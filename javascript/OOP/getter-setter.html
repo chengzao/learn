@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>getter和setter</title>
+</head>
+<body>
+
+</body>
+<script>
+	var o = (function () {
+		var age = 10;
+		return {
+			get_age:function(){
+				return age;
+			},
+			set_age:function(v){
+				age = v
+			}
+		}
+	})();
+
+	o.get_age(); // 10
+	o.set_age(8);
+	o.get_age(); // 8
+
+	//  es5 getter和 setter
+	var o2 = (function () {
+		var age = 10;
+		return {
+			get age(){
+				return age;
+			},
+			set age(v){
+				age = v
+			}
+		}
+	})();
+
+	o2.age; // 10
+	o2.age = 8;
+	o2.age; // 8
+
+</script>
+</html>

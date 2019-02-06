@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>css3 太极</title>
+    <style>
+        body {
+            background: #CFCFCF;
+        }
+
+        .box-taiji {
+            position: relative;
+            margin: 50px auto;
+            width: 0px;
+            height: 100px;
+            border-right: 50px solid #fff;
+            border-left: 50px solid #000;
+            border-radius: 50%;
+        }
+
+        .box-taiji:before,
+        .box-taiji:after {
+            position: absolute;
+            display: block;
+            content: "";
+        }
+
+        .box-taiji:before {
+            top: 0px;
+            left: -26px;
+            z-index: 1;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #fff;
+            box-shadow: 0 50px 0 #000;
+        }
+
+        .box-taiji:after {
+            top: 12px;
+            left: -13px;
+            z-index: 2;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: #000;
+            box-shadow: 0 50px 0 #fff;
+        }
+
+        #yin-yang {
+            position: relative;
+            width: 96px;
+            height: 48px;
+            border-width: 2px 2px 50px 2px;
+            border-style: solid;
+            border-color: red;
+            border-radius: 100%;
+            background: #eee;
+        }
+
+        #yin-yang:before {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 12px;
+            height: 12px;
+            border: 18px solid red;
+            border-radius: 100%;
+            background: #eee;
+            content: "";
+        }
+
+        #yin-yang:after {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 12px;
+            height: 12px;
+            border: 18px solid #eee;
+            border-radius: 100%;
+            background: red;
+            content: "";
+        }
+        /* 333 */
+
+        .t {
+            position: relative;
+            margin-right: auto;
+            margin-left: auto;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            background-image: linear-gradient(90deg, #fff 50%, #000 50%);
+            box-shadow: 0 0 50px #fff;
+            /* -webkit-transition: all 2s ease-in; */
+        }
+
+        .t:hover {
+            /* -webkit-transform: rotate(360deg); */
+        }
+
+        .t:before,
+        .t:after {
+            position: absolute;
+            content: '';
+        }
+
+        .t:before {
+            top: 0;
+            left: 125px;
+            width: 50px;
+            height: 50px;
+            border: 100px solid #fff;
+            border-radius: 50%;
+            background: #000;
+        }
+
+        .t:after {
+            bottom: 0;
+            left: 125px;
+            width: 50px;
+            height: 50px;
+            border: 100px solid #000;
+            border-radius: 50%;
+            background: #fff;
+        }
+        /* 444 */
+
+        .taiji {
+            margin: 100px auto;
+            /*主要是想要效果图居中，没有也可以*/
+            width: 0;
+            height: 600px;
+            /*画一条高为600像素的线*/
+            border-right: 300px solid black;
+            /*线的右边为一个宽为300像素的黑色矩形，黑白整体为一个宽为600像素的正方形*/
+            border-left: 300px solid white;
+            /*线的左边为一个宽为300像素的白色矩形*/
+            border-radius: 300px;
+            /*画一个半径为300像素，左白右黑的圆*/
+        }
+
+        .taiji::before {
+            display: block;
+            margin-left: -150px;
+            /*将同心圆的圆心移到大圆直径上*/
+            width: 100px;
+            height: 100px;
+            border: 100px solid white;
+            /*画一个内黑外白的同心正方形*/
+            border-radius: 100%;
+            /*画一个内黑外白的同心圆*/
+            background: black;
+            /*画一个宽为100像素，黑色背景的正方形*/
+            content: '';
+        }
+
+        .taiji::after {
+            display: block;
+            margin-left: -150px;
+            width: 100px;
+            height: 100px;
+            border: 100px solid black;
+            border-radius: 100%;
+            background: white;
+            content: '';
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box-taiji"></div>
+    <!-- 222 -->
+    <div id="yin-yang"></div>
+    <!-- 333 -->
+    <div class="t"></div>
+    <!-- 444 -->
+    <div class="taiji"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>URLSearchParams</title>
+  <style media="screen">
+    ul, li{list-style: none;}
+    li{width: 300px;height: 100px;display: inline-block;background-color: pink;margin-right: 20px}
+    li:hover{transform: scale3d(1.5,1.5,1.5);}
+  </style>
+</head>
+<body>
+  <ul>
+    <li>lorem:1</li>
+    <li>lorem:2</li>
+    <li>lorem:3</li>
+  </ul>
+</body>
+<script>
+  let url = "q=小明&topic=api";
+  let searchParams = new URLSearchParams(url);
+
+  for(let p of searchParams){
+    console.log(p);
+  }
+</script>
+</html>

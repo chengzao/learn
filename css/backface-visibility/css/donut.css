@@ -1,0 +1,31 @@
+.contain {
+  position: relative;
+  margin: 0 auto;
+  margin-bottom: 125px;
+  width: 210px;
+  height: 300px;
+}
+
+img.donut {
+  position: absolute;
+  -webkit-animation: turn 2s infinite;
+  animation: turn 2s infinite;
+}
+
+.donut-front {
+  z-index: 5;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+@-webkit-keyframes turn {
+  to {
+    -webkit-transform: rotateY(360deg);
+  }
+}
+
+@keyframes turn {
+  to {
+    transform: rotateY(360deg);
+  }
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数构造方法定义</title>
+</head>
+<body>
+<ul>
+    <li>在Javascript中定义一个函数，有两种写法：</li>
+    <li>function foo() { }</li>
+    <li>和</li>
+    <li>var foo = function () { }</li>
+    <li>两种写法完全等价。但是在解析的时候，前一种写法会被解析器自动提升到代码的头部，因此违背了函数应该先定义后使用的要求，所以建议定义函数时，全部采用后一种写法。</li>
+    <li><p>new语句</p></li>
+</ul>
+
+    第一种（函数声明）：
+    function sum1(num1,num2){
+      return num1+num2;
+    }
+    第二种（函数表达式）：
+    var sum2 = function(num1,num2){
+      return num1+num2;
+    }
+    第三种（函数对象方式）：
+    var sum3 = new Function("num1","num2","return num1+num2");
+
+
+<script>
+    Object.beget = function (o) {
+        var F = function (o) {
+        };
+        F.prototype = o;
+        return new F;
+    }
+    var Cat = {
+        name: '',
+        saying: 'meow'
+    };
+    var myCat = Object.beget(Cat);
+    myCat.name = 'mimi';
+    console.log(myCat.saying);
+    console.log(myCat.name);
+</script>
+
+<script>
+
+    function sum1(num1, num2) {
+        return num1 + num2;
+    }
+
+
+    var sum2 = function (num1, num2) {
+        return num1 + num2;
+
+    }
+    var sum3 = new Function("num1", "num2", "return num1+num2");
+    console.log(sum3(4, 2))
+
+</script>
+</body>
+</html>

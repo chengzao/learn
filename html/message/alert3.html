@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>弹出框练习</title>
+	<style>
+		#mask{
+			display: none;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color:#3A3232 ;
+			z-index: 2;
+			opacity: 0.8;
+		}
+
+		#Pop_content{
+			display: none;
+			position: absolute;
+			left: 25%;
+			top: 20%;
+			width: 50%;
+			height: 50%;
+			background-color: #bd9292;
+			z-index: 3;
+		}
+		#Pop_close{
+			float: right;
+			text-decoration:underline;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+<div id="mask"></div>
+	<button id="btn">点击</button>
+	
+	<div id="Pop_content">
+		<div id="Pop_close">点击关闭</div>
+		<div > 这是一个测试 </div>
+		<div > 这是一个测试 </div>
+		<div > 这是一个测试 </div>
+		<div > 这是一个测试 </div>
+	</div>
+
+	<script>
+		function Pop_close(id){
+			var box=document.getElementById(id);
+							var mask=document.getElementById('mask');
+				var Pop_content=document.getElementById('Pop_content');
+			box.onclick=function(e){
+				mask.style.display='none';
+				Pop_content.style.display='none';
+			}
+		}
+		function Pop_open(id){
+				var box=document.getElementById(id);
+				var mask=document.getElementById('mask');
+				var Pop_content=document.getElementById('Pop_content');
+				box.onclick=function(e){
+				mask.style.display='block';
+				Pop_content.style.display='block';
+			}
+		}
+		Pop_open('btn');
+		Pop_close('Pop_close');
+	</script>
+
+
+</body>
+</html>

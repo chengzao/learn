@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CustomEvent</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+var myEvent = new CustomEvent("myevent", {
+  detail: {
+    foo: "bar"
+  },
+  bubbles: true,
+  cancelable: false
+});
+
+window.addEventListener('myevent', function(event) {
+  console.log('Hello ' + event.detail.foo);
+});
+
+window.dispatchEvent(myEvent);
+
+
+(function () {
+  function CustomEvent ( event, params ) {
+    params = params || { bubbles: false, cancelable: false, detail: undefined };
+    var evt = document.createEvent( 'CustomEvent' );
+    evt.initCustomEvent( event, params.bubbles, params.cancelable, params.detail );
+    return evt;
+   }
+
+  CustomEvent.prototype = window.Event.prototype;
+
+  window.CustomEvent = CustomEvent;
+})();
+</script>
+</html>

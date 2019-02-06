@@ -1,0 +1,23 @@
+<html>
+<head>
+  <title>Site B</title>
+  <style>
+  body {
+    background-color: rgb(255, 0, 0);
+  }
+  </style>
+<body>
+<script>
+
+//html5中的postMessage
+
+window.addEventListener('message', function() {
+	if(event.origin == 'http://www.chenio.com'){
+		document.body.style.backgroundColor = event.data;
+		console.log(event.data);
+	}
+});
+</script>
+</script>
+</body>
+</html>

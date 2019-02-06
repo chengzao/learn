@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>codewars</title>
+</head>
+<body>
+  <h1>codewars</h1>
+</body>
+<script>
+  function squareDigits(num) {
+    //may the code be with you
+    let _arr= String(num).split('')
+    let res = _arr.reduce((prev, current) =>{
+      let _cur = Math.pow(current,2)
+      return prev+_cur
+    },'')
+    return res;
+  }
+
+  // function squareDigits(num) {
+  //   var str = String(num)
+  //   var res = ''
+
+  //   for (var i = 0; i < str.length; i++) {
+  //     res += Math.pow(str.charCodeAt(i) - 48, 2)
+  //   }
+
+  //   return parseInt(res)
+  // }
+
+  console.log('====================================');
+  console.log(squareDigits(9414));
+  console.log('====================================');
+
+
+  var countBits = function (n) {
+    // Program Me
+    return n.toString(2).replace(/0/g, '').length
+  };
+
+  console.log('====================================');
+  console.log(countBits(10));
+  console.log('====================================');
+
+
+  // function DNAStrand(dna) {
+  //   //your code here
+  //   let res = dna.split('').map((item, index) => {
+  //     console.log(item);
+  //     switch(item){
+  //       case 'A':
+  //         return item = 'T'
+  //       case 'T':
+  //         return item = 'A'
+  //       case 'G':
+  //         return item = 'C'
+  //       case 'C':
+  //         return item = 'G'
+  //       default:
+  //         return item;
+  //     }
+  //   }).join('')
+  //   return res
+  // }
+
+  let pairs = { A: 'T', T: 'A', C: 'G', G: 'C' };
+  const DNAStrand = dna => dna.replace(/./g, c => pairs[c]);
+
+  console.log('====================================');
+  console.log(DNAStrand('ATTGC'));
+  console.log('====================================');
+
+  function duplicateCount(text) {
+      var str = [],
+        obj = {},
+        res = 1;
+      if(text === ''){return 0}
+      for (const item of text) {
+        let lowerCaseStr = item.toLowerCase()
+        if(!str.includes(lowerCaseStr)){
+          str.push(lowerCaseStr)
+          obj[lowerCaseStr] = res
+        }else{
+          obj[lowerCaseStr] += 1
+        }
+      }
+      let count = Object.values(obj).sort((a, b) => a - b).reverse()
+      return count
+  }
+  console.log('====================================');
+  console.log(duplicateCount('abcdefghabcdABCABA'));
+  console.log('====================================');
+
+</script>
+</html>

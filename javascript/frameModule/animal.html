@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        #container {
+            height: 400px;
+            position: relative;
+            width: 100%;
+            border-bottom: 1px black solid;
+            text-align: center;
+            top: 50px;
+        }
+        
+        #container div {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            left: 10px;
+            background: red;
+            float: left;
+            top: 10px;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="box1"></div>
+        <div id="box2"></div>
+        <div id="box3"></div>
+        <div id="box4"></div>
+    </div>
+</body>
+
+</html>
+<script src='czh.js'></script>
+<script>
+    czh.animate.add('#box1', {
+        left: '100px',
+        height: '300px',
+        width: '200px'
+    }, 5000);
+    czh.animate.add('#box2', {
+        left: '200px',
+        height: '300px',
+        width: '200px'
+    }, 5000);
+    czh.animate.add('#box3', {
+        left: '300px',
+        height: '300px',
+        width: '200px'
+    }, 5000);
+    czh.animate.add('#box4', {
+        left: '400px',
+        height: '300px',
+        width: '200px'
+    }, 5000);
+</script>

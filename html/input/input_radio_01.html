@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>input--radio样式</title>
+	<style type='text/css'>
+		input[type='radio']{
+			margin :3px 3px 0 5px;
+			display: none;
+		}
+		label{
+			padding-left: 20px;
+			cursor: pointer;
+			background:url(images/radio_bg.gif) no-repeat left top; 
+			background-size: 20px;
+		}
+		label.checked{
+			background-position: left bottom;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<input type="radio" id="nba" checked="checked" name='sport' value="nba">
+		<label for="nba" class="checked" name='nba'>nba</label>
+		<input type="radio" id="cba" name='sport' value='cba'>
+		<label for="cab" name='cba'>cba</label>
+	</div>
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function () {
+		$('label').click(function(event) {
+			var radioId = $(this).attr(name);
+			$("label").removeAttr('class') && $(this).attr('class','checked')
+			$("label[type='radio']").removeAttr('checked')&&$('#'+radioId).attr('checked','checked');
+		});  
+	})
+</script>
+</html>

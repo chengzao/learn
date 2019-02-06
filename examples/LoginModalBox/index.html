@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            height: 2000px;
+        }
+
+        #mask {
+            width: 100%;
+            height: 100%;
+            opacity: 0.4; /*半透明*/
+            filter: alpha(opacity=40); /*ie 6半透明*/
+            background-color: black;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+
+        #show {
+            width: 300px;
+            height: 300px;
+            background-color: #fff;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin: -150px 0 0 -150px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<a href="javascript:;" class="register">注册</a>
+<a href="javascript:;" id="login">登录</a>
+
+<div id="mask"></div>
+<div id="show"></div>
+</body>
+</html>
+<script>
+    //自己封装的一个通过id获取元素的方法 名字交$
+    function $(id) {
+        return document.getElementById(id);
+    }
+
+    //获取元素
+    var login = $("login");//登录按钮
+    var mask = $("mask");//遮罩
+    var show = $("show");//遮罩上面的东西 登录框
+
+    //点击login显示mask和show
+    login.onclick = function (event) {
+        mask.style.display = "block";
+        show.style.display = "block";
+        document.body.style.overflow = "hidden";//隐藏多余的部分
+        //阻止冒泡
+        var event = event || window.event;
+        if (event.stopPropagation) {
+            event.stopPropagation();
+        } else {
+            event.cancelBubble = true;
+        }
+
+    }
+
+    //点击其他地方让mask和show消失
+    document.onclick = function (event) {
+        var event = event || window.event;
+        /*var targetId;
+         if (event.target) {
+         targetId = event.target.id;
+         } else {
+         targetId = event.srcElement.id;
+         }*/
+        //用来判断事件到底发生在谁身上 发生在谁身上就是谁的id
+        var targetId = event.target ? event.target.id : event.srcElement.id;
+        //通过判断id看来显示和隐藏盒子
+        if (targetId != "show") {
+            mask.style.display = "none";
+            show.style.display = "none";
+            document.body.style.overflow = "visible";//把多余的部分在显示回来
+        }
+    }
+
+
+</script>

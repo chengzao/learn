@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>iframe</title>
+</head>
+<body>
+<iframe src="" id='iframepage' frameborder="0"></iframe>
+<script>
+//  iframe高度问题
+   function reinitIframe(){
+   var iframe = document.getElementById("iframepage");
+   try{
+       var bHeight = iframe.contentWindow.document.body.scrollHeight;
+       var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+       var height = Math.max(bHeight, dHeight);
+       iframe.height = height;
+   }catch (ex){}
+   }
+</script>
+</body>
+</html>

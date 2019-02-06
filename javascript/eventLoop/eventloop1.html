@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>event loop</title>
+</head>
+<body>
+  <p>事件 循环</p>
+  
+  <p>原文： https://github.com/dwqs/blog/issues/61</p>
+
+  <p>
+    (macro)task主要包含：script(整体代码)、setTimeout、setInterval、I/O、UI交互事件、postMessage、MessageChannel、setImmediate(Node.js 环境)
+  </p>
+
+  <p>
+    microtask主要包含：Promise.then、MutaionObserver、process.nextTick(Node.js 环境)
+  </p>
+
+  <p>
+    在 Node 中，会优先清空 next tick queue，即通过process.nextTick 注册的函数，再清空 other queue，常见的如Promise；此外，timers(setTimeout/setInterval) 会优先于 setImmediate 执行，因为前者在 timer 阶段执行，后者在 check 阶段执行。
+  </p>
+
+  <p>
+    每次执行完一个宏任务之后，会去检查是否存在 Microtasks；如果有，则执行 Microtasks 直至清空 Microtask Queue
+  </p>
+
+  <pre>
+    <code>
+  console.log('script start');
+
+  setTimeout(function() {
+    console.log('timeout1');
+  }, 10);
+
+  new Promise(resolve => {
+      console.log('promise1');
+      resolve();
+      setTimeout(() => console.log('timeout2'), 10);
+  }).then(function() {
+      console.log('then1')
+  })
+
+  console.log('script end');
+
+    </code>
+  </pre>
+
+</body>
+<script>
+  console.log('script start');
+
+  setTimeout(function() {
+    console.log('timeout1');
+  }, 10);
+
+  new Promise(resolve => {
+      console.log('promise1');
+      resolve();
+      setTimeout(() => console.log('timeout2'), 10);
+  }).then(function() {
+      console.log('then1')
+  })
+
+  console.log('script end');
+</script>
+</html>

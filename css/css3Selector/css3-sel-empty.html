@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3 选择器</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #F7F7F7;
+		}
+
+		.empty {
+			list-style: none;
+			height: 30px;
+		}
+		
+		.empty li {
+			float: left;
+			width: 120px;
+			height: 30px;
+			text-align: center;
+			line-height: 30px;
+			font-size: 20px;
+			background-color: pink;
+			margin: 0 5px;
+			position: relative;
+		}
+
+		li span {
+			display: block;
+			width: 20px;
+			height: 20px;
+			text-align: center;
+			line-height: 20px;
+			font-size: 12px;
+			position: absolute;
+			top: -10px;
+			right: 0;
+			background-color: red;
+			color: #FFF;
+		}
+		
+		/*empty本身就是空的意思 span:empty这是一个span标签并内容为空
+			则会被选中
+		*/
+		span:empty {
+			display: none;
+		}
+		
+	</style>
+</head>
+<body>
+	<ul class="empty">
+		<li>商品分类</li>
+		<li>我的订单</li>
+		<li>购物车<span></span></li>
+	</ul>
+</body>
+</html>

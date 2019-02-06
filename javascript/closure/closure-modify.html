@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>闭包间接修改</title>
+		<script>
+		/*
+			function foo() {
+				var a = 1;
+				var b = 2;
+				// 要求在 0 级链上, 同时可以访问 a 或 b
+			}
+
+			// 访问 a
+			function foo() {
+				var a = 1;
+				var b = 2;
+				return function () {
+					return a;
+				}
+			}
+
+			// 访问 b
+			function foo() {
+				var a = 1;
+				var b = 2;
+				return function () {
+					return b;
+				}
+			}
+
+			// 返回数组
+			function foo() {
+				return [1,2,3];
+			}
+		*/
+			// 纪要返回a又要访问b
+			/*
+			function foo() {
+				var a = Math.random();
+				var b = Math.random();
+				return [function () {
+					return a;
+				}, function () {
+					return b;
+				}];
+			}
+
+			var fns = foo();
+			console.log("a = " + fns[0]());
+			console.log("a = " + fns[0]());
+			console.log("a = " + fns[0]());
+			console.log("b = " + fns[1]());
+			console.log("b = " + fns[1]());
+			console.log("b = " + fns[1]());
+			*/
+
+			/*
+			function foo() {
+				var a = Math.random();
+				var b = Math.random();
+				return {
+					get_a: function () {
+					return a;
+				}, get_b: function () {
+					return b;
+				}};
+			}
+
+			var o = foo();
+
+			console.log("a = " + o.get_a());
+			console.log("a = " + o.get_a());
+			console.log("a = " + o.get_a());
+
+			console.log("b = " + o.get_b());
+			console.log("b = " + o.get_b());
+			console.log("b = " + o.get_b());
+			*/
+
+
+
+
+
+			function foo() {
+				var a = Math.random();
+
+				// 既要对他进行读取, 又要对他进行修改
+				return {
+					get_a: function () {
+						return a;
+					}, set_a: function (v) {
+						a = v;
+					}
+				};
+			}
+
+			var o = foo();
+
+			console.log(o.get_a());
+			console.log(o.get_a());
+
+			o.set_a(123);
+
+			console.log(o.get_a());
+			console.log(o.get_a());
+
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

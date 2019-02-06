@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<!-- iphone 默认 电话号码显示为拨号的链接 -->
+	<meta name="format-detection" content="telephone=yes">
+	<!-- iphone 电话号码不显示为拨号的链接 -->
+	<meta name="format-delection" content="telephone=no">
+ <!-- iphone 设备中的 safari 私有 meta 标签,它表示:允许全 屏模式浏览, -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+<!-- meta 标签也是 iphone 的私有标签,它指定的 iphone 中 safari 顶端的 状态条的样式, -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta name="description" content="不超过150字符">
+
+	<meta name="keywords" content="">
+  <!-- 搜索引擎抓取 -->
+  <meta name="robots" content="index,follow">
+	<!-- 不让百度转码 -->
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <!-- uc强制竖屏  	 -->
+  <meta name="screen-orientation" content="portrait">
+	<!-- uc强制全屏 -->
+	<meta name="full-screen" content="yes">
+  <!-- uc应用模式 -->
+  <meta name="browsermode" content="application">
+  <!-- qq强制竖屏 -->
+  <meta name="x5-orientation" content="portrait">
+  <!-- qq强制全屏 -->
+  <meta name="x5-fullscreen" content="true">
+  <!-- qq应用模式 -->
+  <meta name="x5-page-mode" content="app">
+
+	<!-- windows phone <a><input>标签被点击时产生的半透明灰色背景去掉,点击无高光 -->
+  <meta name="msapplication-tap-highlight" content="no">
+
+
+
+	<title>webapp</title>
+  <style>
+  	/*单行文本溢出*/
+		div{
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+		/*多行文本溢出*/
+		div{
+			display: -webkit-box !important;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			word-break: break-all;
+			-webkit-box-orient:vertical;
+			-webkit-line-clamp:2; /* 数字可改 */
+		}
+
+		input::-webkit-input-placeholder{font-size:10px;}
+  </style>
+</head>
+<body>
+	<a href="1234...">Call phone</a>	
+  <!-- 关闭 iOS 键盘首字母自动大写 -->
+	<input type="text" autocapitalize="off">
+<!-- iOS 中如何禁止用户选中文字 通过指定文字标签的-webkit-user-select:none;便可以禁止 iOS 用户选中文字 -->
+	
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$('html').one('touchstart',function(){
+			audio.play();
+		})
+	})
+</script>
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>基础的Canvas</title>
+</head>
+
+<body>
+    <div id="canvas-warp">
+        <canvas id="canvas" style="border: 1px solid #aaaaaa; display: block; margin: 50px auto;">
+            你的浏览器居然不支持Canvas？！赶快换一个吧！！
+        </canvas>
+    </div>
+</body>
+<script type="text/javascript">
+    window.onload = function () {
+        var canvas = document.getElementById("canvas");
+        canvas.width = 400;
+        canvas.height = 400;
+        var context = canvas.getContext("2d");
+
+        context.beginPath();
+        context.moveTo(100,100);
+        context.lineTo(200,200);
+        context.lineTo(100,300);
+        context.lineWidth = 5;
+        context.strokeStyle = "red";
+        context.stroke();
+        
+        
+        context.beginPath();
+        context.moveTo(210,100);
+        context.lineTo(310,100);
+        context.lineTo(310,200);
+        context.lineTo(210,200);
+        context.lineTo(210,100);
+        // context.closePath();
+        context.lineWidth = 2;
+        context.strokeStyle = "blue";
+        context.stroke();
+
+
+        context.beginPath(); // 开始绘制
+        context.moveTo(210,220);
+        context.lineTo(310,220);
+        context.lineTo(310,320);
+        context.lineTo(210,320);
+        context.lineTo(210,220);
+        context.closePath();  //闭合
+
+        context.lineWidth = 2;
+        context.strokeStyle = "red";
+        context.fillStyle = "yellow"; 
+
+        context.fill(); // 填充
+        context.stroke(); // 描边
+
+    }
+</script>
+
+</html>

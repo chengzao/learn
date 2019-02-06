@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>div高亮</title>
+    <style>
+        ul {
+            list-style: none
+        }
+
+        li {
+            height: 20px;
+            width: 200px;
+        }
+
+        .hover {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+    </ul>
+</body>
+<script>
+    var lis = document.getElementsByTagName("li");
+    for (var i = 0; i < lis.length; i++) {
+        lis[i].onmouseover = function () {
+            for (var j = 0; j < lis.length; j++) {
+                lis[j].className = '';
+            }
+            this.className = "hover";
+        }
+
+    }
+</script>
+
+</html>

@@ -1,0 +1,153 @@
+/* 9. 混合器 mixin */
+
+@mixin rounded-corners {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.notice {
+  background-color: green;
+  border: 2px solid #00aa00; // 使用混合器
+  @include rounded-corners;
+}
+
+/* 混合器中的CSS规则 */
+
+@mixin no-bullets {
+  list-style: none;
+  li {
+    list-style-image: none;
+    list-style-type: none;
+    margin-left: 0px;
+  }
+}
+
+ul.plain {
+  color: #444;
+  @include no-bullets;
+}
+
+/* 给混合器传参 */
+
+@mixin link-colors($normal, $hover, $visited) {
+  color: $normal;
+  &:hover {
+    color: $hover;
+  }
+  &:visited {
+    color: $visited;
+  }
+}
+
+a {
+  @include link-colors(blue, red, green);
+}
+
+/* 混合器传参: sass允许通过语法$name: value的形式指定每个参数的值 */
+
+a {
+  @include link-colors($normal: blue, $visited: green, $hover: red);
+}
+
+/* 混合器传参:默认参数值 默认值使用$name: default-value的声明形式 */
+
+@mixin link-colors($normal, $hover: $normal, $visited: $normal) {
+  color: $normal;
+  &:hover {
+    color: $hover;
+  }
+  &:visited {
+    color: $visited;
+  }
+}
+
+a {
+  @include link-colors($normal: blue);
+}
+
+/* mixin向混合样式中导入内容 : @content */
+
+$color: green;
+
+@mixin button($color: #fff) {
+  color: $color;
+  @content;
+  border: 1px solid $color;
+}
+
+.button-green {
+  @include button($color: red) {
+    background: $color;
+  }
+}
+
+/* 10. 使用选择器继承来精简CSS extend */
+
+//通过选择器继承继承样式
+.error {
+  border: 1px solid red;
+  background-color: #fdd;
+}
+
+.seriousError {
+  @extend .error;
+  border-width: 3px;
+}
+
+/* 11. diff mixin and extend */
+
+/* extend */
+.button {
+  background: green;
+}
+
+.button-1 {
+  @extend .button;
+}
+
+.button-2 {
+  @extend .button;
+}
+
+/*  mixin  */
+@mixin button {
+  background-color: green;
+}
+
+.button-1 {
+  @include button;
+}
+
+.button-2 {
+  @include button;
+}
+
+/* 12. function 函数指令 */
+$grid-width: 40px;
+$gutter-width: 10px;
+
+@function grid-width($n) {
+  @return $n * $grid-width + ($n - 1) * $gutter-width;
+}
+
+#sidebar {
+  width: grid-width(5);
+}
+
+@function px2rem($n) {
+  @return ($n)/32;
+}
+.test {
+  height: px2rem(64rem);
+}
+
+$a: 16;
+$base: 32;
+@function p2r($n, $base: $a) {
+  @return $n/$base + rem;
+}
+
+#box {
+  width: p2r(160);
+}

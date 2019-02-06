@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>border</title>
+    <style>
+        .box1 {
+            width: 0;
+            height: 0;
+            border: 100px solid gray;
+            border-radius: 100px;
+            border-right-color: #fff;
+            border-bottom-color: #1b6d85;
+        }
+
+        .box2 {
+            width: 200px;
+            height: 200px;
+            background-color: #ccc;
+            /*第一组值表示水平半径，第二组值表示垂直半径*/
+            border-radius: 100px 25px 80px 5px / 45px 25px 30px 15px;
+        }
+
+        .box3 {
+            width: 200px;
+            height: 200px;
+            background-color: #ccc;
+            /*border-top-right-radius:50px;*/
+            border-top-right-radius: 40px 140px;
+        }
+
+        .box4 {
+            height: 100px;
+            width: 200px;
+            background: red;
+            border-radius: 100px/50px;
+        }
+
+        .box5 {
+            width: 200px;
+            height: 200px;
+            background-color: #efefef;
+            /* Can be set to transparent */
+            border: 3px solid #a72525;
+            -webkit-border-radius: 100px;
+        }
+
+        div {
+            float: left;
+            margin-left: 10px;
+        }
+
+        .box6 {
+            width: 50px;
+            height: 50px;
+            border-left: 10px solid rgb(27, 205, 218);
+            border-right: 10px solid rgb(185, 19, 19);
+            border-top: 10px solid rgb(243, 179, 190);
+            border-bottom: 10px solid rgb(79, 201, 89);
+            border-top-left-radius: 10px 20px;
+            border-top-right-radius: 20px 10px;
+            border-bottom-left-radius: 10px 20px;
+            border-bottom-right-radius: 20px 10px;
+        }
+
+        .box7 {
+            width: 50px;
+            height: 50px;
+            border: 50px solid #000;
+            background-color: #fff
+        }
+
+        .box8 {
+            width: 50px;
+            height: 50px;
+            border: 50px solid #000;
+            border-radius: 50%;
+            background-color: #fff;
+        }
+
+        .box9 {
+            width: 0px;
+            height: 0px;
+            border-left: 100px solid rgb(27, 205, 218);
+            border-right: 100px solid rgb(185, 19, 19);
+            border-top: 30px solid rgb(243, 179, 190);
+            border-bottom: 30px solid rgb(79, 201, 89);
+        }
+
+    </style>
+</head>
+
+<body>
+    <!--参考文档：http://blog.sina.com.cn/s/blog_61671b520101gelr.html-->
+    <!--
+border-radius属性
+   * border-radius
+如果设置两个值，表示左上角和右下角使用第一个值，右上角和左下角使用第二个值。
+如果设置三个值，表示左上角使用第一个值，右上角和左下角使用第二个值，右下角使用第三个值。
+如果设置四个值，则依次对应左上角、右上角、右下角、左下角（顺时针顺序）。
+
+单圆角的设置：
+　　* border-top-left-radius
+　　* border-top-right-radius
+　　* border-bottom-right-radius
+　　* border-bottom-left-radius
+如果设置1个值，表示水平半径与垂直半径相等。
+如果设置2个值，第一个值表示水平半径，第二个值表示垂直半径。
+-->
+    <div class='box1'></div>
+    <div class='box2'></div>
+    <div class='box3'></div>
+    <div class='box4'></div>
+    <div class='box5'></div>
+    <div class="box6"></div>
+    <div class="box7"></div>
+    <div class="box8"></div>
+    <div class="box9"></div>
+</body>
+
+</html>

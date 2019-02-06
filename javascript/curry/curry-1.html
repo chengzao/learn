@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>add(2)(3)</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //1	 add()()()会出错
+    function add1(x) {
+        return function (y) {
+            return x + y;
+        };
+    }
+    console.log(add1(1)(2));
+
+
+    //2
+    function add2(x) {
+        return function (y) {
+            if (typeof y !== 'undefined') {
+                x = x + y;
+                //console.log(arguments.callee);//function(y){.....}
+                return arguments.callee;
+            } else {
+                return x;
+            }
+        };
+    }
+    // console.log(add2(1)(2)(3)()); //6
+
+
+    //3
+    function add3() {
+        var total = 0;
+
+        function sum() {
+            if (arguments.length) {
+                var arr = Array.prototype.slice.call(arguments).sort();
+                total = total + arrayAdder(arr);
+                // console.log(total);
+                return sum;
+            } else {
+                return total;
+            }
+        }
+        //
+        if (arguments.length) {
+            var arr1 = Array.prototype.slice.call(arguments).sort();
+            var mytotal = arrayAdder(arr1);
+            // console.log(arr1);//[2,3]
+            // console.log(mytotal)//5
+            return sum(mytotal);
+        } else {
+            return sum();
+        }
+        //计算add3()传入进来的参数 :
+        //[2,3]-5 ;[5]-5 ;[1]-1 ;[1] 1;[1,2,3]-6;
+        function arrayAdder(arr) {
+            var x = 0;
+            for (var i = 0; i < arr.length; i++) {
+                x = x + arr[i];
+            };
+            return x;
+        }
+    }
+    //console.log(add3(2, 3)(1)(1)(1, 2, 3)());
+
+    //4
+    Function.prototype.curry = function () {
+        if (!arguments.length) return this;
+        var _this = this,
+            args = [].slice.call(arguments, 0);
+        return function () {
+            return _this.apply(this, [].concat(
+                [].slice.call(args, 0), [].slice.call(arguments, 0)));
+        }
+    }
+
+
+    add4 = function (x) {
+        return (function (x, y) {
+            return x + y
+        }).curry(x)
+    }
+
+    // console.log(add4(2)(3))
+</script>
+
+</html>

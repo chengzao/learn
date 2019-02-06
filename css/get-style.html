@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+#mydiv {
+     width : 300px;
+}
+</style>
+</head>
+<body>
+<div id="mydiv"></div>
+
+	<script>
+	function getStyle (id,attr,val) {
+		var mydiv = document.getElementById(id);
+		if(!val){
+			if (mydiv.currentStyle) {
+				return mydiv.currentStyle[attr];
+			} else if (window.getComputedStyle) {
+				return window.getComputedStyle(mydiv, null)[attr];
+			}
+		} else{
+			mydiv.style[attr]=val;
+		}	
+	}
+
+	// 
+	getStyle('mydiv','width','200px');
+	console.log(getStyle('mydiv','width'));
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>curry</title>
+</head>
+<body>
+    <p>柯里化（英语：Currying），又译为卡瑞化或加里化，是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。</p>
+</body>
+<script>
+function add(a) {
+    return function (b) {
+        return a + b
+    }
+}
+
+var tmp = add(5)
+var result = tmp(5)
+console.log(result)
+
+var res = add(1)(2);
+console.log(res)
+
+
+function curry(fn) {
+    var _args = [];
+    return function () {
+        [].push.apply(_args, [].slice.call(arguments));
+        if (_args.length === fn.length) {
+            const args = _args
+            _args = []
+            return fn.apply(this, args);
+        }
+
+        return arguments.callee;
+    }
+}
+var abc = function(a, b, c) {
+  return [a, b, c];
+};
+
+var curried = curry(abc)
+console.log(curried(1)(2)(3))
+
+console.log(curried(1, 2)(3))
+</script>
+</html>

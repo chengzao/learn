@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JSON无限折叠树形菜单特效代码</title>
+
+<style type="text/css">
+    .content{width: 70%;float: right;height:200px;background-color: red;}
+    .wrap-menu {float: left;width:30%; overflow:auto; width:300px; background:#F6F6F6; font:12px/1.5 Tahoma,Arial,sans-serif}
+    .wrap-menu ul{ list-style:none; margin:0; padding:0;}
+    .wrap-menu ul li{ text-indent:3em; white-space:nowrap; }
+    .wrap-menu ul li h2{ cursor:pointer; height:100%; width:100%; margin:0 0 1px 0; font:12px/31px '宋体'; color:#fff; background:red;}
+    .wrap-menu ul li a{ display:block; outline:none; height:25px; line-height:25px; margin:1px 0; color:#1A385C; text-decoration:none;}
+    .wrap-menu ul li img{ margin-right:10px; margin-left:-17px; margin-top:9px; width:7px; height:7px; background:url(images/arrow.gif) no-repeat; border:none;}
+    .wrap-menu ul li img.unfold{ background-position:0 -9px;}
+    .wrap-menu ul li a:hover{ background-color:#ccc; background-image:none;}
+  </style>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/tree.js"></script>
+</head>
+
+<body>
+<!--参考文档：http://bbs.csdn.net/topics/390875860-->
+<div class="democon">
+
+  
+<div class="wrap-menu"></div>
+
+<div class="content">456</div>  
+  
+</div>
+    <script>
+        var testMenu=[
+            {
+                "name": "一级菜单",
+                "submenu": [
+                    {
+                        "name": "二级菜单",
+                        "url": "index.html"
+                    },
+                    {
+                        "name": "二级菜单",
+                        "url": "index1.html"
+                    }
+                ]
+            },
+            {
+                "name": "一级菜单",
+                "submenu": [
+                    {
+                        "name": "二级菜单",
+                        "url": "index2.html"
+                    },
+                    {
+                        "name": "二级菜单",
+                        "submenu": [
+                            {
+                                "name": "三级菜单",
+                                "submenu": [
+                                    {
+                                        "name": "四级菜单",
+                                        "url": ""
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "三级菜单",
+                                "url": ""
+                            }
+                        ]
+                    },
+                    {
+                        "name": "二级菜单",
+                        "url": ""
+                    },
+                    {
+                        "name": "二级菜单",
+                        "submenu": [
+                            {
+                                "name": "三级菜单",
+                                "submenu": [
+                                    {
+                                        "name": "四级菜单",
+                                        "url": ""
+                                    },
+                                    {
+                                        "name": "四级菜单",
+                                        "submenu": [
+                                            {
+                                                "name": "五级菜单",
+                                                "url": ""
+                                            },
+                                            {
+                                                "name": "五级菜单",
+                                                "url": ""
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "三级菜单",
+                                "url": ""
+                            }
+                        ]
+                    },
+                    {
+                        "name": "二级菜单",
+                        "url": ""
+                    }
+                ]
+            },
+            {
+                "name": "一级菜单",
+                "submenu": [
+                    {
+                        "name": "二级菜单",
+                        "url": ""
+                    },
+                    {
+                        "name": "二级菜单",
+                        "url": ""
+                    },
+                    {
+                        "name": "二级菜单",
+                        "url": ""
+                    }
+                ]
+            }
+        ];
+        $(function(){
+            new AccordionMenu({menuArrs:testMenu});
+        });
+/*      $(function () {
+        $(".wrap-menu a").each(function () {
+          $this=$(this);
+          if($this[0].href==String(window.location)){
+            $this.css("background","red");
+          }
+        });
+      })*/
+
+
+    </script>  
+
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对象的克隆</title>
+</head>
+<body>
+	<script>
+	//参考网址：http://qianduanblog.com/post/js-learning-30-object-clone-copy.html
+		function clone(obj) {
+			var o, i, j, k;
+			if (typeof(obj) != "object" || obj === null) return obj;
+			if (obj instanceof(Array)) {
+				o = [];
+				i = 0;
+				j = obj.length;
+				for (; i < j; i++) {
+					if (typeof(obj[i]) == "object" && obj[i] != null) {
+						o[i] = arguments.callee(obj[i]);
+					} else {
+						o[i] = obj[i];
+					}
+				}
+			} else {
+				o = {};
+				for (i in obj) {
+					if (typeof(obj[i]) == "object" && obj[i] != null) {
+						o[i] = arguments.callee(obj[i]);
+					} else {
+						o[i] = obj[i];
+					}
+				}
+			}
+
+			return o;
+		}
+
+		var obj={name:'xiaoming',age:14};
+		var objClone=clone(obj);
+		console.log(objClone.name);
+		objClone.age=16;
+		console.log(obj);
+
+/*
+		//简易的克隆
+		function extend(tag,source){
+			for(var item in source){
+				 tag[item]=source[item];
+			}
+			return tag;
+		}
+*/
+
+	</script>
+</body>
+</html>

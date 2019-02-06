@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>flex居中</title>
+  <style>
+    #item-container {
+      height: 400px;
+      display: flex;
+      background-color: hsl(34,88%,90%);
+    }
+    .square {
+      height: 100px; width: 200px;
+      background-color: hsl(50,88%,50%);
+    }
+    .circle {
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      background-color: hsl(22,88%,50%);
+    }
+    /*#item-container { justify-content: flex-end; }*/
+/*    #item-container {
+      justify-content: center;    !*居中*!
+    }*/
+
+/*    #item-container {
+      justify-content: space-between;
+    }*/
+
+/*
+    #item-container {
+      justify-content: space-around;
+    }
+*/
+
+    /*.square { order: -1; }*/   /*交换位置*/
+
+    /*垂直居中*/
+/*    #item-container {
+      justify-content: space-between;
+      align-items: center;
+    }
+    */
+    /*水平垂直居中*/
+    #item-container{
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+<!-- flex / bfc -->
+<div  id="item-container">
+  <div class="circle"></div>
+  <div class="square"></div>
+  <div class="circle"></div>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>scroll</title>
+    <style>
+        .section {
+            height: 1200px;
+        }
+
+        nav {
+            position: fixed;
+            right: 20px;
+            top: 20px;
+        }
+
+        nav a {
+            display: block;
+            color: black;
+            text-decoration: none;
+        }
+
+        nav a.current {
+            color:#fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <div class="section" id="section1">section1</div>
+            <div class="section" id="section2">section2</div>
+            <div class="section" id="section3">section3</div>
+            <div class="section" id="section4">section4</div>
+            <div class="section" id="section5">section5</div>
+        </div>
+        <nav>
+            <a href="#section1" rel="external nofollow" class="current">section1</a>
+            <a href="#section2" rel="external nofollow">section2</a>
+            <a href="#section3" rel="external nofollow">section3</a>
+            <a href="#section4" rel="external nofollow">section4</a>
+            <a href="#section5" rel="external nofollow">section5</a>
+        </nav>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    var $navs = $('nav a'), // 导航
+        $sections = $('.section'), // 模块
+        $window = $(window),
+        navLength = $navs.length - 1;
+   
+    var backgroundColors = ["red", "orange", "yellow", "green", "blue"];
+    $sections.map((index,ele) => {
+        $(ele).css('background',backgroundColors[index])
+    });
+
+    $window.on('scroll', function () {
+        var scrollTop = $window.scrollTop(),
+            len = navLength;
+        for (; len > -1; len--) {
+            var that = $sections.eq(len);
+
+            // console.log($(that).html(),that.offset().top,'wScrollTop',scrollTop)
+
+            if (scrollTop >= that.offset().top) {
+
+                $navs.removeClass('current').eq(len).addClass('current');
+                break;
+            }
+        }
+    });
+</script>
+
+</html>

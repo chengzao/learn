@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>多用户留言系统-</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<!--[if IE]>
+<script src="html5.js"></script>
+<script src="excanvas.compiled.js"></script>
+<![endif]-->
+ 
+ 
+<link href="" rel="stylesheet">
+<style>
+    /*html5*/
+   article,aside,dialog,footer,header,section,footer,nav,figure,menu,canvas{display:block}
+</style>
+</head>
+<body>
+    <canvas id="can" width="200" height="200">20%</canvas>
+ 
+</body>
+</html>
+ 
+<script type="text/javascript">
+window.onload = function(){
+    var can = document.getElementById('can');
+    var pro = can.innerHTML.substring(0,can.innerHTML.length-1);
+    console.log(pro);
+    var cxt = can.getContext('2d');
+ 
+    //底层
+    cxt.beginPath();
+    cxt.moveTo(100,100);
+    cxt.arc(100,100,100,0,Math.PI*2);
+    cxt.fillStyle='#ddd';
+    cxt.fill();
+    cxt.closePath();
+ 
+    //进度层
+    cxt.beginPath();
+    cxt.moveTo(100,100);
+    cxt.arc(100,100,100,0,(Math.PI/180) * 20,false);
+    cxt.fillStyle='red';
+    cxt.fill();
+    cxt.closePath();
+ 
+    //顶层补色
+    cxt.beginPath();
+    cxt.moveTo(100,100);
+    cxt.arc(100,100,90,0,Math.PI * 2,false);
+    cxt.fillStyle="#fff";
+    cxt.fill();
+    cxt.closePath();
+ 
+    //文字
+    cxt.font = 'bold 40px Arial';
+    cxt.textAlign = 'center';
+    cxt.fillStyle='#333';
+    cxt.textBaseline = 'middle';
+    cxt.moveTo(100,100);
+    cxt.fillText(pro+'%',100,100);
+}
+</script>

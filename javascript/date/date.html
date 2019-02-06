@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>data</title>
+</head>
+
+<body>
+    <div id="txt"></div>
+    <div id="nowDate"></div>
+    <div id="showDate"></div>
+    <div class="top_bar" id="date2" height="28px"></div>
+    <script>
+        var d = new Date();
+        console.log(+new Date()); //1464614801363
+        // 获取年，getFullYear()返回4位的数字
+        var year = d.getFullYear();
+        // 获取月，月份比较特殊，0是1月，11是12月
+        var month = d.getMonth() + 1;
+        // 变成两位
+        month = month < 10 ? '0' + month : month;
+        // 获取日
+        var day = d.getDate();
+        day = day < 10 ? '0' + day : day;
+        console.log(year + '-' + month + '-' + day);
+
+
+
+
+        function startTime() {
+            //获取当前系统日期
+            var today = new Date()
+            var h = today.getHours()
+            var m = today.getMinutes()
+            var s = today.getSeconds()
+            //调用checkTime（）函数，小于十的数字前加0
+            m = checkTime(m)
+            s = checkTime(s)
+            //s设置层txt的内容
+            document.getElementById('txt').innerHTML = h + ":" + m + ":" + s
+            //过500毫秒再调用一次
+            t = setTimeout('startTime()', 500)
+            //小于10，加0
+            function checkTime(i) {
+                if (i < 10) { i = "0" + i }
+                return i
+            }
+        }
+        //startTime();
+
+        function startTime2() {
+            //获取当前系统日期
+            var today = new Date()
+            var h = today.getHours()
+            var m = today.getMinutes()
+            var s = today.getSeconds()
+            //调用checkTime（）函数，小于十的数字前加0
+            m = checkTime(m)
+            s = checkTime(s)
+            //s设置层txt的内容
+            document.getElementById('nowDate').innerHTML = h + ":" + m + ":" + s
+            //过500毫秒再调用一次
+            //t=setTimeout('startTime()',500)
+            //小于10，加0
+            function checkTime(i) {
+                if (i < 10) { i = "0" + i }
+                return i
+            }
+        }
+        setInterval('startTime2()', 1000);
+
+        setInterval("getTime()", 1000); //每隔一秒执行一次
+        //取得系统当前时间
+        function getTime() {
+            var myDate = new Date();
+            var date = myDate.toLocaleDateString();
+            var hours = myDate.getHours();
+            var minutes = myDate.getMinutes();
+            var seconds = myDate.getSeconds();
+            showDate.innerHTML = date + " " + hours + ":" + minutes + ":" + seconds;
+        }
+
+        setInterval("date2.innerHTML=new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());", 1000);
+
+
+        //  UnixStamp to  LocaleToStamp
+
+        // unix →  localTime :  
+        function unixToLocal(unixTime){
+           return (new Date(parseInt(unixTime, 10) * 1000)).format("yyyy-MM-dd HH:mm:ss");
+        }
+        // localTime → unix : 
+       function localToUnix(){
+           return Math.round((new Date()).getTime() / 1000);
+       }
+
+
+
+</script>
+</body>
+
+</html>

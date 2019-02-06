@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>历史管理</title>
+</head>
+<body>
+	<p>我是e.html</p>
+	<a href="a.html">a.html</a>
+	<a href="b.html">b.html</a>
+	<a href="c.html">c.html</a>
+	<a href="d.html">d.html</a>
+	<a href="e.html">e.html</a>
+
+	<input type="button" id="btn" value="返回">
+	<script>
+		var btn = document.getElementById('btn');
+
+		btn.onclick = function () {
+			history.go(-2);
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Symbols</title>
+</head>
+<body>
+
+</body>
+<script>
+/*
+JavaScript的七种原始类型:
+
+    Undefined 未定义
+    Null 空值
+    Boolean 布尔类型
+    Number 数字类型
+    String 字符串类型
+    Object 对象类型
+	Symbols
+ */
+
+/*
+
+symbol是程序创建并且可以用作属性键的值，并且它能避免命名冲突的风险。
+symbol被创建后就不可变更，你不能为它设置属性
+*/
+
+
+// 获取symbol的三种方法
+
+// 1.调用Symbol()
+// 每次调用都会返回一个新的唯一symbol。
+
+// 2.调用Symbol.for(string)
+// 这种方式与通过Symbol()定义的独立symbol不同，symbol注册表中的symbol是共享的。如果你连续三十次调用Symbol.for("cat")，每次都会返回相同的symbol。注册表非常有用，在多个web页面或同一个web页面的多个模块中经常需要共享一个symbol。
+
+// 3.使用标准定义的symbol，例如：Symbol.iterator。
+
+
+'use strict';
+let obj = {};
+let mySymbol = Symbol();
+obj[mySymbol] = "ok!";  // 保证不会冲突
+console.log(obj[mySymbol]);  // ok!
+
+
+
+// 创建一个独一无二的symbol
+
+typeof Symbol(); // symbol
+
+var isMoving1 = Symbol("isMoving");
+var isMoving2= Symbol("isMoving");
+console.log(isMoving1==isMoving2); // false
+
+/*
+
+var isMoving = Symbol("isMoving");
+if (element[isMoving]) {
+  smoothAnimations(element);
+}
+element[isMoving] = true;
+
+*/
+
+
+let mySymbol = Symbol();
+
+// 第一种写法
+let a = {};
+a[mySymbol] = 'Hello!';
+
+// 第二种写法
+let a = {
+  [mySymbol]: 'Hello!'
+};
+
+// 第三种写法
+let a = {};
+Object.defineProperty(a, mySymbol, { value: 'Hello!' });
+
+// 以上写法都得到同样结果
+a[mySymbol] // "Hello!"
+
+
+let s1 = Symbol('foo');
+let s2 = Symbol('foo');
+
+s1 === s2 // false
+
+
+let s1 = Symbol.for('foo');
+let s2 = Symbol.for('foo');
+
+s1 === s2 // true
+
+
+let s1 = Symbol.for("foo");
+Symbol.keyFor(s1) // "foo"
+</script>
+</html>

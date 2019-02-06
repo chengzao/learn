@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Immediately-Invoked Function Expression</title>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+<script>
+    (function(log, w,d,undefined){
+    'use strict';
+
+    var x = 10,
+        y = 100;
+
+    var box = d.querySelector('.box');
+    log(box);
+    log((w.x == x)+'  '+ (w.x === undefined)); // false  true
+
+    }(window.console.log, window,document));
+</script>
+</html>

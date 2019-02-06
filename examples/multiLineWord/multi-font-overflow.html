@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.figcaption {
+	    background: #EEE;
+	    width: 410px;
+	    height: 60px;
+	    margin: 10px;
+	}
+	.figcaption p {
+	    margin: 0;
+	    line-height: 25px;
+	}
+	</style>
+</head>
+<body>
+	<div class="figcaption"><p>作为微软的游戏平台，Xbox已经出现在了Windows Phone和Windows 8中，就在最近，微软宣布将旗下的Zune消费品牌也一并整合至Xbox品牌下，Xbox Live服务影响力越来越大，渗透面也越来越广。</p></div>
+    
+	<div class="figcaption"><p>固定一个喜欢的网站可不可以？当然！把每天常去的网站统统固定到开始屏幕中。如何固定？打开 IE10，在网页空白处点击鼠标右键，在应用栏中点击“图钉”图标即可完成固定。</p></div>
+	    
+	<div class="figcaption"><p>先前给大家介绍了很好用的 Colors！今天给大家介绍一款风格不同的画画软件——Fresh Paint，我们可以用它画出油画。</p></div>
+	    
+	<div class="figcaption">
+	<p>You probably can't do it (currently?) without a fixed-width font like Courier. With a fixed-width font every letter occupies the same horizontal space, so you could probably count the letters and multiply the result with the current font size in ems or exs. Then you would just have to test how many letters fit on one line, and then break it up.</p></div>
+	<div class="box">
+	<p>You probably can't do it (currently?) without a fixed-width font like Courier. With a fixed-width font every letter occupies the same horizontal space, so you could probably count the letters and multiply the result with the current font size in ems or exs. Then you would just have to test how many letters fit on one line, and then break it up.</p></div>
+	<div class="box">
+	<p>You probably can't do it (currently?) without a fixed-width font like Courier. With a fixed-width font every letter occupies the same horizontal space, so you could probably count the letters and multiply the result with the current font size in ems or exs. Then you would just have to test how many letters fit on one line, and then break it up.</p></div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
+<script>
+$(".figcaption").each(function(i){
+    var divH = $(this).height();
+    var $p = $(this).find('p').eq(0);
+    var conH = $($p)
+    while ($p.outerHeight() > divH) {
+        $p.text($p.text().replace(/(\s)*([a-zA-Z0-9]+|\W)(\.\.\.)?$/, "..."));
+    };
+});
+
+//限制字符个数
+$('.box p').each(function(){
+	var maxwidth=23;
+	if($(this).text().length>maxwidth){
+	$(this).text($(this).text().substring(0,maxwidth));
+	$(this).html($(this).html()+'...');
+	}
+});
+
+
+// Clamp.js
+
+//下载及文档地址：https://github.com/josephschmitt/Clamp.js
+
+
+// jQuery插件-jQuery.dotdotdot
+
+// 下载及文档地址：https://github.com/FrDH/jQuery.dotdotdot
+
+</script>
+</html>

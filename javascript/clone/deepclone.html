@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>deep clone</title>
+</head>
+<body>
+  
+</body>
+<script>
+// function deepCopy(obj, parent = null) {
+//     // 创建一个新对象
+//     let result = {};
+//     let keys = Object.keys(obj),
+//         key = null,
+//         temp= null,
+//         _parent = parent;
+//     // 该字段有父级则需要追溯该字段的父级
+//     while (_parent) {
+//         // 如果该字段引用了它的父级则为循环引用
+//         if (_parent.originalParent === obj) {
+//             // 循环引用直接返回同级的新对象
+//             return _parent.currentParent;
+//         }
+//         _parent = _parent.parent;
+//     }
+//     for (let i = 0; i < keys.length; i++) {
+//         key = keys[i];
+//         temp= obj[key];
+//         // 如果字段的值也是一个对象
+//         if (temp && typeof temp=== 'object') {
+//             // 递归执行深拷贝 将同级的待拷贝对象与新对象传递给 parent 方便追溯循环引用
+//             result[key] = deepCopy(temp, {
+//                 originalParent: obj,
+//                 currentParent: result,
+//                 parent: parent
+//             });
+
+//         } else {
+//             result[key] = temp;
+//         }
+//     }
+//     return result;
+// }
+
+
+
+// var objDeepCopy = function (obj) {
+//     if (typeof obj !== 'object') return obj;
+//     if (typeof window !== 'undefined' && window.JSON) { // 浏览器环境下 并支持window.JSON 则使用 JSON
+//         return JSON.parse(JSON.stringify(obj));
+//     } else {
+//         var newObj = obj.constructor === Array ? [] : {};
+//         for (var key in obj) {
+//             newObj[key] = typeof obj[key] === 'object' ? deepCopy(obj[key]) : obj[key];
+//         }
+//         return newObj;
+//     }
+// }
+
+
+
+const deepClone = function (target) {
+    if (typeof target !== 'object') {
+        throw new TypeError('arguments must be a Object!')
+    }
+    // 已经访问过的对象集合
+    const visitedObjs = []
+    // 克隆的对象集合
+    const clonedObjs = []
+    const clone = function (source) {
+        if (visitedObjs.indexOf(source) === -1) { // 这里是判断该原对象是否被访问过
+            visitedObjs.push(source) // 放入数组中
+            const obj = {} // 创建一个待克隆的新对象
+            // 设置原型
+            const prototype = Reflect.getPrototypeOf(source)
+            Reflect.setPrototypeOf(obj, prototype)
+            clonedObjs.push(obj); // 将其置入克隆对象集合中
+            // 设置属性
+            Reflect.ownKeys(source).forEach((key) => {
+                const value = source[key]
+                try {
+                    const Constructor = Reflect.getPrototypeOf(value).constructor
+                    if (Constructor === Date || Constructor === RegExp) {
+                        obj[key] = new Constructor(value.valueOf())
+                    } else {
+                        obj[key] = clone(value) // 此处不能再递归调用 deepClone，而是要改为 clone 方法
+                    }
+                } catch (e) {
+                    obj[key] = value
+                }
+            })
+            return obj
+        } else {
+            // 如果该对象已经被访问过了，则直接从克隆对象中返回。返回的对象的索引是 source 在 visitedObjs 中的索引位置。
+            return clonedObjs[visitedObjs.indexOf(source)]
+        }
+    }
+    return clone(target)
+}
+
+// var obj1 = { a: [1,2,3]}
+var obj1 = {
+    x: 1, 
+    y: 2
+};
+obj1.z = obj1;
+
+var obj2 = deepClone(obj1);
+
+console.log(obj2)
+
+</script>
+</html>

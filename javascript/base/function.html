@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>function</title>
+</head>
+<body>
+	<script>
+		// 函数声明
+		function test(){
+			console.log('this is a function');
+		}
+		test();
+
+		// 表达式
+		var test2 = function(){
+			console.log('this is a function2');
+		}
+		test2();
+
+		// 匿名函数
+		(function(){
+			console.log('this is a function3');
+		})()
+
+		// new Function
+		var test3 = new Function('x,y','console.log(x+y)');
+		test3(1,2);
+
+		// eg：json字符串形式转json格式
+		var str = '{"name":"zhangsna","age":10}';
+		var json = (new Function("return " + str))(); 
+		console.log(json);
+		
+	</script>
+</body>
+</html>

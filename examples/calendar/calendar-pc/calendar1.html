@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="renderer" content="webkit">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="./css/calendar.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <title>日历</title>
+</head>
+
+<body>
+    <div class="master" id="calendar">
+        <div class="zh-almanac">
+            <div class="hint-bar clearfix">
+                <div class="control-bar">
+                    <div class="control-module sel-control">
+                        <a class="prev" href="javascript:;"></a>
+                        <div class="control">
+                            <i class="trigger"></i>
+                            <div date-val="solar" class="field sel">阳历</div>
+                        </div>
+                        <a class="next" href="javascript:;"></a>
+                        <ul class="list sel-list hidden">
+                            <li date-val="solar" class="sel-solar hover">阳历</li>
+                            <li date-val="lunar" class="sel-lunar">阴历</li>
+                        </ul>
+                    </div>
+                    <div class="control-module year-control">
+                        <a class="prev" href="javascript:;"></a>
+                        <div class="control">
+                            <i class="trigger"></i>
+                            <div date-val="2017" class="field year">2017</div>
+                        </div>
+                        <a class="next" href="javascript:;"></a>
+                        <ul class="list year-list hidden">
+                            <li date-val="2011">2011</li>
+                        </ul>
+                    </div>
+                    <div class="control-module month-control">
+                        <a class="prev" href="javascript:;"></a>
+                        <div class="control">
+                            <i class="trigger"></i>
+                            <div date-val="7" class="field month">7</div>
+                        </div>
+                        <a class="next" href="javascript:;"></a>
+                        <ul class="list month-list hidden">
+                            <li date-val="1">1</li>
+                            <li date-val="2">2</li>
+                        </ul>
+                    </div>
+                    <div class="btn-today">今天</div>
+                </div>
+            </div>
+            <div class="alc-container">
+                <div class="main">
+                    <ul class="dates-hd clearfix">
+                        <li>日</li>
+                        <li>一</li>
+                        <li>二</li>
+                        <li>三</li>
+                        <li>四</li>
+                        <li>五</li>
+                        <li>六</li>
+                    </ul>
+                    <ol class="dates-bd clearfix">
+                        <li>
+                            <div class="layer"></div>
+                            <span class="solar">1</span>
+                            <span class="lunar">初四</span>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <input type="text" id="showDate">
+        <!-- <h5 id="showDate"></h5> -->
+        <script src="./calendar1.js"></script>
+        <script>
+            window.onload = function() {
+                // var str = calendar.drawSolar();
+                // var ddd = document.querySelector('.dates-bd')
+                // ddd.innerHTML = str;
+
+                // calendar.showMonthList();
+                // calendar.showYearList();
+                // calendar.showSelList();
+
+                calendar.init();
+
+                // var str = calendar.drawLunar(2017, 2);
+                // var ddd = document.querySelector('.dates-bd')
+                // ddd.innerHTML = str;
+
+                var str =  'ac ab c';
+                var ss  = str.replace(/ab/,'ddd');
+                console.log(ss);
+
+                var sss = str.concat(' ddd');
+                console.log(sss);
+            }
+        </script>
+</body>
+
+</html>

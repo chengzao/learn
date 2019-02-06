@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+		<style>
+			ul li.cur{
+				color: red;
+			}
+	</style>
+</head>
+<body>
+			<ul>
+		 	<li>1</li>
+		 	<li>2</li>
+		 	<li>3</li>
+		 </ul>
+</body>
+
+<script>
+	window.onload=function(){
+		var href = window.location.href;
+		var oLi = document.getElementsByTagName('li');
+		var a ;
+		a = href.substring(href.length-1);	
+		for(var i=0;i<oLi.length;i++){
+			for(var i=0;i<oLi.length;i++){
+				oLi[i].className='';
+			}
+			oLi[a].className='cur';
+		}
+
+	}
+</script>
+
+</html>

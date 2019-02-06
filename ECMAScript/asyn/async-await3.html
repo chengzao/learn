@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>async await</title>
+</head>
+<body>
+    
+</body>
+<script type="text/javascript">
+/*
+await（只允许在 async(异步) 函数内部使用）等待其操作对象 Promise 返回：
+如果 Promise 是完成状态，await 的结果是完成态的值。
+如果 Promise 是拒绝状态，await 会抛出拒绝值。
+*/
+
+var sleep = function (time) {
+    return new Promise(function (resolve, reject) {
+        setTimeout(function () {
+            resolve("data is ok");
+            // reject("data is err");
+        }, time);
+    })
+};
+
+// 处理单个 async(异步) 返回值
+async function asyncFunc() {
+	const result = await otherAsyncFunc();
+	console.log(result);
+}
+// 等价于:
+function asyncFunc() {
+	return otherAsyncFunc()
+		.then(result => {
+			console.log(result);
+		});
+}
+
+//按顺序处理多个 async(异步) 返回值
+async function asyncFunc() {
+	const result1 = await otherAsyncFunc1();
+	console.log(result1);
+	const result2 = await otherAsyncFunc2();
+	console.log(result2);
+}
+// 等价于:
+function asyncFunc() {
+	return otherAsyncFunc1()
+		.then(result1 => {
+			console.log(result1);
+			return otherAsyncFunc2();
+		})
+		.then(result2 => {
+			console.log(result2);
+		});
+}
+
+// 并行处理多个 async(异步) 返回值
+async function asyncFunc() {
+	const [result1, result2] = await Promise.all([
+		otherAsyncFunc1(),
+		otherAsyncFunc2(),
+	]);
+	console.log(result1, result2);
+}
+// 等价于:
+function asyncFunc() {
+	return Promise.all([
+		otherAsyncFunc1(),
+		otherAsyncFunc2(),
+	])
+	.then(([result1, result2]) => {
+		console.log(result1, result2);
+	});
+}
+
+// 错误处理
+async function asyncFunc() {
+	try {
+		await otherAsyncFunc();
+	} catch (err) {
+		console.error(err);
+	}
+}
+// 等价于:
+function asyncFunc() {
+	return otherAsyncFunc()
+		.catch(err => {
+			console.error(err);
+		});
+}
+</script>
+</html>

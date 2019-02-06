@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>外边距重叠</title>
+  <style>
+
+    #test {
+      width: 100px;
+      height: 100px;
+      background-color: blue; /*firefox*/
+      background-color: blue\9; /*all ie*/
+      background-color: blue; /*ie8*/
+      +background-color: blue; /*ie7*/
+      _background-color: blue; /*ie6*/
+      margin-bottom: 30px;
+    }
+
+    :root #test {
+      background-color: blue\9 ;/*ie9*/
+    }
+
+    #test2{
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+<div id='test'></div>
+<div id=test2></div>
+
+
+<script>
+	console.log( window.top.document.compatMode )
+</script>
+</body>
+</html>

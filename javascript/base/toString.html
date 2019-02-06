@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>类型转换</title>
+</head>
+<body>
+  String()
+</body>
+<script type="text/javascript">
+//原始类型值的转换规则
+// 数值：转为相应的字符串。
+// 字符串：转换后还是原来的值。
+// 布尔值：true转为"true"，false转为"false"。
+// undefined：转为"undefined"。
+// null：转为"null"。
+
+String(123) // "123"
+String('abc') // "abc"
+String(true) // "true"
+String(undefined) // "undefined"
+String(null) // "null"
+
+// 对象的转换规则
+// 先调用对象自身的toString方法。如果返回原始类型的值，
+// 则对该值使用String函数，不再进行以下步骤。
+// 如果toString方法返回的是对象，再调用原对象的valueOf方法。
+// 如果valueOf方法返回原始类型的值，则对该值使用String函数，不再进行以下步骤。
+// 如果valueOf方法返回的是对象，就报错
+String({a: 1}) // "[object Object]"
+String([1, 2, 3]) // "1,2,3"
+
+
+</script>
+</html>

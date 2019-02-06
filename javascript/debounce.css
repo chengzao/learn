@@ -1,0 +1,113 @@
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+.dashi-marry {
+  height: 100%;
+  width: 100%;
+  background-color: #b10007;
+}
+.dashi-marry .nav {
+  height: 18.3125rem;
+  background: url("http://ii.911cha.com/wechat/sjswnl/dashi/dashi_marry_1.jpg") no-repeat center center;
+  background-size: cover;
+  position: relative;
+  text-align: center;
+}
+.dashi-marry .nav .txt {
+  position: absolute;
+  bottom: 0.78125rem;
+  transform: translateX(-50%);
+  color: #FDC700;
+  font-size: 0.875rem;
+}
+.dashi-marry .start-btn {
+  margin: 0.15625rem 0.625rem 1.25rem 0.625rem;
+  height: 2.75rem;
+  background: url("http://ii.911cha.com/wechat/sjswnl/dashi/dashi_marry_c.jpg") repeat-x;
+  background-size: contain;
+  position: relative;
+}
+.dashi-marry .start-btn .left {
+  height: 2.75rem;
+  width: 0.46875rem;
+  background: url("http://ii.911cha.com/wechat/sjswnl/dashi/dashi_marry_l.jpg") no-repeat;
+  background-size: 0.46875rem 2.75rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.dashi-marry .start-btn .right {
+  height: 2.75rem;
+  width: 0.46875rem;
+  background: url("http://ii.911cha.com/wechat/sjswnl/dashi/dashi_marry_r.jpg") no-repeat;
+  background-size: 0.46875rem 2.75rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.dashi-marry .start-btn .center {
+  text-align: center;
+  line-height: 2.75rem;
+  font-size: 1.125rem;
+}
+.dashi-marry .start-btn .center a {
+  color: #fff;
+  text-decoration: none;
+}
+.dashi-marry .item {
+  margin: 0 0.625rem 0.625rem 0.625rem;
+}
+.dashi-marry .item-1 {
+  height: 33.125rem;
+  text-align: center;
+  background-color: #fff;
+}
+.dashi-marry .item-1 img {
+  width: 20.3125rem;
+  height: 30.78125rem;
+  margin-top: 1.0625rem;
+}
+.dashi-marry .item-2 {
+  height: 34.375rem;
+  text-align: center;
+  background-color: #fff;
+}
+.dashi-marry .item-2 img {
+  width: 20.3125rem;
+  height: 31.8125rem;
+  margin-top: 1.15625rem;
+}
+.dashi-marry .item-3 {
+  height: 37.8125rem;
+  text-align: center;
+  background-color: #fff;
+}
+.dashi-marry .item-3 img {
+  width: 20.3125rem;
+  height: 35.5rem;
+  margin-top: 1.375rem;
+}
+.dashi-marry .foot {
+  height: 4.0625rem;
+  background-color: rgba(74,74,74,.3);
+  margin-top: 0.9375rem;
+  padding: 0.6875rem 0.625rem 0 0.625rem;
+  box-sizing: border-box;
+  display: none;
+}
+.dashi-marry .foot .start-btn {
+  margin: 0;
+}
+.dashi-marry .foot {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.dashi-marry .show-bottom-div {
+  height: 0;
+  visibility: hidden;
+  margin-bottom: 4.6875rem;
+}

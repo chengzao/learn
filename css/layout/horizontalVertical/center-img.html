@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>img居中处理</title>
+  <style>
+    /*使用text-align水平居中*/
+    div.center1 {
+      margin: 10px auto;
+      width: 500px;
+      text-align: center;
+      background: hsl(0, 100%, 97%);
+      border: 1px solid #000;
+    }
+    div.center1 img
+    {
+      width: 33%; height: auto;
+    }
+
+     /*使用 margin: auto 居中
+     注意： 必须使用display: block使 margin: 0 auto对img元素生效。*/
+    div.center2 {
+      margin: 10px auto;
+      width: 500px;
+      border: 1px solid #ccc;
+    }
+    div.center2 img {
+      display: block;
+      width: 33%;
+      height: auto;
+      margin: 0 auto;
+    }
+    /*使用table-cell居中*/
+    .center-aligned1 {
+      margin: 10px auto;
+      width: 500px;
+      display: table;
+      background: hsl(120, 100%, 97%);
+      border: 1px solid #000;
+    }
+    .center-core1 {
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+    }
+    .center-core1 img {
+      width: 33%;
+      height: auto;
+    }
+
+    /*使用absolute定位居中*/
+    .absolute-aligned {
+      margin: 10px auto;
+      position: relative;
+      width: 500px;
+      min-height: 300px;
+      background: hsl(200, 100%, 97%);
+      border: 1px solid #000;
+    }
+    .absolute-aligned img {
+      width: 50%;
+      height: auto;
+      overflow: auto;
+      margin: auto;
+      position: absolute;
+      top: 0; left: 0;
+      bottom: 0; right: 0;
+    }
+
+    /*使用translate居中*/
+    .center3 {
+      margin: 10px auto;
+      width: 500px;
+      height: 300px;
+      background: hsl(180, 100%, 97%);
+      position: relative;
+      border: 1px solid #000;
+    }
+    .center3 img {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 30%; height: auto;
+    }
+
+    /*使用Flexbox居中*/
+    .center4 {
+      margin: 10px auto;
+      width: 500px;
+      height: 300px;
+      background: hsl(240, 100%, 97%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #000;
+    }
+    .center4 img {
+      width: 30%; height: auto;
+    }
+
+
+    /*使用calc居中*/
+    .center5 {
+      margin:auto;
+      width: 300px;
+      background: hsl(300, 100%, 97%);
+      height: 300px;
+      position: relative;
+      border: 1px solid #000;
+    }
+    .center5 img {
+      width: 50%;
+      height: 50%;
+      position: absolute;
+      top: calc(50% - 25%);
+      left: calc(50% - 25%);
+    }
+    /*额外标签*/
+    .wrap {
+      width: 600px;
+      height: 400px;
+      text-align: center;
+      margin: 80px auto;
+      border: 1px solid #CCC;
+      background-color: #FFF;
+    }
+
+    .wrap img {
+      vertical-align: middle;
+    }
+
+    .wrap span {
+      height: 100%;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+  </style>
+</head>
+<!--参考文档：http://www.devstore.cn/essay/essayInfo/6783.html-->
+
+<div class="center1">
+  <img src="images/docenter.png" alt>
+</div>
+<div class="center2">
+  <img src="images/docenter.png" alt>
+</div>
+
+<div class="center-aligned1">
+  <div class="center-core1">
+    <img src="images/docenter.png">
+  </div>
+</div>
+
+<div class="absolute-aligned">
+  <img src="images/docenter.png">
+</div>
+
+<div class="center3">
+  <img src="images/docenter.png" alt>
+</div>
+
+<div class="center4">
+  <img src="images/docenter.png" alt>
+</div>
+
+<div class="center5">
+  <img src="images/docenter.png" alt>
+</div>
+
+<div class="wrap">
+  <img src="./images/docenter.png" alt="">
+  <span></span>
+</div>
+
+</body>
+</html>

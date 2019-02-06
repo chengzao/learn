@@ -1,0 +1,134 @@
+@charset 'utf-8';
+.cless {
+  color: red;
+}
+.bcss {
+  color: #ccc;
+}
+/* 这是一个编译后看见的注释*/
+.col {
+  color: #ccc;
+}
+.col2 {
+  color: red;
+}
+/*1. 混合*/
+.bord {
+  border: 1px solid #000;
+}
+.box {
+  width: 300px;
+  height: 300px;
+  background-color: red;
+  border: 1px solid #000;
+}
+/*2. 混合-带参数*/
+.border_hunhe {
+  width: 300px;
+  height: 300px;
+  border: solid yellow 20px;
+}
+/*3.1 混合-默认值*/
+.border_hunhe2 {
+  border: 10px solid green;
+}
+.border_hunhe21 {
+  border: 12px solid green;
+}
+/* 3.2 混合用法:默认值为变量 */
+.border_hunhe3 {
+  border: 10px solid red;
+}
+.border_hunhe31 {
+  border: 13px solid red;
+}
+/* 4. 匹配模式 */
+/* 三角形 border */
+/*
+  .sanjiao{
+      width:0;
+      height: 0;
+      overflow: hidden;
+      border-width:20px;
+      border-color: transparent transparent red transparent;
+      border-style:dashed dashed solid dashed; 兼容ie
+  }
+ */
+/* 匹配通用格式 */
+.sanjiao {
+  border-width: 50px;
+  border-color: transparent transparent transparent #ccc;
+  border-style: dashed dashed dashed solid;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+.sanjiao1 {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+/* 
+  5. 运算: 其中一个带单位即可
+  注意:减法之间的格式;命名变量在运算中不可添加单位
+*/
+.add {
+  width: 110px;
+  height: 110px;
+  color: #333333;
+}
+.add2 {
+  width: 106px;
+  height: 220px;
+}
+.add3 {
+  width: 110px;
+  height: 118px;
+}
+/* 6. 嵌套用法 */
+ul {
+  width: 100px;
+}
+ul li {
+  width: 100px;
+  float: left;
+  border-bottom: 1px solid #666666;
+}
+ul a {
+  width: 100px;
+  color: red;
+  display: block;
+  /* & 上一层选择器的名 */
+}
+ul a:hover {
+  color: blue;
+}
+ul a span {
+  font-weight: bold;
+  font-size: 18px;
+  float: right;
+  color: #85ada7;
+}
+/* $的用法 */
+.tit {
+  width: 100px;
+}
+.tit_n {
+  width: 100px;
+}
+/* 7. argument用法 */
+.bor2 {
+  border: #ccc 10px solid;
+}
+.bor21 {
+  border: red 10px solid;
+}
+/* 8. 避免编译 */
+.wid {
+  width: calc(100px - 20px);
+}
+/* 9. important用法 */
+.im_a {
+  width: 10px !important;
+  height: 10px !important;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>logo标志叠加显示loading加载效果</title>
+  <style>
+    .loading {
+      position: relative;
+      width: 160px;
+      height: 120px;
+      margin: 100px auto;
+    }
+
+    .loading div {
+      background-image: url(./images/logo.png);
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
+
+    .loading1 {
+      width: 160px;
+      height: 120px;
+      background-position: -160px 0;
+      z-index: 1;
+    }
+
+    .loading2 {
+      width: 160px;
+      height: 0;
+      background-position: 0 0;
+      z-index: 2;
+      background-position: left bottom;
+    }
+  </style>
+</head>
+<body>
+
+<!-- 
+
+  setInterval
+  background
+
+ -->
+
+
+<div class="loading">
+  <div class="loading1"></div>
+  <div class="loading2"></div>
+</div>
+<script>
+  // 第一种 方案
+  var loading = document.getElementsByClassName("loading2")[0];
+  var timer=null;
+  var h = 0;
+  timer=setInterval(function () {
+    h++;
+    if (h > 120) {
+      console.log('loading over');
+      //return;
+      clearInterval(timer);
+      console.log('test');
+    }
+    loading.style.height = h + "px";
+  }, 10);
+   
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+
+  </style>
+</head>
+<body>
+  <div style="width:200px;">
+    <div style="float:left;"></div><!-- 在IE6的重复文字BUG -->
+    <div style="float:right;width:200px;">123456</div>
+    <div style="clear:both;"></div>
+  </div>
+  <div>
+    <div style="width:200px;_display:inline">
+      <div style="float:left;"></div><!-- 在IE6的重复文字BUG -->
+      <div style="float:right;width:200px;">1234567</div>
+      <div style="clear:both;"></div>
+    </div>
+  </div>
+  <div>
+    <div style="width:200px;">
+      <div style="float:left;"></div>
+      <div style="float:right;width:200px;">12345678</div>
+      <div style="clear:both;"></div>
+    </div>
+  </div>
+  <div>
+    <div style="width:200px;">
+      <!-- 在IE6的重复文字BUG -->
+      <div style="float:left;"></div>
+      <div style="float:right;width:200px;">123456789</div>
+      <div style="clear:both;"></div>
+    </div>
+  </div>
+  <div>
+    <div style="width:200px;_position: relative;">
+      <div style="float:left;"></div>
+      <div style="float:right;width:200px;">1234567890</div>
+      <div style="clear:both;"></div>
+    </div>
+  </div>
+
+</body>
+</html>

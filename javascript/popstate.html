@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Hll</p>
+    <a href="./iframe.html">Click Me link</a>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script>
+    // jQuery(document).ready(function ($) {
+    //     if (window.history && window.history.pushState) {
+    //         $(window).on('popstate', function () {
+    //             var hashLocation = location.hash;
+    //             var hashSplit = hashLocation.split("#!/");
+    //             var hashName = hashSplit[1];
+    //             if (hashName !== '') {
+    //                 var hash = window.location.hash;
+    //                 if (hash === '') {
+    //                     alert("Back button isn't supported. You are leaving this application on next clicking the back button");
+    //                 }
+    //             }
+    //         });
+    //         window.history.pushState('forward', null, './#forward');
+    //     }
+    // });
+    window.onpopstate = function (event) {
+        // alert("location: " + document.location + ", state: " + JSON.stringify(event.state));
+        console.log(event)
+    };
+    history.pushState({ page: 1 }, "title 1", "?page=1");
+    console.log(history)
+</script>
+
+</html>

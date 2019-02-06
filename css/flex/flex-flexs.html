@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3伸缩布局</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: '微软雅黑';
+            background-color: #F7F7F7;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .wrapper {
+            width: 1024px;
+            margin: 0 auto;
+        }
+
+        .wrapper>section {
+            min-height: 300px;
+            margin-bottom: 30px;
+            box-shadow: 1px 1px 4px #DDD;
+            background-color: #FFF;
+        }
+
+        .wrapper>header {
+            text-align: center;
+            line-height: 1;
+            padding: 20px;
+            margin-bottom: 10px;
+            font-size: 30px;
+        }
+
+        .wrapper section>header {
+            line-height: 1;
+            padding: 10px;
+            font-size: 22px;
+            color: #333;
+            background-color: #EEE;
+        }
+
+        .wrapper .wrap-box {
+            padding: 20px;
+        }
+
+        .wrapper .brief {
+            min-height: auto;
+        }
+
+        .wrapper .flex-img {
+            width: 100%;
+        }
+
+        /*全局设置*/
+
+        section ul {
+            display: flex;
+        }
+
+        section li {
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+            margin: 10px;
+            background-color: pink;
+        }
+
+        .order li:nth-child(1) {
+            order: 5;
+        }
+
+        .order li:nth-child(2) {
+            order: 3;
+        }
+
+        .order li:nth-child(3) {
+            order: 2;
+        }
+
+        .flex-grow-0 li {
+            flex-grow: 0;
+        }
+
+        .flex-grow-1 li {
+            flex-grow: 1;
+        }
+
+        .flex-grow-2 li {
+            flex-grow: 1;
+        }
+
+        .flex-shrink-0 li {
+            flex-shrink: 1;
+            width: 50%;
+        }
+
+        .flex-shrink-1 li {
+            flex-shrink: 1;
+            width: 50%;
+        }
+        .flex-basis-0 li {
+            flex-basis: auto;
+            width: 50%;
+        }
+        .flex-basis-1 li {
+            flex-basis: auto;
+            width: 50%;
+        }
+		.flex-0 li{
+			flex: auto;
+		}
+		.flex-1 li{
+			flex: none;
+		}
+		.flex-2 li{
+			flex: 1;
+		}
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>CSS3-伸缩布局详解</header>
+
+        <!-- 简介 -->
+        <section class="brief">
+            <header>order</header>
+            <div class="wrap-box">
+                <p>order: 属性定义项目的排列顺序。数值越小，排列越靠前，默认为0</p>
+            </div>
+        </section>
+
+        <!-- 分隔线 -->
+        <section class="order-auto">
+            <header>order auto</header>
+            <div class="wrap-box">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+        </section>
+        <section class="order">
+            <header>order</header>
+            <div class="wrap-box">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+        </section>
+        <!-- 简介 -->
+        <section class="brief">
+            <header>flex-grow</header>
+            <div class="wrap-box">
+                <p>flex-grow: 属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大</p>
+            </div>
+        </section>
+        <section class="flex-grow-0">
+            <header>flex-grow: 0</header>
+            <div class="wrap-box">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+        </section>
+        <section class="flex-grow-1">
+            <header>flex-grow: 1</header>
+            <div class="wrap-box">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+        </section>
+        <section class="flex-grow-2">
+            <header>第二个元素 flex-grow: 4</header>
+            <div class="wrap-box">
+                <ul>
+                    <li>1</li>
+                    <li style="flex-grow:4">2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+        </section>
+        <!-- 简介 -->
+        <section class="brief">
+            <header>flex-shrink</header>
+            <div class="wrap-box">
+                <p>flex-shrink: 属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小</p>
+            </div>
+        </section>
+        <section class="flex-shrink-1">
+            <header>flex-shrink: 1</header>
+            <div class="wrap-box">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+        </section>
+        <section class="flex-shrink-0">
+            <header>第二个元素 flex-shrink: 0</header>
+            <div class="wrap-box">
+                <ul>
+                    <li>1</li>
+                    <li style="flex-shrink:0">2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+        </section>
+        <!-- 简介 -->
+        <section class="brief">
+            <header>flex-basis</header>
+            <div class="wrap-box">
+                <p>flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）.默认值为auto，即项目的本来大小</p>
+            </div>
+        </section>
+        <section class="flex-basis-0">
+            <header>flex-basis: auto</header>
+            <div class="wrap-box">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                </ul>
+            </div>
+        </section>
+        <section class="flex-basis-1">
+            <header>第二个元素 flex-basis:400px</header>
+            <div class="wrap-box">
+                <ul>
+                    <li>1</li>
+                    <li style="flex-basis:400px">2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+        </section>
+        <!-- 简介 -->
+        <section class="brief">
+            <header>flex</header>
+            <div class="wrap-box">
+				<p>flex: 属性是flex-grow(放大,0), flex-shrink(缩小,1) 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。</p>
+				<p>flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]</p>
+				<p>flex: 该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)</p>
+            </div>
+        </section>
+        <section class="flex-0">
+            <header>flex: auto</header>
+            <div class="wrap-box">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+        </section>
+        <section class="flex-1">
+            <header>flex:none</header>
+            <div class="wrap-box">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+        </section>
+        <section class="flex-2">
+            <header>第二个元素 flex:1 0 400px</header>
+            <div class="wrap-box">
+                <ul>
+                    <li>1</li>
+                    <li style="flex:1 0 400px">2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+</body>
+
+</html>

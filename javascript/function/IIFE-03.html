@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IIFE</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    /*其实立即函数就是把它当做一个表达式*/
+    void function() {
+    }();
+
+    ~function() {
+    }();
+
+    var sum =  1+function() {
+                return 1
+            }();
+
+    console.log(sum)
+    ;(function() {
+    })();
+
+    -function(){
+        console.log('water');
+    }();
+
+    1, function(){
+        console.log(this) // window
+    }();
+
+
+    1^function(){
+        console.log(this) // window
+    }();
+
+    1>function(){
+        console.log(this) // window
+    }();
+
+
+    ~+-!(function(){
+        console.log("run!")
+    })();
+
+    ~!(function(){
+        console.log("run!")
+    })();
+
+
+    (function(){
+        console.log("run!")
+    }).call();
+
+    (function(){
+        console.log("run!")
+    }).apply()
+
+
+</script>

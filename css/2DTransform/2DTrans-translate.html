@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS 2D转换</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #F7F7F7;
+		}
+
+		/*理解2D坐标 Y轴正方向向下，X轴正方向右*/
+
+		.translate {
+			width: 200px;
+			height: 600px;
+			background-color: green;
+			transition: all 1s linear;
+		}
+
+		.translate:hover {
+			/*除了可以像素值，也可以是百分比，相对于自身*/
+			transform: translate(0, -100%);
+		}
+	</style>
+</head>
+<body>
+	<div class="translate"></div>
+</body>
+</html>

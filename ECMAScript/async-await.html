@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>generator async</title>
+</head>
+
+<body>
+    <h1>generator async</h1>
+</body>
+<script>
+    //async函数返回的是 Promise 对象
+
+    const fs = require('fs');
+
+    const readFile = function (fileName) {
+        return new Promise(function (resolve, reject) {
+            fs.readFile(fileName, function (error, data) {
+                if (error) return reject(error);
+                resolve(data);
+            });
+        });
+    };
+    const asyncReadFile = async function () {
+        const f1 = await readFile('/etc/hosts');
+        const f2 = await readFile('/etc/paths');
+        console.log(f1.toString());
+        console.log(f2.toString());
+    };
+    asyncReadFile();
+
+
+    async function timeout(ms) {
+        await new Promise((resolve) => {
+            setTimeout(resolve, ms);
+        });
+    }
+
+    async function asyncPrint(value, ms) {
+        await timeout(ms);
+        console.log(value);
+    }
+
+    asyncPrint('hello world', 50);
+
+
+    //async 函数有多种使用形式
+    // 函数声明
+    async function foo() {}
+
+    // 函数表达式
+    const foo = async function () {};
+
+    // 对象的方法
+    let obj = { async foo() {} };
+    obj.foo().then(function () {})
+
+    // Class 的方法
+    class Storage {
+        constructor() {
+            this.cachePromise = caches.open('avatars');
+        }
+
+        async getAvatar(name) {
+            const cache = await this.cachePromise;
+            return cache.match(`/avatars/${name}.jpg`);
+        }
+    }
+
+    const storage = new Storage();
+    storage.getAvatar('jake').then(…);
+
+    // 箭头函数
+    const foo = async() => {};
+
+
+    //async函数内部return语句返回的值，会成为then方法回调函数的参数
+    async function f() {
+        return 'hello world';
+    }
+
+    f().then(v => console.log(v))
+    // "hello world"
+
+    async function f() {
+        throw new Error('出错了');
+    }
+
+    f().then(
+        v => console.log(v),
+        e => console.log(e)
+    )
+    // Error: 出错了
+
+
+    //最好把await命令放在try...catch代码块中
+    //多个await命令后面的异步操作，如果不存在继发关系，最好让它们同时触发
+    //await命令只能用在async函数之中，如果用在普通函数，就会报错
+
+
+    function spawn(genF) {
+  return new Promise(function(resolve, reject) {
+    const gen = genF();
+    function step(nextF) {
+      let next;
+      try {
+        next = nextF();
+      } catch(e) {
+        return reject(e);
+      }
+      if(next.done) {
+        return resolve(next.value);
+      }
+      Promise.resolve(next.value).then(function(v) {
+        step(function() { return gen.next(v); });
+      }, function(e) {
+        step(function() { return gen.throw(e); });
+      });
+    }
+    step(function() { return gen.next(undefined); });
+  });
+}
+
+//异步处理方法
+// promise
+function chainAnimationsPromise(elem, animations) {
+
+  // 变量ret用来保存上一个动画的返回值
+  let ret = null;
+
+  // 新建一个空的Promise
+  let p = Promise.resolve();
+
+  // 使用then方法，添加所有动画
+  for(let anim of animations) {
+    p = p.then(function(val) {
+      ret = val;
+      return anim(elem);
+    });
+  }
+
+  // 返回一个部署了错误捕捉机制的Promise
+  return p.catch(function(e) {
+    /* 忽略错误，继续执行 */
+  }).then(function() {
+    return ret;
+  });
+
+}
+
+//generator
+function chainAnimationsGenerator(elem, animations) {
+
+  return spawn(function*() {
+    let ret = null;
+    try {
+      for(let anim of animations) {
+        ret = yield anim(elem);
+      }
+    } catch(e) {
+      /* 忽略错误，继续执行 */
+    }
+    return ret;
+  });
+
+}
+
+//async - await
+async function chainAnimationsAsync(elem, animations) {
+  let ret = null;
+  try {
+    for(let anim of animations) {
+      ret = await anim(elem);
+    }
+  } catch(e) {
+    /* 忽略错误，继续执行 */
+  }
+  return ret;
+}
+
+</script>
+
+</html>

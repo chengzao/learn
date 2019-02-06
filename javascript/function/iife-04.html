@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>iife</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 函数声明
+    function foo(){}
+
+    // 函数表达式
+    var foo = function(){}
+
+    // Function构造函数
+    var foo = new Function();
+
+    // 匿名函数 IIFE
+    // iife1
+    (function(){
+        console.log('iife')
+    })();
+    // iife2
+    (function(){
+        console.log('iife2')
+    }());
+    // iife3
+    (function(a,b){
+        console.log('a+b :',a+b)
+    })(1,22);
+
+    // iife4 
+    (function(root,fn){
+        root.fn = fn();
+    })(typeof window !== "undefined" ? window : this,function(){
+        return {
+            sum:function(a,b){
+                console.log('a+b => ',a+b)
+            }
+        }
+    });
+    fn.sum(12,23);
+
+    // iife5
+    // if the module has no dependencies, the above pattern can be simplified to
+    ;(function (root, factory) {
+        if (typeof define === 'function' && define.amd) {
+            // AMD. Register as an anonymous module.
+            define([], factory);
+        } else if (typeof module === 'object' && module.exports) {
+            // Node. Does not work with strict CommonJS, but
+            // only CommonJS-like environments that support module.exports,
+            // like Node.
+            module.exports = factory();
+        } else {
+            // Browser globals (root is window)
+            root.returnExports = factory();
+    }
+    }(typeof self !== 'undefined' ? self : this, function () {
+        // Just return a value to define the module export.
+        // This example returns an object, but the module
+        // can return a function as the exported value.
+        return {};
+    }));
+
+
+    // 浅拷贝
+    function extend(o,n,override){
+        for(let i  in n){
+            if(n.hasOwnProperty(i) && (!o.hasOwnProperty(i) || override)){
+                o[i] = n[i];    
+            }
+        }
+    }
+
+    // 默认参数
+    var options = {
+        pageNumber: 1,
+        pageShow: 2
+    };
+
+    // 用户设置
+    var userOptions = {
+        pageShow: 3,
+        pageCount: 10
+    }
+
+    extend(options, userOptions, true);
+
+    // 合并后
+    console.log(options)
+
+
+</script>
+</html>

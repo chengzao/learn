@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .hover{color: red;}
+  </style>
+</head>
+<body>
+<div class="nav">
+  <ul>
+    <li><a href="test.html" class="hover"> 首页</a></li>
+    <li><a href="test1.html"> 个人资料</a></li>
+    <li><a href="test2.html"> 我的好友</a></li>
+    <li><a href="test3.html"> 消息管理</a></li>
+  </ul>
+</div>
+</body>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".nav a").each(function(){
+      $this = $(this);
+      if($this[0].href==String(window.location)){
+        $this.addClass("hover");
+      }
+    });
+  });
+</script>
+</html>

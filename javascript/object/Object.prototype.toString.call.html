@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--http://www.cnblogs.com/ziyunfei/archive/2012/11/05/2754156.html-->
+<!--https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/instanceof-->
+<!--https://developer.mozilla.org/zh-CN/docs/Web/CSS-->
+<script>
+  var arr = [];
+  console.log(Object.prototype.toString.call(arr))  //"[object Array]"
+  console.log(Object.prototype.toString.apply(arr))  //"[object Array]"
+
+
+  function fn() {}
+
+  // 判断
+  Object.prototype.toString.call(obj).slice(8,-1);
+
+
+  // obj != null || obj != undefined
+  (obj).constructor.name.toString().toLowerCase()
+
+</script>
+</body>
+</html>

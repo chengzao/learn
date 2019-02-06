@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #demo {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+
+        #demo2 {
+            width: 100px;
+            height: 100px;
+            margin: 100px;
+            /*marign不算offsetHeight*/
+            padding-top: 50px;
+            /*padding算offsetHeight*/
+            border-top: 5px solid red;
+            /*border算offsetHeight*/
+            background-color: pink;
+        }
+
+        #demo3 {
+            width: 100px;
+            height: 100px;
+            /*position: absolute;*/
+            background-color: pink;
+        }
+
+        #father {
+            width: 200px;
+            height: 200px;
+            margin: 100px;
+            /*不是到margin左侧的距离*/
+            padding: 50px;
+            border: 10px solid blue;
+            /*position: absolute;*/
+            background-color: pink;
+        }
+
+        #son {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+        }
+
+        #father2 {
+            width: 200px;
+            height: 200px;
+            margin: 100px;
+            /*不是到margin左侧的距离*/
+            padding: 50px;
+            border: 10px solid blue;
+            position: absolute;
+            background-color: pink;
+        }
+
+        #son2 {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+        }
+
+        #one {
+            position: absolute;
+        }
+
+        #two {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- demo -->
+    <div id="demo" style=""></div>
+    <div id="test" style="width: 111px;"></div>
+    <!-- demo2 -->
+    <div id="demo2" style=""></div>
+    <!-- demo3 -->
+    <div id="demo3" style="left:100px"></div>
+    <!-- demo4 -->
+    <div id="father">
+        <div id="son"></div>
+    </div>
+    <div id="father2">
+        <div id="son2"></div>
+    </div>
+    <!-- demo5 -->
+    <div id="one">
+        <div id="two">
+            <div id="three"></div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    var demo = document.getElementById("demo");
+    var test = document.getElementById('test');
+    //demo.style.height = "200px";//可以对样式进行设置
+    demo.offsetHeight = 200; //不可以对样式进行设置
+    console.log(test.style.height);
+    console.log(test.style.width); // demo.style.height 只能获取行内样式
+    console.log(typeof demo.style.height); //demo.style.height 的类型是字符串 string
+
+    console.log(demo.offsetHeight); // demooffsetHeight 可以获取其他地方的样式 甚至没有样式都可以获取到
+    console.log(typeof demo.offsetHeight); //类型是数值型 number
+
+    //demo2 offsetHeight   height+padding+border
+    var demo2 = document.getElementById("demo2");
+    console.log(demo2.offsetHeight);
+
+    //demo3  offsetLeft   
+    var demo3 = document.getElementById("demo3");
+    console.log(demo3.offsetLeft); // 0
+    console.log(demo3.style.left); //100px
+
+    //demo4  offsetLeft  
+    var son = document.getElementById("son");
+    var son2 = document.getElementById("son2");
+    console.log(son.offsetLeft); //160  父级没有定位
+    console.log(son2.offsetLeft); //50  父级有定位
+    //demo5  offsetParent
+    var three = document.getElementById("three");
+    console.log(three.offsetParent); //找最近的那个
+    console.log(three.parentNode);
+</script>
+
+</html>

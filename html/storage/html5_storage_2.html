@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--localStorage和sessionStorage
+
+这里有俩个用来保存数据的属性：
+
+localStorage - 没有过期时间的方式保存数据
+sessionStorage - 保存数据到session
+在使用web storage之前，检查浏览器是否支持localStorage和sessionStorage：-->
+<script>
+  if(typeof(Storage)!=="undefined"){
+    // 你的浏览器支持HTML5本地存储!
+    // 你的代码...
+  }else{
+    // 你的浏览器不支持HTML5本地存储!
+  }
+</script>
+
+
+<!--下面的例子计算了一个用户点击按钮的次数。在这段代码中，将会把值转化为数字，这样可以使用加法：-->
+<p><h3>每次我们输入代码的时候都会刷新代码预览窗口,这会刷新页面并重新执行以下代码,</h3></p>
+<p><h3>所以在第一次点击按钮之后,每当我们输入内容,实时预览窗口中按钮上面的数字会重复加1,就好像我们点击了按钮一样,这不是bug哦.</h3></p>
+<h4>(记得先用上面的判断方法来检测浏览器是否支持这个HTML5特性哦)</h4>
+<button id="result"></button>
+<button id="result2"></button>
+
+<script>
+  if (localStorage.clickcount){
+    localStorage.clickcount=Number(localStorage.clickcount)+1;
+  }else{
+    localStorage.clickcount=1;
+  }
+  document.getElementById("result").innerHTML="你点击了: " + localStorage.clickcount + " 次.";
+</script>
+<!--sessionStorage对象
+sessionStorage对象和localStorage对象类似，除了保存的数据只在当前这段时间中有效。
+"这段时间"指的是从开始点击到关闭对话框这段时间.数据将会在用户关闭浏览器窗口时失效。-->
+
+
+<!--下面代码在当前的session中计算了用户点击的次数：-->
+
+<script>
+  if (sessionStorage.clickcount){
+    sessionStorage.clickcount=Number(sessionStorage.clickcount)+1;
+  }else{
+    sessionStorage.clickcount=1;
+  }
+  document.getElementById("result2").innerHTML="你点击了: " + sessionStorage.clickcount + " 次在点击按钮到关闭窗口这段时间里.";
+</script>
+</body>
+</html>

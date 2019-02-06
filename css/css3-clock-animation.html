@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>css3 时钟旋转动画</title>
+  <style>
+    /*CSS源代码*/
+    body{
+      background:#CFCFCF;
+    }
+    .clock{
+      width:96px;
+      height:96px;
+      border:2px solid #fff;
+      border-radius:50%;
+      margin:200px auto;
+      position:relative;
+    }
+    .clock:after,.clock:before{
+      position:absolute;
+      content:"";
+      background-color:#fff;
+    }
+
+    .clock:after{
+      width:40px;
+      height:2px;
+      transform-origin:left;    /*旋转元素的基点位置*/
+      top:44px;
+      left:44px;
+      animation:miaozhen 1s linear infinite;
+    }
+    .clock:before{
+      width:35px;
+      height:2px;
+      transform-origin:left;     /*旋转元素的基点位置*/
+      top:44px;
+      left:44px;
+      animation:fenzhen 60s linear infinite;
+    }
+    @keyframes miaozhen{
+      0%{
+        transform:rotate(0deg);
+      }100%{
+         transform:rotate(360deg);
+       }
+    }
+    @keyframes fenzhen{
+      0%{
+        transform:rotate(0deg);
+      }100%{
+         transform:rotate(360deg);
+       }
+    }
+
+  </style>
+</head>
+<body>
+<!--
+  参考：
+  http://www.w3school.com.cn/cssref/pr_transform-origin.asp
+  http://www.gbtags.com/gb/rtreplayer/2909.htm
+  -->
+<div class='clock'></div>
+</body>
+</html>

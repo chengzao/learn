@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <title>HTML 5 Application - IndexedDb</title>
+  <style>
+    button{background-color: lightblue;border:1px solid #ccc;color: #fff;height:32px;margin: 10px}
+    img{border: 1px solid #ccc;margin: 10px;width:90%;height:80% }
+    div{background-color: #304242;color: red;width: 88%;margin: 10px;padding: 10px 20px 10px}
+  </style>
+  <script type="text/javascript">
+    var localDatabase = {};
+    var dbName = "employeeDb";//数据库名称
+    var dbVersion = 2.0; //数据库版本
+    localDatabase.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+    localDatabase.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange;
+    localDatabase.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction;
+
+    localDatabase.indexedDB.onerror = function (e) {
+      console.log("Database error: " + e.target.errorCode);
+    };
+    //打开数据库的最新版本
+    function openDatabase() {
+      var openRequest = localDatabase.indexedDB.open(dbName);
+      openRequest.onerror = function (e) {
+        console.log("Database error: " + e.target.errorCode);
+      };
+      openRequest.onsuccess = function (event) {
+        localDatabase.db = openRequest.result;
+        console.log("Database opened");
+      };
+    }
+    //创建一个新的数据库/对象存储
+    function createDatabase() {
+      console.log('Deleting local database');
+
+      var deleteDbRequest = localDatabase.indexedDB.deleteDatabase(dbName);
+      deleteDbRequest.onsuccess = function (event) {
+        console.log('Database deleted');
+        //  localDatabase.indexedDB.open(数据库名称,数据库版本号)
+        var openRequest = localDatabase.indexedDB.open(dbName, dbVersion);
+        //异步错误处理函数
+        openRequest.onerror = function (e) {
+          console.log("Database error: " + e.target.errorCode);
+        };
+        openRequest.onsuccess = function (event) {
+          console.log("Database created");
+          localDatabase.db = openRequest.result;
+        };
+        openRequest.onupgradeneeded = function (evt) {
+          console.log('Creating object stores');
+          //创建索引
+          var employeeStore = evt.currentTarget.result.createObjectStore("employees", {keyPath: "id"});
+          employeeStore.createIndex("stateIndex", "state", {unique: false});
+          employeeStore.createIndex("emailIndex", "email", {unique: true});
+          employeeStore.createIndex("zipIndex", "zip_code", {unique: false});
+        };
+        deleteDbRequest.onerror = function (e) {
+          console.log("Database error: " + e.target.errorCode);
+        };
+
+      };
+    }
+    //删除现有数据库
+    function deleteDatabase() {
+      var deleteDbRequest = localDatabase.indexedDB.deleteDatabase(dbName);
+      deleteDbRequest.onsuccess = function (event) {
+        // database deleted successfully
+      };
+      deleteDbRequest.onerror = function (e) {
+        console.log("Database error: " + e.target.errorCode);
+      };
+    }
+    //填充数据
+    function populateDatabase() {
+      console.log("populating database");
+      var transaction = localDatabase.db.transaction("employees", "readwrite");
+      var store = transaction.objectStore("employees");
+
+      if (localDatabase != null && localDatabase.db != null) {
+        var request = store.put({
+          "id": "E1",
+          "first_name": "Joe",
+          "last_name": "Smith",
+          "email": "joe.smith@somedomain.com",
+          "street": "123 Main Street",
+          "city": "New York",
+          "state": "New York",
+          "zip_code": "10016",
+        });
+        request.onsuccess = function (e) {
+          console.log("Added E1");
+        };
+
+        request.onerror = function (e) {
+          console.log(e.value);
+        };
+
+        request = store.put({
+          "id": "E2",
+          "first_name": "John",
+          "last_name": "Jones",
+          "email": "john.jones@somedomain.com",
+          "street": "999 Main Street",
+          "city": "New York",
+          "state": "New York",
+          "zip_code": "10016",
+        });
+        request.onsuccess = function (e) {
+          console.log("Added E2");
+        };
+
+        request.onerror = function (e) {
+          console.log(e.value);
+        };
+        request = store.put({
+          "id": "E3",
+          "first_name": "John",
+          "last_name": "Adams",
+          "email": "john.adams@somedomain.com",
+          "street": "1 First Street",
+          "city": "San Franciso",
+          "state": "California",
+          "zip_code": "94118",
+        });
+        request.onsuccess = function (e) {
+          console.log("Added E3");
+        };
+
+        request.onerror = function (e) {
+          console.log(e.value);
+        };
+        request = store.put({
+          "id": "E4",
+          "first_name": "Jane",
+          "last_name": "Adams",
+          "email": "jane.adams@somedomain.com",
+          "street": "2 Second Street",
+          "city": "San Franciso",
+          "state": "California",
+          "zip_code": "92101",
+        });
+
+        request.onsuccess = function (e) {
+          console.log("Added E4");
+        };
+
+        request.onerror = function (e) {
+          console.log(e.value);
+        };
+
+        request = store.put({
+          "id": "E5",
+          "first_name": "Jane",
+          "last_name": "Davis",
+          "email": "jane.davis@somedomain.com",
+          "street": "3 Third Street",
+          "city": "San Franciso",
+          "state": "California",
+          "zip_code": "92100",
+        });
+
+        request.onsuccess = function (e) {
+          console.log("Added E5");
+        };
+
+        request.onerror = function (e) {
+          console.log(e.value);
+        };
+      }
+    }
+    //创建一条新员工记录
+    function addEmployee() {
+      try {
+        var result = document.getElementById("result");
+        result.innerHTML = "";
+
+        var transaction = localDatabase.db.transaction("employees", "readwrite");
+        var store = transaction.objectStore("employees");
+
+        if (localDatabase != null && localDatabase.db != null) {
+          var request = store.add({
+            "id": "E6",
+            "first_name": "Janei",
+            "last_name": "Doi",
+            "email": "jani.doh@somedomain.com",
+            "street": "183 Pennsylvania Avenue",
+            "city": "Washington D.C.",
+            "state": "DC",
+            "zip_code": "20500",
+          });
+          request.onsuccess = function (e) {
+            result.innerHTML = "Employee record was added successfully.";
+            ;
+          };
+
+          request.onerror = function (e) {
+            console.log(e.value);
+            result.innerHTML = "Employee record was not added.";
+          };
+        }
+      }
+      catch (e) {
+        console.log(e);
+      }
+    }
+    //更新现有的员工记录
+    function updateEmployee() {
+      try {
+        var result = document.getElementById("result");
+        result.innerHTML = "";
+        //localDatabase.db.transaction(数据表名称,事务模式);
+        var transaction = localDatabase.db.transaction("employees", "readwrite");
+        var store = transaction.objectStore("employees");
+        var jsonStr;
+        var employee;
+
+        if (localDatabase != null && localDatabase.db != null) {
+          // 获取 E3
+          store.get("E3").onsuccess = function (event) {
+            employee = event.target.result;
+            // save old value
+            jsonStr = "OLD: " + JSON.stringify(employee);
+            result.innerHTML = jsonStr;
+
+            // update record  更新的记录
+            employee.email = "johm.adams@anotherdomain.com";
+
+            var request = store.put(employee);
+
+            request.onsuccess = function (e) {
+            };
+
+            request.onerror = function (e) {
+              console.log(e.value);
+            };
+
+            // fetch record again  再次读取E3记录
+            store.get("E3").onsuccess = function (event) {
+              employee = event.target.result;
+              jsonStr = "<br/>NEW: " + JSON.stringify(employee);
+              result.innerHTML = result.innerHTML + jsonStr;
+            };
+          }; // fetch employee first time
+        }
+      }
+      catch (e) {
+        console.log(e);
+      }
+    }
+    //清除对象存储事务
+    function clearAllEmployees() {
+      try {
+        var result = document.getElementById("result");
+        result.innerHTML = "";
+
+        if (localDatabase != null && localDatabase.db != null) {
+          //localDatabase.db.transaction(数据表名称,事务模式);
+          var store = localDatabase.db.transaction("employees", "readwrite").objectStore("employees");
+
+          store.clear().onsuccess = function (event) {
+            result.innerHTML = "'Employees' object store cleared";
+          };
+        }
+      }
+      catch (e) {
+        console.log(e);
+      }
+    }
+    //使用键获取一个特定的记录
+    function fetchEmployee() {
+      try {
+        var result = document.getElementById("result");
+        result.innerHTML = "";
+        if (localDatabase != null && localDatabase.db != null) {
+          var store = localDatabase.db.transaction("employees").objectStore("employees");
+          store.get("E3").onsuccess = function (event) {
+            var employee = event.target.result;
+            if (employee == null) {
+              result.innerHTML = "employee not found";
+            }
+            else {
+              var jsonStr = JSON.stringify(employee);
+              result.innerHTML = jsonStr;
+              console.log('E3 的数据为' + jsonStr);
+            }
+          };
+        }
+      }
+      catch (e) {
+        console.log(e);
+      }
+    }
+    //迭代所有员工记录
+    function fetchAllEmployees() {
+      try {
+        var result = document.getElementById("result");
+        result.innerHTML = "";
+
+        if (localDatabase != null && localDatabase.db != null) {
+          var store = localDatabase.db.transaction("employees").objectStore("employees");
+          var request = store.openCursor();
+          request.onsuccess = function (evt) {
+            var cursor = evt.target.result;
+            if (cursor) {
+              var employee = cursor.value;
+              var jsonStr = JSON.stringify(employee);
+              result.innerHTML = result.innerHTML + "<br/>" + jsonStr;
+              cursor.continue();
+            }
+          };
+        }
+      }
+      catch (e) {
+        console.log(e);
+      }
+    }
+    //迭代纽约市内的所有员工记录
+    function fetchNewYorkEmployees() {
+      try {
+        var result = document.getElementById("result");
+        result.innerHTML = "";
+
+        if (localDatabase != null && localDatabase.db != null) {
+          var range = IDBKeyRange.only("New York");
+
+          var store = localDatabase.db.transaction("employees").objectStore("employees");
+          var index = store.index("stateIndex");
+
+          index.openCursor(range).onsuccess = function (evt) {
+            var cursor = evt.target.result;
+            if (cursor) {
+              var employee = cursor.value;
+              var jsonStr = JSON.stringify(employee);
+              result.innerHTML = result.innerHTML + "<br/>" + jsonStr;
+              cursor.continue();
+            }
+          };
+        }
+      }
+      catch (e) {
+        console.log(e);
+      }
+    }
+    //使用 IDBKeyRange.only 索引获取特定的记录
+    function fetchEmployeeByEmail() {
+      try {
+        var result = document.getElementById("result");
+        result.innerHTML = "";
+
+        if (localDatabase != null && localDatabase.db != null) {
+          var range = IDBKeyRange.only("jane.adams@somedomain.com");
+
+          var store = localDatabase.db.transaction("employees").objectStore("employees");
+          var index = store.index("emailIndex");
+
+          index.get(range).onsuccess = function (evt) {
+            var employee = evt.target.result;
+            var jsonStr = JSON.stringify(employee);
+            result.innerHTML = jsonStr;
+          };
+        }
+      }
+      catch (e) {
+        console.log(e);
+      }
+    }
+    //使用 IDBKeyRange.lowerBound 超过指定的边界值范围的记录
+    function fetchEmployeeByZipCode1() {
+      try {
+        var result = document.getElementById("result");
+        result.innerHTML = "";
+
+        if (localDatabase != null && localDatabase.db != null) {
+          var store = localDatabase.db.transaction("employees").objectStore("employees");
+          var index = store.index("zipIndex");
+
+          var range = IDBKeyRange.lowerBound("92000");
+
+          index.openCursor(range).onsuccess = function (evt) {
+            var cursor = evt.target.result;
+            if (cursor) {
+              var employee = cursor.value;
+              var jsonStr = JSON.stringify(employee);
+              result.innerHTML = result.innerHTML + "<br/>" + jsonStr;
+              cursor.continue();
+            }
+          };
+        }
+      }
+      catch (e) {
+        console.log(e);
+      }
+    }
+    //使用 IDBKeyRange.upperBound 指定的边界值之前的所有记录
+    function fetchEmployeeByZipCode2() {
+      try {
+        var result = document.getElementById("result");
+        result.innerHTML = "";
+
+        if (localDatabase != null && localDatabase.db != null) {
+          var store = localDatabase.db.transaction("employees").objectStore("employees");
+          var index = store.index("zipIndex");
+
+          var range = IDBKeyRange.upperBound("93000");
+
+          index.openCursor(range).onsuccess = function (evt) {
+            var cursor = evt.target.result;
+            if (cursor) {
+              var employee = cursor.value;
+              var jsonStr = JSON.stringify(employee);
+              result.innerHTML = result.innerHTML + "<br/>" + jsonStr;
+              cursor.continue();
+            }
+          };
+        }
+      }
+      catch (e) {
+        console.log(e);
+      }
+    }
+    //使用 IDBKeyRange.bound  返回指定范围内的所有记录
+    function fetchEmployeeByZipCode3() {
+      try {
+        var result = document.getElementById("result");
+        result.innerHTML = "";
+
+        if (localDatabase != null && localDatabase.db != null) {
+          var store = localDatabase.db.transaction("employees").objectStore("employees");
+          var index = store.index("zipIndex");
+
+          var range = IDBKeyRange.bound("92000", "92999", true, true);
+
+          index.openCursor(range).onsuccess = function (evt) {
+            var cursor = evt.target.result;
+            if (cursor) {
+              var employee = cursor.value;
+              var jsonStr = JSON.stringify(employee);
+              result.innerHTML = result.innerHTML + "<br/>" + jsonStr;
+              cursor.continue();
+            }
+          };
+        }
+      }
+      catch (e) {
+        console.log(e);
+      }
+    }
+  </script>
+</head>
+
+<!--
+indexDB案例
+**
+   原文：http://www.ibm.com/developerworks/cn/web/wa-indexeddb/
+**
+表 1. IndexedDB 事务模式
+模式	            描述
+readonly	    提供对某个对象存储的只读访问，在查询对象存储时使用。
+readwrite	    提供对某个对象存储的读取和写入访问权。
+versionchange	提供读取和写入访问权来修改对象存储定义，或者创建一个新的对象存储。
+
+表 2. IndexedDB API 在为索引打开游标时提供的范围类型或过滤器
+范围类型或过滤器	        描述
+IDBKeyRange.bound	    返回指定范围内的所有记录。这个范围有一个下边界和上边界。它还有两个可选的参数：lowerOpen 和 upperOpen，这两个参数表明下边界或上边界上的记录是否应包含在范围内。
+IDBKeyRange.lowerBound	超过指定的边界值范围的所有记录。此范围有一个可选的参数 lowerOpen，表明下边界上的记录是否应包含在范围中。
+IDBKeyRange.upperBound	返回指定的边界值之前的所有记录。它也有一个可选的 upperOpen 参数。
+IDBKeyRange.only	    仅返回与指定值匹配的记录。
+
+-->
+  <img src="./indexDB.png" alt="">
+  <button onclick="createDatabase()">Create Database</button>
+  <button onclick="openDatabase()">Open Database</button>
+  <button onclick="populateDatabase()">Populate Database</button>
+  <button onclick="clearAllEmployees()">Clear All Employees</button>
+  <button onclick="fetchEmployee()">Fetch Employee</button>
+  <button onclick="updateEmployee()">Update Employee</button>
+  <button onclick="addEmployee()">Add Employee</button>
+  <button onclick="fetchEmployeeByEmail()">Fetch Employee By Email</button>
+  <button onclick="fetchEmployeeByZipCode1()">Fetch Employee By Zip Code 1</button>
+  <button onclick="fetchEmployeeByZipCode2()">Fetch Employee By Zip Code 2</button>
+  <button onclick="fetchEmployeeByZipCode3()">Fetch Employee By Zip Code 3</button>
+  <button onclick="fetchAllEmployees()">Fetch All Employees</button>
+  <button onclick="fetchNewYorkEmployees()">Fetch NY Employees</button>
+  <button onclick="deleteDatabase()">deleteDatabase</button>
+  <div id="result">这是一条小尾巴</div>
+</body>
+</html>

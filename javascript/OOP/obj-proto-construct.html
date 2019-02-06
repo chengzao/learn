@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>对象的原型链结构</title>
+		<script>
+		/*
+			function Dog() {}
+			var dog = new Dog();
+			// Dog.prototype
+			// dog.__proto__
+			// constructor
+
+			// 对象
+			// 函数
+			// 原型对象
+
+			// 验证
+			function Cat() {}
+			var cat = new Cat();
+			console.log(Dog.prototype === cat.__proto__);
+
+			console.log(Dog === Dog.prototype.constructor);
+			console.log(Dog === dog.__proto__.constructor);
+		*/
+
+
+		/*
+			function Dog() {
+				this.name = "旺财";
+			}
+			// 每一个构造函数中利用 this.成员 创建的属性, 每一个对象都会有
+			var dog1 = new Dog();
+			var dog2 = new Dog();
+
+			// console.log(Dog.name); // ?
+		*/
+
+		/*
+			function Dog() {}
+			var dog = new Dog();
+			// 要求绘制到 Object.prototype
+		*/
+
+
+		/*
+		function Dog() {}
+		var dog = new Dog();
+
+		function Cat() {}
+		var cat = new Cat();
+
+		// 绘制出 对象, 构造函数, 与 Object.prototype
+
+		console.log(Dog.prototype.__proto__ === Cat.prototype.__proto__);
+		*/
+
+
+		// 在他的基础之上 添加 Object
+
+
+			function Dog() {}
+			function Animal() {
+
+				this.hahah = "哈哈";
+			}
+
+			var animal = new Animal();
+
+			Dog.prototype = animal;
+
+			var dog = new Dog();
+
+			console.log(dog.__proto__ === animal);
+
+
+
+
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

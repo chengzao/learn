@@ -1,0 +1,31 @@
+<html>
+<head>
+  <title>api.chenio.com</title>
+</head>
+<body>
+<h3> iframe结合location.hash进行跨域数据获取</h3>
+<script>
+//模拟一个简单的参数处理操作
+switch(location.hash){
+    case '#paramdo':
+        callBack();
+        break;
+    case '#paramset':
+        //do something……
+        break;
+}
+
+function callBack(){
+    try {
+        parent.location.hash = 'somedata';
+    } catch (e) {
+        // ie、chrome的安全机制无法修改parent.location.hash，
+        var ifrproxy = document.createElement('iframe');
+        ifrproxy.style.display = 'none';
+        ifrproxy.src = 'http://www.chenio.com/note/server/JSONP/locationHashProxy.html#somedata';  
+        document.body.appendChild(ifrproxy);
+    }
+}
+</script>
+</body>
+</html>

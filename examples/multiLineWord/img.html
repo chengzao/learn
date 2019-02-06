@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 30px;
+            background-color: #dfdfdf;
+        }
+
+        .box i {
+            display: inline-block;
+            width: 8px;
+            height: 13px;
+            background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAbCAYAAACjkdXHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QjgwRjUwMjQ0QzVCMTFFOEIzQjNEODJENEM4Njk0QzgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QjgwRjUwMjU0QzVCMTFFOEIzQjNEODJENEM4Njk0QzgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoxODIzMjI5MzRDNTAxMUU4QjNCM0Q4MkQ0Qzg2OTRDOCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoxODIzMjI5NDRDNTAxMUU4QjNCM0Q4MkQ0Qzg2OTRDOCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PvHgdtwAAABVSURBVHjaYmAgD7CQqY+hAIiPADE/ORr/QXEguRpTRzWOaiQauEE1/QfiPlLTKxMQz4Vq/gLEdpQY8HXUgFEDqGWADbkGPAJiJXIKfZABEiAGQIABAIxNQ7WlbeLCAAAAAElFTkSuQmCC') no-repeat center center;
+            background-size: 8px 13px;
+        }
+
+        .box span {
+            font-size: 13px;
+        }
+        .box2 {
+            display: table-cell;
+            height: 30px;
+            background-color: #dfdfdf;
+            text-align:center;    
+            vertical-align:middle;
+        }
+
+        .box2 i {
+            display: inline-block;
+            width: 8px;
+            height: 13px;
+            background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAbCAYAAACjkdXHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QjgwRjUwMjQ0QzVCMTFFOEIzQjNEODJENEM4Njk0QzgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QjgwRjUwMjU0QzVCMTFFOEIzQjNEODJENEM4Njk0QzgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoxODIzMjI5MzRDNTAxMUU4QjNCM0Q4MkQ0Qzg2OTRDOCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoxODIzMjI5NDRDNTAxMUU4QjNCM0Q4MkQ0Qzg2OTRDOCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PvHgdtwAAABVSURBVHjaYmAgD7CQqY+hAIiPADE/ORr/QXEguRpTRzWOaiQauEE1/QfiPlLTKxMQz4Vq/gLEdpQY8HXUgFEDqGWADbkGPAJiJXIKfZABEiAGQIABAIxNQ7WlbeLCAAAAAElFTkSuQmCC') no-repeat center center;
+            background-size: 8px 13px;
+            vertical-align:middle;
+        }
+
+        .box2 span {
+            font-size: 13px;
+        }
+        .box3 {
+            display: inline-block;
+            height: 30px;
+            *display: inline;
+            background-color: #dfdfdf;
+            text-align:center;    
+            vertical-align:middle;
+        }
+
+        .box3 i {
+            display: inline-block;
+            width: 8px;
+            height: 13px;
+            background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAbCAYAAACjkdXHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QjgwRjUwMjQ0QzVCMTFFOEIzQjNEODJENEM4Njk0QzgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QjgwRjUwMjU0QzVCMTFFOEIzQjNEODJENEM4Njk0QzgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoxODIzMjI5MzRDNTAxMUU4QjNCM0Q4MkQ0Qzg2OTRDOCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoxODIzMjI5NDRDNTAxMUU4QjNCM0Q4MkQ0Qzg2OTRDOCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PvHgdtwAAABVSURBVHjaYmAgD7CQqY+hAIiPADE/ORr/QXEguRpTRzWOaiQauEE1/QfiPlLTKxMQz4Vq/gLEdpQY8HXUgFEDqGWADbkGPAJiJXIKfZABEiAGQIABAIxNQ7WlbeLCAAAAAElFTkSuQmCC') no-repeat center center;
+            background-size: 8px 13px;
+            vertical-align:middle;
+        }
+
+        .box3 span {
+            font-size: 13px;
+        }
+        .box4 {
+            height: 30px;
+            background-color: #dfdfdf;
+        }
+        .box4::after{
+            content:'';
+            width:0;
+            height:100%;
+            display:inline-block;
+            vertical-align:middle;
+        }
+
+        .box4 i {
+            display: inline-block;
+            width: 8px;
+            height: 13px;
+            background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAbCAYAAACjkdXHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QjgwRjUwMjQ0QzVCMTFFOEIzQjNEODJENEM4Njk0QzgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QjgwRjUwMjU0QzVCMTFFOEIzQjNEODJENEM4Njk0QzgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoxODIzMjI5MzRDNTAxMUU4QjNCM0Q4MkQ0Qzg2OTRDOCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoxODIzMjI5NDRDNTAxMUU4QjNCM0Q4MkQ0Qzg2OTRDOCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PvHgdtwAAABVSURBVHjaYmAgD7CQqY+hAIiPADE/ORr/QXEguRpTRzWOaiQauEE1/QfiPlLTKxMQz4Vq/gLEdpQY8HXUgFEDqGWADbkGPAJiJXIKfZABEiAGQIABAIxNQ7WlbeLCAAAAAElFTkSuQmCC') no-repeat center center;
+            background-size: 8px 13px;
+            vertical-align:middle;
+        }
+
+        .box4 span {
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>display: flex;</p>
+    <div class="box">
+        <i></i>
+        <span>返回</span>
+    </div>
+    <p>display: table-cell;</p>
+    <div class="box2">
+        <i></i><span>返回</span>
+    </div>
+    <p>display: inline-block;</p>
+    <div class="box3">
+        <i></i>
+        <span>返回</span>
+    </div>
+    <p>:after</p>
+    <div class="box4">
+        <i></i>
+        <span>返回</span>
+    </div>
+</body>
+
+</html>

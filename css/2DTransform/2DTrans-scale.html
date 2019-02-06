@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS 2D转换</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #F7F7F7;
+		}
+
+		.scale {
+			width: 200px;
+			height: 200px;
+			margin: 100px auto;
+			background-color: green;
+			transition: all 1s;
+		}
+
+		.scale:hover {
+			/*CSS3中通transform来实现2D和3D的转换*/
+			transform: scale(2, 2);
+		}
+	</style>
+</head>
+<body>
+	<div class="scale"></div>
+</body>
+</html>

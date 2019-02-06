@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>replaceState</title>
+</head>
+
+<body>
+	<input type="button" id="btn" value="看地址变没变">
+	<script>
+
+		// replaceState它修改浏览历史中当前纪录
+		
+		var btn = document.getElementById('btn');
+		// 第3个参数表示替换的历史记录
+		// 第2代表示网页的title，所有浏览器基本都忽略
+		// 第一个参数，代表我们自定义一些数据，可传可不传，不传给null
+		btn.onclick = function () {
+			history.replaceState(null, 'title', './test.html');
+		}
+		window.addEventListener('popstate', function (stat) {
+			console.log('stat ', stat);
+		}, false)
+	</script>
+</body>
+
+</html>

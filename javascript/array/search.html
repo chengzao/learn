@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>search</title>
+</head>
+<body>
+  <p>O(n)复杂度</p>
+  <script type="text/javascript">
+    function search(target, arr) {
+      let index = -1;
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === target) {
+          index = i;
+        }
+      }
+      return index;
+    }
+    let arr = [1,4,6,8,9,21,45,67,98];
+    console.log(search(67,arr));
+  </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>proxy</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    'use strict';
+    console.log('-------------------demo1----------------');
+    var target = {},
+        handler = {};
+    var proxy = new Proxy(target, handler);
+    proxy.color = 'pink';
+    console.log(proxy);
+    console.log(target.color);
+
+    console.log('-------------------demo2----------------');
+    var target2 = {};
+    var handler2 = {
+        set: function (target, key, value, receiver) {
+            throw new Error("请不要为这个对象设置属性。");
+        }
+    };
+    var proxy2 = new Proxy(target2, handler2);
+    try {
+        proxy2.name = "angelina";
+    } catch (e) {
+        console.log(e);
+    }
+
+    console.log('-------------------demo3----------------');
+    //https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect
+    function Tree() {
+        return new Proxy({}, handler);
+    }
+    var handler = {
+        get: function (target, key, receiver) {
+            if (!(key in target)) {
+                target[key] = Tree(); // 自动创建一个子树
+            }
+            return Reflect.get(target, key, receiver);
+        }
+    };
+    var tree = Tree();
+    tree.branch1.branch2.test = "green";
+    console.log(tree);
+
+
+    // eg.
+    const me = { name: 'xiao ming', like: 'game', musicPlaying: true }
+
+    const meWithProxy = new Proxy(me, {
+        get(target, prop) {
+
+            switch (prop) {
+            case 'like':
+                return 'study';
+            case 'name':
+                return 'zhang san';
+            default:
+                return 'error';
+
+            }
+            //return target[prop];
+
+        },
+        set(target, prop, value) {
+            if (prop === 'musicPlaying' && value !== true) {
+                throw Error('error error error！');
+            }
+            target[prop] = value;
+        },
+
+
+    });
+    console.log(meWithProxy.name);
+    console.log('name' in meWithProxy)
+    console.log(meWithProxy.musicPlaying = false);
+</script>
+
+</html>

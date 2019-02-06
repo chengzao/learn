@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数callback模式</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    function fn(fn2) {
+        console.log("fn在执行");
+        fn2();
+    }
+
+    function callback() {
+        console.log("callback在执行");
+    }
+
+    fn(callback);
+
+</script>

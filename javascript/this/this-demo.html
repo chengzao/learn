@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+// 1. 作为普通函数调用
+	function test(){
+    this.a = 5;
+    console.log(this.a);
+    console.log(this);
+}
+//test(); // 5  [object Window]
+
+var a = 5;
+function test2(){
+    var a = 10;
+    console.log(this.a);
+}
+//test2(); //5
+
+
+var a3 = 5;
+function test3(){
+    this.a3 = 10;
+}
+test3();
+//console.log(a3); //10
+
+//对象函数的调用
+    var name = "张三";
+    var person = {
+    	name: "李四",
+    	showName: function (){
+    		console.log(this.name);
+    	}
+    }
+
+    //person.showName(); //李四
+
+    var other = person.showName();
+	  //other; //  李四
+	var another = person.showName;
+	  //another();// 张三
+
+// 构造函数调用
+	
+	function Animal() {
+
+		this.name = "豆豆";
+	}
+
+	var dog = new Animal();
+
+	//console.log(dog.name); // 输出 豆豆
+
+//使用 apply 或 call 调用
+	var name2 = "张三";
+
+	function test() {
+		console.log(this.name2);
+	}
+	var b = {};
+	b.name2 = "李四";
+	b.n = test;
+	b.n(); //李四
+	b.n.apply(); //张三
+	b.n.apply(b); //李四
+</script>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			// 函数的四种模式
+			// 1, 函数模式
+			// 2, 方法模式
+			// 3, 构造函数模式
+			// 4, 上下文调用
+			
+			
+			// 1, 函数模式
+			// 在 js 中函数, 方法, 构造器等实际上是一个东西, 只是它所处的环境不同
+			// 函数 不在于任何内容相关联的时候就是函数模式
+			/*
+			var func = function () {
+				console.log(this);
+			};
+			
+			// func(); // 函数调用
+			
+			// 函数调用, this 就是全局对象, 在 html 中就是 window 对象
+			
+			
+			var o = {name:"11:21"};
+			var arr = [1,2,3];
+			*/
+			
+			// 2, 方法调用模式
+			// 如果将函数与数组元素, 对象属性等联系起来, 那么再利用对象或数组来调用该函数的时候
+			// 他就是方法模式, this 就是当前对象
+			// o.fn = func;  // 与对象关联
+			// o.fn();	// 利用对象来调用
+			// func();
+			
+			// arr.push(func);	// 关联到数组上
+			// arr[3]();  // 利用数组来调用
+			
+			
+			
+			/*
+			function f1() {
+				console.log(this.length);
+			}
+			
+			var o = {length:1};
+			
+			o.fn = f1;
+			
+			o.fn(); // => 1
+			
+			function f2(fn, a) {
+				
+				fn(); // undefiend
+			}
+			
+			f2(f1, 12);
+			*/
+			
+			
+			
+			
+			var length = 10;
+			function fn(){
+				console.log(this.length)
+			}
+			var obj = {
+				length: 5,
+				mathod: function(f){
+					f(); 					// 10
+					arguments[0]();			// 2
+				}
+			}
+			obj.mathod(fn,1,2);   //10 2
+			
+			// obj.f = fn;
+			// obj.f();
+			
+
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

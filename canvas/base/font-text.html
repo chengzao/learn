@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>基本文本显示</title>
+    <style>
+        canvas { border: 1px solid #aaaaaa; display: block; margin: 50px auto; }
+    </style>
+</head>
+<body>
+<div id="canvas-warp">
+    <canvas id="canvas">
+        你的浏览器居然不支持Canvas？！赶快换一个吧！！
+    </canvas>
+    <canvas id="canvas2">
+        你的浏览器居然不支持Canvas？！赶快换一个吧！！
+    </canvas>
+    <canvas id="canvas3">
+        你的浏览器居然不支持Canvas？！赶快换一个吧！！
+    </canvas>
+    <canvas id="canvas4">
+        你的浏览器居然不支持Canvas？！赶快换一个吧！！
+    </canvas>
+    <canvas id="canvas5">
+        你的浏览器居然不支持Canvas？！赶快换一个吧！！
+    </canvas>
+    <canvas id="canvas6">
+        你的浏览器居然不支持Canvas？！赶快换一个吧！！
+    </canvas>
+</div>
+
+<script>
+/**
+    font	    设置或返回文本内容的当前字体属性
+    textAlign	设置或返回文本内容的当前对齐方式
+    textBaseline	设置或返回在绘制文本时使用的当前文本基线
+    fillText()	 在画布上绘制“被填充的”文本
+    strokeText()	在画布上绘制文本（无填充）
+    measureText()	返回包含指定文本宽度的对象
+*/
+    window.onload = function(){
+        font();
+        font2();
+        font3();
+        font4();
+        font5();
+        font6();
+    };
+    function font(){
+        var canvas = document.getElementById("canvas");
+        canvas.width = 800;
+        canvas.height = 100;
+        var context = canvas.getContext("2d");
+        context.fillStyle = "#FFF";
+        context.fillRect(0,0,800,300);
+
+        //1. 使用`font`设置字体。
+        // context.font = "[font-style] [font-variant] [font-weight] [font-size/line-height] [font-family]"
+        context.font = "20px serif";
+        //2. 使用`fillStyle`设置字体颜色。
+        context.fillStyle = "#00AAAA";
+        //3. 使用`fillText()`方法显示字体。
+        context.fillText("《CANVAS》",20,30);
+    }
+    function font2(){
+        var canvas = document.getElementById("canvas2");
+        canvas.width = 800;
+        canvas.height = 500;
+        var context = canvas.getContext("2d");
+        context.fillStyle = "#FFF";
+        context.fillRect(0,0,800,500);
+
+        context.beginPath();
+        context.font = "25px Verdana";
+        var gradient = context.createLinearGradient(0,0,800,0);
+        gradient.addColorStop("0","magenta");
+        gradient.addColorStop("0.5","blue");
+        gradient.addColorStop("1.0","red");
+        context.fillStyle = gradient;
+        context.strokeStyle = "#00AAAA";
+        context.strokeText("This is test!", 50, 100);
+        context.fillText("This is test!", 50, 200);
+
+        //限制宽度
+        context.font = "small-caps 25px Verdana";
+        context.fillText("This is test!", 50, 300, 200);
+
+        context.beginPath();
+        var img = new Image();
+        img.src = "http://bpic.588ku.com/element_origin_min_pic/16/09/16/2157dbf76e4447b.jpg";
+        img.onload = function(){
+            var pattern = context.createPattern(img, "repeat");
+            context.fillStyle = pattern;
+            context.fillText("This is Test!", 50, 400);
+        }
+
+        context.beginPath();
+    }
+    function font3(){
+        var canvas = document.getElementById("canvas3");
+        canvas.width = 800;
+        canvas.height = 600;
+        var context = canvas.getContext("2d");
+        context.fillStyle = "#FFF";
+        context.fillRect(0,0,800,600);
+
+        // 在位置 400 创建蓝线
+        context.strokeStyle="blue";
+        context.moveTo(400,100);
+        context.lineTo(400,500);
+        context.stroke();
+
+
+        context.fillStyle = "#000";
+        context.font="50px Arial";
+
+        // 显示不同的 textAlign 值
+        context.textAlign="start";
+        context.fillText("textAlign=start", 400, 120);
+        context.textAlign="end";
+        context.fillText("textAlign=end", 400, 200);
+        context.textAlign="left";
+        context.fillText("textAlign=left", 400, 280);
+        context.textAlign="center";
+        context.fillText("textAlign=center", 400, 360);
+        context.textAlign="right";
+        context.fillText("textAlign=right", 400, 480);
+    }
+    function font4(){
+        var canvas = document.getElementById("canvas4");
+        canvas.width = 800;
+        canvas.height = 600;
+        var context = canvas.getContext("2d");
+        context.fillStyle = "#FFF";
+        context.fillRect(0,0,800,600);
+
+        //在位置 y=300 绘制蓝色线条
+        context.strokeStyle="blue";
+        context.moveTo(0,300);
+        context.lineTo(800,300);
+        context.stroke();
+
+        context.fillStyle = "#00AAAA";
+        context.font="20px Arial";
+
+        //在 y=300 以不同的 textBaseline 值放置每个单词
+        context.textBaseline="top";
+        context.fillText("Top",150,300);
+        context.textBaseline="bottom";
+        context.fillText("Bottom",250,300);
+        context.textBaseline="middle";
+        context.fillText("Middle",350,300);
+        context.textBaseline="alphabetic";
+        context.fillText("Alphabetic",450,300);
+        context.textBaseline="hanging";
+        context.fillText("Hanging",550,300);
+    }
+    function font5(){
+        var canvas = document.getElementById("canvas5");
+        canvas.width = 800;
+        canvas.height = 600;
+        var context = canvas.getContext("2d");
+        context.fillStyle = "#FFF";
+        context.fillRect(0,0,800,600);
+
+        //居中显示
+        context.textAlign = "center";
+        context.textBaseline = "middle";
+
+        context.fillStyle = "#00AAAA";
+        context.font="30px Arial";
+        var txt="Hello Canvas";
+        context.fillText("width:" + context.measureText(txt).width,400,300);
+        context.fillText(txt,400,250);
+    }
+    function font6(){
+        var canvas = document.getElementById("canvas6");
+        canvas.width = 800;
+        canvas.height = 600;
+        var context = canvas.getContext("2d");
+        context.fillStyle = "#FFF";
+        context.fillRect(0,0,800,600);
+    
+        //居中显示
+        context.textAlign = "center";
+        context.textBaseline = "middle";
+
+        context.fillStyle = "#00AAAA";
+        context.font="30px Arial";
+        var txt="Hello Canvas shadow";
+        context.shadowColor = "red";
+        context.shadowOffsetX = 5;
+        context.shadowOffsetY = 5;
+        context.shadowBlur= 2;
+        context.fillText(txt,400,250);
+       
+    }
+</script>
+</body>
+</html>

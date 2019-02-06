@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>两列定宽 一列自适应</title>
+    <style>
+        .left,.right {
+            float:left;
+            width:100px;
+        }
+        .right{
+            float: right;
+        }
+        .center {
+            overflow:hidden;
+        }
+
+        .parent{
+            background-color: aliceblue;
+        }
+        .left{
+            background-color: palegreen;
+        }
+        .right{
+            background-color: aquamarine;
+        }
+        .center{
+            background-color: bisque;
+        }
+    </style>
+</head>
+<body>
+<div class="parent">
+    <div class="left">
+        <p>left</p>
+    </div>
+    <div class="right">
+        <p>right</p>
+    </div>
+    <div class="center">
+        <p>center</p>
+        <p>center</p>
+    </div>
+</div>    
+</body>
+</html>

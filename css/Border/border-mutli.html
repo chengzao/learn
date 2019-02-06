@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>多边框</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            margin: 150px;
+        }
+
+        .one-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 310px;
+            height: 310px;
+        }
+
+        /*
+ * 由于使用伪元素和 outline 制作的边框是脱离文档流的，建议再套一个 div 并使用水平垂直居中 防止影响其他样式
+ */
+
+        .one {
+            width: 150px;
+            height: 150px;
+            position: relative;
+            background-color: #999;
+            border: 10px double #ff0000;
+            outline: 10px solid rgb(255, 136, 0);
+            outline-offset: 0px;
+            /* 控制 outline 的偏移位置 */
+        }
+
+        .one::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            bottom: -40px;
+            left: -40px;
+            z-index: -1;
+            background-color: #f7fc00;
+            background-clip: content-box;
+            /* 当使用伪元素的背景做为边框时需要使用该属性控制背景的区域 */
+            border: 10px dashed rgb(56, 252, 8);
+            outline: 10px inset rgb(3, 194, 252);
+        }
+
+        .one::after {
+            content: '';
+            position: absolute;
+            top: -70px;
+            right: -70px;
+            bottom: -70px;
+            left: -70px;
+            z-index: -2;
+            background-color: #fc000d;
+            background-clip: content-box;
+            /* 当使用伪元素的背景做为边框时需要使用该属性控制背景的区域 */
+            border: 10px dotted rgb(56, 252, 8);
+            outline: 10px outset rgb(252, 3, 177);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="one-box">
+        <div class="one">方案一</div>
+    </div>
+</body>
+
+</html>

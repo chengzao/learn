@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>天气预报</title>
+	<style>
+		table {
+			width: 600px;
+			border-collapse: collapse;
+		}
+		td {
+			height: 40px;
+			text-align: center;
+			border: 1px solid #CCC;
+		}
+	</style>
+</head>
+<body>
+	<h4>如果无效需要安装配置wamp环境查看，查看<a href="jsonp.md">jsonp</a></h4>
+	<table>
+		
+	</table>
+	<script src="./js/jquery.min.js"></script>
+	<script src="./js/template-native.js"></script>
+	<script>
+
+		url='http://api.map.baidu.com/telematics/v3/weather?output=json&ak=0A5bc3c4fb543c8f9bc54b77bc155724';
+		$.ajax({
+			url:url ,
+			type: 'get',
+			data: {location: '北京'},
+			// 指定为跨域请求
+			dataType: 'jsonp',
+			success: function (data) {
+				// console.log(data);
+
+				var items = data.results[0]['weather_data'];
+
+				console.log(items);
+
+				// var arr = [0, 1, 2];
+
+				var info = {
+					items: items
+				}
+
+				// info.items
+
+				var html = template('tpl', info);
+
+				// console.log(html);
+
+				$('table').append(html);
+			}
+		})		
+	</script>
+	<script type="text/template" id="tpl">
+		<% for(var i=0; i<items.length; i++) { %>
+			<tr>
+				<td><%= items[i].date %></td>
+				<td>
+					<img src="<%= items[i].dayPictureUrl %>">
+				</td>
+				<td>
+					<img src="<%= items[i].nightPictureUrl %>">
+				</td>
+				<td><%= items[i].temperature %></td>
+				<td><%= items[i].weather %></td>
+				<td><%= items[i].wind %></td>
+			</tr>
+		<% } %>
+	</script>
+</body>
+</html>

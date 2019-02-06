@@ -1,0 +1,51 @@
+/**
+ * @Author: czh
+ * @date:2016.12.15
+ */
+
+@charset "utf-8";
+/* 禁用iPhone中Safari的字号自动调整 */
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -ms-touch-action: none;
+}
+/* 去除iPhone中默认的input样式 */
+input[type="submit"],input[type="reset"],input[type="button"],input[type="search"],input[type="tel"],
+input,textarea{border: 0;-webkit-appearance:none; resize: none;outline: medium;}
+
+/*防止多行文本框拖动*/
+textarea {resize: none;}
+/*去掉图片低测默认的3像素空白缝隙*/
+img {border: 0;vertical-align: middle;}
+/*合并外边线*/
+table {border-collapse: collapse;}
+/* 取消链接高亮  */
+body,div,ul,li,ol,h1,h2,h3,h4,h5,h6,input,textarea,select,p,dl,dt,dd,a,img,button,form,table,th,tr,td,tbody,article, 
+aside, details,figcaption,figure,footer,header,hgroup, menu,nav,section{tap-highlight-color: transparent; -webkit-tap-highlight-color:rgba(0, 0, 0, 0); }
+/* 设置HTML5元素为块 */
+article, aside, details,figcaption,figure,footer,header,hgroup, menu,nav,section {display: block;}
+/* 图片自适应 */
+img {
+max-width: 100%;
+height: auto;
+width:auto\9; /* ie8 */
+-ms-interpolation-mode:bicubic;/*为了照顾ie图片缩放失真*/
+}
+/*fieldset组合表单中的相关元素*/
+fieldset, img, input, button { border: none;padding: 0; margin: 0; outline-style: none;}
+
+/* 初始化 */
+body,div,ul,li,ol,h1,h2,h3,h4,h5,h6,input,textarea,select,p,dl,dt,dd,a,img,button,form,table,th,tr,td,tbody,article, 
+aside, details,figcaption,figure,footer,header,hgroup, menu,nav,section{margin:0; padding:0; border:none;}
+body{font-family: '宋体',Microsoft YaHei,Tahoma,Arial,sans-serif; color:#555;background-color: #f5f7f9; /* overflow: hidden; */}
+s,em,i{font-style:normal;text-decoration: none;}
+strong{font-weight: normal;}
+.clearfix:after{content:""; display:block; visibility:hidden; height:0; clear:both;}
+.clearfix{zoom:1;}
+a{text-decoration:none; color:#969696; font-family: '宋体','Microsoft YaHei',Tahoma,Arial,sans-serif;}
+a:hover{text-decoration:none;}
+/*清除列表风格*/
+ul,ol,li{list-style:none;}
+h1, h2, h3, h4, h5, h6{ font-size:100%; font-family: 'Microsoft YaHei';font-weight: normal;}
+img{border: none;display: block;}

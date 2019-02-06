@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>regex</title>
+</head>
+<body>
+	
+</body>
+<script>
+  // regexp: ()表示一组 []表示一个 {}用来修饰次数
+  // var 变量名= new RegExp(/表达式/); 通过构造函数声明
+  var regEx = new RegExp(/\d/);//digital 数字
+  console.log(regEx.test("1"));//true \d 是用来 匹配数字
+  console.log(regEx.test("a"));//false \d 是用来 匹配数字 非数字不可以
+  console.log(regEx.test("1a"));//true 只要有数字就可以
+
+  // var 变量名= /表达式/; 通过直接量声明
+  var regEx2 = /\d/;
+
+
+  var rep = /\d+|\.|\,|\~|\!|\@|\#|\#|\%|\^|\&|\*|\(|\)|\+|\=|\{|\}/ui;
+  // /([\x{4e00}-\x{9fa5}]+)/u
+  // /([a-zA-Z]+)/ui
+  var str = '111';
+  var res = new RegExp(rep,'gi').test(str)
+
+  console.log('res =>',res);
+
+
+</script>
+</html>

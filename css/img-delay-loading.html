@@ -1,0 +1,142 @@
+<!-- HTML5基本文档结构 //-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>前端图片延迟加载的具体实现</title>
+  <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <!--这里引入bootstrap的css样式表，引用的是cdn,因为没有及时的确认极客标签上哪个才是，所以才是先使用bootstrap中文网上的-->
+</head>
+<body>
+<!--这里采用最基本的bootstrap布局-->
+<div class="container-fluid">
+  <div class="row clearfix">
+    <div class="col-md-4 column">
+      <a href="#" class="thumbnail img_width">
+        <!--注意，图片延迟加载的关键点就是在于在一开始并没有给img的src赋予图片的路径地址，而是自定义
+          了一个属性x-src存放图片的路径地址，后期使用javascript进行设置
+        -->
+        <img src="" x-src="http://pic60.nipic.com/file/20150303/12216461_110913232000_2.jpg">
+      </a>
+    </div>
+    <div class="col-md-4 column">
+      <a href="#" class="thumbnail img_width">
+        <img src="" x-src="http://pic60.nipic.com/file/20150303/12216461_110913232000_2.jpg">
+      </a>
+    </div>
+    <div class="col-md-4 column">
+      <a href="#" class="thumbnail img_width">
+        <img src="" x-src="http://pic60.nipic.com/file/20150303/12216461_110913232000_2.jpg">
+      </a>
+    </div>
+  </div>
+  <div class="row clearfix">
+    <div class="col-md-4 column">
+      <a href="#" class="thumbnail img_width">
+        <!--注意，图片延迟加载的关键点就是在于在一开始并没有给img的src赋予图片的路径地址，而是自定义
+          了一个属性x-src存放图片的路径地址，后期使用javascript进行设置
+        -->
+        <img src="" x-src="http://pic60.nipic.com/file/20150303/12216461_110913232000_2.jpg">
+      </a>
+    </div>
+    <div class="col-md-4 column">
+      <a href="#" class="thumbnail img_width">
+        <img src="" x-src="http://pic60.nipic.com/file/20150303/12216461_110913232000_2.jpg">
+      </a>
+    </div>
+    <div class="col-md-4 column">
+      <a href="#" class="thumbnail img_width">
+        <img src="" x-src="http://pic60.nipic.com/file/20150303/12216461_110913232000_2.jpg">
+      </a>
+    </div>
+  </div>
+  <div class="row clearfix">
+    <div class="col-md-4 column">
+      <a href="#" class="thumbnail img_width">
+        <!--注意，图片延迟加载的关键点就是在于在一开始并没有给img的src赋予图片的路径地址，而是自定义
+          了一个属性x-src存放图片的路径地址，后期使用javascript进行设置
+        -->
+        <img src="" x-src="http://pic60.nipic.com/file/20150303/12216461_110913232000_2.jpg">
+      </a>
+    </div>
+    <div class="col-md-4 column">
+      <a href="#" class="thumbnail img_width">
+        <img src="" x-src="http://pic60.nipic.com/file/20150303/12216461_110913232000_2.jpg">
+      </a>
+    </div>
+    <div class="col-md-4 column">
+      <a href="#" class="thumbnail img_width">
+        <img src="" x-src="http://pic60.nipic.com/file/20150303/12216461_110913232000_2.jpg">
+      </a>
+    </div>
+  </div>
+  <div class="row clearfix">
+    <div class="col-md-4 column">
+      <a href="#" class="thumbnail img_width">
+        <!--注意，图片延迟加载的关键点就是在于在一开始并没有给img的src赋予图片的路径地址，而是自定义
+          了一个属性x-src存放图片的路径地址，后期使用javascript进行设置
+        -->
+        <img src="" x-src="http://pic60.nipic.com/file/20150303/12216461_110913232000_2.jpg">
+      </a>
+    </div>
+    <div class="col-md-4 column">
+      <a href="#" class="thumbnail img_width">
+        <img src="" x-src="http://pic60.nipic.com/file/20150303/12216461_110913232000_2.jpg">
+      </a>
+    </div>
+    <div class="col-md-4 column">
+      <a href="#" class="thumbnail img_width">
+        <img src="" x-src="http://pic60.nipic.com/file/20150303/12216461_110913232000_2.jpg">
+      </a>
+    </div>
+  </div>
+</div>
+<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+  //接下来要开始写图片延迟加载的判断
+  // 首先，页面一开始加载进来进行的判断
+  $(document).ready(function(){
+    $("img").each(function(){
+      //这里首先是对页面刚加载进来的图片是否在可视区域内
+      if(($(this).offset().top+$(this).height()/2) < $(window).height()){
+        $(this).attr("src",$(this).attr("x-src"));
+
+        /*
+         *    这里进行判断需要知道三个数据量：
+         *        1：图片元素相对于文档的偏移量，offset()会返回一个top和left值，这里我们只需要top
+         2:图片自身高度的一半（注：因为我这里的需求是当图片至少有一半计入可视区域的时候才加载，视个人需求而定）
+         3：浏览器可视区域的高度
+         if判断中表明：图片至少有一半的高度在浏览器可视区域内，那么就将当前图片的x-src值赋值给src，即引入真正的图片地址
+         *
+         */
+      }
+    });
+
+    //初始化判断完毕，那么接下来就是要判断用户是否进行滚动条进行滚动，不可视区域内的图片是否随着滚动条的滚动进入可视区域
+
+    $(window).scroll(function(){         //这是jquery对滚动条事件的检测函数
+      console.log('height:'+$(window).height());
+      console.log('scrollTop:'+$(window).scrollTop());
+      $("img").each(function(){          //同样需要进行图片的遍历
+        if($(this).attr("src") == ""){  //这里仅当img的src属性为空才进入，表明遍历那些为载入进来的img
+          if(($(this).offset().top + $(this).height()/2) < $(window).height()+$(window).scrollTop()){
+            $(this).attr("src",$(this).attr("x-src"));
+          }
+
+          /*
+           *    这里的判断除了需要知道上面的三个数据之外，还需要知道滚动条滚动的高度
+           *    如果  图片的高度上的偏移量+图片自身高度的一半 <浏览器可视区域的高度+滚动条滚动的高度，则表明不可视区域的图片随着滚动条的滚动进入到了可视区域内，
+           *   这个时候就需要把img的图片路径地址赋值给src，从而引入图片
+           */
+        }
+      });
+    });
+  });
+</script>
+</body>
+
+<!--总结：图片延迟加载最基本的就是：先不要给img的src设置具体的图片路径地址，使用javascript判断图片是否在可视区域内部，若是，
+  则把正确的图片路径地址赋值给img的src属性，然后随着滚动条的滚动，进行检测，判断不可视区域内的图片是否随着滚动条的滚动进入到了可视区域，
+  然后把正确的图片路径地址赋值给img的src属性，从而加载图片
+-->
+</html>

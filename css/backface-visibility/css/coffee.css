@@ -1,0 +1,56 @@
+.contain {
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
+  margin-bottom: 475px;
+  width: 175px; 
+}
+
+.coffee {
+  position: absolute;
+  -webkit-animation: turn-over 2s 700ms infinite;
+  animation: turn-over 2s 700ms infinite;
+}
+
+.cup-front {
+  z-index: 3;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.coffee-drip {
+  top: -20px;
+  left: 30px;
+  -webkit-animation: spill 2s infinite;
+  -webkit-animation-delay: 700ms;
+  -webkit-transform: rotateX(180deg);
+  -webkit-backface-visibility: hidden;
+  animation: spill 2s infinite;
+  animation-delay: 700ms;
+  transform: rotateX(180deg);
+  backface-visibility: hidden;
+}
+
+@-webkit-keyframes turn-over {
+  to {
+    -webkit-transform: rotateX(-180deg);
+  }
+}
+
+@-webkit-keyframes spill {
+  to {
+    -webkit-transform: translateY(200px);
+  }
+}
+
+@keyframes turn-over {
+  to {
+    transform: rotateX(-180deg);
+  }
+}
+
+@keyframes spill {
+  to {
+    transform: translateY(200px);
+  }
+}

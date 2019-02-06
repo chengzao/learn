@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        /*-- 轮播图整体样式-- */
+
+        #slideshow {
+            width: 260px;
+            height: 248px;
+            margin: 20px auto;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /*-- 图片样式 --*/
+
+        #slideshow img {
+            position: absolute;
+            top: 0;
+            left: 260px;
+            /*图片均位于右侧*/
+            transition: left 0.3s linear;
+            /*改变left值实现动画*/
+        }
+
+        #slideshow img.active {
+            left: 0;
+        }
+
+        #slideshow img.left {
+            left: -260px;
+        }
+
+        /*-- 页码样式 --*/
+
+        #slideshow div {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            line-height: 0;
+            text-align: center;
+            padding: 5px 0;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        #slideshow span {
+            display: inline-block;
+            width: 15px;
+            height: 10px;
+            margin: 0 3px;
+            border-radius: 5px;
+            background: white;
+            transition: width 0.3s;
+        }
+
+        #slideshow span.active {
+            width: 25px;
+            background: rgb(216, 83, 127);
+        }
+
+        /*-- 图片描述的样式 --*/
+
+        #slideshow p {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            line-height: 20px;
+            font-size: 14px;
+            text-indent: 5px;
+            color: white;
+            background: rgba(0, 0, 0, 0.4);
+            cursor: default;
+            opacity: 0;
+            transition: opacity 0.3s linear;
+        }
+
+        #slideshow p.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="slideshow">
+        <!-- 插入轮播的图片们 -->
+        <img class="active" src="http://i0.hdslb.com/bfs/archive/1058ca7f23a79f4f0ae0760ad4c08ac9c596f70e.jpg" />
+        <img src="http://i0.hdslb.com/bfs/archive/e10fa2ca13cb59b264fce0f9085e1a050cc2dab5.jpg" />
+        <img src="http://i0.hdslb.com/bfs/archive/86783a2c790312bb9f5f473896f9d36ec4c1da34.jpg" />
+        <!-- 插入轮播的页码们 -->
+        <div>
+            <span class="active" name="0"></span>
+            <span name="1"></span>
+            <span name="2"></span>
+        </div>
+        <!-- 插入图片的描述们 -->
+        <p class="active">刀剑乱舞-花丸-</p>
+        <p>我太受欢迎了该怎么办</p>
+        <p>少女编号</p>
+    </div>
+</body>
+<script>
+    function slideshow() {
+        var slideshow = document.getElementById("slideshow"),
+            imgs = slideshow.getElementsByTagName("img"), //图片们
+            pages = slideshow.getElementsByTagName("span"), //页码们
+            descrips = slideshow.getElementsByTagName("p"), //描述们
+            length = imgs.length, //图片数目
+            current = 1; //current为当前活跃的图片、页码、描述的编号
+
+        function changeSlide() { //切换图片的函数
+            for (var i = 0; i < length; i++) {
+                if (i == current) {
+                    imgs[i].className = "active";
+                    pages[i].className = "active";
+                    descrips[i].className = "active";
+                } else {
+                    pages[i].className = "";
+                    descrips[i].className = "";
+                    if (i < current) {
+                        imgs[i].className = "left";
+                    } else {
+                        imgs[i].className = "";
+                    }
+                }
+            }
+            current++; //自增1
+            if (current >= length) {
+                current = 0;
+            }
+        }
+
+        //每2s调用changeSlide函数进行图片轮播
+        var slideon = setInterval(changeSlide, 2000);
+
+        slideshow.onmouseover = function () {
+            clearInterval(slideon); //当鼠标移入时清除轮播事件
+        }
+        slideshow.onmouseout = function () {
+            slideon = setInterval(changeSlide, 2000); //当鼠标移出时重新开始轮播事件
+        }
+
+        for (var i = 0; i < length; i++) { //定义鼠标移入页码事件
+            pages[i].onmouseover = function () {
+                current = this.getAttribute("name"); //得到当前鼠标指的页码
+                changeSlide();
+            }
+        }
+
+    }
+
+    slideshow();
+</script>
+
+</html>

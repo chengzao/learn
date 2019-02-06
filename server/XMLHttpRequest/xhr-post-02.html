@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>XMLHttpRequire</title>
+</head>
+<body>
+	<p>XMLHttpRequire</p>
+	<div id="show"></div>
+</body>
+<script>
+	var xhr = new XMLHttpRequest();
+	//console.log(xhr);
+	// 请求行
+	xhr.open('post','xhrPost02.php');
+	// 请求头  POST
+	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');	
+    // 请求主体
+	xhr.send('name=xiaowang&age=30');
+
+	// 事件的监听，来监听状态的变化
+	xhr.onreadystatechange=function(){
+		if(xhr.readyState == 4 && xhr.status){
+			document.getElementById('show').innerHTML=xhr.responseText; 
+		}		
+		
+	}
+</script>
+</html>

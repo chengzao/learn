@@ -1,0 +1,29 @@
+# REST Client for Visual Studio Code
+# mock url: easy-mock
+
+@easyMock =  https://www.easy-mock.com/mock/5c41d5f6d13fff0d542dc707/api
+
+###
+GET {{easyMock}}/all HTTP/1.1
+
+###
+GET {{easyMock}}/query?name=xiaoming&age=12 HTTP/1.1
+
+###
+POST {{easyMock}}/post HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "小明",
+  "age": 12
+}
+
+###
+PUT {{easyMock}}/put/233 HTTP/1.1
+name: put
+
+###
+DELETE {{easyMock}}/delete/12222 HTTP/1.1
+
+###
+PATCH {{easyMock}}/patch/222?name=xiao wang HTTP/1.1

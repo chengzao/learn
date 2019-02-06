@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>多列布局</title>
+  <style>
+    p{font-size: 12px;}
+    pre{background-color: #f0f0f0;}
+    a:visited,a:active,a:link{color: #666;text-decoration: none;}
+    a:hover{color: red}
+    .warp{width: 300px;height: 100px;background-color: #ccc;}
+    .left{height: 100%;background-color: #1edd56;}
+    .right{height: 100%;background-color: #dce45a;}
+    .center{height: 100%;background-color: #f0f0f0;}
+    .column{background-color: #74d474;}
+    /*一列定宽,一列自适应*/
+    .left1{width: 100px;float: left;}
+    .right1{margin-left: 110px}
+    .warp3{display: table;}
+    .left3,.right3{display: table-cell;}
+    .left3{width: 100px;padding-right: 10px;}
+    .warp4{display: flex;}
+    .left4{width: 100px;padding-right: 10px;}
+    .right4{flex: 1}
+    /*多列定宽，一列自适应*/
+    .left5,.center5{float: left;width: 100px;margin-right: 10px;}
+    .right5{overflow: hidden;}
+    .warp6{display: table;}
+    .left6,.center6,.right6{display: table-cell;}
+    .center6,.right6{width: 100px;padding-right: 10px;}
+    .warp7{display: flex;}
+    .left7,.center7{width: 100px;padding-right: 10px;}
+    .right7{flex: 1}
+    /*一列不定宽，一列自适应*/
+    .left8{float: left;margin-right: 10px;width: 100px;}
+    .right8{overflow: hidden;}
+    .warp9{display: table;}
+    .left9,.right9{display: table-cell;}
+    .left9{padding-right: 10px;width: 100px;}
+    .warp10{display: flex;}
+    .left10{margin-right: 10px;width: 100px;}
+    .right10{flex: 1}
+    /*多列不定宽，一列自适应*/
+    .left11,.center11{ float: left; margin-right: 10px;width: 100px;}
+    .right11{overflow: hidden;}
+    /*等分*/
+    .warp12{height: 50px;width: 400px;}
+    .column12{float: left; width: 25%;box-sizing: border-box;height: 100%;}
+    .warp13{display: table;width: 400px;}
+    .column13{display: table-cell;}
+    .warp14{display:flex;width: 400px;}
+    .column14{flex:1;}
+    /*等高*/
+    .warp15{overflow: hidden;width: 400px;}
+    .left15,.right15{ padding-bottom: 9999px; margin-bottom: -9999px;}
+    .left15{ float: left; width: 100px;background-color: #1edd56;}
+    .right15{ overflow: hidden;background-color: #dce45a;}
+    .warp16{display: table;width: 400px;}
+    .left16,.right16{ display: table-cell;}
+    .left16{background-color: #1edd56;}
+    .right16{background-color: #dce45a;}
+    .warp17{display: flex;width: 400px;}
+    .left17{flex:1;background-color: #1edd56;}
+    .right17{flex:1;background-color: #dce45a;}
+  </style>
+</head>
+<body>
+  <h3 id="top">多列布局</h3>
+<ul>
+  <li><a href="#1">一列定宽,一列自适应</a></li>
+  <li><a href="#2">多列定宽,一列自适应</a></li>
+  <li><a href="#3">一列不定宽,一列自适应</a></li>
+  <li><a href="#4">多列不定宽，一列自适应</a></li>
+  <li><a href="#5">等分</a></li>
+  <li><a href="#6">等高</a></li>
+</ul>
+<p>common css</p>
+<pre>
+  .warp{width: 300px;height: 100px;background-color: #ccc;}
+  .left{height: 100%;background-color: #1edd56;}
+  .right{height: 100%;background-color: #dce45a;}
+  .center{height: 100%;background-color: #f0f0f0;}
+  .column{background-color: #74d474;}
+</pre>
+<h4 id="1">一列定宽,一列自适应</h4>
+<p>float && margin</p>
+<pre>
+  .left1{width: 100px;float: left;}
+  .right1{margin-left: 110px}
+</pre>
+<div class="warp">
+  <div class="left left1">left</div>
+  <div class="right right1">right</div>
+</div>
+<p>table</p>
+<pre>
+  .warp3{display: table;}
+  .left3,.right3{display: table-cell;}
+  .left3{width: 100px;padding-right: 10px;}
+</pre>
+<div class="warp warp3">
+  <div class="left left3">left</div>
+  <div class="right right3">right</div>
+</div>
+<p>flex</p>
+<pre>
+  .warp4{display: flex;}
+  .left4{width: 100px;padding-right: 10px;}
+  .right4{flex: 1}
+</pre>
+<div class="warp warp4">
+  <div class="left left4">left</div>
+  <div class="right right4">right</div>
+</div>
+<h4 id="2">多列定宽,一列自适应</h4>
+<p>float && overflow</p>
+<pre>
+  .left5,.center5{float: left;width: 100px;margin-right: 10px;}
+  .right5{overflow: hidden;}
+</pre>
+<div class="warp">
+  <div class="left left5">left</div>
+  <div class="center center5">center</div>
+  <div class="right right5">right</div>
+</div>
+<p>table</p>
+<pre>
+  .warp6{display: table;}
+  .left6,.center6,.right6{display: table-cell;}
+  .center6,.right6{width: 100px;padding-right: 10px;}
+</pre>
+<div class="warp warp6">
+  <div class="left left6">left</div>
+  <div class="center center6">center</div>
+  <div class="right right6">right</div>
+</div>
+<p>flex</p>
+<pre>
+  .warp7{display: flex;}
+  .left7,.center7{width: 100px;padding-right: 10px;}
+  .right7{flex: 1}
+</pre>
+<div class="warp warp7">
+  <div class="left left7">left</div>
+  <div class="center center7">center</div>
+  <div class="right right7">right</div>
+</div>
+
+<h4 id="3">一列不定宽,一列自适应</h4>
+<p>float && overflow</p>
+<pre>
+  .left8{float: left;margin-right: 10px;
+    width: 100px;//可变
+  }
+  .right8{overflow: hidden;}
+</pre>
+<div class="warp">
+  <div class="left left8">left</div>
+  <div class="right right8">right</div>
+</div>
+<p>table</p>
+<pre>
+  .warp9{display: table;}
+  .left9,.right9{display: table-cell;}
+  .left9{padding-right: 10px;
+    width: 100px;//可变
+  }
+</pre>
+<div class="warp warp9">
+  <div class="left left9">left</div>
+  <div class="right right9">right</div>
+</div>
+<p>flex</p>
+<pre>
+  .warp10{display: flex;}
+  .left10{margin-right: 10px;
+    width: 100px;//可变
+  }
+  .right10{flex: 1}
+</pre>
+<div class="warp warp10">
+  <div class="left left10">left</div>
+  <div class="right right10">right</div>
+</div>
+<h4 id="4">多列不定宽，一列自适应</h4>
+<pre>
+  .left11,.center11{ float: left; margin-right: 10px;
+    width: 100px; //可变
+  }
+  .right11{overflow: hidden;}
+</pre>
+<div class="warp">
+  <div class="left left11">left</div>
+  <div class="center center11">center</div>
+  <div class="right right11">right</div>
+</div>
+<h4 id="5">等分</h4>
+<p>float && margin</p>
+<pre>
+  .warp12{height: 50px;width: 400px;}
+  .column12{float: left;
+    width: 25%;//均分4份
+    box-sizing: border-box;height: 100%;
+    border-left: 1px solid #000;}
+</pre>
+<div class="warp12">
+  <div class="column column12">1</div>
+  <div class="column column12">2</div>
+  <div class="column column12">3</div>
+  <div class="column column12">4</div>
+</div>
+<p>table && margin</p>
+<pre>
+  .warp13{display: table;width: 400px;}
+  .column13{display: table-cell;}
+</pre>
+<div class="warp13">
+  <div class="column column13">1</div>
+  <div class="column column13">2</div>
+  <div class="column column13">3</div>
+  <div class="column column13">4</div>
+</div>
+<p>flex</p>
+<pre>
+  .warp14{display:flex;width: 400px;}
+  .column14{flex:1;}
+</pre>
+<div class="warp14">
+  <div class="column column14">1</div>
+  <div class="column column14">2</div>
+  <div class="column column14">3</div>
+  <div class="column column14">4</div>
+</div>
+<h4 id="6">等高</h4>
+<p>float && overflow</p>
+<pre>
+  .warp15{overflow: hidden;width: 400px;}
+  .left15,.right15{ padding-bottom: 9999px; margin-bottom: -9999px;}
+  .left15{ float: left; width: 100px;background-color: #1edd56;}
+  .right15{ overflow: hidden;background-color: #dce45a;}
+</pre>
+<div class="warp15">
+  <div class="left15">
+    <p>left</p>
+  </div>
+  <div class="right15">
+    <p>right</p>
+    <p>right</p>
+    <p>right</p>
+  </div>
+</div>
+<p>table</p>
+<pre>
+  .warp16{display: table;width: 400px;}
+  .left16,.right16{ display: table-cell;}
+  .left16{background-color: #1edd56;}
+  .right16{background-color: #dce45a;}
+</pre>
+<div class="warp16">
+  <div class="left16">
+    <p>left</p>
+  </div>
+  <div class="right16">
+    <p>right</p>
+    <p>right</p>
+    <p>right</p>
+  </div>
+</div>
+<p>flex</p>
+<pre>
+  .warp17{display: flex;width: 400px;}
+  .left17{flex:1;background-color: #1edd56;}
+  .right17{flex:1;background-color: #dce45a;}
+</pre>
+<div class="warp17">
+  <div class="left17">
+    <p>left</p>
+  </div>
+  <div class="right17">
+    <p>right</p>
+    <p>right</p>
+    <p>right</p>
+  </div>
+</div>
+<h5></h5>
+<a href="#top">返回顶部</a>
+</body>
+</html>

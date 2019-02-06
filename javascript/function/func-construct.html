@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数构造模式</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //构造函数模式
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+        this.sayHello = function () {
+            alert("大家好，我是" + this.name);
+        }
+        this.showAge = function () {
+            alert("我永远" + this.age);
+        }
+    }
+
+    var person1 = new Person("xiaolong1", 18);
+    var person2 = new Person("xiaolong2", 12);
+    var person3 = new Person("xiaolong3", 13);
+
+    //person1.sayHello();
+
+    //console.log(typeof person1);
+    console.log(person1 instanceof Person);
+    //通过这种方式创建出来的对象 可以通过instanceof关键字来辨别具体的类型
+
+    console.log(person1.sayHello);
+    console.log(person2.sayHello);
+    //两个函数看上去一样
+    console.log(person1.sayHello == person2.sayHello);//实际上不是同一个函数
+
+</script>

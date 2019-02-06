@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        .box {
+            width: 400px;
+            height: 300px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+
+        .hd {
+            height: 45px;
+        }
+
+        .hd span {
+            display: inline-block;
+            width: 90px;
+            background-color: pink;
+            line-height: 45px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .hd span.current {
+            background-color: purple;
+        }
+
+        .bd li {
+            height: 255px;
+            background-color: purple;
+            display: none;
+        }
+
+        .bd li.current {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="one">
+    <div class="hd">
+        <span class="current">体育</span>
+        <span>娱乐</span>
+        <span>新闻</span>
+        <span>综合</span>
+    </div>
+    <div class="bd">
+        <ul>
+            <li class="current">我是体育模块</li>
+            <li>我是娱乐模块</li>
+            <li>我是新闻模块</li>
+            <li>我是综合模块</li>
+        </ul>
+    </div>
+</div>
+<div class="box" id="two">
+    <div class="hd">
+        <span class="current">体育</span>
+        <span>娱乐</span>
+        <span>新闻</span>
+        <span>综合</span>
+    </div>
+    <div class="bd">
+        <ul>
+            <li class="current">我是体育模块</li>
+            <li>我是娱乐模块</li>
+            <li>我是新闻模块</li>
+            <li>我是综合模块</li>
+        </ul>
+    </div>
+</div>
+<div class="box" id="three">
+    <div class="hd">
+        <span class="current">体育</span>
+        <span>娱乐</span>
+        <span>新闻</span>
+        <span>综合</span>
+    </div>
+    <div class="bd">
+        <ul>
+            <li class="current">我是体育模块</li>
+            <li>我是娱乐模块</li>
+            <li>我是新闻模块</li>
+            <li>我是综合模块</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    function tab(id) {  // 封装tab
+        // 获取元素   只获取  这个id 下面的span 和 li
+        var eleId = document.getElementById(id);  // 获取id元素
+        var spans = eleId.getElementsByTagName("span");  //  span 4个小span
+        var lis = eleId.getElementsByTagName("li");  //  4个小li
+        for (var i = 0; i < spans.length; i++) {  // 遍历 4个 span
+            //spans[i].index = i;  // 每个span得到索引号
+            spans[i].onmouseover = function (num) {
+                return function () {
+                    //这里面的num就是循环遍历时的i
+                    //干掉所有人
+                    for (var j = 0; j < spans.length; j++) {
+                        spans[j].className = "";
+                        lis[j].className = "";
+                    }
+                    //留下我自己
+                    spans[num].className = "current";
+                    lis[num].className = "current";
+
+                }
+            }(i);
+        }
+    }
+    tab("one");   // 实参
+    tab("two");
+    tab("three");
+</script>

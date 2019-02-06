@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>calendar</title>
+    <style>
+        #mask {
+            width: 200px;
+            height: 150px;
+            border: 1px solid #ccc;
+        }
+
+        #mask div {
+            height: 33%;
+            line-height: 282%;
+        }
+
+        #mask {
+
+            background: -webkit-linear-gradient(top, #ace, #f96, #ace);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mask">
+        <div>111111</div>
+        <div>222222</div>
+        <div>333333</div>
+    </div>
+</body>
+<script>
+    function tap(dom,callBack) {
+        var startTime = 0;
+        var delayTime = 200;
+        var isMove = false;
+        var startX,startY,lastX,lastY;
+        dom.addEventListener("touchstart", function (ev) {
+            //记录开始时间  
+            startTime = Date.now();
+            startX = ev.changedTouches[0].pageX;
+            startY = ev.changedTouches[0].pageY;
+
+            // console.log('touchstart X : ',startX)
+            // console.log('touchstart Y : ',startY)
+        });
+        dom.addEventListener("touchmove", function (ev) {
+            var startX2 = ev;
+            var startY2 = ev;
+
+            console.log('touchmove X : ',startX2)
+            console.log('touchmove Y : ',startY2)
+        });
+        dom.addEventListener("touchend", function (ev) {
+            var startX3 = ev.changedTouches[0].pageX;
+            var startY3 = ev.changedTouches[0].pageY;
+
+            lastX = startX3 - startX;
+            lastY = startY3 - startY;
+
+            console.log('touchend lastX : ',lastX)
+            console.log('touchend lastY : ',lastY)
+
+
+            if(lastX > 20){
+                console.log('向右滑动 : ➡➡➡➡➡')
+            }else if(lastX < -20 && lastX){
+                console.log('向左滑动 : ⬅⬅⬅⬅⬅')
+            }
+
+            if(lastY > 20){
+                console.log('向下滑动 : ⬇⬇⬇⬇⬇⬇⬇⬇⬇')
+            }else if(lastY < -20 && lastY){
+                console.log('向上滑动 : ⬆⬆⬆⬆⬆⬆⬆⬆⬆')
+            }
+
+            if (Date.now() - startTime > delayTime) return;
+            callBack && callBack();
+        })
+    }
+
+    function f(){
+        console.log('我是移动端tap : '+ +new Date())
+    }
+
+    var mask = document.getElementById('mask');
+    tap(mask,f);
+
+</script>
+
+</html>

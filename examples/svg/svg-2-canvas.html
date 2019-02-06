@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>svg canvas</title>
+</head>
+
+<body>
+        <p>svg sources</p>
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" width="500" height="440">
+            <line x1="0" y1="0" x2="200" y2="0" style="stroke:rgb(0,0,0);stroke-width:5" />
+        </svg>
+        <p>svg to canvas</p>
+        <canvas id="canvas"></canvas>
+</body>
+<script>
+    var svgString = new XMLSerializer()
+    .serializeToString(document.querySelector('svg'));
+    console.log(svgString);
+
+
+    var img = new Image();
+    var svg = new Blob([svgString], {
+        type: "image/svg+xml;charset=utf-8"
+    });
+
+    var DOMURL = self.URL || self.webkitURL || self;
+    var url = DOMURL.createObjectURL(svg);
+    img.src = url;
+
+    img.onload = function () {
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+    };
+</script>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8">
+    <title>js 拖拽</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      div {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.js"></script>
+  </head>
+  <body>
+    <div
+      style="height: 600px;background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPiAgICA8ZGVmcz4gICAgICAgIDxwYXR0ZXJuIGlkPSJncmlkIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPiAgICAgICAgICAgIDxwYXRoIGQ9Ik0gMTAgMCBMIDAgMCAwIDEwIiBmaWxsPSJub25lIiBzdHJva2U9IiNkZGRkZGQiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iMSIgLz4gICAgICAgIDwvcGF0dGVybj4gICAgPC9kZWZzPiAgICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIiAvPjwvc3ZnPg==)">
+      <div id="bk" style="width:50px;height:50px;background: red;position: absolute"></div>
+    </div>
+  </body>
+  <script>
+    $(function () {
+      var orgX,
+        orgY,
+        eleX,
+        eleY,
+        hasMove = false;
+      $("#bk").on("mousedown", function (e) {
+        orgX = e.pageX;
+        //记录鼠标的水平位置
+        orgY = e.pageY;
+        //记录鼠标的垂直位置
+        eleX = $(this)[0].offsetLeft;
+        //记录元素的水平位置
+        eleY = $(this)[0].offsetTop;
+        console.log(eleX)
+        //记录元素的垂直位置
+        hasMove = true;
+        //鼠标按下时标明当前元素可以拖拽标识 });
+        $(document).on("mousemove", function (e) {
+          if (hasMove) {
+            //当元素可以拖拽时执行操作 //新位置计算方法为元素的上次位置加上新的位移量
+            var left = eleX + Math.round((e.pageX - orgX) / 10) * 10;
+            var top = eleY + Math.round((e.pageY - orgY) / 10) * 10;
+            //更新位置信息
+            $("#bk").css({top: top, left: left});
+          }
+        }).on("mouseup", function (e) {
+          hasMove = false;
+          //鼠标松开时设置元素不可拖拽
+        });
+      })
+    });
+  </script>
+</html>

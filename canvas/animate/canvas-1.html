@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>canvas1</title>
+    <style>
+        #canvas1 {
+            width: 500px;
+            height: 500px;
+            background-color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas1" width="500" height="500"></canvas>
+</body>
+<script>
+    var canvas = document.getElementById("canvas1"),
+        context = canvas.getContext("2d"),
+        width = canvas.width,
+        height = canvas.height,
+        radius = 0;
+
+    //画圆
+    var drawCircle = function () {
+        context.beginPath();
+        context.arc(150, 100, radius, 0, Math.PI * 2);
+        context.closePath();
+        context.lineWidth = 2; //线条宽度
+        context.strokeStyle = 'rgba(250,250,50,1)'; //颜色
+        context.stroke();
+        radius += 0.5; //每一帧半径增加0.5
+
+        //半径radius大于30时，重置为0
+        if (radius > 30) {
+            radius = 0;
+        }
+    };
+
+    var render = function () {
+        //默认值为source-over
+        var prev = context.globalCompositeOperation;
+
+        //只显示canvas上原图像的重叠部分
+        context.globalCompositeOperation = 'destination-in';
+
+        //设置主canvas的绘制透明度
+        context.globalAlpha = 0.95;
+
+        //这一步目的是将canvas上的图像变的透明
+        context.fillRect(0, 0, width, height);
+
+        //在原图像上重叠新图像
+        context.globalCompositeOperation = prev;
+
+        //在主canvas上画新圆
+        drawCircle();
+    };
+
+    (function drawFrame() {
+        requestAnimationFrame(drawFrame,canvas);
+        render();
+    })();
+</script>
+
+</html>

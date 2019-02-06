@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>禁用分享</title>
+  <style media="screen">
+    ul{
+      list-style: none;
+      margin: 0;
+      padding:0;
+    }
+    li{
+      margin-bottom:10px;
+    }
+    button{
+      display: block;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h3>界面操作接口</h3>
+  <ul>
+    <li>
+      <span>隐藏右上角菜单接口</span>
+      <button id="hideOptionMenu">hideOptionMenu</button>
+    </li>
+    <li>
+      <span>显示右上角菜单接口</span>
+      <button id="showOptionMenu">showOptionMenu</button>
+    </li>
+    <li>
+      <span>关闭当前网页窗口接口</span>
+      <button id="closeWindow">closeWindow</button>
+    </li>
+    <li>
+      <span>批量隐藏功能按钮接口</span>
+      <button id="hideMenuItems">hideMenuItems</button>
+    </li>
+    <li>
+      <span>批量显示功能按钮接口</span>
+      <button id="showMenuItems">showMenuItems</button>
+    </li>
+    <li>
+      <span>隐藏所有非基础按钮接口</span>
+      <button id="hideAllNonBaseMenuItem">hideAllNonBaseMenuItem</button>
+    </li>
+    <li>
+      <span>显示所有功能按钮接口</span>
+      <button id="showAllNonBaseMenuItem">showAllNonBaseMenuItem</button>
+    </li>
+  </ul>
+</body>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+wx.config({
+    debug: false,
+    appId: 'wx3d9605a1a529fc89',
+    timestamp: 1517454040,
+    nonceStr: 'abc',
+    signature: 'c8e3d41a20db9a376227ac3b1bede7febd131cc8',
+    jsApiList: [
+      'hideMenuItems',
+      'showMenuItems',
+      'hideAllNonBaseMenuItem',
+      'showAllNonBaseMenuItem',
+      'hideOptionMenu',
+      'showOptionMenu',
+      'closeWindow'
+    ]
+});
+
+wx.ready(function () {
+  // 隐藏右上角菜单
+  document.querySelector('#hideOptionMenu').onclick = function () {
+    wx.hideOptionMenu();
+  };
+
+  // 显示右上角菜单
+  document.querySelector('#showOptionMenu').onclick = function () {
+    wx.showOptionMenu();
+  };
+
+  // 批量隐藏菜单项
+  document.querySelector('#hideMenuItems').onclick = function () {
+    wx.hideMenuItems({
+      menuList: [
+        'menuItem:readMode', // 阅读模式
+        'menuItem:share:timeline', // 分享到朋友圈
+        'menuItem:copyUrl' // 复制链接
+      ],
+      success: function (res) {
+        alert('已隐藏“阅读模式”，“分享到朋友圈”，“复制链接”等按钮');
+      },
+      fail: function (res) {
+        alert(JSON.stringify(res));
+      }
+    });
+  };
+
+  // 批量显示菜单项
+  document.querySelector('#showMenuItems').onclick = function () {
+    wx.showMenuItems({
+      menuList: [
+        'menuItem:readMode', // 阅读模式
+        'menuItem:share:timeline', // 分享到朋友圈
+        'menuItem:copyUrl' // 复制链接
+      ],
+      success: function (res) {
+        alert('已显示“阅读模式”，“分享到朋友圈”，“复制链接”等按钮');
+      },
+      fail: function (res) {
+        alert(JSON.stringify(res));
+      }
+    });
+  };
+
+  // 隐藏所有非基本菜单项
+  document.querySelector('#hideAllNonBaseMenuItem').onclick = function () {
+    wx.hideAllNonBaseMenuItem({
+      success: function () {
+        alert('已隐藏所有非基本菜单项');
+      }
+    });
+  };
+
+  // 显示所有被隐藏的非基本菜单项
+  document.querySelector('#showAllNonBaseMenuItem').onclick = function () {
+    wx.showAllNonBaseMenuItem({
+      success: function () {
+        alert('已显示所有非基本菜单项');
+      }
+    });
+  };
+
+  // 关闭当前窗口
+  document.querySelector('#closeWindow').onclick = function () {
+    wx.closeWindow();
+  };
+});
+
+wx.error(function (res) {
+  alert(res.errMsg);
+});
+
+</script>
+<!-- 另一种方式 -->
+<script type="text/javascript">
+  // function onBridgeReady() {
+  //     WeixinJSBridge.call('hideOptionMenu');
+  // }
+  //  if (typeof WeixinJSBridge == "undefined") {
+  //      if (document.addEventListener) {
+  //          document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+  //      } else if (document.attachEvent) {
+  //          document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+  //          document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+  //      }
+  //  } else {
+  //      onBridgeReady();
+  //  }
+</script>
+</html>

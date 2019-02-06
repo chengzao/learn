@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+<img src="img.jpg" alt="" width="50" id="pic"/>
+</body>
+</html>
+<script>
+    //获取元素
+    var pic = document.getElementById("pic");
+    var timer = null;
+
+    //鼠标点击document的时候获取鼠标的座标 然后让图片渐渐地想目标靠拢
+    document.onclick = function (event) {
+        //防止多次点击
+        clearInterval(timer);
+        //为了兼容IE678
+        var event = event || window.event;
+        //鼠标在页面的座标 如果是IE678 先获取client 然后加上 页面被卷去的部分
+        var pageX = event.pageX || event.clientX + document.documentElement.scrollLeft;
+        var pageY = event.pageY || event.clientY + document.documentElement.scrollTop;
+
+        //设定定时器 让图片有缓动动画效果
+        timer = setInterval(function () {
+            //step = (target - leader) / 10
+            //leader = leader + step
+            var targetX = pageX - pic.offsetWidth / 2;//图片水平方向的目标就是鼠标点击时的X座标
+            var targetY = pageY - pic.offsetHeight / 2;//图片垂直方向的目标就是鼠标点击时的Y座标
+            var leaderX = pic.offsetLeft;//图片水平方向的当前位置 offsetLeft
+            var leaderY = pic.offsetTop;//图片垂直方向的当前位置 offsetTop
+            var stepX = (targetX - leaderX) / 10;
+            var stepY = (targetY - leaderY) / 10;
+            stepX = stepX > 0 ? Math.ceil(stepX) : Math.floor(stepX);
+            stepY = stepY > 0 ? Math.ceil(stepY) : Math.floor(stepY);
+            leaderX = leaderX + stepX;
+            leaderY = leaderY + stepY;
+            pic.style.left = leaderX + "px";
+            pic.style.top = leaderY + "px";
+            if (leaderX == targetX && leaderY == targetY) {
+                clearInterval(timer);
+            }
+        }, 10)
+
+    }
+
+</script>

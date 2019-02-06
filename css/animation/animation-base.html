@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3 动画</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #F7F7F7;
+		}
+
+		.box {
+			width: 400px;
+			margin: 100px auto;
+		}
+
+		.box img {
+			width: 100%;
+			/*animate*/
+			/*我们用animation来指定使哪一个动画序列*/
+			animation: rotate 5s linear infinite;
+		}
+
+		/*有一个小问题*/
+
+		/*动画序列，指定一个动画该如何执行*/
+		@keyframes rotate {
+			0% {
+				transform: rotate(0deg) scale(1);
+			}
+
+			50% {
+				transform: rotate(-180deg) scale(5);
+			}
+
+			100% {
+				transform: rotate(-300deg) scale(1);
+			}
+		}
+
+	</style>
+</head>
+<body>
+	<div class="box">
+		<img src="./images/fengche.png">
+	</div>
+</body>
+</html>

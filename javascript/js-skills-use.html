@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>javascript使用注意点</title>
+</head>
+<body>
+  <!-- javascript 模式  -->
+</body>
+<script type='text/javascript'>
+  //一、尽量少用 全局变量
+  myglobal="hello";
+  console.log(myglobal);
+  console.log(window.myglobal);
+  console.log(this.myglobal);
+  console.log(window['myglobal']);//hello
+  // 函数声明语法定义函数
+  function sun(x,y) {
+    sum=x+y;
+    return sum
+  }
+  // 改为 局部变量
+  function sum(x,y) {
+    var sum=x+y;
+    return sum;
+  }
+
+  // 函数表达式定义函数
+  var fn1=function (x,y) {
+    var sum=x+y;
+    return sum;
+  }
+  //Function构造函数定义函数
+  var fn=new Function('x,y','return x+y;');
+  console.log(fn(1,2));
+
+  //二、 for循环
+  var arr=[1,2,3];
+  for (var i = 0; i < arr.length; i++) {
+  }
+  //改为 缓存arr长度
+  for (var i = 0, arrL=arr.length;i<arrL; i++) {
+  }
+
+  // for in 循环
+
+  var man ={
+    hands:1,
+    heads:2
+  }
+  if(typeof Object.prototype.clone=='undefined'){
+      Object.prototype.clone=function () {
+        console.log('clone');
+      }
+  }
+
+  //1. for in 循环
+  //hasOwnProperty用法：  https://segmentfault.com/a/1190000000480531
+  for (var i in man ) {
+    // 过滤
+    if(man.hasOwnProperty(i)){
+      console.log(i,':',man[i]); //hands : 1  ; heads : 2
+    }
+  }
+
+  for (var i in man ) {
+    if(Object.prototype.hasOwnProperty.call(man,i)){
+      console.log(i,':',man[i]); //hands : 1  ; heads : 2
+    }
+  }
+
+  //2. 不用hasOwnProperty 的 for in
+  for (var i in man ) {
+      console.log(i,':',man[i]); //hands : 1  ; heads : 2 ; clone(){}
+  }
+
+ //3. 创建新方法的原型方式
+  if(Object.prototype.clone !=='function'){
+    Object.prototype.clone=function () {
+      console.log('clone');
+    }
+  }
+
+  //三、 避免使用隐式转换  用 === 或 !== 来判断
+
+  var zero=0
+  if(zero==false){
+    //  执行
+  }
+  if(zero===false){
+    //  不会执行
+  }
+
+  //四、 避免使用 eval
+  console.log(eval('1+2')) //3
+  console.log('1+2'); // 1+2
+
+  //五、 setTimeout
+  function fun() {
+    console.log('fun setTimeout')
+  }
+  setTimeout(fun,100);
+  setTimeout(function () {console.log('22')},100)
+
+
+  var str='var un=123;console.log(un)';
+  eval(str);
+  var str1='var un1=123;console.log(un1)';
+  new Function(str1)();
+  var str2='var un2=123;console.log(un2)';
+  (function () {
+    eval(str2);
+  })();
+
+  console.log(typeof un)  //number
+  console.log(typeof un1) //undefined
+  console.log(typeof un2) //undefined
+
+ // parseInt ,Number
+  var day='09',year='08 a';
+  console.log(parseInt(day, 10));
+  console.log(parseInt(year, 10));
+
+
+  function getRating(rating) {
+        if (rating > 5 || rating < 0) throw new Error('数字不在范围内');
+        return '★★★★★☆☆☆☆☆'.substring(5 - rating, 10 - rating);
+    }
+    Math.random().toString(36).substr(2, 10)
+
+    try {
+        var a = getRating(2);
+        console.log(a)
+    } catch (e) {
+        window.location.href = 'https://stackoverflow.com/search?q=[js]+' + e.message;
+    }
+
+    // 字符串
+    function repStr(n) {
+        var str = new Array(n + 1).join('abc');
+        return str;
+    }
+</script>
+</html>

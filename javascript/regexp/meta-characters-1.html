@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>元字符</title>
+		<script>
+			// 元字符
+			// 元字符也是一个字符串, 只是它不用来直接匹配文本, 而是表达别的含义
+			// 例如 +
+			//		+ 不能单独出现, 它一定跟在某一个字符后面, 表示这个字符出现1 次到多次
+			//		如果需要匹配 + 号, 那么就需要使用转义字符, 写成 \+
+
+
+			// 基本元字符:
+			//	.		任意非换行字符
+			// 	()		优先级提升或分组元字符
+			//  |		或者. 或者的优先级最低
+			//  []		范围, 表示一个字符
+			//				[a-zA-Z]
+			//				[a-z]
+			//				[A-Z]
+			//				[0-9]
+			//				[aklp]
+
+			// [1-9][0-9]+|[0-9]
+
+
+			/*
+			var s1 = "foot";
+			var s2 = "boot";
+
+			var s = "123root456";
+
+			// var r = new RegExp("foot|boot");
+			// var r = new RegExp("f|boot");  // 匹配 f 或 boot
+			// 更改
+			var r = new RegExp("(f|b)oot");
+			console.log(r.test(s));
+			*/
+
+			// 发票|成人|赌博|法轮功
+			// [字符串], 但是他表示的只有一个字符
+			// [abcd] => (a|b|c|d)
+			// 比如我要匹配出单词
+			var s = "I have a dream";
+
+			var r = new RegExp("[a-zA-Z]+", "g");
+			var m;
+			while (m = r.exec(s)) {
+				console.log(m[0]);
+			}
+
+
+				
+
+
+
+
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>

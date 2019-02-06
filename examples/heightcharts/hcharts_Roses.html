@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="container" style="min-width:800px;height:400px;"></div>
+</body>
+<script type="text/javascript" src="js/jquery-1.8.3_min.js"></script>
+<script type="text/javascript" src="js/highcharts.js"></script>
+<script type="text/javascript" src="js/highcharts-more.js"></script>
+<script type="text/javascript">
+  $(function () {
+    $('#container').highcharts({
+      chart: {
+        polar:true,
+        type: 'bar'
+      },
+      pane: {
+        size:'85%'
+      },
+      plotOptions: {
+        series: {
+          stacking: 'normal',
+          shadow: false,
+          groupPadding: 0,
+          pointPlacement: 'on'
+        }
+      },
+      legend:{
+        enabled: false
+      },
+      title: {
+        text: 'My first Highcharts chart'
+      },
+      xAxis: {
+        categories: ['N', 'NNE', 'NE','ENE','E','ESE','SE','SSE','S', 'SSW', 'SW','WSW','W','WNW','NW','NNW'] ,        
+        // tickmarkPlacement: 'on',
+      },
+      yAxis: {
+        title: {
+        },
+        min: 0,
+        endOnTick: false,
+        showLastLabel: true,
+        reversedStacks: false,
+        minorTickInterval:5,
+        tickInterval: 5
+      },
+      series: [{
+        name: 'Jane',
+        data: [18, 18, 18,18,18,18,18,18,18, 18, 18,18,18,18,18,18]   ,
+        startRow: 1,
+        endRow: 10,
+      }
+      ],
+      credits:{enabled:false}
+    });
+  });
+</script>
+</html>

@@ -1,0 +1,36 @@
+.contain {
+  position: relative;
+  margin: 0 auto;
+  width: 150px;
+  height: 570px;
+}
+
+.door {
+  position: absolute;
+  -webkit-transform: perspective(600px) rotateY(45deg);
+  -webkit-transform-origin: right;
+  -webkit-animation: open 4s infinite;
+  transform: perspective(600px) rotateY(45deg);
+  transform-origin: right;
+  animation: open 4s infinite;
+}
+
+.front {
+  z-index: 2;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+@-webkit-keyframes open {
+  50% { 
+    -webkit-transform: perspective(600px) rotateY(-140deg);
+  }
+}
+
+@keyframes open {
+  50% { 
+    transform: perspective(600px) rotateY(-140deg);
+  }
+}
+
+

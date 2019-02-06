@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>dom的闭包案例</title>
+		<style>
+			input {
+				margin: 5px;
+				width: 100px;
+				height: 50px;
+			}
+		</style>
+		<script>
+			// 在页面中有很多 按钮
+			// 按钮上是文字 点击
+			// 要求点击按钮, 修改其文字为 被点击
+			// 然后点击其他按钮时, 还原上一次点击的按钮, 并将新的按钮文字修改为被点击
+			window.onload = function () {
+				// 在里面获得 input
+				var btns = document.getElementsByTagName("input");
+				for (var i = 0; i < btns.length; i++) {
+					btns[i].onclick = function () {
+						// 每次点击的时候 将原来点击的设置为 "点击"
+						// 将现在点击的设置为 "被点击"
+						for (var j = 0; j < btns.length; j++) {
+							btns[j].value = "点击";
+						}
+
+
+						this.value = "被点击";
+
+					};
+
+				}
+			};
+
+		</script>
+	</head>
+	<body>
+		<input type="button" value="点击"/>
+		<input type="button" value="点击"/>
+		<input type="button" value="点击"/>
+		<input type="button" value="点击"/>
+		<input type="button" value="点击"/><br />
+		<input type="button" value="点击"/>
+		<input type="button" value="点击"/>
+		<input type="button" value="点击"/>
+		<input type="button" value="点击"/>
+		<input type="button" value="点击"/><br />
+		<input type="button" value="点击"/>
+		<input type="button" value="点击"/>
+		<input type="button" value="点击"/>
+		<input type="button" value="点击"/>
+		<input type="button" value="点击"/><br />
+	</body>
+</html>

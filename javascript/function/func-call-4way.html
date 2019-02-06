@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>函数的4种调用模式</title>
+		<script src="js/jkformat.js"></script>
+		<script>
+			// 函数, this 全局
+			// 方法, this 当前
+			// 构造, new,	 this, return
+			// 上下文,
+			//		函数.apply(null)
+			//		函数.apply(o)
+
+			/*
+			function foo() {
+				console.log(this);
+			}
+
+			foo();		// foo.apply();
+
+			var o = {};
+			o.fn = foo;
+			o.fn();		// foo.apply(o)
+			*/
+
+
+			// 借用函数
+			// 伪数组  arguments
+			/*
+			function foo() {
+
+				// console.log(arguments.join(", "));
+
+				// console.log(Array.prototype.join.apply(arguments, [", "]));
+				console.log([].join.call(arguments, "==="));
+			}
+
+			foo(1,2,3,4,5);
+			*/
+
+
+			function foo() {
+				var f = arguments[0],
+					args = [].slice.call(arguments, 1);
+			}
+
+			// 1 + 2 = 3
+			var a = 1, b = 2, oper = "+", res = 1 + 2;
+			// console.log(a + " " + oper + " " + b + " = " + res);
+
+			console.log(jf("{0} {1} {2} = {3}", 1, "+", 2, 3));
+
+			// foo("123{{name}}456{{age}}", {name:"jim", age:19});
+
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

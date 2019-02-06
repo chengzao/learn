@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>const</title>
+</head>
+<body>
+<h1>const:声明一个只读的常量。一旦声明，常量的值就不能改变</h1>
+<h1>const:一旦声明变量，就必须立即初始化，不能留到以后赋值。</h1>
+<h1>const:只在声明所在的块级作用域内有效</h1>
+</body>
+<script>
+
+	'use strict';
+
+console.log('---------const常量不可改变-----------');
+	try {
+		const a = 10;
+		a = 12;
+		console.log(a);
+	} catch(e) {
+		console.log(e); // Assignment to constant variable.
+	}
+console.log('---------const引用类型属性赋值--------');
+	{
+		const obj = {
+			'name':'zhangsan'
+		}
+		obj.name = 'lisi';
+		console.log('const引用类型属性赋值:',obj.name);
+	}
+
+console.log('---------const引用类型直接赋值------------');
+	try {
+			const obj = {
+				'name':'zhangsan'
+			}
+
+			obj = 'lisi';
+			//console.log(obj);
+		    console.log(obj.name);
+	} catch(e) {
+		// statements
+		console.log(e);
+	}
+
+console.log('---------const 后声明 赋值-------');
+
+	try {
+		console.log(foo);
+		let foo = 'demo';
+	} catch(e) {
+		console.log(e);// foo is not defined
+	}
+console.log('---------const 后声明 未赋值-------');
+	try {
+		console.log(foo);
+		let foo2;
+	} catch(e) {
+		console.log(e); // foo is not defined
+	}
+console.log('---------const 先声明 未赋值-------');
+	try {
+		let foo2;
+		console.log(foo);
+	} catch(e) {
+		console.log(e); // foo is not defined
+	}
+console.log('---------const 先声明赋值 后使用-------');
+	{
+		let foo2 = 'test';
+		console.log(foo2);
+	}
+
+console.log('-------顶层对象window的属性-----------');
+	{
+		let b = 1;
+		console.log(window.b); // undefined
+	}
+
+</script>
+</html>

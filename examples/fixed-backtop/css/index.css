@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.box {
+  background-color: pink;
+  width: 100%;
+  margin: 0 auto;
+  height: 2573px;
+}
+.top {
+  height: 45px;
+  width: 100%;
+  background: url(images/r1.png) no-repeat center top;
+  background-color: pink;
+  position: fixed;
+  top: 0;
+}
+.topadd {
+  position: static;
+}
+.one {
+  margin: 0 auto;
+  width: 1000px;
+  height: 45px;
+}
+.one a {
+  float: right;
+  width: 55px;
+  height: 22px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.tan {
+  width: 400px;
+  height: 200px;
+  border: 2px solid lightcoral;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -100px;
+  margin-left: -200px;
+  background: #fff;
+  display: none;
+}
+.tanup {
+  padding-left: 15px;
+  width: 385px;
+  height: 36px;
+  background: rgb(237, 100, 100);
+  cursor: move;
+  color: #fff;
+  font: 18px/36px "microsoft yahei";
+}
+.txt {
+  color: lightcoral;
+  font: 26px "microsoft yahei";
+  text-align: center;
+  line-height: 60px;
+}
+.btn {
+  display: inline-block;
+  width: 80px;
+  border: 2px solid salmon;
+  background-color: bisque;
+  text-align: center;
+  margin-left: 70px;
+  margin-top: 20px;
+  color: salmon;
+  font: 16px/36px "microsoft yahei";
+  cursor: pointer;
+}
+
+.left,
+.right {
+  width: 120px;
+  height: 288px;
+  position: absolute;
+  top: 200px;
+}
+.left {
+  left: 0px;
+  background: url(../images/r2_c1.png) no-repeat;
+}
+.right {
+  right: 0px;
+  background: url(../images/r2_c2.png) no-repeat;
+}
+.totop {
+  width: 50px;
+  height: 50px;
+  background: url(../images/top.png);
+  position: fixed;
+  display: none;
+  bottom: 50px;
+  right: 20px;
+  cursor: pointer;
+}

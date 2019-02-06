@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>解构 - 数组</title>
+</head>
+<body>
+	<h1>解构 Destructuring - array</h1>
+</body>
+<script>
+	// 传统
+	// var one = someArray[0];
+ 	// var two = someArray[1];
+ 	// var three = someArray[2];
+
+    'use strict';
+    console.log('----------参数----------');
+    {
+			const someArray = ['one','two','three'];
+	    let [first, second, third] = someArray;
+	    console.log(first); // one
+		}
+
+    console.log('----------空参数----------');
+		{
+			let [,,c3] = ["foo", "bar", "baz"];
+	    console.log(c3);  // baz
+		}
+
+		console.log('----------嵌套----------');
+		{
+			let [foo, [[bar], baz]] = [1, [[2], 3]];
+	    console.log(foo);// 1
+	    console.log(bar); // 2
+	    console.log(baz);// 3
+		}
+
+    console.log('----------spread----------');
+    {
+			let [head, ...tail] = [1, 2, 3, 4];
+	    console.log(tail);  // [2,3,4]
+		}
+		{
+			let [x, y, ...z] = ['a'];
+			console.log('x val -> ',x); // "a"
+			console.log('y val -> ',y); // undefined
+			console.log('z val -> ',z); // []
+		}
+
+		console.log('--------不完全解构---------------');
+		{
+			let [x, y] = [1, 2, 3];
+			console.log(x); // 1
+			console.log(y); // 2
+
+			let [a, [b], d] = [1, [2, 3], 4];
+			console.log(a); // 1
+			console.log(b); // 2
+			console.log(d); // 4
+		}
+
+    console.log('----------解构不成功----------');
+		{
+	    var [missing] = [];
+	    console.log('missing val -> ',missing);// undefined
+			let [bar, foo] = [1];
+			console.log('foo val -> ',foo); // undefined
+		}
+		console.log('--------Set解构赋值');
+		{
+			let [x,y,z] = new Set(['a','b','c'])
+			console.log(x); // a
+			console.log(y); // b
+			console.log(z); // c
+		}
+
+		console.log('-----------Iterator-----------');
+		{
+			function* fibs() {
+			  let a = 0;
+			  let b = 1;
+			  while (true) {
+			    yield a;
+			    [a, b] = [b, a + b];
+			  }
+			}
+			let [first, second, third, fourth, fifth, sixth] = fibs();
+			console.log(fifth); // 3
+		}
+
+		console.log('-----------设置默认值------------------');
+		{
+			let [x, y = 'b'] = ['a'];
+			console.log(x); // x='a'
+			console.log(y); // y='b'
+		}
+		console.log('-----------undefined && null --------');
+		{
+			let [x = 1] = [undefined];
+			console.log(x); // 1
+
+			let [y = 1] = [null];
+			console.log(y); // null
+		}
+
+		console.log('--------默认值为函数表达式----');
+		{
+			function f() {
+			  console.log('aaa');
+			}
+			let [x = f()] = [1];
+			console.log(x); //
+		}
+		console.log('--------默认值为undefined的函数表达式1------');
+		{
+			function f() {
+			  console.log('aaa');
+			}
+			let [x = f()] = [];
+			console.log(x); // aaa
+		}
+		console.log('--------默认值为undefined的函数表达式2------');
+		{
+			function f() {
+			  console.log('aaa');
+			}
+			let [x = f()] = [undefined];
+			console.log(x); // aaa
+		}
+		console.log('-------引用解构赋值的其他变量,但该变量必须已经声明-------');
+		{
+			{
+				let [x = 1, y = x] = [];
+				console.log(x,y);// x=1; y=1
+			}
+			{
+				let [x = 1, y = x] = [2];
+				console.log(x,y);// x=2; y=2
+			}
+			{
+				let [x = 1, y = x] = [1, 2];
+				console.log(x,y);// x=1; y=2
+			}
+			let [x = y, y = 1] = []; // y is not defined
+		}
+</script>
+</html>

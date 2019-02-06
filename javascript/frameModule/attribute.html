@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            height: 50px;
+            width: 500px;
+            background: red;
+            margin: 10px;
+        }
+
+        .show {
+            display: block
+        }
+
+        .hide {
+            display: none
+        }
+    </style>
+
+</head>
+
+<body>
+    <div name='web' class='my value'></div>
+    <div name='web' class='my value'></div>
+    <div name='web' date-val='ddd' class='my value'></div>
+    <button id='show'>显示</button>
+    <button id='hide'>隐藏</button>
+    <button id='removeall'>去除属性</button>
+</body>
+
+</html>
+<script src='czh.js'></script>
+<script>
+    /*测试代码*/
+    czh.on('hide', 'click', function () {
+        /*  hide('div')*/
+        czh.attr('div', 'class', 'hide');
+    })
+
+    czh.on('show', 'click', function () {
+        /* show('div')*/
+        attr('div', 'class', 'show')
+        // removeAttr('div','class','name');
+    })
+
+    czh.on('removeall', 'click', function () {
+        /* show('div')*/
+        /* attr('div','class','show')*/
+        czh.removeAttr('div', 'class', 'name');
+    })
+
+
+    /*隐藏*/
+    function hide(context) {
+        czh.css(context, 'display', 'none');
+    }
+    /*显示*/
+    function show(context) {
+        czh.css(context, 'display', 'block');
+    }
+    //设置属性
+    function attr(context, key, value) {
+        var doms = czh.$all(context);
+        if (value) {
+            /*设置模式*/
+            for (var i = 0; i < doms.length; i++) {
+                setOneDOM(doms[i], key, value)
+            }
+        } else {
+            /*获取模式*/
+            return getOneDOM(doms[0], key);
+        }
+
+        function setOneDOM(dom, key, value) {
+            dom.setAttribute(key, value)
+        }
+
+        function getOneDOM(dom, key) {
+            return dom.getAttribute(key);
+        }
+    }
+    //功能：去除多个元素的某个属性
+    function removeAttrOld(context, key) {
+        var doms = czh.$all(context);
+        for (var i = 0; i < doms.length; i++) {
+            removeOneDOM(doms[i], key);
+        }
+
+        function removeOneDOM(dom, key) {
+            dom.removeAttribute(key);
+        }
+    }
+
+    function removeAttr() {
+        //arguments是伪数组 根本就无法调用数组对象中的方法
+        /*如何将伪数组转成真数组*/
+        var args = Array.prototype.slice.call(arguments);
+        var str = args[0];
+        /*属性集合*/
+        var names = args.slice(1);
+
+        var doms = czh.$all(str);
+        for (var i = 0; i < doms.length; i++) {
+            /*去除某个元素的属性集合*/
+            removeOneDOMAttributes(doms[i]);
+        }
+        /*去除单个元素的所有属性*/
+        function removeOneDOMAttributes(dom) {
+            for (var j = 0; j < names.length; j++) {
+                dom.removeAttribute(names[j]);
+            }
+        }
+
+    }
+
+
+    function atrGetEle(ele, attr, value) {
+        var aElements = document.getElementsByTagName(ele);
+        var aEle = [];
+        for (var i = 0; i < aElements.length; i++) {
+            if (aElements[i].getAttribute(attr) == value)
+                aEle.push(aElements[i]);
+        }
+        return aEle;
+    }
+
+    var aaa = atrGetEle('div','date-val','ddd');
+    console.log(aaa);
+</script>

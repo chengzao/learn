@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	   *{margin:0;padding:0;}
+	    ul,ol{list-style:none}
+	    /*demo*/
+	    .box {
+	    		width: 230px;
+	        height: 104px;
+	        margin: 10px;
+	        overflow: hidden;
+	        position: relative;
+	    }
+	    .box .slider li{
+	    		width: 230px;
+	        height: 104px;
+	        background-color: red;
+	    }
+	    .box .circle {
+	        position: absolute;
+	        left: 50%;
+	        /*margin-left:-50px;*/
+	        transform: translate(-50%,0);
+	        bottom:10px;
+	    }
+	    .box .circle span {
+	        float: left;
+	        width: 18px;
+	        height: 18px;
+	        border-radius: 50%;
+	        background-color: pink;
+	        text-align: center;
+	        line-height: 18px;
+	        margin-right: 10px;
+	        cursor: pointer;
+	    }
+		/*demo2*/
+        .box2 {
+            width: 200px;
+            height: 240px;
+            background-color: #ffae12;
+            position: relative;
+            margin: 10px;
+            text-align: center;
+        }
+        .box2 span {
+            display: block;
+            height: 100px;
+            line-height: 100px;
+            color: #fff;
+        }
+        .box2 p {
+            position: absolute;
+            top: 70px;
+            left: 50px;
+            width: 100px;
+            height: 150px;
+            font: 700 50px/150px "simsun";
+            background-color: greenyellow;
+            color: #fff;
+            text-align: center;
+        }
+			/*demo3*/
+        .box3 {
+            width: 600px;
+            height: 30px;
+            font: 400 20px/30px "simsun";
+            color: red;
+            margin: 10px;
+        }
+      /*demo4*/
+     
+	</style>
+</head>
+<body>
+<p>demo</p>
+<div class="box">
+  <div class="slider">
+      <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+      </ul>
+  </div>
+  <div class="circle"></div>
+</div>
+<p>demo2</p>
+<div class="box2" id="box2">
+    <span></span>
+    <p></p>
+</div>
+<p>demo3</p>
+<div class="box3" id="box3"></div>
+<p>demo4</p>
+
+</body>
+<script>
+// demo 动态生成小圆点
+function  Createcircle() {
+	var box=document.getElementsByClassName('box')[0];
+	var Arr = box.children[0].getElementsByTagName("li");
+	var lc = box.children[1];
+	for(var i=0;i<Arr.length; i++){
+	  var newSpan = document.createElement("span");
+	  newSpan.innerHTML = i+1;
+	  lc.appendChild(newSpan);
+	}
+}
+Createcircle();
+//demo2 日历
+function calendar () {
+  var date = new Date();
+  var box = document.getElementById("box2");
+  var y = date.getFullYear();
+  //获取月
+  var m = date.getMonth();
+  //获取日
+  var d = date.getDate();
+  //获取星期
+  var xingqi = date.getDay();
+  var dayArr = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+  box.children[0].innerHTML = y+"年"+(m+1)+"月"+d+"日 "+dayArr[xingqi];
+  box.children[1].innerHTML = d; 
+}
+calendar();
+//demo3
+function Countdown() {
+    //定义一个定时器
+    setInterval(aaa,1000);
+    //设置一个方法。
+    function aaa(){
+        //把目标时间和现在时间的对象创建出来
+        var nowTime = new Date().getTime();
+        var newTime = new Date("2020/01/01 00:00:00").getTime();
+        //分别获取毫秒值，相减。
+        var ms = newTime - nowTime ;
+        var ss  = parseInt(ms/1000);
+
+        //换算成天时分秒。然后输入到页面中。
+        var s = ss%60;
+        var m = parseInt(ss/60%60);
+        var h = parseInt(ss/60/60%24);
+        var d = parseInt(ss/60/60/24);
+        s < 10 ? s = "0" + s : s;
+        m < 10 ? m = "0" + m : m;
+        h < 10 ? h = "0" + h : h;
+        d < 10 ? d = "0" + d : d;
+        document.getElementById("box3").innerHTML = "距离2020年还有"+d+"天"+h+"小时"+m+"分"+s+"秒";
+    }  
+}
+Countdown();
+// demo4 
+
+</script>
+</html>

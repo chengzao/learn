@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Boolean</title>
+</head>
+<body>
+boolean
+</body>
+<script type="text/javascript">
+
+  // Boolean
+  // 除了以下六个值的转换结果为false，其他的值全部为true
+  // undefined
+  // null
+  // -0
+  // 0或+0
+  // NaN
+  // ''（空字符串）
+  // false
+
+  Boolean(undefined) // false
+  Boolean(null) // false
+  Boolean(0) // false
+  Boolean(NaN) // false
+  Boolean('') // false
+  Boolean(false)  //false
+
+  Boolean(new Boolean(false)) // true
+  Boolean([]) // true
+
+
+</script>
+</html>

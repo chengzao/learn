@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style media="screen">
+        img {
+            display: none;
+        }
+        
+        .show {
+            display: block;
+        }
+        
+        .hid {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+<script type="text/javascript">
+    var img = new Image();
+    img.onload = function() {
+        console.log('img onload...');
+    }
+    img.onerror = function() {
+        new Error('img error!!!')
+    }
+    img.src = "http://ii.911cha.com/caiche/s/2.jpg";
+    img.longDesc = './1.html';
+    if (img.complete) {
+        alert(1)
+        img.className = 'show';
+        var link = document.createElement('a');
+        link.href = img.longDesc;
+        link.appendChild(img);
+        document.body.appendChild(link);
+    } else {
+        img.className = 'hid';
+    }
+</script>
+
+</html>

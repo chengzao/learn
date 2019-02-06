@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>箭头函数 Arrow Functions</title>
+</head>
+
+<body>
+
+</body>
+<script>
+	/*
+
+	1.函数体内的this对象，绑定定义时所在的对象，而不是使用时所在的对象。
+
+	2.不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出异常
+
+	3.不可以使用arguments对象，该对象在箭头函数体内不存在
+
+	4.不可以使用arguments对象，该对象在函数体内不存在
+
+	5.不可以使用yield命令，因此箭头函数不能用作 Generator 函数
+	
+	 */
+
+  // 函数名
+	const bar = function baz() {}
+	console.log('bar function name : ', bar.name);
+	console.log('匿名函数的函数名： ', (new Function).name);
+	function foo() {};
+	console.log('bind function name : ',foo.bind({}).name );
+
+	//如果箭头函数不需要参数或需要多个参数，就使用一个圆括号代表参数部分。
+	//如果箭头函数直接返回一个对象，必须在对象外面加上括号，否则会报错。
+	//如果箭头函数只有一行语句，且不需要返回值，可以不用写大括号。
+
+	const full = ({ first, last }) => first + ' ' + last;
+	console.log('full name is : ',full({first:'xiao',last:'ming'}));
+
+
+	'use strict';
+	console.log('--------------forEach---------------');
+	[1, 2, 3].forEach((item, index) => console.log(item));
+
+	console.log('----------------map-----------------');
+
+	let arr = [1, 2, 3];
+	var newArr = arr.map((item, index) => item * 10);
+	console.log(newArr);
+
+
+	console.log('---------------demo-----------------');
+	// ES6允许使用“箭头”（=>）定义函数
+	var f = v => v; /*等同于：*/
+	var f = function(v) {
+		return v;
+	}
+
+	var f2 = () => 5;
+	// 等同于
+	var f2 = function() {
+		return 5
+	};
+
+	var sum = (num1, num2) => num1 + num2;
+	// 等同于
+	var sum = function(num1, num2) {
+		return num1 + num2;
+	}
+
+	// 如果箭头函数代码块部分多于一条语句,就要使用大括号将它们括起来。
+	var sum2 = (num1, num2) => {
+		console.log('数字：' + num1);
+		return num1 + num2;
+	}
+
+	console.log('---------------demo2----------------');
+
+	function Person(name) {
+		this.name = name;
+	}
+
+	// 箭头函数语法的特性， **绑定定义时所在的对象**，而不是使用时所在的对象。
+	Person.prototype.sayHello = function() {
+		setTimeout(() => {
+			console.log(this.name);
+		}, 1000);
+	}
+
+	let xiaohong = new Person('小红');
+
+	xiaohong.sayHello();
+</script>
+
+</html>

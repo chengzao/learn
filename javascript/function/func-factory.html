@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工厂模式</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //通过工厂模式 可以快速的创建相同类型的对象
+    function Person(name, age) {
+        var obj = {};
+        obj.name = name;
+        obj.age = age;
+        obj.sayHello = function () {
+            alert("大家好，我是" + obj.name);
+        }
+        obj.showAge = function () {
+            alert("我永远" + obj.age);
+        }
+        return obj;
+    }
+
+    var person1 = Person("xiaolonglong", 98);
+    var person2 = Person("xiaolonglong2", 2);
+    var person3 = Person("xiaolonglong3", 20);
+
+    person1.sayHello();
+    person2.sayHello();
+    person3.sayHello();
+
+    console.log(typeof person1);
+    console.log(person1 instanceof Person);//通过instanceof能够判断对象是哪个类的实例
+
+
+</script>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IIFE</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    (function(w){
+        var sum  =   10;
+        var name = 10;
+        function add(){};
+        function buy(){};
+        w.sum = sum;
+        w.add = function(){};
+        w.buy = function(){};
+        /*我们其实是给window对象定义一个属性，这个属性的名称叫sum*/
+
+
+        /*我们可以定义一个json来保存一切需要暴露的变量或者函数*/
+    })(window);
+
+    /*jquery框架中也有两个全局变量：$ jquery*/
+
+    console.log(sum);
+
+
+    /*如何访问多个*/
+    /*我们可以定义一个对象来保存一切需要暴露的属性和方法*/
+    (function(w){
+        var sum  =   10;
+        var name = 10;
+        var json = {
+            sum:sum,
+            name:name,
+            on:function(){},
+            css:function(){
+                console.log('css模块中的css方法')
+            },
+            extend:function(){},
+            isString:function(){}
+        };
+        w.$ = json;
+    })(window);
+
+    $.css();
+</script>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>继承练习</title>
+</head>
+<body>
+</body>
+<script>
+
+  // student 继承 Person 属性
+
+  function Person(name,age){
+  	this.name = name;
+  	this.age = age;
+  }
+
+  function Student(score){
+  	this.score =score;
+  }
+  //
+  Student.prototype = new Person('zhangsan',10);
+
+  var s = new Student('60');
+
+  console.log(s.score);  // 60
+  console.log(s.name);   // zhangsan
+  console.log(s.age);    // 10
+
+
+  //
+  function Student2(name,age,score){
+    Person.call(this,name,age);
+    this.score =score;
+  }
+
+  var s2 = new Student2('lisi','18',92);
+
+  console.log(s2.score);  // 92
+  console.log(s2.name);   // lisi
+  console.log(s2.age);    // 18
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多组选择器</title>
+    <style>
+        span{
+            height:300px;
+            width:300px;
+            background:#F00;
+            margin: 10px;
+        }
+        div{
+        	width: 100px;
+        	height: 40px;
+        	border: 1px solid #000;
+        	margin-top: 10px;
+        	text-align: center;
+        	line-height: 40px;
+        }
+    </style>
+</head>
+<body>
+<h2>h2</h2>
+<h3>h3</h3>
+<div  class='moshou'>魔兽世界</div>
+
+<div class="hero">英雄联盟</div>
+
+<div id="dream">梦幻西游</div>
+</body>
+</html>
+<script src='czh.js'></script>
+<script>
+    //多组选择器
+    var dom = $group('.moshou,h3,#dream');
+    for(var i = 0, len1 = dom.length; i < len1; i++){
+        dom[i].style.border = '1px solid red';
+    }
+
+ 	function $group (context) {
+        var doms = [];  // result
+        var list = [];  // temp
+        var arr = context.split(',');
+ 		for(var i=0;i<arr.length;i++){
+            var item = arr[i];
+            var first =item.charAt(0);
+            var index= item.indexOf(first);
+            var name = item.slice(index+1);
+            console.log(item);
+            list = [];  // temp清空
+ 			if(first == '#'){
+ 				doms.push(czh.$id(name));
+ 			}else if(first == '.'){
+ 				list = czh.$class(name);
+ 				for(var j=0;j<list.length;j++){
+ 					doms.push(list[j]);
+ 				}
+ 			}else{
+                list = czh.$tag(item);
+                for(var k =0;k<list.length;k++){
+                    doms.push(list[k])
+                }
+ 			}
+ 		}
+        console.log(doms);
+ 		return doms;
+ 	}
+
+</script>

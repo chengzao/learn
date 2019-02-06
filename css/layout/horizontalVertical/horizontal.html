@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>水平居中</title>
+  <style>
+    p{font-size: 12px;}
+    pre{background-color: #f0f0f0;}
+    .warp{background-color: #ccc;width: 400px;}
+    .warp1{text-align: center;}
+    .con1{display: inline-block;}
+    .con2{display: table;margin: 0 auto;}
+    .warp3{position: relative;height: 1.5em;}
+    .con3{position: absolute;left: 50%;transform: translateX(-50%);}
+    .warp4{position: relative;height: 1.5em;}
+    .con4{position: absolute;width: 100px;left: 50%;margin-left: -50px;background-color: green;text-align: center;}
+    .warp5{display: flex;justify-content: center;}
+    .con5{margin: 0 auto;}
+  </style>
+</head>
+<body>
+  <h3>水平居中 horizontal</h3>
+<p>common css</p>
+<pre>
+  .warp{background-color: #ccc;width: 400px;}
+</pre>
+<p>inline-block && text-align：</p>
+<pre>
+  .warp1{text-align: center;}
+  .con1{display: inline-block;}
+</pre>
+<div class="warp warp1">
+  <div class="con1">demo</div>
+</div>
+<p>table && margin</p>
+<pre>
+  .con2{display: table;margin: 0 auto;}
+</pre>
+<div class="warp warp2">
+  <div class="con2">demo</div>
+</div>
+<p>absolute && transform</p>
+<pre>
+  .warp3{position: relative;height: 1.5em;}
+  .con3{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+</pre>
+<div class="warp warp3">
+  <div class="con3">demo</div>
+</div>
+<p>absolute && margin</p>
+<pre>
+  .warp4{position: relative;height: 1.5em;}
+  .con4{
+    width: 100px;
+    position: absolute;
+    left: 50%;
+    margin-left: -50px;
+    background-color: green;
+    text-align: center;
+  }
+</pre>
+<div class="warp warp4">
+  <div class="con4">demo</div>
+</div>
+<p>flex && justify-content</p>
+<pre>
+  .warp5{display: flex;justify-content: center;}
+  .con5{margin: 0 auto;}
+</pre>
+<div class="warp warp5">
+  <div class="con5">demo</div>
+</div>
+</body>
+</html>

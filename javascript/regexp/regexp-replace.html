@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>regexp替换</title>
+    <script>
+        // 字符串.replace()
+        /*
+        var s = "1234567";
+        var s2 = s.replace("3", "三");
+        console.log(s);
+        console.log(s2);
+        */
+        // 第一个参数除了是正常的字符串以外, 还可以是正则表达式对象
+
+        var s = "1aaaaaaaaaaaaaaaaaaaaaaaaaaaa2"; // => 1a2
+        var s2 = s.replace(new RegExp("a+", "g"), "a");
+        console.log(s);
+        console.log(s2);
+
+        var a = 'The quick brown fox jumped over the lazy dog.';
+        var pattern = /quick|brown|lazy/ig;
+
+        var b = a.replace(pattern, function replacer(match) {
+            return match.toUpperCase();
+        });
+        console.log(b);
+
+
+		// tip :	
+
+        // 正则表达式中，需要反斜杠转义的，一共有12个字符：^、.、[、$、(、)、|、*、+、?、{和\\。
+        // 需要特别注意的是，如果使用RegExp方法生成正则对象，转义需要使用两个斜杠，
+        // 因为字符串内部会先转义一次
+        (new RegExp('1\+1')).test('1+1') // false
+
+        (new RegExp('1\\+1')).test('1+1') // true
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

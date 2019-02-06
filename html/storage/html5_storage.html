@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>html5 web storage</title>
+</head>
+<body>
+<script>
+  /*
+
+   HTML5 提供了两种在客户端存储数据的新方法：
+
+     localStorage - 没有时间限制的数据存储
+     sessionStorage - 针对一个 session 的数据存储
+
+  * */
+
+
+  if(window.localStorage){
+    console.log("浏览支持localStorage")
+  }else{
+    console.log("浏览暂不支持localStorage")
+  }
+  //或者 if(typeof window.localStorage == 'undefined'){ 	alert("浏览暂不支持localStorage") }
+
+
+</script>
+<script type="text/javascript">
+  /*
+  * localStorage 方法存储的数据没有时间限制。第二天、第二周或下一年之后，数据依然可用。
+  * */
+  localStorage.lastname="Smith";
+  console.log(localStorage.lastname);
+  if (localStorage.pagecount)
+  {
+    localStorage.pagecount=Number(localStorage.pagecount) +1;
+  }
+  else
+  {
+    localStorage.pagecount=1;
+  }
+  document.write("Visits "+ localStorage.pagecount + " time(s).");
+</script>
+
+<script>
+  /*
+  * sessionStorage 方法针对一个 session 进行数据存储。当用户关闭浏览器窗口后，数据会被删除。
+  * */
+  sessionStorage.lastname="Smith";
+  console.log(sessionStorage.lastname);
+  if (sessionStorage.pagecount)
+  {
+    sessionStorage.pagecount=Number(sessionStorage.pagecount) +1;
+  }
+  else
+  {
+    sessionStorage.pagecount=1;
+  }
+  document.write("<br/>Visits "+sessionStorage.pagecount+" time(s) this session.");
+</script>
+</body>
+</html>

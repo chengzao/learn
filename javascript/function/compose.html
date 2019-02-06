@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>compose function</title>
+</head>
+<body>
+
+</body>
+<script>
+  // 字符串填充 padStart 和 padEnd
+  let numStr = '123';
+  console.log('padStart', numStr.padStart(2, '000000000'))
+  console.log('padStart', numStr.padStart(3, '000000000'))
+  console.log('padStart', numStr.padStart(5, '000000000'))
+  console.log('padStart', numStr.padEnd(5, '000000000'))
+
+  // 闭包 (Closure)
+  var closure = function () {
+    var a = 1;
+    return (function () {
+      return a + 1;
+    })()
+  }
+  var _closure = closure()
+  console.log(_closure);
+
+
+  // 函数组合 (Compose)
+  var compose = function (f, g) {
+    return function (x) {
+      return f(g(x));
+    };
+  };
+  var toUpperCase = function (x) {
+    return x.toUpperCase();
+  };
+  var exclaim = function (x) {
+    return x + '!';
+  };
+  var shout = compose(exclaim, toUpperCase);
+
+  var _compose = shout("send in the clowns");
+  console.log(_compose);
+
+  // 柯里化 (Currying)
+  var curry = x => y => x + y;
+
+  var add = function (x) {
+    return function (y) {
+      return x + y;
+    };
+  };
+  var increment = curry(1);
+  var addTen = add(10);
+  console.log(increment(2));// 3
+  console.log(addTen(2));// 12
+
+
+</script>
+</html>

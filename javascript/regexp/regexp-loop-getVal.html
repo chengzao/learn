@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>regexp循环提取</title>
+		<script>
+			//       0123456789012345678901234567890
+			var s = "abcdbookefgbookabookbcdegabcdefg";
+			// 正则对象.exec(字符串)
+			// 在"字符串" 中 找是否存在符合正则表达式的字符串, 如果有
+			// 找出来封装成结果对象, 并返回给 左边的变量
+			// 如果没有找到, 则返回一个 null
+			var r = new RegExp("book", "g");
+			var m;
+
+			// console.log(r.exec(s) === null);
+			// 如果需要使用正则表达式循环的找出所有的内容, 需要使用 参数 "g" 表示全局
+			// new RegExp("正则表达式", "g");
+
+			// 使用全局模式后, 方法 exec 有了变化
+			// 第一次调用的时候 找出第一个
+			// 第二次调用的时候 找出第二个
+			// ...
+			// 如果全部找出, 还调用则返回 null
+			while((m = r.exec(s)) != null) {  // 不为空就继续找, 为空就停下
+				console.log(m[0] + ", " + m.index + ", " + m[0].length);
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

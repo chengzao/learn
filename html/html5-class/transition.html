@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            height: 0;
+            overflow: hidden;
+            width: 200px;
+            border: 1px solid #000;
+            border-width: 1px 0;
+        }
+        
+        p {
+            padding: 0 40px;
+            transform: translateY(-100%);
+        }
+        
+        .bbb {
+            height: auto;
+            transform: translateY(0);
+            transition: all 1s ease;
+        }
+        
+        .aaa {
+            height: auto;
+            width: 200px;
+            transform: translateY(0);
+            transition: all 1s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <button type="button" id="btn" name="button">Click Me</button>
+    <div id="hide">
+        <p>
+            abcd
+        </p>
+
+    </div>
+</body>
+<script type="text/javascript">
+    // https://developer.mozilla.org/zh-CN/docs/Web/API/Element/classList
+    // classList : add() remove()  item() toggle() contains()
+    var btn = document.querySelector('#btn');
+    var divs = document.querySelector('#hide');
+    var ap = document.querySelector('p');
+    btn.onclick = function() {
+        // divs.className = 'bbb';
+        // ap.className = 'aaa';
+        divs.classList.add('bbb');
+        ap.classList.add('aaa');
+    }
+</script>
+
+</html>

@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title>enter不换行onkeypress</title>
+  </head>
+  <body>
+    <textarea rows="3" cols="40" id="te" onkeypress="back(this,event);"></textarea>
+  </body>
+  <script>
+    function back(ele, event) {
+      event = event || window.event;
+      if (event.keyCode == 13) {
+        event.returnValue = false;
+        ele.value += "{{enter}}"
+        return false;
+      }
+    }
+  </script>
+</html>

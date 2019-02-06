@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    #alTips{
+      width: 100px;
+      height: 50px;
+    }
+
+  </style>
+</head>
+<body>
+<div id='click'>点击</div>
+<script src='http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js'></script>
+<script>
+  function tips(msg,pos){
+
+    var node = document.getElementById('alTips');
+
+    if(node==null){  // 当前页面没有tips节点
+
+      var o = $('<div id="alTips">'+msg+'</div>');
+
+      $('body').append(o)
+
+      $('#alTips').css({
+        top: pos+'%',
+        left:'50%',
+        position:'absolute',
+        fontSize:'0.112rem',
+        padding:'0.032rem 0.064rem',
+        borderRadius:'5px',
+        backgroundColor:'rgba(0,0,0,.4)',
+        color:'#fff',
+        transform: 'translateX(-50%)',
+        webkitTransform: 'translateX(-50%)',
+        zIndex: 999
+      });
+
+      setTimeout(function(){
+
+        var tip = document.getElementById('alTips');
+
+        document.body.removeChild(tip)
+
+      }, 3000)
+    }
+  }
+tips('sss',90);
+</script>
+<script>
+  //面向对象点赞
+
+  function ClickLike(id){
+
+    this.id = id;
+    this.iNow ;
+    this.flag = true;
+  }
+  ClickLike.prototype = {
+
+    init:function(){
+
+      var _this = this;
+
+
+      this.id.tap(function(){
+
+        if(session==''){
+          window.location.href = 'login.html';
+          return false;
+        }
+
+        _this.tapLike($(this));
+      });
+    },
+    tapLike:function(obj){
+
+      this.iNow = obj.next().html();
+
+      if(this.flag){
+
+        this.iNow++;
+
+        obj.next().html(this.iNow)
+
+        this.clickData();
+
+        this.flag = false ;
+      }
+    },
+    clickData:function(){
+
+      $.ajax({
+        url: 'http://192.168.0.107:8080/video/addClickLike',
+        type: 'post',
+        dataType: 'json',
+        data: {
+          sessionToken: getCookie('sessionToken'),
+          videoId:arr[iNow].videoId,
+          toOptId:arr[iNow].userId
+        },
+        success:function(data){
+          console.log(data);
+        }
+      })
+    },
+    hello:function () {
+      console.log('hello')
+    }
+  }
+  var click=new ClickLike()
+  click.hello();
+</script>
+</body>
+</html>

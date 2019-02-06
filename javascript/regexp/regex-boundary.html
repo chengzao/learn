@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>regex边界</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    console.log(/chuan/.test("chuan"));
+    console.log(/chuan/.test("chuang"));
+    console.log(/^chuan$/.test("chuang"));//严格模式 我要什么给我什么
+    console.log(/^chuan$/.test("chuanchuan"));//严格模式 必须严格按照我们要的来才行
+    console.log(/^chuan$/.test("chuan"));//严格模式 必须严格按照我们要的来才行
+    console.log(/^1$/.test("1"));//严格模式 必须严格按照我们要的来才行
+    console.log(/^1$/.test("11"));//严格模式 必须严格按照我们要的来才行
+    console.log(/^1*$/.test("1"));//0次或多次 1次可以
+    console.log(/^1*$/.test("11"));//0次或多次 2次可以
+    console.log(/^1*$/.test(""));//0次或多次 0次可以
+</script>

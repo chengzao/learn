@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>自动转换</title>
+</head>
+<body>
+自动转换
+</body>
+<script type="text/javascript">
+// 不同类型的数据互相运算
+123 + 'abc' // "123abc"
+
+// 对非布尔值类型的数据求布尔值
+if ('abc') {
+console.log('hello')
+}  // "hello"
+
+// 对非数值类型的数据使用一元运算符（即“+”和“-”）
++ {foo: 'bar'} // NaN
+- [1, 2, 3] // NaN
+
+// 自动转换为布尔值
+// 除了以下六个值，其他都是自动转为true
+// undefined
+// null
+// -0
+// 0或+0
+// NaN
+// ''（空字符串）
+
+// 写法一
+expression ? true : false
+
+// 写法二
+!!expression
+
+//自动转换为字符串
+'5' + 1 // '51'
+'5' + true // "5true"
+'5' + false // "5false"
+'5' + {} // "5[object Object]"
+'5' + [] // "5"
+'5' + function (){} // "5function (){}"
+'5' + undefined // "5undefined"
+'5' + null // "5null"
+'100'+20 // "10020"
+
+//自动转换为数值
+'5' - '2' // 3
+'5' * '2' // 10
+true - 1  // 0
+false - 1 // -1
+'1' - 1   // 0
+'5' * []    // 0
+false / '5' // 0
+'abc' - 1   // NaN
+
++'abc' // NaN
+-'abc' // NaN
++true // 1
+-false // 0
+
+</script>
+</html>

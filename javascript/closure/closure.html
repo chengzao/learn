@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>closure</title>
+</head>
+<body>
+    
+</body>
+<script type="text/javascript">
+    /*    
+        for (var i = 0; i < 10; i++) {
+            setTimeout(function () {
+                console.log(i)
+            }, 10 * i)
+        } 
+    */
+    // call
+    for (var i = 0; i < 10; i++) {
+        setTimeout(function () {
+            console.log(i+1)
+        }.call(i), 10 * i)
+    }
+    // apply
+    for (var i = 0; i < 10; i++) {
+        setTimeout(function () {
+            console.log(i+2)
+        }.apply(i), 10 * i)
+    }
+    // bind
+    for (var i = 0; i < 10; i++) {
+        setTimeout(function () {
+            console.log(i+3)
+        }.bind(i)(), 10 * i)
+    }
+    // let
+    for (let i = 0;  i < 10; i++) {
+        setTimeout(function () {
+            console.log(i+4)
+        }, 10 * i)
+    }
+    for (let i = 0;  i < 10; i++) {
+        setTimeout((function (i) {
+            console.log(i+5)
+        })(i), 10 * i)
+    }
+</script>
+</html>

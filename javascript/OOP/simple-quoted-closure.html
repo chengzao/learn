@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>简单类型与引用类型(闭包)</title>
+</head>
+<body>
+
+</body>
+<script>
+
+// 值类型, 变量本身存储的就是数值本身
+var n = 1;
+var m = n;
+
+n;//1
+m; //1
+n = 2; //2
+m;//1
+m = 222; //222
+n; //2
+
+// example:
+function foo() {
+	var a = 123;
+	return {
+		a: a,
+		set: function (v) {
+			a = v;
+		}
+	}
+}
+var o = foo();
+console.log(o.a); // 123
+o.set(998);
+console.log(o.a); // 123
+
+
+
+// o1 和 o2 存储的是对象的地址(引用)
+var o1 = {name: "jim"};
+var o2 = o1;
+// 引用类型, 变量存储的是地址(引用)
+
+o1.name; // jim
+o2.name; //jim
+
+o1.name = 'a';  //a
+o2.name;   //a
+
+o2.name = 'b';  //b
+o1.name;  // b
+
+
+// example:
+function foo2() {
+	var a = {num: 123};
+	return {
+		a: a,
+		set: function (v) {
+			a.num = v;
+		}
+	}
+}
+
+var o = foo2();
+console.log(o.a.num); // 123
+o.set(998);
+console.log(o.a.num); // 998
+
+</script>
+</html>

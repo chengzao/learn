@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js判断浏览器类型</title>
+</head>
+<body>
+
+</body>
+<script>
+	(function getMobileDevice(window) {
+		var ua = navigator.userAgent;
+		var mobile = /AppleWebKit.*Mobile.*/.test(ua) || /AppleWebKit/.test(ua); // 是否为移动终端
+		var ios = /\(i[^;]+;( U;)? CPU.+Mac OS X/.test(ua); // ios终端
+		var android = /(Android);?[\s\/]+([\d.]+)?/.test(ua); // android终端或者uc浏览器
+		var iphone = /iphone/i.test(ua); // iphone
+		var iPad = /iPad/i.test(ua); // ipad
+		var weixin = /micromessenger/i.test(ua); // weixin
+		var chrome = /Chrome\/([\d.]+)/.test(ua) || /CriOS\/([\d.]+)/.test(ua); // Chrome
+		var mozilla = ua.indexOf('Gecko') > -1 && ua.indexOf('KHTML') == -1; // 火狐内核
+		var webkit = /AppleWebKit/i.test(ua); // 苹果、谷歌内核
+		var opera = /Presto/i.test(ua); // opera内核
+		var safari = /safari/i.test(ua) && !/Chrome/i.test(ua); // 苹果浏览器
+		var msie = /msie/i.test(ua); // 微软
+		window.device = {
+			isMobile: mobile,
+			isIos: ios,
+			isAndroid: android,
+			isIPhone: iphone,
+			isIPad: iPad,
+			isWeiXin: weixin,
+			isChrome: chrome,
+			isMozilla: mozilla,
+			isWebkit: webkit,
+			isOpera: opera,
+			isSafari: safari,
+			isMsie: msie
+		}
+	})(window);
+	console.log(device);
+</script>
+</html>

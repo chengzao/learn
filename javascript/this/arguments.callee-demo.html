@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>递归，形参，实参验证</title>
+</head>
+<body>
+  <script>
+
+    //1.1  递归
+    var fn=function(n){
+      if(n>0)
+        return n+fn(n-1);
+      return 0;
+    }
+    console.log(fn(10))
+
+
+    //1.2 递归
+    var fn=(function(n){
+      if(n>0)
+        return n+arguments.callee(n-1);
+      return 0;
+    })(10);
+
+    console.log(fn)
+
+
+    //2. 验证形参和实参长度正确！
+
+    function calleeLengthDemo(arg1, arg2) {
+      console.log(calleeLengthDemo.length);//形参个数
+      console.log(arguments.length==calleeLengthDemo.length);//判断形参与实参是否相等
+
+      if (arguments.length==arguments.callee.length) {
+        window.console.log("验证形参和实参长度正确！");
+        return;
+      } else {
+        console.log("实参长度：" +arguments.length);
+        console.log("形参长度： " +arguments.callee.length);
+      }
+    }
+    calleeLengthDemo(2,3);
+
+  </script>
+</body>
+</html>

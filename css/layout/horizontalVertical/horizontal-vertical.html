@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>垂直居中</title>
+  <style>
+    p{font-size: 12px;}
+    pre{background-color: #f0f0f0;}
+    .warp{width: 200px;height: 100px;background-color: #ccc;}
+    .warp1{text-align: center;display: table-cell;vertical-align: middle;}
+    .con1{display: inline-block;}
+    .warp2{position: relative;}
+    .con2{position: absolute;left: 50%;top: 50%;transform: translate(-50%,-50%);}
+    .warp3{position: relative;}
+    .con3{position: absolute;left: 50%;top: 50%;width: 100px;height: 50px;background-color: green;margin-left: -50px;margin-top: -25px;}
+    .warp4{display: flex;justify-content: center;align-items: center;}
+  </style>
+</head>
+<body>
+  <h3>horizontal vertical 水平垂直居中</h3>
+<p>common css</p>  
+<pre>
+  .warp{width: 200px;height: 100px;background-color: #ccc;}
+</pre>
+<p>inline-block && table-cell && text-align && vertical-align</p>
+<pre>
+  .warp1{
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .con1{display: inline-block;}
+</pre>
+<div class="warp warp1">
+  <div class="con1">demo</div>
+</div>
+<p>absolute && transform</p>
+<pre>
+  .warp2{position: relative;}
+  .con2{
+    position: absolute;
+    left: 50%;top: 50%;
+    transform: translate(-50%,-50%);
+  }
+</pre>
+<div class="warp warp2">
+  <div class="con2">demo</div>
+</div>
+<p>absolute && margin</p>
+<pre>
+  .warp3{position: relative;}
+  .con3{
+    position: absolute;
+    left: 50%;top: 50%;
+    width: 100px;height: 50px;
+    background-color: green;
+    margin-left: -50px;
+    margin-top: -25px;
+  }
+</pre>
+<div class="warp warp3">
+  <div class="con3"></div>
+</div>
+<p>flex</p>
+<pre>
+  .warp4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</pre>
+<div class="warp warp4">
+  <div class="con4">demo</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <title>worker</title>
+    <style>
+        :root{
+            --width: 60vw;
+        }
+        pre{
+            width: var(--width);
+            white-space: pre-wrap; /*css-3*/ 
+            white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
+            white-space: -pre-wrap; /*Opera4-6*/ 
+            white-space: -o-pre-wrap; /*Opera7*/ 
+            word-wrap: break-word; /*InternetExplorer5.5+*/ 
+        }
+    </style>
+</head>
+
+<body>
+    <div>Github user info search : </div>
+    <div>
+        <input type='text' title='' id="msg">
+        <button onclick='sendMessage()'>发送</button>
+        <button onclick='stopWorker()'>stop!</button>
+        <div>Worker 输出内容：
+            <div  class=""></div>
+            <pre><code  id='app' class="json"></code></pre>
+        </div>
+    </div>
+
+    <code id="code"></code>
+
+</body>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script> -->
+<script type='text/javascript'>
+
+    // https://juejin.im/post/5b4af72ae51d45198d4b1388
+
+    // 使用Worker前检查一下浏览器是否支持
+    if (typeof (Worker) === 'undefined') 
+        document.writeln(' Sorry! No Web Worker support.. ')
+    else {
+        window.worker = new Worker('workerThread2.js')
+
+        // worker.onmessage: 指定worker线程发消息时的回调，
+        // worker.addEventListener('message',cb)的方式
+        window.worker.onmessage = ev => {
+            console.log(ev)
+            document.getElementById('app').innerHTML = JSON.stringify(ev.data)
+
+            var code = document.querySelector('#app');
+            var worker = new Worker('hworker.js');
+            worker.onmessage = function(event) { code.innerHTML = event.data; }
+            worker.postMessage(code.textContent);
+        }
+
+        // worker.onerror: 指定worker线程发生错误时的回调，
+        // 也可以 worker.addEventListener('error',cb)
+        window.worker.onerror = err => {
+            worker.terminate()
+            console.log(err.filename, err.lineno, err.message) // 发生错误的文件名、行号、错误内容
+        }
+
+        function sendMessage() {
+            const msg = document.getElementById('msg')
+            // 主线程往worker线程发消息，消息可以是任意类型数据，包括二进制数据
+            window.worker.postMessage(msg.value)
+        }
+
+        function stopWorker() {
+            // worker.terminate: 主线程关闭worker线程
+            window.worker.terminate()
+        }
+    }    
+</script>
+
+</html>

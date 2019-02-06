@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			/*
+			var num = 123;
+			function f() {
+				console.log(this.num);
+			}
+			
+			var o1 = {num: 456};
+			var o2 = {
+						num: 789,
+						method: function () {
+							f(); // 函数	
+						}
+				};
+			
+			f();			// => 123
+			f.apply(); 		// => 123
+			f.call(o1);		// => 456
+			f.call(o2);		// => 789
+			o2.method();	// => 123
+			*/
+			
+			/*
+			var num = 123;
+			function f() {
+				console.log(this.num);
+			}
+			
+			var o1 = {num: 456};
+			var o2 = {
+						num: 789,
+						method: function () {
+							function foo(){
+								console.log(this.num);
+							}
+							foo();
+						}
+				};
+
+			o2.method();	 // 123
+			*/
+
+			/*
+			var num = 123;
+			function f() {
+				console.log(this.num);
+			}
+			
+			var o1 = {num: 456};
+			var o2 = {
+						num: 789,
+						method: function () {
+							function foo(){
+								console.log(this.num);
+							}
+							o2.fn=foo;
+							o2.fn();
+						}
+				};
+
+			o2.method();	 // 789
+
+			*/
+		
+			/*
+			var num = 123;
+			function f() {
+				console.log(this.num);
+			}
+			
+			var o1 = {num: 456};
+			var o2 = {
+						num: 789,
+						method: function () {
+							var that = this;
+							function foo(){
+								console.log(that.num);
+							}
+						}
+				};
+
+			o2.method();	 // 789
+			*/
+
+			/*
+			var num = 456;
+			var o = {
+				num: 123,
+				fn: function () {
+					function foo() {
+						console.log(this.num);
+					}
+					foo();
+				}
+			};
+			o.fn();
+			*/
+			
+			
+			
+			/*
+			var num = 456;
+			var o = {
+				num: 123,
+				fn: function () {
+					function foo() {
+						console.log(this.num);
+					}
+					foo.apply(this);
+				}
+			};
+			o.fn();
+			*/
+			
+			
+			
+			/*
+			var num = 456;
+			var o = {
+				num: 123,
+				fn: function () {
+					(function foo() {
+						console.log(this.num);
+					})();
+				}
+			};
+			o.fn();
+			*/
+			
+				
+			
+			var num = 456;
+			var o = {
+				num: 123,
+				fn: function () {
+					var that = this;
+					(function foo() {
+						console.log(that.num); // 123
+					})();
+					
+				}
+			};
+			o.fn();
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

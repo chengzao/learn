@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>menu tree</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  </head>
+    <ul class="menu">
+        <li><a href="#">菜单一</a>
+            <ul>
+                <li><a href="#">菜单二</a></li>
+                <li><a href="#">菜单二</a></li>
+                <li><a href="#">菜单二</a>
+                    <ul>
+                        <li><a href="#">菜单三</a></li>
+                        <li><a href="#">菜单三</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><a href="#">菜单一</a>
+            <ul>
+                <li><a href="#">菜单二</a></li>
+                <li><a href="#">菜单二</a></li>
+            </ul>            
+        </li>
+        <li><a href="#">菜单一</a></li>
+    </ul>
+  <body>
+  
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".menu ul").css("display","none");
+               $(".menu a").on("click", function(){
+                    $(this).next().toggle();
+               });            
+        });
+    </script>
+  </body>
+</html>
+

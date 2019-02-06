@@ -1,0 +1,63 @@
+p {
+  color:pink;
+}
+/* 看得见的注释 */
+// 看不见的注释
+
+// 1. 嵌套
+.warp {
+  font: 14px/1.5 Helvetica, arial, sans-serif;
+  #logo {
+    border-radius: 5px;
+  }
+}
+
+$font-size = 24px
+.box {
+  font-size: $font-size;
+}
+/* Parent reference */
+ul
+  li a
+    display: block
+    color: blue
+    padding: 5px
+    html.ie &
+      padding: 6px
+    &:hover
+      color: red
+
+/* Mixins */
+border-radius(val)
+  -webkit-border-radius: val
+  -moz-border-radius: val
+  border-radius: val
+
+button {
+  border-radius(5px);
+}
+
+/* Transparent mixins */
+border-radius()
+  -webkit-border-radius: arguments
+  -moz-border-radius: arguments
+  border-radius: arguments
+
+button {
+  border-radius: 5px 10px;
+}
+
+/* func */
+
+add(a, b)
+  a + b
+
+sub(a, b)
+  a - b
+
+invoke(a, b, fn)
+  fn(a, b)
+
+body
+  padding-left invoke(5px, 10px, add)
+  padding-right invoke(5px, 10px, sub)

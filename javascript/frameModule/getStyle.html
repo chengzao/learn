@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            height: 50px;
+            width: 500px;
+            background: red;
+            margin: 10px;
+            color: #ccc;
+        }
+    </style>
+
+</head>
+<body>
+<div id="mydiv"></div>
+<div class='mydiv'></div>
+<div class='mydiv'></div>
+<div class='mydiv'></div>
+<div class='mydiv'></div>
+<div class='mydiv'></div>
+</body>
+</html>
+<script src='czh.js'></script>
+<script>
+
+
+    /*复习原生语言*/
+    var dom = czh.$id('mydiv');
+    //dom.style.background = 'green';
+    //setStyle(dom,'background','green');
+    
+    //getStyle(dom,'color');
+    //$css(dom,'background','pink');
+    czh.$css('#mydiv','background','pink');
+
+  	function $getStyle(dom,key){
+        var str = '';
+        if(dom.currentStyle){
+            str =  dom.currentStyle[key];
+        }else{
+            str = window.getComputedStyle(dom,null)[key];
+        }
+        return str;
+    }
+
+    function $setStyle(dom,key,value){
+        dom.style[key] = value;
+    }
+
+    function $css(id,key,val){
+    	if(val){
+    	    $setStyle(id,key,val);
+    	}else{
+    		return $getStyle(id,key);
+    	}   	
+    }
+
+
+    function $css2(context,key,val){
+    	var doms = czh.isString(context)?czh.$all(context):context;
+    	if(val){
+    		for(var i=0;i<doms.length;i++){
+    		   $setStyle(doms[i],key,val);
+    		}
+    		
+    	}else{
+    		return $getStyle(doms[0],key);
+    	}   	
+    }
+</script>

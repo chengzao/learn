@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单元素</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #F7F7F7;
+		}
+
+		form {
+			max-width: 640px;
+			width: 100%;
+			margin: 32px auto 0;
+			font-size: 32px;
+		}
+
+		label {
+			display: block;
+			margin: 30px;
+		}
+
+		input {
+			display: block;
+			width: 100%;
+			height: 32px;
+			margin-top: 10px;
+		}
+	</style>
+</head>
+<body>
+	<form action="">
+		<fieldset>
+			<legend>表单元素</legend>
+			<label for="">
+				姓名：<input type="text" name="name">
+			</label>
+			<label for="">
+				密码：<input type="password" name="pass">
+			</label>
+			<label for="">
+				爱好：
+				<input type="text" list="hobby" name="fav">
+				<datalist id="hobby">
+					<option value="basketball"></option>
+					<option value="basketball"></option>
+					<option value="football"></option>
+					<option value="pingpang"></option>
+				</datalist>
+			</label>
+			<label for="">
+				推荐人：
+				<output name="teacher"></output>
+			</label>
+			<label for="">
+				加密类型：
+				<keygen name="security">
+			</label>
+			<label for="">
+				度量器：
+				<meter min="0" max="100" low="20" high="80" value="81"></meter>
+			</label>
+			<input type="submit" value="提交">
+		</fieldset>
+	</form>
+	<script>
+		document.forms[0].teacher.value = 'xiaoming';
+	</script>
+</body>
+</html>

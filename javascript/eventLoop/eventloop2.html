@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>event loop</title>
+</head>
+<body>
+  <p>事件 循环</p>
+  
+  <p>原文： https://github.com/dwqs/blog/issues/61</p>
+
+  <p>
+    (macro)task主要包含：script(整体代码)、setTimeout、setInterval、I/O、UI交互事件、postMessage、MessageChannel、setImmediate(Node.js 环境)
+  </p>
+
+  <p>
+    microtask主要包含：Promise.then、MutaionObserver、process.nextTick(Node.js 环境)
+  </p>
+
+  <p>
+    在 Node 中，会优先清空 next tick queue，即通过process.nextTick 注册的函数，再清空 other queue，常见的如Promise；此外，timers(setTimeout/setInterval) 会优先于 setImmediate 执行，因为前者在 timer 阶段执行，后者在 check 阶段执行。
+  </p>
+
+  <p>
+    每次执行完一个宏任务之后，会去检查是否存在 Microtasks；如果有，则执行 Microtasks 直至清空 Microtask Queue
+  </p>
+
+  <pre>
+    <code>
+        new Promise(resolve => {
+          resolve(1);
+          
+          Promise.resolve().then(() => {
+            // t2
+            console.log(2)
+          });
+          console.log(4)
+      }).then(t => {
+        // t1
+        console.log(t)
+      });
+      console.log(3);
+    </code>
+  </pre>
+
+  <div>
+
+      <p>为什么 t2 会先执行呢？理由如下：</p>
+
+      <ul>
+          <li>根据 Promises/A+规范：</li>
+          <li>实践中要确保 onFulfilled 和 onRejected 方法异步执行，且应该在 then 方法被调用的那一轮事件循环之后的新执行栈中执行</li>
+          <li>Promise.resolve 方法允许调用时不带参数，直接返回一个resolved 状态的 Promise 对象。立即 resolved 的 Promise 对象，是在本轮“事件循环”（event loop）的结束时，而不是在下一轮“事件循环”的开始时。</li>
+          <li>http://es6.ruanyifeng.com/#docs/promise#Promise-resolve</li>
+      </ul>
+      <p>所以，t2 比 t1 会先进入 microtask 的 Promise 队列。</p>
+  </div>
+
+</body>
+<script>
+
+
+
+new Promise(resolve => {
+    resolve(1);
+    
+    Promise.resolve().then(() => {
+    	// t2
+    	console.log(2)
+    });
+    console.log(4)
+}).then(t => {
+	// t1
+	console.log(t)
+});
+console.log(3);
+</script>
+</html>

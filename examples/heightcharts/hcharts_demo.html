@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <!--参考文档:http://www.hcharts.cn/docs/index.php?doc=basic-chart-->
+  <!--Highcharts 图表的高度和宽度是根据 DIV 容器的宽高来设定的-->
+  <!--如果容器没有设定宽高，默认是 宽 400px， 高 400px，另外设置容器的 min-width 属性可以让 highcharts 自适应宽度-->
+  <!--<div id="container" style="min-width:400px;height:400px"></div>  -->
+  <div id="container" style="min-width:800px;height:400px;"></div>
+
+</body>
+<script type="text/javascript" src="js/jquery-1.8.3_min.js"></script>
+<script type="text/javascript" src="js/highcharts.js"></script>
+<script type="text/javascript" src="js/highcharts-more.js"></script>
+<script>
+ /* $(function () {
+    $('#container').highcharts({                   //图表展示容器，与div的id保持一致
+      chart: {
+        polar:true,
+        type: 'bar'                         //指定图表的类型，默认是折线图（line）
+      },
+      pane: {
+        size:'85%'
+      },
+      plotOptions: {
+        series: {
+          stacking: 'normal',
+          shadow: false,
+          groupPadding: 0,
+          pointPlacement: 'on'
+        }
+      },
+      title: {
+        text: 'My first Highcharts chart'      //指定图表标题
+      },
+      xAxis: {
+        categories: ['N', 'NNE', 'NE','ENE','E','ESE','SE','SSE','S', 'SSW', 'SW','WSW','W','WNW','NW','NNW'] ,  //指定x轴分组
+        tickmarkPlacement: 'on',
+      },
+      yAxis: {
+        title: {
+          //          text: 'something'                  //指定y轴的标题
+        },
+        min: 0,
+        endOnTick: false,
+        showLastLabel: true,
+        reversedStacks: false
+      },
+      series: [{                                 //指定数据列
+        name: 'Jane',                          //数据列名
+        data: [18, 18, 18,18,18,18,18,18,18, 18, 18,18,18,18,18,18]   ,                     //数据
+        startRow: 1,
+        endRow: 10,
+
+      }
+        /!*, {
+         name: 'John',
+         data: [5, 7, 3]
+         }*!/],
+      credits:{enabled:false}   //图表版权信息
+    });
+  });
+*/
+ $(function () {
+   $('#container').highcharts({
+     chart: {
+       polar:true,
+       type: 'bar'
+     },
+     pane: {
+       size:'85%'
+     },
+     plotOptions: {
+       series: {
+         stacking: 'normal',
+         shadow: false,
+         groupPadding: 0,
+         pointPlacement: 'on'
+       }
+     },
+     legend:{
+       enabled: false
+     },
+     title: {
+       text: 'My first Highcharts chart'
+     },
+     xAxis: {
+       categories: ['N', 'NNE', 'NE','ENE','E','ESE','SE','SSE','S', 'SSW', 'SW','WSW','W','WNW','NW','NNW'] ,
+       tickmarkPlacement: 'on',
+     },
+     yAxis: {
+       title: {
+       },
+       min: 0,
+       endOnTick: false,
+       showLastLabel: true,
+       reversedStacks: false,
+       minorTickInterval:5,
+       tickInterval: 5
+     },
+     series: [{
+       name: 'Jane',
+       data: [18, 18, 18,18,18,18,18,18,18, 18, 18,18,18,18,18,18]   ,
+       startRow: 1,
+       endRow: 10,
+     }
+     ],
+     credits:{enabled:false}
+   });
+ });
+
+
+</script>
+
+</html>

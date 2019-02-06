@@ -1,0 +1,42 @@
+p {
+  color: #ffc0cb;
+}
+/* 看得见的注释 */
+.warp {
+  font: 14px/1.5 Helvetica, arial, sans-serif;
+}
+.warp #logo {
+  border-radius: 5px;
+}
+.box {
+  font-size: 24px;
+}
+/* Parent reference */
+ul li a {
+  display: block;
+  color: #00f;
+  padding: 5px;
+}
+html.ie ul li a {
+  padding: 6px;
+}
+ul li a:hover {
+  color: #f00;
+}
+/* Mixins */
+button {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+/* Transparent mixins */
+button {
+  -webkit-border-radius: 5px 10px;
+  -moz-border-radius: 5px 10px;
+  border-radius: 5px 10px;
+}
+/* func */
+body {
+  padding-left: 15px;
+  padding-right: -5px;
+}

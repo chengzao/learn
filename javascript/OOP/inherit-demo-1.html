@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>继承练习</title>
+</head>
+<body>
+<img src="images/prototype.png" alt="">
+<img src="images/__proto__.png" alt="">
+</body>
+<script>
+
+// foo 继承 obj 属性
+
+var obj= {'name':'zhangsan'};
+
+function Foo (age,gender) {
+	this.age = age;
+	this.gender = gender;
+}
+
+Foo.prototype = obj;
+
+//Foo.prototype.__proto__ =obj;
+
+var foo = new Foo();
+
+console.log(foo.name);
+
+
+</script>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>全屏</title>
+	<style>
+		.box {
+			width: 200px;
+			height: 200px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<button class="btn">点击全屏</button>
+	<script>
+		var btn = document.querySelector('.btn');
+		var box = document.querySelector('.box');
+
+		btn.addEventListener('click', function () {
+			// box.webkitRequestFullScreen();
+			document.documentElement.webkitRequestFullScreen();
+		});
+	</script>
+</body>
+</html>

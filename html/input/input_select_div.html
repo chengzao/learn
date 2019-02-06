@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul {
+			list-style: none;
+			display: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		#divselect {
+			width: 222px;
+			border: 1px solid #ccc
+		}
+
+		#divselect cite {
+			width: 187px;
+			height: 24px;
+			line-height: 24px;
+			display: block;
+			color: #807a62;
+			cursor: pointer;
+			font-style: normal;
+			padding-left: 4px;
+			padding-right: 30px;
+			border: 1px solid #999;
+			background: url(images/xjt.png) no-repeat right center;
+		}
+
+		#divselect ul {
+			width: 221px;
+			border: 1px solid #999;
+			background-color: #ffffff;
+			position: absolute;
+			z-index: 20000;
+			margin-top: -1px;
+		}
+
+		#divselect ul li {
+			cursor: pointer;
+		}
+
+		#divselect ul li a {
+			text-decoration: none;
+			height: 24px;
+			line-height: 24px;
+			color: #333333;
+			display: block;
+		}
+
+		#divselect ul li a:hover {
+			background-color: #666;
+		}
+	</style>
+</head>
+
+<body>
+	<form action="" method="post">
+		<div id="divselect">
+			<cite>请选择特效分类</cite>
+			<ul>
+				<li><a href="javascript:;" selectid="1">导航菜单</a></li>
+				<li><a href="javascript:;" selectid="2">下拉select效果</a></li>
+				<li><a href="javascript:;" selectid="3">select模拟</a></li>
+				<li><a href="javascript:;" selectid="4">DIVCSS5特效</a></li>
+				<li><a href="javascript:;" selectid="5">jquery 下拉菜单特效</a></li>
+			</ul>
+		</div>
+		<input name="" type="hidden" value="" id="inputselect" />
+
+	</form>
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+	jQuery.divselect = function (divselectid, inputselectid) {
+		var inputselect = $(inputselectid);
+		$(divselectid + " cite").click(function () {
+			var ul = $(divselectid + " ul");
+			if (ul.css("display") == "none") {
+				ul.slideDown("fast");
+			} else {
+				ul.slideUp("fast");
+			}
+		});
+		$(divselectid + " ul li").click(function () {
+			var txt = $(this).text();
+			$(divselectid + " cite").html(txt);
+			var value = $(this).attr("selectid");
+			inputselect.val(value);
+			$(divselectid + " ul").hide();
+		});
+	};
+	$(function () {
+		$.divselect("#divselect", "#inputselect");
+	});
+</script>
+
+</html>

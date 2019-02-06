@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>requestAnimationFrame </title>
+    <style>
+        body {
+            height: 11111pt;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">aa</div>
+</body>
+<script type="text/javascript">
+    var start = null;
+var element = document.getElementById('box');
+element.style.position = 'absolute';
+
+function step(timestamp) {
+  if (!start) start = timestamp;
+  var progress = timestamp - start;
+  element.style.left = Math.min(progress / 10, 200) + 'px';
+  if (progress < 2000) {
+    window.requestAnimationFrame(step);
+  }
+}
+
+window.requestAnimationFrame(step);
+
+
+let t0 = window.performance.now();
+step();
+let t1 = window.performance.now();
+console.log("doSomething函数执行了" + (t1 - t0) + "毫秒.")
+</script>
+
+</html>

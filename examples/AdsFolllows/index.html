@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    img {
+            position: absolute;
+            left: 0;
+            top: 50px;
+        }
+
+        #demo {
+            width: 1000px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+  <img src="images/aside.jpg" alt="" id="pic" />
+
+  <div id="demo">
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+  </div>
+</body>
+</html>
+<script>
+   // 封装scrollTop
+  function scroll() {
+    if (window.pageYOffset != null) {  // ie9+ 高版本浏览器
+      // 因为 window.pageYOffset 默认的是  0  所以这里需要判断
+      return {
+        left: window.pageXOffset,
+        top: window.pageYOffset
+      }
+    }
+    else if (document.compatMode === "CSS1Compat") {    // 标准浏览器   来判断有没有声明DTD
+      return {
+        left: document.documentElement.scrollLeft,
+        top: document.documentElement.scrollTop
+      }
+    }
+    return {   // 未声明 DTD
+      left: document.body.scrollLeft,
+      top: document.body.scrollTop
+    }
+  }
+
+  // 动画
+  function animate(obj, target) {
+    clearInterval(obj.timer);
+    obj.timer = setInterval(function () {
+      var step = (target - obj.offsetTop) / 10;//step = (target - leader) / 10
+      step = target > obj.offsetTop ? Math.ceil(step) : Math.floor(step);//根据目标来向上或者向下取整
+      //leader = leader + step
+      obj.style.top = obj.offsetTop + step + "px";
+      //console.log("leader: " + box.offsetLeft + "step" + step);
+      if (target == obj.offsetTop) {
+        clearInterval(obj.timer);
+      }
+    }, 30)
+  }
+
+  window.onload = function () {
+    var pic = document.getElementById("pic");
+    window.onscroll = function () {
+      target = scroll().top + 50;
+      animate(pic, target);
+    }
+  }
+
+
+</script>

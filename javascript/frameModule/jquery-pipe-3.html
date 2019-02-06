@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jquery链式</title>
+	<style>
+
+	div{
+		width: 100px;
+		height: 100px;
+		background-color: pink;
+	}
+
+	</style>
+</head>
+<body>
+	<button id = 'mybtn'>按钮</button>
+	<div class='div'>1</div>
+	<div class='div'>2</div>
+	<div class='div'>3</div>
+</body>
+<script src="czh04.js"></script>
+<script>
+	var btn = document.getElementById('mybtn');
+    btn.onclick  = function(){
+        $$('.div').eq(0).hide();
+
+    }
+
+    $$('.div').eq(1).$css('background','red');
+
+
+    // test1
+   	$$.fn();
+   	$$.fn2();
+   	// test2
+   	$$('div').hide().show();
+</script>
+</html>

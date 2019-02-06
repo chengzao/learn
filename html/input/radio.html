@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div>
+		<input checked type="radio" value="1">
+		<input type="radio" value="2">
+		<input type="radio" value="3">
+		<input type="radio" value="4">
+	</div>
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+	$('div input').click(function () {
+		console.log($(this).val())
+		console.log($(this).prop('checked'))
+		$(this).attr('checked','checked').siblings('input').removeAttr('checked');
+	})
+
+
+	//根据官方的建议：具有true和false两个属性的属性，如：checked、selected、及disabled使用prop()，其他的使用attr()
+
+</script>
+</html>

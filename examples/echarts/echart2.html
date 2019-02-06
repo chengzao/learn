@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="container"></div>
+<script src='js/echarts-all.js'></script>
+	<script>
+		var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+window.onresize = myChart.resize;
+option = {
+  title : {
+    text: '区域排名',
+    x: 'center',
+    textStyle:{
+      color:'#232323',
+      fontSize:16,
+      fontFamily:'microsoft yahei'
+    }
+  },
+  grid: {
+    left: '3%',
+    bottom: '1%',
+    containLabel: true
+  },
+  tooltip : {
+    trigger: 'item'
+  },
+  legend: {
+    data:['装机容量'],
+    y:'7%',
+    x:'90%',
+  },
+  // calculable : true,
+  xAxis : [
+    {
+
+      name: '装机容量(kW)',
+      position:'top',
+      type : 'value',
+      boundaryGap : [0, 0.01],
+      splitLine:{
+        lineStyle:{
+          type:'dashed',
+        }
+      }
+    }
+  ],
+  yAxis : [
+    {
+      type : 'category',
+      data : ['山塘湖', '景峡', '烟墩', '淖毛湖', '苦水', '十三间房']
+    }
+  ],
+  series : [
+    {
+      itemStyle: {
+        normal: {
+          color: 'tomato',
+           barBorderColor: 'tomato',
+          barBorderWidth: 6,
+          barBorderRadius:0,
+          label : {
+            show: true, position: 'insideTop'
+          }
+        }
+      },
+      name:'装机容量',
+      type:'bar',
+      data:[25, 50, 60, 65, 70, 76],
+      // itemStyle: {normal: {color: '#46b7f4'}},
+    }
+  ]
+};
+if (option && typeof option === "object") {
+  echartSize(dom, myChart);
+  window.onresize = function () {
+    echartSize(dom, myChart);
+  }
+  myChart.setOption(option, true);
+}
+
+function echartSize(dom, name) {
+  var ClientH = document.documentElement.clientHeight;
+  var ClientW = document.documentElement.clientWidth;
+  dom.style.height = (ClientH - 80) + 'px';
+  dom.style.width = ClientW + 'px';
+  name.resize();
+}
+	</script>
+</body>
+</html>

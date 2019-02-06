@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://ii.911cha.com/blue/style.css?20171226">
+    <link rel="stylesheet" href="https://ii.911cha.com/nongli/nongli.css?20170327">
+    <link rel="stylesheet" href="https://ii.911cha.com/nongli/calendar.css?20171115">
+    <title>calendar</title>
+    <style media="screen">
+       .zh-almanac{
+         position: absolute;
+         top: 44px;
+         left: 80px;
+         z-index: 999;
+         height: auto;
+       }
+    </style>
+</head>
+
+<body>
+    <div class="mainbox">
+        <div class="leftbox">
+            <div class="panel">
+                <div class="mtb">
+                    <div class="oc gclear" style="position:relative;">
+                        <span class="s_txt mr green">生日一</span>
+                        <span class="s_iptw clearIptVal">
+                            <input readonly="readonly" class="s_ipt f14" autocomplete="off" id="txt_0" value="点击选择生日1">
+                        </span>
+                        <span class="s_txt red">必填</span>
+                    </div>
+                    <div class="oc gclear" style="position:relative;">
+                        <span class="s_txt mr green">生日二</span>
+                        <span class="s_iptw clearIptVal">
+                            <input readonly="readonly" class="s_ipt f14" autocomplete="off" id="txt_1" value="点击选择生日2">
+                        </span>
+                        <span class="s_txt blue">必填</span>
+                    </div>
+                    <div class="oc gclear" style="position:relative;">
+                        <span class="s_txt mr green">生日二</span>
+                        <span class="s_iptw clearIptVal">
+                            <input readonly="readonly" class="s_ipt f14" autocomplete="off" id="txt_2" value="点击选择吉日1">
+                        </span>
+                        <span class="s_txt blue">必填</span>
+                    </div>
+                    <div class="oc gclear" style="position:relative;">
+                        <span class="s_txt mr green">生日三</span>
+                        <span class="s_iptw clearIptVal">
+                            <input readonly="readonly" class="s_ipt f14" autocomplete="off" id="txt_3" value="点击选择吉日2">
+                        </span>
+                        <span class="s_txt blue">必填</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 以下为日历基本结构body -->
+    <div class="oc gclear" style="position:relative;">
+        <span class="s_txt mr green">生日四</span>
+        <span class="s_iptw clearIptVal">
+            <input readonly="readonly" class="s_ipt f14" autocomplete="off" id="txt_4" value="我是测试">
+        </span>
+        <span class="s_txt blue">必填</span>
+    </div>
+</body>
+<script src="./js/calendar2.js"></script>
+<!-- <script src="./js/calendar.min.js"></script> -->
+<script>
+    window.onload = function() {
+
+       // 1. 日历文件：
+       // calendar.js  为源码未压缩版
+
+       // images/*  为日历所需图片
+       // css/calendar.css 为日历所需样式
+
+       // 结构基本DOM  : 一些样式 可 更改
+       // <div class="oc gclear" style="position:relative;">
+       //     <span class="s_txt mr green">生日四</span>
+       //     <span class="s_iptw clearIptVal">
+       //         <input readonly="readonly" class="s_ipt f14" autocomplete="off" id="txt_4" value="我是测试">
+       //     </span>
+       //     <span class="s_txt blue">必填</span>
+       // </div>
+
+
+
+        // 2. 日历使用介绍
+        /**
+          cal.show({
+              'el': '#txt_0',   // ***目标input标签的id ,（必须）***
+              'show':'#calendar0', // ***目标input对应存放日历的标签id ,（必须）***
+              'ipts':{     // （非必须）
+                  'name':['kind1','year1','month1','date1'], // 隐藏input提交表单的name值，默认['kind','year','month','date']
+                  'hide':false    // 是否有隐藏input标签,默认为true
+              },
+              'tip': '点击选择生日1', // ***点击清除按钮后的提示信息,需要与页面中input的提示值保持一致 , (必须)***
+              'initTime':[2017,9],  // 初始化日历的日期  （非必须）
+              'bottomTip':{   （非必须）
+                  'class':['green','aaa','pp','center'],   // 日历底部的类名 默认：['pp','center']
+                  'txt':'点击选中日期',   // 日历底部提示的文字
+                  'hide':true  //是否显示日历底部的信息，默认为false
+              }
+            })
+         */
+
+
+        // 示例如下 ：
+
+        cal.show({
+             'el': '#txt_0',
+             'ipts':{
+                 'name':['kind1','year1','month1','date1'],
+                 'hide':false
+             },
+             'tip': '点击选择生日1',
+             'initTime':[2017,9],
+             'bottomTip':{
+                 'class':['green','aaa','pp','center'],
+                 'txt':'点击选中日期',
+             }
+           })
+
+        cal.show({
+           'el': '#txt_1',
+           'ipts':{
+                 'name':['kind2','year2','month2','date2'],
+                 'hide':false
+             },
+           'tip': '点击选择生日2',
+           'initTime':[2014,9],
+           'bottomTip':{
+                 'class':['green','bbb','pp','center'],
+                 'txt':'点击选中日期1',
+                 'hide':true
+             }
+        })
+
+        cal.show({
+           'el': '#txt_2',
+           'ipts':{
+                 'name':['kind3','year3','month3','date3'],
+                 'hide':true
+             },
+           'tip': '点击选择吉日1',
+           'initTime':[2010,9],
+           'bottomTip':{
+                 'class':['green','ccc','pp','center'],
+                 'txt':'点击选择上面吉日1',
+             }
+        })
+
+        cal.show({
+           'el': '#txt_3',
+           'tip': '点击选择吉日2',
+        })
+
+
+        cal.show({
+           'el': '#txt_4',
+           'tip': '我是测试',
+        })
+
+    }
+</script>
+
+</html>

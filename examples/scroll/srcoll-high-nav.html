@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>自动生成右侧导航栏</title>
+  <style>
+    ul,
+    li {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:link,
+    a:visited,
+    a:focus {
+      color: #000
+    }
+
+    .anchor {
+      height: 800px;
+      display: block;
+    }
+
+    .nav {
+      position: fixed;
+      right: 20px;
+      top: 50px;
+    }
+
+    a.cur {
+      color: red;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="article">
+    <h2>书籍目录<a class="anchor" href="#a0"></a></h2>
+    <p>很多字。。。。</p>
+    <h2>作品试读<a class="anchor" href="#a1"></a></h2>
+    <p>很多字。。。。</p>
+    <h2>购买须知<a class="anchor" href="#a2"></a></h2>
+    <p>很多字。。。。</p>
+    <h2>注意事项<a class="anchor" href="#a3"></a></h2>
+    <p>很多字。。。。</p>
+    <h2>用户点评<a class="anchor" href="#a4"></a></h2>
+  </div>
+  <div id="nav" class="nav"></div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<script>
+  var html = ['<ul>'];
+  var headings = document.querySelectorAll('#article h2');
+  for (var i = 0; i < headings.length; i++) {
+    var id = 'a' + i;
+    var el = headings[i];
+    el.id = id;
+    html.push('<li><a href="' + el.childNodes[1].href + '" id = "' + id + i + '">' + el.firstChild.nodeValue + '</a>');
+  }
+  html.push('</ul>');
+  var nav = document.getElementById('nav');
+  nav.innerHTML = html.join('\n');
+  $(function () {
+    $(window).scroll(function () {
+      var wst = $(window).scrollTop();
+      var title = document.querySelectorAll('#article h2');
+      for (i = 0; i < title.length; i++) {
+        //
+        if ($("#a" + i).offset().top <= wst) {
+
+          $('#nav a').removeClass("cur");  //cur是标签激活的class
+          $('#a' + i + i).addClass("cur");
+        }
+      }
+    });
+  });
+  $('#nav a').click(function () {
+    $('#nav a').removeClass("cur");
+    $(this).addClass("cur");
+  });
+</script>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>thunk</title>
+</head>
+<body>
+    <p> Thunk 函数的定义，它是"传名调用"的一种实现策略，用来替换某个表达式</p>
+</body>
+<script>
+
+
+    var thunk = function(m){
+        return 7+m;
+    }
+
+    function f(thunk,val){
+        var res =  thunk(val) + 5;
+        console.log(res)
+    }
+
+    f(thunk,3);
+
+</script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>历史管理</title>
+</head>
+<body>
+	<p>我是b.html</p>
+	<a href="a.html">a.html</a>
+	<a href="b.html">b.html</a>
+	<a href="c.html">c.html</a>
+	<a href="d.html">d.html</a>
+	<a href="e.html">e.html</a>
+
+	<input type="button" id="btn" value="返回">
+	<input type="button" id="btn1" value="前进">
+	<script>
+		var btn = document.getElementById('btn');
+		var btn1 = document.getElementById('btn1');
+
+		// 提供一个内建的对象，可供我们对历历记录进行管理
+
+		btn.onclick = function () {
+			// 后退
+			history.back();
+		}
+
+	</script>
+</body>
+</html>

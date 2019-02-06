@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>window global</title>
+</head>
+<body>
+  <h1>顶层对象的属性</h1>
+  <h2>ES6中：var命令和function命令声明的全局变量，依旧是顶层对象的属性</h2>
+  <h2>ES6中：let命令、const命令、class命令声明的全局变量，不属于顶层对象的属性</h2>
+  <textarea name="name" rows="8" cols="80" readonly style="resize:none">
+
+  浏览器里面，顶层对象是window，但 Node 和 Web Worker 没有window
+
+  浏览器和 Web Worker 里面，self也指向顶层对象，但是 Node 没有self
+
+  Node 里面，顶层对象是global，但其他环境都不支持
+
+  </textarea>
+</body>
+<script type="text/javascript">
+  console.log('------- ES5 ----------');
+  // 如果在 Node 的 REPL 环境，可以写成 global.a
+  // 或者采用通用方法，写成 this.a
+  var a = 1;
+  console.log('window.a :',window.a);
+
+  console.log('------- ES6 ----------');
+  let b = 2;
+  console.log('window.b :',window.b);
+
+</script>
+</html>

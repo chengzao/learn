@@ -1,0 +1,78 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas太极</title>
+	<style type="text/css">
+	body,html{
+		margin: 0;
+		padding: 0;
+		background-color: gray;
+	}
+	canvas{
+		display: block;
+		margin: auto;
+	}
+	</style>
+	<script type="text/javascript">
+	window.onload = function(){
+		var canvas = document.getElementById('canvas'),
+			ctx    = canvas.getContext("2d");
+			ctx.clearRect(0,0,500,500);
+			//绘制白色半圆
+			ctx.fillStyle="#fff";
+			ctx.beginPath();
+			ctx.arc(250,250,230,1.5*Math.PI,Math.PI/2,false);
+			ctx.closePath();
+			ctx.fill();			
+			//绘制黑色半圆
+			ctx.save();
+			ctx.fillStyle="#000";
+			ctx.beginPath();
+			ctx.arc(250,250,230,Math.PI/2,1.5*Math.PI,false);
+			ctx.closePath();
+			ctx.fill();					
+			ctx.restore();
+			//绘制边缘白圆
+			ctx.beginPath();
+			ctx.arc(250,365,115,0,2*Math.PI,false);
+			ctx.closePath();
+			ctx.fill();
+			//绘制边缘黑园
+			ctx.save();
+			ctx.fillStyle="#000";
+			ctx.beginPath();
+			ctx.arc(250,135,115,0,2*Math.PI,false);
+			ctx.closePath();
+			ctx.fill();
+			ctx.restore();
+			//绘制小白点
+			ctx.beginPath();
+			ctx.arc(250,135,15,0,2*Math.PI,false);
+			ctx.closePath();
+			ctx.fill();
+			//绘制小黑点
+			ctx.save();
+			ctx.fillStyle="#000";
+			ctx.beginPath();
+			ctx.arc(250,365,15,0,2*Math.PI,false);
+			ctx.closePath();
+			ctx.fill();
+			ctx.restore();	
+			//加上“中国太极”四个字
+			//调整透明度
+			ctx.globalAlpha=0.4;
+			ctx.fillStyle="blue";
+			ctx.font="60px 'Microsoft Yahei'";
+			ctx.fillText("中国",100,200);
+			ctx.fillText("太极",280,350);
+	};
+	</script>
+</head>
+<body>
+	<canvas width="500" height="500" id="canvas">
+		您的浏览器不支持canvas标签
+	</canvas>
+</body>
+</html>

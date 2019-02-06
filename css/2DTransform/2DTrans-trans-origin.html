@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS 2D转换</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #F7F7F7;
+		}
+
+		.box {
+			width: 155px;
+			height: 219px;
+			margin: 200px auto;
+			position: relative;
+		}
+
+		.box img {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			transition: all 5s;
+			transform-origin: right top;
+			/*transform-origin: 100% 50%;*/
+
+		}
+
+		.box:hover img:nth-child(1) {
+			transform: rotate(60deg);
+		}
+
+		.box:hover img:nth-child(2) {
+			transform: rotate(120deg);
+		}
+
+		.box:hover img:nth-child(3) {
+			transform: rotate(180deg);
+		}
+
+		.box:hover img:nth-child(4) {
+			transform: rotate(240deg);
+		}
+
+		.box:hover img:nth-child(5) {
+			transform: rotate(300deg);
+		}
+
+		.box:hover img:nth-child(6) {
+			transform: rotate(360deg);
+		}
+		/*转换原点不影响translate位移*/
+	</style>
+</head>
+<body>
+	<div class="box">
+		<img src="./images/pk1.png" alt="">
+		<img src="./images/pk1.png" alt="">
+		<img src="./images/pk1.png" alt="">
+		<img src="./images/pk1.png" alt="">
+		<img src="./images/pk1.png" alt="">
+		<img src="./images/pk1.png" alt="">
+	</div>
+</body>
+</html>

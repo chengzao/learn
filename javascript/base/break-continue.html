@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>break continue</title>
+  </head>
+  <body></body>
+  <script type="text/javascript">
+    // break
+    var a = 0;
+    while (a < 5) {
+      a++; //a = a + 1;
+      if (a == 3) {
+        break; //终止循环
+      }
+      console.log(a);
+    }
+    console.log("break is over");
+    // 1 2 break is over continue
+    var a = 0;
+    while (a < 5) {
+      a++; //a = a + 1;
+      if (a == 2) {
+        continue; //跳出本次循环,进入下一次循环
+      }
+      console.log(a);
+    }
+    console.log("continue is over");
+    // 1 3 4 5 continue is over
+
+    //label标签
+    top : for (var i = 0; i < 3; i++) {
+      for (var j = 0; j < 3; j++) {
+        if (i === 1 && j === 1)
+          break top;
+        console.log('i=' + i + ', j=' + j);
+      }
+    }
+    // i=0, j=0
+    // i=0, j=1
+    // i=0, j=2
+    // i=1, j=0
+
+     lab1: for(var i =0 ; i<5;i++){
+       if(i===3){
+         continue lab1
+       }
+       console.log('i ==> ',i)
+     }
+     // 0 1 2 4
+  </script>
+</html>

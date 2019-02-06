@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>map</title>
+</head>
+<body>
+
+</body>
+<script>
+/*
+一个Map对象由若干键值对组成
+
+1. new Map：返回一个新的、空的Map。
+2. new Map(pairs)：根据所含元素形如[key, value]的数组pairs来创建一个新的Map。这里提供的pairs可以是一个已有的Map 对象，可以是一个由二元数组组成的数组，也可以是逐个生成二元数组的一个生成器，等等。
+3. map.size：返回Map中项目的个数。
+4. map.has(key)：测试一个键名是否存在，类似key in obj。
+5. map.get(key)：返回一个键名对应的值，若键名不存在则返回undefined，类似obj[key]。
+6. map.set(key, value)：添加一对新的键值对，如果键名已存在就覆盖。
+7. map.delete(key)：按键名删除一项，类似delete obj[key]。
+8. map.clear()：清空Map。
+9. map[Symbol.iterator]()：返回遍历所有项的迭代器，每项用一个键和值组成的二元数组表示。
+map.forEach(f) 类似for (let [key, value] of map) { f(value, key, map); }
+10. map.keys()：返回遍历所有键的迭代器。
+11. map.values()：返回遍历所有值的迭代器。
+12. map.entries()：返回遍历所有项的迭代器，就像map[Symbol.iterator]()。
+*/
+'use strict';
+var map = new Map();
+map.set('name','xiaoming');
+map.set('gender','man');
+map.set('age',8);
+console.log('map.size ==> '+map.size);  // 3
+console.log('map.get ==> '+map.get('name')); // xiaoming
+console.log('map.has ==> '+map.has('name')); // true
+var newMap = map.delete('age');
+console.log('map.delete ==> ' + newMap); //true
+console.log(map);
+console.log(map.keys());
+console.log(map.values());
+console.log(map.entries());
+
+console.log('-------------------demo2---------------')
+
+let food = new Map();
+
+let fruit = {},cook = function () {},dessert = 'tea';
+food.set(fruit,'apple')
+food.set(cook,'fork')
+food.set(dessert,'meat')
+
+console.log(food);
+console.log(food.size);
+console.log(food.get(fruit));
+console.log(food.get(cook));
+food.delete(dessert);
+console.log(food.has(dessert));
+
+food.forEach((value,key)=>{
+	console.log(`${key} = ${value}`);
+})
+
+food.clear();
+console.log(food);
+</script>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        ul {
+            list-style: none
+        }
+
+        body {
+            background-color: #333;
+        }
+
+        .nav {
+            width: 800px;
+            height: 42px;
+            margin: 100px auto;
+            background: url(images/rss.png) right center no-repeat;
+            background-color: #fff;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .nav li {
+            width: 83px;
+            height: 42px;
+            text-align: center;
+            line-height: 42px;
+            float: left;
+            cursor: pointer;
+        }
+
+        .nav span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 83px;
+            height: 42px;
+            background: url(images/cloud.gif) no-repeat;
+        }
+
+        ul {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div class="nav">
+    <span id="cloud"></span>
+    <ul>
+        <li>北京</li>
+        <li>上海</li>
+        <li>广州</li>
+        <li>深圳</li>
+        <li>武汉</li>
+        <li>关于</li>
+        <li>联系</li>
+    </ul>
+</div>
+</body>
+</html>
+<script>
+    //当鼠标放到li上的时候 让筋斗云跑过来
+    var lis = document.getElementsByTagName("li");
+    var cloud = document.getElementById("cloud");
+    var lastClickPosition = 0;
+
+    for (var i = 0; i < lis.length; i++) {
+        lis[i].onmouseover = function () {
+            animate(cloud, this.offsetLeft);
+        }
+        lis[i].onmouseout = function () {
+            animate(cloud, lastClickPosition);
+        }
+        lis[i].onclick = function () {
+            lastClickPosition = this.offsetLeft;
+            //animate(cloud, lis.offsetLeft);
+        }
+    }
+
+    //封装好的缓动动画函数
+    function animate(obj, target) {
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function () {
+            var step = (target - obj.offsetLeft) / 10;
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            //缓动动画 leader = leader + (target-leader)/10
+            //动画 位置 =  位置 + 步长
+            obj.style.left = obj.offsetLeft + step + "px";
+            if (obj.offsetLeft == target) {
+                clearInterval(obj.timer);
+            }
+        }, 10)
+    }
+
+
+</script>

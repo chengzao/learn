@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>构造函数 new </title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+//instanceof 用来测试一个对象在其原型链中是否存在一个构造函数的 prototype 属性
+//object instanceof constructor
+function C(){}
+function D(){}
+
+var o = new C();
+
+// true，因为 Object.getPrototypeOf(o) === C.prototype
+o instanceof C;
+
+// false，因为 D.prototype不在o的原型链上
+o instanceof D;
+
+
+function Fubar(foo, bar) {
+if (!(this instanceof Fubar)) {
+  return new Fubar(foo, bar);
+}
+
+this._foo = foo;
+this._bar = bar;
+}
+
+Fubar(1, 2)._foo // 1
+(new Fubar(1, 2))._foo // 1
+</script>
+</html>

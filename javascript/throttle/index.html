@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>throttle 节流</title>
+  <style>
+    #container {
+      width: 100%;
+      height: 200px;
+      line-height: 200px;
+      text-align: center;
+      color: #fff;
+      background-color: #444;
+      font-size: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container"></div>
+  <button id="button">点击取消debounce</button>
+</body>
+<script>
+
+  // 原文链接：https://github.com/mqyqingfeng/Blog/issues/26
+
+  // 使用时间戳
+  // function throttle(func, wait) {
+  //   var context, args;
+  //   var previous = 0;
+
+  //   return function () {
+  //     var now = +new Date();
+  //     context = this;
+  //     args = arguments;
+  //     if (now - previous > wait) {
+  //       func.apply(context, args);
+  //       previous = now;
+  //     }
+  //   }
+  // }
+
+  // var count = 1;
+  // var container = document.getElementById('container');
+  // function getUserAction(e) {
+  //   console.log(e);
+  //   container.innerHTML = count++;
+  // };
+  // container.onmousemove = throttle(getUserAction, 500);
+
+
+  // 使用定时器
+  // function throttle(func, wait) {
+  //   var timeout;
+  //   var previous = 0;
+
+  //   return function () {
+  //     context = this;
+  //     args = arguments;
+  //     if (!timeout) {
+  //       timeout = setTimeout(function () {
+  //         timeout = null;
+  //         func.apply(context, args)
+  //       }, wait)
+  //     }
+  //   }
+  // }
+
+  // var count = 1;
+  // var container = document.getElementById('container');
+  // function getUserAction(e) {
+  //   console.log(e);
+  //   container.innerHTML = count++;
+  // };
+  // container.onmousemove = throttle(getUserAction, 500);
+
+
+
+  function throttle(func, wait, options) {
+    var timeout, context, args, result;
+    var previous = 0;
+    if (!options) options = {};
+
+    var later = function () {
+      previous = options.leading === false ? 0 : new Date().getTime();
+      timeout = null;
+      func.apply(context, args);
+      if (!timeout) context = args = null;
+    };
+
+    var throttled = function () {
+      var now = new Date().getTime();
+      if (!previous && options.leading === false) previous = now;
+      var remaining = wait - (now - previous);
+      context = this;
+      args = arguments;
+      if (remaining <= 0 || remaining > wait) {
+        if (timeout) {
+          clearTimeout(timeout);
+          timeout = null;
+        }
+        previous = now;
+        func.apply(context, args);
+        if (!timeout) context = args = null;
+      } else if (!timeout && options.trailing !== false) {
+        timeout = setTimeout(later, remaining);
+      }
+    };
+
+    throttled.cancel = function () {
+      clearTimeout(timeout);
+      previous = 0;
+      timeout = null;
+    };
+
+    return throttled;
+  }
+
+  var count = 1;
+  var container = document.getElementById('container');
+
+  function getUserAction() {
+    container.innerHTML = count++;
+  };
+
+  var setUseAction = throttle(getUserAction, 1000);
+
+  container.onmousemove = setUseAction
+
+  document.getElementById("button").addEventListener('click', function () {
+    setUseAction.cancel();
+  })
+
+</script>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>禁止复制</title>
+    <style>
+        /* css 禁止文本选择 这样不会触发js */
+
+        body {
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- lorem5 + tab -->
+    <p>Lorem ipsum dolor sit amet.</p>
+</body>
+<script>
+    // 禁止右键菜单
+    document.body.oncontextmenu = e => {
+        console.log(e, '右键');
+        return false;
+        // e.preventDefault();
+    };
+    // 禁止文字选择。
+    document.body.onselectstart = e => {
+        console.log(e, '文字选择');
+        return false;
+        // e.preventDefault();
+    };
+    // 禁止复制
+    document.body.oncopy = e => {
+        console.log(e, 'copy');
+        return false;
+        // e.preventDefault();
+    }
+    // 禁止剪切
+    document.body.oncut = e => {
+        console.log(e, 'cut');
+        return false;
+        // e.preventDefault();
+    };
+    // 禁止粘贴
+    document.body.onpaste = e => {
+        console.log(e, 'paste');
+        return false;
+        // e.preventDefault();
+    };
+</script>
+
+</html>

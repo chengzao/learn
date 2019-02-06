@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>logo标志叠加显示loading加载效果</title>
+  <style>
+    #loading {
+      width: 160px;
+      height: 120px;
+      background: url(images/logo.png) no-repeat -160px 0;
+    }
+
+    #loading2 {
+      width: 160px;
+      /*height: 120px;*/
+      background: url(images/logo.png) no-repeat 0 0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- 
+
+  setInterval
+  background
+
+ -->
+
+
+<div id="loading">
+  <div id="loading2"></div>
+</div>
+</body>
+<script>
+  // 第二种 方案  优化 清理定时器
+  var loading2 = document.getElementById('loading2');
+  var h = 0;
+  var timer = setInterval(function () {
+    h++;
+    if (h > 120) {
+      console.log('loading over');//
+      clearInterval(timer);
+      console.log('test');//清理
+    }
+    loading2.style.height = h + 'px';
+  }, 50)
+</script>
+</html>

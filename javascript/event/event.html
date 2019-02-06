@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width" />
+<title>js自定义事件</title>
+<script type="text/javascript">
+　　//创建事件
+　　var HtmlEvent;
+　　if (document.createEvent) {
+　　　　HtmlEvent = document.createEvent('HTMLEvents'); //谷歌、火狐创建新事件的写法
+　　　　HtmlEvent.initEvent("Click", false, false);
+　　}
+　　else if (document.createEventObject) {
+　　　　HtmlEvent = document.createEventObject(); //旧版本IE的创建新事件的写法
+　　}
+　　window.onload = function () {
+　　　　//监听事件与绑定处理函数
+　　　　if (document.addEventListener) {
+　　　　　　document.addEventListener('Click', function (e) {
+　　　　　　　　alert("谷歌火狐、事件被触发!"); //谷歌火狐的触发事件
+　　　　　　}, false);
+　　　　}
+　　　　else if(document.attachEvent) {
+　　　　　　document.attachEvent('ondataavailable', function () {
+　　　　　　　　alert("IE事件触发!"); }); //IE
+　　　　　　}
+　　　　}
+　　
+
+　　function fire()
+　　{
+　　　　if (document.dispatchEvent) {
+　　　　　　document.dispatchEvent(HtmlEvent);
+　　　　}
+　　　　else if (document.fireEvent) {
+　　　　　　document.fireEvent('ondataavailable', HtmlEvent);
+　　　　}
+　　}
+</script>
+</head>
+<body>
+　　<div>
+　　　　<input type="button" value="触发" onclick="fire()" />
+　　</div>
+</body>
+</html>

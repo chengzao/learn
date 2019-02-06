@@ -1,0 +1,30 @@
+@charset "UTF-8";
+body {
+  color: red;
+}
+
+.box111 {
+  width: 3.125rem;
+  height: 1px;
+}
+
+/*设计稿一般为750px*/
+/* font-size px*/
+.box {
+  width: 2.66667rem;
+  height: 300px;
+  font-size: 15px;
+  position: relative;
+  left: 20px;
+  top: 10px;
+}
+
+[data-dpr="2"] .box {
+  font-size: 30px;
+}
+
+[data-dpr="3"] .box {
+  font-size: 45px;
+}
+
+/*# sourceMappingURL=../map/test.css.map */

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取索引(闭包版)</title>
+</head>
+<body>
+<button>1</button>
+<button>2</button>
+<button>3</button>
+<button>4</button>
+<button>5</button>
+</body>
+</html>
+<script>
+    var btns = document.getElementsByTagName("button");
+    // for (var i = 0; i < btns.length; i++) {
+    //     btns[i].onclick = outerFun(i);
+    //     function outerFun(num) {
+    //         return function () {
+    //             alert(num);
+    //         }
+    //     }
+    // }
+    //
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].onclick = function (num) {
+            return function () {
+                alert(num);
+            }
+        }(i);
+    }
+
+</script>

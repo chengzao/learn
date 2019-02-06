@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <script src="https://cdn.bootcss.com/vue/2.5.9/vue.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        .river {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .stream {
+            flex: 0 0 25%;
+            display: flex;
+            flex-flow: column nowrap;
+        }
+
+        .water img {
+            width: 100%
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <ul class='river'>
+            <li class='stream' v-for='col in cols'>
+                <div class='water' v-for='(v,k) in col'>
+                    <img :src="urlPrefix + v + suffix" alt=""> </div>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            urlPrefix: 'http://www.imaoda.com/s/img/github/',
+            suffix: '.png',
+            images: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+            cols: { "0": [], "1": [], "2": [], "3": [] }
+        },
+        mounted() {
+            this.elRiver = document.querySelector('.river')
+            this.pushItem(this.images)
+        },
+        methods: {
+            calcHeight() {
+                let streams = this.elRiver.children
+                let minCol = 0
+                let minHeight = streams[0].clientHeight
+                for (let i = 1; i < streams.length; i++) {
+                    if (streams[i].clientHeight < minHeight) {
+                        minHeight = streams[i].clientHeight
+                        minCol = i
+                    }
+                }
+                return minCol
+            },
+            pushItem(arr) {
+                if (!arr.length) return
+                this.$nextTick(() => {
+                    let minCol = this.calcHeight()
+                    this.cols[minCol].push(arr.shift())
+                    this.$nextTick(() => {
+                        this.pushItem(arr)
+                    })
+                })
+            }
+        }
+    });
+</script>

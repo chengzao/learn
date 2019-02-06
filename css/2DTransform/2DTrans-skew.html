@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS 2D转换</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #F7F7F7;
+		}
+
+		.skew {
+			width: 200px;
+			height: 200px;
+			margin: 100px auto;
+			background-color: green;
+			border-width: 5px;
+			border-style: solid;
+			border-color: red pink blue yellow;
+			transition: all 5s;
+		}
+
+		.skew:hover {
+			/*只写一个参数的时候，第二个参数默认为0*/
+			/* x 轴 正值是逆时针 ， y轴正值是顺时针 */
+			transform: skew(45deg);
+		}
+
+	</style>
+</head>
+<body>
+	<div class="skew"></div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3 过渡</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #F7F7F7;
+		}
+
+		.transition {
+			width: 200px;
+			height: 200px;
+			margin: 50px auto;
+			background-color: green;
+			/*position: absolute;
+			left: 0;*/
+			/*transition: all 1s linear;*/
+			/*transition-property: left;*/
+			/*transition-duration: 2s;*/
+			/*过渡速度*/
+			/*transition-timing-function: linear;*/
+			/*设置延时*/
+			/*transition-delay: 3s;*/
+
+			transition: width 2s linear, height 2s 2s;
+		}
+
+		.transition:hover {
+			/*left: 1000px;*/
+			width: 400px;
+			height: 400px;
+		}
+	</style>
+</head>
+<body>
+	<div class="transition"></div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			// 每一个函数对象都有 apply 和 call 方法
+			// 这两个函数就是上下文调用, 会根据参数是的函数决定使用方法调用还是函数调用
+			
+			/*
+			function foo() {
+				console.log(this);
+			}
+			
+			foo(); // 函数调用
+			
+			var o = {};
+			o.fn = foo;
+			o.fn(); // 方法调用
+			*/
+			
+			// apply
+			// 函数名.apply(null)   就是使用函数调用模式来执行函数
+			// 函数名.apply(对象)	  就是使用该对象来调用该函数, 即方法模式
+			
+			
+			var num = 123;
+			// console.log(window.num);
+			
+			function foo() {
+				console.log(this.num);
+			}
+			
+			var o = {num: 456};
+			
+			
+			// 函数调用模式
+			// foo();
+			foo.apply(null);
+			
+			// 方法调用模式
+			// o.fn = foo;
+			// o.fn();
+			foo.apply(o);
+			
+			// 实际上本质就是函数在调用时, apply 方法的第一个参数就会成为函数中的 this
+			
+			
+			
+			
+			
+			
+			
+			var num = 123;
+			
+			function foo() {
+				console.log(this.num);
+			}
+			
+			var o = {num: 456};
+			
+			foo.call(null);
+			
+			foo.call(o);
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

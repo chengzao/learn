@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.minheight div{height: 5px;background-color: #f0f0f0;width: 251px;}
+		.minheight div.cur{overflow: hidden;}
+		.box{ width:400px;}
+		.box .left{ width:200px;height:100px;background:red;float:left;}
+		.box .right{ width:200px;float:right;}
+		.box .right div{width:180px;height:100px;background:blue;padding:0 15px;}
+		.box .right .cur{padding: 0 10px;}
+		.line{border: 1px solid #999;margin: 20px 0;}
+		.box2 .left{width:100px;height:100px;background:red; float:left;margin-right: -3px;}
+		.box2 .right{width:100px;height:100px;background:blue;}
+		.box3 p{width:50px;height:40px;background:red;}
+	</style>
+</head>
+<body>
+
+	<div class="minheight">
+		<h1>ie6 min-height</h1>
+		<p>未处理</p>
+		<div></div>
+		<p>使用overflow:hidden</p>
+		<div class="cur"></div>
+	</div>
+	<div class="line"></div>
+	<div class="box">
+		<h1>ie6 width padding:0 15px;</h1>
+		<div class="left"></div>
+	    <div class="right">
+	    	<div></div>
+	    </div>
+	</div>
+	<div class="box">
+		<h1>ie6 width padding:0 10px;</h1>
+		<div class="left"></div>
+	    <div class="right">
+	    	<div class="cur"></div>
+	    </div>
+	</div>
+
+	<div class="box2">
+		<h1>在IE6，7下元素要通过浮动并在同一行，就给这行元素都加浮动 3像素</h1>
+		<div class="left"></div>
+	    <div class="right"></div>
+	</div>
+
+	<div class="box3">
+		<h1>标签嵌套</h1>
+		<p>
+			<h3></h3>
+		</p>
+	</div>
+</body>
+</html>

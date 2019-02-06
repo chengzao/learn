@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>旋转变换</title>
+    <style>
+        canvas { border: 1px solid #aaaaaa; display: block; margin: 50px auto; }
+    </style>
+</head>
+<body>
+<div id="canvas-warp">
+    <canvas id="canvas">
+        你的浏览器居然不支持Canvas？！赶快换一个吧！！
+    </canvas>
+    <canvas id="canvas2">
+        你的浏览器居然不支持Canvas？！赶快换一个吧！！
+    </canvas>
+</div>
+
+<script>
+    window.onload = function(){
+        rotate();
+        rotate2();
+    };
+
+    function rotate(){
+        var canvas = document.getElementById("canvas");
+        canvas.width = 800;
+        canvas.height = 600;
+        var context = canvas.getContext("2d");
+        context.fillStyle = "#FFF";
+        context.fillRect(0,0,800,600);
+
+
+        for(var i = 0; i <= 12; i++){
+            context.save();
+            context.translate(70 + i * 50, 50 + i * 40);
+            context.fillStyle = "#00AAAA";
+            context.fillRect(0,0,20,20);
+            context.restore();
+
+            context.save();
+            context.translate(70 + i * 50, 50 + i * 40);
+            context.rotate(i * 30 * Math.PI / 180);
+            context.fillStyle = "red";
+            context.fillRect(0,0,20,20);
+            context.restore();
+        }
+    }
+
+    function rotate2(){
+        var canvas = document.getElementById("canvas2");
+        canvas.width = 800;
+        canvas.height = 600;
+        var context = canvas.getContext("2d");
+        context.fillStyle = "#FFF";
+        context.fillRect(0,0,800,600);
+
+        for(var i=1; i<=10; i++){
+            context.save();
+            context.translate(400,300);
+            context.rotate(36 * i * Math.PI / 180);
+            context.fillStyle = "rgba(255,0,0,0.25)";
+            context.fillRect(0, -200, 200, 200);
+            context.restore();
+        }
+    }
+</script>
+</body>
+</html>

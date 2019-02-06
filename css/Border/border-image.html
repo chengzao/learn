@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3边框</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #F7F7F7;
+		}
+
+		ul {
+			width: 960px;
+			margin: 40px auto;
+			list-style: none;
+			background-color: #FFF;
+		}
+
+		li {
+			padding: 15px;
+		}
+
+/*		li:nth-child(2) .border-image {
+			width: 300px;
+			height: 150px;
+			border-image-source: url(./images/border.png);
+			border-image-slice: 27 27 27 27;
+			border-image-repeat: round;
+			border-image-width: 25px;
+		}*/
+		
+		li:nth-child(2) .border-image {
+			width: 300px;
+			height: 150px;
+			border-image-source: url(./images/border.png);
+			border-image-width: 15px;
+			border-image-slice: 27 27 27 27;
+			border-image-repeat: round;
+			/*border-image-repeat: stretch;*/
+			/*border-image-repeat: repeat;*/
+		}
+
+
+		li:nth-child(3) .border-image {
+			width: 300px;
+			height: 150px;
+			border-image-source: url(./images/border1.png);
+			border-image-width: 15px;
+			border-image-slice: 35 35 27 27;
+			border-image-repeat: round;
+			/*border-image-repeat: stretch;*/
+			/*border-image-repeat: repeat;*/
+		}
+		li:nth-child(4) {
+			width: 300px;
+			height: 150px;
+			/*border-image: url(./images/border.png) 27/20px round;*/
+			/*指定图片地址*/
+			border-image-source: url(./images/border.png);
+			/*如何去裁切*/
+			border-image-slice: 27 27;
+			/*指定一个边框宽度*/
+			border-image-width: 30px;
+			/*没有height这个属性*/
+			/*border-image-height: 30px;*/
+			/*边框平铺样式*/
+			/*border-image-repeat: stretch;*/
+			/*border-image-repeat: repeat;*/
+			/*会自动调整缩放比例*/
+			border-image-repeat: stretch round;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>
+			<div class="border-image">
+				<img src="./images/border.png" alt="">
+			</div>
+		</li>
+		<li>
+			<div class="border-image"></div>
+		</li>
+		<li>
+			<div class="border-image"></div>
+		</li>
+		<li>
+			<div class="border-image"></div>
+		</li>		
+	</ul>
+</body>
+</html>

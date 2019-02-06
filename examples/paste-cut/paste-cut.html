@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>复制 粘贴</title>
+</head>
+<body>
+    <h4>复制 粘贴</h4>
+    <!-- lorem + tab -->
+    <!-- https://blog.csdn.net/zimin1985/article/details/21653161 -->
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+    <p>Lorem ipsum dolor sit.</p>
+
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+</body>
+<script>
+    //源： https://juejin.im/post/5b66993ee51d451924734c35
+
+    //获取剪贴板数据方法
+    function getClipboardText(event){
+        var clipboardData = event.clipboardData || window.clipboardData;
+        return clipboardData.getData("text");
+    };
+
+    //设置剪贴板数据
+    function setClipboardText(event, value){
+        if(event.clipboardData){
+            return event.clipboardData.setData("text/plain", value);
+        }else if(window.clipboardData){
+            return window.clipboardData.setData("text", value);
+        }
+    };
+
+    // 获取选择的文本
+    function getSelectedText() {
+        if (window.getSelection) {
+        return window.getSelection().toString();
+        } else if (document.getSelection) {
+        return document.getSelection();
+        } else if (document.selection) {
+        return document.selection.createRange().text;
+        }
+    }
+
+    document.body.oncopy = event => {
+        event.preventDefault(); // 取消默认的复制事件 
+        let textFont, copyFont = getSelectedText(); // 被复制的文字 等下插入
+        // 超过10个子
+        if (copyFont.length > 10) {
+            textFont = copyFont + '\n'
+                + '作者：chengzao\n'
+                + '链接：https://www.chenio.cn\n'
+                + '来源：掘金\n'
+                + '著作权归作者所有。';
+        } else {
+            textFont = copyFont; // 没超过十个字 则采用被复制的内容。
+        }
+        setClipboardText(event,textFont)
+    }
+
+    // 粘贴
+    document.body.onpaste = ev =>{
+        // ev.preventDefault();
+        console.log('onpaste',ev);
+    }
+
+    // 剪切
+    document.body.oncut = ev =>{
+        ev.preventDefault();
+        // console.log('oncut',ev);
+        let textFont, copyFont = getSelectedText();
+        if (copyFont.length > 10) {
+            textFont = copyFont + '\n'
+                + '作者：chengzao\n'
+                + '链接：https://www.chenio.cn\n'
+                + '来源：掘金\n'
+                + '著作权归作者所有\n'
+                + '时间：'+ new Date().toLocaleString();
+        } else {
+            textFont = copyFont; // 没超过十个字 则采用被复制的内容。
+        }
+        setClipboardText(event,textFont)
+    }
+
+</script>
+</html>

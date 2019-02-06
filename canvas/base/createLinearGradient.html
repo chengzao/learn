@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>填充线性渐变</title>
+</head>
+<body>
+<div id="canvas-warp">
+    <canvas id="canvas" style="border: 1px solid #aaaaaa; display: block; margin: 50px auto;">
+        你的浏览器居然不支持Canvas？！赶快换一个吧！！
+    </canvas>
+    <canvas id="canvas2" style="border: 1px solid #aaaaaa; display: block; margin: 50px auto;">
+        你的浏览器居然不支持Canvas？！赶快换一个吧！！
+    </canvas>
+    <canvas id="canvas3" style="border: 1px solid #aaaaaa; display: block; margin: 50px auto;">
+        你的浏览器居然不支持Canvas？！赶快换一个吧！！
+    </canvas>
+    <canvas id="canvas4" style="border: 1px solid #aaaaaa; display: block; margin: 50px auto;">
+        你的浏览器居然不支持Canvas？！赶快换一个吧！！
+    </canvas>
+</div>
+
+<script>
+    window.onload = function(){
+        createLinearGradient();
+        strokeRect();
+        fillRect();
+        createRadialGradient();
+    }
+    // context.createLinearGradient(xstart,ystart,xend,yend);
+    function createLinearGradient(){
+        var canvas = document.getElementById("canvas");
+        canvas.width = 800;
+        canvas.height = 600;
+        var context = canvas.getContext("2d");
+
+        context.rect(200,100,400,400);
+
+        //添加渐变线
+        var grd = context.createLinearGradient(200,300,600,300);
+
+        //添加颜色断点
+        grd.addColorStop(0,"black");
+        grd.addColorStop(0.5,"white");
+        grd.addColorStop(1,"black");
+
+        //应用渐变
+        context.fillStyle = grd;
+
+        context.fill();
+    }
+    function strokeRect(){
+        var canvas = document.getElementById("canvas2");
+        canvas.width = 800;
+        canvas.height = 300;
+        var context = canvas.getContext("2d");
+
+        //添加渐变线
+        var grd = context.createLinearGradient(100,300,700,300);
+
+        //添加颜色断点
+        grd.addColorStop(0,"olive");
+        grd.addColorStop(0.25,"maroon");
+        grd.addColorStop(0.5,"aqua");
+        grd.addColorStop(0.75,"fuchsia");
+        grd.addColorStop(0.25,"teal");
+
+        //应用渐变
+        context.strokeStyle = grd;
+
+        context.strokeRect(200,50,300,50);
+        context.strokeRect(200,100,150,50);
+        context.strokeRect(200,150,450,50);
+    }
+    function fillRect(){
+        var canvas = document.getElementById("canvas3");
+        canvas.width = 800;
+        canvas.height = 300;
+        var context = canvas.getContext("2d");
+
+        //添加渐变线
+        var grd = context.createLinearGradient(100,300,700,300);
+
+        //添加颜色断点
+        grd.addColorStop(0,"olive");
+        grd.addColorStop(0.25,"maroon");
+        grd.addColorStop(0.5,"aqua");
+        grd.addColorStop(0.75,"fuchsia");
+        grd.addColorStop(0.25,"teal");
+
+        //应用渐变
+        context.fillStyle = grd;
+        context.strokeStyle = grd;
+        
+
+        context.fillRect(200,50,300,50);
+        context.fillRect(200,100,150,50);
+        context.fillRect(200,150,450,50);
+
+        context.fillRect(0,250,800,25);
+    }
+    // context.createRadialGradient(x0,y0,r0,x1,y1,r1)
+    function createRadialGradient(){
+        var canvas = document.getElementById("canvas4");
+        canvas.width = 600;
+        canvas.height = 600;
+        var context = canvas.getContext("2d");
+
+        //添加渐变线
+        var grd = context.createRadialGradient(300,300,100,300,300,200);
+
+        //添加颜色断点
+        grd.addColorStop(0,"red");
+        grd.addColorStop(0.25,"maroon");
+        grd.addColorStop(0.5,"aqua");
+        grd.addColorStop(0.75,"yellow");
+        grd.addColorStop(0.25,"teal");
+
+        //应用渐变
+        context.fillStyle = grd;
+        context.strokeStyle = grd;
+        context.fillRect(100,100,400,400);
+    }
+
+</script>
+</body>
+</html>

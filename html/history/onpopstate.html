@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>onpopstate</title>
+</head>
+
+<body>
+	<input type="button" id="btn" value="看地址变没变">
+	<script>
+		// 页面第一次加载的时候，浏览器不会触发popstate事件
+		// 这个state对象也可以直接通过history对象读取
+		// var currentState = history.state;
+
+		var btn = document.getElementById('btn');
+
+		btn.onclick = function () {
+			// 新增一条记录
+			// 我们自定义的数据，只对新增的相对应的历史起作用
+			history.pushState({
+				key: 'test'
+			}, '标题变没变', '/test.html');
+		}
+
+		// 监听历史的变化？只有在点后退/前进时调用
+		window.onpopstate = function (state) {
+			console.log(state);
+
+			console.log(history);
+		}
+	</script>
+</body>
+
+</html>

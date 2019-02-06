@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HashHistory</title>
+</head>
+<body>
+    <h1>HashHistory</h1>
+    <a href="#test">click</a>
+    <div id="test">test</div>
+</body>
+<script>
+    console.log('window.location.hash : ',window.location.hash)
+    window.addEventListener("hashchange", function(res){
+        console.log('hash',res)
+    }, false)
+</script>
+</html>

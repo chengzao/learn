@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>input checkbox样式</title>
+	<style>
+		.content .label{
+			display: inline;
+			padding: .2em .6em .3em;
+			font-size: 75%;
+			line-height: 1;
+			font-weight: 700;
+			color:#fff;
+			text-align: center;
+			white-space: nowrap;
+			vertical-align: baseline;
+			border-radius: .25em;
+		}
+		.content .label {
+		  display: block;
+		  margin-bottom: 6px;
+		  line-height: 19px;
+		  font-weight: 400;
+		  font-size: 13px;
+		  color: #333;
+		  text-align: left; 
+		}
+		
+	
+		.content .checkbox{
+		  position: relative;
+		  display: block;
+		  font-weight: 400; 
+		}
+		.content .checkbox {
+		  margin-bottom: 4px;
+		  padding-left: 25px;
+		  line-height: 25px;
+		  color: #0c4757;
+		  cursor: pointer;
+		  font-size: 13px; 
+		}
+		.content .checkbox input {
+		  position: absolute;
+		  left: -9999px; 
+		}
+		.content .checkbox i {
+		  position: absolute;
+		  top: 6px;
+		  left: 0;
+		  display: block;
+		  width: 15px;
+		  height: 15px;
+		  outline: 0;
+		  border-width: 1px;
+		  border-style: solid;
+		  background: #9cd9e8; 
+		}
+
+	
+		.content .checkbox i{
+		  border-color: #47A8C0;
+		  transition: border-color .3s;
+		  -webkit-transition: border-color .3s; 
+		}
+
+		.content .checkbox input:checked + i{
+		  border-color: #47A8C0; 
+		} 
+
+		.content .checkbox input + i:after {
+		  position: absolute;
+		  opacity: 0;
+		  transition: opacity .1s;
+		  -webkit-transition: opacity .1s; 
+		}
+	
+		.content .checkbox input:checked + i:after {
+		  opacity: 1; 
+		}
+		.content .checkbox input + i:after {
+			content:'';
+			top: -3px;
+			left: 1px;
+			width: 15px;
+			height: 5px;		  	
+			border: 2px solid #fd8845;
+			border-top-color: transparent;
+			border-right-color: transparent;
+			-ms-transform: rotate(-60deg);
+			-moz-transform: rotate(-60deg);
+			-webkit-transform: rotate(-60deg);
+			transform: rotate(-45deg);
+		}		
+	</style>
+</head>
+<body>
+	
+	<div class="content">
+	  <label class="checkbox">
+	    <input type="checkbox" name="checkbox" checked="checked">
+	    <i></i>小明</label>
+	  <label class="checkbox">
+	    <input type="checkbox" name="checkbox">
+	    <i></i>小王</label>
+	  <label class="checkbox">
+	    <input type="checkbox" name="checkbox">
+	    <i></i>大王</label>	    
+	</div>
+   
+</body>
+</html>

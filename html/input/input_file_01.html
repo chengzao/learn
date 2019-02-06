@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>file样式</title>
+</head>
+<body>
+	<p>未修改: input type属性--> file</p>
+	<input type="file">
+
+	<p>修改后: input type属性--> file</p>
+	<input type="text" size="20" name="upfile" id="upfile" style="border:1px dotted #ccc">  
+	<input type="button" value="浏览" onclick="path.click()" style="border:1px solid #ccc;background:#fff">  
+	<input type="file" id="path" style="display:none" onchange="upfile.value=this.value">
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+$red: red;
+$base: 32px;
+body {
+  color: $red;
+}
+
+@function px2rem($n) {
+  @return ($n) / $base + rem;
+}
+
+.box111 {
+  width: px2rem(100px);
+  height: (100px)/ (100);
+}
+
+/*设计稿一般为750px*/
+@function px2rem($px, $base-font-size: 37.5px) {
+  @if (unitless($px)) {
+    @warn "Assuming #{$px} to be in pixels, attempting to convert it into pixels for you";
+    @return px2rem($px + 0px); // That may fail.
+  } @else if (unit($px) == rem) {
+    @return $px;
+  }
+  @return ($px / $base-font-size) * 1rem;
+}
+/* font-size px*/
+@mixin font-dpr($font-size) {
+  font-size: $font-size;
+
+  [data-dpr="2"] & {
+    font-size: $font-size * 2;
+  }
+
+  [data-dpr="3"] & {
+    font-size: $font-size * 3;
+  }
+}
+
+@mixin adjust-location($x, $y) {
+  @if unitless($x) {
+    @warn "Assuming #{$x} to be in pixels";
+    $x: 1px * $x;
+  }
+  @if unitless($y) {
+    @warn "Assuming #{$y} to be in pixels";
+    $y: 1px * $y;
+  }
+  position: relative;
+  left: $x;
+  top: $y;
+}
+
+@mixin adjust-location2($x, $y) {
+  @if unitless($x) {
+    @error "$x may not be unitless, was #{$x}.";
+  }
+  @if unitless($y) {
+    @error "$y may not be unitless, was #{$y}.";
+  }
+  position: relative;
+  left: $x;
+  top: $y;
+}
+
+.box {
+  width: px2rem(100px);
+  height: 300px;
+  @include font-dpr(15px);
+  @include adjust-location(20px, 10);
+}
+.box2 {
+  width: px2rem(100px);
+  height: 300px;
+  @include font-dpr(15px);
+  @include adjust-location2(20, 10px);
+}

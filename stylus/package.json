@@ -1,0 +1,16 @@
+{
+  "name": "stylus-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "stylus -w stylus -o css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "stylus": "^0.54.5"
+  }
+}

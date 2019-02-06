@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>简单轮播图</title>
+	<style>
+		ul,li{list-style: none;margin: 0;padding: 0;}
+    .carousel{
+    	width: 490px;
+    	height: 170px;
+    	margin: 50px auto;
+    }		
+    .inner{
+    	background-color: pink;
+    	width: 490px;
+    	height: 170px;
+    	overflow: hidden;
+    	position: relative;
+    }
+    .inner ul{
+    	width: 600%;
+    	position: absolute;
+    	top: 0;
+    	left: 0;
+    }
+    .inner li{
+    	float: left;
+    }
+		
+	</style>
+</head>
+<body>
+	<div class="carousel" id="box">
+		<div class="inner">
+			<ul>
+				<li><a href="#"><img src="./carousel01.jpg" alt=""></a></li>
+				<li><a href="#"><img src="./carousel02.jpg" alt=""></a></li>
+				<li><a href="#"><img src="./carousel03.jpg" alt=""></a></li>
+				<li><a href="#"><img src="./carousel04.jpg" alt=""></a></li>
+				<li><a href="#"><img src="./carousel05.jpg" alt=""></a></li>
+				<li><a href="#"><img src="./carousel01.jpg" alt=""></a></li>
+			</ul>
+		</div>
+	</div>
+</body>
+<script>
+  var box = document.getElementById('box');
+  var inner = box.children[0];
+  var ul = inner.children[0];
+  var imgs = ul.children;  
+  var imgW = inner.offsetWidth;
+  setInterval(function(){
+  	var ulL = ul.offsetLeft;
+  	var imgL = (imgs.length-1)*imgW;
+  	// var step = Math.ceil((ulL + imgL)/50);
+  	if(ulL > -imgL){
+  		ul.style.left = ulL - 10 + 'px';
+  	}else{
+  		ul.style.left = 0;	
+  	}
+  },100);
+</script>
+</html>

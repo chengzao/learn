@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+    <title>gitment</title>
+</head>
+
+<body>
+    <div id="comments"></div>
+</body>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var clientId = '8e20331e9b77400554a6';
+    var clientSecret = 'f8eb3774e88570bd63666c92b66f7e3df3fc30f2';
+    var myTheme = {
+        render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+
+            // your custom component
+            container.appendChild(instance.renderSomething(state, instance))
+
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container
+        },
+        renderSomething(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            if (state.user.login) {
+                container.innerText = `Hello, ${state.user.login}`
+            }
+            return container
+        }
+    }
+    var gitment = new Gitment({
+        id: 'gitment demo',
+        owner: 'chengzao',
+        repo: 'test-rep',
+        oauth: {
+            client_id: clientId,
+            client_secret: clientSecret,
+        },
+        theme: myTheme
+        // ...
+        // For more available options, check out the documentation below
+    })
+
+    gitment.render('comments')
+    // or
+    // gitment.render(document.getElementById('comments'))
+    // or
+    // document.body.appendChild(gitment.render())
+</script>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件兼容性写法</title>
+	<style>
+		#test{
+			width: 100px;
+			height: 100px;
+		}
+	</style>
+</head>
+<body>
+<div id="test">123</div>
+	<script>
+
+		//事件兼容写法
+		function Events(e) {
+			var ev = e || window.event;
+			var target = ev.target || ev.srcElement;
+			console.log(target);
+		}
+		//获取，设置样式
+		function getStyle1(obj,attr,value){
+			var obj=document.getElementById(obj);
+			if(!value){
+				 if(obj.currentStyle){
+				 		return obj.currentStyle[attr];
+				 }else{
+				 	  return window.getComputedStyle(obj , null)[attr];
+				 }
+			}else{
+				obj.style[attr]=value;
+			}
+		}
+
+		console.log(getStyle1('test','width'));
+		//添加事件
+		function AddEven(id,event,fn){
+			var obj=document.getElementById(id);
+			if (document.addEventListener) {
+				 obj.addEventListener(event, fn,false);
+			} else{
+				 obj.attachEvent('on'+event, fn);
+			}
+		}
+
+
+		//移除事件
+		function deletEven(id,event,fn){
+			var obj=document.getElementById(id);
+			if (document.removeEventListener) {
+				return obj.removeEventListener(event, fn,false);
+			} else{
+				return obj.datachEvent('on'+event, fn);
+			}
+		}
+
+
+	</script>
+
+</body>
+</html>

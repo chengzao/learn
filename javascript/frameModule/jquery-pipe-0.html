@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jquery链式</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			text-align: center;
+			border: 1px solid #000;
+		}
+        li{height: 30px; background-color: pink; list-style: none; margin-bottom: 10px;}
+        #box{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+        }
+        #box2{
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+        }
+	</style>
+</head>
+<body>
+<div id="div">点击我</div>
+
+<ul id="container">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+<a href='http://www.baidu.com' id='baidu'>baidu</a>
+<br />
+<a href='http://www.sina.com.cn'>sina</a>
+
+
+<div id="box">
+    <div id="box2"></div>
+</div>
+
+<ul id="container2">
+    <li class='now'></li>
+    <li class='now'></li>
+    <li>
+        <span class='span'></span>
+    </li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+
+</body>
+<script src="czh.js"></script>
+<script>
+
+  	// 事件捕获  事件冒泡
+
+    function fn1(){
+    	var a= document.createElement('p');
+    	a.innerHTML = 'hello';
+        czh.$id('div').appendChild(a);
+    }
+    function fn2(){
+    	var a= document.createElement('p');
+    	a.innerHTML = 'world';
+        czh.$id('div').appendChild(a);
+    }
+    // 绑定
+    czh.on('div','click',fn1);
+    czh.on('div','click',fn2);
+
+    // 解除
+    czh.un('div','click',fn2);
+
+    //
+    var container = czh.$id('container');
+    var doms = container.children;
+    for(var i = 0;i < doms.length;i++){
+        doms[i].addEventListener('click',function(e){
+            czh.getTarget(e).style.background = 'red'
+        },false)
+    }
+    var ul = czh.$id('container2');
+    ul.addEventListener('click',function(e){
+        var target = czh.getTarget(e);
+        if(target.className == 'now'){
+            target.style.background = 'red'
+        }
+        if(target.className == 'span'){
+            alert('12222')
+        }
+    },false)
+
+
+    // 阻止浏览器默认行为
+    czh.on('baidu','click',function(e){
+        console.log('444')
+        //浏览器兼容性写法
+        czh.preventDefault(e);
+    });
+
+    // 阻止冒泡
+    czh.on('box','click',function(){
+        console.log('box');
+    });
+    czh.on('box2','click',function(){
+        console.log('box2');
+        // 阻止冒泡
+        czh.stopPropagation();
+    });
+
+</script>
+</html>

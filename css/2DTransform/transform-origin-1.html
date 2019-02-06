@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #div1 {
+            position: relative;
+            height: 200px;
+            width: 200px;
+            margin: 100px;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+
+        #div2 {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: 1px solid black;
+            background-color: yellow;
+            transform-origin: 50px 0px;
+            /* transform-origin: right top; */
+            transform:  rotate(30deg);
+            opacity: .5;
+        }
+
+        .transform {
+            -moz-transform: translate(-10px, -20px) scale(0.8) rotate(45deg) translate(20px, 30px);
+            -webkit-transform: translate(-10px, -20px) scale(0.8) rotate(45deg) translate(20px, 30px);
+            transform: translate(-10px, -20px) 
+            rotate(45deg)
+            translate(20px, 30px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="div1">
+        <div id="div2">HELLO</div>
+    </div>
+    <img class="transform" src="http://image.zhangxinxu.com/image/study/s/s128/mm1.jpg" />
+</body>
+
+</html>

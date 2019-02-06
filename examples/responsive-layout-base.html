@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    /*当页面宽度 大于 960 像素的时候 页面颜色是红色
+     当页面宽度 大于 640 小于 960 页面的颜色是 绿色
+     其他情况 显示蓝色
+     */
+    changeColor();
+    window.onresize = function () {
+        changeColor();
+    }
+
+    function changeColor() {
+        if (client().width > 960) {
+            document.body.style.backgroundColor = "red";
+            document.body.innerHTML = "Computer";
+        } else if (client().width > 640) {
+            document.body.style.backgroundColor = "green";
+            document.body.innerHTML = "Tablet";
+        } else {
+            document.body.style.backgroundColor = "blue";
+            document.body.innerHTML = "Mobile";
+        }
+    }
+
+    function client() {
+        if (window.innerWidth != null) {
+            return {
+                width: window.innerWidth,
+                height: window.innerHeight
+            }
+        } else if (document.compatMode == "CSS1Compat") {
+            return {
+                width: document.documentElement.clientWidth,
+                height: document.documentElement.clientHeight
+            }
+        } else {
+            return {
+                width: document.body.clientWidth,
+                height: document.body.clientHeight
+            }
+        }
+    }
+</script>

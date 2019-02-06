@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <a onclick="stopDefault(this)" href="https://www.baidu.com" >click me</a>
+    <div id="box" style="display:none">box</div>
+</body>
+<script>
+    var arr = [1, 2, 3, 4, 5, 6, 7, 8];
+    var htm = '';
+    for (var i = 0; i < arr.length; i++) {
+        if (i % 3 == 0) {
+            var a = i / 3
+            htm += '<div class="line">';
+            for (var j = 0; j < 3; j++) {
+                var b = (j + a * 3 + 1);
+                if (b <= arr.length) {
+                    htm += '<p>' + b + '</p>';
+                } else {
+                    htm += '<p class="last">last</p>';
+                }
+            }
+            htm += '</div>';
+        }
+    }
+    console.log(htm)
+
+    function stopDefault(ev){
+        if(event.preventDefault){
+            event.preventDefault();
+        }else{
+            event.returnValue = false;
+        }
+        ev.href = 'javascript:void(0);'
+        return false;
+    }
+
+    console.log(document.querySelector("#box"));
+
+</script>
+
+</html>

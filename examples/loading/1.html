@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+       .loading{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+       }
+       .loading i{
+               width:6px;
+               height:50px;
+               margin:0 2px;
+               background:blue;
+               display:inline-block;
+               transform: scaleY(0.4);
+               animation:loop 0.8s infinite;
+               -webkit-animation:loop 0.8s infinite;
+       }
+       .loading i:nth-child(1){}
+       .loading i:nth-child(2){
+             animation-delay: 0.1s;
+       }
+       .loading i:nth-child(3){
+             animation-delay: 0.2s;
+       }
+       .loading i:nth-child(4){
+             animation-delay: 0.3s;
+       }
+       .loading i:nth-child(5){
+             animation-delay: 0.4s;
+       }
+
+       @keyframes loop{
+             0%,40%,100%{ transform: scaleY(0.4); }
+          20%{ transform: scaleY(1); }
+       }
+    </style>
+</head>
+<body>
+    <div class="loading">
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+    </div>
+</body>
+</html>

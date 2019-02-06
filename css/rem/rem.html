@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="./rem.css">
+    <title>rem布局</title>
+</head>
+
+<body>
+    <noscript>开启JavaScript，获得更好的体验</noscript>
+
+    <div class="p1">
+        宽度为屏幕宽度的50%，字体大小1.2em
+        <div class="s1">
+            字体大小1.2.em
+        </div>
+    </div>
+
+    <div class="p2">
+        宽度为屏幕宽度的40%，字体大小默认
+        <div class="s2">
+            字体大小1.2em
+        </div>
+    </div>
+</body>
+<!-- <noscript>开启JavaScript，获得更好的体验</noscript> -->
+<script>
+    var documentElement = document.documentElement;
+
+    function callback() {
+        var clientWidth = documentElement.clientWidth;
+        // 屏幕宽度大于780，不在放大
+        clientWidth = clientWidth < 780 ? clientWidth : 780;
+        documentElement.style.fontSize = clientWidth / 10 + 'px';
+    }
+
+    document.addEventListener('DOMContentLoaded', callback);
+    window.addEventListener('orientationchange' in window ? 'orientationchange' : 'resize', callback);
+</script>
+
+</html>

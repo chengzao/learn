@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<textarea id= "test"></textarea>  
+<script type="text/javascript">  
+  var test= document.getElementById("test");  
+ test.onkeydown = function(e){  
+    send(e);  
+ }  
+    function send(e){  
+    var code;  
+    if (!e) var  e = window.event;  
+    if (e.keyCode) code = e.keyCode;  
+    else if (e.which) code = e.which;  
+    if(code==13 && window.event){  
+        e.returnValue = false;  
+    }else if(code==13){  
+        e.preventDefault();  
+    }  
+  
+}  
+ </script>  
+</body>
+</html>

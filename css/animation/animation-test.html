@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			background-color: #F7F7F7;
+		}
+
+		.demo {
+			width: 200px;
+			height: 200px;
+			margin: 100px auto;
+			background-color: yellow;
+
+			/*使用一个动画序列*/
+			animation: change 2s infinite;
+		}
+		
+		/*指定一个动画集*/
+		@keyframes change {
+			0% {
+				/*width: 200px;*/
+			}
+
+			50% {
+				width: 400px;
+				height: 400px;
+			}
+
+			100% {
+				width: 350px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="demo"></div>
+</body>
+</html>

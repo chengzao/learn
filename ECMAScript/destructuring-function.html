@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>解构 函数参数</title>
+</head>
+<body>
+
+</body>
+<script>
+	'use strict';
+	//解构的属性未定义时你可以提供一个默认值
+	console.log('-----------基本用法-------------');
+	{
+		let arr =[[1,2],[2,2]].map(([a,b]) => a+b)
+		console.log(arr);
+	}
+	console.log('-----------默认值--------------');
+  {
+		function move({x = 0, y = 0} = {}) {
+		  console.log(x,y);
+		}
+
+		move({x: 3, y: 8}); // 3, 8
+		move({x: 3}); // 3, 0
+		move({}); // 0, 0
+		move(); // 0, 0
+	}
+	console.log('-----undefined就会触发函数参数的默认值--');
+	{
+		let arr = [1, undefined, 3].map((x = 'yes') => x);
+		console.log(arr);
+	}
+
+		console.log('----------交换变量的值--------');
+		{
+			let x = 1;
+			let y = 2;
+			[x,y] = [y,x]
+			console.log(x);
+			console.log(y);
+		}
+    console.log('-----------返回多个值--------------');
+    //多重返回值
+    {
+			function returnArr() {
+	      return [1, 2];
+	    }
+
+	    let [foo, bar] = returnArr();
+			console.log(foo,bar);
+		}
+
+    {
+			function returnObj() {
+	      return {
+	        foo: 'xiaoming',
+	        bar: 'laowang'
+	      }
+	    }
+	    let { foo, bar } = returnObj();
+	    console.log(foo + ' --- ' +bar)
+		}
+
+   console.log('--------函数参数的定义-------');
+	 {
+		 // 参数是一组有次序的值
+		 function f1([x, y, z]) { console.log(x,y,z);};
+		 f1([1, 2, 3]);
+
+		 // 参数是一组无次序的值
+		 function f2({x, y, z}) { console.log(x,y,z); }
+		 f2({z: 3, y: 2, x: 1});
+	 }
+   {
+		 function fn(a,b,{c,d}={}){
+	    console.log(a,b,c,d);
+	   }
+	   fn(1,2,{c:'xiao',d:'ming'});
+	 }
+		console.log('----------提取函数名------------');
+		{
+			function fn(){}
+			console.log(fn.name); // fn
+
+			let test2 = function(){}
+			console.log(test2.name); // test2
+
+			let test3 = function fn(){};
+			console.log(test3.name)  // fn
+		}
+		console.log('---------提取JSON数据----------');
+		{
+			let jsonData = {
+			  id: 42,
+			  status: "OK",
+			  data: [867, 5309]
+			};
+			let { id, status, data: number } = jsonData;
+			console.log(id, status, number);
+			// 42, "OK", [867, 5309]
+		}
+		console.log('-----------Map--------------');
+			// 遍历
+			var map = new Map();
+			map.set('name', "xiaoming");
+			map.set('age', "12");
+			for (var [key, value] of map) {
+				console.log(key + " ==>  " + value);
+			}
+			// 只遍历键
+			for (var [key] of map) {
+				console.log(key);
+			}
+			// 只遍历值
+			for (var [,value] of map) {
+				console.log(value);
+			}
+
+		console.log('---------------输入模块的指定方法--------');
+		{
+			// const { a, b } = require("source");
+		}
+
+		console.log('-------------函数参数的默认值---------');
+		{
+			let f = function (url, {
+			  async = true,
+			  beforeSend = function () {},
+			  cache = true,
+			  complete = function () {},
+			  crossDomain = false,
+			  global = true,
+			  // ... more config
+			}) {
+			  // ... do stuff
+			};
+		}
+
+</script>
+</html>

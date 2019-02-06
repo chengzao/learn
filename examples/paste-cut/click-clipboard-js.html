@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>点击复制</title>
+</head>
+<body>
+    <div id="test">This is a test!</div>
+    <button class="btn">clipboard</button>
+</body>
+<script src="https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
+<script>
+
+console.log(ClipboardJS.isSupported())
+
+var clipboard = new ClipboardJS('.btn', {
+        text: function(trigger) {
+            var html = document.getElementById('test').innerHTML;
+            // 用正则替换
+            html = html + '\nTime: ' + new Date();
+            // 返回带html格式的内容
+
+            console.log(trigger)
+
+            return html;
+        },
+        target: function(trigger) {
+            return trigger;
+        }
+    });
+
+
+document.addEventListener('keydown', function(e){
+    var code = e.keyCode || e.which;
+   console.log(code) 
+})
+
+
+</script>
+</html>

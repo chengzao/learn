@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>XMLHttpRequire</title>
+</head>
+<body>
+	<p>XMLHttpRequire</p>
+	<div id="show"></div>
+</body>
+<script>
+	var xhr = new XMLHttpRequest();
+	// 请求行
+	xhr.open('get','xhr01.php');
+	// 请求头 
+	xhr.setRequestHeader('Content-Type', 'text/html');
+	// 请求主体
+	xhr.send(null);
+	// 事件的监听，来监听状态的变化
+	xhr.onreadystatechange=function(){
+		//console.log(xhr.status);
+		if(xhr.readyState == 4 && xhr.status){
+			document.getElementById('show').innerHTML=xhr.responseText; 
+		}
+	}
+</script>
+</html>

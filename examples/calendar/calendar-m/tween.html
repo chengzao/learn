@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test</title>
+</head>
+
+<body>
+<a>sdsadasd</a>
+<input type="email" name="" value="czhlink@163.com" readonly>
+</body>
+<script src="./tween.js" charset="utf-8"></script>
+<script type="text/javascript">
+    var date1 = +new Date();
+    var begin = 0;
+    var during = 1000;
+    var end = -6;
+    var s = 0;
+    var timer = setInterval(function() {
+        var date2 = +new Date();
+        s = Math.tween.Quad.easeOut(date2 - date1, begin, end, during);
+        if (date2 > (date1 + during)) {
+            s = end;
+            clearInterval(timer);
+        }
+        console.log(s);
+    }, 30);
+</script>
+
+</html>

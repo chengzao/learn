@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" onclick="loadXMLDoc('xmlData/aaa.xml');" value="点击获取" />
+	<h1 id="demo"></h1>
+</body>
+
+<script type="text/javascript">
+
+	function loadXMLDoc(url){
+	  var xmlhttp;
+	  var xml;
+	  var txt=document.getElementById('demo');
+	  // code for IE7+, Firefox, Chrome, Opera, Safari
+	  if (window.XMLHttpRequest){
+	    xmlhttp=new XMLHttpRequest();
+	    }else{
+		    // code for IE6, IE5
+		    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	    }
+	  xmlhttp.onreadystatechange=function(){
+	    if (xmlhttp.readyState==4 && xmlhttp.status==200){
+	     		xml=xmlhttp.responseXML.documentElement.getElementsByTagName("item");
+	     		txt.innerHTML=xml[0].getElementsByTagName('p')[0].textContent;
+	      }
+	  }
+	  xmlhttp.open("GET",url,true);
+	  xmlhttp.send();
+	}
+</script>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>字符串模版</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /**
+        includes(str)   表示是否找到了参数字符串
+
+        startsWith(str) 表示参数字符串是否在源字符串的头部
+
+        endsWith(str) 	表示参数字符串是否在源字符串的尾部
+
+        repeat(num)		将原字符串重复n次并返回
+
+        padStart(num,str)  字符串补全长度的功能
+        padEnd(num,str)   字符串补全长度的功能
+
+        模板字符串``
+
+            增强版的字符串：用反引号(`)作为标识
+
+            模板字符串中所有的空格和缩进都会被保留
+
+            在模板字符串中嵌入变量：${}
+
+            模板字符串可以是原始的：String.raw`hello world\n`
+
+         */
+
+    'use strict';
+
+    let str = 'hello world';
+    console.log(str.includes('ll')); // true
+    console.log(str.startsWith('hello')); // true
+    console.log(str.endsWith('ld')); // true
+    console.log(str.repeat(2)); // hello worldhello world
+
+    '1'.padStart(10, '0') // "0000000001"
+    '12'.padStart(10, 'YYYY-MM-DD') // "YYYY-MM-12"
+    '09-12'.padStart(10, 'YYYY-MM-DD') // "YYYY-09-12"
+
+    let tmpStr = String.raw `hello world\n`;
+
+    console.log(tmpStr);
+
+
+    let foo = 'world';
+    let str2 = `
+	this is a test!
+	this is a test2!
+	hello ,  ${foo}!
+	this is a test3!
+	this is a\ntest4!
+	`;
+    console.log(str2);
+
+    // 运算
+    let x = 1;
+    let y = 2;
+
+    `${x} + ${y} = ${x + y}` // "1 + 2 = 3"
+
+    // 函数调用
+    function fn() {
+        return "Hello World";
+    }
+
+    `foo ${fn()} bar`
+    // foo Hello World bar
+
+    /**
+     * HTML 标签转义
+     * @param {Array.<DOMString>} templateData 字符串类型的tokens
+     * @param {...} ..vals 表达式占位符的运算结果tokens
+     * 
+     */
+    function SaferHTML(templateData) {
+        var s = templateData[0];
+        console.log('templateData',templateData);
+        for (var i = 1; i < arguments.length; i++) {
+            var arg = String(arguments[i]);
+            // Escape special characters in the substitution.
+            s += arg.replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;");
+            // Don't escape special characters in the template.
+            s += templateData[i];
+        }
+        return s;
+    }
+    // 调用
+    var bonk = 'aaa';
+    var html = SaferHTML `<p> ${bonk} 向你示好。</p>`;
+    console.log(html);
+</script>
+
+</html>

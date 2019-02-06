@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // https://juejin.im/post/5b2df500f265da597c772b0d
+    let obj = {
+      singer: "周杰伦"
+    };
+    let value = "青花瓷";
+    Object.defineProperty(obj, "music", {
+      // value: '七里香', // 设置属性的值 下面设置了get set函数 所以这里不能设置
+      configurable: false, // 是否可以删除属性 默认不能删除
+      // writable: true,  // 是否可以修改对象 下面设置了get set函数 所以这里不能设置
+      enumerable: true, // music是否可以被枚举 默认是不能被枚举(遍历)
+      // ☆ get,set设置时不能设置writable和value，要一对一对设置，交叉设置/同时存在 就会报错
+      get() {
+        // 获取obj.music的时候就会调用get方法
+        // let value = "强行设置get的返回值"; // 打开注释 读取属性永远都是‘强行设置get的返回值’
+        return value;
+      },
+      set(val) {
+        // 将修改的值重新赋给song
+        value = val;
+      }
+    });
+    console.log(obj.music); // 青花瓷
+    delete obj.music; // configurable设为false 删除无效
+    console.log(obj.music); // 青花瓷
+    obj.music = "听妈妈的话"; 
+    console.log(obj.music); // 听妈妈的话
+    for (let key in obj) {
+      // 默认情况下通过defineProperty定义的属性是不能被枚举(遍历)的
+      // 需要设置enumerable为true才可以 否则只能拿到singer 属性
+      console.log(key); // singer, music
+    }
+</script>
+</html>

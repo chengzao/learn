@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>字符串占位置长度</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var jmz = {};
+    jmz.GetLength = function (str) {
+        var realLength = 0,
+            len = str.length,
+            charCode = -1;
+        for (var i = 0; i < len; i++) {
+            charCode = str.charCodeAt(i);
+            if (charCode >= 0 && charCode <= 128) realLength += 1;
+            else realLength += 2;
+        }
+        return realLength;
+    };
+    console.log(jmz.GetLength('我s你。。。  s   '))
+
+
+
+    GetLength = function (str) {
+        return str.replace(/[\u0391-\uFFE5]/g, "aa").length;
+    };
+    console.log(GetLength('测试测试ceshiceshi.'));
+
+
+    var str = '我我我';
+    var bytesCount = 0;
+    for (var i = 0; i < str.length; i++)
+    {
+        var c = str.charAt(i);
+        if (/^[\u0000-\u00ff]$/.test(c)) //匹配双字节
+        {
+            bytesCount += 1;
+        }
+        else
+        {
+            bytesCount += 2;
+        }
+    }
+    console.log(bytesCount);
+
+    new function (s) {
+        if (!arguments.length || !s) {
+            return null;
+        }
+        if ('' == s) {
+            return 0;
+        }
+
+        var str = 0;
+
+        for (var i = 0; i < s.length; i++) {
+            if (s.charCodeAt(i) > 255) {
+                str += 2;
+            } else {
+                str += 1;
+            }
+
+        }
+        console.log(str);
+    }('hello world')
+
+
+    var a = "I love my Country!我爱你中国！";
+
+    //需求：弹出O
+    //console.log(a.charAt(3));
+
+    //需求：一个字符串占多少个字母位置。
+    //步骤:(如果编码值在0-127之间就属于英文)
+    //1.获取所有位置上的字符
+    //2.判断是中文还是英文
+    //3.如果是中文，占两个字符。
+
+    var len = 0;
+
+    //1.获取所有位置上的字符
+    for (var i = 0; i < a.length; i++) {
+
+        //a这个字符串的i索引位置的字符的编码值。
+        var val = a.charCodeAt(i);
+
+        //2.判断是中文还是英文
+        if (val > 127 || val < 0) {
+            len += 2;
+        } else {
+            len += 1;
+        }
+        //3.如果是中文，占两个字符。
+    }
+
+    console.log(len);
+</script>
+
+</html>

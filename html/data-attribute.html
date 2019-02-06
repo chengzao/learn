@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义属性</title>
+</head>
+<body>
+
+	<div id="data"  test1='test1' data-name='data-test'></div>
+
+	<script>
+	  //getAttribute(name),setAttribute(name, value),$().attr();
+	var data=document.getElementById('data');
+
+	console.log(data.getAttribute('data-name'));//data-test
+	console.log(data.getAttribute('test1'));//test1
+
+	</script>
+</body>
+</html>

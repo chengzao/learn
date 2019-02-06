@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.code ol{background-color: #f0f0f0;width: 500px;}
+		.code ol li{background-color: rgba(204, 204, 204, 0.29);}
+		.code ol,.code li{margin: 0;}
+	</style>
+</head>
+<body>
+	<code class="box code">
+		<style>
+			body{
+				background-color: #f0f0f0;	
+			}
+		</style>
+		<div>
+			<p>222</p>
+			<h3>333</h3>
+			<ul>
+				<li>22</li>
+				<li>22</li>
+				<li>
+					<ol>
+						<li>44</li>
+						<li>
+							<ul>
+								<li>3232</li>
+							</ul>
+						</li>
+					</ol>
+				</li>
+				<li>22</li>
+			</ul>
+		</div>
+		<div>sd</div>
+
+		<script>
+			function ff(){
+				console.log(111)
+			}
+		</script>
+	</code>
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
+<script>
+	var arr = $(".box").html().split("\n"); //获取换行后的数组
+	var txt = '<ol>';
+	$.each(arr,function(i,item){
+		var itemL = item.length;//总长度
+		var item = $.trim(item);
+		iteml = item.length;//去掉空格后的长度
+		itemSpaceL = itemL - iteml; // 空格的长度
+		if(i>1&&i<arr.length-2){
+			var space='';
+			for(i=0;i<itemSpaceL-2;i++){
+				space += '&nbsp;';
+			}
+			item = space + item;
+		}
+		var str1= item.replace(/</g,'&lt;');  //替换<
+		var res = str1.replace(/>/g,'&gt;');  //替换>
+		var line = res;
+	    if(line !== "" && i != arr.length-1){
+	    	txt += "<li>"+ line +"</li>";
+	    }
+	});
+	txt += '</ol>'
+	$(".code").html(txt);
+</script>
+</html>

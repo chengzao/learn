@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>柯里化</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var concat2WordsCurrying = function (a) {
+        console.log('this is ==> ',a);
+        return function (b = "d") {
+            console.log('this is ==> ',b);
+            return a + b;
+        };
+    };
+    console.log(concat2WordsCurrying("foo ")); // [Function]
+    console.log(concat2WordsCurrying("foo ")("bar ")); // foo bar baza
+
+    // var compose = function(f, g) {
+    //     return function(x) {
+    //         return f(g(x));
+    //     };
+    // };
+    var compose = (f, g) => (x => f(g(x)));
+
+    // 1.0   
+    var add1 = x => x + 1;
+    var mul5 = x => x * 5;
+
+    console.log(compose(mul5, add1)(2))
+
+    // 2.0    
+    var toUpperCase = word => word.toUpperCase();
+    var split = x => (str => str.split(x));
+
+    var f = compose(split(' '), toUpperCase);
+
+    console.log(f("abcd efgh"));
+
+    // 3.0        
+    var head = function(x) { return x[0]; };
+    var reverse = reduce(function(acc, x){ return [x].concat(acc); }, []);
+    var last = compose(head, reverse);
+
+    console.log(last(['jumpkick', 'roundhouse', 'uppercut']));
+
+
+    //
+    var currying = function (fn) {
+        var args = [].slice.call(arguments, 1);
+        return function () {
+            var newArgs = args.concat([].slice.call(arguments));
+            console.log(newArgs)
+            return fn.apply(null, newArgs);
+        };
+    };
+
+    // 
+    var test = currying(function () {
+        var args = [].slice.call(arguments);
+        console.log('args ==> ',args)
+        console.log(args.join(";"));
+      
+    }, "main");
+
+    test("a", "b", "c", "d");
+
+    test("aaa");
+
+
+    var currying = function (fn) {
+        var _args = [];
+        return function a() {
+            if (arguments.length === 0) {
+                return fn.apply(this, _args);
+            }
+            Array.prototype.push.apply(_args, [].slice.call(arguments));
+            
+            return a;
+        }
+    };
+
+    var multi = function () {
+        var total = 0;
+        for (var i = 0, c; c = arguments[i++];) {
+            total += c;
+        }
+        return total;
+    };
+
+    var sum = currying(multi);
+
+    sum(100, 200)(300);
+    sum(400);
+    console.log(sum()); // 1000  （空白调用时才真正计算）
+
+</script>
+
+</html>

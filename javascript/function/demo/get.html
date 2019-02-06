@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			// 如何调用
+			// 标志性的特征就是 new
+			
+			
+			// 1, new 创建对象
+			// {}
+			// 2, 调用构造器, 将刚创建的对象引用交给 构造器的 this
+			// this = {}
+			// 3, 依次执行构造器中的代码, 给 this 添加成员
+			// this.xxx = xxx;
+			
+			
+			/*
+			// 
+			function Foo() {
+				this.name = "张三";
+				this.age = 19;
+				this.gender = "男";
+				// console.log(this);
+			}
+			
+			var o1 = new Foo();
+			
+			
+			// 等价于
+			function Fn(obj) {
+				obj.name = "张三";
+				obj.age = 19;
+				obj.gender = "男";
+			}
+			var o2 = {};
+			Fn(o2);
+			
+			*/
+			
+			
+			// 构造器与其他调用方式不同的地方就是 return
+			// 构造器模式更改了 return 的功能
+			
+			// 如果构造函数中 有 return 语句, ruturn 的是基本类型, 那么久忽略该语句
+			// 如果 return 语句后加的是 对象类型那么久返回该对象, 原来创建的对象就忽略(闭包)
+			
+			/*
+			function Foo() {
+				this.name = "张师傅";
+				
+				return [1,2,3];
+			}
+			
+			var o = new Foo();
+			*/
+			
+			
+			
+			// 思考, 对象是否可以存在私有数据???
+			var o = {name:"jim"};
+			
+			function Person(name, age, gender) {
+				
+				return {
+					get name () {
+						return name;
+					},
+					get age () {
+						return age;
+					},
+					get gender () {
+						return gender;
+					}
+				};
+			}
+			
+			var p = new Person("jim", 19, "男");
+			p.name1 = "tom";
+			console.log(p.name);  // p.get_name()
+			console.log(p.age);
+			console.log(p.gender);
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>闭包</title>
+		<script>
+			// 闭包: 要解决如何访问函数内的数据
+
+			// 语法模型
+			function foo1() {
+				var num = 123;
+				return function () {
+					return num;
+				}
+			}
+			/*
+			function foo2() { // 不是闭包操作
+				var num = 123;
+				return num;
+			}
+			*/
+
+
+
+			function foo3() {
+				var n1 = 123;
+				var n2 = 456;
+				return {
+					get_N1: function() {
+						return n1;
+					},
+					set_N1: function (value) {
+						n1 = value;
+					},
+					// getter 与 setter
+					get n2 () {
+						return n2;
+					},
+					set n2 (v) {
+						n2 = v;
+					}
+				}
+			}
+
+			var o = foo3();
+			console.log(o.get); // undefined
+			console.log(o.n2);
+			o.n2 = 789;
+			console.log(o.n2);
+
+
+
+
+
+
+
+			// 引用类型与值类型(*****)
+			//
+//			function Foo() {
+//				var o = {name:"jim"};
+//				return {
+//					a: o,
+//					set_a: function (v) {
+//						o.name = v;
+//					}
+//				};
+//			}
+
+
+			function Foo() {
+				var o = 123;
+				return {
+					a: o,
+					set_a: function (v) {
+						o = v;
+					}
+				};
+			}
+
+			var obj = Foo();
+			obj.a
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

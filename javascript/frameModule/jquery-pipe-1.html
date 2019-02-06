@@ -1,0 +1,77 @@
+<html>
+<head>
+  <title>jquery链式</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <style>
+    #ok{
+      width: 100px;
+      height: 110px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+
+<div id="ok">asdlf</div>
+
+</body>
+</html>
+<script type="text/javascript">
+(function (w) {
+  function CZH(str) {
+    this.el = str;
+  }
+
+  CZH.prototype = {
+    extend:function (tag,source) {
+      for(var i in source){
+        tag[i]=source[i];
+      }
+      return tag;
+    },
+    css : function(key, value) {
+      this.el.style[key] = value;
+      return this;
+    },
+    hide:function() {
+      this.el.style["display"] = "none";
+      console.log('hide')
+      return this;
+    },
+    show:function() {
+      this.el.style["display"] = "block";
+      console.log('show')
+      return this;
+    }
+  }
+
+  var $$ = function(str) {
+      if(typeof(str) == 'string'){
+            var el = document.getElementById(str);
+            var Jq = new CZH(el);
+            return Jq;
+      }else{
+        window.onload = str;
+      }
+  }
+
+  w.$$ = w._test_ = $$;
+
+})(window);
+
+  $$("ok").hide().show();
+
+  $$(function(){
+    console.log('this is a function');
+  });
+
+
+  (function($){
+    $.sayHello=function(name){
+      console.log('hello world ! '+name);
+    }
+
+  })($$);
+
+  $$.sayHello('xiaowang');
+</script>

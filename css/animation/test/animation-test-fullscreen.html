@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3 动画</title>
+	<style>
+		html, body {
+			height: 100%;
+		}
+
+		body {
+			margin: 0;
+			padding: 0;
+			position: relative;
+		}
+
+		ul {
+			padding: 0;
+			margin: 0;
+		}
+
+		.img-box {
+			padding: 0;
+			margin: 0;
+			height: 100%;
+			position: relative;
+		}
+
+		.img-box li {
+			width: 100%;
+			height: 100%;
+			background-size: cover;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+
+		.img-box li:nth-child(1) {
+			background-image: url(./images/bg1.jpg);
+			z-index: 3;
+		}
+
+		.img-box li:nth-child(2) {
+			background-image: url(./images/bg2.jpg);
+			z-index: 2;
+		}
+
+		.img-box li:nth-child(3) {
+			background-image: url(./images/bg3.jpg);
+			z-index: 1;
+		}
+
+		.handle {
+			position: absolute;
+			bottom: 80px;
+			z-index: 10;
+			width: 100%;
+			height: 100px;
+			text-align: center;
+		}
+
+		.handle li {
+			display: inline-block;
+			width: 100px;
+			height: 100px;
+			line-height: 100px;
+			margin: 0 10px;
+			background-color: pink;
+			border-radius: 50px;
+		}
+
+		.handle a {
+			display: inline-block;
+			width: 100%;
+			height: 100%;
+			text-decoration: none;
+			font-size: 24px;
+			color: #444;
+		}
+
+		/*目标选择器*/
+		#img1:target {
+			z-index: 3;
+			animation: slideleft 1s linear;
+		}
+
+		#img2:target {
+			z-index: 3;
+		}
+
+		#img3:target {
+			z-index: 3;
+		}
+
+		/*第一屏*/
+		@keyframes slideleft {
+			from {
+				transform: translate(-100%);
+			}
+
+			to {
+				transform: translate(0);
+			}
+		}
+	</style>
+</head>
+<body>
+	<ul class="handle">
+		<li>
+			<a href="#img1">1</a>
+		</li>
+		<li>
+			<a href="#img2">2</a>
+		</li>
+		<li>
+			<a href="#img3">3</a>
+		</li>
+	</ul>
+	<ul class="img-box">
+		<li id="img1"></li>
+		<li id="img2"></li>
+		<li id="img3"></li>
+	</ul>
+</body>
+</html>

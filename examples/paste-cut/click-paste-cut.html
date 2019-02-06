@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>点击复制</title>
+</head>
+
+<body>
+    <h4>点击复制</h4>
+
+    <p id="text_element">Lorem, ipsum dolor.</p>
+
+    <button onclick="copyContent('text_element')">
+        Copy to clipboard
+    </button>
+    <br/><br/><input type="text" placeholder="Paste here for checking" />
+</body>
+<script>
+    function copyContent(elementId) {
+
+        // 动态创建 input 元素
+        var aux = document.createElement("input");
+
+        var val = document.getElementById(elementId).innerHTML  + 'THIS IS COPY!'
+
+        // 获得需要复制的内容
+        aux.setAttribute("value", val);
+
+        // 添加到 DOM 元素中
+        document.body.appendChild(aux);
+
+        // 执行选中
+        // 注意: 只有 input 和 textarea 可以执行 select() 方法.
+        aux.select();
+
+        // 获得选中的内容
+        var content = window.getSelection().toString();
+        console.log(content);
+        // 执行复制命令
+        document.execCommand("copy");
+
+        // 将 input 元素移除
+        document.body.removeChild(aux);
+
+    }
+</script>
+
+</html>

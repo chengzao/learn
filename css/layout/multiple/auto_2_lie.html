@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>两列不定宽 一列自适应</title>
+    <style>
+        .left,
+        .center {
+            float: left;
+            margin-right: 20px;
+        }
+
+        .right {
+            overflow: hidden;
+        }
+
+        .left p,
+        .center p {
+            width: 100px;
+        }
+
+        .p {
+            background-color: palegoldenrod;
+        }
+
+        .l {
+            background-color: palegreen;
+        }
+
+        .r {
+            background-color: paleturquoise;
+        }
+        .c{
+            background-color: orchid;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent p">
+        <div class="left l">
+            <p>left</p>
+        </div>
+        <div class="center c">
+            <p>center</p>
+        </div>
+        <div class="right r">
+            <p>right</p>
+            <p>right</p>
+        </div>
+    </div>
+</body>
+
+</html>

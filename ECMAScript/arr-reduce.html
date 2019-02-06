@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Array reduce</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var arr = [1,2,3,4,1,3];
+    arr.reduce(function(pre,cur,curIndex,array){
+        var _log = {
+            pre,cur,curIndex,array    
+        };
+        
+        // console.log(_log);
+        return pre+cur;
+    })
+
+    arr.reduce(function(pre,cur,curIndex,array){
+        var _log = {
+            pre,cur,curIndex,array    
+        };
+        // console.log(_log);
+    },100)
+
+
+    arr.map(function(cur,index,array){
+        var _log = {
+            cur,index,array
+        };
+        // console.log(_log);
+    })
+
+    //arr.map(function callback(currentValue, index, array) { // Return element for new_array }[, thisArg])
+
+    arr.map(function(cur,index,array){
+        var _log = {
+            cur,index,array,'ary':this.ary
+        };
+        // console.log(_log);
+    },{'ary':233})
+
+    // 反转
+    // console.log(arr.reverse())
+
+
+
+    //arr.some(callback[, thisArg])
+    arr = [2,1,5,7,9,1];
+    // var _count = 1;
+    var isTrue = arr.some(function(cur,idx,array){
+        var _log = {
+            cur,idx,array,'max':this.max
+        };  
+        // console.log(_log);
+        // console.log(_count)
+        // _count++;
+        return cur >= this.max;
+    },{'max':4})
+    console.log(isTrue)
+
+
+    // entries() 方法返回一个新的Array Iterator对象，该对象包含数组中每个索引的键/值对
+    // keys() 方法返回一个新的Array迭代器，它包含数组中每个索引的键
+    arr = ["a", "b", "c"];
+    var iterator = arr.keys();
+    console.log(iterator.next());
+
+
+    arr = ["a", , "c"];
+    var sparseKeys = Object.keys(arr);
+    var denseKeys = [...arr.keys()];
+    console.log(sparseKeys); // ['0', '2']
+    console.log(denseKeys);  // [0, 1, 2]
+
+    // filter
+    function isBigEnough(element) {
+        return element >= this.max;
+    }
+    var filtered = [12, 5, 8, 130, 44].filter(isBigEnough,{'max':14});
+    console.log(filtered)
+</script>   
+</html>

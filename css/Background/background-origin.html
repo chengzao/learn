@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>背景-原点</title>
+	<style>
+		div {
+			width: 200px;
+			height: 200px;
+			padding: 50px;
+			margin: 100px auto;
+			border: 5px dashed red;
+			background-color: yellow;
+			background-image: url(images/bg.jpg);
+			background-repeat: no-repeat;
+			background-position: 40px 40px;
+			/*所谓的背景原点其实调整的是背景图片位置一个参照点*/
+			/*是以边框的外侧为参照*/
+			/*background-origin: border-box;*/
+			/*是以内边距的外侧为参照*/
+			/*background-origin: padding-box;*/
+			/*是以内边距的外侧为参照*/
+			background-origin: content-box;
+		}
+
+		/*origin 有原点的意思*/
+	</style>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+        select {
+            opacity: 0.5;
+        }
+        ul {
+            width: 8em;
+            line-height: 2em;
+        }
+
+        li {
+            display: list-item;
+            width: 100%;
+            height: 2em;
+            border:1px solid #ccc;
+            border-top-width: 0;
+            text-indent: 1em;
+            background-color: #f90;
+        }
+        li:first-child {
+            border-top-width: 1px;
+        }
+
+        li.unselected {
+            display: none;
+            background-color: #fff;
+        }
+        ul#selectUl:hover li.unselected {
+            background-color: #fff;
+        }
+        ul#selectUl:hover li,
+        ul#selectUl:hover li.unselected {
+            display: list-item;
+        }
+        ul#selectUl:hover li {
+            background-color: #fc0;
+        }
+        ul#selectUl li:hover,
+        ul#selectUl li.unselected:hover {
+            background-color: #f90;
+        }
+	</style>
+</head>
+<body>
+<select name="size">
+    <option value="small">Small</option>
+    <option value="medium">Medium</option>
+    <option value="large">Large</option>
+</select>
+
+<ul id="selectUl">
+    <li>small</li>
+    <li>medium</li>
+    <li>large</li>
+</ul>
+
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
+<script>
+$('#selectUl li:not(":first")').addClass('unselected');
+$('#selectUl').hover(
+    function(){
+        $(this).find('li').click(
+            function(){
+                $('.unselected').removeClass('unselected');
+                $(this).siblings('li').addClass('unselected');
+                var index = $(this).index();
+                $('select[name=size]')
+                    .find('option:eq(' + index + ')')
+                    .attr('selected',true);
+            });
+    },
+    function(){
+    });
+         
+</script>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>a rel</title>
+</head>
+
+<body>
+    <a target="_blank" href="http://www.b.com/other/b_rel.html">bbbb</a>
+    <a target="_blank" href="http://www.b.com/other/b_rel.html" rel="noopener noreferrer nofollow">bbbb2</a>
+</body>
+<script>
+    "use strict";
+
+    function openUrl(url) {
+        var newTab = window.open();
+        console.log(newTab)
+        newTab.opener = null;
+        newTab.location = url;
+    }
+    openUrl();
+</script>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>generator</title>
+</head>
+<body>
+    
+</body>
+<script type="text/javascript">
+    function * coffeeMachineGenerator (beans) {
+  do {
+    yield cookCoffee()
+  } while (--beans)
+
+  // 煮咖啡
+  function cookCoffee () {
+    console.log('cooking')
+
+    return 'Here you are'
+  }
+}
+
+// 往咖啡机放咖啡豆
+let coffeeMachine = coffeeMachineGenerator(10)
+
+// 我想喝咖啡了
+coffeeMachine.next()
+
+// 我在3秒后还会喝咖啡
+setTimeout(() => {
+  coffeeMachine.next()
+}, 3 * 1e3)
+
+function * generator () {
+  yield 1
+  yield 2
+  return 3
+}
+// return不参与迭代
+for (let item of generator()) {
+  console.log(item)
+}
+
+function * gen1 () {
+  yield 1
+  yield* gen2()
+  yield 5
+}
+
+function * gen2 () {
+  yield 2
+  yield 3
+  yield 4
+  return 'won\'t be iterate'
+}
+
+for (let value of gen1()) {
+  console.log(value)
+}
+
+
+function * randomGenerator (...randoms) {
+  let len = randoms.length
+  while (true) {
+    yield randoms[Math.floor(Math.random() * len)]
+  }
+}
+
+const randomeGen = randomGenerator(1, 2, 3, 4)
+
+console.log(randomeGen.next().value )// 返回一个随机数
+</script>
+</html>

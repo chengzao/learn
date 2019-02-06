@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/almanac.css">
+    <title>日历</title>
+</head>
+
+<body>
+    <p class="solarlunar"></p>
+    <p id="calendar11"></p>
+    <table id="calendar"></table>
+    <p id='calendar21'></p>
+    <table id="calendar2"></table>
+
+
+
+    <div class="control-bar">
+        <div class="control-module year-control">
+            <a class="prev" action="prev" href="javascript:;"></a>
+            <div class="control">
+                <i class="trigger"></i>
+                <div val="2015" class="field year">2015</div>
+            </div>
+            <a class="next" action="next" href="javascript:;"></a>
+            <ul class="list year-list hidden">
+                <li val='2017'>2017</li>
+                <li val='2018'>2018</li>
+                <li val='2018'>2018</li>
+                <li val='2018'>2018</li>
+                <li val='2018'>2018</li>
+                <li val='2018'>2018</li>
+                <li val='2018'>2018</li>
+                <li val='2018'>2018</li>
+                <li val='2018'>2018</li>
+                <li val='2018'>2018</li>
+            </ul>
+        </div>
+        <div class="control-module month-control">
+            <a class="prev" action="prev" href="javascript:;"></a>
+            <div class="control">
+                <i class="trigger"></i>
+                <div val="7" class="field month">7</div>
+            </div>
+            <a class="next" action="next" href="javascript:;"></a>
+            <ul class="list month-list hidden">
+                <li val='1'>1</li>
+                <li val='2'>2</li>
+                <li val='3'>3</li>
+                <li val='4'>4</li>
+                <li val='5'>5</li>
+                <li val='6'>6</li>
+                <li val='7'>7</li>
+                <li val='8'>8</li>
+                <li val='9'>9</li>
+                <li val='10'>10</li>
+                <li val='11'>11</li>
+                <li val='12'>12</li>
+            </ul>
+        </div>
+        <div class="btn-today">返回今天</div>
+    </div>
+
+    <table class="table" style="margin-top:50px;"></table>
+
+    <form id="myForm">  
+        <fieldset>  
+          <legend>Creating Date and Time Controls</legend>  
+          <p>  
+            <label> Choose a date from the  
+              <input type="date" />  
+            </label>  
+          </p>  
+          Date Picker control:  
+          <p>  
+            <label>Select a time:  
+              <input type="time" />  
+            </label>  
+          </p>  
+          <p>  
+            <label>Select a date and a time:  
+              <input type="datetime" />  
+            </label>  
+          </p>  
+          <p>  
+            <label>Select a month:  
+              <input type="month" />  
+            </label>  
+          </p>  
+          <p>  
+            <label>Select a week:  
+              <input type="week" />  
+            </label>  
+          </p>  
+        </fieldset>  
+      </form>  
+      
+      </div>
+
+
+
+      <h3 class="click">click</h3>
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
+<script src="./calendar0.js"></script>
+<script type="text/javascript">
+    $(function() {
+        var lunar = calendar.solar2lunar();
+        $('.solarlunar').html('阳历：' + lunar.cYear + '年' + lunar.cMonth + '月' + lunar.cDay + '日（' + lunar.astro + '）<br />农历：' + lunar.lYear + '年' + lunar.IMonthCn + lunar.IDayCn + '，' + lunar.gzYear + '年' + lunar.gzMonth + '月' + lunar.gzDay + '日（' + lunar.Animal + '年）');
+    });
+
+    console.log(calendar.solar2lunar(2017, 11, 01));
+    console.log(calendar.lYearDays(1939))
+    var sum = 0;
+    for (var i = 1900; i < 1939; i++) {
+        // console.log(i, calendar.lYearDays(i));
+        sum += calendar.lYearDays(i);
+    }
+    console.log(sum)
+
+
+    $(function() {
+        var str = '<thead><tr>'
+        var arr = [
+            '日',
+            '一',
+            '二',
+            '三',
+            '四',
+            '五',
+            '六'
+        ]
+        for (var i = 0; i < 7; i++) {
+            str += '<th>' + arr[i] + '</th>'
+        }
+        str += '</tr></thead>'
+        str += '<tbody>'
+        for (var k = 0; k < 6; k++) {
+            str += '<tr>';
+            for (var i = 1; i < 8; i++) {
+                str += '<td></td>';
+            }
+            str += '</tr>';
+        }
+        str += '</tbody>';
+        $('#calendar2').html(str);
+
+        var tds = $('#calendar2 td');
+        var nWeek = calendar.lunar2solar(2017, 7, 1)
+            // console.log(nWeek);
+        var dayNum = calendar.monthDays(2017, 7);
+        // console.log(dayNum);
+        // console.log(calendar.toChinaDay(dayNum));
+
+        var jlArr = []; //存储阴历天数
+        for (var kk = 1; kk < dayNum + 1; kk++) {
+            jlArr.push(calendar.toChinaDay(kk))
+        }
+
+        // console.log(jlArr);
+        var num = 0 // 格子数量
+        for (var m = nWeek.nWeek; m < dayNum, num < dayNum; m++, num++) {
+            tds[m].innerHTML = jlArr[num];
+        }
+    });
+
+
+
+    var str = '';
+    var num = 1;
+    for (var i = 0; i < 6; i++) {
+        str += '<tr>'
+        for (var k = 0; k < 7; k++) {
+            str += '<td>' + (num++) + '</td>'
+        }
+        str += '</tr>'
+    }
+    var con = document.getElementsByClassName('table')[0]
+    con.innerHTML = str;
+</script>
+
+</html>

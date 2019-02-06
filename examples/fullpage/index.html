@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        ul, ol {
+            list-style: none
+        }
+
+        ul, body, html {
+            width: 100%;
+            height: 100%;
+        }
+
+        ul li {
+            width: 100%;
+            height: 100%;
+        }
+
+        ol {
+            position: fixed;
+            top: 50px;
+            left: 50px;
+        }
+
+        ol li {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #000;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+<ol>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ol>
+</body>
+</html>
+<script src="tools.js" type="text/javascript"></script>
+<script>
+    //获取元素
+    //console.log(document.getElementsByTagName("ul")[0]);
+    var ul = document.getElementsByTagName("ul")[0];
+    var ol = document.getElementsByTagName("ol")[0];
+    var ulLis = ul.children;
+    var olLis = ol.children;
+    var leader = 0;
+    var timer = null;
+
+    //循环遍历数组 给ul和ol 添加颜色
+    var arr = ["red", "orange", "yellow", "green", "blue"];
+    for (var i = 0; i < arr.length; i++) {
+        ulLis[i].style.backgroundColor = arr[i];
+        olLis[i].style.backgroundColor = arr[i];
+    }
+
+    window.onscroll = function () {
+        leader = scroll().top;
+        console.log(leader);
+    }
+
+    //点击olLis窗体跑到对应的ulLis的位置
+    for (var j = 0; j < olLis.length; j++) {
+        olLis[j].index = j;
+        olLis[j].onclick = function () {
+            //this.index是当前点击的olLis的索引
+            //通过this.index就能够找到对应的ulLis距离target
+            var suoyin = this.index;
+            var target = ulLis[suoyin].offsetTop;
+            //console.log('target:'+target);
+            // 清理定时器
+            clearInterval(timer);
+            timer = setInterval(function () {
+                //让窗体跑到对应的ulLis的距离target
+                //target  和 当前点击的olLis的索引有关 通过索引找到对应的ulLis
+                //根据索引去找
+                var step = (target - leader) / 10;
+                //判断方向
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                //动画方式
+                leader = leader + step;
+                //console.log('leader:'+leader);
+                window.scrollTo(0, leader);
+                // 如果leader到达ulLis距离顶部的距离target，则清理定时器
+                if (leader == target) {
+                    clearInterval(timer);
+                }
+            }, 30)
+        }
+    }
+</script>

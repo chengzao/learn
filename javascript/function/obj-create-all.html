@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>对象的创建方式小结</title>
+		<script>
+			// 附加属性
+			var p = new Object();
+			p.name = "jim";
+			p.age = 19;
+			p.gender = "男";
+			p.sayHello = function () {
+				console.log("hahha");
+			};
+
+
+			// 构造方法的模式
+			function Person(name, age, gender) {
+				this.name = name;
+				// ...
+				this.sayHello = function () {};
+			}
+
+
+			// 使用原型创建对象
+			function Person() {}
+			Person.prototype.sayHello = function() {};
+			// ...
+
+
+
+			// 工厂方法
+			// 根据需要将对象创建出来, 以供我使用
+			// 一般的命名为 create...
+			/*
+			function createPerson(name, age, gender) {
+				var temp = {};
+				temp.name = name;
+				temp.age = age;
+				temp.gender = gender;
+				temp.sayHello = function () {};
+				return temp;
+			}
+
+			function createPerson(name, age, gender) {
+				return {
+					name: name,
+					age: age,
+					gender: gender,
+					sayHello: function () {}
+				};
+			}
+			*/
+
+
+
+			// 寄生模式
+			// 就是 new 一下, 但是返回新的对象
+			/*
+			function Person(name, age, gender) {
+				return {
+					name: name,
+					age: age,
+					gender: gender,
+					sayHello: function () {}
+				};
+			}
+			var p = new Person("tom", 18, "女");
+
+
+			function create(o) {
+				function F() {}
+				F.prototype = o;
+				var f = new F();
+				return f;
+			}
+
+			// new
+			//
+			var p = new create({score:100});
+			*/
+
+
+
+			// copy 创建
+//			var o = {name:"jim"};
+
+//			var obj = o;
+//			console.log(o.name);
+//			console.log(obj.name);
+//			o.name = "tom";
+//			console.log(o.name);
+//			console.log(obj.name);
+
+			var o = {name:"jim"};
+
+			Object.prototype.shadowCopy = function () {
+				var o = {};
+				for (var k in this) {
+					o[k] = this[k];
+				}
+				return o;
+			}
+
+			var obj = o.shadowCopy();
+
+
+			console.log(o.name);
+			console.log(obj.name);
+			o.name = "tom";
+			console.log(o.name);
+			console.log(obj.name);
+
+
+
+
+
+
+
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

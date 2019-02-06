@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>click parse self</title>
+</head>
+
+<body>
+    <button id="copy">点击复制自己</button>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script>
+    var aEle = document.querySelector('#copy');
+    aEle.addEventListener('click', function () {
+        var range = document.createRange();
+        // 选中需要复制的节点
+        range.selectNode(aEle);
+
+        // 执行选中元素
+        window.getSelection().addRange(range);
+        
+        var content = window.getSelection().toString();
+        console.log(content);
+
+        // 执行 copy 操作
+        var successful = document.execCommand('copy');
+        try {
+            var msg = successful ? 'successful' : 'unsuccessful';
+            console.log('copy is' + msg);
+        } catch (err) {
+            console.log('Oops, unable to copy');
+        }
+
+     
+
+        // 移除选中的元素
+        window.getSelection().removeAllRanges();
+    }, false);
+</script>
+
+</html>

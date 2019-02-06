@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>构造函数</title>
+		<script>
+			// 商品为例
+			/*
+			var goods = {
+				name: "javascript 权威指南",
+				img: "1213223235.jpg",
+				price: 100,
+				desc: "最牛的js书...."
+			};
+
+			// 构造方法
+			// 复用对象
+			function Goods(name, img, price, desc) {
+				this.name= "javascript 权威指南",
+				this.img= "1213223235.jpg",
+				this.price= 100,
+				this.desc= "最牛的js书...."
+			}
+
+			var goods = new Goods("js", "111.jpg", 100, "号");
+			*/
+
+
+			// 注意:
+			//	1> 构造方法名一般大写, 区分 (骆驼命名规则, 帕斯卡命名规则)
+			//	2> 构造函数常常有称为 "类名"
+			// 	3> 构造函数的执行顺序(*****)
+			//  4> 对象的类型
+			//  5> 原型: 凡是函数, 定义以后就都有一个属性叫 prototype
+			//			该属性常常称为函数的原型属性
+
+			//			由该函数创建的对象, 继承自 该 属性表示的对象. 常常将
+			//			该对象称为 创建出来的对象的 原型对象
+			//			function Person () {}
+			//			将 Person.prototype 称为 函数 Person 的原型属性
+			//			将 person.prototype 称为 new Person() 的原型对象
+
+			//  6> 一个对象包含两个部分: 一个是构造函数中定义的数据与方法, 一部分是原型中的属性与方法
+			// 		js 中推荐使用 字面量, 但是 对象的字面量无法复用
+			//		因此将其结合, 定义构造函数, 设置其原型属性
+
+			/*
+			function Foo() {
+
+			}
+			Foo.prototype = {
+				constructor: Foo,
+				// ...
+				// ...
+			};
+			//		原型对象中一般只有方法, 或常量. 而将对象独有的数据属性放在构造方法中
+			//  7> 如果构造函数没有参数, 圆括号可以省略
+			var i1 = new Foo();
+			var i2 = new Foo;
+
+			//  上面的代码 对象结尾处有一个 逗号
+			//  {name:"", age:1, gender:""}
+			*/
+
+
+			// 对象属性的访问
+			// 1> 属性
+			// 2> 关联数组(***)
+
+			var o = {name: "张三"};
+
+			console.log(o.name); // 属性
+			console.log(o["name"]); // 关联数组
+
+			console.log(o[name]);// 方括号内必须是一个字符串, 或结果必须是一个字符串
+
+
+			// 可以遍历对象
+			for (var k in o) {
+				// o.k => o."name"
+				console.log(k +", "+ typeof k );
+			}
+
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

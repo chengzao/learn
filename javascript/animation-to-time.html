@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>动画时间进程</title>
+    <style>
+        div {
+            height: 300px;
+            width: 300px;
+            background: #CCC;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <button id='mybtn'>确认</button>
+    <div id='div'></div>
+</body>
+
+</html>
+<script>
+    //点击一个按钮：将一个div 在5秒钟以内从0移动到500
+    var dom = document.getElementById('div');
+    var btn = document.getElementById('mybtn');
+    /*setInterval*/
+    var timer;
+    var tween; //动画时间进程
+    var now0 = +new Date(); //动画运行之前计算一下时间
+    var duration = 5000; //规定的物体只能运行5秒
+    var juli = 500; //总距离
+    var start = 0; //起始位置
+    btn.onclick = function () {
+        timer = setInterval(move, 20);
+    }
+
+    //将计算动画时间写成一个函数
+    function getTween(now0, now1, duration) {
+        var tween = (now1 - now0) / duration;
+        return tween;
+    }
+
+
+    function move() {
+        var now1 = +new Date();
+        /*下一次循环已经走过的时间*/
+        /*var pass = now1 - now0;*/
+        /*动画时间进程公式：已经过去的时间/总时间*/
+        /* tween = pass/duration;*/
+        tween = getTween(now0, now1, duration)
+        /*当大于500 停止*/
+        if (dom.offsetLeft > 500) {
+            clearInterval(timer);
+        } else {
+            /*运动*/
+            /*下次循环物体该走到哪个位置：起始位置+ 总距离x动画时间进程*/
+            dom.style.left = start + juli * tween + 'px';
+        }
+    }
+</script>

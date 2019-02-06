@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>标签可编辑</title>
+</head>
+<body>
+	<div>normal text</div>
+	<div contenteditable="true">contentEditable</div>
+	<div ondblclick="this.contentEditable=true">dblclick contentEditable</div>
+	<div id="designMode">
+		<p>designMode</p>
+		<h2>this is a test!!</h2>
+	</div>
+</body>
+<script>
+	//document.designMode 控制整个文档是否可编辑。
+	var editDesignMode = document.querySelector('#designMode');
+	editDesignMode.ondblclick = function () {
+		document.designMode = 'on';		
+	}
+</script>
+</html>

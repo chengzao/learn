@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>函数调用this</title>
+</head>
+<body>
+<script>
+  //在浏览器的JavaScript 里，这个全局对象是window 对象。
+  var a='abc';
+  var fn1=function () {
+    return this.a;
+  }
+  console.log(fn1());//abc
+
+
+  var fn2={
+    a:'bcd',
+    b:function () {
+      return this.a;
+    }
+  }
+ var f=fn2.b(); // 执行函数
+ var g=fn2.b;  // 函数体
+ console.log(g());//abc
+  console.log(f);//bcd
+</script>
+</body>
+</html>

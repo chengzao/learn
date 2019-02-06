@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>socket</title>
+</head>
+<body>
+    <p>socket</p>
+    <p> cd ../jsonp2 && node socket.js </p>
+</body>
+<script>
+    let socket = new WebSocket('ws://127.0.0.1:3000');
+    // 给服务器发消息
+    socket.onopen = function() {
+        socket.send('hello server')
+    }
+    // 接收服务器回复的消息
+    socket.onmessage = function(e) {
+        console.log(e.data)
+    }
+</script>
+</html>

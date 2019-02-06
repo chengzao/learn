@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .content{
+      width: 200px;
+      height: 300px;
+      float: right;
+      background: red;
+    }
+    .nav{
+      width: 200px;
+      height: 200px;
+      float: left;
+    }
+    .a1{color: red;}
+  </style>
+</head>
+<body>
+<div>
+  <!--参考文档：http://bbs.csdn.net/topics/390875860-->
+  <!--参考文档：http://www.360doc.com/content/14/1217/17/3561520_433672298.shtml-->
+  <div class="header"></div>
+  <div class="nav">
+    <ul>
+      <li><a href="test01.html">233</a></li>
+      <li><a href="test00.html">234</a></li>
+    </ul>
+  </div>
+  <div class="content">6666</div>
+</div>
+</body>
+<script src="js/jquery.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $(".nav a").each(function () {
+      $this=$(this);
+      if($this[0].href==String(window.location)){
+        $this.addClass("a1");
+      }
+    });
+  });
+</script>
+</html>

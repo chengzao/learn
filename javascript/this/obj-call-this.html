@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>对象调用this</title>
+</head>
+<body>
+
+<script>
+
+  //1.
+  var a='test';
+  var obj={
+    a:'objName',
+    fn:function () {
+      console.log(this.a);
+    }
+  }
+  obj.fn();//objName
+  //2.
+  var price=0.9;
+  var Price = {};
+  Price.vipPrice = function() {
+    this.discount = 0.6;
+    this.getPrice = function(price) {
+      console.log(this.discount);//0.6
+      return price * this.discount;
+      /*赠送其他一些代码*/
+    }
+  }
+  var vip =new Price.vipPrice();
+  console.log(vip.getPrice(100));
+
+
+</script>
+</body>
+</html>

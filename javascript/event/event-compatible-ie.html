@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>ie兼容性写法</title>
+	</head>
+	<body>
+		<script>
+			var ev = ev || window.event
+			var clientWidth = document.documentElement.clientWidth || document.body.clientWidth
+			var target = ev.srcElement || ev.target
+
+			//canceBubble()只支持IE,return false,stopPropagation()
+			obj = {
+				stopPropagation: function(event) {
+					if (event.stopPropagation) {
+						event.stopPropagation();
+					} else {
+						event.cancelBubble = true;
+					},
+				addHandler：function(element, type, handler) {
+						if (element.addEventListener) { //检测是否为DOM2级方法
+							element.addEventListener(type, handler, false);
+						} else if (element.attachEvent) { //检测是否为IE级方法
+							element.attachEvent("on" + type, handler);
+						} else { //检测是否为DOM0级方法
+							element["on" + type] = handler;
+						}
+					},
+
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#main{
+			width: 600px;
+	height: 400px;
+	}
+
+	</style>
+</head>
+<body>
+<div id="main"></div>
+	<script src="js/echarts.min.js"></script>
+	<script src="js/china.js"></script>
+	<script>
+			var myChart=echarts.init(document.getElementById("main"));
+/*			function fetchData(cb) {
+			    // 通过 setTimeout 模拟异步加载
+			    setTimeout(function () {
+			        cb({
+			            categories: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"],
+			            data: [5, 20, 36, 10, 10, 20]
+			        });
+			    }, 3000);
+			}
+
+		// 初始 option
+		option = {
+		    title: {
+		        text: '异步数据加载示例'
+		    },
+		    tooltip: {},
+		    legend: {
+		        data:['销量']
+		    },
+		    xAxis: {
+		        data: []
+		    },
+		    yAxis: {},
+		    series: [{
+		        name: '销量',
+		        type: 'bar',
+		        data: []
+		    }]
+		};
+
+		myChart.showLoading();
+
+		fetchData(function (data) {
+		    myChart.hideLoading();
+		    myChart.setOption({
+		        xAxis: {
+		            data: data.categories
+		        },
+		        series: [{
+		            // 根据名字对应到相应的系列
+		            name: '销量',
+		            data: data.data
+		        }]
+		    });
+		});
+*/
+
+var geoCoordMap = {
+    "海门":[121.15,31.89],
+    "鄂尔多斯":[109.781327,39.608266],
+    "招远":[120.38,37.35],
+    "舟山":[122.207216,29.985295],
+    "齐齐哈尔":[123.97,47.33],
+    "盐城":[120.13,33.38],
+    "赤峰":[118.87,42.28],
+    "青岛":[120.33,36.07],
+    "乳山":[121.52,36.89],
+    "金昌":[102.188043,38.520089]
+
+};
+
+var convertData = function (data) {
+    var res = [];
+    for (var i = 0; i < data.length; i++) {
+        var geoCoord = geoCoordMap[data[i].name];
+        if (geoCoord) {
+            res.push(geoCoord.concat(data[i].value));
+        }
+    }
+    return res;
+};
+
+option = {
+    title: {
+        text: '全国主要城市空气质量',
+/*        subtext: 'data from PM25.in',
+        sublink: 'http://www.pm25.in',*/
+        left: 'center',
+        textStyle: {
+            color: '#fff'
+        }
+    },
+    backgroundColor: '#404a59',
+    visualMap: {
+        min: 0,
+        max: 500,
+        splitNumber: 5,
+        inRange: {
+            color: ['#d94e5d','#eac736','#50a3ba'].reverse()
+        },
+        textStyle: {
+            color: '#fff'
+        }
+    },
+    geo: {
+        map: 'china',
+        label: {
+            emphasis: {
+                show: false
+            }
+        },
+        roam: true,
+        itemStyle: {
+            normal: {
+                areaColor: '#323c48',
+                borderColor: '#111'
+            },
+            emphasis: {
+                areaColor: '#2a333d'
+            }
+        }
+    },
+    series: [{
+        type: 'heatmap',
+        coordinateSystem: 'geo',
+        data: convertData([
+            {name: "海门", value: 29},
+            {name: "鄂尔多斯", value: 132},
+            {name: "招远", value: 122},
+            {name: "舟山", value: 212},
+            {name: "齐齐哈尔", value: 314},
+            {name: "盐城", value: 15},
+            {name: "赤峰", value: 426},
+            {name: "青岛", value: 218},
+            {name: "乳山", value: 218},
+            {name: "金昌", value: 119}
+        ])
+    }]
+};
+
+			myChart.setOption(option);
+	</script>
+</body>
+</html>

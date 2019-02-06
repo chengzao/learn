@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script type="text/javascript">
+    // function h(nodeName, attributes, ...args) {
+    //     let children = args.length ? [].concat(...args) : null;
+    //     return { nodeName, attributes, children };
+    // }
+
+ 
+
+
+    function render(vnode) {
+        if (vnode.split) return document.createTextNode(vnode);
+
+        let n = document.createElement(vnode.nodeName);
+
+        let a = vnode.attributes || {};
+
+        Object.keys(a).forEach(k => n.setAttribute(k, a[k]));
+
+        (vnode.children || []).forEach(c => n.appendChild(render(c)));
+
+        return n;
+    }
+
+    // JSX -> VDOM:
+    // let vdom = < div id = "foo" > Hello! < /div>;
+
+
+    let vdom = {
+        nodeName: "div",
+        attributes: {
+            "id": "foo"
+        },
+        children: ["Hello!"]
+    }
+
+    // VDOM -> DOM:
+    let dom = render(vdom);
+
+    // add the tree to <body>:
+    document.body.appendChild(dom);
+</script>
+
+</html>

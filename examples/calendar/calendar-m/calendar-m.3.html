@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>calendar</title>
+    <style>
+        input {
+            width: 90%;
+            height: 40px;
+            font-size: 18px;
+            border: 1px solid #19b5ee;
+            border-radius: 5px;
+            margin: 20px 5% 0 5%;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="datetime" value="选择日期" readonly id="cal">
+    <div style="display: none" id="timeData_0">
+        <input type="text" name="orderkind_0" value="1">
+        <input type="text" name="orderyear_0" value="2017">
+        <input type="text" name="ordermonth_0" value="10">
+        <input type="text" name="orderday_0" value="7">
+    </div>
+
+    <input type="datetime" value="选择日期" readonly id="cal2">
+    <div style="display: none" id="timeData_1">
+        <input type="text" name="orderkind_0" value="1">
+        <input type="text" name="orderyear_0" value="2017">
+        <input type="text" name="ordermonth_0" value="10">
+        <input type="text" name="orderday_0" value="7">
+    </div>
+
+
+</body>
+<script>
+    var calendarObj = {
+        // 插入script标签
+        createSrc: function(url) {
+            var scrEle = document.createElement("script");
+            scrEle.src = url;
+            document.body.appendChild(scrEle);
+        },
+        // 插入样式表
+        createStyle: function(url) {
+            var scrEle = document.createElement("link");
+            scrEle.rel = "stylesheet";
+            scrEle.href = url;
+            document.head.appendChild(scrEle);
+        },
+        on: function(url) {
+            if (!url) {
+                return false;
+            }
+            if (window.addEventListener)
+                window.addEventListener("load", this.createSrc.bind(this, url), false);
+            else if (window.attachEvent)
+                window.attachEvent("onload", this.createSrc.bind(this, url));
+            else window.onload = this.createSrc.bind(this, url);
+        }
+    }
+    calendarObj.createStyle('calendar-m.3.css');
+    calendarObj.on("calendar-m.3.js");
+</script>
+
+</html>

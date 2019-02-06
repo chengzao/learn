@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>动画距离进程</title>
+    <style>
+        div {
+            height: 300px;
+            width: 300px;
+            background: #CCC;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <button id='mybtn'>确认</button>
+    <div id='div'></div>
+</body>
+
+</html>
+<script>
+    //点击一个按钮：将一个div 从0移动到500
+    var dom = document.getElementById('div');
+    var btn = document.getElementById('mybtn');
+
+    /*setInterval*/
+    var timer;
+    btn.onclick = function () {
+        timer = setInterval(move, 20);
+    }
+
+    function move() {
+        /*当大于500 停止*/
+        if (dom.offsetLeft > 500) {
+            clearInterval(timer);
+        } else {
+            /*运动*/
+            dom.style.left = dom.offsetLeft + 10 + 'px';
+        }
+    }
+</script>

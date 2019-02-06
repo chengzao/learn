@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box {
+            width: 400px;
+            margin: 50px auto;
+        }
+
+        .box div {
+            margin: 10px 0;
+        }
+
+        button {
+            margin: 5px;
+        }
+    </style>
+
+
+
+
+
+
+</head>
+
+<body>
+    <div class="box">
+        <div id="box1">What's your name?</div>
+        <div id="box2">请叫我超哥！</div>
+
+        <div>
+            <button>concat</button>
+            <span></span>
+        </div>
+        <div>
+            <button>slice(2,3)</button>
+            <span></span>
+        </div>
+        <div>
+            <button>slice(0)</button>
+            <span></span>
+        </div>
+        <div>
+            <button>slice(-3)</button>
+            <span></span>
+        </div>
+        <div>
+            <button>slice(8,3)</button>
+            <span></span>
+        </div>
+        <div>
+            <button>substr(2,3)</button>
+            <span></span>
+        </div>
+        <div>
+            <button>substr(2)</button>
+            <span></span>
+        </div>
+        <div>
+            <button>substr(3,2)</button>
+            <span></span>
+        </div>
+        <div>
+            <button>substring(3,2)</button>
+            <span></span>
+        </div>
+        <div>
+            <button>substring(-1)</button>
+            <span></span>
+        </div>
+        <div>
+            <button>substring(0,5)</button>
+            <span></span>
+        </div>
+        <div>
+            <button>substring(3)</button>
+            <span></span>
+        </div>
+    </div>
+
+
+
+</body>
+
+
+<script>
+    window.onload = function () {
+        var btnArr = document.getElementsByTagName("button");
+        var box1 = document.getElementById("box1").innerHTML;
+        var box2 = document.getElementById("box2").innerHTML;
+
+        function fn(btn, txt) {
+            btn.onclick = function fn() {
+                this.nextSibling.innerHTML = txt;
+            }
+        }
+
+
+        fn(btnArr[0], box1.concat(box2));
+        fn(btnArr[1], box1.slice(2, 3));
+        fn(btnArr[2], box1.slice(0));
+        fn(btnArr[3], box1.slice(-3));
+        fn(btnArr[4], box1.slice(8, 3));
+        fn(btnArr[5], box1.substr(2, 3));
+        fn(btnArr[6], box1.substr(2));
+        fn(btnArr[7], box1.substr(3, 2));
+        fn(btnArr[8], box1.substring(3, 2));
+        fn(btnArr[9], box1.substring(-1));
+        fn(btnArr[10], box1.substring(0, 5));
+        fn(btnArr[11], box1.substring(3));
+
+
+    }
+</script>
+
+</html>

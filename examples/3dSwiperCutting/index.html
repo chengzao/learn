@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3 3D切割轮播图</title>
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+	<div class="view">
+		<ul>
+			<li>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</li>
+			<li>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</li>
+			<li>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</li>
+			<li>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</li>
+			<li>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</li>
+		</ul>
+		<a href="javascript:;" class="prev">&lt;</a>
+		<a href="javascript:;" class="next">&gt;</a>
+	</div>
+	<script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script>
+		// 全局索引
+		var current = 0;
+
+		// 上一张
+		$('.prev').on('click', function () {
+
+			current++;
+
+			$('li').each(function (key) {
+
+				$(this).css({
+					'transform': 'rotateX(' + current * 90 + 'deg)',
+					'transition-delay': key * 0.25 + 's'
+				});
+			});
+		});
+
+		// 下一张
+		$('.next').on('click', function () {
+
+			current--;
+
+			$('li').each(function (key) {
+
+				$(this).css({
+					'transform': 'rotateX(' + current * 90 + 'deg)',
+					'transition-delay': key * 0.25 + 's'
+				});
+			});
+		});
+	</script>
+</body>
+</html>

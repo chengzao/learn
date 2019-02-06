@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>property</title>
+</head>
+<body>
+    <input id="uid" type="checkbox"  value="1">
+
+
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
+<script type="text/javascript">
+// 当前jQuery版本为1.11.1
+var uid = document.getElementById("uid");
+var $uid = $(uid);
+
+document.writeln( $uid.attr("checked") ); // checked
+document.writeln( $uid.prop("checked") ); // true
+
+// 取消复选框uid的选中(将其设为false即可)
+// 相当于 uid.checked = false;
+$uid.prop("checked", false);
+
+// attr()获取的是初始状态的值，即使取消了选中，也不会改变
+document.writeln( $uid.attr("checked") ); // checked
+// prop()获取的值已经发生变化
+document.writeln( $uid.prop("checked") ); // false
+</script>
+</html>

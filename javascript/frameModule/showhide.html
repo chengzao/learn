@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>show hide</title>
+    <style>
+        div{
+            height: 50px;
+            width: 500px;
+            background: red;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class='mydiv'></div>
+<div class='mydiv'></div>
+<div class='mydiv'></div>
+<div class='mydiv'></div>
+<div class='mydiv'></div>
+<button id='show'>显示</button>
+<button id='hide'>隐藏</button>
+</body>
+</html>
+<script src='czh.js'></script>
+<script>
+    czh.on('show','click',function(){
+        czh.show('.mydiv');
+
+    })
+    czh.on('hide','click',function(){
+        czh.hide('.mydiv');
+
+    })
+    function hide(context){
+        var doms = czh.$all(context);
+        for(var i = 0;i<doms.length;i++){
+            doms[i].style.display = 'none';
+        }
+    }
+    function show(context){
+        var doms = czh.$all(context);
+        for(var i = 0;i<doms.length;i++){
+            doms[i].style.display = 'block';
+        }
+    }
+    function hide(context){
+        czh.$css(context,'display','none');
+    }
+    function show(context){
+        czh.$css(context,'display','block');
+    }
+</script>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>hasOwnProperty and isPrototypeOf</title>
+</head>
+<body>
+    <h4>hasOwnProperty and isPrototypeOf diff</h4>
+</body>
+<script>
+    // 原文地址： https://www.cnblogs.com/SourceKing/p/5757659.html
+
+    // hasOwnProperty()方法用来判断某个对象是否含有指定的自身属性
+
+    const log = console.log.bind(console);    
+
+    {
+       // 判断对象是否含有特定的自身属性
+       const obj = new Object();
+       obj.proto = 'Hello';
+       function delProto(){
+           obj.newProto = 'hasOwnProperty';
+           delete obj.proto; // 删除属性
+       } 
+       log(obj.hasOwnProperty('proto'));  //true
+       delProto(); // 执行删除属性方法
+       log(obj.hasOwnProperty('proto')) // false
+       log(obj.hasOwnProperty('newProto')) // true
+    }
+    {
+        // 自身属性和继承属性区别
+        const obj = new Object();
+        obj.proto = 'Hello';
+        log(obj.hasOwnProperty('proto')); // true
+        log(obj.hasOwnProperty('toString')); // false : 继承自Object原型上的方法
+        log(obj.hasOwnProperty('hasOwnProperty')); // false : 继承自Object原型上的方法
+    }
+    {
+        // 修改hasOwnProperty的指向
+        const obj = {'name':"xiaoming"};
+        function Person(){
+            this.age = 12;
+        }
+        Person.prototype = obj;
+        let p = new Person();
+        log(p.hasOwnProperty('age')) // true
+        
+        log(p.name)  // xiaoming
+
+        log(p.hasOwnProperty('name')) // false
+    }
+    {
+        // 使用hasOwnproperty遍历一个对象的自身的属性
+        let o = {'gender':"boy"};
+        function Person(){
+            this.name = "xiaoming";
+            this.age = 12;
+        }
+        Person.prototype = o;
+        let p = new Person();
+
+        // for in 会遍历出对象继承中的可枚举属性
+        for(let k in p){
+            if(p.hasOwnProperty(k)){
+                log('自身的属性:',k);  // name , age
+            }else{
+                log('继承的属性:',k); // gender
+            }
+        }
+    }
+
+    {
+        // hasOwnProperty方法可以被覆盖
+        var o = {
+            "name":"Hello",
+            hasOwnProperty (){
+                return false;
+            }
+        }
+        // 对象自身定义的方法会覆盖Object
+        log(o.hasOwnProperty('name')); // false
+
+        // 解决方式，利用call , apply , bind 等方法
+        log(Object.hasOwnProperty.call(o,'name')); // true
+        log(Object.prototype.hasOwnProperty.call(o,'name')); // true
+        log(Object.prototype.hasOwnProperty.apply(o,['name'])); // true
+        // bind 不会自执行, 需要手动调用
+        log(Object.prototype.hasOwnProperty.bind(o,'name')()); // true
+    }
+    
+    // isPrototypeOf()方法测试一个对象是否存在另一个对象的原型链上
+    {
+        // 检测一个对象是否存在另一个对象的原型上
+        let o = {};
+        function Person(){}
+        let p1 = new Person();
+        Person.prototype = o;
+        let p2 = new Person();
+
+        // 检测 对象 o 是否在 p1 , p2 的原型上    
+        log(o.isPrototypeOf(p1)) // false
+        log(o.isPrototypeOf(p2)) // true
+    }
+
+    {
+        // 检测一个对象是否存在另一个对象的原型链上
+        let o = {};
+        
+        function Animal(){}
+
+        function Person(){}
+        let p1 = new Person();
+        Person.prototype = o;
+        let p2 = new Person();
+
+        // 检测 对象 o 是否在 p1 , p2 的原型上    
+        log(o.isPrototypeOf(p1)) // false
+        log(o.isPrototypeOf(p2)) // true
+
+        // p1的原型链结构是 p1=> Person.prototype => Object.prototype=>null
+        // p2的原型链结构是 p2=> o => Object.prototype => null
+        // p1和p2都拥有Object.prototype所以他们都在Object.Prototype的原型链上
+        log(Object.prototype.isPrototypeOf(p1)) // true
+        log(Object.prototype.isPrototypeOf(p2)) // true
+    }    
+
+
+</script>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input id="haorooms_btn" type="button" value="图片显示">
+	<div id="haorooms_div"></div>
+</body>
+<script>
+/*
+图片编码的数据一般以如下开头:
+	data:image/gif;base64,base64编码的gif图片数据 
+	data:image/png;base64,base64编码的png图片数据 
+	data:image/jpeg;base64,base64编码的jpeg图片数据 
+	data:image/x-icon;base64,base64编码的icon图片数据 
+*/
+  function saveImg( key ){
+    var img = new Image,
+    canvas = document.createElement("canvas"),
+    ctx = canvas.getContext("2d"),
+    src = "a.jpg"; // insert image url here
+
+    img.crossOrigin = "Anonymous";
+
+    img.onload = function() {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage( img, 0, 0 );
+        localStorage.setItem( key, canvas.toDataURL("image/png") );
+    }
+    img.src = src;
+    // make sure the load event fires for cached images too
+    if ( img.complete || img.complete === undefined ) {
+        img.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+        img.src = src;
+    }
+  }
+  function get(div,key){//读取get(容器,图片)
+    var srcStr = localStorage.getItem(key);
+    var imgObj = document.createElement('img');
+    imgObj.src = srcStr;
+    div.appendChild(imgObj);
+  }
+	window.onload = function(){
+    saveImg("savedImageData");
+    var haoroomsbtn = document.getElementById('haorooms_btn');
+    var oDiv = document.getElementById('haorooms_div');
+    haoroomsbtn.onclick = function(){
+        get(oDiv,"savedImageData");
+    }
+	} 	
+</script>
+</html>

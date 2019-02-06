@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>class</title>
+    <style>
+       #mydiv div{
+            height: 50px;
+            width: 400px;
+            margin: 10px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id='mydiv'>
+    <div class='mydiv'></div>
+    <div class='mydiv'></div>
+    <div class='mydiv'></div>
+    <div class='mydiv'></div>
+    <div class='mydiv'></div>
+    <div class='mydiv'></div>
+    <div class='mydiv'></div>
+    <div class='mydiv'></div>
+</div>
+</body>
+</html>
+<script src='czh.js'></script>
+<script>
+    var divs =  document.getElementsByClassName('mydiv');
+
+   var dv = czh.$id('mydiv',dv);
+   var divs =  czh.$class('mydiv',dv);
+    for(var i=0;i<divs.length;i++){
+        divs[i].onclick =function(){
+            this.style.background = 'blue';
+        }
+    }
+
+
+    function $class(ele){
+    	var arr =[];
+    	var doms= document.getElementsByTagName('*');
+    	var len = doms.length;
+    	for(var i = 0;i<len;i++){
+    		if(doms[i].className === ele){
+    			arr.push(doms[i]);
+    		}
+    	}
+    	return arr;
+    }
+
+    function $class2(ele,id){
+    	var dom = czh.$id(id);
+    	var arr =[];
+    	var doms= dom.getElementsByTagName('*');
+    	var len = doms.length;
+    	for(var i = 0;i<len;i++){
+    		if(doms[i].className === ele){
+    			arr.push(doms[i]);
+    		}
+    	}
+    	return arr;
+    }
+
+
+
+    function $class3(ele,id){
+    	var dom;
+    	if(czh.isString(id)){
+    		dom =czh.$id(id); 
+    	}else{
+    		dom = id;
+    	}
+    	var arr =[];
+    	var doms= dom.getElementsByTagName('*');
+    	var len = doms.length;
+    	for(var i = 0;i<len;i++){
+    		if(doms[i].className === ele){
+    			arr.push(doms[i]);
+    		}
+    	}
+    	return arr;
+    }
+
+    function $class4(ele,id){
+    	var dom;
+    	if(id){
+	    	if(czh.isString(id)){
+	    		dom =czh.$id(id); 
+	    	}else{
+	    		dom = id;
+	    	}
+    	}else{
+    		dom = document;
+    	}
+    	var arr =[];
+    	var doms= dom.getElementsByTagName('*');
+    	var len = doms.length;
+    	for(var i = 0;i<len;i++){
+    		if(doms[i].className === ele){
+    			arr.push(doms[i]);
+    		}
+    	}
+    	return arr;
+    }
+
+    function $class5(ele,id){
+
+    	var doms = getContext(id);
+
+    	var eles =  getClass(doms,ele);
+
+    	return eles;
+
+    	function getContext(ele){
+	    	var dom;
+	    	if(id){
+		    	if(czh.isString(id)){
+		    		dom =czh.$id(id); 
+		    	}else{
+		    		dom = id;
+		    	}
+	    	}else{
+	    		dom = document;
+	    	}
+	    	return dom;
+    	}
+
+    	function getClass(context,ele){
+    		var arr =[];
+	    	var doms= context.getElementsByTagName('*');
+	    	var len = doms.length;
+	    	for(var i = 0;i<len;i++){
+	    		if(doms[i].className === ele){
+	    			arr.push(doms[i]);
+	    		}
+	    	}
+	    	return arr;
+    	}
+    }
+
+</script>

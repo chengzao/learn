@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script src="sea/sea.js"></script>
+<script>
+
+seajs.config({
+	base:'./js',
+	alias : {
+		m3 : 'module3.js'
+	}
+});
+
+seajs.use('m3',function(ex){
+	console.log(ex.num);
+});
+
+</script>
+</head>
+
+<body>
+</body>
+</html>

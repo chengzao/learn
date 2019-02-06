@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多行字居中</title>
+	<style>
+	ol{
+		width: 1200px;
+	}
+	ol,li{
+		list-style:none;
+		padding:0;
+		margin:0;
+		font-family:"微软雅黑";
+	}
+	li{
+		display:block;
+		float:left;
+		width:248px;
+		height:72px;
+		background:#f4f4f5;
+		overflow:hidden;
+		margin:0 16px 16px 0
+	}
+	li a{
+		display:block;
+		margin:0 auto;
+		padding:0 24px;
+		height:72px;
+		color:#666666;
+		font-size:16px;
+		text-decoration:none;
+	}
+	li span{
+		display:table-cell;
+		vertical-align:middle;
+		height:72px;
+		width:200px;
+		text-align:center;
+		line-height:25px
+	}
+
+
+	.box {
+		background:#ccc;
+		line-height:200px;
+		height:200px;
+		width:300px;
+		margin: 10px;
+		padding:5px;
+		text-align: center;
+		float: left;
+	}
+
+	.vertical-middle {
+		line-height:1.2;
+		display:inline-block;
+		vertical-align:middle;
+	}
+
+
+	</style>
+</head>
+<body>
+	<div>
+		<ol>
+		    <li><a href="#"><span>常用快递查快递查快递查询API</span></a></li>
+		    <li><a href="#"><span>常用快递查询API</span></a></li>
+		    <li><a href="#"><span>常用快递查询API</span></a></li>
+		    <li><a href="#"><span>常用快递查快递查快递查快递查询API</span></a></li>
+		    <li><a href="#"><span>常用快递查询API</span></a></li>
+		</ol>
+		<div style="clear:both"></div>
+	</div>
+
+
+<div class="box">
+    <div class="vertical-middle">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+</div>
+<div class="box">
+    <div class="vertical-middle">Lorem ipsum dolor sit</div>
+</div>
+
+<div class="box">
+    <div class="vertical-middle">Lorem ipsum dolor sitt labore et dolore magna aliquat labore et dolore magna aliqua</div>
+</div>
+
+</body>
+</html>

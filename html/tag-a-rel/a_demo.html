@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>a标签的介绍</title>
+	<!-- 页面上的所有链接规定默认地址或默认目标 -->
+	<!-- <base target="_self"> -->
+	<style>
+		.demo{
+			color: red;
+			font-size: 14px;
+			width: 50px;
+			height: 50px;
+			background-color: #ccc;
+		}
+		a{
+			width: 100px;
+			height: 100px;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="demo">
+		<a href="a_target.html">a标签</a>
+	</div>
+	<hr>
+	<a>a标签</a>	
+	<a href="#" target="_blank">另一窗口打开</a>
+	<a href="../css/images/a.gif" download="a.gif">down</a>
+	<a href="https://github.com/chengzao">跳转</a>
+	<a href="#mubiao">跳转描点</a>
+	<a href="a_target.html#mubiao">a在跳转的页面进行锚点定位</a>
+
+	<hr>
+	
+   <!-- 页面跳转的方式 -->
+	<a target="_blank" href="http://www.cnblogs.com/chenio">a点击在新窗口跳转1</a>
+	<a id="btn" href="javascript:void(0);">a点击在新窗口跳转2</a>
+	<div id="btn2">div点击在新窗口跳转3</div>
+	<div onclick="javascript:window.location.href='http://github.com/chengzao'">div点击在当前跳转4</div>
+
+
+	<script>
+		var btn = document.getElementById('btn');
+		var btn2 = document.getElementById('btn2');
+
+		function href(str) {
+			str.onclick = function() {
+				window.open("http://github.com/chengzao", "_blank");
+			}
+		}
+		href(btn);
+		href(btn2);
+	</script>
+
+
+
+
+
+
+
+<hr>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p id="mubiao" style="color: red;">这是跳转目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+<p >目标点</p>
+
+
+
+</body>
+</html>

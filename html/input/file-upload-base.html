@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+
+    请选择上传文件（图片）：
+    <input type="file" id="fl" />
+
+
+
+
+
+</body>
+<script>
+    //需求：限制文件上传格式。（图片类型jpg,png,gif）
+    //步骤：
+    //1.获取事件源
+    //2.绑定事件
+    //3.书写事件驱动程序
+    //1.获取input的value值。
+    //2.（现获取.的索引值）截取字符串（从后往前按.截取）
+    //3.转化成统一大小写
+    //4.判断，如果是== jpg,png,gif，显示上传成功。否则上传失败
+
+    //1.获取事件源
+    var inp = document.getElementById("fl");
+
+    //2.绑定事件
+    inp.onchange = function () {
+        //3.书写事件驱动程序
+        //1.获取input的value值。（现获取.的索引值）
+        var index = this.value.lastIndexOf(".");
+
+        //2.截取字符串（从后往前按.截取）
+        //3.转化成统一大小写
+        var val = this.value.slice(index).toUpperCase();
+
+        //4.判断，如果是== jpg,png,gif，显示上传成功。否则上传失败
+        if (val == ".JPG" || val == ".PNG" || val == ".GIF") {
+            alert("上传成功！");
+        } else {
+            alert("您所上传的文件，不符合相应格式！");
+        }
+    }
+</script>
+
+</html>

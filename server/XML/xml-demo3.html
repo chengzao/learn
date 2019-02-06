@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>XML获取</title>
+	<style>
+		p {
+			text-align: center;
+			font-size: 24px;
+		}
+	</style>
+</head>
+<body>
+	<p>XML获取</p>
+	<script>
+		var xhr = new XMLHttpRequest;
+
+		xhr.open('get', 'xml-demo3.php');
+
+		xhr.send(null);
+
+		xhr.onreadystatechange = function () {
+			if(xhr.readyState == 4 && xhr.status == '200') {
+				// var result = xhr.responseText;
+				var result = xhr.responseXML;
+				console.log(result);
+
+				// 测试通过DOM是可以操作返回结果的
+				// var root = result.getElementsByTagName('root');
+				// console.log(root);
+
+				var items = result.getElementsByTagName('item');
+
+				// console.log(items.length);
+				for(var i=0; i<items.length; i++) {
+					var name = items[i].getElementsByTagName('name')[0].firstChild.nodeValue;
+					var age = items[i].getElementsByTagName('name')[1].textContent;
+					console.log(age);
+					console.log(name);
+				}
+			}
+		}
+	</script>
+</body>
+</html>

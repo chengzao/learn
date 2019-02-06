@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>svg circle</title>
+  <style>
+    .red {
+      fill: red;
+    }
+
+    .fancy {
+      fill: none;  /* 填充色 */
+      stroke: black; /* 描边色 */
+      stroke-width: 3pt; /* 描边色 */
+    }
+  </style>
+</head>
+
+<body>
+  <img src="./sources/circle2.svg" alt="">
+
+  <svg width="100" height="100">
+    <circle cx="50" cy="50" r="50" />
+  </svg>
+
+  <!-- 如果只想展示 SVG 图像的一部分，就要指定viewBox属性 -->
+  <svg width="100" height="100" viewBox="50 50 50 50">
+    <circle cx="50" cy="50" r="50" />
+  </svg>
+
+  <svg width="300" height="180">
+    <circle cx="30" cy="50" r="25" />
+    <circle cx="90" cy="50" r="25" class="red" />
+    <circle cx="150" cy="50" r="25" class="fancy" />
+  </svg>
+</body>
+
+</html>

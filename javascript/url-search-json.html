@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	function serilizeUrl(url) {
+    var urlObject = {};
+    if (/\?/.test(url)) {
+        var urlString = url.substring(url.indexOf("?") + 1);
+        var urlArray = urlString.split("&");
+        for (var i = 0, len = urlArray.length; i < len; i++) {
+            var urlItem = urlArray[i];
+            var item = urlItem.split("=");
+            urlObject[item[0]] = item[1];
+        }
+        return urlObject;
+    }
+    return null;
+}
+
+  console.log(serilizeUrl('http://item.taobao.com/item.htm?a=1&b=2&c=&d=xxx&e'));
+
+
+	</script>
+</body>
+</html>

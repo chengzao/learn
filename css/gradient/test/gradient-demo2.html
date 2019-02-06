@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS 渐变</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #F7F7F7;
+		}
+
+		.progress {
+			width: 400px;
+			height: 40px;
+			margin: 100px auto;
+			border-radius: 5px;
+			background-color: green;
+			background-image: linear-gradient(
+				135deg,
+				yellow 25%,
+				transparent 25%,
+				transparent 50%,
+				yellow 50%,
+				yellow 75%,
+				transparent 75%,
+				transparent 100%
+			);
+			background-size: 40px 40px;
+		}
+
+		.progress1 {
+			width: 400px;
+			height: 10px;
+			margin: 20px auto;
+			border: 1px solid #000;
+			background-image: linear-gradient(
+				135deg,
+				#fff 0%,
+				#fff 20%,
+				#ffb22c 20%,
+				#ffb22c 30%,
+				#fff 30%,
+				#fff 60%,
+				#4e80bd 60%,
+				#4e80bd 70%,
+				#fff 70%,
+				#fff 100%
+			);
+			background-size: 35px 10px;
+		}
+		.progress2 {
+			width: 400px;
+			height: 5px;
+			margin: 20px auto;
+			border: 1px solid #000;
+			background-image: linear-gradient(
+				135deg,
+				#fff 0%,
+				#fff 20%,
+				#ffb22c 20%,
+				#ffb22c 32%,
+				#fff 32%,
+				#fff 60%,
+				#4e80bd 60%,
+				#4e80bd 72%,
+				#fff 72%,
+				#fff 100%
+			);
+			background-size: 35px 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="progress"></div>
+	<div class="progress1"></div>
+	<div class="progress2"></div>
+</body>
+</html>

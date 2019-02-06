@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单事件</title>
+</head>
+<body>
+	<form action="">
+		<input type="email" id="txt" >
+		<input type="submit" value="提交">
+	</form>
+	<script>
+		var txt = document.getElementById('txt');
+
+		// ? 当我输入中文的时候，未输入完毕之前，不进行统计
+		txt.oninput = function () {
+			console.log(this.value.length);
+		}
+
+		// 监听验证不合法的情况
+		txt.oninvalid = function () {
+			// 设置自定义的验证信息
+			this.setCustomValidity('请输入正确的邮箱地址');
+		}
+
+	</script>
+</body>
+</html>

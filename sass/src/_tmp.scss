@@ -1,0 +1,56 @@
+/*
+ * @Author: czh
+ * @Date: 2017-12-15 14:40:16
+ * @Last Modified by: czh
+ * @Last Modified time: 2017-12-15 15:30:03
+ */
+
+/* scss 局部文件 */
+
+$color: pink;
+
+div,
+p {
+  .box & + span {
+    color: $color;
+  }
+}
+
+div,
+p {
+  + span {
+    color: $color;
+  }
+}
+
+.closed {
+  width: (150/16) rem;
+  height: (500rem/2);
+}
+
+p {
+  $width: 1000px;
+  width: $width/2;
+  $height: 16;
+  height: 1rem / $height;
+  $font-size: 12px;
+  $line-height: 30px;
+  font: #{$font-size}/#{$line-height};
+}
+
+$designWidth: 750;
+@function px2rem($px) {
+  @return $px * 320 / $designWidth/20 + rem;
+}
+
+.demo {
+  width: px2rem(30);
+  height: 750 / $designWidth + rem;
+}
+
+/* 默认变量值
+   如果导入前没有设置变量的值则取默认值，否则取设置的值 */
+$fancybox-width: 400px !default;
+.fancybox {
+  width: $fancybox-width;
+}

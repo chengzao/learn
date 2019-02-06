@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>个人主页</title>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			background-color: #F7F7F7;
+			font-family: Arial;
+		}
+
+		.wrapper {
+			width: 980px;
+			margin: 50px auto;
+		}
+
+		ul {
+			padding: 0;
+			margin: 0;
+			overflow: hidden;
+			list-style: none;
+			background-color: #000;
+			border-radius: 4px;
+		}
+
+		li {
+			float: left;
+			width: 120px;
+			height: 40px;
+			text-align: center;
+			line-height: 40px;
+			font-size: 18px;
+		}
+
+		li.active {
+			background-color: #333;
+		}
+
+		li a {
+			display: block;
+			color: #FFF;
+			text-decoration: none;
+		}
+
+		.content {
+			margin-top: 30px;
+			font-size: 24px;
+			padding: 0 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<!-- 导航菜单 -->
+		<ul>
+			<li data-key="index">
+				<a href="index.html">Index</a>
+			</li>
+			<li data-key="introduce">
+				<a href="introduce.html">Introduce</a>
+			</li>
+			<li data-key="contact" class="active">
+				<a href="contact.html">Contact Us</a>
+			</li>
+		</ul>
+		<!-- 内容 -->
+		<div class="content">
+			Contact us
+		</div>
+	</div>
+	<script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="data.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>实现事件的追加</title>
+</head>
+<body>
+	<div id="dv"></div>
+</body>
+<script>
+
+	// 写一个函数, 传入一个函数, 要求将函数绑定到 onload 上
+
+	var addload = (function() {
+		var arr = [];
+		return function(fn) {
+			arr.push(fn);
+			window.onload = function() {
+				for (var i = 0; i < arr.length; i++) {
+					arr[i]();
+				}
+			};
+		};
+	})();
+
+
+	addload(function() {
+		o.id("dv").style.border = "1px solid red";
+	});
+
+	addload(function() {
+		o.id("dv").style.backgroundColor = "pink";
+	})
+
+	addload(function() {
+		o.id("dv").style.width = "300px";
+		o.id("dv").style.height = "300px";
+	});
+
+	// 沙箱模式/命名空间模式
+	(function(w) {
+		// 代码写在这里
+		var getById = function(idName) {
+			return document.getElementById(idName);
+		};
+		var getByTagName = function(tagName) {
+			return document.getElementsByTagName(tagName);
+		};
+		var o = {
+			id: getById,
+			tag: getByTagName
+		};
+
+
+		w.o = w.__o__ = o;
+
+	})(window);
+
+</script>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>scrollTop</title>
+</head>
+
+<body>
+    <div class="box" style="height:250px;width:230px;border:1px solid #ccc;overflow-y:auto;overflow-x: hidden;">
+        <pre>
+                        $(function() {
+                            var lunar = calendar.solar2lunar();
+                            $('.solarlunar').html('阳历：' + lunar.cYear + '年' + lunar.cMonth + '月' + lunar.cDay + '日（' + lunar.astro + '）<br />农历：' + lunar.lYear + '年' + lunar.IMonthCn + lunar.IDayCn + '，' + lunar.gzYear + '年' + lunar.gzMonth + '月' + lunar.gzDay + '日（' + lunar.Animal + '年）');
+                        });
+
+                        console.log(calendar.solar2lunar(2017, 11, 01));
+                        console.log(calendar.lYearDays(1939))
+                        var sum = 0;
+                        for (var i = 1900; i < 1939; i++) {
+                            // console.log(i, calendar.lYearDays(i));
+                            sum += calendar.lYearDays(i);
+                        }
+                        console.log(sum)
+
+
+                        $(function() {
+                            var str = '<thead><tr>'
+                            var arr = [
+                                '日',
+                                '一',
+                                '二',
+                                '三',
+                                '四',
+                                '五',
+                                '六'
+                            ]
+                            for (var i = 0; i < 7; i++) {
+                                str += '<th>' + arr[i] + '</th>'
+                            }
+                            str += '</tr></thead>'
+                            str += '<tbody>'
+                            for (var k = 0; k < 6; k++) {
+                                str += '<tr>';
+                                for (var i = 1; i < 8; i++) {
+                                    str += '<td></td>';
+                                }
+                                str += '</tr>';
+                            }
+                            str += '</tbody>';
+                            $('#calendar2').html(str);
+
+                            var tds = $('#calendar2 td');
+                            var nWeek = calendar.lunar2solar(2017, 7, 1)
+                                // console.log(nWeek);
+                            var dayNum = calendar.monthDays(2017, 7);
+                            // console.log(dayNum);
+                            // console.log(calendar.toChinaDay(dayNum));
+
+                            var jlArr = []; //存储阴历天数
+                            for (var kk = 1; kk < dayNum + 1; kk++) {
+                                jlArr.push(calendar.toChinaDay(kk))
+                            }
+
+                            // console.log(jlArr);
+                            var num = 0 // 格子数量
+                            for (var m = nWeek.nWeek; m < dayNum, num < dayNum; m++, num++) {
+                                tds[m].innerHTML = jlArr[num];
+                            }
+                        });
+                </pre>
+        <p class="top">top........</p>
+    </div>    
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
+<script>
+    $('.top').on('click', function (event) {
+      // console.log(event)
+        console.log(document.querySelector('.box').scrollTop = 60);
+    })
+  console.log(document.querySelectorAll('pre')[0].scrollHeight);
+
+ 
+
+</script>
+
+</html>
