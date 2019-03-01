@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>递归</title>
+</head>
+<body>
+
+</body>
+<script>
+
+  const tree1 =
+      [
+        {
+          "name": "测试1",
+          "children": []
+        },
+        {
+          "name": "测试2",
+          "children": [
+            {
+              "name": "A区",
+              "children": [
+                {
+                  "name": "a1",
+                  "children": null
+                },
+                {
+                  "name": "a2",
+                  "children": null
+                }
+              ]
+            },
+            {
+              "name": "B区",
+              "children": [
+                {
+                  "name": "b1",
+                  "children": null
+                },
+                {
+                  "name": "b2",
+                  "children": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "测试3",
+          "children": []
+        }
+      ]
+
+  // 在数组对象中查找name
+  function search(obj, name, namePath = []) {
+    for (let i = 0, len = obj.length; i < len; i++) {
+      let item = obj[i]
+      if (item.name === name) {
+        namePath.push(item.name)
+        return {
+          has: true,
+          namePath
+        }
+      } else if (item.children && item.children.length) {
+        namePath.push(item.name)
+        let result = search(item.children, name, namePath)
+        if (result.has) return { has: true, namePath }
+        namePath.pop()
+      }
+    }
+    return {
+      has: false
+    }
+  }
+
+  console.log('search', search(tree1, 'a1'));
+
+  const tree2 = {
+      "name": "测试2",
+      "children": [
+        {
+          "name": "A区",
+          "children": [
+            {
+              "name": "a1",
+              "children": null
+            },
+            {
+              "name": "a2",
+              "children": null
+            }
+          ]
+        },
+        {
+          "name": "B区",
+          "children": [
+            {
+              "name": "b1",
+              "children": null
+            },
+            {
+              "name": "b2",
+              "children": [
+                {
+                  "name": "b2-1",
+                  "children": null
+                },
+                {
+                  "name": "b2-2",
+                  "children": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+
+  // 对象树查找name，返回父级name的数组（包含自己）
+  const search2 = (tree, name, namePath=[]) => {
+    let item = tree
+    if (item.name === name) {
+      namePath.push(item)
+      return {
+        namePath
+      }
+    } else if (item.children && item.children.length) {
+      namePath.push(item)
+      for(var i=0; i< item.children.length; i++){
+        let result = search2(item.children[i], name, namePath)
+        if (result) return { namePath }
+      }
+      namePath.pop()
+    }
+  }
+
+  console.log('search2', search2(tree2, 'b2-2'));
+
+  // 包装了一下search
+  const search3 = (tree, name, namePath = []) => {
+    let item = Array.isArray(tree) ? tree : [tree]
+    return search(item, name, namePath)
+  }
+  console.log('search3', search3(tree2, 'b2-2'));
+</script>
+</html>

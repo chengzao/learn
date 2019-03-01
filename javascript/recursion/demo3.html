@@ -11,7 +11,7 @@
 </body>
 <script>
 
-const tree1 =
+  const tree1 =
   [
     {
       "name": "测试1",
@@ -96,7 +96,7 @@ const tree1 =
     return false
   };
 
-  var tree2 = {
+  const tree2 = {
       "id": 1,
       "label": "A",
       "child": [
@@ -141,7 +141,7 @@ const tree1 =
 
   console.log('------------------------------')
 
-  var tree3 = [
+  const tree3 = [
     { id: '1', children: [] },
     {
       id: '2', children: [
@@ -175,7 +175,7 @@ const tree1 =
 
   console.log('------------------------------')
 
-  var tree4 = [
+  const tree4 = [
     { id: '1', children: [] },
     {
       id: '2', children: [
@@ -209,7 +209,7 @@ const tree1 =
 
   console.log('------------------------------')
 
-  var tree5 = [
+  const tree5 = [
     { id: '1', children: [
       {id:'4-2', level: '1'}
     ] },
@@ -247,7 +247,7 @@ const tree1 =
 
   console.log('------------------------------')
 
-  var tree6 = [
+  const tree6 = [
     {
       id: '1', children: [
         { id: '4-2', level: '1' }
@@ -284,7 +284,7 @@ const tree1 =
   console.log('search6',search6(tree6, '6'))
 
   console.log('------------------------------')
-  var tree7 = [
+  const tree7 = [
       {
         id: '1-1', children: [
           { id: '1-2-1', level: '2' }
@@ -319,8 +319,73 @@ const tree1 =
 
 
   console.log('search7', search7(tree7, []))
+  console.log('------------------------------')
 
 
+  const tree8 = {
+    "id": "1",
+    "name": "tu-1",
+    "level": "1",
+    "children": [
+      {
+        "id": "2",
+        "name": "tu-1-1",
+        "level": "2",
+        "children": [
+          {
+            "id": "3",
+            "name": "tu-1-1-1",
+            "level": "3",
+            "children": []
+          },
+          {
+            "id": "4",
+            "name": "tu-1-1-2",
+            "level": "3"
+          },
+          {
+            "id": "5",
+            "name": "6666",
+            "level": "3"
+          },
+          {
+            "id": "6",
+            "name": "sss",
+            "level": "3",
+            "children": [
+              {
+                "id": "7",
+                "name": "aaaaa",
+                "level": "4"
+              },
+              {
+                "id": "8",
+                "name": "bbb",
+                "level": "4"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "name": "fff",
+        "level": "3"
+      }
+    ]
+  }
+  const search8 = (tree, res) => {
+    if (tree.children && tree.children.length > 0) {
+      for(var i=0; i< tree.children.length; i++){
+        search8(tree.children[i], res)
+      }
+    } else {
+      res.push(tree)
+    }
+    return res
+  }
 
+  console.log('search8', search8(tree8, []));
+  console.log('------------------------------')
 </script>
 </html>
