@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>递归</title>
+</head>
+<body>
+
+</body>
+<script>
+
+const tree1 =
+  [
+    {
+      "name": "测试1",
+      "children": []
+    },
+    {
+      "name": "测试2",
+      "children": [
+        {
+          "name": "A区",
+          "children": [
+            {
+              "name": "a1",
+              "children": null
+            },
+            {
+              "name": "a2",
+              "children": null
+            }
+          ]
+        },
+        {
+          "name": "B区",
+          "children": [
+            {
+              "name": "b1",
+              "children": null
+            },
+            {
+              "name": "b2",
+              "children": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "测试3",
+      "children": []
+    }
+  ]
+
+  function search(obj, name, namePath = []) {
+    for (let i = 0, len = obj.length; i < len; i++) {
+      let item = obj[i]
+      if (item.name === name) {
+        namePath.push(name)
+        item.expand = true
+        return {
+          has: true,
+          namePath
+        }
+      } else if (item.children && item.children.length) {
+        namePath.push(item.name)
+        let result = search(item.children, name, namePath)
+        if (result.has) return { has: true, namePath }
+        namePath.pop()
+      }
+    }
+    return {
+      has: false
+    }
+  }
+
+  console.log('search',search(tree1, "a2")) // {has: true, namePath: ["测试2", "A区", "a2"]}
+
+
+  console.log('------------------------------')
+
+  const search2 = (tree, target) => {
+    if (tree.id === target) {
+      return tree;
+    }
+
+    for (const child of tree.child) {
+      const res = search2(child, target);
+
+      if (res) {
+        return res;
+      }
+    }
+    return false
+  };
+
+  var tree2 = {
+      "id": 1,
+      "label": "A",
+      "child": [
+        {
+          "id": 2,
+          "label": "B",
+          "child": [
+            {
+              "id": 5,
+              "label": "E",
+              "child": [
+              ]
+            },
+            {
+              "id": 6,
+              "label": "F",
+              "child": [
+              ]
+            }
+            ]
+        },
+        {
+          "id": 4,
+          "label": "D",
+          "child": [
+            {
+              "id": 8,
+              "label": "H",
+              "child": [
+              ]
+            },
+            {
+              "id": 9,
+              "label": "I",
+              "child": [
+              ]
+            }]
+        }]
+    }
+;
+  console.log('search2',search2(tree2, 1));
+
+  console.log('------------------------------')
+
+  var tree3 = [
+    { id: '1', children: [] },
+    {
+      id: '2', children: [
+        { id: '3', children: [] },
+        { id: '4', children: [
+          {id: '4-1'},
+          {id: '4-2'}
+        ] }
+      ]
+    },
+    { id: '5', children: [] },
+    { id: '6', children: [] }
+  ]
+
+  const search3 = (tree, target) => {
+    for (var i = 0; i < tree.length; i++) {
+      const child = tree[i];
+      if (tree[i].id == target) {
+        return true
+      }else if (child.children && child.children.length > 0) {
+        let res = search3(child.children, target)
+        if(res){
+          return true
+        }
+      }
+    }
+    return false
+  };
+
+  console.log('search3',search3(tree3, '6'))
+
+  console.log('------------------------------')
+
+  var tree4 = [
+    { id: '1', children: [] },
+    {
+      id: '2', children: [
+        { id: '3', children: [] },
+        {
+          id: '4', children: [
+            { id: '4-1' },
+            { id: '4-2' }
+          ]
+        }
+      ]
+    },
+    { id: '5', children: [] },
+    { id: '6', children: [] }
+  ]
+  const search4 = (tree, target) => {
+    for (var i = 0; i < tree.length; i++) {
+      const child = tree[i];
+      if (tree[i].id == target) {
+        return tree[i]
+      } else if (child.children && child.children.length > 0) {
+        let res = search4(child.children, target)
+        if (res) {
+          return res
+        }
+      }
+    }
+    return false
+  };
+  console.log('search4',search4(tree4, '4-2'))
+
+  console.log('------------------------------')
+
+  var tree5 = [
+    { id: '1', children: [
+      {id:'4-2', level: '1'}
+    ] },
+    {
+      id: '2', children: [
+        { id: '3', children: [] },
+        {
+          id: '4', children: [
+            { id: '4-1' },
+            { id: '4-2' }
+          ]
+        }
+      ]
+    },
+    { id: '5', children: [] },
+    { id: '6', children: [] }
+  ]
+
+  function warpSearch(tree, target){
+    var res = []
+    const search5 = (tree, target) => {
+      for (var i = 0; i < tree.length; i++) {
+        const item = tree[i];
+        if (item.id == target) {
+          res.push(item)
+        } else if (item.children && item.children.length > 0) {
+          search5(item.children, target)
+        }
+      }
+    }
+    search5(tree, target)
+    return res;
+  }
+  console.log('warpSearch',warpSearch(tree5, '4-2'))
+
+  console.log('------------------------------')
+
+  var tree6 = [
+    {
+      id: '1', children: [
+        { id: '4-2', level: '1' }
+      ]
+    },
+    {
+      id: '2', children: [
+        { id: '3', children: [] },
+        {
+          id: '4', children: [
+            { id: '4-1' },
+            { id: '4-2' }
+          ]
+        }
+      ]
+    },
+    { id: '5', children: [] },
+    { id: '6', children: [] }
+  ]
+
+
+  const search6 = (tree, target, res=[]) => {
+    for (var i = 0; i < tree.length; i++) {
+      const item = tree[i];
+      if (item.id == target) {
+        res.push(item)
+      } else if (item.children && item.children.length > 0) {
+        search6(item.children, target, res)
+      }
+    }
+    return res
+  }
+  console.log('search6',search6(tree6, '4-2'))
+  console.log('search6',search6(tree6, '6'))
+
+  console.log('------------------------------')
+  var tree7 = [
+      {
+        id: '1-1', children: [
+          { id: '1-2-1', level: '2' }
+        ]
+      },
+      {
+        id: '2-1', children: [
+          { id: '2-2-1', children: [] },
+          {
+            id: '2-2-2', children: [
+              { id: '2-3-1' },
+              { id: '2-3-2' }
+            ]
+          }
+        ]
+      },
+      { id: '5-1', children: [] },
+      { id: '6-1' }
+    ]
+
+  const search7 = (tree, res) => {
+    for (var i = 0; i < tree.length; i++) {
+      const item = tree[i];
+      if (item.children && item.children.length > 0) {
+        search7(item.children, res)
+      }else{
+        res.push(item)
+      }
+    }
+    return res
+  }
+
+
+  console.log('search7', search7(tree7, []))
+
+
+
+</script>
+</html>
