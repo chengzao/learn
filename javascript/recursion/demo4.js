@@ -239,3 +239,60 @@ const search4 = (tree, res) => {
 }
 
 console.log('search4', search4(tree5, []))
+
+const tree6 = [
+  {
+    "reimburse": [
+      {
+        "name": "1111",
+        "subjectId": "1-58cb829ae4b0eeff59e787c1",
+        "subjectName": "2222"
+      }
+    ],
+  },
+  {
+    "custom": [
+      {
+        "name": "aaaa",
+        "subjectId": "1-58cb829ae4b0eeff59e787c4",
+        "subjectName": "bbbb"
+      }
+    ],
+
+  },
+  {
+    "contract": [
+      {
+        "name": "cccc",
+        "subjectId": "1-58cb829ae4b0eeff59e787c3",
+        "subjectName": "dddd"
+      },
+      {
+        "name": "eeee",
+        "subjectId": "1-58cb829ae4b0eeff59e787c5",
+        "subjectName": "ffff"
+      }
+    ],
+  }
+]
+
+
+const search5 = (tree) => {
+  var res1 = [], res2 = [],
+    _list = ['reimburse', 'contract', 'custom'];
+  for (var i = 0; i < tree.length; i++) {
+    var _item = tree[i];
+    for(var k=0; k< _list.length; k++){
+      var __item = _item[_list[k]];
+      if (__item && __item.length > 0) {
+        for (var j = 0; j < __item.length; j++) {
+          res1.push(__item[j].subjectId)
+          res2.push(__item[j])
+        }
+      }
+    }
+  }
+  return {res1, res2}
+}
+
+console.log(search5(tree6));
