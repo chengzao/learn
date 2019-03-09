@@ -304,6 +304,10 @@ const tree6 = [
     rootType: "custom"
   },
   {
+    name: "aa申请",
+    rootType: "custom"
+  },
+  {
     name: "付款合同",
     rootType: "contract"
   }
@@ -313,15 +317,24 @@ console.clear();
 
 const search6 = tree => {
   let obj = { all: [] };
-  tree.forEach((item, index) => {
-    // console.log(item);
-    obj[item.rootType] = item.rootType;
+  tree.forEach((item) => {
+    obj[item.rootType] = '';
   });
-  tree.forEach((item, index) => {
-    // console.log(item);
-    obj[item.rootType] += "#" + item.name;
+
+  tree.forEach((item) => {
+    obj[item.rootType] += item.name + "#" ;
     obj.all.push(item.name);
   });
+
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      let element = obj[key];
+      if(typeof element == 'string'){
+        element = element.slice(0,-1)
+        obj[key] = element;
+      }
+    }
+  }
   return obj;
 };
 
@@ -386,3 +399,145 @@ var dataaaa = [
 ];
 
 console.log("childrens to children", childrensTochildren(dataaaa));
+
+const tree7 = [
+  {
+    'id': '-1',
+    'level': '0'
+  },
+  {
+    'id': '1',
+    'level': '0'
+  },
+  {
+    'id': '2',
+    'level': '0',
+    'children': [
+      {
+        'id': '3',
+        'level': '1'
+      },
+      {
+        'id': '4',
+        'level': '1',
+        'children': [
+          {
+            'id': '5',
+            'level': '2'
+          },
+          {
+            'id': '6',
+            'level': '2',
+            'children': [
+              {
+                'id': '7',
+                'level': '3'
+              }
+            ]
+          }
+        ]
+      },
+    ]
+  }
+]
+
+const search7 = function (tree, id, prev, root){
+  for (let i = 0; i < tree.length; i++) {
+    let element = tree[i];
+    if(element.children && element.children.length > 0){
+      root.push(element)
+      let res = search7(element.children, id, element, root)
+      if(res){
+        return res;
+      }
+    }
+    if (element.id == id) {
+      return {
+        cur: element,
+        prev: prev,
+        root: root
+      }
+    }
+  }
+}
+
+console.log('search7',search7(tree7, '3', {}, []));
+
+const tree8 = [
+  {
+    "id": "1253",
+    "name": "ddd",
+    "lastNode": "0",
+    "level": 1,
+    "children": [
+      {
+        "id": "1254",
+        "name": "eee",
+        "lastNode": "0",
+        "level": 2,
+        "children": [
+          {
+            "id": "1263",
+            "name": "6666",
+            "lastNode": "1",
+            "level": 3,
+          },
+          {
+            "id": "1255",
+            "name": "444",
+            "lastNode": "1",
+            "level": 3,
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "1249",
+    "name": "顶级",
+    "lastNode": "0",
+    "level": 1,
+    "children": [
+      {
+        "id": "1250",
+        "name": "二级",
+        "lastNode": "0",
+        "level": 2,
+        "children": [
+          {
+            "id": "1265",
+            "name": "rrr",
+            "lastNode": "1",
+            "level": 3,
+          },
+          {
+            "id": "1264",
+            "name": "222",
+            "lastNode": "1",
+            "level": 3,
+          }
+        ]
+      }
+    ],
+  }
+]
+
+var filterLastNodeItem = function (tree) {
+  for (var i = 0; i < tree.length; i++) {
+    var _item = tree[i];
+    if (_item['lastNode'] == '1') {
+      tree.splice(i, 1);
+      i--;
+    }
+    if (_item.children && _item.children.length > 0) {
+      filterLastNodeItem(_item.children)
+    }
+    if (_item.children && _item.children.length == 0){
+      delete _item.children
+    }
+  }
+  return tree
+}
+
+
+console.log(filterLastNodeItem(tree8))
