@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+/* 移动端页面设计稿宽度 */
+$design-width: 750;
+/* 移动端页面设计稿dpr基准值 */
+$design-dpr: 2;
+
+/* 单位px转化为rem */
+@function px2rem($px) {
+    @return #{$px / 100}rem;
+}
+
+/* 设置字体大小，不使用rem单位， 根据dpr值分段调整 */
+@mixin font-size($fontSize) {
+    font-size: $fontSize / $design-dpr;
+
+    [data-dpr="2"] & {
+        font-size: $fontSize / $design-dpr * 2;
+    }
+
+    [data-dpr="3"] & {
+        font-size: $fontSize / $design-dpr * 3;
+    }
+}

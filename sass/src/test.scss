@@ -66,11 +66,11 @@ body {
   width: px2rem(100px);
   height: 300px;
   @include font-dpr(15px);
-  @include adjust-location(20px, 10);
+  @include adjust-location(20px, 10px);
 }
 .box2 {
   width: px2rem(100px);
   height: 300px;
   @include font-dpr(15px);
-  @include adjust-location2(20, 10px);
+  @include adjust-location2(20px, 10px);
 }

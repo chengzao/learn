@@ -1,0 +1,203 @@
+@charset "UTF-8";
+/* 移动端页面设计稿宽度 */
+/* 移动端页面设计稿dpr基准值 */
+/* 将移动端页面分为10块 */
+/* 缩放所支持的设备最小宽度 */
+/* 缩放所支持的设备最大宽度 */
+/*
+    rem与px对应关系，1rem代表在JS中设置的html font-size值（为一块的宽度），$rem即为$px对应占多少块
+
+        $px                    $rem
+    -------------    ===    ------------
+    $design-width              $blocks
+*/
+/* 单位px转化为rem */
+/* 单位rem转化为px，可用于根据rem单位快速计算原px */
+/* html根的宽度定义 */
+/* 设置容器拉伸的最小宽度 */
+/* 设置容器拉伸的最大宽度 */
+/* 设置字体大小，不使用rem单位， 根据dpr值分段调整 */
+.f-p-0 {
+  padding: 0 !important;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* 某些机型虽然设备dpr大于1，但识别不了scale缩放，这里需要重新设置最小宽度防止出现横向滚动条 */
+}
+html body {
+  margin-right: auto;
+  margin-left: auto;
+  min-width: 320px;
+}
+@media (-webkit-device-pixel-ratio: 2) {
+  html body {
+    min-width: 640px;
+  }
+}
+@media (-webkit-device-pixel-ratio: 3) {
+  html body {
+    min-width: 960px;
+  }
+}
+html body[data-content-max] {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 780px;
+}
+@media (-webkit-device-pixel-ratio: 2) {
+  html body[data-content-max] {
+    max-width: 1560px;
+  }
+}
+@media (-webkit-device-pixel-ratio: 3) {
+  html body[data-content-max] {
+    max-width: 2340px;
+  }
+}
+html[data-dpr="1"] body {
+  min-width: 320px;
+}
+
+body {
+  /* rem2px的使用方式，仅用于临时计算 */
+  border-width: 45px;
+  background-color: #f8f8f8;
+  font-size: 0.3733333333rem;
+  font-family: "Microsoft YaHei";
+}
+
+.container {
+  background-color: #fff;
+}
+
+header {
+  height: 4rem;
+  line-height: 4rem;
+  text-align: center;
+  background-color: #f2f2f2;
+}
+
+nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  padding: 0;
+}
+nav ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  width: 2.6666666667rem;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+nav ul .icon {
+  margin-bottom: 0.2666666667rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  line-height: 1.6rem;
+  text-align: center;
+  background-color: #f2f2f2;
+}
+
+main {
+  padding: 0.2666666667rem;
+}
+main h3 {
+  position: relative;
+  margin-top: 0.6666666667rem;
+  margin-left: 0.3466666667rem;
+  /* 字体也可以选择不使用rem
+  */
+  font-size: 15px;
+}
+[data-dpr="2"] main h3 {
+  font-size: 30px;
+}
+[data-dpr="3"] main h3 {
+  font-size: 45px;
+}
+main h3:before {
+  content: "";
+  position: absolute;
+  left: -0.2666666667rem;
+  width: 0.16rem;
+  height: 100%;
+  background-color: #fc8200;
+}
+
+.info-items {
+  margin-top: 0.2666666667rem;
+  margin-bottom: 0.2666666667rem;
+}
+
+.info-item {
+  margin-top: 0.2666666667rem;
+  padding: 0.4rem;
+  padding-left: 0;
+  border: 1px solid #ddd;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.info-item span {
+  min-width: 1.6rem;
+  text-align: center;
+  border-right: 1px solid #ddd;
+}
+.info-item input {
+  width: 100%;
+  border: none;
+  font-size: 0.3733333333rem;
+  caret-color: #fc8200;
+  outline: none;
+}
+.info-item textarea {
+  padding: 0.2666666667rem;
+  width: 100%;
+  border: none;
+  height: 3.3333333333rem;
+  font-size: 0.3733333333rem;
+  font-family: "Microsoft YaHei";
+  caret-color: #fc8200;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+.info-confirm {
+  margin-bottom: 0.5333333333rem;
+  text-align: center;
+}
+.info-confirm__btn {
+  display: inline-block;
+  margin-top: 1.0666666667rem;
+  width: 2.6666666667rem;
+  height: 1.0666666667rem;
+  line-height: 1.0666666667rem;
+  text-align: center;
+  background-color: #fc8200;
+  text-decoration: none !important;
+  color: #fff !important;
+}
+
+footer {
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  background-color: #f2f2f2;
+}
+
+/*# sourceMappingURL=rem.css.map */

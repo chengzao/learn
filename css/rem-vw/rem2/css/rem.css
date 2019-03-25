@@ -1,0 +1,150 @@
+@charset "UTF-8";
+/* 移动端页面设计稿宽度 */
+/* 移动端页面设计稿dpr基准值 */
+/* 单位px转化为rem */
+/* 设置字体大小，不使用rem单位， 根据dpr值分段调整 */
+.f-p-0 {
+  padding: 0 !important;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f8f8f8;
+  font-size: 0.28rem;
+  font-family: "Microsoft YaHei";
+}
+
+.container {
+  background-color: #fff;
+}
+
+header {
+  height: 3rem;
+  line-height: 3rem;
+  text-align: center;
+  background-color: #f2f2f2;
+}
+
+nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  padding: 0;
+}
+nav ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  width: 2rem;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+nav ul .icon {
+  margin-bottom: 0.2rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  line-height: 1.2rem;
+  text-align: center;
+  background-color: #f2f2f2;
+}
+
+main {
+  padding: 0.2rem;
+}
+main h3 {
+  position: relative;
+  margin-top: 0.5rem;
+  margin-left: 0.26rem;
+  /* 字体也可以选择不使用rem
+  */
+  font-size: 15px;
+}
+[data-dpr="2"] main h3 {
+  font-size: 30px;
+}
+[data-dpr="3"] main h3 {
+  font-size: 45px;
+}
+main h3:before {
+  content: "";
+  position: absolute;
+  left: -0.2rem;
+  width: 0.12rem;
+  height: 100%;
+  background-color: #fc8200;
+}
+
+.info-items {
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.info-item {
+  margin-top: 0.2rem;
+  padding: 0.3rem;
+  padding-left: 0;
+  border: 1px solid #ddd;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.info-item span {
+  min-width: 1.2rem;
+  text-align: center;
+  border-right: 1px solid #ddd;
+}
+.info-item input {
+  width: 100%;
+  border: none;
+  font-size: 0.28rem;
+  caret-color: #fc8200;
+  outline: none;
+}
+.info-item textarea {
+  padding: 0.2rem;
+  width: 100%;
+  border: none;
+  height: 2.5rem;
+  font-size: 0.28rem;
+  font-family: "Microsoft YaHei";
+  caret-color: #fc8200;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+.info-confirm {
+  margin-bottom: 0.4rem;
+  text-align: center;
+}
+.info-confirm__btn {
+  display: inline-block;
+  margin-top: 0.8rem;
+  width: 2rem;
+  height: 0.8rem;
+  line-height: 0.8rem;
+  text-align: center;
+  background-color: #fc8200;
+  text-decoration: none !important;
+  color: #fff !important;
+}
+
+footer {
+  height: 1.5rem;
+  line-height: 1.5rem;
+  text-align: center;
+  background-color: #f2f2f2;
+}
+
+/*# sourceMappingURL=rem.css.map */
