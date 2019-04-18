@@ -10,21 +10,25 @@
 	function serilizeUrl(url) {
     var urlObject = {};
     if (/\?/.test(url)) {
-        var urlString = url.substring(url.indexOf("?") + 1);
-        var urlArray = urlString.split("&");
-        for (var i = 0, len = urlArray.length; i < len; i++) {
-            var urlItem = urlArray[i];
-            var item = urlItem.split("=");
-            urlObject[item[0]] = item[1];
-        }
-        return urlObject;
+      var urlString = url.substring(url.indexOf("?") + 1);
+      console.log(urlString);
+      var urlArray = urlString.split("&");
+      for (var i = 0, len = urlArray.length; i < len; i++) {
+          var urlItem = urlArray[i];
+        console.log(urlItem);
+        var item = urlItem.split("=");
+        if(item.length == 2 && item[0] != '' && item[0] != '""' && item[0] != '"'){
+            urlObject[item[0]] = encodeURIComponent(item[1]);
+          }
+      }
+      return urlObject;
     }
-    return null;
-}
+    return {};
+  }
 
-  console.log(serilizeUrl('http://item.taobao.com/item.htm?a=1&b=2&c=&d=xxx&e'));
+  console.log(serilizeUrl('http://item.taobao.com/item.htm?a=1&b=2&c=&d=xxx&e&=c&"=mm&f=1'));
+  console.log(serilizeUrl('http://item.taobao.com/item.html#123?a=1&name=姓名'));
 
-
-	</script>
+  </script>
 </body>
 </html>
