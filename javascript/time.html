@@ -6,7 +6,7 @@
 </head>
 <body>
 <script>
-  var tools = {
+var tools = {
     // 格式化时间: '2019/4/22 14:40:00' || 时间戳
     formateDate(date) {
       let dateTime = new Date(date)
@@ -40,7 +40,7 @@
         new Date(
           endDetailDate.year,
           endDetailDate.month - 1,
-          endDetailDate.day,
+          endDetailDate.day+1,
         ).getTime() + distance
       let outputStart = this.formateDate(startStamp)
       let outputLast = this.formateDate(lastStamp)
@@ -53,154 +53,122 @@
         entryLast,
       }
     },
-  }
-  var info = {
-    earliestDate:1554886800000,
-    latestDate:1555060500000
-  }
-  let start = info.earliestDate
-  let startDetailDate = tools.formateDate(start)
-  let end = info.latestDate
-  let endDetailDate = tools.formateDate(end)
-  let weekStamp = 1000*60*60*24*7
-  let gridWidth = 50
-  // console.log('startDetailDate', startDetailDate)
-  // console.log('endDetailDate', endDetailDate)
-  // console.log('------------------------------')
-  // 获取最早日期00：00时间戳
-  let earliestChuo = new Date(
-    startDetailDate.year,
-    startDetailDate.month-1,
-    startDetailDate.day,
-  ).getTime()-weekStamp
-  // 获取最晚日期24：00时间戳
-  let duestChuo = new Date(
-    endDetailDate.year,
-    endDetailDate.month-1,
-    endDetailDate.day,
-  ).getTime() + weekStamp
+    getWeek(y, m, d) {
+      // 将字符串转为标准时间格式
+      let currentDate = new Date(y, m, d);
+      // 先计算出该日期为第几周
+      // 获取这一年的1月1号
+      let firstDate = new Date(y, 0, 1)
 
-  // console.log('earliestChuo', tools.formateDate(earliestChuo))
-  // console.log('duestChuo', tools.formateDate(duestChuo))
-  // 一天的时间戳
-  let dayStamp = 1000 * 60 * 60 * 24
-  // 一共有多少天
-  let days = (duestChuo - earliestChuo) / dayStamp + 1
-  // console.log('days',days)
-  // 总的宽度是多少
-  let width = days * gridWidth
-  // console.log('width', width)
+      let firstWeek = firstDate.getDay() == 0 ? 7 : firstDate.getDay()
 
+      let currentDateWeek = currentDate.getDay() == 0 ? 7 : firstDate.getDay()
 
-  function getWeek(y,m,d) {
-    // 将字符串转为标准时间格式
-    let currentDate = new Date(y,m,d);
-    // 先计算出该日期为第几周
-    // 获取这一年的1月1号
-    let firstDate = new Date(y, 0, 1)
+      // 一天的时间戳
+      let dayStamp = 1000 * 24 * 60 * 60
 
-    let firstWeek =  firstDate.getDay() == 0 ? 7 : firstDate.getDay()
+      // 传入时间与1月1日的天数
+      let days = Math.ceil((currentDate.getTime() - firstDate.getTime()) / dayStamp)
 
-    let currentDateWeek = currentDate.getDay() == 0 ? 7 : firstDate.getDay()
+      let weeks = Math.ceil((days + firstWeek) / 7)
+      return {
+        weeks: weeks,
+        year: currentDate.getFullYear(),
+        month: currentDate.getMonth() + 1,
+        day: currentDate.getDate(),
+        week: currentDate.getDay()
+      }
+    },
 
-    // 一天的时间戳
-    let dayStamp = 1000 * 24 * 60 * 60
+    getAllDate(first, last) {
+      // 一天的时间戳
+      let firstDate = new Date(first)
+      let firstDateYear = firstDate.getFullYear();
+      //
+      let initDate = +new Date(firstDateYear, 0, 1)
+      let lastDate = new Date(last)
+      let dayStamp = 1000 * 24 * 60 * 60
 
-    // 传入时间与1月1日的天数
-    let days = Math.ceil((currentDate.getTime() - firstDate.getTime()) / dayStamp)
+      let firstWeek = firstDate.getDay() == 0 ? 7 : firstDate.getDay()
+      let lastDateWeek = lastDate.getDay() == 0 ? 7 : lastDate.getDay()
 
+      // 开始时间与1月1日天数
+      let day1 = Math.ceil((firstDate - initDate) / dayStamp)
+      let _day1 = day1 - (firstWeek-1)
 
-    let weeks = Math.ceil((days + firstWeek) / 7)
-    return {
-      weeks: weeks,
-      year: currentDate.getFullYear(),
-      month: currentDate.getMonth()+1,
-      day: currentDate.getDate(),
-      week: currentDate.getDay()
+      // 开始时间与结束时间的天数
+      let day2 = Math.ceil((lastDate - firstDate) / dayStamp)
+      let _day2 = day2 + (7 - lastDateWeek) + 1
+
+      let dates = []
+      let _start = _day1+1, _last = day1+ _day2
+      for (var i = _start; i <= _last; i++) {
+        let week = this.getWeek(firstDateYear, 0, i)
+        dates.push(week)
+      }
+      return dates
+    },
+    splitArr(arr){
+      var map = {},
+      dest = [];
+      for (var i = 0; i < arr.length; i++) {
+        var item = arr[i];
+        if (!map[item.weeks]) {
+          dest.push({
+            weeks: item.weeks,
+            data: [item]
+          });
+          map[item.weeks] = item;
+        } else {
+          for (var j = 0; j < dest.length; j++) {
+            var output = dest[j];
+            if (output.weeks == item.weeks) {
+              output.data.push(item);
+              break;
+            }
+          }
+        }
+      }
+      return dest
     }
   }
 
+  // function getYearWeek(date = new Date()) {
+  //     date = new Date(date)
+  //     let date2 = new Date(date.getFullYear(), 0, 1)
+  //     let day1 = date.getDay()
+  //     if (day1 == 0) day1 = 7
+  //     let day2 = date2.getDay()
+  //     if (day2 == 0) day2 = 7
+  //     let d = Math.round(
+  //       (date.getTime() -
+  //         date2.getTime() +
+  //         (day2 - day1) * (24 * 60 * 60 * 1000)) /
+  //       86400000,
+  //     )
+  //     return Math.ceil(d / 7) + 1
+  // }
 
-  function getYearWeek(date = new Date()) {
-      date = new Date(date)
-      let date2 = new Date(date.getFullYear(), 0, 1)
-      let day1 = date.getDay()
-      if (day1 == 0) day1 = 7
-      let day2 = date2.getDay()
-      if (day2 == 0) day2 = 7
-      let d = Math.round(
-        (date.getTime() -
-          date2.getTime() +
-          (day2 - day1) * (24 * 60 * 60 * 1000)) /
-        86400000,
-      )
-      return Math.ceil(d / 7) + 1
-    }
-
-
-  function getAllDate(first, last) {
-    // 一天的时间戳
-    let firstDate = new Date(first)
-    let fist_y = firstDate.getFullYear();
-    let initDate = +new Date(fist_y, 0, 1)
-    let lastDate = new Date(last)
-    let dayStamp = 1000 * 24 * 60 * 60
-
-    let firstWeek = firstDate.getDay() == 0 ? 7 : firstDate.getDay()
-
-    let lastDateWeek = lastDate.getDay() == 0 ? 7 : lastDate.getDay()
-
-    // 开始时间与1月1日天数
-    let day1 = Math.ceil((firstDate - initDate) / dayStamp)
-
-    day1 = day1 - (7 - firstWeek)
-
-    // 开始时间与结束时间的天数
-    let day2 = Math.ceil((lastDate - firstDate) / dayStamp)
-
-    day2 = day2 + (7 - lastDateWeek)
-
-    let dates = []
-    for(var i=day1;i<= day1+day2;i++){
-      let week = getWeek(fist_y, 0, i )
-      dates.push(week)
-    }
-    return dates
-  }
 
   var aaa = {
     earliestDate:1554109200000,
     latestDate:1556614800000
   }
-  let weeks7 = dayStamp*7
-  let res = tools.startAndLastTime(aaa.earliestDate, aaa.latestDate, weeks7)
-  let arr = getAllDate(res.outputStart.dateTime,res.outputLast.dateTime)
+  var bbb = {
+    earliestDate: 1554886800000,
+    latestDate: 1555060500000
+  }
+  var ccc = {
+    earliestDate: +new Date(2019,2,5),
+    latestDate: +new Date(2019, 2, 15)
+  }
+
+  let weeks7 = 1000*60*60*24*7
+  let res = tools.startAndLastTime(ccc.earliestDate, ccc.latestDate, weeks7)
+  let arr = tools.getAllDate(res.outputStart.dateTime,res.outputLast.dateTime)
   console.log(arr)
 
-  function splitArr(arr){
-    var map = {},
-      dest = [];
-    for (var i = 0; i < arr.length; i++) {
-      var item = arr[i];
-      if (!map[item.weeks]) {
-        dest.push({
-          weeks: item.weeks,
-          data: [item]
-        });
-        map[item.weeks] = item;
-      } else {
-        for (var j = 0; j < dest.length; j++) {
-          var output = dest[j];
-          if (output.weeks == item.weeks) {
-            output.data.push(item);
-            break;
-          }
-        }
-      }
-    }
-    return dest
-  }
-  // console.log(splitArr(arr));
+  console.log(tools.splitArr(arr));
 
 
 </script>
