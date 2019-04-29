@@ -1,0 +1,459 @@
+<template>
+  <div class="calendarDay clearfix" :style="{ height: clientHeight }">
+    <!-- treeNode s -->
+    <div class="treeNode clearfix" :style="{ height: clientHeight }">
+      <!-- tree item e -->
+      <div class="treeNode-item">
+        <div class="treeNode-item-title" :class="{ fixed: isMove }">
+          <span class="treeNode-title-left">全部任务</span>
+        </div>
+        <div class="treeNode-item-title" v-if="isMove"></div>
+        <div class="treeItem-container" :style="transfromMove">
+          <tree-item
+            :item="child"
+            v-for="(child, index) in taskBoardList"
+            :key="'b' + index"
+            :itemId="itemId"
+            @changeHover="changeHoverBg"
+          ></tree-item>
+        </div>
+      </div>
+      <!-- tree item e -->
+      <!-- tree info e -->
+      <div class="treeNode-info">
+        <div class="treeNode-info-title" :class="{ fixed: isMove }">
+          <span>负责人</span>
+          <span>开始时间</span>
+          <span class="br0">结束时间</span>
+        </div>
+        <div class="treeNode-info-title" v-if="isMove"></div>
+        <div class="treeInfo-container bb">
+          <tree-info
+            :item="child"
+            :itemId="itemId"
+            v-for="(child, index) in taskBoardList"
+            :key="index"
+            @changeHover="changeHoverBg"
+          ></tree-info>
+        </div>
+      </div>
+      <!-- tree info e -->
+    </div>
+    <!-- treeNode e -->
+    <!-- treeGantt s -->
+    <div class="treeGantt" :style="{ height: clientHeight }">
+      <div class="treeGantt-warp" ref="aaa" @scroll.passive="handleScroll">
+        <div class="treeGantt-main" :style="{ width: calacWidth }">
+          <div
+            class="treeGantt-header-warp"
+            :style="{ width: calacWidth }"
+            :class="{ fixed: isMove }"
+          >
+            <div class="treeGantt-header" :style="{ width: calacWidth }">
+              <div
+                class="treeGantt-item"
+                v-for="(item, index) in info.formatTimeDetail"
+                :key="'gannt_' + index"
+              >
+                <div class="treeGantt-header-item treeGantt-header-time">
+                  {{ item.year + '年' + item.month + '月' }}
+                </div>
+                <div class="treeGantt-header-item treeGantt-header-list">
+                  <span v-for="day in item.detail" :key="day.chuo">{{
+                    day.day + ' ' + day.weekStr
+                  }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="treeGantt-header" v-if="isMove"></div>
+          <div class="treeGantt-container">
+            <tree-gantt
+              :item="child"
+              v-for="(child, index) in taskBoardList"
+              :key="index"
+            ></tree-gantt>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- treeGantt e -->
+  </div>
+</template>
+
+<script>
+  import { mapState } from 'vuex'
+  // import BScroll from 'better-scroll'
+  import TreeItem from './TreeItem'
+  import TreeInfo from './TreeInfo'
+  import TreeGantt from './TreeGantt'
+  import tools from '../../libs/index'
+  export default {
+    name: 'calendarDay',
+    components: {
+      TreeItem,
+      TreeInfo,
+      TreeGantt,
+    },
+    data() {
+      return {
+        clientHeight: 'auto',
+        itemId: 0,
+        scrollTop: 0,
+        scrollLeft: 0,
+        isMove: false,
+      }
+    },
+    watch: {},
+    computed: {
+      ...mapState('calendar', {
+        info: state => state.calendar,
+      }),
+
+      initCalendarData() {
+        let info = this.info
+        let ganttRenderData = []
+        if (info) {
+          // 开始日期前加一周    结束日期后加一周
+          let start = info.earliestDate - 604800000
+          let end = info.latestDate + 604800000
+          info.timeDetail = tools.getTimeDetail(start, end)
+          let dayStamp = 1000 * 60 * 60 * 24
+          info.width = info.width = Math.ceil((end - start) / dayStamp)
+          info.formatTimeDetail = tools.formatGetTimeDetail(info.timeDetail)
+          if (info.taskBoardList) {
+            ganttRenderData = info.taskBoardList.map(item => {
+              if (item.tasks && item.tasks.length > 0) {
+                item.tasks.map(task => {
+                  this.handleStatus(task)
+                  return task
+                })
+              }
+              return item
+            })
+          }
+        }
+        return ganttRenderData
+      },
+      taskBoardList() {
+        return this.info && this.initCalendarData
+      },
+      calacWidth() {
+        return (this.info && this.info.width * 50 + 'px') || '1000px'
+      },
+      transfromMove() {
+        let _move = -this.scrollTop
+        return {
+          transform: `translateY(${_move}px)`,
+        }
+      },
+      transfromLeft() {
+        let _move = -this.scrollLeft
+        return {
+          transform: `translateX(${_move}px)`,
+        }
+      },
+    },
+    methods: {
+      calcHeight() {
+        let doc = document.documentElement || document.body
+        let Height = Math.max(doc.clientHeight, doc.offsetHeight) + 'px'
+        return Height
+      },
+      changeHoverBg(item) {
+        this.itemId = item.id
+      },
+      handleStatus(item) {
+        item.text = ''
+        item.width = '0px'
+        let res = tools.getTime(this.info.earliestDate)
+        let dayStamp = 1000 * 60 * 60 * res.hour
+        let start = this.info.earliestDate - 604800000 - dayStamp
+        // let end = this.info.latestDate + 604800000
+        let _gridWidth = 50 // 单元格的宽度
+        let _houerTime = 1000 * 60 * 60
+        // 一小时的宽度
+        let hourWidth = _gridWidth / 24
+        let currentTime = new Date().getTime()
+        //
+        if (item.startDate && item.dueDate) {
+          item.code = 4
+          // 格式化开始时间
+          item.formatStartDate = tools.getTime(item.startDate)
+          // 格式化结束时间
+          item.formatDueDate = tools.getTime(item.dueDate)
+          // 每一项任务有多少小时
+          let itemHour = (item.dueDate - item.startDate) / _houerTime
+          // 每个任务宽度
+          item.width = itemHour * hourWidth
+          item.left = ((item.startDate - start) / _houerTime) * hourWidth
+          if (item.status === 2) {
+            // 灰色
+            item.class = 'gray'
+          } else {
+            // 拿当前时间与截至时间对比
+            if (currentTime > item.dueDate) {
+              // currentTime > task.dueDate  -- 红色
+              item.class = 'red'
+            }
+            if (currentTime < item.dueDate) {
+              // currentTime < task.dueDate  -- 绿色
+              item.class = 'green'
+            }
+          }
+        } else if (!item.startDate && item.dueDate) {
+          item.code = 3
+          item.width = 1.5 * _gridWidth
+          item.left = ((item.dueDate - start) / _houerTime) * hourWidth
+          // 格式化结束时间
+          item.formatDueDate = tools.getTime(item.dueDate)
+          if (item.status === 2) {
+            // 灰色
+            item.class = 'gray'
+          } else {
+            // 拿当前时间与截至时间对比
+            if (currentTime > item.dueDate) {
+              // currentTime > task.dueDate  -- 红色
+              item.class = 'red'
+            }
+            if (currentTime < item.dueDate) {
+              // currentTime < task.dueDate  -- 绿色
+              item.class = 'green'
+            }
+          }
+        } else if (item.startDate && !item.dueDate) {
+          item.code = 2
+          item.width = 1.5 * _gridWidth
+          // 不用对比  -- 绿色
+          item.class = 'green'
+          item.left =
+            ((item.startDate - start) / _houerTime) * hourWidth - _gridWidth / 2
+          // 格式化开始时间
+          item.formatStartDate = tools.getTime(item.startDate)
+        } else {
+          item.code = 0
+          item.width = 0
+          item.class = ''
+          // 不显示任何东西
+        }
+      },
+      handleScroll(ev) {
+        let _scrollTop = this.$refs.aaa.scrollTop
+        let _scrollLeft = this.$refs.aaa.scrollLeft
+        /*eslint-disable*/
+        document.querySelector('.treeItem-container').style[
+          'transform'
+          ] = `translate(0px,${-_scrollTop}px) translateZ(0)`
+        document.querySelector('.treeInfo-container').style[
+          'transform'
+          ] = `translate(0px,${-_scrollTop}px) translateZ(0)`
+        console.log('_scrollTop', _scrollTop)
+        if (_scrollTop > 0) {
+          this.isMove = true
+          document.querySelector('.treeGantt-header').style[
+            'transform'
+            ] = `translate(${-_scrollLeft}px,0px) translateZ(0)`
+        } else {
+          this.isMove = false
+          document.querySelector('.treeGantt-header').style[
+            'transform'
+            ] = `translate(0px,0px) translateZ(0)`
+        }
+        /* eslint-enable */
+      },
+    },
+    mounted() {
+      const vm = this
+      vm.clientHeight = vm.calcHeight()
+      window.onresize = function() {
+        vm.clientHeight = vm.calcHeight()
+      }
+    },
+  }
+</script>
+
+<style scoped lang="scss">
+  .calendarDay {
+    overflow: hidden;
+    min-width: 1200px;
+    .treeNode {
+      float: left;
+      width: 700px;
+      height: 100%;
+      box-shadow: 5px 0 5px 0 rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+      background-color: #ffffff;
+      border-top: 1px solid #dbdbdb;
+    }
+    .treeGantt {
+      height: 100%;
+      border-top: 1px solid #dbdbdb;
+      display: block;
+      overflow: hidden;
+    }
+    .treeNode-item {
+      width: 30%;
+      float: left;
+      border-right: 1px solid #dbdbdb;
+      box-sizing: border-box;
+      overflow: hidden;
+      z-index: 2;
+      position: relative;
+    }
+    .treeNode-item-title {
+      width: 209px;
+      height: 48px;
+      font-size: 14px;
+      line-height: 48px;
+      color: #999;
+      box-sizing: border-box;
+      border-left: 1px solid #dbdbdb;
+      z-index: 2;
+      // border-bottom: 1px solid #dbdbdb;
+      box-sizing: border-box;
+      white-space: nowrap;
+      background-color: #ffffff;
+    }
+    .treeNode-info-title {
+      background-color: #ffffff;
+      width: 490px;
+      height: 48px;
+      z-index: 555;
+    }
+    .treeNode-title-left {
+      width: 100%;
+      min-width: 50px;
+      height: 48px;
+      font-size: 14px;
+      line-height: 48px;
+      color: #999;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      z-index: 555;
+      padding-left: 12px;
+      display: inline-block;
+      border-bottom: 1px solid #dbdbdb;
+      box-sizing: border-box;
+      white-space: nowrap;
+    }
+    .treeNode-info {
+      width: 70%;
+      float: left;
+      position: relative;
+      z-index: 2;
+      overflow: hidden;
+      // box-shadow: 5px 0 5px 0 rgba(0, 0, 0, 0.1);
+      // box-sizing: border-box;
+      span {
+        width: 33.33%;
+        min-width: 50px;
+        height: 48px;
+        font-size: 14px;
+        line-height: 48px;
+        color: #999;
+        box-sizing: border-box;
+        border-right: 1px solid #dbdbdb;
+        z-index: 2;
+        padding-left: 12px;
+        display: inline-block;
+        border-bottom: 1px solid #dbdbdb;
+        box-sizing: border-box;
+        white-space: nowrap;
+        &.br0 {
+          border-right: 0;
+        }
+      }
+    }
+
+    .treeGantt-header {
+      // width: 100%;
+      height: 48px;
+      font-size: 14px;
+      line-height: 48px;
+      color: #999;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      border-left: 1px solid #dbdbdb;
+      z-index: 100;
+      padding-left: 12px;
+      border-bottom: 1px solid #dbdbdb;
+      box-sizing: border-box;
+      white-space: nowrap;
+      padding-left: 0;
+      background-color: #ffffff;
+    }
+    .treeGantt-item {
+      height: 48px;
+      font-size: 14px;
+      line-height: 48px;
+      overflow: hidden;
+      display: inline-block;
+      box-sizing: border-box;
+      &:last-child {
+        .treeGantt-header-time {
+          border-right: 0;
+        }
+        span:last-child {
+          border-right: 0;
+        }
+      }
+    }
+    .treeGantt-header-item {
+      // width: 100%;
+      display: block;
+      height: 24px;
+      line-height: 24px;
+      text-align: center;
+      font-size: 12px;
+      color: #888;
+    }
+    .treeGantt-header-time {
+      // width: 100%;
+      display: block;
+      height: 24px;
+      line-height: 24px;
+      text-align: center;
+      font-size: 12px;
+      color: #888;
+      border-right: 1px solid #dfdfdf;
+      box-sizing: border-box;
+    }
+    .treeGantt-header-list {
+      border-top: 1px solid #dbdbdb;
+      border-left: none;
+      white-space: nowrap;
+      span {
+        width: 50px;
+        text-align: center;
+        height: 23px;
+        line-height: 23px;
+        border-right: 1px solid #dbdbdb;
+        font-size: 12px;
+        color: #888;
+        box-sizing: border-box;
+        float: left;
+      }
+    }
+    .treeGantt-container {
+      overflow: auto;
+      height: 100%;
+      background: url('../../../../assets/images/project/grid.jpg') 26px -18px;
+      background-size: 50px 35px;
+    }
+    .treeGantt-warp {
+      overflow: auto;
+      height: 100%;
+    }
+    .treeGantt-main {
+      width: 1500px;
+    }
+    .fixed {
+      position: fixed;
+      z-index: 1;
+    }
+    .treeItem-container,
+    .treeInfo-container {
+      transform: translate(0px, 0px) translateZ(0);
+    }
+  }
+</style>

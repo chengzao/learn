@@ -18,6 +18,7 @@
         }
         .p{
             background-color: palegoldenrod;
+
         }
         .l{
             background-color: palegreen;
@@ -25,6 +26,14 @@
         .r{
             background-color: paleturquoise;
         }
+      p{
+        width: 300px;
+        display: inline-block;
+      }
+      .main{
+        overflow: auto;
+        white-space: nowrap;
+      }
     </style>
 </head>
 <body>
@@ -33,9 +42,19 @@
             <p>left</p>
         </div>
         <div class="right r">
-            <p>right</p>
-            <p>right</p>
+              <div class="main">
+                <p>right</p>
+                <p>right</p>
+              </div>
         </div>
     </div>
 </body>
+<script>
+  var dom = document.querySelector('.main')
+  var html = ''
+  for (var i =0; i< 20; i++){
+    html += '<p>'+i+'</p>'
+  }
+  dom.innerHTML = html
+</script>
 </html>
