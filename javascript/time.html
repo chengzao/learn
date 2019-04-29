@@ -40,7 +40,7 @@ var tools = {
         new Date(
           endDetailDate.year,
           endDetailDate.month - 1,
-          endDetailDate.day+1,
+          endDetailDate.day,
         ).getTime() + distance
       let outputStart = this.formateDate(startStamp)
       let outputLast = this.formateDate(lastStamp)
@@ -79,7 +79,27 @@ var tools = {
         week: currentDate.getDay()
       }
     },
-
+    getYearWeek(date = new Date()) {
+      date = new Date(date)
+      let date2 = new Date(date.getFullYear(), 0, 1)
+      let day1 = date.getDay()
+      if (day1 == 0) day1 = 7
+        let day2 = date2.getDay()
+        if (day2 == 0) day2 = 7
+        let d = Math.round(
+          (date.getTime() -
+            date2.getTime() +
+            (day2 - day1) * (24 * 60 * 60 * 1000)) /
+          86400000,
+        )
+        return {
+          weeks: Math.ceil(d / 7) + 1,
+          year: date.getFullYear(),
+          month: date.getMonth() + 1,
+          day: date.getDate(),
+          week: date.getDay()
+        }
+    },
     getAllDate(first, last) {
       // 一天的时间戳
       let firstDate = new Date(first)
@@ -103,7 +123,9 @@ var tools = {
       let dates = []
       let _start = _day1+1, _last = day1+ _day2
       for (var i = _start; i <= _last; i++) {
-        let week = this.getWeek(firstDateYear, 0, i)
+        let _time = new Date(firstDateYear, 0, i)
+        // let week = this.getWeek(firstDateYear, 0, i)
+        let week = this.getYearWeek(_time)
         dates.push(week)
       }
       return dates
@@ -130,24 +152,17 @@ var tools = {
         }
       }
       return dest
+    },
+    spliteYearArr(data){
+      let newArr = []
+     for (var i = 0, len = data.length; i < len; i += 7) {
+        newArr.push(data.slice(i, i + 7));
+      }
+      return newArr
     }
   }
 
-  // function getYearWeek(date = new Date()) {
-  //     date = new Date(date)
-  //     let date2 = new Date(date.getFullYear(), 0, 1)
-  //     let day1 = date.getDay()
-  //     if (day1 == 0) day1 = 7
-  //     let day2 = date2.getDay()
-  //     if (day2 == 0) day2 = 7
-  //     let d = Math.round(
-  //       (date.getTime() -
-  //         date2.getTime() +
-  //         (day2 - day1) * (24 * 60 * 60 * 1000)) /
-  //       86400000,
-  //     )
-  //     return Math.ceil(d / 7) + 1
-  // }
+
 
 
   var aaa = {
@@ -159,16 +174,70 @@ var tools = {
     latestDate: 1555060500000
   }
   var ccc = {
-    earliestDate: +new Date(2019,2,5),
-    latestDate: +new Date(2019, 2, 15)
+    earliestDate: +new Date(2018,12,5),
+    latestDate: +new Date(2019, 1, 15)
   }
 
   let weeks7 = 1000*60*60*24*7
   let res = tools.startAndLastTime(ccc.earliestDate, ccc.latestDate, weeks7)
   let arr = tools.getAllDate(res.outputStart.dateTime,res.outputLast.dateTime)
-  console.log(arr)
+  // console.log(arr)
 
-  console.log(tools.splitArr(arr));
+  // console.log(tools.splitArr(arr));
+  console.log(tools.spliteYearArr(arr));
+
+  var ddd = {
+    earliestDate: +new Date(2019, 1, 5),
+    latestDate: +new Date(2019, 3, 15)
+  }
+
+
+  // let monthArr = [...Array(12).keys()].map(item => item+1);
+
+  function timeToJson(time){
+    let date = new Date(time)
+    return {
+      year: date.getFullYear(),
+      month: date.getMonth()+1,
+      day: date.getDate(),
+      week: date.getDay(),
+      hour: date.getHours(),
+      minute: date.getMinutes(),
+      second: date.getSeconds()
+    }
+  }
+
+
+  function formateYear(first, last, months){
+    let firstDate = new Date(first)
+    let lastDate = new Date(last)
+
+    let _firstYear = firstDate.getFullYear()
+    let _firstMonth = firstDate.getMonth()
+    let _firstDate = firstDate.getDate()
+    let firstStamp = new Date(_firstYear, _firstMonth-months, _firstDate).getTime()
+
+    let _lastYear = lastDate.getFullYear()
+    let _lastMonth = lastDate.getMonth()
+    let _lastDate = lastDate.getDate()
+    let lastStamp = new Date(_lastYear, _lastMonth+months, _lastDate).getTime()
+
+    let outputStart = timeToJson(firstStamp)
+    let outputEnd = timeToJson(lastStamp)
+
+    let entryStart = timeToJson(first)
+    let entryEnd = timeToJson(last)
+
+    return {
+      outputStart,
+      outputEnd,
+      entryStart,
+      entryEnd
+    }
+  }
+
+  res= formateYear(ddd.earliestDate,ddd.latestDate,  3)
+  console.log('res ', res)
 
 
 </script>
