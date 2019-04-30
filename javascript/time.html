@@ -53,12 +53,12 @@ var tools = {
         entryLast,
       }
     },
-    getWeek(y, m, d) {
+    getWeek(time) {
       // 将字符串转为标准时间格式
-      let currentDate = new Date(y, m, d);
+      let currentDate = new Date(time);
       // 先计算出该日期为第几周
       // 获取这一年的1月1号
-      let firstDate = new Date(y, 0, 1)
+      let firstDate = new Date(currentDate.getFullYear(), 0, 1)
 
       let firstWeek = firstDate.getDay() == 0 ? 7 : firstDate.getDay()
 
@@ -124,8 +124,8 @@ var tools = {
       let _start = _day1+1, _last = day1+ _day2
       for (var i = _start; i <= _last; i++) {
         let _time = new Date(firstDateYear, 0, i)
-        // let week = this.getWeek(firstDateYear, 0, i)
-        let week = this.getYearWeek(_time)
+        let week = this.getWeek(_time)
+        // let week = this.getYearWeek(_time)
         dates.push(week)
       }
       return dates
@@ -191,7 +191,6 @@ var tools = {
     latestDate: +new Date(2019, 3, 15)
   }
 
-
   // let monthArr = [...Array(12).keys()].map(item => item+1);
 
   function timeToJson(time){
@@ -203,10 +202,10 @@ var tools = {
       week: date.getDay(),
       hour: date.getHours(),
       minute: date.getMinutes(),
-      second: date.getSeconds()
+      second: date.getSeconds(),
+      stamp: date.getTime()
     }
   }
-
 
   function formateYear(first, last, months){
     let firstDate = new Date(first)
@@ -236,9 +235,71 @@ var tools = {
     }
   }
 
-  res= formateYear(ddd.earliestDate,ddd.latestDate,  3)
-  console.log('res ', res)
+  function getYearMonths(start, end){
+    let startDate = new Date(start)
+    let startDateY = startDate.getFullYear(),
+        startDateM = startDate.getMonth()+1;
+        startDateD = startDate.getDate();
 
+    let endDate = new Date(end)
+    let endDateY = endDate.getFullYear(),
+        endDateM = endDate.getMonth() + 1;
+
+    let months = null
+    let years = endDateY - startDateY
+      if(years == 0){
+        months = endDateM - startDateM +1
+      }else if(years == 1){
+        months = 12 - startDateM + endDateM + 1
+      }else if(years > 1 ){
+        months = 12 - startDateM + endDateM + 12 * (years - 1) + 1
+      }
+    console.log('months', months);
+
+    let arr = []
+    for(var i=0; i<months; i++){
+      var fff = new Date(startDateY, startDateM+i-1,startDateD).getTime()
+      arr.push(timeToJson(fff))
+    }
+    return {
+      months: months,
+      data: arr,
+      startStamp: startDate.getTime(),
+      endStamp: endDate.getTime()
+    }
+  }
+
+  function splitArrYear(arr){
+  var map = {},
+    dest = [];
+  for (var i = 0; i < arr.length; i++) {
+    var item = arr[i];
+    if (!map[item.year]) {
+      dest.push({
+        year: item.year,
+        data: [item]
+      });
+      map[item.year] = item;
+    } else {
+      for (var j = 0; j < dest.length; j++) {
+        var output = dest[j];
+        if (output.year == item.year) {
+          output.data.push(item);
+          break;
+        }
+      }
+    }
+  }
+  return dest
+}
+
+
+  res= formateYear(ddd.earliestDate,ddd.latestDate,  3)
+
+  var result = getYearMonths(res.outputStart.stamp, res.outputEnd.stamp)
+
+
+  console.log(splitArrYear(result.data));
 
 </script>
 </body>
