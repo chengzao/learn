@@ -1,25 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>css 选择器</title>
-	<!-- 外联样式 -->
-	<link rel="stylesheet" href="a.css">
-	<!-- 嵌入样式（内联样式） -->
-	<style>
-		@import url('b.css');
-	  .test{color:blue};
-	  p{color:red} /*不能正常显示红色字体*/
-	  .demo p{color:red}; /* 改变权重后可正常显示红色 */
-	</style>
+  <meta charset="UTF-8">
+  <title>css 选择器</title>
+  <!-- 外联样式 -->
+  <link rel="stylesheet" href="a.css">
+  <!-- 嵌入样式（内联样式） -->
+  <style>
+    @import url('b.css');
+
+    .test {
+      color: blue
+    }
+
+    ;
+
+    p {
+      color: red
+    }
+
+    /*不能正常显示红色字体*/
+    .demo p {
+      color: red
+    }
+
+    ;
+    /* 改变权重后可正常显示红色 */
+  </style>
 </head>
 <body>
-	<!-- 行内样式 -->
-	<div style="color: red">111</div>
+  <!-- 行内样式 -->
+  <div style="color: red">111</div>
 
-	<div class="demo">
-		<p class="test">world</p>
-	</div>
+  <div class="demo">
+    <p class="test">world</p>
+  </div>
 
 </body>
 </html>

@@ -5,14 +5,14 @@
   <title>cookie</title>
 </head>
 <body>
-<script>
-/*  document.cookie = "user_id=1";
-  document.cookie = "user_name=admin";
-  document.write(document.cookie);*/
+  <script>
+    /*  document.cookie = "user_id=1";
+      document.cookie = "user_name=admin";
+      document.write(document.cookie);*/
 
-  var date=new Date();
-  date.setTime(date.getTime()+10*60*1000); //设置date为当前时间+30分
-  document.cookie="key=123; expires="+date.toUTCString(); //将date赋值给expires
-</script>
+    var date = new Date();
+    date.setTime(date.getTime() + 10 * 60 * 1000); //设置date为当前时间+30分
+    document.cookie = "key=123; expires=" + date.toUTCString(); //将date赋值给expires
+  </script>
 </body>
 </html>

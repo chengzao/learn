@@ -136,15 +136,15 @@
     // 只有当所有的状态都为fulfieled，p的状态才会变成reject；否则p的状态变为reject；最后才传递给p的回调函数
     // 当如果作为参数的 Promise 实例，自己定义了catch方法，那么它一旦被rejected，并不会触发Promise.all()的catch方法
     const p1 = new Promise((resolve, reject) => {
-            resolve('hello');
-        })
+        resolve('hello');
+    })
         .then(result => result)
         .catch(e => e);
 
     // p2 定义了catch方法
     const p2 = new Promise((resolve, reject) => {
-            throw new Error('报错了');
-        })
+        throw new Error('报错了');
+    })
         .then(result => result)
         .catch(e => e);
 
@@ -159,13 +159,13 @@
     // 只要其中有一个实例改变，p的状态就改变，并传递给p的回调函数
 
 
-    // Promise.resolve 将现有对象转为 Promise 对象    
+    // Promise.resolve 将现有对象转为 Promise 对象
     Promise.resolve('foo')
     // 等价于
     new Promise(resolve => resolve('foo'))
 
-    // （1）参数是一个 Promise 实例: 直接返回这个实例     
-    // （1）参数是一个 thenable 对象: 将这个对象转为 Promise 对象，然后就立即执行thenable对象的then方法。     
+    // （1）参数是一个 Promise 实例: 直接返回这个实例
+    // （1）参数是一个 thenable 对象: 将这个对象转为 Promise 对象，然后就立即执行thenable对象的then方法。
     let thenable = {
         then: function (resolve, reject) {
             resolve(42);
@@ -294,7 +294,7 @@
     run(g);
 
 
-    // 
+    //
     const f = () => console.log('now');
     (
         () => new Promise(

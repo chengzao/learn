@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>insertAdjacentHTML</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>insertAdjacentHTML</title>
 </head>
 <body>
-    <p style="color:red;">This is insertAdjacentHTML demo : </p>
+  <p style="color:red;">This is insertAdjacentHTML demo : </p>
 
-    <div id="one">InsertAdjacentHTML Contain is Here</div>
+  <div id="one">InsertAdjacentHTML Contain is Here</div>
 </body>
 <script>
-var d = document.querySelector('#one');
-d.insertAdjacentHTML('afterend','<h2>This is insertAdjactHTMl afterend</h2>');
-d.insertAdjacentHTML('afterbegin','<h3>This is insertAdjactHTMl afterbegin</h3>');
-d.insertAdjacentHTML('beforeend','<h4>This is insertAdjactHTMl beforeend</h4>');
-d.insertAdjacentHTML('beforebegin','<h5>This is insertAdjactHTMl beforebegin</h5>');
+  var d = document.querySelector('#one');
+  d.insertAdjacentHTML('afterend', '<h2>This is insertAdjactHTMl afterend</h2>');
+  d.insertAdjacentHTML('afterbegin', '<h3>This is insertAdjactHTMl afterbegin</h3>');
+  d.insertAdjacentHTML('beforeend', '<h4>This is insertAdjactHTMl beforeend</h4>');
+  d.insertAdjacentHTML('beforebegin', '<h5>This is insertAdjactHTMl beforebegin</h5>');
 </script>
 </html>

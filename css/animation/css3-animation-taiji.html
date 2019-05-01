@@ -5,64 +5,72 @@
   <title>css3 太极</title>
   <style>
     /*CSS源代码*/
-    body{
-      background:#CFCFCF;
-    }
-    .box-taiji{
-      width:0px;
-      height:400px;
-      position:relative;
-      margin:50px auto;
-      border-left:200px solid #000;      /**/
-      border-right:200px solid #fff;     /**/
-      border-radius:50%;
-      animation:move 1s linear infinite;
-    }
-    .box-taiji:before,
-    .box-taiji:after{
-      position:absolute;
-      content:"";
-      display:block;
-    }
-    .box-taiji:before{
-      width:200px;
-      height:200px;
-      top:0px;
-      left:-100px;
-      z-index:1;
-      background-color:#fff;
-      border-radius:50%;
-      box-shadow:0 200px 0 #000;
-    }
-    .box-taiji:after{
-      width:60px;
-      height:60px;
-      top:70px;
-      left:-30px;
-      z-index:2;
-      background-color:#000;
-      border-radius:50%;
-      box-shadow:0 200px 0 #fff;
+    body {
+      background: #CFCFCF;
     }
 
-    @keyframes move{
-      0%{
-        transform:rotate(0deg);
-      }100%{
-         transform:rotate(360deg);
-       }
+    .box-taiji {
+      width: 0px;
+      height: 400px;
+      position: relative;
+      margin: 50px auto;
+      border-left: 200px solid #000;
+      /**/
+      border-right: 200px solid #fff;
+      /**/
+      border-radius: 50%;
+      animation: move 1s linear infinite;
+    }
+
+    .box-taiji:before,
+    .box-taiji:after {
+      position: absolute;
+      content: "";
+      display: block;
+    }
+
+    .box-taiji:before {
+      width: 200px;
+      height: 200px;
+      top: 0px;
+      left: -100px;
+      z-index: 1;
+      background-color: #fff;
+      border-radius: 50%;
+      box-shadow: 0 200px 0 #000;
+    }
+
+    .box-taiji:after {
+      width: 60px;
+      height: 60px;
+      top: 70px;
+      left: -30px;
+      z-index: 2;
+      background-color: #000;
+      border-radius: 50%;
+      box-shadow: 0 200px 0 #fff;
+    }
+
+    @keyframes move {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
     }
   </style>
 </head>
 <body>
-<!--
+  <!--
   参考：http://www.gbtags.com/gb/rtreplayerpreview/2875.htm
 -->
-<!-- HTML代码片段中请勿添加<body>标签 //-->
-<div class="box-taiji"></div>
+  <!-- HTML代码片段中请勿添加<body>标签 //-->
+  <div class="box-taiji"></div>
 
-<!-- 推荐开源CDN来选取需引用的外部JS //-->
-<script type="text/javascript" src="http://cdn.gbtags.com/jquery/1.11.1/jquery.min.js"></script>
+  <!-- 推荐开源CDN来选取需引用的外部JS //-->
+  <script type="text/javascript" src="http://cdn.gbtags.com/jquery/1.11.1/jquery.min.js"></script>
 
 </body>
 </html>

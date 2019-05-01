@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>clickOtherHide</title>
-	<style>
-		.box1{width: 100px;height: 100px;background-color: #666;}
-	</style>
+  <meta charset="UTF-8">
+  <title>clickOtherHide</title>
+  <style>
+    .box1 {
+      width: 100px;
+      height: 100px;
+      background-color: #666;
+    }
+  </style>
 </head>
 <body>
-	<div class="box1"></div>
+  <div class="box1"></div>
 </body>
 <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type='text/javascript'>
-	// 利用冒泡机制
-	$(document).on("click", function(){
-		$(".box1").hide();
-	});
+  // 利用冒泡机制
+  $(document).on("click", function () {
+    $(".box1").hide();
+  });
 
-	$(".box1").on("click", function(e){
-		e.preventDefault();
-		e.stopPropagation();
-	});
+  $(".box1").on("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+  });
 
 </script>
 </html>

@@ -1,44 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>event</title>
-	<style>
-		.box{
-			width: 100px;
-			height: 100px;
-			border: 1px solid #000;
-			text-align: center;
-			line-height: 100px;
-		}
-	</style>
+  <meta charset="UTF-8">
+  <title>event</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      text-align: center;
+      line-height: 100px;
+    }
+  </style>
 </head>
 <body>
-	<div class="box">
-		<button class="btn">按钮</button>
-	</div>
-	
-	<script>
-	    var box = document.querySelectorAll('.box')[0]; 
-		var btn = document.querySelector('.btn');
+  <div class="box">
+    <button class="btn">按钮</button>
+  </div>
 
-		box.addEventListener('click', handle1,false) // 事件冒泡 
-		btn.addEventListener('click', handle2,true) // 事件捕获
+  <script>
+    var box = document.querySelectorAll('.box')[0];
+    var btn = document.querySelector('.btn');
 
-		function handle1 (event) {
-			console.log('this is a box')
-			//event.stopPropagation() // 阻止冒泡
-		    //event.preventDefault() // 阻止默认行为
-		}		
+    box.addEventListener('click', handle1, false) // 事件冒泡
+    btn.addEventListener('click', handle2, true) // 事件捕获
+
+    function handle1(event) {
+      console.log('this is a box')
+      //event.stopPropagation() // 阻止冒泡
+      //event.preventDefault() // 阻止默认行为
+    }
 
 
-		function handle2 (event) {
-			console.log('this is a btn')
-			event.stopPropagation() // 阻止冒泡
-		    event.preventDefault() // 阻止默认行为
-		}
-		
+    function handle2(event) {
+      console.log('this is a btn')
+      event.stopPropagation() // 阻止冒泡
+      event.preventDefault() // 阻止默认行为
+    }
 
-	</script>
+
+  </script>
 </body>
 </html>

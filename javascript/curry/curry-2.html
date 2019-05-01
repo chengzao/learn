@@ -2,40 +2,40 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>curry</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>curry</title>
 </head>
 
 <body>
 
 </body>
 <script>
-    let log = console.log.bind(console);
-    function currying(fn) {
-        var allArgs = [];
+  let log = console.log.bind(console);
+  function currying(fn) {
+    var allArgs = [];
 
-        return function next() {
-            var args = [].slice.call(arguments);
-            log(args)    
-            if (args.length > 0) {
-                allArgs = allArgs.concat(args);
-                return next;
-            } else {
-                return fn.apply(null, allArgs);
-            }
-        }
+    return function next() {
+      var args = [].slice.call(arguments);
+      log(args)
+      if (args.length > 0) {
+        allArgs = allArgs.concat(args);
+        return next;
+      } else {
+        return fn.apply(null, allArgs);
+      }
     }
-    var add = currying(function () {
-        var sum = 0;
-        for (var i = 0; i < arguments.length; i++) {
-            sum += arguments[i];
-        }
-        log(sum);
-        return sum;
-    });
-   add(1,2,3)(4)()
+  }
+  var add = currying(function () {
+    var sum = 0;
+    for (var i = 0; i < arguments.length; i++) {
+      sum += arguments[i];
+    }
+    log(sum);
+    return sum;
+  });
+  add(1, 2, 3)(4)()
 </script>
 
 </html>

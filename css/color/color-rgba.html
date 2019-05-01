@@ -1,39 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>CSS 颜色</title>
-	<style>
-		body {
-			margin: 0;
-			padding: 0;
-			background-color: #F7F7F7;
-		}
+  <meta charset="UTF-8">
+  <title>CSS 颜色</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #F7F7F7;
+    }
 
-		/**
+    /**
 		 * 通过rgba我们可以对颜色的透明度进行控制
 		 */
-		div.outer {
-			width: 200px;
-			height: 200px;
-			margin: 40px auto;
-			background-color: rgba(0, 255, 0, 0.6);
-			color: rgba(255, 0, 0, 0.3);
-			border: 5px solid rgba(255, 0, 0, 1);
-		}
+    div.outer {
+      width: 200px;
+      height: 200px;
+      margin: 40px auto;
+      background-color: rgba(0, 255, 0, 0.6);
+      color: rgba(255, 0, 0, 0.3);
+      border: 5px solid rgba(255, 0, 0, 1);
+    }
 
-		div.inner {
-			width: 100px;
-			height: 100px;
-			opacity: 1;
-			font-size: 20px;
-		}
-
-	</style>
+    div.inner {
+      width: 100px;
+      height: 100px;
+      opacity: 1;
+      font-size: 20px;
+    }
+  </style>
 </head>
 <body>
-	<div class="outer">
-		<div class="inner">我是一个子盒子</div>
-	</div>
+  <div class="outer">
+    <div class="inner">我是一个子盒子</div>
+  </div>
 </body>
 </html>

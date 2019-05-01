@@ -2,80 +2,80 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
 </head>
 
 <body>
-    <script>
-        var input = document.createElement('input');
-        input.type = 'file';
-        document.body.appendChild(input);
-        var curWidth = 0;
-        var curHeight = 0;
+  <script>
+    var input = document.createElement('input');
+    input.type = 'file';
+    document.body.appendChild(input);
+    var curWidth = 0;
+    var curHeight = 0;
 
-        input.addEventListener('change', function () {
-            var file = this.files[0];
-            // console.log(file)
-            // 1.0
-            // var img = document.createElement("img");
-            // var reader = new FileReader();
-            // reader.onload = function (e) {
-            //     img.src = e.target.result;
-            // }
-            // reader.readAsDataURL(file);
-            // document.body.appendChild(img)
+    input.addEventListener('change', function () {
+      var file = this.files[0];
+      // console.log(file)
+      // 1.0
+      // var img = document.createElement("img");
+      // var reader = new FileReader();
+      // reader.onload = function (e) {
+      //     img.src = e.target.result;
+      // }
+      // reader.readAsDataURL(file);
+      // document.body.appendChild(img)
 
-            //2.0 
-            // var img = document.createElement('img');
-            // img.src = window.URL.createObjectURL(file);
-            // document.body.appendChild(img)
+      //2.0
+      // var img = document.createElement('img');
+      // img.src = window.URL.createObjectURL(file);
+      // document.body.appendChild(img)
 
-            //3.0 读取文件数据
-            var reader = new FileReader();
-            reader.onload = function(e){
-                // 获取文件源
-                var data = e.target.result;
-                // 实例化Image
-                var image = new Image();
-                // 图片加载完
-                image.onload = function(){
-                    //获取图片实际宽高
-                    curWidth = image.width;
-                    curHeight = image.height;
-                    //创建 canvas
-                    var canvas = document.createElement("canvas");
-                    var ctx = canvas.getContext("2d");
-                    var MAX_WIDTH = 800;
-                    var MAX_HEIGHT = 600;
-                    var width = curWidth;
-                    var height = curHeight;
-                    // 比较
-                    if (width > height) {
-                        if (width > MAX_WIDTH) {
-                            height *= MAX_WIDTH / width;
-                            width = MAX_WIDTH;
-                        }
-                    } else {
-                        if (height > MAX_HEIGHT) {
-                            width *= MAX_HEIGHT / height;
-                            height = MAX_HEIGHT;
-                        }
-                    }
-                    canvas.width = width;
-                    canvas.height = height;
-                    ctx.drawImage(image, 0, 0, width, height);
-                    document.body.appendChild(canvas);
-                }
-                image.src = data;
+      //3.0 读取文件数据
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        // 获取文件源
+        var data = e.target.result;
+        // 实例化Image
+        var image = new Image();
+        // 图片加载完
+        image.onload = function () {
+          //获取图片实际宽高
+          curWidth = image.width;
+          curHeight = image.height;
+          //创建 canvas
+          var canvas = document.createElement("canvas");
+          var ctx = canvas.getContext("2d");
+          var MAX_WIDTH = 800;
+          var MAX_HEIGHT = 600;
+          var width = curWidth;
+          var height = curHeight;
+          // 比较
+          if (width > height) {
+            if (width > MAX_WIDTH) {
+              height *= MAX_WIDTH / width;
+              width = MAX_WIDTH;
             }
-            reader.readAsDataURL(file);
+          } else {
+            if (height > MAX_HEIGHT) {
+              width *= MAX_HEIGHT / height;
+              height = MAX_HEIGHT;
+            }
+          }
+          canvas.width = width;
+          canvas.height = height;
+          ctx.drawImage(image, 0, 0, width, height);
+          document.body.appendChild(canvas);
+        }
+        image.src = data;
+      }
+      reader.readAsDataURL(file);
 
-        });
+    });
 
-    </script>
+  </script>
 </body>
 
 </html>

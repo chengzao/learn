@@ -18,16 +18,16 @@
   let name = 'xx';
   let age = 9;
   function tag(strArr, ...args) {
-      var str = '';
-      for (let i = 0; i < args.length; i++) {
-          str += strArr[i] + args[i]
-          // console.log(str);
-      }
-      console.log(strArr,args);
-      //[ '', '今年', '岁了' ]   [ 'xx', 9 ]
-      //
-      str += strArr[strArr.length - 1];
-      return str;
+    var str = '';
+    for (let i = 0; i < args.length; i++) {
+      str += strArr[i] + args[i]
+      // console.log(str);
+    }
+    console.log(strArr, args);
+    //[ '', '今年', '岁了' ]   [ 'xx', 9 ]
+    //
+    str += strArr[strArr.length - 1];
+    return str;
   }
   let str = tag`${name}今年${age}岁了`;
   console.log(str);

@@ -1,43 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <style media="screen">
-      .knockout {
-        background-image: linear-gradient(to left, #FF4E50 , #F9D423);
-        font-family: 'Bowlby One SC', cursive;
-        height: 100vh;
-        text-transform: uppercase;
-        width: 100%;
-      }
-      text:nth-child(2) {
-        font-size: 5em;
-      }
-      text:nth-child(3) {
-        font-size: 5.1em;
-      }
-      text:nth-child(4) {
-        font-size: 15em;
-      }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style media="screen">
+    .knockout {
+      background-image: linear-gradient(to left, #FF4E50, #F9D423);
+      font-family: 'Bowlby One SC', cursive;
+      height: 100vh;
+      text-transform: uppercase;
+      width: 100%;
+    }
 
-    </style>
-  </head>
-  <body>
-    <div class="knockout">
+    text:nth-child(2) {
+      font-size: 5em;
+    }
 
-      <svg class="knockout-text-container" width="100%" height="100%">
-        <rect class="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y="0" fill-opacity="1" mask="url(#knockout-text)"/>
-        <mask id="knockout-text">
-          <rect width="100%" height="100%" fill="#fff" x="0" y="0"/>
-          <text x="50%" y="100" fill="#000" text-anchor="middle">Mama Said</text>
-          <text x="50%" y="175" fill="#000" text-anchor="middle">Knock You</text>
-          <text x="50%" y="365" fill="#000" text-anchor="middle">Out</text>
-        </mask>
-      </svg>
+    text:nth-child(3) {
+      font-size: 5.1em;
+    }
 
-    </div>
-  </body>
+    text:nth-child(4) {
+      font-size: 15em;
+    }
+  </style>
+</head>
+<body>
+  <div class="knockout">
+
+    <svg class="knockout-text-container" width="100%" height="100%">
+      <rect class="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y="0" fill-opacity="1"
+        mask="url(#knockout-text)" />
+      <mask id="knockout-text">
+        <rect width="100%" height="100%" fill="#fff" x="0" y="0" />
+        <text x="50%" y="100" fill="#000" text-anchor="middle">Mama Said</text>
+        <text x="50%" y="175" fill="#000" text-anchor="middle">Knock You</text>
+        <text x="50%" y="365" fill="#000" text-anchor="middle">Out</text>
+      </mask>
+    </svg>
+
+  </div>
+</body>
 </html>

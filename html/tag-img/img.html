@@ -6,31 +6,39 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>img</title>
   <style>
-    .wrapper{
+    .wrapper {
       width: 400px;
     }
-    .image{
+
+    .image {
       overflow: hidden;
       height: 0;
       padding-bottom: 66%;
-      position:relative;
+      position: relative;
     }
-    img{
+
+    img {
       position: absolute;
       width: 100%;
       height: 100%;
     }
-    strong{
+
+    strong {
       color: red;
     }
-    a:link, a:visited, a:hover, a:active{
+
+    a:link,
+    a:visited,
+    a:hover,
+    a:active {
       color: blue;
       text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <p>img宽高等比例缩放(使用的是padding-bottom的取值为百分比(%),基于父元素<strong>宽度</strong>的百分比下内边距)<a href="http://www.w3school.com.cn/cssref/pr_padding-bottom.asp">链接</a></p>
+  <p>img宽高等比例缩放(使用的是padding-bottom的取值为百分比(%),基于父元素<strong>宽度</strong>的百分比下内边距)<a
+      href="http://www.w3school.com.cn/cssref/pr_padding-bottom.asp">链接</a></p>
   <div class="wrapper">
     <div class="image">
       <img src="./images/a.jpg" alt="a">

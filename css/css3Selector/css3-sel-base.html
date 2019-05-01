@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>选择器 - 属性</title>
-	<style>
-		body {
-			margin: 0;
-			padding: 0;
-			font-family: '微软雅黑';
-			background-color: #F7F7F7;
-		}
+  <meta charset="UTF-8">
+  <title>选择器 - 属性</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: '微软雅黑';
+      background-color: #F7F7F7;
+    }
 
-		a {
-			color: #333;
-			font-size: 24px;
-			text-decoration: none;
-		}
+    a {
+      color: #333;
+      font-size: 24px;
+      text-decoration: none;
+    }
 
-		li {
-			line-height: 40px;
-		}
+    li {
+      line-height: 40px;
+    }
 
-		/**
+    /**
 		 * 我们先要了解属性选择器的语法
 		 * E:[attr];
 		 * E:[attr=val];
@@ -29,74 +29,74 @@
 		 * E:[attr$=val];
 		 * E:[attr*=val];
 		 */
-		
-		/*以下便是CSS3属性选择器的基本语法*/
-		/*a[data-src='111'] {
-			color: red;
-		}*/
-		
-		/*传统写法*/
-		/*a[href="a.mp3"], a[href="b.mp3"] {
+
+    /*以下便是CSS3属性选择器的基本语法*/
+    /*a[data-src='111'] {
 			color: red;
 		}*/
 
-		/*$=代表的是什么结尾的*/
-		/*a[href$="mp3"] {
+    /*传统写法*/
+    /*a[href="a.mp3"], a[href="b.mp3"] {
+			color: red;
+		}*/
+
+    /*$=代表的是什么结尾的*/
+    /*a[href$="mp3"] {
 			color: blue;
 		}
 
 		a[href$="rmvb"] {
 			color: pink;
-		}*/	
+		}*/
 
-		/*a[href^='a'] {
+    /*a[href^='a'] {
 			color: red;
 		}*/
 
-		/*a[href*='m'] {
+    /*a[href*='m'] {
 			color: red;
 		}*/
 
-		a[href] {
-			color: red;
-		}
-		
-		/*语法[] 括号内部写的按属性做的条件筛选*/
-		[herf="b.txt"] {}
-	</style>
+    a[href] {
+      color: red;
+    }
+
+    /*语法[] 括号内部写的按属性做的条件筛选*/
+    [herf="b.txt"] {}
+  </style>
 </head>
 <body>
-	<ul>
-		<li>
-			<span data-src="111">adsfas</span>
-		</li>
-		<li>
-			<a href="a.mp4" data-src="111">a.mp4是一个视频文件</a>
-		</li>
-		<li>
-			<a href="b.txt">b.txt是一个文本文件</a>
-		</li>
-		<li>
-			<a href="a.mp3">a.mp3一个音频文件</a>
-		</li>
-		<li>
-			<a href="b.mp3">b.mp3一个音频文件</a>
-		</li>
-		<li>
-			<a href="a.rmvb">a.rmvb是一个视频文件</a>
-		</li>
-		<li>
-			<a href="b.rmvb">b.rmvb是一个视频文件</a>
-		</li>
-	</ul>
-	<script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script>
+  <ul>
+    <li>
+      <span data-src="111">adsfas</span>
+    </li>
+    <li>
+      <a href="a.mp4" data-src="111">a.mp4是一个视频文件</a>
+    </li>
+    <li>
+      <a href="b.txt">b.txt是一个文本文件</a>
+    </li>
+    <li>
+      <a href="a.mp3">a.mp3一个音频文件</a>
+    </li>
+    <li>
+      <a href="b.mp3">b.mp3一个音频文件</a>
+    </li>
+    <li>
+      <a href="a.rmvb">a.rmvb是一个视频文件</a>
+    </li>
+    <li>
+      <a href="b.rmvb">b.rmvb是一个视频文件</a>
+    </li>
+  </ul>
+  <script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script>
 		// 类选择器以类名，标签以标签，推出属性选择器实际就是以
 		// 属性选择元素，类选择器以点开始，ID选择器以#，属性选择器以[]
 		// 做为语法要求，[]里面写的选择器的条件
 		// jQuery的一种选择器，叫做属性选择器
 		// $('[href="b.txt"]').css('color', 'red');
 		// $('[href="a.rmvb"]').css('color', 'green');
-	</script>
+  </script>
 </body>
 </html>

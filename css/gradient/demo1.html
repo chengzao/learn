@@ -2,42 +2,42 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <style>
-        body {
-            padding: 10rem;
-            background: rgba(0, 0, 0, .9)
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      padding: 10rem;
+      background: rgba(0, 0, 0, .9)
+    }
 
-        .panel {
-            height: 12rem;
-            width: 24rem;
-            border: 1px solid rgba(22, 78, 137, 1);
-            background: rgba(13, 35, 61, 1);
-            position: relative;
-        }
+    .panel {
+      height: 12rem;
+      width: 24rem;
+      border: 1px solid rgba(22, 78, 137, 1);
+      background: rgba(13, 35, 61, 1);
+      position: relative;
+    }
 
-        .panel::after {
-            content: attr(data-corner);
-            display: block;
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 5rem;
-            padding: 0 1rem;
-            overflow: hidden;
-            text-align: right;
-            color: rgba(255, 255, 255, .9);
-            background: linear-gradient(45deg, transparent 0%, transparent 30%, rgba(22, 78, 137, 1) 30%, rgba(22, 78, 137, 1) 100%)
-        }
-    </style>
+    .panel::after {
+      content: attr(data-corner);
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 5rem;
+      padding: 0 1rem;
+      overflow: hidden;
+      text-align: right;
+      color: rgba(255, 255, 255, .9);
+      background: linear-gradient(45deg, transparent 0%, transparent 30%, rgba(22, 78, 137, 1) 30%, rgba(22, 78, 137, 1) 100%)
+    }
+  </style>
 </head>
 
 <body>
-    <div class='panel' data-corner='New'></div>
+  <div class='panel' data-corner='New'></div>
 
 </body>
 

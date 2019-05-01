@@ -1,70 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
+  <meta charset="UTF-8">
+  <title>Document</title>
 
 </head>
 <body>
-<div>
-	<input type="checkbox" value="1" >
-	<input type="checkbox" value="2">
-	<input type="checkbox" value="3">
-	<input type="checkbox" value="4">
-	<input type="checkbox" value="5">
-	<input type="checkbox" value="6">
-</div>
+  <div>
+    <input type="checkbox" value="1">
+    <input type="checkbox" value="2">
+    <input type="checkbox" value="3">
+    <input type="checkbox" value="4">
+    <input type="checkbox" value="5">
+    <input type="checkbox" value="6">
+  </div>
   <script>
 
 
 
 
-  var input=document.getElementsByTagName("input");
-  var arr=[];
-  for (var i = 0; i < input.length; i++) {
-  	// console.log(input[i])
-  	
-  	input[i].onclick=function(){
-//  		 console.log(this.value);
+    var input = document.getElementsByTagName("input");
+    var arr = [];
+    for (var i = 0; i < input.length; i++) {
+      // console.log(input[i])
 
-  		var True=this.checked;
-  		console.log(True)
+      input[i].onclick = function () {
+        //  		 console.log(this.value);
 
-  		if(True){
-  			// this.name='checked';
-  			this.setAttribute("checked", "checked")
-  			arr.push(this);
-  		}else {
-  			this.setAttribute("checked", "");
-  		}
-			// console.log(arr.length);
-			if(arr.length==4){
-				// console.log('4');
-				
-			}
+        var True = this.checked;
+        console.log(True)
 
-			
-  	}
+        if (True) {
+          // this.name='checked';
+          this.setAttribute("checked", "checked")
+          arr.push(this);
+        } else {
+          this.setAttribute("checked", "");
+        }
+        // console.log(arr.length);
+        if (arr.length == 4) {
+          // console.log('4');
 
-  	 
+        }
 
 
-console.log(input[i].checked);
+      }
 
 
 
-  }
-		
+
+      console.log(input[i].checked);
 
 
-/*	  	+function (){
-	    alert('Hello World');
-			}();*/
 
-/*	  	var fnName= function (){
-	    alert('Hello World');
-			}();*/
-		
+    }
+
+
+
+    /*	  	+function (){
+          alert('Hello World');
+          }();*/
+
+    /*	  	var fnName= function (){
+          alert('Hello World');
+          }();*/
+
 
 
   </script>

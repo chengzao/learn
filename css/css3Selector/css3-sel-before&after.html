@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>选择器 - 伪元素</title>
-	<style>
-		body {
-			margin: 0;
-			padding: 0;
-			font-family: '微软雅黑';
-			background-color: #F7F7F7;
-		}
+  <meta charset="UTF-8">
+  <title>选择器 - 伪元素</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: '微软雅黑';
+      background-color: #F7F7F7;
+    }
 
-		li {
-			font-size: 20px;
-			/*line-height: 40px;*/
-			list-style: none;
-		}
+    li {
+      font-size: 20px;
+      /*line-height: 40px;*/
+      list-style: none;
+    }
 
 
-/*		li .before,
+    /*		li .before,
 		li .after {
 			display: block;
 			width: 100px;
@@ -26,55 +26,55 @@
 			background-color: red;
 			margin: 10px;
 		}*/
-		
-		/*伪元素的语法是::，表示的是伪元素选择器*/
-		li:after {
-			/*为新增加的元素添加一个内容*/
-			/*content 属性必须有，::after、::before必须结合content使用
+
+    /*伪元素的语法是::，表示的是伪元素选择器*/
+    li:after {
+      /*为新增加的元素添加一个内容*/
+      /*content 属性必须有，::after、::before必须结合content使用
 				即使没内容，也要给一个空的字符串
 			*/
-			content: 'fff';
-			/*新创建的元素为行内元素，某些情况下需要转在块*/
-			/*永远处于最一个位置*/
-			display: inline-block;
-			width: 100px;
-			height: 100px;
-			background-color: red;
-		}
+      content: 'fff';
+      /*新创建的元素为行内元素，某些情况下需要转在块*/
+      /*永远处于最一个位置*/
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
 
-		li:before {
-			/*永远处于第一个位置*/
-			content: 'ddd';
-			display: inline-block;
-			width: 100px;
-			height: 100px;
-			background-color: red;
-		}
+    li:before {
+      /*永远处于第一个位置*/
+      content: 'ddd';
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
 
-		span.test {
-			display: inline-block;
-			width: 100px;
-			height: 100px;
-			background-color: red;
-		}
+    span.test {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
 
 
-		/*关于before和after
+    /*关于before和after
 		CSS2中 E:before或者E:after，是属于伪类的，并且没有伪元素的概念
 		CSS3中 提出伪元素的概念 E::before和E::after，并且归属到了伪元素当中，伪类里就不再存在E:before或者E:after伪类;
 		*/
-	</style>
+  </style>
 </head>
 <body>
-	<ul>
-		<li>
-			<span class="test">中间的</span>
-			<span class="test">中间的</span>
-			<span class="test">中间的</span>
-			<span class="test">中间的</span>
-			<span class="test">中间的</span>
-			<span class="test">中间的</span>
-		</li>
-	</ul>
+  <ul>
+    <li>
+      <span class="test">中间的</span>
+      <span class="test">中间的</span>
+      <span class="test">中间的</span>
+      <span class="test">中间的</span>
+      <span class="test">中间的</span>
+      <span class="test">中间的</span>
+    </li>
+  </ul>
 </body>
 </html>

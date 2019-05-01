@@ -1,70 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>CSS3 动画</title>
-	<style>
-		html, body {
-			height: 100%;
-		}
+  <meta charset="UTF-8">
+  <title>CSS3 动画</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
 
-		body {
-			margin: 0;
-			padding: 0;
-			background-color: #F7F7F7;
-		}
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #F7F7F7;
+    }
 
-		.box {
-			width: 200px;
-			height: 200px;
-			background-color: green;
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: green;
 
-			/*动画序列的名称*/
-			animation-name: move;
+      /*动画序列的名称*/
+      animation-name: move;
 
-			/*动画的持续时间*/
-			animation-duration: 1s;
+      /*动画的持续时间*/
+      animation-duration: 1s;
 
-			/*动画的延时*/
-			animation-delay: 1s;
+      /*动画的延时*/
+      animation-delay: 1s;
 
-			/*播放状态*/
-			/*animation-play-state: paused;*/
+      /*播放状态*/
+      /*animation-play-state: paused;*/
 
-			/*播放速度*/
-			animation-timing-function: linear;
+      /*播放速度*/
+      animation-timing-function: linear;
 
-			/*播放次数*/
-			animation-iteration-count: infinite;
+      /*播放次数*/
+      animation-iteration-count: infinite;
 
-			/*动画播放完结后的状态*/
-			/*animation-fill-mode: forwards;*/
+      /*动画播放完结后的状态*/
+      /*animation-fill-mode: forwards;*/
 
-			/*循环播放时，交叉动画*/
-			animation-direction: alternate;
-		}
+      /*循环播放时，交叉动画*/
+      animation-direction: alternate;
+    }
 
-		@keyframes move {
-			from {
-				width: 200px;
-				height: 200px;
-			}
+    @keyframes move {
+      from {
+        width: 200px;
+        height: 200px;
+      }
 
-			to {
-				width: 400px;
-				height: 400px;
-			}
-		}
+      to {
+        width: 400px;
+        height: 400px;
+      }
+    }
 
 
-		/**
+    /**
 		 * 动画序列
 		 * 指定动画序列名
 		 * 调整动画细节（掌握各属性的特点和用法）
 		 */
-	</style>
+  </style>
 </head>
 <body>
-	<div class="box"></div>
+  <div class="box"></div>
 </body>
 </html>

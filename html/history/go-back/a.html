@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>历史管理</title>
+  <meta charset="UTF-8">
+  <title>历史管理</title>
 </head>
 <body>
-	<p>我是a.html</p>
-	<a href="a.html">a.html</a>
-	<a href="b.html">b.html</a>
-	<a href="c.html">c.html</a>
-	<a href="d.html">d.html</a>
-	<a href="e.html">e.html</a>
+  <p>我是a.html</p>
+  <a href="a.html">a.html</a>
+  <a href="b.html">b.html</a>
+  <a href="c.html">c.html</a>
+  <a href="d.html">d.html</a>
+  <a href="e.html">e.html</a>
 
-	<input type="button" id="btn1" value="前进">
-	<input type="button" id="btn" value="回退">
-	<script>
+  <input type="button" id="btn1" value="前进">
+  <input type="button" id="btn" value="回退">
+  <script>
 
-		var btn1 = document.getElementById('btn1');
-		btn1.onclick = function () {
-			// 前进
-			// history.forward();
-			history.go(2);
-		}
+    var btn1 = document.getElementById('btn1');
+    btn1.onclick = function () {
+      // 前进
+      // history.forward();
+      history.go(2);
+    }
 
-		var btn = document.getElementById('btn');
-		btn.onclick = function () {
-			// 前进
-			// history.forward();
-			history.go(-2);
-		}
-	</script>
+    var btn = document.getElementById('btn');
+    btn.onclick = function () {
+      // 前进
+      // history.forward();
+      history.go(-2);
+    }
+  </script>
 </body>
 </html>

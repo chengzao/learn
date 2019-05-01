@@ -10,7 +10,6 @@
 // self.onerror: 指定worker线程发生错误时的回调，
 // 也可以 self.addEventListener('error',cb)
 
-
 // let i = 1
 
 // function simpleCount() {
@@ -21,18 +20,13 @@
 
 // simpleCount()
 
-
 // 加载单个脚本
 // importScripts('script1.js')
 
 // 加载多个脚本
-importScripts('script1.js','script2.js')
-
+importScripts('script1.js', 'script2.js')
 
 self.onmessage = ev => {
-  self.postMessage( fn() + ' ' + fn2() +' : '+ev.data)
-//   self.close();
+  self.postMessage(fn() + ' ' + fn2() + ' : ' + ev.data)
+  //   self.close();
 }
-
-
-

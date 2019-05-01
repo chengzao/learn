@@ -1,65 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>layout</title>
-    <style>
-        #app{
-            width: 1000px;
-            margin: 0 auto;
-        }
-        .list{
-            display: flex;
-            /* flex-flow: row wrap; */
-            flex-direction: row;
-            flex-wrap: wrap;
-        }
-        .list>li{
-            flex: 0 0 20%;
-            list-style: none;
-        }
-        .list>li>div{
-            margin: 0.3rem;
-            padding: 0.2rem;
-            border: 1px solid #ccc;
-            color: black;
-            height: 5rem;
-            background-image: url(http://www.imaoda.com/s/img/system/back2.jpg);
-            background-position: 50%;
-            background-size: cover;
-            text-align: center;
-            line-height: 8rem;
-        }
-        @media(max-width:768px){
-            #app{width:100%}
-            .list>li {flex: 0 0 50%}
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>layout</title>
+  <style>
+    #app {
+      width: 1000px;
+      margin: 0 auto;
+    }
+
+    .list {
+      display: flex;
+      /* flex-flow: row wrap; */
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .list>li {
+      flex: 0 0 20%;
+      list-style: none;
+    }
+
+    .list>li>div {
+      margin: 0.3rem;
+      padding: 0.2rem;
+      border: 1px solid #ccc;
+      color: black;
+      height: 5rem;
+      background-image: url(http://www.imaoda.com/s/img/system/back2.jpg);
+      background-position: 50%;
+      background-size: cover;
+      text-align: center;
+      line-height: 8rem;
+    }
+
+    @media(max-width:768px) {
+      #app {
+        width: 100%
+      }
+
+      .list>li {
+        flex: 0 0 50%
+      }
+    }
+  </style>
 </head>
 <body>
-    <div id="app">
-        <div class="list">
-            <li>
-                <div>conten</div>
-            </li>
-            <li>
-                <div>conten</div>
-            </li>
-            <li>
-                <div>conten</div>
-            </li>
-            <li>
-                <div>conten</div>
-            </li>
-            <li>
-                <div>conten</div>
-            </li>
-            <li>
-                <div>conten</div>
-            </li>
-        </div>
+  <div id="app">
+    <div class="list">
+      <li>
+        <div>conten</div>
+      </li>
+      <li>
+        <div>conten</div>
+      </li>
+      <li>
+        <div>conten</div>
+      </li>
+      <li>
+        <div>conten</div>
+      </li>
+      <li>
+        <div>conten</div>
+      </li>
+      <li>
+        <div>conten</div>
+      </li>
     </div>
+  </div>
 </body>
 </html>

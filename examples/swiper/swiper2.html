@@ -1,78 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>swiper</title>
-	<style>
-		.MySwiper {
-			width: 400px;
-			height: 200px;
-			margin: 50px auto;
-			overflow: hidden;
-			transform-style: preserve-3d;
-		}
+  <meta charset="UTF-8">
+  <title>swiper</title>
+  <style>
+    .MySwiper {
+      width: 400px;
+      height: 200px;
+      margin: 50px auto;
+      overflow: hidden;
+      transform-style: preserve-3d;
+    }
 
-		.MySwiper ul {
-			list-style: none;
-			padding: 0;
-			margin: 0;
-			width: 400%;
-			height: 100%;
-			transition: all .8s ease-in-out;
-			background-color: #f1f1f1;
-		}
+    .MySwiper ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 400%;
+      height: 100%;
+      transition: all .8s ease-in-out;
+      background-color: #f1f1f1;
+    }
 
-		.MySwiper ul li {
-			width: 400px;
-			height: 200px;
-			text-align: center;
-			float: left;
-			line-height: 200px;
-			font-size: 25px;
-		}
-	</style>
+    .MySwiper ul li {
+      width: 400px;
+      height: 200px;
+      text-align: center;
+      float: left;
+      line-height: 200px;
+      font-size: 25px;
+    }
+  </style>
 </head>
 
 <body>
-	<div class="MySwiper">
-		<ul>
-			<li>1</li>
-			<li>2</li>
-			<li>3</li>
-			<li>4</li>
-		</ul>
-	</div>
+  <div class="MySwiper">
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+    </ul>
+  </div>
 </body>
 <script>
-	var MySwiper = document.getElementsByClassName('MySwiper')[0];
-	var ulSwiper = (MySwiper.children)[0];
-	var liSwiper = (ulSwiper.children)[0];
-	var lis = (ulSwiper.children).length;
-	var imgWid = liSwiper.offsetWidth;
-	var i = 0;
-	var timer = 2000;
+  var MySwiper = document.getElementsByClassName('MySwiper')[0];
+  var ulSwiper = (MySwiper.children)[0];
+  var liSwiper = (ulSwiper.children)[0];
+  var lis = (ulSwiper.children).length;
+  var imgWid = liSwiper.offsetWidth;
+  var i = 0;
+  var timer = 2000;
 
-	function autoPlay() {
-		var ulOffsetL = ulSwiper.offsetLeft; //ul距离浏览器左侧距离
-		var MyOffsetL = MySwiper.offsetLeft; //swiper距离浏览器左侧的距离 
-		var distanceL = Math.abs(ulOffsetL - MyOffsetL);
-		if (i < (lis - 1)) {
-			i++;
-			// 还原过渡效果
-			ulSwiper.style.transitionProperty = 'all';
-		} else {
-			i = 0;
-			//去掉过渡效果
-			ulSwiper.style.transitionProperty = 'none';
+  function autoPlay() {
+    var ulOffsetL = ulSwiper.offsetLeft; //ul距离浏览器左侧距离
+    var MyOffsetL = MySwiper.offsetLeft; //swiper距离浏览器左侧的距离
+    var distanceL = Math.abs(ulOffsetL - MyOffsetL);
+    if (i < (lis - 1)) {
+      i++;
+      // 还原过渡效果
+      ulSwiper.style.transitionProperty = 'all';
+    } else {
+      i = 0;
+      //去掉过渡效果
+      ulSwiper.style.transitionProperty = 'none';
 
-		}
+    }
 
-		ulSwiper.style.transform = 'translate3d(-' + imgWid * i + 'px,0,0)';
+    ulSwiper.style.transform = 'translate3d(-' + imgWid * i + 'px,0,0)';
 
-		// 循环
-		setTimeout(autoPlay, timer);
-	}
-	autoPlay();
+    // 循环
+    setTimeout(autoPlay, timer);
+  }
+  autoPlay();
 </script>
 
 </html>

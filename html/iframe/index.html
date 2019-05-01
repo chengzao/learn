@@ -1,64 +1,73 @@
 <!doctype html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>iframe-tab-独行冰海</title>
-        <style>
-            html,body,div,span,iframe{
-                font: "微软雅黑";
-            }
-            .box{
-                margin: 100px auto;
-            }
-            .tit{
-                width: 300px;
-                height: 40px;
-                text-align: center;
-            }
-            .tit span{
-                float: left;
-                width: 100px;
-                height: 40px;
-                line-height: 40px;
-                background: #cfc;
-                cursor: hand;
-                cursor: pointer;
-            }
-            .tit .select{
-                background: #9f9;
-            }
-            .con{
-                width: 300px;
-            }
-        </style>
-    </head>
-    <body>
-           <div class="box">
-                <div class='tit' id="tabTit">
-                    <span class='select'>标题1</span>
-                    <span>标题2</span>
-                    <span>标题3</span>
-                </div>
-                <iframe class='con' src="model1.html" frameborder="0" id="tabCon"></iframe>
-           </div>   
-    </body>
-    <script>
-        var btns = document.getElementById('tabTit').getElementsByTagName('span');
-        var tabCon = document.getElementById('tabCon');
-        for (var i = 0; i < btns.length; i++) {
-            btns[i].index = i;
-            btns[i].onclick = function() {
-                for (var i = 0; i < btns.length; i++) {
-                    btns[i].className = '';
-                };
-                this.className = 'select';
-                tabCon.src = 'model' + (this.index + 1) + '.html';
-                // 进行高度控制和处理
-                setTimeout(function() {
-                    tabCon.style.height = tabCon.contentWindow.document.body.offsetHeight + 'px';
-                    console.log(tabCon.contentWindow.document.body.offsetHeight);
-                }, 100);
-            }
-        };
-    </script>
+<head>
+  <meta charset="UTF-8">
+  <title>iframe-tab-独行冰海</title>
+  <style>
+    html,
+    body,
+    div,
+    span,
+    iframe {
+      font: "微软雅黑";
+    }
+
+    .box {
+      margin: 100px auto;
+    }
+
+    .tit {
+      width: 300px;
+      height: 40px;
+      text-align: center;
+    }
+
+    .tit span {
+      float: left;
+      width: 100px;
+      height: 40px;
+      line-height: 40px;
+      background: #cfc;
+      cursor: hand;
+      cursor: pointer;
+    }
+
+    .tit .select {
+      background: #9f9;
+    }
+
+    .con {
+      width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class='tit' id="tabTit">
+      <span class='select'>标题1</span>
+      <span>标题2</span>
+      <span>标题3</span>
+    </div>
+    <iframe class='con' src="model1.html" frameborder="0" id="tabCon"></iframe>
+  </div>
+</body>
+<script>
+  var btns = document.getElementById('tabTit').getElementsByTagName('span');
+  var tabCon = document.getElementById('tabCon');
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].index = i;
+    btns[i].onclick = function () {
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].className = '';
+      };
+      this.className = 'select';
+      tabCon.src = 'model' + (this.index + 1) + '.html';
+      // 进行高度控制和处理
+      setTimeout(function () {
+        tabCon.style.height = tabCon.contentWindow.document.body.offsetHeight + 'px';
+        console.log(tabCon.contentWindow.document.body.offsetHeight);
+      }, 100);
+    }
+  };
+</script>
 </html>

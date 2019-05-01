@@ -10,7 +10,6 @@
 // self.onerror: 指定worker线程发生错误时的回调，
 // 也可以 self.addEventListener('error',cb)
 
-
 // 同源限制
 // worker线程执行的脚本文件必须和主线程的脚本文件同源，这是当然的了，
 // 总不能允许worker线程到别人电脑上到处读文件吧
@@ -29,9 +28,6 @@
 // 脚本限制
 // worker线程不能执行alert、confirm，但可以使用 XMLHttpRequest 对象发出ajax请求。
 
-
-
-
 // let i = 1
 
 // function simpleCount() {
@@ -42,31 +38,27 @@
 
 // simpleCount()
 
-
 // 加载单个脚本
 // importScripts('script1.js')
 
 // 加载多个脚本
 // importScripts('script1.js','script2.js')
 
-
 // self.onmessage = ev => {
 //   self.postMessage( fn() + ' ' + fn2() +' : '+ev.data)
 // //   self.close();
 // }
 
-
-self.addEventListener('message',function(ev){
-
-  this.console.log('worker message data : ',ev.data)
-  let url = 'https://api.github.com/users/'+ev.data;
-  let req = new XMLHttpRequest();
-      req.open('GET', url, true);
-      req.responseType = "json";
-      req.onreadystatechange = () => {
-        if (req.readyState == 4) {
-        postMessage(req.response);
-      }
+self.addEventListener('message', function(ev) {
+  this.console.log('worker message data : ', ev.data)
+  let url = 'https://api.github.com/users/' + ev.data
+  let req = new XMLHttpRequest()
+  req.open('GET', url, true)
+  req.responseType = 'json'
+  req.onreadystatechange = () => {
+    if (req.readyState == 4) {
+      postMessage(req.response)
     }
-  req.send(null);
+  }
+  req.send(null)
 })

@@ -13,18 +13,18 @@
 	// 第3个参数表示替换的历史记录
 	// 第2代表示网页的title，所有浏览器基本都忽略
 	// 第一个参数，代表我们自定义一些数据，可传可不传，不传给null
-	
-	console.log('replaceState history length1 : ',history.length)	
+
+	console.log('replaceState history length1 : ', history.length)
 
 	btn.onclick = function () {
 		history.replaceState(null, 'title', '#test');
 
-		console.log('replaceState history length2 : ',history.length)	
-}
+		console.log('replaceState history length2 : ', history.length)
+	}
 
-	window.addEventListener('popstate',function(stat){
-		console.log('stat ',stat);
-	},false)
+	window.addEventListener('popstate', function (stat) {
+		console.log('stat ', stat);
+	}, false)
 
 
 

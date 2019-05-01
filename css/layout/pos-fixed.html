@@ -2,45 +2,45 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>pos fixed 固定底部</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>pos fixed 固定底部</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
 
-        body {
-            height: 100vh;
-        }
+    body {
+      height: 100vh;
+    }
 
-        #wrap {
-            height: auto;
-            min-height: 100%;
-        }
+    #wrap {
+      height: auto;
+      min-height: 100%;
+    }
 
-        #main {
-            padding-bottom: 150px;
-            /* 和footer相同的高度 */
-        }
+    #main {
+      padding-bottom: 150px;
+      /* 和footer相同的高度 */
+    }
 
-        #footer {
-            margin-top: -150px;
-            /* footer高度的负值 */
-            height: 150px;
-            background: #0c8ed9
-        }
-    </style>
+    #footer {
+      margin-top: -150px;
+      /* footer高度的负值 */
+      height: 150px;
+      background: #0c8ed9
+    }
+  </style>
 </head>
 
 <body>
-    <div id="wrap">
-        <div id="main">正文</div>
-    </div>
-    <div id="footer">底部</div>
+  <div id="wrap">
+    <div id="main">正文</div>
+  </div>
+  <div id="footer">底部</div>
 </body>
 
 </html>

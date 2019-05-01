@@ -16,14 +16,62 @@
 <script type="text/javascript" src="js/highcharts.js"></script>
 <script type="text/javascript" src="js/highcharts-more.js"></script>
 <script>
- /* $(function () {
-    $('#container').highcharts({                   //图表展示容器，与div的id保持一致
+  /* $(function () {
+     $('#container').highcharts({                   //图表展示容器，与div的id保持一致
+       chart: {
+         polar:true,
+         type: 'bar'                         //指定图表的类型，默认是折线图（line）
+       },
+       pane: {
+         size:'85%'
+       },
+       plotOptions: {
+         series: {
+           stacking: 'normal',
+           shadow: false,
+           groupPadding: 0,
+           pointPlacement: 'on'
+         }
+       },
+       title: {
+         text: 'My first Highcharts chart'      //指定图表标题
+       },
+       xAxis: {
+         categories: ['N', 'NNE', 'NE','ENE','E','ESE','SE','SSE','S', 'SSW', 'SW','WSW','W','WNW','NW','NNW'] ,  //指定x轴分组
+         tickmarkPlacement: 'on',
+       },
+       yAxis: {
+         title: {
+           //          text: 'something'                  //指定y轴的标题
+         },
+         min: 0,
+         endOnTick: false,
+         showLastLabel: true,
+         reversedStacks: false
+       },
+       series: [{                                 //指定数据列
+         name: 'Jane',                          //数据列名
+         data: [18, 18, 18,18,18,18,18,18,18, 18, 18,18,18,18,18,18]   ,                     //数据
+         startRow: 1,
+         endRow: 10,
+
+       }
+         /!*, {
+          name: 'John',
+          data: [5, 7, 3]
+          }*!/],
+       credits:{enabled:false}   //图表版权信息
+     });
+   });
+ */
+  $(function () {
+    $('#container').highcharts({
       chart: {
-        polar:true,
-        type: 'bar'                         //指定图表的类型，默认是折线图（line）
+        polar: true,
+        type: 'bar'
       },
       pane: {
-        size:'85%'
+        size: '85%'
       },
       plotOptions: {
         series: {
@@ -33,84 +81,36 @@
           pointPlacement: 'on'
         }
       },
+      legend: {
+        enabled: false
+      },
       title: {
-        text: 'My first Highcharts chart'      //指定图表标题
+        text: 'My first Highcharts chart'
       },
       xAxis: {
-        categories: ['N', 'NNE', 'NE','ENE','E','ESE','SE','SSE','S', 'SSW', 'SW','WSW','W','WNW','NW','NNW'] ,  //指定x轴分组
+        categories: ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'],
         tickmarkPlacement: 'on',
       },
       yAxis: {
         title: {
-          //          text: 'something'                  //指定y轴的标题
         },
         min: 0,
         endOnTick: false,
         showLastLabel: true,
-        reversedStacks: false
+        reversedStacks: false,
+        minorTickInterval: 5,
+        tickInterval: 5
       },
-      series: [{                                 //指定数据列
-        name: 'Jane',                          //数据列名
-        data: [18, 18, 18,18,18,18,18,18,18, 18, 18,18,18,18,18,18]   ,                     //数据
+      series: [{
+        name: 'Jane',
+        data: [18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18],
         startRow: 1,
         endRow: 10,
-
       }
-        /!*, {
-         name: 'John',
-         data: [5, 7, 3]
-         }*!/],
-      credits:{enabled:false}   //图表版权信息
+      ],
+      credits: { enabled: false }
     });
   });
-*/
- $(function () {
-   $('#container').highcharts({
-     chart: {
-       polar:true,
-       type: 'bar'
-     },
-     pane: {
-       size:'85%'
-     },
-     plotOptions: {
-       series: {
-         stacking: 'normal',
-         shadow: false,
-         groupPadding: 0,
-         pointPlacement: 'on'
-       }
-     },
-     legend:{
-       enabled: false
-     },
-     title: {
-       text: 'My first Highcharts chart'
-     },
-     xAxis: {
-       categories: ['N', 'NNE', 'NE','ENE','E','ESE','SE','SSE','S', 'SSW', 'SW','WSW','W','WNW','NW','NNW'] ,
-       tickmarkPlacement: 'on',
-     },
-     yAxis: {
-       title: {
-       },
-       min: 0,
-       endOnTick: false,
-       showLastLabel: true,
-       reversedStacks: false,
-       minorTickInterval:5,
-       tickInterval: 5
-     },
-     series: [{
-       name: 'Jane',
-       data: [18, 18, 18,18,18,18,18,18,18, 18, 18,18,18,18,18,18]   ,
-       startRow: 1,
-       endRow: 10,
-     }
-     ],
-     credits:{enabled:false}
-   });
- });
 
 
 </script>

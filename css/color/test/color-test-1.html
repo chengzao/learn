@@ -1,38 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>CSS3 颜色</title>
-	<style>
-		body {
-			margin: 0;
-			padding: 0;
-			background-color: #F7F7F7;
-		}
+  <meta charset="UTF-8">
+  <title>CSS3 颜色</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #F7F7F7;
+    }
 
-		.item {
-			width: 320px;
-			height: 320px;
-			margin: 100px auto;
-			border: 1px solid #CCC;
-			position: relative;
-		}
+    .item {
+      width: 320px;
+      height: 320px;
+      margin: 100px auto;
+      border: 1px solid #CCC;
+      position: relative;
+    }
 
-		.item:hover::after {
-			content: '';
-			position: absolute;
-			left: 0;
-			top: 0;
-			width: 100%;
-			height: 100%;
-			background-color: rgba(0, 0, 0, 0.5);
-		}
-		
-	</style>
+    .item:hover::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  </style>
 </head>
 <body>
-	<div class="item">
-		<img src="./images/pic.jpg" alt="">
-	</div>
+  <div class="item">
+    <img src="./images/pic.jpg" alt="">
+  </div>
 </body>
 </html>

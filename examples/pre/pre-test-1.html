@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<style>
-		pre, code {
-			display: block;
-			overflow: auto;
-			background: #f4f4f4;
-			padding: 5px 10px;
-			border: 1px solid #eee;
-			word-wrap:break-word; /* Internet Explorer 5.5+ */ 
-			white-space: pre-wrap; /* Firefox */
-		}
-	</style>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    pre,
+    code {
+      display: block;
+      overflow: auto;
+      background: #f4f4f4;
+      padding: 5px 10px;
+      border: 1px solid #eee;
+      word-wrap: break-word;
+      /* Internet Explorer 5.5+ */
+      white-space: pre-wrap;
+      /* Firefox */
+    }
+  </style>
 </head>
 <body>
-<!-- <pre>
+  <!-- <pre>
 pre{
     white-space: pre-wrap;       /* css-3 */
     white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
@@ -29,7 +32,7 @@ pre{
 }
 </pre> -->
 
-<pre>
+  <pre>
 
 (function() {
     var pre = document.getElementsByTagName('pre'),
@@ -42,7 +45,7 @@ pre{
             line_num.innerHTML += '<span>' + (j + 1) + '</span>';
         }
     }
-})();    
+})();
 
 
 
@@ -51,18 +54,18 @@ pre{
 </body>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
 <script>
-	var arr = $("pre").html().split("\n");
-	console.log($("pre").html())
-	var text = '<ol>';
-	$.each(arr,function(i,item){
-		var line = item;
-		console.log(line)
-	    if(line!=""){
-	        text += "<li>"+ line +"</li>";
-	    }
-	});
-	text += '</ol>'
-	 $("pre").html(text);
+  var arr = $("pre").html().split("\n");
+  console.log($("pre").html())
+  var text = '<ol>';
+  $.each(arr, function (i, item) {
+    var line = item;
+    console.log(line)
+    if (line != "") {
+      text += "<li>" + line + "</li>";
+    }
+  });
+  text += '</ol>'
+  $("pre").html(text);
 
 
 

@@ -2,24 +2,23 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>css竖列</title>
-    <style media="screen">
-
-    .test ol{
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css竖列</title>
+  <style media="screen">
+    .test ol {
       list-style: none;
     }
 
-    .test ol li{
+    .test ol li {
       float: left;
       width: 24px;
       line-height: 24px;
       position: relative;
     }
 
-    .j::after{
+    .j::after {
       content: '。';
       position: absolute;
       bottom: -10px;
@@ -27,7 +26,8 @@
       display: inline-block;
       font-size: 20px;
     }
-    .d::after{
+
+    .d::after {
       content: ',';
       position: absolute;
       top: 0;
@@ -38,53 +38,58 @@
     }
 
     .one {
-        margin: 0 auto;
-        height: 140px;
-        writing-mode: vertical-lr;/*从左向右 从右向左是 writing-mode: vertical-rl;*/
-        writing-mode: tb-lr;/*IE浏览器的从左向右 从右向左是 writing-mode: tb-rl；*/
+      margin: 0 auto;
+      height: 140px;
+      writing-mode: vertical-lr;
+      /*从左向右 从右向左是 writing-mode: vertical-rl;*/
+      writing-mode: tb-lr;
+      /*IE浏览器的从左向右 从右向左是 writing-mode: tb-rl；*/
     }
 
-    .two{
+    .two {
       margin: 150px auto;
       width: 200px;
       font-size: 20px;
       line-height: 24px;
-      transform:rotate(90deg);
-       -ms-transform:rotate(90deg);    /* IE 9 */
-       -moz-transform:rotate(90deg);   /* Firefox */
-       -webkit-transform:rotate(90deg); /* Safari 和 Chrome */
-       -o-transform:rotate(90deg);     /* Opera */
+      transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+      /* IE 9 */
+      -moz-transform: rotate(90deg);
+      /* Firefox */
+      -webkit-transform: rotate(90deg);
+      /* Safari 和 Chrome */
+      -o-transform: rotate(90deg);
+      /* Opera */
     }
 
     .h1 {
-    width: 20px;
-    font-size: 20px;
-    word-wrap: break-word;
-    display: inline-block;
+      width: 20px;
+      font-size: 20px;
+      word-wrap: break-word;
+      display: inline-block;
     }
-
-    </style>
+  </style>
 </head>
 
 <body>
 
-      <div class="test">
-        <ol>
-          <li class="j">欲话毗陵君反袂</li>
-          <li>欲言夏口我沾衣</li>
-          <li>谁知临老相逢日</li>
-          <li>悲叹声多语笑稀</li>
-        </ol>
+  <div class="test">
+    <ol>
+      <li class="j">欲话毗陵君反袂</li>
+      <li>欲言夏口我沾衣</li>
+      <li>谁知临老相逢日</li>
+      <li>悲叹声多语笑稀</li>
+    </ol>
 
-      </div>
-      <div class="one">欲话毗陵君反袂，欲言夏口我沾衣。谁知临老相逢日，悲叹声多语笑稀。</div>
-      <div class="two">欲话毗陵君反袂，欲言夏口我沾衣。谁知临老相逢日，悲叹声多语笑稀。</div>
+  </div>
+  <div class="one">欲话毗陵君反袂，欲言夏口我沾衣。谁知临老相逢日，悲叹声多语笑稀。</div>
+  <div class="two">欲话毗陵君反袂，欲言夏口我沾衣。谁知临老相逢日，悲叹声多语笑稀。</div>
 
-      <div class="h1">NETTUTS</div>
-      <div class="h1">欲话毗陵君反袂</div>
+  <div class="h1">NETTUTS</div>
+  <div class="h1">欲话毗陵君反袂</div>
 
 
-      <div>欲<br>话<br>毗<br>陵<br>君<br>反<br>袂</div>
+  <div>欲<br>话<br>毗<br>陵<br>君<br>反<br>袂</div>
 </body>
 <script>
 

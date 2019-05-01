@@ -1,256 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <style>
-        .list{
-            width:538px;
-            height:198px;
-            overflow:hidden;
-            margin:50px auto;
-            position: relative;
-            border: 1px solid #666;
-            
-        }
-        .list ul{
-            width:2152px;
-            height:198px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            margin:0;
-            padding:0;
-            line-height: 198px;
-        }
-        .list ul li{
-            list-style: none;
-            float:left;
-            width:538px;
-            font-size: 40px;
-            text-align: center;
-        }
-        .list ul li img{ pointer-events: none;width: 100%;} 
-        .list ol{
-            position: absolute;
-        }
-        .list ol li{
-            list-style: none;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            border: 1px solid #999;
-            text-align: center;
-            line-height: 10px;
-            font-size: 12px;
-            float: left;
-            margin-right: 5px;
-            cursor: pointer;
-        }
-        .list ol li.cur{
-            background-color:#f0f;
-        }  
-        .list div{
-            display: none;
-            margin-top: 56px;
-            height: 80px;
-            z-index: 111;
-            position: absolute;
-        }
-        .list div span{
-            width: 40px;
-            height: 80px;
-            display: inline-block;
-            font-size: 25px;
-            text-align: center;
-            line-height: 80px;
-            background-color: #ccc;
-            cursor: pointer;
-        } 
-    </style>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    .list {
+      width: 538px;
+      height: 198px;
+      overflow: hidden;
+      margin: 50px auto;
+      position: relative;
+      border: 1px solid #666;
+
+    }
+
+    .list ul {
+      width: 2152px;
+      height: 198px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 0;
+      padding: 0;
+      line-height: 198px;
+    }
+
+    .list ul li {
+      list-style: none;
+      float: left;
+      width: 538px;
+      font-size: 40px;
+      text-align: center;
+    }
+
+    .list ul li img {
+      pointer-events: none;
+      width: 100%;
+    }
+
+    .list ol {
+      position: absolute;
+    }
+
+    .list ol li {
+      list-style: none;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 1px solid #999;
+      text-align: center;
+      line-height: 10px;
+      font-size: 12px;
+      float: left;
+      margin-right: 5px;
+      cursor: pointer;
+    }
+
+    .list ol li.cur {
+      background-color: #f0f;
+    }
+
+    .list div {
+      display: none;
+      margin-top: 56px;
+      height: 80px;
+      z-index: 111;
+      position: absolute;
+    }
+
+    .list div span {
+      width: 40px;
+      height: 80px;
+      display: inline-block;
+      font-size: 25px;
+      text-align: center;
+      line-height: 80px;
+      background-color: #ccc;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-    <div class="list" id = "sidle" ondragstart="return false;" onselectstart="return false;" onselectstart="on" style="-moz-user-select:none;">
-        <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-        </ul>
-        <ol>
-            <!-- <li class="cur">1</li>
+  <div class="list" id="sidle" ondragstart="return false;" onselectstart="return false;" onselectstart="on"
+    style="-moz-user-select:none;">
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+    </ul>
+    <ol>
+      <!-- <li class="cur">1</li>
             <li>2</li>
             <li>3</li>
             <li>4</li> -->
-        </ol>
-        <div style="clear:both">
-            <span class="left" style="left:0">></span>
-            <span class="right" style="right:0"><</span>
-        </div>
-    </div>
-</body>
-<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
-<script>
-function swiper(){
-    (function($){
-        var silde = {
-            init:function(){
-                this.auto();
-            },
-            auto:function(){
-                var _root = this,
-                    $ul = $("#sidle").find("ul"),
-                    $lis = $ul.children("li"),
-                    width = $lis.eq(0).width();
-                setInterval(function(){
-                    $ul.animate({
-                            'left':'-'+ width +'px'
-                        },
+    </ol>
+    <div style="clear:both">
+      <span class="left" style="left:0">></span>
+      <span class="right" style="right:0">
+        <</span> </div> </div> </body> <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js">
+        </script>
+          <script>
+            function swiper() {
+              (function ($) {
+                var silde = {
+                  init: function () {
+                    this.auto();
+                  },
+                  auto: function () {
+                    var _root = this,
+                      $ul = $("#sidle").find("ul"),
+                      $lis = $ul.children("li"),
+                      width = $lis.eq(0).width();
+                    setInterval(function () {
+                      $ul.animate({
+                        'left': '-' + width + 'px'
+                      },
                         'slow',
-                        function(){
-                            //此处保证能循环轮播
-                            //将已经轮播过的节点的第一张图片添加到末尾的位置
-                            //再将margin-left重置为0px;
-                            //这样就能一直的循环下去.
-                            $ul.css({'left':0}).
-                                children('li').
-                                last().
-                                after(
-                                    $ul.children('li').first()
-                                );
+                        function () {
+                          //此处保证能循环轮播
+                          //将已经轮播过的节点的第一张图片添加到末尾的位置
+                          //再将margin-left重置为0px;
+                          //这样就能一直的循环下去.
+                          $ul.css({ 'left': 0 }).
+                            children('li').
+                            last().
+                            after(
+                              $ul.children('li').first()
+                            );
                         });
-                    },2000
-                );
+                    }, 2000
+                    );
+                  }
+                };
+                $(function () { silde.init(); })
+              })(jQuery);
             }
-        };
-        $(function(){silde.init();})
-    })(jQuery);
-}
-swiper();
-    
+            swiper();
 
-function swiper2(){
-    $(function(){
-        $list = $("#sidle");
-        $ul = $("#sidle").find("ul");
-        $ol = $("#sidle").find("ol");    
-        $lis = $ul.children("li"),
-        width = $lis.eq(0).width();
-        $imgs = $lis.length;
-        var $cur = 0;
-        var timer = null;
-        var startX = 0;
 
-        // 自动生成小圆点
-        $.map($lis,function(ele, index) {
-            var li = document.createElement("li")
-            li.innerHTML = index;
-            if(index == 0){
-                li.className = "cur";
-            }
-            $($ol).append(li);
+            function swiper2() {
+              $(function () {
+                $list = $("#sidle");
+                $ul = $("#sidle").find("ul");
+                $ol = $("#sidle").find("ol");
+                $lis = $ul.children("li"),
+                  width = $lis.eq(0).width();
+                $imgs = $lis.length;
+                var $cur = 0;
+                var timer = null;
+                var startX = 0;
 
-        })
-        // 克隆第一张到最后
-        $($ul).append($($lis).first().clone(true))
+                // 自动生成小圆点
+                $.map($lis, function (ele, index) {
+                  var li = document.createElement("li")
+                  li.innerHTML = index;
+                  if (index == 0) {
+                    li.className = "cur";
+                  }
+                  $($ol).append(li);
 
-        //
-        $ols = $ol.children('li');
+                })
+                // 克隆第一张到最后
+                $($ul).append($($lis).first().clone(true))
 
-        $($ols).mouseover(function(){
-            $index = $(this).index(); 
-            $(this).addClass('cur').siblings('li').removeClass('cur');
-            $($ul).animate({"left": -$index*width+'px'},'fast');
-            $cur = $index;
-        })
-        // 右侧按钮
-        $(".right").click(function(){
-            if($cur<$imgs-1){
-                $cur++;
-            }else{
-                $cur=0;
-            }
-            $($ul).animate({'left': -$cur*width+'px'}, 'fast')
-            $($ols).eq($cur).addClass('cur').siblings('li').removeClass('cur')
-        });
-        //左侧按钮
-        $(".left").click(function(){
-            if($cur>0){
-               $cur--; 
-            }else{
-                $cur=$imgs-1;
-            }
-            $($ul).animate({'left': -$cur*width+'px'}, 'fast')
-            $($ols).eq($cur).addClass('cur').siblings('li').removeClass('cur')
-        })
-        // 自动播放
-        function autoplay(){
-            if($cur<$imgs-1){
-                $cur++
-            }else{
-                $cur =0;
-                $($ul).css({
-                        'left':0 +'px'
-                    });
-                $($ols).eq($cur).addClass('cur').siblings('li').removeClass('cur');
-            }
+                //
+                $ols = $ol.children('li');
 
-            $($ul).animate({
-                        'left':'-'+ $cur*width +'px'
-                    },'slow');
-            $($ols).eq($cur).addClass('cur').siblings('li').removeClass('cur');
-        }
-        timer = setInterval(autoplay,2000);    
-        $('.list').mouseover(function() {
-           $('.list div').css("display","block"); 
-           clearInterval(timer);
-        });
-        //
-        $('.list').mouseout(function() {
-           $('.list div').css("display","none"); 
-           timer = setInterval(autoplay,2000); 
-        });
-
-        $($lis).mousedown(function(event) {
-            startX = event.clientX;
-        });
-
-        $($lis).mouseup(function(event) {
-            var endX = event.clientX;
-            
-            var distanceX = endX - startX;
-            console.log(distanceX)
-            if(distanceX<-100){
-
-                if($cur<$imgs-1){
-                    $cur++
-                }else{
-                    $cur =0;
-                    $($ul).css({
-                            'left':0 +'px'
-                        });
-                    $($ols).eq($cur).addClass('cur').siblings('li').removeClass('cur');
-                }
-                $($ul).animate({"left":-$cur*width+'px'},"slow");    
-                $($ols).eq($cur).addClass('cur').siblings('li').removeClass('cur');
-            }else if(distanceX>100){
-
-                if($cur>0){
+                $($ols).mouseover(function () {
+                  $index = $(this).index();
+                  $(this).addClass('cur').siblings('li').removeClass('cur');
+                  $($ul).animate({ "left": -$index * width + 'px' }, 'fast');
+                  $cur = $index;
+                })
+                // 右侧按钮
+                $(".right").click(function () {
+                  if ($cur < $imgs - 1) {
+                    $cur++;
+                  } else {
+                    $cur = 0;
+                  }
+                  $($ul).animate({ 'left': -$cur * width + 'px' }, 'fast')
+                  $($ols).eq($cur).addClass('cur').siblings('li').removeClass('cur')
+                });
+                //左侧按钮
+                $(".left").click(function () {
+                  if ($cur > 0) {
                     $cur--;
-                }else{
-                    $cur =$imgs-1;
+                  } else {
+                    $cur = $imgs - 1;
+                  }
+                  $($ul).animate({ 'left': -$cur * width + 'px' }, 'fast')
+                  $($ols).eq($cur).addClass('cur').siblings('li').removeClass('cur')
+                })
+                // 自动播放
+                function autoplay() {
+                  if ($cur < $imgs - 1) {
+                    $cur++
+                  } else {
+                    $cur = 0;
                     $($ul).css({
-                            'left':-$cur*width+'px'
-                        });
-
+                      'left': 0 + 'px'
+                    });
                     $($ols).eq($cur).addClass('cur').siblings('li').removeClass('cur');
+                  }
+
+                  $($ul).animate({
+                    'left': '-' + $cur * width + 'px'
+                  }, 'slow');
+                  $($ols).eq($cur).addClass('cur').siblings('li').removeClass('cur');
                 }
-                // console.log($cur)
-                $($ul).animate({"left":-$cur*width+'px'},"slow");    
-                $($ols).eq($cur).addClass('cur').siblings('li').removeClass('cur');
+                timer = setInterval(autoplay, 2000);
+                $('.list').mouseover(function () {
+                  $('.list div').css("display", "block");
+                  clearInterval(timer);
+                });
+                //
+                $('.list').mouseout(function () {
+                  $('.list div').css("display", "none");
+                  timer = setInterval(autoplay, 2000);
+                });
+
+                $($lis).mousedown(function (event) {
+                  startX = event.clientX;
+                });
+
+                $($lis).mouseup(function (event) {
+                  var endX = event.clientX;
+
+                  var distanceX = endX - startX;
+                  console.log(distanceX)
+                  if (distanceX < -100) {
+
+                    if ($cur < $imgs - 1) {
+                      $cur++
+                    } else {
+                      $cur = 0;
+                      $($ul).css({
+                        'left': 0 + 'px'
+                      });
+                      $($ols).eq($cur).addClass('cur').siblings('li').removeClass('cur');
+                    }
+                    $($ul).animate({ "left": -$cur * width + 'px' }, "slow");
+                    $($ols).eq($cur).addClass('cur').siblings('li').removeClass('cur');
+                  } else if (distanceX > 100) {
+
+                    if ($cur > 0) {
+                      $cur--;
+                    } else {
+                      $cur = $imgs - 1;
+                      $($ul).css({
+                        'left': -$cur * width + 'px'
+                      });
+
+                      $($ols).eq($cur).addClass('cur').siblings('li').removeClass('cur');
+                    }
+                    // console.log($cur)
+                    $($ul).animate({ "left": -$cur * width + 'px' }, "slow");
+                    $($ols).eq($cur).addClass('cur').siblings('li').removeClass('cur');
+                  }
+                });
+              })
             }
-        });
-    })    
-}
-</script>
+          </script>
 </html>

@@ -6,41 +6,80 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>垂直方向</title>
   <style>
-    p{font-size: 12px;}
-    pre{background-color: #f0f0f0;}
-    .warp{background-color: #ccc;height: 100px;}
-    .con{line-height:100px;}
-    .warp1{display: table-cell;vertical-align: middle;}
-    .warp2{position: relative;}
-    .con2{position: absolute;top: 50%;transform: translateY(-50%);}
-    .warp3{position: relative;}
-    .con3{position: absolute;height: 50px;top: 50%;margin-top: -25px;background-color: green;line-height: 50px;}
-    .warp4{display: flex;align-items: center;}
+    p {
+      font-size: 12px;
+    }
+
+    pre {
+      background-color: #f0f0f0;
+    }
+
+    .warp {
+      background-color: #ccc;
+      height: 100px;
+    }
+
+    .con {
+      line-height: 100px;
+    }
+
+    .warp1 {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    .warp2 {
+      position: relative;
+    }
+
+    .con2 {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .warp3 {
+      position: relative;
+    }
+
+    .con3 {
+      position: absolute;
+      height: 50px;
+      top: 50%;
+      margin-top: -25px;
+      background-color: green;
+      line-height: 50px;
+    }
+
+    .warp4 {
+      display: flex;
+      align-items: center;
+    }
   </style>
 </head>
 <body>
   <h3>垂直方向 vertical</h3>
-<p>common css</p>  
-<pre>
+  <p>common css</p>
+  <pre>
   .warp{background-color: #ccc;height: 100px;}
 </pre>
-<p>line-height</p>
-<pre>
+  <p>line-height</p>
+  <pre>
   .warp{background-color: #ccc;height: 100px;}
   .con{line-height:100px;width: 50px;}
 </pre>
-<div class="warp">
-  <div class="con">demo</div>
-</div>
-<p>table-cell && vertial-align</p>
-<pre>
+  <div class="warp">
+    <div class="con">demo</div>
+  </div>
+  <p>table-cell && vertial-align</p>
+  <pre>
   .warp1{display: table-cell;vertical-align: middle;}
 </pre>
-<div class="warp warp1">
-  <div class="con1">demo</div>
-</div>
-<p>absolute && transform</p>
-<pre>
+  <div class="warp warp1">
+    <div class="con1">demo</div>
+  </div>
+  <p>absolute && transform</p>
+  <pre>
   .warp2{position: relative;}
   .con2{
     position: absolute;
@@ -48,11 +87,11 @@
     transform: translateY(-50%);
   }
 </pre>
-<div class="warp warp2">
-  <div class="con2">demo</div>
-</div>
-<p>absolute && margin</p>
-<pre>
+  <div class="warp warp2">
+    <div class="con2">demo</div>
+  </div>
+  <p>absolute && margin</p>
+  <pre>
   .warp3{position: relative;}
   .con3{
     position: absolute;
@@ -62,15 +101,15 @@
     line-height: 50px;
   }
 </pre>
-<div class="warp warp3">
-  <div class="con3">demo</div>
-</div>
-<p>flex && algin-items</p>
-<pre>
+  <div class="warp warp3">
+    <div class="con3">demo</div>
+  </div>
+  <p>flex && algin-items</p>
+  <pre>
   .warp4{display: flex;align-items: center;}
 </pre>
-<div class="warp warp4">
-  <div class="con4">demo</div>
-</div>
+  <div class="warp warp4">
+    <div class="con4">demo</div>
+  </div>
 </body>
 </html>

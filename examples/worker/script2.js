@@ -1,3 +1,3 @@
-function fn2(){
-    return "worker js"
+function fn2() {
+  return 'worker js'
 }

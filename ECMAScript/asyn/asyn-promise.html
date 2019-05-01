@@ -1,133 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>promise</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>promise</title>
 </head>
 <body>
-    
+
 </body>
 <script type="text/javascript">
-    var callbacks = [];
+  var callbacks = [];
 
-    function Promise() {
-        this.isPromise = true;
-    }
+  function Promise() {
+    this.isPromise = true;
+  }
 
-    Promise.prototype = {
-        resolve: function (result) {
-            this.complete("resolve", result);
+  Promise.prototype = {
+    resolve: function (result) {
+      this.complete("resolve", result);
 
-        },
+    },
 
-        reject: function (result) {
-            var _this = this;
-            setTimeout(function () {
-                _this.complete("reject", result);    
-            });
-        },
+    reject: function (result) {
+      var _this = this;
+      setTimeout(function () {
+        _this.complete("reject", result);
+      });
+    },
 
-        executeInLoop: function (promise,result) {
-            // 如果队列里还有函数 并且（ 要么 没有返回一个值 或者 （有返回值但不是promise类型））
-            if ((promise && !promise.isPromise || !promise) && callbacks.length) {
+    executeInLoop: function (promise, result) {
+      // 如果队列里还有函数 并且（ 要么 没有返回一个值 或者 （有返回值但不是promise类型））
+      if ((promise && !promise.isPromise || !promise) && callbacks.length) {
 
-                var callback = this.getCallbackByType("resolve");
+        var callback = this.getCallbackByType("resolve");
 
-                if (callback) {
-                    var promise = callback(promise? promise: result);
-                    this.executeInLoop(promise, promise? promise: result);
-                }
-            }
-        },
-
-        getCallbackByType: function (type) {
-            if (callbacks.length) {
-
-                var callback = callbacks.shift()[type];
-
-                while (!callback) {
-                    callback = callbacks.shift()[type];
-                }                    
-
-            }
-
-            return callback;
-        },
-
-        complete: function (type, result) {
-
-            var callback = this.getCallbackByType(type);
-
-            if (callback) {
-                var promise = callback(result);    
-                /*
-                    1. 有返回值，promise类型
-                    2. 有返回值，其他类型
-                    3. 无返回值
-                */
-                this.executeInLoop(promise, promise? promise: result);
-            }
-        },
-
-        then: function (successHandler, failedHandler) {
-            callbacks.push({
-                resolve: successHandler,
-                reject: failedHandler
-            });
-
-            return this;
+        if (callback) {
+          var promise = callback(promise ? promise : result);
+          this.executeInLoop(promise, promise ? promise : result);
         }
-    }
-   var delay = function (throwError) {
-        var promise = new Promise();
+      }
+    },
 
-        if (throwError) {
-            promise.reject(new Error("ERROR"));
-            return promise;
+    getCallbackByType: function (type) {
+      if (callbacks.length) {
+
+        var callback = callbacks.shift()[type];
+
+        while (!callback) {
+          callback = callbacks.shift()[type];
         }
 
-        setTimeout(function () {
-            promise.resolve("some data");
-        }, 1000);
+      }
 
-        return promise;
+      return callback;
+    },
+
+    complete: function (type, result) {
+
+      var callback = this.getCallbackByType(type);
+
+      if (callback) {
+        var promise = callback(result);
+        /*
+            1. 有返回值，promise类型
+            2. 有返回值，其他类型
+            3. 无返回值
+        */
+        this.executeInLoop(promise, promise ? promise : result);
+      }
+    },
+
+    then: function (successHandler, failedHandler) {
+      callbacks.push({
+        resolve: successHandler,
+        reject: failedHandler
+      });
+
+      return this;
+    }
+  }
+  var delay = function (throwError) {
+    var promise = new Promise();
+
+    if (throwError) {
+      promise.reject(new Error("ERROR"));
+      return promise;
     }
 
-    // delay().then(function (result) {
-    //     console.log(result);
-    // }).then(function () {
-    //     console.log("This is the second successHandler");    
-    // }).then(function () {
-    //     console.log("This is the third successHandler");
-    // })
+    setTimeout(function () {
+      promise.resolve("some data");
+    }, 1000);
 
-    delay()
+    return promise;
+  }
+
+  // delay().then(function (result) {
+  //     console.log(result);
+  // }).then(function () {
+  //     console.log("This is the second successHandler");
+  // }).then(function () {
+  //     console.log("This is the third successHandler");
+  // })
+
+  delay()
     // ------Level 1------
     .then(function FirstSucHandler(result) {
-        console.log("First successHandler recevied: ", result);
-    
-        var p = new Promise();
-        p.reject(new Error("This is a test"));
-        return p;                    
-    
+      console.log("First successHandler recevied: ", result);
+
+      var p = new Promise();
+      p.reject(new Error("This is a test"));
+      return p;
+
     }, function FirstErrorHandler(error) {
-        console.error("Second failedHandler catch: ", error);
+      console.error("Second failedHandler catch: ", error);
     })
     // ------Level 2------
     .then(function SecondSucHandler(result) {
-        console.log("Second successHandler recevied: ", result);            
+      console.log("Second successHandler recevied: ", result);
     })
     // ------Level 3------
     .then(function ThirdSucHandler(result) {
-        console.log("Third successHandler recevied: ", result);
+      console.log("Third successHandler recevied: ", result);
     }, function ThirdErrorHandler(error) {
-        console.error("Third failedHandler catch: ", error);
+      console.error("Third failedHandler catch: ", error);
     })
     // ------Level 4------
     .then(function FourSucHandler(result) {
-        console.log("Fourth successHandler recevied: ", result);
+      console.log("Fourth successHandler recevied: ", result);
     })
 </script>
 </html>

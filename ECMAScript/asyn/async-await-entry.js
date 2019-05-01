@@ -1,2 +1,2 @@
-require('babel-core/register');
-require('./async-await-test');
+require('babel-core/register')
+require('./async-await-test')

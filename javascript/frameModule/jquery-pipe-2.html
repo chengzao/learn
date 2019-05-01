@@ -1,46 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>jquery链式</title>
-	<style>
-		#demo{
-			width: 100px;
-			height: 100px;
-			border: 1px solid #000;
-		}
-		.d{
-			width: 100px;
-			height: 100px;
-		}
-	</style>
+  <meta charset="UTF-8">
+  <title>jquery链式</title>
+  <style>
+    #demo {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+    }
+
+    .d {
+      width: 100px;
+      height: 100px;
+    }
+  </style>
 </head>
 <body>
-	<div id="demo">demo</div>
-	<div class="d"></div>
-	<div class="d"></div>
-	<div class="d"></div>
+  <div id="demo">demo</div>
+  <div class="d"></div>
+  <div class="d"></div>
+  <div class="d"></div>
 </body>
 <script src="czh03.js"></script>
 <script>
 
-	$$('#demo').$css('color','pink').hide().show();
-	console.log($$('#demo').$css('width'));
-    $$('.d').$css('background','red');
+  $$('#demo').$css('color', 'pink').hide().show();
+  console.log($$('#demo').$css('width'));
+  $$('.d').$css('background', 'red');
 
-    $$(function(){
-    	console.log('this is a test');
-    });
+  $$(function () {
+    console.log('this is a test');
+  });
 
 
-	(function($){
-		$.sayHello=function(name){
-			console.log('hello world ! '+name);
-		}
+  (function ($) {
+    $.sayHello = function (name) {
+      console.log('hello world ! ' + name);
+    }
 
-	})($$)
+  })($$)
 
-	$$.sayHello('xiaowang');
+  $$.sayHello('xiaowang');
 
 
 

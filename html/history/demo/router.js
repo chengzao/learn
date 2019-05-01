@@ -1,4 +1,3 @@
-
 // demo1
 
 // (function () {
@@ -7,12 +6,11 @@
 //     $('a').on('click', function () {
 //         console.log(this.text)
 //         var text = this.text;
-//         // 
+//         //
 //         history.pushState(null, null, '#/' + text);
 //         $('#router').html('<p>' + text + '</p>')
 //     })
 // })()
-
 
 // demo2
 
@@ -40,33 +38,29 @@
 //     })
 // })()
 
-
-
 // demo3
 
-(function(){   
+;(function() {
+  var url = '内容展示'
 
-    var url = '内容展示';
+  history.replaceState(url, null, '') //最开始的状态，采用replace直接替换
+  $('#router').html('<p>' + url + '</p>')
 
-    history.replaceState(url,null,'');//最开始的状态，采用replace直接替换
-    $('#router').html('<p>'+url+'</p>')
+  console.log('history length => ', history.length)
 
-    console.log('history length => ',history.length);
+  $('a').on('click', function() {
+    url = this.text
+    console.log('url => ', url)
 
-    $('a').on('click',function(){
-        url = this.text;
-        console.log('url => ',url);
+    $('#router').html('<p>' + url + '</p>')
 
-        $('#router').html('<p>'+ url +'</p>')
-        
-        history.pushState(url,null,'#/'+url);
+    history.pushState(url, null, '#/' + url)
 
-        console.log('history length => ',history.length)
-    })
-    window.addEventListener('popstate',function(e){
-        console.log('state => ',e.state);
-        url = e.state
-        $('#router').html('<p>'+ url +'</p>')
-     });     
-
+    console.log('history length => ', history.length)
+  })
+  window.addEventListener('popstate', function(e) {
+    console.log('state => ', e.state)
+    url = e.state
+    $('#router').html('<p>' + url + '</p>')
+  })
 })()

@@ -1,33 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>选择器 - 伪元素</title>
-	<style>
-		body {
-			margin: 0;
-			padding: 0;
-			font-family: '微软雅黑';
-			background-color: #F7F7F7;
-		}
+  <meta charset="UTF-8">
+  <title>选择器 - 伪元素</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: '微软雅黑';
+      background-color: #F7F7F7;
+    }
 
-		li {
-			font-size: 20px;
-			line-height: 40px;
-		}
+    li {
+      font-size: 20px;
+      line-height: 40px;
+    }
 
-		/*从字面理解是第一个字母，实际上根据不同的语言，有不同的处理*/
-		li::first-letter {
-			color: red;
-		}
-		
-	</style>
+    /*从字面理解是第一个字母，实际上根据不同的语言，有不同的处理*/
+    li::first-letter {
+      color: red;
+    }
+  </style>
 </head>
 <body>
-	<ul>
-		<li>As long as the effort of deep strokes fell great oaks</li>
-		<li>只要功夫深，铁杵磨成针</li>
-		<li>深いストロークの努力が大きな樫の落ちた限り</li>
-	</ul>
+  <ul>
+    <li>As long as the effort of deep strokes fell great oaks</li>
+    <li>只要功夫深，铁杵磨成针</li>
+    <li>深いストロークの努力が大きな樫の落ちた限り</li>
+  </ul>
 </body>
 </html>

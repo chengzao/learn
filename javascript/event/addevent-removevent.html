@@ -1,46 +1,46 @@
 <html>
 <head>
-    <title>addEventListener方法使用实例</title>
-    <meta charset="UTF-8">
+  <title>addEventListener方法使用实例</title>
+  <meta charset="UTF-8">
 </head>
 <body>
-<h4>测试是否绑定或解除事件</h4>
-<input id="testAction" type="button" value="没有事件" /><br/>
-<h4>绑定事件</h4>
-<input id="addEventLis" type="button" value="绑定事件" onclick="add_Event()" /><br/>
-<h4>解除绑定事件</h4>
-<input id="removeEventLis" type="button" value="解除事件" onclick="delete_Event()" /><br/>
+  <h4>测试是否绑定或解除事件</h4>
+  <input id="testAction" type="button" value="没有事件" /><br />
+  <h4>绑定事件</h4>
+  <input id="addEventLis" type="button" value="绑定事件" onclick="add_Event()" /><br />
+  <h4>解除绑定事件</h4>
+  <input id="removeEventLis" type="button" value="解除事件" onclick="delete_Event()" /><br />
 
-<script language="javascript">
-    function add_Event(){
-        var a = document.getElementById("testAction");
-        a.value="有事件";
-        if (document.all) {
-            //IE
-            a.attachEvent("onmouseover", Hello_ok);
-        }else{
-            //chrome or firefox
-            a.addEventListener("mouseover", Hello_ok, false);
-        }
+  <script language="javascript">
+    function add_Event() {
+      var a = document.getElementById("testAction");
+      a.value = "有事件";
+      if (document.all) {
+        //IE
+        a.attachEvent("onmouseover", Hello_ok);
+      } else {
+        //chrome or firefox
+        a.addEventListener("mouseover", Hello_ok, false);
+      }
     }
 
 
 
-    function delete_Event(){
-        var a = document.getElementById("testAction");
-        a.value="没有事件";
-        if (document.all) {
-               //IE
-            a.detachEvent("onmouseover", Hello_ok);
-        }else {
-            a.removeEventListener("mouseover", Hello_ok, false);
-        }
+    function delete_Event() {
+      var a = document.getElementById("testAction");
+      a.value = "没有事件";
+      if (document.all) {
+        //IE
+        a.detachEvent("onmouseover", Hello_ok);
+      } else {
+        a.removeEventListener("mouseover", Hello_ok, false);
+      }
     }
 
 
-        function Hello_ok(){
-            alert("Hello ,this is a onclick event!");
-        }
-</script>
+    function Hello_ok() {
+      alert("Hello ,this is a onclick event!");
+    }
+  </script>
 </body>
 </html>

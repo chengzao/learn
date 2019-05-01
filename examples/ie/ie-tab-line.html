@@ -6,12 +6,52 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <style>
-  ul.tabs{display:block; padding:0 10px 0 0; margin:25px 0 0 0; height:35px; border-bottom:solid 1px #ccc; line-height:34px;}
-  ul.tabs li{display:block; float:right; padding:0 10px; margin:0; list-style:none;}
-  ul.tabs li.cur{ border:solid 1px #ccc; border-bottom-color:#fff; background-color:#fff; height:34px; margin-bottom:-1px; position:relative;}
-  .box ul{height: 31px;border-bottom:solid 1px #ccc;line-height: 31px;}
-  .box ul li{list-style: none;float: left;width: 100px;height: 30px;text-align: center;}
-  .box ul li.cur{border:solid 1px #ccc; border-bottom-color:#fff;margin-bottom: -1px;position: relative;}
+    ul.tabs {
+      display: block;
+      padding: 0 10px 0 0;
+      margin: 25px 0 0 0;
+      height: 35px;
+      border-bottom: solid 1px #ccc;
+      line-height: 34px;
+    }
+
+    ul.tabs li {
+      display: block;
+      float: right;
+      padding: 0 10px;
+      margin: 0;
+      list-style: none;
+    }
+
+    ul.tabs li.cur {
+      border: solid 1px #ccc;
+      border-bottom-color: #fff;
+      background-color: #fff;
+      height: 34px;
+      margin-bottom: -1px;
+      position: relative;
+    }
+
+    .box ul {
+      height: 31px;
+      border-bottom: solid 1px #ccc;
+      line-height: 31px;
+    }
+
+    .box ul li {
+      list-style: none;
+      float: left;
+      width: 100px;
+      height: 30px;
+      text-align: center;
+    }
+
+    .box ul li.cur {
+      border: solid 1px #ccc;
+      border-bottom-color: #fff;
+      margin-bottom: -1px;
+      position: relative;
+    }
   </style>
 
 
@@ -21,66 +61,62 @@
 
   <ul class="tabs">
 
-      <li class="tab cur">111</li>
+    <li class="tab cur">111</li>
 
-      <li class="tab ">222</li>
+    <li class="tab ">222</li>
 
   </ul>
 
 
-<div class="box">
-  <ul>
-    <li class="cur">222</li>
-    <li>444</li>
-  </ul>
-</div>
+  <div class="box">
+    <ul>
+      <li class="cur">222</li>
+      <li>444</li>
+    </ul>
+  </div>
 
 
 
 </body>
 <script type="text/javascript">
-function ie(){
-  var browser=navigator.appName
-  var b_version=navigator.appVersion
-  var version=b_version.split(";");
-  if(version.length>1){
-    var trim_Version=version[1].replace(/[ ]/g,"");
-    if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE6.0")
-    {
-    alert("IE 6.0");
-    }
-    else if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE7.0")
-    {
-    alert("IE 7.0");
-    }
-    else if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE8.0")
-    {
-    alert("IE 8.0");
-    }
-    else if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE9.0")
-    {
-    alert("IE 9.0");
+  function ie() {
+    var browser = navigator.appName
+    var b_version = navigator.appVersion
+    var version = b_version.split(";");
+    if (version.length > 1) {
+      var trim_Version = version[1].replace(/[ ]/g, "");
+      if (browser == "Microsoft Internet Explorer" && trim_Version == "MSIE6.0") {
+        alert("IE 6.0");
+      }
+      else if (browser == "Microsoft Internet Explorer" && trim_Version == "MSIE7.0") {
+        alert("IE 7.0");
+      }
+      else if (browser == "Microsoft Internet Explorer" && trim_Version == "MSIE8.0") {
+        alert("IE 8.0");
+      }
+      else if (browser == "Microsoft Internet Explorer" && trim_Version == "MSIE9.0") {
+        alert("IE 9.0");
+      }
     }
   }
-}
-// ie();
+  // ie();
 
-function ie2(){
-  var browser=navigator.appName
-  var b_version=navigator.appVersion
-  var version = b_version.split(";");
-  document.write("浏览器名称："+ browser)
-  document.write("<br />")
-  document.write("浏览器版本："+ b_version)
-  // var ff = navigator.appVersion.match(/6./i)=="6.";
-  // alert(ff);
-  if (version.length > 1) {
-          var trim_Version = parseInt(version[1].replace(/[ ]/g, "").replace(/MSIE/g, ""));
-          if (browser=="Microsoft Internet Explorer"&&trim_Version == 6) {
-            alert('ie6')
-          }
+  function ie2() {
+    var browser = navigator.appName
+    var b_version = navigator.appVersion
+    var version = b_version.split(";");
+    document.write("浏览器名称：" + browser)
+    document.write("<br />")
+    document.write("浏览器版本：" + b_version)
+    // var ff = navigator.appVersion.match(/6./i)=="6.";
+    // alert(ff);
+    if (version.length > 1) {
+      var trim_Version = parseInt(version[1].replace(/[ ]/g, "").replace(/MSIE/g, ""));
+      if (browser == "Microsoft Internet Explorer" && trim_Version == 6) {
+        alert('ie6')
+      }
+    }
   }
-}
 // ie2();
 
 </script>

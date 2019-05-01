@@ -1,113 +1,113 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title></title>
-		<link rel="stylesheet" href="./css/index.css">
-	</head>
-	<body>
-		<div class="box">
-			<div class="top" id="s_top">
-				<div class="one">
-					<a href="javascript:;"></a>
-				</div>
-			</div>
-			<div class="tan" id="s_tan">
-				<div class="tanup" id="tanup">提示框</div>
-				<div class="txt">你真的真的真的要关闭吗？</div>
-				<span class="btn">狠心关掉</span><span class="btn">让它呆着</span>
-			</div>
-			<div class="left" id="left"></div>
-			<div class="right" id="right"></div>
-			<div class="totop" id="totop"></div>
-		</div>
-	</body>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+  <div class="box">
+    <div class="top" id="s_top">
+      <div class="one">
+        <a href="javascript:;"></a>
+      </div>
+    </div>
+    <div class="tan" id="s_tan">
+      <div class="tanup" id="tanup">提示框</div>
+      <div class="txt">你真的真的真的要关闭吗？</div>
+      <span class="btn">狠心关掉</span><span class="btn">让它呆着</span>
+    </div>
+    <div class="left" id="left"></div>
+    <div class="right" id="right"></div>
+    <div class="totop" id="totop"></div>
+  </div>
+</body>
 </html>
 <script type="text/javascript" src="my.js"></script>
 <script type="text/javascript">
-	var toolbar=$("s_top");
-	var btn=toolbar.getElementsByTagName("a")[0];
-	var but=$("s_tan").getElementsByTagName("span");
-	but[0].onclick=function(){
-		toolbar.className="top topadd";
-		$("s_tan").style.display="none";
-	}
-	but[1].onclick=function(){
-		$("s_tan").style.display="none";
-	}
-	btn.onclick=function(){
-		if(toolbar.className == "top topadd"){
-			return false;
-		}
-		$("s_tan").style.display="block";
-	}
+  var toolbar = $("s_top");
+  var btn = toolbar.getElementsByTagName("a")[0];
+  var but = $("s_tan").getElementsByTagName("span");
+  but[0].onclick = function () {
+    toolbar.className = "top topadd";
+    $("s_tan").style.display = "none";
+  }
+  but[1].onclick = function () {
+    $("s_tan").style.display = "none";
+  }
+  btn.onclick = function () {
+    if (toolbar.className == "top topadd") {
+      return false;
+    }
+    $("s_tan").style.display = "block";
+  }
 
-	$("tanup").onmousedown=function(e){
-		//alert(1)
-		var e= e || event;
-		var ox=e.pageX;
-		var oy=e.pageY;
-		var oleft=parseInt(getStyle($("s_tan"),"left"));
-		var otop=parseInt(getStyle($("s_tan"),"top"));
+  $("tanup").onmousedown = function (e) {
+    //alert(1)
+    var e = e || event;
+    var ox = e.pageX;
+    var oy = e.pageY;
+    var oleft = parseInt(getStyle($("s_tan"), "left"));
+    var otop = parseInt(getStyle($("s_tan"), "top"));
 
-		//alert(otop);
-		document.onmousemove=function(e){
-			var e= e || event;
-			$("s_tan").style.left=e.pageX-ox+oleft+ "px";
-			$("s_tan").style.top=e.pageY-oy+otop+ "px";
-		}
-	}
-	document.onmouseup=function(){
-		document.onmousemove=null;
-	}
-
-
-
-	var lead =$("left").offsetTop;
-	var target=$("left").offsetTop;
-	var time1=null;
-	window.onscroll=function(){
-		target=scroll().top+200;
-		lead1=scroll().top;
-		if(scroll().top>500){
-			$("totop").style.display="block";
-		}else{
-			$("totop").style.display="none";
-		}
-		clearInterval(time1);
-		time1=setInterval(function(){
-			lead = lead + ( target - lead )/10;
-			$("left").style.top=lead + "px";
-			$("right").style.top=lead + "px";
-			if(lead == target){
-				//alert(1);
-				clearInterval(time1);
-			}
-		},10);
-	}
+    //alert(otop);
+    document.onmousemove = function (e) {
+      var e = e || event;
+      $("s_tan").style.left = e.pageX - ox + oleft + "px";
+      $("s_tan").style.top = e.pageY - oy + otop + "px";
+    }
+  }
+  document.onmouseup = function () {
+    document.onmousemove = null;
+  }
 
 
-	$("left").onclick=function(){
-		$("left").style.display="none";
-		$("right").style.display="none";
-	}
-	$("right").onclick=function(){
-		$("left").style.display="none";
-		$("right").style.display="none";
-	}
 
-	var lead1=0;
-	var target1=0;
-	var time2=null;
-	$("totop").onclick=function(){
-		time2=setInterval(function(){
-			lead1=lead1 +(target1 - lead1)/10;
-			window.scrollTo(0,lead1);
-		if(lead1 == 0){
-			clearInterval(time2);
-		}
-		},17)
-	}
+  var lead = $("left").offsetTop;
+  var target = $("left").offsetTop;
+  var time1 = null;
+  window.onscroll = function () {
+    target = scroll().top + 200;
+    lead1 = scroll().top;
+    if (scroll().top > 500) {
+      $("totop").style.display = "block";
+    } else {
+      $("totop").style.display = "none";
+    }
+    clearInterval(time1);
+    time1 = setInterval(function () {
+      lead = lead + (target - lead) / 10;
+      $("left").style.top = lead + "px";
+      $("right").style.top = lead + "px";
+      if (lead == target) {
+        //alert(1);
+        clearInterval(time1);
+      }
+    }, 10);
+  }
+
+
+  $("left").onclick = function () {
+    $("left").style.display = "none";
+    $("right").style.display = "none";
+  }
+  $("right").onclick = function () {
+    $("left").style.display = "none";
+    $("right").style.display = "none";
+  }
+
+  var lead1 = 0;
+  var target1 = 0;
+  var time2 = null;
+  $("totop").onclick = function () {
+    time2 = setInterval(function () {
+      lead1 = lead1 + (target1 - lead1) / 10;
+      window.scrollTo(0, lead1);
+      if (lead1 == 0) {
+        clearInterval(time2);
+      }
+    }, 17)
+  }
 
 
 </script>

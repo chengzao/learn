@@ -1,36 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<style>
-		#main{
-			width: 600px;
-			height:500px;
-		}
-
-	</style>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    #main {
+      width: 600px;
+      height: 500px;
+    }
+  </style>
 </head>
 <body>
-	<div id="main"></div>
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/echarts.min.js"></script>
-	<script type="text/javascript" src="js/china.js"></script>
-	<script type="text/javascript" src="js/beijing.js"></script>
-	<script type="text/javascript">
+  <div id="main"></div>
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/echarts.min.js"></script>
+  <script type="text/javascript" src="js/china.js"></script>
+  <script type="text/javascript" src="js/beijing.js"></script>
+  <script type="text/javascript">
 
-	var url='data/beijing.json';
-	//以服务器形式打开
-	$.get(url, function (chinaJson) {
-	    echarts.registerMap('beijing', chinaJson);
-	    var chart = echarts.init(document.getElementById('main'));
-	    chart.setOption({
-	        series: [{
-	            type: 'map',
-	            map: 'beijing'
-	        }]
-	    });
-	});
-	</script>
+    var url = 'data/beijing.json';
+    //以服务器形式打开
+    $.get(url, function (chinaJson) {
+      echarts.registerMap('beijing', chinaJson);
+      var chart = echarts.init(document.getElementById('main'));
+      chart.setOption({
+        series: [{
+          type: 'map',
+          map: 'beijing'
+        }]
+      });
+    });
+  </script>
 </body>
 </html>

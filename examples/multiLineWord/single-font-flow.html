@@ -4,28 +4,35 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<style>
-		p{	
+		p {
 			width: 150px;
 			overflow: hidden;
-			text-overflow:ellipsis;
+			text-overflow: ellipsis;
 			white-space: nowrap;
 		}
-		.p{
+
+		.p {
 			width: 150px;
-			position: relative; 
-			line-height: 20px; 
+			position: relative;
+			line-height: 20px;
 			max-height: 40px;
 			overflow: hidden;
 			display: block;
 		}
-		.p::after{
-			content: "..."; position: absolute; bottom: 0; right: 0; padding-left: 40px;
+
+		.p::after {
+			content: "...";
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			padding-left: 40px;
 			background: -webkit-linear-gradient(left, transparent, #fff 55%);
 			background: -o-linear-gradient(right, transparent, #fff 55%);
 			background: -moz-linear-gradient(right, transparent, #fff 55%);
 			background: linear-gradient(to right, transparent, #fff 55%);
 		}
-		div{
+
+		div {
 			width: 150px;
 			display: -webkit-box;
 			-webkit-box-orient: vertical;
@@ -34,34 +41,32 @@
 			line-height: 22px;
 			max-height: 64px;
 			/*ie6*/
-			_height:expression(this.scrollHeight > 64 ? "64px" : "auto"); 
+			_height: expression(this.scrollHeight > 64 ? "64px": "auto");
 		}
 
-		.box{
+		.box {
 			background-color: #555;
-			max-height:120px;
-			min-height:40px;
+			max-height: 120px;
+			min-height: 40px;
 			margin-bottom: 10px;
-			_height:expression(this.scrollHeight > 120 ? "120px" : (this.scrollHeight < 40 ? "40px" : "auto"));
+			_height: expression(this.scrollHeight > 120 ? "120px": (this.scrollHeight < 40 ? "40px": "auto"));
 		}
-		
-
 	</style>
 </head>
 <body>
 	<p>单行文本溢出单行文本溢出单行文本溢出</p>
 	<span class="p">单行文本溢出单行文本溢出单行文本溢出单行文本溢出单行文本溢出单行文本溢出</span>
 	<div>
-	   多行文本溢出多行文本溢出多行文本溢出多行文本溢出多行文本溢出
-	   多行文本溢出多行文本溢出多行文本溢出多行文本溢出多行文本溢出
-	   多行文本溢出多行文本溢出多行文本溢出多行文本溢出多行文本溢出
-	   多行文本溢出多行文本溢出多行文本溢出多行文本溢出多行文本溢出
+		多行文本溢出多行文本溢出多行文本溢出多行文本溢出多行文本溢出
+		多行文本溢出多行文本溢出多行文本溢出多行文本溢出多行文本溢出
+		多行文本溢出多行文本溢出多行文本溢出多行文本溢出多行文本溢出
+		多行文本溢出多行文本溢出多行文本溢出多行文本溢出多行文本溢出
 	</div>
 	<div class="box">
 		多行文本溢出多行文本溢出多行文本溢出多行文本溢出多行文本溢出
-	   多行文本溢出多行文本溢出多行文本溢出多行文本溢出多行文本溢出
-	   多行文本溢出多行文本溢出多行文本溢出多行文本溢出多行文本溢出
-	   多行文本溢出多行文本溢出多行文本溢出多行文本溢出多行文本溢出
+		多行文本溢出多行文本溢出多行文本溢出多行文本溢出多行文本溢出
+		多行文本溢出多行文本溢出多行文本溢出多行文本溢出多行文本溢出
+		多行文本溢出多行文本溢出多行文本溢出多行文本溢出多行文本溢出
 	</div>
 	<div class="box">
 		min-height;40px

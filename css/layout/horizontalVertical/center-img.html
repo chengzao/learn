@@ -12,24 +12,27 @@
       background: hsl(0, 100%, 97%);
       border: 1px solid #000;
     }
-    div.center1 img
-    {
-      width: 33%; height: auto;
+
+    div.center1 img {
+      width: 33%;
+      height: auto;
     }
 
-     /*使用 margin: auto 居中
+    /*使用 margin: auto 居中
      注意： 必须使用display: block使 margin: 0 auto对img元素生效。*/
     div.center2 {
       margin: 10px auto;
       width: 500px;
       border: 1px solid #ccc;
     }
+
     div.center2 img {
       display: block;
       width: 33%;
       height: auto;
       margin: 0 auto;
     }
+
     /*使用table-cell居中*/
     .center-aligned1 {
       margin: 10px auto;
@@ -38,11 +41,13 @@
       background: hsl(120, 100%, 97%);
       border: 1px solid #000;
     }
+
     .center-core1 {
       display: table-cell;
       text-align: center;
       vertical-align: middle;
     }
+
     .center-core1 img {
       width: 33%;
       height: auto;
@@ -57,14 +62,17 @@
       background: hsl(200, 100%, 97%);
       border: 1px solid #000;
     }
+
     .absolute-aligned img {
       width: 50%;
       height: auto;
       overflow: auto;
       margin: auto;
       position: absolute;
-      top: 0; left: 0;
-      bottom: 0; right: 0;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
     }
 
     /*使用translate居中*/
@@ -76,11 +84,14 @@
       position: relative;
       border: 1px solid #000;
     }
+
     .center3 img {
       position: absolute;
-      top: 50%; left: 50%;
+      top: 50%;
+      left: 50%;
       transform: translate(-50%, -50%);
-      width: 30%; height: auto;
+      width: 30%;
+      height: auto;
     }
 
     /*使用Flexbox居中*/
@@ -94,20 +105,23 @@
       align-items: center;
       border: 1px solid #000;
     }
+
     .center4 img {
-      width: 30%; height: auto;
+      width: 30%;
+      height: auto;
     }
 
 
     /*使用calc居中*/
     .center5 {
-      margin:auto;
+      margin: auto;
       width: 300px;
       background: hsl(300, 100%, 97%);
       height: 300px;
       position: relative;
       border: 1px solid #000;
     }
+
     .center5 img {
       width: 50%;
       height: 50%;
@@ -115,6 +129,7 @@
       top: calc(50% - 25%);
       left: calc(50% - 25%);
     }
+
     /*额外标签*/
     .wrap {
       width: 600px;
@@ -134,7 +149,6 @@
       display: inline-block;
       vertical-align: middle;
     }
-
   </style>
 </head>
 <!--参考文档：http://www.devstore.cn/essay/essayInfo/6783.html-->

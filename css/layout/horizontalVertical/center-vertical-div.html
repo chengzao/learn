@@ -4,182 +4,199 @@
   <meta charset="UTF-8">
   <title>垂直居中</title>
   <style>
-    .dv{
-        width: 500px;
-        height: 400px;
-        border: 1px solid #000;
-        position: relative;
-        text-align: center;
-        float: left;
-        margin: 10px;
+    .dv {
+      width: 500px;
+      height: 400px;
+      border: 1px solid #000;
+      position: relative;
+      text-align: center;
+      float: left;
+      margin: 10px;
     }
+
     /*方法一：已知元素的高宽*/
     .div2 {
-        background-color: red;
-        width: 200px;
-        height: 200px;
-        position: absolute; /*父元素需要相对定位*/
-        top: 50%;
-        left: 50%;
-        margin-top: -100px; /*二分之一的height，width*/
-        margin-left: -100px;
+      background-color: red;
+      width: 200px;
+      height: 200px;
+      position: absolute;
+      /*父元素需要相对定位*/
+      top: 50%;
+      left: 50%;
+      margin-top: -100px;
+      /*二分之一的height，width*/
+      margin-left: -100px;
     }
 
     /*方法二:未知元素的高宽*/
 
-    .div1{
-        width: 200px;
-        height: 300px;
-        background-color: #6699FF;
+    .div1 {
+      width: 200px;
+      height: 300px;
+      background-color: #6699FF;
 
-        margin:auto;
-        position: absolute;        /*父元素需要相对定位*/
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
+      margin: auto;
+      position: absolute;
+      /*父元素需要相对定位*/
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
     }
 
     /*表格法*/
     .parent {
-        display:table;
-        width: 500px;
-        height: 300px;
-        background: #3BB7FF;
-        *position: relative; /*IE hake*/
+      display: table;
+      width: 500px;
+      height: 300px;
+      background: #3BB7FF;
+      *position: relative;
+      /*IE hake*/
     }
+
     .children {
-        display:table-cell;
-        vertical-align:middle;
-        *position: absolute;
-        *top:50%; /*IE hake*/
+      display: table-cell;
+      vertical-align: middle;
+      *position: absolute;
+      *top: 50%;
+      /*IE hake*/
     }
+
     .content {
-        width:300px;
-        margin:0 auto;
-        background: #00FD2A;
-        *position: relative;
-        *top:-50%; /*IE hake*/
+      width: 300px;
+      margin: 0 auto;
+      background: #00FD2A;
+      *position: relative;
+      *top: -50%;
+      /*IE hake*/
     }
+
     /*行内块法*/
-    .parent2{
-        margin-top: 10px;
-        width: 500px;
-        height: 300px;
-        text-align: center;
-        border: 1px solid #000;
+    .parent2 {
+      margin-top: 10px;
+      width: 500px;
+      height: 300px;
+      text-align: center;
+      border: 1px solid #000;
     }
-    .parent2:after{
-        content:'';
-        display:inline-block;
-        vertical-align:middle;
-        height:100%;
-        width:0;
+
+    .parent2:after {
+      content: '';
+      display: inline-block;
+      vertical-align: middle;
+      height: 100%;
+      width: 0;
     }
-    .children2{
-        width:300px;
-        height: 200px;
-        margin:0 auto;
-        display:inline-block;
-        vertical-align:middle;
-        border: 1px solid #000;
+
+    .children2 {
+      width: 300px;
+      height: 200px;
+      margin: 0 auto;
+      display: inline-block;
+      vertical-align: middle;
+      border: 1px solid #000;
     }
+
     /*字体垂直居中*/
-    .txt{
-        width: 200px;
-        height: 100px;
-        text-align: center;
-        line-height: 100px;
-        border: 1px solid #000;
-        margin-top: 10px;
+    .txt {
+      width: 200px;
+      height: 100px;
+      text-align: center;
+      line-height: 100px;
+      border: 1px solid #000;
+      margin-top: 10px;
     }
 
     #MrJin {
-        margin-top: 10px;
-        position: static;
-        *position: relative;
-        height: 200px;
-        width: 500px;
-        border: 1px solid #03c;
-        *display: block !important;
-        display: table !important;
+      margin-top: 10px;
+      position: static;
+      *position: relative;
+      height: 200px;
+      width: 500px;
+      border: 1px solid #03c;
+      *display: block !important;
+      display: table !important;
     }
 
     #MrJin_a {
-        position: static;
-        *position: absolute;
-        display: table-cell;
-        vertical-align: middle;
-        *display: block;
-        top: 50%;
-        width: 100%;
+      position: static;
+      *position: absolute;
+      display: table-cell;
+      vertical-align: middle;
+      *display: block;
+      top: 50%;
+      width: 100%;
     }
 
     #MrJin_b {
-        position: relative;
-        top: -50%;
-        text-align: center;
-        width: 100%;
+      position: relative;
+      top: -50%;
+      text-align: center;
+      width: 100%;
     }
+
     /*flex*/
-    .box{
-        width: 400px;
-        height: 230px;
-        border: 1px solid #000;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .box {
+      width: 400px;
+      height: 230px;
+      border: 1px solid #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-    .boxChild{
-        width: 200px;
-        height: 100px;
-        border: 1px solid #000;
+
+    .boxChild {
+      width: 200px;
+      height: 100px;
+      border: 1px solid #000;
     }
   </style>
 </head>
 <body>
 
-<div class='dv'>Box
-  <div class='div1'>box:未知元素的高宽</div>
-</div>
+  <div class='dv'>Box
+    <div class='div1'>box:未知元素的高宽</div>
+  </div>
 
-<div class='dv'>Box2
-  <div class='div2'>box2:已知元素的高宽</div>
-</div>
+  <div class='dv'>Box2
+    <div class='div2'>box2:已知元素的高宽</div>
+  </div>
 
-<div class="parent">
-  <div class="children">
-    <div class="content">
-      表格法兼容性好，支持IE6+，支持动态高度，表格法兼容性好，支持IE6+，支持动态高度，表格法兼容性好，支持IE6+，支持动态高度，表格法兼容性好，支持IE6+，支持动态高度表格法兼容性好，支持IE6+，支持动态高度。
+  <div class="parent">
+    <div class="children">
+      <div class="content">
+        表格法兼容性好，支持IE6+，支持动态高度，表格法兼容性好，支持IE6+，支持动态高度，表格法兼容性好，支持IE6+，支持动态高度，表格法兼容性好，支持IE6+，支持动态高度表格法兼容性好，支持IE6+，支持动态高度。
+      </div>
     </div>
   </div>
-</div>
 
-<div class="parent2">
-  <div class="children2"> 行内块法:通过增加一个空白元素（如伪元素），并将其高度设置为百分百，然后同时将空白元素和要居中的元素设置vertical-align: middle;即可实现垂直居中。
+  <div class="parent2">
+    <div class="children2"> 行内块法:通过增加一个空白元素（如伪元素），并将其高度设置为百分百，然后同时将空白元素和要居中的元素设置vertical-align: middle;即可实现垂直居中。
+    </div>
   </div>
-</div>
 
-<div class="txt">
-  字体垂直居中
-</div>
-
-<div id="MrJin">
-  <div id="MrJin_a">
-    <div id="MrJin_b"><a href="http://www.baidu.com/"><p>css练习</p>
-      <p>如何保持DIV居中</p>
-      <p>如何保持DIV居中</p></a></div>
+  <div class="txt">
+    字体垂直居中
   </div>
-</div>
+
+  <div id="MrJin">
+    <div id="MrJin_a">
+      <div id="MrJin_b"><a href="http://www.baidu.com/">
+          <p>css练习</p>
+          <p>如何保持DIV居中</p>
+          <p>如何保持DIV居中</p>
+        </a></div>
+    </div>
+  </div>
 
 
-<div class='dv'>Box3
-  <div class='div3'>box3:translate(-50%,-50%)</div>
-</div>
+  <div class='dv'>Box3
+    <div class='div3'>box3:translate(-50%,-50%)</div>
+  </div>
 
-<div class="box">
+  <div class="box">
     <div class="boxChild">flex居中</div>
-</div>
+  </div>
 
 
 </body>

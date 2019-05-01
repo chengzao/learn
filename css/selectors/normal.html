@@ -6,76 +6,98 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>normal css select</title>
     <style>
-        h3:hover{
+        h3:hover {
             background-color: yellowgreen;
         }
-        h3::after{
+
+        h3::after {
             content: ':';
-            margin-left:10px;
+            margin-left: 10px;
         }
-        .item{
+
+        .item {
             margin: 10px 0;
         }
-        .item .red{
+
+        .item .red {
             color: red;
         }
-        .item #red{
+
+        .item #red {
             color: green;
         }
-        *{
+
+        * {
             font-size: 24px;
         }
-        .item p{
+
+        .item p {
             color: yellowgreen;
         }
-        .item-1 p,.item-1 div{
+
+        .item-1 p,
+        .item-1 div {
             color: red;
         }
-        .item-2 p{
+
+        .item-2 p {
             color: #e0e;
         }
-        .item-3>p{
+
+        .item-3>p {
             color: #ccc;
         }
-        .targetEle+p{
+
+        .targetEle+p {
             color: red;
         }
-        .item-5 a[target]{
-            background-color:yellow;
+
+        .item-5 a[target] {
+            background-color: yellow;
         }
+
         .item-5 p {
             padding: 0;
             font-size: 14px;
         }
-        .item-5 p[data-cal]{
+
+        .item-5 p[data-cal] {
             color: red;
         }
-        .item-5 p[data-cal="aaa"]{
+
+        .item-5 p[data-cal="aaa"] {
             color: blue;
         }
-        .item-5 p[data-cal ~="ccc"]{
+
+        .item-5 p[data-cal~="ccc"] {
             color: pink;
         }
-        .item-5 p[lang|=en]{
+
+        .item-5 p[lang|=en] {
             color: #ccc;
         }
-        .item-5 p[data-ta ^='a']{
+
+        .item-5 p[data-ta ^='a'] {
             color: red;
         }
-        .item-5 p[data-ta $='s']{
+
+        .item-5 p[data-ta $='s'] {
             color: blue;
         }
-        .item-5 p[data-ta *='n']{
+
+        .item-5 p[data-ta *='n'] {
             color: blueviolet;
         }
 
-        .item-6 a:hover{
-            background-color:yellow;
+        .item-6 a:hover {
+            background-color: yellow;
         }
-        .item-7 input[type="text"]:focus{
-            color: red;    
+
+        .item-7 input[type="text"]:focus {
+            color: red;
         }
-        .item-8 p:lang(en){
+
+        .item-8 p:lang(en) {
             background: yellow;
         }
     </style>
@@ -101,12 +123,14 @@
     <h3>element1 element2 ...</h3>
     <div class="item-2">
         <p>element1 element2 : this is element1 element2 font</p>
-        <div>选择该元素element1内部的所有element2元素.（第一层元素） <p>我是第二层内嵌元素 (变色)</p></div>
+        <div>选择该元素element1内部的所有element2元素.（第一层元素） <p>我是第二层内嵌元素 (变色)</p>
+        </div>
     </div>
     <h3>element1>element2</h3>
     <div class="item-3">
         <p>element1>element2 : this is element1>element2 font</p>
-        <div>选择该元素内部的所有元素. （第一层元素）<p>我是第二层内嵌元素 (不变色)</p></div>
+        <div>选择该元素内部的所有元素. （第一层元素）<p>我是第二层内嵌元素 (不变色)</p>
+        </div>
     </div>
     <h3>element+element</h3>
     <div class="item-4">
@@ -118,10 +142,10 @@
     </div>
     <h3>[attribute]</h3>
     <div class="item-5">
-        <p>[attribute]    [target] 选择带有 target 属性所有元素</p>
-        <p>[attribute=value]	[target=_blank]	选择 target="_blank" 的所有元素</p>
-        <p>[attribute~=value]	[title~=flower]	选择 title 属性包含单词 "flower" 的所有元素</p>
-        <p>[attribute|=value]	[lang|=en]	选择 lang 属性值以 "en" 开头的所有元素</p>
+        <p>[attribute] [target] 选择带有 target 属性所有元素</p>
+        <p>[attribute=value] [target=_blank] 选择 target="_blank" 的所有元素</p>
+        <p>[attribute~=value] [title~=flower] 选择 title 属性包含单词 "flower" 的所有元素</p>
+        <p>[attribute|=value] [lang|=en] 选择 lang 属性值以 "en" 开头的所有元素</p>
         <a href="http://www.w3school.com.cn">w3school.com.cn</a>
         <a href="http://www.disney.com" target="_blank">disney.com</a>
         <a href="http://www.wikipedia.org" target="_top">wikipedia.org</a>

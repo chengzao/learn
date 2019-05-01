@@ -2,50 +2,51 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>定宽 自适应 两块高度一样高</title>
-    <style>
-        .parent {
-            display: table;
-            width: 100%;
-            table-layout: fixed;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>定宽 自适应 两块高度一样高</title>
+  <style>
+    .parent {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+    }
 
-        .left {
-            width: 100px;
-            padding-right: 20px;
-        }
+    .left {
+      width: 100px;
+      padding-right: 20px;
+    }
 
-        .right,
-        .left {
-            display: table-cell;
-        }
-        .p {
-            background-color: palegoldenrod;
-        }
+    .right,
+    .left {
+      display: table-cell;
+    }
 
-        .l {
-            background-color: palegreen;
-        }
+    .p {
+      background-color: palegoldenrod;
+    }
 
-        .r {
-            background-color: paleturquoise;
-        }
-    </style>
+    .l {
+      background-color: palegreen;
+    }
+
+    .r {
+      background-color: paleturquoise;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="parent p">
-        <div class="left l">
-            <p>left</p>
-        </div>
-        <div class="right r">
-            <p>right</p>
-            <p>right</p>
-        </div>
+  <div class="parent p">
+    <div class="left l">
+      <p>left</p>
     </div>
+    <div class="right r">
+      <p>right</p>
+      <p>right</p>
+    </div>
+  </div>
 </body>
 
 </html>

@@ -6,24 +6,106 @@
 	<title>divselect</title>
 </head>
 <style media="screen">
-	.divselect{font-size:14px;position:relative;display:inline-block;width:318px;border:1px solid #e8e8ec;border-radius:3px;*zoom:1;*display:inline;}
-	.divselect .selVal{position:relative;padding-right:14px;padding-left:14px;border-radius:3px;}
-	.divselect .selVal span{line-height:36px;display:block;overflow:hidden;height:36px;cursor:pointer;white-space:nowrap;letter-spacing:normal;text-overflow:ellipsis;color:#666;}
-	.divselect .selVal i{position:absolute;top:12px;right:5px;display:inline-block;overflow:hidden;zoom:1;width:12px;height:10px;background:url('./images/main_icon.png') no-repeat -150px -28px;_display:inline;}
-	.divselect .selVal i.cur{background:url('./images/main_icon.png') no-repeat -150px -18px;}
-	.divselect ul{position:absolute;top:43px;left:-1px;visibility:hidden;overflow:hidden;width:318px;margin:-1px 0 0;padding:0;list-style:none;border:1px solid #e8e8ec;border-radius:3px;background-color:#fff;}
-	.divselect ul li{cursor:pointer;}
-	.divselect ul li a{line-height:39px;display:block;height:39px;padding-right:14px;padding-left:14px;white-space:nowrap;text-decoration:none;letter-spacing:normal;color:#999;}
-	.divselect ul li a:hover{background-color:#f6f6f8;}
+	.divselect {
+		font-size: 14px;
+		position: relative;
+		display: inline-block;
+		width: 318px;
+		border: 1px solid #e8e8ec;
+		border-radius: 3px;
+		*zoom: 1;
+		*display: inline;
+	}
+
+	.divselect .selVal {
+		position: relative;
+		padding-right: 14px;
+		padding-left: 14px;
+		border-radius: 3px;
+	}
+
+	.divselect .selVal span {
+		line-height: 36px;
+		display: block;
+		overflow: hidden;
+		height: 36px;
+		cursor: pointer;
+		white-space: nowrap;
+		letter-spacing: normal;
+		text-overflow: ellipsis;
+		color: #666;
+	}
+
+	.divselect .selVal i {
+		position: absolute;
+		top: 12px;
+		right: 5px;
+		display: inline-block;
+		overflow: hidden;
+		zoom: 1;
+		width: 12px;
+		height: 10px;
+		background: url('./images/main_icon.png') no-repeat -150px -28px;
+		_display: inline;
+	}
+
+	.divselect .selVal i.cur {
+		background: url('./images/main_icon.png') no-repeat -150px -18px;
+	}
+
+	.divselect ul {
+		position: absolute;
+		top: 43px;
+		left: -1px;
+		visibility: hidden;
+		overflow: hidden;
+		width: 318px;
+		margin: -1px 0 0;
+		padding: 0;
+		list-style: none;
+		border: 1px solid #e8e8ec;
+		border-radius: 3px;
+		background-color: #fff;
+	}
+
+	.divselect ul li {
+		cursor: pointer;
+	}
+
+	.divselect ul li a {
+		line-height: 39px;
+		display: block;
+		height: 39px;
+		padding-right: 14px;
+		padding-left: 14px;
+		white-space: nowrap;
+		text-decoration: none;
+		letter-spacing: normal;
+		color: #999;
+	}
+
+	.divselect ul li a:hover {
+		background-color: #f6f6f8;
+	}
+
 	/*select*/
-	.select-hidden-accessible {border: 0 !important;clip: rect(0 0 0 0) !important;height: 1px !important;margin: -1px !important;overflow: hidden !important;padding: 0 !important;position: absolute !important;width: 1px !important;}
+	.select-hidden-accessible {
+		border: 0 !important;
+		clip: rect(0 0 0 0) !important;
+		height: 1px !important;
+		margin: -1px !important;
+		overflow: hidden !important;
+		padding: 0 !important;
+		position: absolute !important;
+		width: 1px !important;
+	}
 </style>
 <body>
 	<p></p>
-  <select class="sel" name="">
-  	<option value="1">1</option>
-  	<option value="2">2</option>
-  </select>
+	<select class="sel" name="">
+		<option value="1">1</option>
+		<option value="2">2</option>
+	</select>
 	<p></p>
 	<select class="" name="">
 		<option value="1">1</option>
@@ -45,7 +127,7 @@
 	<p></p>
 
 	<div class="divselect" id="divselect3">
-		<div class="selVal" ><span>导航菜单12345</span><i class=""></i></div>
+		<div class="selVal"><span>导航菜单12345</span><i class=""></i></div>
 		<ul>
 			<li><a href="javascript:;" selectid="1"><span>导航菜单1</span></a></li>
 			<li><a href="javascript:;" selectid="2"><span>导航菜单ddddddd12</span></a></li>
@@ -58,95 +140,95 @@
 </body>
 <script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
-  function checkSel(){
-    var isTrue = $('select').is('.sel');
-    if(isTrue){
-      $('.sel').addClass('select-hidden-accessible');
-      // 拼接字符串
-      var str = '';
-      str += '<div class="divselect" id="divselect1">';
-      str += '<div class="selVal"><span>请选择特效分类</span><i></i></div>';
-      str += '<ul>';
-      str += '<li><a href="javascript:;" selectid="1"><span>导航菜单1</span></a></li>';
-      str += '<li><a href="javascript:;" selectid="2"><span>导航菜单ddddddd12</span></a></li>';
-      str += '<li><a href="javascript:;" selectid="3"><span>导航菜单1234567890导航菜单1菜单1234567890</span></a></li>';
-      str += '<li><a href="javascript:;" selectid="4"><span>导航菜单1234</span></a></li>';
-      str += '<li><a href="javascript:;" selectid="5"><span>导航菜单12345</span></a></li>';
-      str += '</ul>';
-      str += '<input name="" type="hidden" value="" id="inputselect1" />';
-      str += '</div>';
+	function checkSel() {
+		var isTrue = $('select').is('.sel');
+		if (isTrue) {
+			$('.sel').addClass('select-hidden-accessible');
+			// 拼接字符串
+			var str = '';
+			str += '<div class="divselect" id="divselect1">';
+			str += '<div class="selVal"><span>请选择特效分类</span><i></i></div>';
+			str += '<ul>';
+			str += '<li><a href="javascript:;" selectid="1"><span>导航菜单1</span></a></li>';
+			str += '<li><a href="javascript:;" selectid="2"><span>导航菜单ddddddd12</span></a></li>';
+			str += '<li><a href="javascript:;" selectid="3"><span>导航菜单1234567890导航菜单1菜单1234567890</span></a></li>';
+			str += '<li><a href="javascript:;" selectid="4"><span>导航菜单1234</span></a></li>';
+			str += '<li><a href="javascript:;" selectid="5"><span>导航菜单12345</span></a></li>';
+			str += '</ul>';
+			str += '<input name="" type="hidden" value="" id="inputselect1" />';
+			str += '</div>';
 
-      $('.sel').after(str);
-      divselect("#divselect1", "#inputselect1",3);
+			$('.sel').after(str);
+			divselect("#divselect1", "#inputselect1", 3);
 			// 移除select
-			$(function(){$('.sel').remove()});
-    }
-  }
+			$(function () { $('.sel').remove() });
+		}
+	}
 
-	function divselect(divselectid, inputselectid,zIndex) {
+	function divselect(divselectid, inputselectid, zIndex) {
 		// zIndex 大小按照dom前后顺序由大到小
-		$(divselectid).css('zIndex',zIndex);
+		$(divselectid).css('zIndex', zIndex);
 		//判断id是否存在
-		if(!$('div'+ divselectid)[0]){return;}
+		if (!$('div' + divselectid)[0]) { return; }
 		var inputselect = $(inputselectid); //获取input标签赋值
 		// 默认divselect取值:默认取第一条
-		var selDefault = $(divselectid+" ul li").eq(0).text();
-		$(divselectid+" .selVal span").html(selDefault);
+		var selDefault = $(divselectid + " ul li").eq(0).text();
+		$(divselectid + " .selVal span").html(selDefault);
 		//设置divselect宽度
-		var ul = $(divselectid+" ul");
-		var lis = $(divselectid+" ul li span");
+		var ul = $(divselectid + " ul");
+		var lis = $(divselectid + " ul li span");
 		var pingR = 35;
 		var curLen = 1;  // 当前最大值默认值
 		var minLimit = 40; //最小极限值
-		var maxLimit= 800; //最大极限值
-	  $.map(lis,function(item,index){
+		var maxLimit = 800; //最大极限值
+		$.map(lis, function (item, index) {
 			var lisLen = item.offsetWidth;
 			// 比较取最大值并赋值给当前值
-			if(lisLen>curLen && lisLen > minLimit){
+			if (lisLen > curLen && lisLen > minLimit) {
 				curLen = lisLen;
 			}
 		})
 		// 比较最小极限值
-		if(curLen<minLimit){
+		if (curLen < minLimit) {
 			curLen = minLimit;
-		//比较最大极限值
-		}else if (curLen>maxLimit) {
+			//比较最大极限值
+		} else if (curLen > maxLimit) {
 			curLen = maxLimit;
 		}
 		//赋值给当前divselect
-		$(divselectid).width(curLen+pingR);
-		$(ul).width(curLen+pingR);
+		$(divselectid).width(curLen + pingR);
+		$(ul).width(curLen + pingR);
 		//点击展示/隐藏下拉列表
-		$(divselectid + " div").on("click",function () {
+		$(divselectid + " div").on("click", function () {
 			if (ul.css("visibility") == "hidden") {
 				$(divselectid + " i").addClass('cur');
-				ul.css("visibility",'visible');
+				ul.css("visibility", 'visible');
 			} else {
-				ul.css("visibility",'hidden');
+				ul.css("visibility", 'hidden');
 				$(divselectid + " i").removeClass('cur');
 			}
 		});
 		// 选取下拉列表的选中的值并赋值
-		$(divselectid + " ul li a").on("click",function () {
+		$(divselectid + " ul li a").on("click", function () {
 			var selVal = $(this).text();
 			$(divselectid + " .selVal span").html(selVal);
 			// 获取当前对象的自定义属性值并赋值给input标签
 			var value = $(this).attr("selectid");
 			inputselect.val(value);
-			$(divselectid + " ul").css('visibility','hidden');
+			$(divselectid + " ul").css('visibility', 'hidden');
 			$(divselectid + " i").removeClass('cur');
 		});
 		// 鼠标离开隐藏
-		$(divselectid +' ul').on('mouseleave',function(){
-			$(divselectid + " ul").css('visibility','hidden');
+		$(divselectid + ' ul').on('mouseleave', function () {
+			$(divselectid + " ul").css('visibility', 'hidden');
 			$(divselectid + " i").removeClass('cur');
 		})
 	};
 
 	$(function () {
-    checkSel();
-		divselect("#divselect2", "#inputselect2",2);
-		divselect("#divselect3", "#inputselect3",1);
+		checkSel();
+		divselect("#divselect2", "#inputselect2", 2);
+		divselect("#divselect3", "#inputselect3", 1);
 	});
 
 </script>

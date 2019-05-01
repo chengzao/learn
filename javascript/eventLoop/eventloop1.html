@@ -8,7 +8,7 @@
 </head>
 <body>
   <p>事件 循环</p>
-  
+
   <p>原文： https://github.com/dwqs/blog/issues/61</p>
 
   <p>
@@ -20,7 +20,8 @@
   </p>
 
   <p>
-    在 Node 中，会优先清空 next tick queue，即通过process.nextTick 注册的函数，再清空 other queue，常见的如Promise；此外，timers(setTimeout/setInterval) 会优先于 setImmediate 执行，因为前者在 timer 阶段执行，后者在 check 阶段执行。
+    在 Node 中，会优先清空 next tick queue，即通过process.nextTick 注册的函数，再清空 other
+    queue，常见的如Promise；此外，timers(setTimeout/setInterval) 会优先于 setImmediate 执行，因为前者在 timer 阶段执行，后者在 check 阶段执行。
   </p>
 
   <p>
@@ -52,16 +53,16 @@
 <script>
   console.log('script start');
 
-  setTimeout(function() {
+  setTimeout(function () {
     console.log('timeout1');
   }, 10);
 
   new Promise(resolve => {
-      console.log('promise1');
-      resolve();
-      setTimeout(() => console.log('timeout2'), 10);
-  }).then(function() {
-      console.log('then1')
+    console.log('promise1');
+    resolve();
+    setTimeout(() => console.log('timeout2'), 10);
+  }).then(function () {
+    console.log('then1')
   })
 
   console.log('script end');

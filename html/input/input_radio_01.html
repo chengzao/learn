@@ -4,17 +4,19 @@
 	<meta charset="UTF-8">
 	<title>input--radio样式</title>
 	<style type='text/css'>
-		input[type='radio']{
-			margin :3px 3px 0 5px;
+		input[type='radio'] {
+			margin: 3px 3px 0 5px;
 			display: none;
 		}
-		label{
+
+		label {
 			padding-left: 20px;
 			cursor: pointer;
-			background:url(images/radio_bg.gif) no-repeat left top; 
+			background: url(images/radio_bg.gif) no-repeat left top;
 			background-size: 20px;
 		}
-		label.checked{
+
+		label.checked {
 			background-position: left bottom;
 		}
 	</style>
@@ -30,11 +32,11 @@
 <script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function () {
-		$('label').click(function(event) {
+		$('label').click(function (event) {
 			var radioId = $(this).attr(name);
-			$("label").removeAttr('class') && $(this).attr('class','checked')
-			$("label[type='radio']").removeAttr('checked')&&$('#'+radioId).attr('checked','checked');
-		});  
+			$("label").removeAttr('class') && $(this).attr('class', 'checked')
+			$("label[type='radio']").removeAttr('checked') && $('#' + radioId).attr('checked', 'checked');
+		});
 	})
 </script>
 </html>

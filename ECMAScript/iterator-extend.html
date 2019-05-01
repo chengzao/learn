@@ -178,7 +178,7 @@
     }
 
 
-    // 调用 Iterator 接口的场合 
+    // 调用 Iterator 接口的场合
     // （1）解构赋值:对数组和 Set 结构进行解构赋值时，会默认调用Symbol.iterator方法
     let set = new Set().add('a').add('b').add('c');
 
@@ -234,7 +234,7 @@
     iterator.next() // { value: "i", done: false }
     iterator.next() // { value: undefined, done: true }
 
-    // Iterator 接口与 Generator 函数 
+    // Iterator 接口与 Generator 函数
     var myIterable = {};
 
     myIterable[Symbol.iterator] = function* () {
@@ -247,7 +247,7 @@
     // 或者采用下面的简洁写法
 
     let obj = {
-        * [Symbol.iterator]() {
+        *[Symbol.iterator]() {
             yield 'hello';
             yield 'world';
         }
@@ -269,7 +269,7 @@
             next() {
                 return { done: false };
             },
-            return () {
+            return() {
                 file.close();
                 return { done: true };
             },

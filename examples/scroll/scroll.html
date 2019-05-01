@@ -24,7 +24,7 @@
         }
 
         nav a.current {
-            color:#fff;
+            color: #fff;
         }
     </style>
 </head>
@@ -53,10 +53,10 @@
         $sections = $('.section'), // 模块
         $window = $(window),
         navLength = $navs.length - 1;
-   
+
     var backgroundColors = ["red", "orange", "yellow", "green", "blue"];
-    $sections.map((index,ele) => {
-        $(ele).css('background',backgroundColors[index])
+    $sections.map((index, ele) => {
+        $(ele).css('background', backgroundColors[index])
     });
 
     $window.on('scroll', function () {

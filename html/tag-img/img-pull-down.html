@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>图片下拉</title>
+  <meta charset="UTF-8">
+  <title>图片下拉</title>
 </head>
 <body>
 
-<img id="pic" src="images/1.jpg"  width="200"  height="200" />
-<select id="sel" onchange="showImg(this)">
-<option value="images/2.jpg">城市生活</option>
-<option value="images/3.jpg">都市早报</option>
-<option value="images/4.jpg">青山绿水</option>
-</select>
+  <img id="pic" src="images/1.jpg" width="200" height="200" />
+  <select id="sel" onchange="showImg(this)">
+    <option value="images/2.jpg">城市生活</option>
+    <option value="images/3.jpg">都市早报</option>
+    <option value="images/4.jpg">青山绿水</option>
+  </select>
 
-<script>
-//1.
-function showImg (oSel) {
-//在此处添加代码
-var str = oSel.value;
-document.getElementById("pic").src= str;
-}
-</script>
+  <script>
+    //1.
+    function showImg(oSel) {
+      //在此处添加代码
+      var str = oSel.value;
+      document.getElementById("pic").src = str;
+    }
+  </script>
 
-<script>
-//2.
-	var sel=document.getElementById('sel');
-	var pic=document.getElementById('pic');
+  <script>
+    //2.
+    var sel = document.getElementById('sel');
+    var pic = document.getElementById('pic');
 
-	function vi(){
-		console.log('123');
-		console.log(pic.getAttribute('src'));
-		pic.setAttribute('src', sel.value);
-	}
-</script>
+    function vi() {
+      console.log('123');
+      console.log(pic.getAttribute('src'));
+      pic.setAttribute('src', sel.value);
+    }
+  </script>
 </body>
 </html>

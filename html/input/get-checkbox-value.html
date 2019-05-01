@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>获取checkbox</title>
-	</head>
-	<body>
+<head>
+  <meta charset="UTF-8">
+  <title>获取checkbox</title>
+</head>
+<body>
 
-		<input type="text">
-		<input name="1" type="checkbox">
-		<input name='2' type="checkbox">
-		<input type="button">
-		<input name='3' type="checkbox">
-
-
-
-		<script>
-
-		  var inputs=document.getElementsByTagName('input');
-
-		  var lis=[];
-		  var iLength=inputs.length;
-		  for( var i=0 ; i<iLength ;i++){
-		  		if(inputs[i].type=='checkbox'){
-		  				lis.push(inputs[i].name);
-		  		}
-		  }
-
-		  console.log(lis);//["1", "2", "3"]
+  <input type="text">
+  <input name="1" type="checkbox">
+  <input name='2' type="checkbox">
+  <input type="button">
+  <input name='3' type="checkbox">
 
 
-		</script>
-	</body>
+
+  <script>
+
+    var inputs = document.getElementsByTagName('input');
+
+    var lis = [];
+    var iLength = inputs.length;
+    for (var i = 0; i < iLength; i++) {
+      if (inputs[i].type == 'checkbox') {
+        lis.push(inputs[i].name);
+      }
+    }
+
+    console.log(lis);//["1", "2", "3"]
+
+
+  </script>
+</body>
 </html>

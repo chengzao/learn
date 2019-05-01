@@ -1,134 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>select</title>
-    <style>
-        h3::after{
-            content: ':';
-            margin-left: 10px;
-        }
-        h3:hover{
-            background-color: yellowgreen;
-        }
-        .item-1 .p::first-letter{
-            color: red;
-            font-size: 20px;
-        }
-        .item-2 .p{
-            width: 500px;
-        }
-        .item-2 .p::first-line{
-            background-color: red;
-        }
-        .item-3 p:first-child{
-            background-color: pink;
-        }
-        .item-4 .p:before{
-            content: '前插入文字';
-            color: red;
-        }    
-        .item-4 .p:after{
-            content: '后插入文字';
-            color: pink;
-        }  
-        .item-5 .p~div{
-            color: burlywood;
-        }  
-        .item-6 p:first-of-type{
-            background-color: pink;
-        }
-        .item-7 p:last-of-type{
-            background-color: red;
-        }
-        .item-8 p:only-of-type{
-            background-color: red;
-        }
-        .item-9 p:only-child{
-            background-color: blue;
-        }
-        .item-11 p:last-child{
-            background-color: gray;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>select</title>
+  <style>
+    h3::after {
+      content: ':';
+      margin-left: 10px;
+    }
+
+    h3:hover {
+      background-color: yellowgreen;
+    }
+
+    .item-1 .p::first-letter {
+      color: red;
+      font-size: 20px;
+    }
+
+    .item-2 .p {
+      width: 500px;
+    }
+
+    .item-2 .p::first-line {
+      background-color: red;
+    }
+
+    .item-3 p:first-child {
+      background-color: pink;
+    }
+
+    .item-4 .p:before {
+      content: '前插入文字';
+      color: red;
+    }
+
+    .item-4 .p:after {
+      content: '后插入文字';
+      color: pink;
+    }
+
+    .item-5 .p~div {
+      color: burlywood;
+    }
+
+    .item-6 p:first-of-type {
+      background-color: pink;
+    }
+
+    .item-7 p:last-of-type {
+      background-color: red;
+    }
+
+    .item-8 p:only-of-type {
+      background-color: red;
+    }
+
+    .item-9 p:only-child {
+      background-color: blue;
+    }
+
+    .item-11 p:last-child {
+      background-color: gray;
+    }
+  </style>
 </head>
 <body>
-    <h3>first-letter</h3>
-    <div class="item-1">
-        <p class="p">first-letter: 选择每个元素的首字母</p>
+  <h3>first-letter</h3>
+  <div class="item-1">
+    <p class="p">first-letter: 选择每个元素的首字母</p>
+  </div>
+  <h3>first-letter</h3>
+  <div class="item-2">
+    <p class="p">first-line: 选择每个元素的首行;选择每个元素的首行选择每个元素的首行选择每个元素的首行选择每个元素的首行选择每个元素的首行</p>
+  </div>
+  <h3>first-child</h3>
+  <div class="item-3">
+    <p class="p">first-child: 选择父元素的第一个子元素的每个元素</p>
+    <p class="p">我是父元素的第二个子元素的每个元素</p>
+  </div>
+  <h3>:before :after</h3>
+  <div class="item-4">
+    <p>:before and :after</p>
+    <p class="p">我是正文！！！</p>
+  </div>
+  <h3>element1~element2</h3>
+  <div class="item-5">
+    <p class="p">我是正文！！！</p>
+    <div>element1~element2 ; 选择前面有element1元素的每个元素element2</div>
+    <p>我是中间p测试代码</p>
+    <div>element1~element2 ; 选择前面有element1元素的每个元素element2</div>
+    <span>
+      <div>我是span内嵌测试div代码</div>
+    </span>
+  </div>
+  <h3>first-of-type</h3>
+  <div class="item-6">
+    <p class="first">:first-of-type 选择属于其父元素的首个元素的每个元素</p>
+    <div>
+      <p class="first">内嵌元素 选择属于其父元素的首个元素的每个元素</p>
+      <p class="last">内嵌元素 选择属于其父元素的首个元素的每个元素2</p>
     </div>
-    <h3>first-letter</h3>
-    <div class="item-2">
-        <p class="p">first-line: 选择每个元素的首行;选择每个元素的首行选择每个元素的首行选择每个元素的首行选择每个元素的首行选择每个元素的首行</p>
+    <p class="last">:first-of-type 选择属于其父元素的首个元素的每个元素2</p>
+  </div>
+  <h3>last-of-type</h3>
+  <div class="item-7">
+    <p class="first">:last-of-type 选择属于其父元素的最后元素的每个元素</p>
+    <div>
+      <p class="first">内嵌元素 选择属于其父元素的最后元素的每个元素</p>
+      <p class="last">内嵌元素 选择属于其父元素的最后元素的每个元素2</p>
     </div>
-    <h3>first-child</h3>
-    <div class="item-3">
-        <p class="p">first-child: 选择父元素的第一个子元素的每个元素</p>
-        <p class="p">我是父元素的第二个子元素的每个元素</p>
+    <p class="last">:last-of-type 选择属于其父元素的最后元素的每个元素2</p>
+  </div>
+  <h3>only-of-type</h3>
+  <div class="item-8">
+    <p class="first">:only-of-type 其父元素唯一的元素的每个元素</p>
+    <div>
+      <p class="first">内嵌元素 其父元素唯一的元素的每个元素</p>
+      <p class="last">内嵌元素 其父元素唯一的元素的每个元素2</p>
     </div>
-    <h3>:before :after</h3>
-    <div class="item-4">
-        <p>:before and :after</p>
-        <p class="p">我是正文！！！</p>
+  </div>
+  <h3>only-child</h3>
+  <div class="item-9">
+    <p>:only-child 其父元素的唯一子元素的每个元素</p>
+    <div>
+      <p>这是一个段落。</p>
     </div>
-    <h3>element1~element2</h3>
-    <div class="item-5">
-        <p class="p">我是正文！！！</p>
-        <div>element1~element2 ; 选择前面有element1元素的每个元素element2</div>
-        <p>我是中间p测试代码</p>
-        <div>element1~element2 ; 选择前面有element1元素的每个元素element2</div>
-        <span>
-            <div>我是span内嵌测试div代码</div>
-        </span>
+  </div>
+  <h3>other</h3>
+  <div class="item-10">
+    <p>:nth-child(n) :nth-last-child(n) :nth-of-type(n) :nth-last-of-type(n) :last-child</p>
+    <p> :root p:empty #news:target input:enabled input:disabled input:checked :not(p) ::selection</p>
+  </div>
+  <h3>last-child</h3>
+  <div class="item-11">
+    <p class="first">:last-child 选择属于其父元素的最后元素的每个元素</p>
+    <div>
+      <p class="first">内嵌元素 选择属于其父元素的最后元素的每个元素</p>
+      <p class="last">内嵌元素 选择属于其父元素的最后元素的每个元素2</p>
     </div>
-    <h3>first-of-type</h3>
-    <div class="item-6">
-        <p class="first">:first-of-type 选择属于其父元素的首个元素的每个元素</p>
-        <div>
-            <p class="first">内嵌元素 选择属于其父元素的首个元素的每个元素</p>
-            <p class="last">内嵌元素 选择属于其父元素的首个元素的每个元素2</p>
-        </div>
-        <p class="last">:first-of-type 选择属于其父元素的首个元素的每个元素2</p>
-    </div> 
-    <h3>last-of-type</h3>
-    <div class="item-7">
-        <p class="first">:last-of-type 选择属于其父元素的最后元素的每个元素</p>
-        <div>
-            <p class="first">内嵌元素 选择属于其父元素的最后元素的每个元素</p>
-            <p class="last">内嵌元素 选择属于其父元素的最后元素的每个元素2</p>
-        </div>
-        <p class="last">:last-of-type 选择属于其父元素的最后元素的每个元素2</p>
-    </div> 
-    <h3>only-of-type</h3>
-    <div class="item-8">
-        <p class="first">:only-of-type 其父元素唯一的元素的每个元素</p>
-        <div>
-            <p class="first">内嵌元素 其父元素唯一的元素的每个元素</p>
-            <p class="last">内嵌元素 其父元素唯一的元素的每个元素2</p>
-        </div>
-    </div> 
-    <h3>only-child</h3>
-    <div class="item-9">
-        <p>:only-child 其父元素的唯一子元素的每个元素</p>
-        <div>
-            <p>这是一个段落。</p>
-        </div>
-    </div> 
-    <h3>other</h3>
-    <div class="item-10">
-        <p>:nth-child(n) :nth-last-child(n) :nth-of-type(n) :nth-last-of-type(n) :last-child</p>
-        <p>	:root p:empty #news:target  input:enabled input:disabled input:checked 	:not(p)	::selection</p>
-    </div>
-    <h3>last-child</h3>
-    <div class="item-11">
-        <p class="first">:last-child 选择属于其父元素的最后元素的每个元素</p>
-        <div>
-            <p class="first">内嵌元素 选择属于其父元素的最后元素的每个元素</p>
-            <p class="last">内嵌元素 选择属于其父元素的最后元素的每个元素2</p>
-        </div>
-        <p class="last">:last-of-child 选择属于其父元素的最后元素的每个元素2</p>
-    </div> 
+    <p class="last">:last-of-child 选择属于其父元素的最后元素的每个元素2</p>
+  </div>
 </body>
 </html>

@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>本地存储</title>
-	<style>
-		p {
-			text-align: center;
-			margin: 50px 0 0;
-		}
-	</style>
+  <meta charset="UTF-8">
+  <title>本地存储</title>
+  <style>
+    p {
+      text-align: center;
+      margin: 50px 0 0;
+    }
+  </style>
 </head>
 <body>
-	<p>
-		<input type="button" class="btn" value="读取">
-	</p>
-	<p class="result"></p>
-	<script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script>
-		$('.btn').on('click', function () {
-			var text = window.sessionStorage.getItem('text');
-			$('.result').text(text);
-		});
-	</script>
+  <p>
+    <input type="button" class="btn" value="读取">
+  </p>
+  <p class="result"></p>
+  <script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script>
+    $('.btn').on('click', function () {
+      var text = window.sessionStorage.getItem('text');
+      $('.result').text(text);
+    });
+  </script>
 </body>
 </html>

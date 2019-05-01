@@ -1,100 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>多行字居中</title>
-	<style>
-		 body { font-size:12px;font-family:tahoma;}
-		 ol,ul,li{list-style: none;}
-		 div.wrap {
-		  display:table;
-		  border:1px solid #FF0099;
-		  background-color:#FFCCFF;
-		  width:360px;
-		  height:200px;
-		  _position:relative;
-		  overflow:hidden;
-		 }
-		 div.subwrap {
-		  vertical-align:middle;
-		  display:table-cell;
-		  _position:absolute;
-		  _top:50%;
-		 }
-		 div.content {
-		  _position:relative;
-		  _top:-50%;
-		 }
-		 li{width: 100px;height: 40px;border: 1px solid #000;}
+  <meta charset="UTF-8">
+  <title>多行字居中</title>
+  <style>
+    body {
+      font-size: 12px;
+      font-family: tahoma;
+    }
 
-		 div.box2 {width: 1200px;}
-		 div.box2 li{
-		  display: table;
-		  text-align: center;
-		  width:248px;
-		  height:72px;
-		  _position:relative;
-		  overflow:hidden;
-		  float: left;
-		  margin: 0 16px 16px 0;
-		  background: #f4f4f5;
-		  border: 0;
-    	  font-size: 16px;
-		 }
-		 div.box2 a{
-		  vertical-align:middle;
-		  display:table-cell;
-		  color: #666666;
-		  width: 200px;
-		  text-decoration: none;
-		  _margin-left: -100px;
-		  _position:absolute;
-		  _top:50%;
-		 }
-		 div.box2 ol span{
-		 	width: 200px;
-		    display: inline-block;
-		    _position:relative;
-		    _top:-50%;
-		 }
+    ol,
+    ul,
+    li {
+      list-style: none;
+    }
 
-	</style>
+    div.wrap {
+      display: table;
+      border: 1px solid #FF0099;
+      background-color: #FFCCFF;
+      width: 360px;
+      height: 200px;
+      _position: relative;
+      overflow: hidden;
+    }
+
+    div.subwrap {
+      vertical-align: middle;
+      display: table-cell;
+      _position: absolute;
+      _top: 50%;
+    }
+
+    div.content {
+      _position: relative;
+      _top: -50%;
+    }
+
+    li {
+      width: 100px;
+      height: 40px;
+      border: 1px solid #000;
+    }
+
+    div.box2 {
+      width: 1200px;
+    }
+
+    div.box2 li {
+      display: table;
+      text-align: center;
+      width: 248px;
+      height: 72px;
+      _position: relative;
+      overflow: hidden;
+      float: left;
+      margin: 0 16px 16px 0;
+      background: #f4f4f5;
+      border: 0;
+      font-size: 16px;
+    }
+
+    div.box2 a {
+      vertical-align: middle;
+      display: table-cell;
+      color: #666666;
+      width: 200px;
+      text-decoration: none;
+      _margin-left: -100px;
+      _position: absolute;
+      _top: 50%;
+    }
+
+    div.box2 ol span {
+      width: 200px;
+      display: inline-block;
+      _position: relative;
+      _top: -50%;
+    }
+  </style>
 </head>
 <body>
-<!-- https://segmentfault.com/q/1010000003112721 -->
-<!-- https://css-tricks.com/centering-css-complete-guide/ -->
-<div class="wrap">
-	 <div class="subwrap">
-	   <div class="content">
-			<ul>
-				<li>1</li>
-				<li>2</li>
-			</ul>
-		</div>
-	</div>
-</div>
+  <!-- https://segmentfault.com/q/1010000003112721 -->
+  <!-- https://css-tricks.com/centering-css-complete-guide/ -->
+  <div class="wrap">
+    <div class="subwrap">
+      <div class="content">
+        <ul>
+          <li>1</li>
+          <li>2</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
 
 
-<div class="box2">
-	<ol>
-	    <li><a href="#">
-	    	<span>常用快递查快递查快递查询API</span>
-	    </a></li>
-	    <li><a href="#">
-	    	<span>常用快递查询API</span>
-	    </a></li>
-	    <li><a href="#">
-	    	<span>常用快递查询API</span>
-	    </a></li>
-	    <li><a href="#">
-	    	<span>常用快递查快递查快递查快递查询API</span>
-	    </a></li>
-	    <li><a href="#">
-	    	<span>常用快递查询API</span>
-	    </a></li>
-	</ol>
-</div>
+  <div class="box2">
+    <ol>
+      <li><a href="#">
+          <span>常用快递查快递查快递查询API</span>
+        </a></li>
+      <li><a href="#">
+          <span>常用快递查询API</span>
+        </a></li>
+      <li><a href="#">
+          <span>常用快递查询API</span>
+        </a></li>
+      <li><a href="#">
+          <span>常用快递查快递查快递查快递查询API</span>
+        </a></li>
+      <li><a href="#">
+          <span>常用快递查询API</span>
+        </a></li>
+    </ol>
+  </div>
 
 </body>
 </html>

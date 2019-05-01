@@ -1,95 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>本地存储</title>
-	<style>
-		p {
-			text-align: center;
-			margin: 50px 0 0;
-		}
-	</style>
+  <meta charset="UTF-8">
+  <title>本地存储</title>
+  <style>
+    p {
+      text-align: center;
+      margin: 50px 0 0;
+    }
+  </style>
 </head>
 <body>
-	<!-- 添加 -->
-	<p>
-		<label for="">
-			键:<input type="text" class="key">
-		</label>
-		<label for="">
-			值:<input type="text" class="val">
-		</label>
-		<input type="button" class="set" value="设置">
-	</p>
-	<!-- 读取 -->
-	<p>
-		<label for="">
-			值: <output class='val'>&nbsp;</output>
-		</label>
-		<label for="">
-			键:<input type="text" class="key">
-		</label>
-		<input type="button" class="get" value="读取">
-	</p>
-	<!-- 删除 -->
-	<p>
-		<label for="">
-			键:<input type="text" class="key">
-		</label>
-		<input type="button" class="remove" value="删除">
-	</p>
-	<!-- 清空 -->
-	<p>
-		<input type="button" class="clear" value="清空">
-	</p>
-	<script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script>
-		// 添加
-		$('.set').on('click', function () {
-			var parent = $(this).parent();
-			// 当前下面的.key
-			var key = parent.find('.key').val();
-			// 当前下面的.val
-			var val = parent.find('.val').val();
+  <!-- 添加 -->
+  <p>
+    <label for="">
+      键:<input type="text" class="key">
+    </label>
+    <label for="">
+      值:<input type="text" class="val">
+    </label>
+    <input type="button" class="set" value="设置">
+  </p>
+  <!-- 读取 -->
+  <p>
+    <label for="">
+      值: <output class='val'>&nbsp;</output>
+    </label>
+    <label for="">
+      键:<input type="text" class="key">
+    </label>
+    <input type="button" class="get" value="读取">
+  </p>
+  <!-- 删除 -->
+  <p>
+    <label for="">
+      键:<input type="text" class="key">
+    </label>
+    <input type="button" class="remove" value="删除">
+  </p>
+  <!-- 清空 -->
+  <p>
+    <input type="button" class="clear" value="清空">
+  </p>
+  <script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script>
+    // 添加
+    $('.set').on('click', function () {
+      var parent = $(this).parent();
+      // 当前下面的.key
+      var key = parent.find('.key').val();
+      // 当前下面的.val
+      var val = parent.find('.val').val();
 
-			// 存储一个数据
-			// window.sessionStorage.setItem(key, val);
-			window.localStorage.setItem(key, val);
+      // 存储一个数据
+      // window.sessionStorage.setItem(key, val);
+      window.localStorage.setItem(key, val);
 
-		});
+    });
 
-		// 读取
-		$('.get').on('click', function () {
-			var parent = $(this).parent();
-			// 当前下面的.key
-			var key = parent.find('.key').val();
+    // 读取
+    $('.get').on('click', function () {
+      var parent = $(this).parent();
+      // 当前下面的.key
+      var key = parent.find('.key').val();
 
-			// 读取一个数据
-			var val = window.sessionStorage.getItem(key);
+      // 读取一个数据
+      var val = window.sessionStorage.getItem(key);
 
-			parent.find('.val').val(val);
+      parent.find('.val').val(val);
 
-		});
+    });
 
-		// 删除
-		$('.remove').on('click', function () {
-			var parent = $(this).parent();
-			// 当前下面的.key
-			var key = parent.find('.key').val();
+    // 删除
+    $('.remove').on('click', function () {
+      var parent = $(this).parent();
+      // 当前下面的.key
+      var key = parent.find('.key').val();
 
-			// 删除一个数据
-			var val = window.sessionStorage.removeItem(key);
+      // 删除一个数据
+      var val = window.sessionStorage.removeItem(key);
 
-		});
+    });
 
-		// 清空
-		$('.clear').on('click', function () {
-			var parent = $(this).parent();
+    // 清空
+    $('.clear').on('click', function () {
+      var parent = $(this).parent();
 
-			// 清空一个数据
-			window.sessionStorage.clear();
+      // 清空一个数据
+      window.sessionStorage.clear();
 
-		});
-	</script>
+    });
+  </script>
 </body>
 </html>

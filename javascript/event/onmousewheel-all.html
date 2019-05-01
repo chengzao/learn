@@ -2,42 +2,44 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <style>
-        #my_elem {
-            width: 500px;
-            height: 400px;
-            background-color: pink;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    #my_elem {
+      width: 500px;
+      height: 400px;
+      background-color: pink;
+    }
+  </style>
 </head>
 
 <body>
-    <div id="my_elem"></div>
+  <div id="my_elem"></div>
 </body>
 <script>
-    function addMouseWheelEvent(element, func) {
-        if (typeof element.onmousewheel == "object") {
-            element.onmousewheel = function (ev) {
-                ev = ev || window.event;
-                //console.log(ev.wheelDelta);
-                func();
-            };
-        } else {
-            // 兼容 firefox
-            element.addEventListener("DOMMouseScroll", function (ev) {
-                ev = ev || window.event;
-                //console.log('ev.detail : '+ev.detail);
-                func();
-            }, false);
-        }
+  function addMouseWheelEvent(element, func) {
+    if (typeof element.onmousewheel == "object") {
+      element.onmousewheel = function (ev) {
+        ev = ev || window.event;
+        //console.log(ev.wheelDelta);
+        func();
+      };
+    } else {
+      // 兼容 firefox
+      element.addEventListener("DOMMouseScroll", function (ev) {
+        ev = ev || window.event;
+        //console.log('ev.detail : '+ev.detail);
+        func();
+      }, false);
     }
-    var count = 0;
-    var my_elem = document.getElementById('my_elem');
-    var fn = function () { count++;
-        console.log('鼠标滚动了' + count) };
-    addMouseWheelEvent(my_elem, fn);
+  }
+  var count = 0;
+  var my_elem = document.getElementById('my_elem');
+  var fn = function () {
+    count++;
+    console.log('鼠标滚动了' + count)
+  };
+  addMouseWheelEvent(my_elem, fn);
 </script>
 
 </html>

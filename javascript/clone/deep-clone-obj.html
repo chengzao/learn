@@ -2,62 +2,62 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <style>
-        div {
-            width: 2500px;
-            height: 300px;
-            background-color: antiquewhite;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 2500px;
+      height: 300px;
+      background-color: antiquewhite;
+    }
+  </style>
 </head>
 
 <body>
-    <div></div>
+  <div></div>
 </body>
 <script>
-    // console.log(window.innerWidth)
-    // console.log(document.documentElement.clientWidth)
+  // console.log(window.innerWidth)
+  // console.log(document.documentElement.clientWidth)
 
-     // 深克隆对象和数组
-    var objDeepCopy2 = function (source) {
-        var sourceCopy = source instanceof Array ? [] : {};
-        for (var item in source) {
-            sourceCopy[item] = typeof source[item] === 'object' ? objDeepCopy(source[item]) : source[item];
-        }
-        return sourceCopy;
+  // 深克隆对象和数组
+  var objDeepCopy2 = function (source) {
+    var sourceCopy = source instanceof Array ? [] : {};
+    for (var item in source) {
+      sourceCopy[item] = typeof source[item] === 'object' ? objDeepCopy(source[item]) : source[item];
     }
+    return sourceCopy;
+  }
 
-    var objDeepCopy = function (obj) {
-        if (typeof obj !== 'object') return obj;
-        if (typeof window !== 'undefined' && window.JSON) { // 浏览器环境下 并支持window.JSON 则使用 JSON
-            return JSON.parse(JSON.stringify(obj));
-        } else {
-            var newObj = obj.constructor === Array ? [] : {};
-            for (var key in obj) {
-                newObj[key] = typeof obj[key] === 'object' ? deepCopy(obj[key]) : obj[key];
-            }
-            return newObj;
-        }
+  var objDeepCopy = function (obj) {
+    if (typeof obj !== 'object') return obj;
+    if (typeof window !== 'undefined' && window.JSON) { // 浏览器环境下 并支持window.JSON 则使用 JSON
+      return JSON.parse(JSON.stringify(obj));
+    } else {
+      var newObj = obj.constructor === Array ? [] : {};
+      for (var key in obj) {
+        newObj[key] = typeof obj[key] === 'object' ? deepCopy(obj[key]) : obj[key];
+      }
+      return newObj;
     }
+  }
 
 
-    var obj = { 'abc': [1, 2], 'def': { "name": "xiao ming" ,"test":{"aaa":"hhh"}} };
+  var obj = { 'abc': [1, 2], 'def': { "name": "xiao ming", "test": { "aaa": "hhh" } } };
 
-    var test = objDeepCopy(obj);
-    test.def.name = "wang wang";
-    console.log('test', test);
-    console.log('obj', obj)
+  var test = objDeepCopy(obj);
+  test.def.name = "wang wang";
+  console.log('test', test);
+  console.log('obj', obj)
 
 
-    obj = [1,2,[4,5]];
-    test = objDeepCopy(obj);
-    test[1] = "wang wang";
-    console.log('test', test);
-    console.log('obj', obj)
+  obj = [1, 2, [4, 5]];
+  test = objDeepCopy(obj);
+  test[1] = "wang wang";
+  console.log('test', test);
+  console.log('obj', obj)
 
 </script>
 

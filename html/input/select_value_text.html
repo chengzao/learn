@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>text_value</title>
+  <meta charset="UTF-8">
+  <title>text_value</title>
 </head>
 <body>
-	<select name="" id="changcity" onchange="fn(this)">
-		<option value="1">a</option>
-		<option value="2">b</option>
-		<option value="3">c</option>
-		<option value="4">d</option>
-	</select>
+  <select name="" id="changcity" onchange="fn(this)">
+    <option value="1">a</option>
+    <option value="2">b</option>
+    <option value="3">c</option>
+    <option value="4">d</option>
+  </select>
 </body>
 <script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
-	function fn(){
-		var cityName=$('#changcity option:selected').text();
-		var cityValue=$("#changcity").val();
-	  console.log(cityName);
-	  console.log(cityValue);
-	}
+  function fn() {
+    var cityName = $('#changcity option:selected').text();
+    var cityValue = $("#changcity").val();
+    console.log(cityName);
+    console.log(cityValue);
+  }
 </script>
 </html>

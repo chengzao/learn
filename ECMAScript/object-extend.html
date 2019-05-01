@@ -9,7 +9,8 @@
 </head>
 
 <body>
-    <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty"> Object TO URL </a>
+    <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty">
+        Object TO URL </a>
 </body>
 <script type="text/javascript">
     let name = 'zhansan',
@@ -138,14 +139,14 @@
     // 获取getter和setter的函数名
 
     const obj = {
-        get foo() {},
-        set foo(x) {}
+        get foo() { },
+        set foo(x) { }
     };
     const descriptor = Object.getOwnPropertyDescriptor(obj, 'foo');
     descriptor.get.name // "get foo"
     descriptor.set.name // "set foo"
 
-    (new Function()).name // "anonymous"
+        (new Function()).name // "anonymous"
 
     var doSomething = function () {
         // ...
@@ -156,8 +157,8 @@
     const key1 = Symbol('description');
     const key2 = Symbol();
     let obj = {
-        [key1]() {},
-        [key2]() {},
+        [key1]() { },
+        [key2]() { },
     };
     obj[key1].name // "[description]"
     obj[key2].name // ""
@@ -214,12 +215,12 @@
     }
     //为对象添加方法
     Object.assign(SomeClass.prototype, {
-        someMethod(arg1, arg2) {},
-        anotherMethod() {}
+        someMethod(arg1, arg2) { },
+        anotherMethod() { }
     });
     // 等同于下面的写法
-    SomeClass.prototype.someMethod = function (arg1, arg2) {};
-    SomeClass.prototype.anotherMethod = function () {};
+    SomeClass.prototype.someMethod = function (arg1, arg2) { };
+    SomeClass.prototype.anotherMethod = function () { };
 
     //克隆对象
     function clone(origin) {

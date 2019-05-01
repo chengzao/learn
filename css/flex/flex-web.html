@@ -1,137 +1,160 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Web的Flex弹性盒模型</title>
-<style>
-	body{
-		font-family: '微软雅黑';
-		/*font-family: cursive, '微软雅黑';*/
-		padding: 0;
-		margin: 20px 0 40px;
+	<meta charset="UTF-8">
+	<title>Web的Flex弹性盒模型</title>
+	<style>
+		body {
+			font-family: '微软雅黑';
+			/*font-family: cursive, '微软雅黑';*/
+			padding: 0;
+			margin: 20px 0 40px;
 
-		font-size: 16px;
-		background-color: #F9F9F9;
-	}
-	h1{
-		color: #0BF;
-		text-indent: 15px;
-	}
-	h3{
-		color: #6D7273;
-		text-indent: 15px;
-		padding: 10px 0;
-		background-color: #fff;
-	}
-	p{
-		margin: 0;
-		padding: 0;
-		color: #666;
-		margin-bottom: 5px;
-	}
+			font-size: 16px;
+			background-color: #F9F9F9;
+		}
 
-	.boxes{
-		padding: 0 10px;
-		overflow: hidden;
-		display: -webkit-flex;
-		flex-wrap: wrap;
-		align-content:flex-start
-	}
-	.box{
-		width: 400px;
-		padding: 8px;
-		margin-right: 20px;
-		margin-bottom: 10px;
-		display: inline-block;
-		box-shadow: 2px 2px 3px 1px #E0E0E0;
-	}
+		h1 {
+			color: #0BF;
+			text-indent: 15px;
+		}
 
-	.boxstyle{
-		padding: 8px 0;
-	}
-	.boxborder{
-		border: 1px dashed #B6B6B6;
-	}
-	.demo{
-		color: #fff;
-		display: -webkit-flex;
-		text-align: center;
-	}
-	.demo .item{
-		line-height: 40px;
-		background-color: #ddd;
-	}
-	.demo .item:nth-child(1){
-		background-color: #E46C49;
-	}
-	.demo .item:nth-child(2){
-		background-color: #37B0D3;
-	}
-	.demo .item:nth-child(3){
-		background-color: #68B33D;
-	}
-	.demo .item:nth-child(4){
-		background-color: #E46775;
-	}
-	.demo .item:nth-child(5){
-		background-color: #CFC731;
-	}
-	.demo .item:nth-child(6){
-		background-color: #8370F4;
-	}
+		h3 {
+			color: #6D7273;
+			text-indent: 15px;
+			padding: 10px 0;
+			background-color: #fff;
+		}
 
-	.demo .item span{
-		display: block;
-	}
+		p {
+			margin: 0;
+			padding: 0;
+			color: #666;
+			margin-bottom: 5px;
+		}
 
-	.demo2 .item{
-		height: 60px;
-		width: 150px;
-		word-wrap: break-word;
-		line-height: 1.5;
-	}
+		.boxes {
+			padding: 0 10px;
+			overflow: hidden;
+			display: -webkit-flex;
+			flex-wrap: wrap;
+			align-content: flex-start
+		}
 
-	.demo-row{
-		flex-direction: row;
-	}
-	.demo-row-reverse{
-		flex-direction: row-reverse;
-	}
-	.demo-column{
-		height: 200px;
-		flex-direction: column;
-	}
-	.demo-column-reverse{
-		height: 200px;
-		flex-direction: column-reverse;
-	}
+		.box {
+			width: 400px;
+			padding: 8px;
+			margin-right: 20px;
+			margin-bottom: 10px;
+			display: inline-block;
+			box-shadow: 2px 2px 3px 1px #E0E0E0;
+		}
 
-	.demo-nowrap{
-		-webkit-flex-wrap: nowrap;
-		width: 400px;
-	}
-	.demo-wrap{
-		-webkit-flex-wrap: wrap;
-		width: 400px;
-	}
-	.demo-wrap-reverse{
-		-webkit-flex-wrap: wrap-reverse;
-		width: 400px;
-	}
-	.demo-align-content{
-		width: 400px;
-		flex-wrap: wrap;
-		height:200px;
-		border: 1px dashed #B6B6B6;
-	}
-	.demo-align-content .item:nth-child(1), .demo-align-content .item:nth-child(2), .demo-align-content .item:nth-child(3),
-	.demo-align-content .item:nth-child(4), .demo-align-content .item:nth-child(5), .demo-align-content .item:nth-child(6){
-		background-color: #717171;
-		width: 80px;
-		margin: 2px 10px;
-	}
+		.boxstyle {
+			padding: 8px 0;
+		}
 
-</style>
+		.boxborder {
+			border: 1px dashed #B6B6B6;
+		}
+
+		.demo {
+			color: #fff;
+			display: -webkit-flex;
+			text-align: center;
+		}
+
+		.demo .item {
+			line-height: 40px;
+			background-color: #ddd;
+		}
+
+		.demo .item:nth-child(1) {
+			background-color: #E46C49;
+		}
+
+		.demo .item:nth-child(2) {
+			background-color: #37B0D3;
+		}
+
+		.demo .item:nth-child(3) {
+			background-color: #68B33D;
+		}
+
+		.demo .item:nth-child(4) {
+			background-color: #E46775;
+		}
+
+		.demo .item:nth-child(5) {
+			background-color: #CFC731;
+		}
+
+		.demo .item:nth-child(6) {
+			background-color: #8370F4;
+		}
+
+		.demo .item span {
+			display: block;
+		}
+
+		.demo2 .item {
+			height: 60px;
+			width: 150px;
+			word-wrap: break-word;
+			line-height: 1.5;
+		}
+
+		.demo-row {
+			flex-direction: row;
+		}
+
+		.demo-row-reverse {
+			flex-direction: row-reverse;
+		}
+
+		.demo-column {
+			height: 200px;
+			flex-direction: column;
+		}
+
+		.demo-column-reverse {
+			height: 200px;
+			flex-direction: column-reverse;
+		}
+
+		.demo-nowrap {
+			-webkit-flex-wrap: nowrap;
+			width: 400px;
+		}
+
+		.demo-wrap {
+			-webkit-flex-wrap: wrap;
+			width: 400px;
+		}
+
+		.demo-wrap-reverse {
+			-webkit-flex-wrap: wrap-reverse;
+			width: 400px;
+		}
+
+		.demo-align-content {
+			width: 400px;
+			flex-wrap: wrap;
+			height: 200px;
+			border: 1px dashed #B6B6B6;
+		}
+
+		.demo-align-content .item:nth-child(1),
+		.demo-align-content .item:nth-child(2),
+		.demo-align-content .item:nth-child(3),
+		.demo-align-content .item:nth-child(4),
+		.demo-align-content .item:nth-child(5),
+		.demo-align-content .item:nth-child(6) {
+			background-color: #717171;
+			width: 80px;
+			margin: 2px 10px;
+		}
+	</style>
 </head>
 <body>
 	<h1>Web的Flex弹性盒模型</h1>
@@ -252,7 +275,7 @@
 					<div class="item" style="width: 200px">width: 200px;</div>
 					<div class="item" style="width: 300px">width: 300px;</div>
 				</div>
-			</div>	
+			</div>
 		</div>
 
 		<h3>[ flex-flow ]: flex-direction flex-wrap; /* 自个体会吧 */</h3>
@@ -273,11 +296,13 @@
 
 			<div class="box">
 				<div class="boxstyle">
-					<p><p>/* 效果如同 float:right; */</p></p>
+					<p>
+						<p>/* 效果如同 float:right; */</p>
+					</p>
 					<p>justify-content: flex-end;</p>
 					<p>display: -webkit-flex;</p>
 				</div>
-				<div class="demo demo-justify boxborder"  style="justify-content: flex-end;">
+				<div class="demo demo-justify boxborder" style="justify-content: flex-end;">
 					<div class="item" style="width:100px">width:100px;</div>
 					<div class="item" style="width:100px">width:100px;</div>
 				</div>
@@ -409,12 +434,12 @@
 					<p>display: -webkit-flex;</p>
 				</div>
 				<div class="demo demo-align-content" style="align-items: flex-start">
-					<div class="item" >a</div>
-					<div class="item" >b</div>
-					<div class="item" >c</div>
-					<div class="item" >d</div>
-					<div class="item" >e</div>
-					<div class="item" >f</div>
+					<div class="item">a</div>
+					<div class="item">b</div>
+					<div class="item">c</div>
+					<div class="item">d</div>
+					<div class="item">e</div>
+					<div class="item">f</div>
 
 				</div>
 			</div>
@@ -425,12 +450,12 @@
 					<p>display: -webkit-flex;</p>
 				</div>
 				<div class="demo demo-align-content" style="align-content: flex-start;">
-					<div class="item" >a</div>
-					<div class="item" >b</div>
-					<div class="item" >c</div>
-					<div class="item" >d</div>
-					<div class="item" >e</div>
-					<div class="item" >f</div>
+					<div class="item">a</div>
+					<div class="item">b</div>
+					<div class="item">c</div>
+					<div class="item">d</div>
+					<div class="item">e</div>
+					<div class="item">f</div>
 
 				</div>
 			</div>
@@ -441,12 +466,12 @@
 					<p>display: -webkit-flex;</p>
 				</div>
 				<div class="demo demo-align-content" style="align-content: flex-end;">
-					<div class="item" >a</div>
-					<div class="item" >b</div>
-					<div class="item" >c</div>
-					<div class="item" >d</div>
-					<div class="item" >e</div>
-					<div class="item" >f</div>
+					<div class="item">a</div>
+					<div class="item">b</div>
+					<div class="item">c</div>
+					<div class="item">d</div>
+					<div class="item">e</div>
+					<div class="item">f</div>
 
 				</div>
 			</div>
@@ -456,12 +481,12 @@
 					<p>display: -webkit-flex;</p>
 				</div>
 				<div class="demo demo-align-content" style="align-content: center;">
-					<div class="item" >a</div>
-					<div class="item" >b</div>
-					<div class="item" >c</div>
-					<div class="item" >d</div>
-					<div class="item" >e</div>
-					<div class="item" >f</div>
+					<div class="item">a</div>
+					<div class="item">b</div>
+					<div class="item">c</div>
+					<div class="item">d</div>
+					<div class="item">e</div>
+					<div class="item">f</div>
 
 				</div>
 			</div>
@@ -471,12 +496,12 @@
 					<p>display: -webkit-flex;</p>
 				</div>
 				<div class="demo demo-align-content" style="align-content: space-between;">
-					<div class="item" >a</div>
-					<div class="item" >b</div>
-					<div class="item" >c</div>
-					<div class="item" >d</div>
-					<div class="item" >e</div>
-					<div class="item" >f</div>
+					<div class="item">a</div>
+					<div class="item">b</div>
+					<div class="item">c</div>
+					<div class="item">d</div>
+					<div class="item">e</div>
+					<div class="item">f</div>
 				</div>
 			</div>
 			<div class="box">
@@ -485,15 +510,15 @@
 					<p>display: -webkit-flex;</p>
 				</div>
 				<div class="demo demo-align-content" style="align-content: space-around;">
-					<div class="item" >a</div>
-					<div class="item" >b</div>
-					<div class="item" >c</div>
-					<div class="item" >d</div>
-					<div class="item" >e</div>
-					<div class="item" >f</div>
+					<div class="item">a</div>
+					<div class="item">b</div>
+					<div class="item">c</div>
+					<div class="item">d</div>
+					<div class="item">e</div>
+					<div class="item">f</div>
 
 				</div>
-			</div>		
+			</div>
 
 			<div class="box">
 				<div class="boxstyle">
@@ -501,17 +526,17 @@
 					<p>display: -webkit-flex;</p>
 				</div>
 				<div class="demo demo-align-content" style="align-content: stretch;">
-					<div class="item" >a</div>
-					<div class="item" >b</div>
-					<div class="item" >c</div>
-					<div class="item" >d</div>
-					<div class="item" >e</div>
-					<div class="item" >f</div>
+					<div class="item">a</div>
+					<div class="item">b</div>
+					<div class="item">c</div>
+					<div class="item">d</div>
+					<div class="item">e</div>
+					<div class="item">f</div>
 
 				</div>
-			</div>	
-	
-		</div>	
+			</div>
+
+		</div>
 
 		<h3>[ order ]</h3>
 		<div class="boxes">
@@ -520,18 +545,18 @@
 					<p>display: -webkit-flex;</p>
 				</div>
 				<div class="demo demo-align-content" style="width: 1000px;height:40px;">
-					<div class="item" >a</div>
-					<div class="item" >b</div>
-					<div class="item" >c</div>
+					<div class="item">a</div>
+					<div class="item">b</div>
+					<div class="item">c</div>
 					<div class="item" style="order:-1; width:120px"> d (order:-1) </div>
-					<div class="item" >e</div>
-					<div class="item" >f</div>
+					<div class="item">e</div>
+					<div class="item">f</div>
 				</div>
 			</div>
 		</div>
 
 	</section>
-	
+
 
 </body>
 </html>

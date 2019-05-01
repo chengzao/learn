@@ -12,45 +12,45 @@
   </div>
 </body>
 <script type="text/javascript">
-var phases = {
-  1: 'capture',
-  2: 'target',
-  3: 'bubble'
-};
+  var phases = {
+    1: 'capture',
+    2: 'target',
+    3: 'bubble'
+  };
 
-var div = document.querySelector('div');
-var p = document.querySelector('p');
+  var div = document.querySelector('div');
+  var p = document.querySelector('p');
 
-div.addEventListener('click', callback, false);
-p.addEventListener('click', callback, false);
+  div.addEventListener('click', callback, false);
+  p.addEventListener('click', callback, false);
 
-// 1.0 stopPropagation
-// p.addEventListener('click', function(event) {
-//   //stopPropagation方法只会阻止当前监听函数的传播，
-//   //不会阻止<p>节点上的其他click事件的监听函数
-//   event.stopPropagation();
-// });
-// p.addEventListener('click',function(){
-//   //执行到这里
-//   console.log('other click event1');
-// })
+  // 1.0 stopPropagation
+  // p.addEventListener('click', function(event) {
+  //   //stopPropagation方法只会阻止当前监听函数的传播，
+  //   //不会阻止<p>节点上的其他click事件的监听函数
+  //   event.stopPropagation();
+  // });
+  // p.addEventListener('click',function(){
+  //   //执行到这里
+  //   console.log('other click event1');
+  // })
 
-// 2.0 stopImmediatePropagation
-p.addEventListener('click', function(event) {
-  //如果想要不再触发那些监听函数，可以使用stopImmediatePropagation方法
-  event.stopImmediatePropagation();
-});
+  // 2.0 stopImmediatePropagation
+  p.addEventListener('click', function (event) {
+    //如果想要不再触发那些监听函数，可以使用stopImmediatePropagation方法
+    event.stopImmediatePropagation();
+  });
 
-p.addEventListener('click', function(event) {
-  // 不会执行到这里
-  console.log('other click event2');
-});
+  p.addEventListener('click', function (event) {
+    // 不会执行到这里
+    console.log('other click event2');
+  });
 
-function callback(event) {
-  var tag = event.currentTarget.tagName;
-  var phase = phases[event.eventPhase];
-  console.log("Tag: '" + tag + "'. EventPhase: '" + phase + "'");
-}
+  function callback(event) {
+    var tag = event.currentTarget.tagName;
+    var phase = phases[event.eventPhase];
+    console.log("Tag: '" + tag + "'. EventPhase: '" + phase + "'");
+  }
 
 
 

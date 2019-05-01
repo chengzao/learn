@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body ontouchstart="">
-<div class="wxapi_container">
+  <div class="wxapi_container">
     <div class="wxapi_index_container">
       <ul class="label_box lbox_close wxapi_index_list">
         <li class="label_item wxapi_index_item"><a class="label_inner" href="#menu-basic">基础接口</a></li>
@@ -122,20 +122,20 @@
 </body>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
- // 测试号
- // https://mp.weixin.qq.com/debug/cgi-bin/sandboxinfo?action=showinfo&t=sandbox/index
- // 域名: 填写不需要加http和https协议: 例:www.test.com
+  // 测试号
+  // https://mp.weixin.qq.com/debug/cgi-bin/sandboxinfo?action=showinfo&t=sandbox/index
+  // 域名: 填写不需要加http和https协议: 例:www.test.com
 
 
   //获取access_token
- // https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
+  // https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
 
- // jsapi_ticket
- // https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=ACCESS_TOKEN&type=jsapi
+  // jsapi_ticket
+  // https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=ACCESS_TOKEN&type=jsapi
 
- // 微信 JS 接口签名校验工具 : signature
- // https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=jsapisign
- // url: 填写完整地址. 例：http://www.test.com/html/dashi_my/disable_share.html
+  // 微信 JS 接口签名校验工具 : signature
+  // https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=jsapisign
+  // url: 填写完整地址. 例：http://www.test.com/html/dashi_my/disable_share.html
 
 
   /*
@@ -151,49 +151,49 @@
    */
   // alert(location.href.split('#')[0])
   wx.config({
-      debug: true,
-      appId: 'wx3d9605a1a529fc89',
-      timestamp: 1517454040,
-      nonceStr: 'abc',
-      signature: 'cc0f70b98e30bfa5d9bc50adc56f483de97156ae',
-      jsApiList: [
-        'checkJsApi',
-        'onMenuShareTimeline',
-        'onMenuShareAppMessage',
-        'onMenuShareQQ',
-        'onMenuShareWeibo',
-        'onMenuShareQZone',
-        'hideMenuItems',
-        'showMenuItems',
-        'hideAllNonBaseMenuItem',
-        'showAllNonBaseMenuItem',
-        'translateVoice',
-        'startRecord',
-        'stopRecord',
-        'onVoiceRecordEnd',
-        'playVoice',
-        'onVoicePlayEnd',
-        'pauseVoice',
-        'stopVoice',
-        'uploadVoice',
-        'downloadVoice',
-        'chooseImage',
-        'previewImage',
-        'uploadImage',
-        'downloadImage',
-        'getNetworkType',
-        'openLocation',
-        'getLocation',
-        'hideOptionMenu',
-        'showOptionMenu',
-        'closeWindow',
-        'scanQRCode',
-        'chooseWXPay',
-        'openProductSpecificView',
-        'addCard',
-        'chooseCard',
-        'openCard'
-      ]
+    debug: true,
+    appId: 'wx3d9605a1a529fc89',
+    timestamp: 1517454040,
+    nonceStr: 'abc',
+    signature: 'cc0f70b98e30bfa5d9bc50adc56f483de97156ae',
+    jsApiList: [
+      'checkJsApi',
+      'onMenuShareTimeline',
+      'onMenuShareAppMessage',
+      'onMenuShareQQ',
+      'onMenuShareWeibo',
+      'onMenuShareQZone',
+      'hideMenuItems',
+      'showMenuItems',
+      'hideAllNonBaseMenuItem',
+      'showAllNonBaseMenuItem',
+      'translateVoice',
+      'startRecord',
+      'stopRecord',
+      'onVoiceRecordEnd',
+      'playVoice',
+      'onVoicePlayEnd',
+      'pauseVoice',
+      'stopVoice',
+      'uploadVoice',
+      'downloadVoice',
+      'chooseImage',
+      'previewImage',
+      'uploadImage',
+      'downloadImage',
+      'getNetworkType',
+      'openLocation',
+      'getLocation',
+      'hideOptionMenu',
+      'showOptionMenu',
+      'closeWindow',
+      'scanQRCode',
+      'chooseWXPay',
+      'openProductSpecificView',
+      'addCard',
+      'chooseCard',
+      'openCard'
+    ]
   });
 </script>
 <script src="http://203.195.235.76/jssdk/js/zepto.min.js"></script>

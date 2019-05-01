@@ -35,8 +35,8 @@
   rest // [2, 3, 4, 5]
 
 
-    //字符串
-    [...'hello'] //[ "h", "e", "l", "l", "o" ]
+  //字符串
+  [...'hello'] //[ "h", "e", "l", "l", "o" ]
 
   //实现了 Iterator 接口的对象
   let nodeList = document.querySelectorAll('div');
@@ -95,7 +95,7 @@
   //findIndex() 返回第一个符合条件的数组成员的位置，如果所有成员都不符合条件，则返回-1。
 
   [1, 4, -5, 10].find((n) => n < 0) // -5
-  [1, 5, 10, 15].findIndex(function(value, index, arr) {
+  [1, 5, 10, 15].findIndex(function (value, index, arr) {
     return value > 9;
   }) // 2
 

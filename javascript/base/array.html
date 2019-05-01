@@ -1,104 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>array</title>
+  <meta charset="UTF-8">
+  <title>array</title>
 </head>
 <body>
-	<script>
-		var arr = [1,2,3];
+  <script>
+    var arr = [1, 2, 3];
 
-		// pop: 删除最后一个
-		arr.pop()  // [1,2]
+    // pop: 删除最后一个
+    arr.pop()  // [1,2]
 
-		// push
-		arr.push(233) // [1,2,233]
+    // push
+    arr.push(233) // [1,2,233]
 
-		// shift: 删除第一个
-		arr.shift()	// [2,233]
+    // shift: 删除第一个
+    arr.shift()	// [2,233]
 
-		// delete
-		delete arr[1]   // [2,undefined]
+    // delete
+    delete arr[1]   // [2,undefined]
 
-		// splice
-		arr.splice(1)  // [2]
+    // splice
+    arr.splice(1)  // [2]
 
-		// concat 返回一个新的数组
-		var arr2= arr.concat(arr);
+    // concat 返回一个新的数组
+    var arr2 = arr.concat(arr);
 
-		var arr3 = ['a', 'b', 'c'];
+    var arr3 = ['a', 'b', 'c'];
 
-		Object.keys(arr3)  //  ["0", "1", "2"]
-		Object.values(arr3) // ["a", "b", "c"]
+    Object.keys(arr3)  //  ["0", "1", "2"]
+    Object.values(arr3) // ["a", "b", "c"]
 
-		var arr4 = [ 'a', 'b', 'c' ];
-		arr4.length // 3
+    var arr4 = ['a', 'b', 'c'];
+    arr4.length // 3
 
-		arr4.length = 2;
-		arr4 // ["a", "b"]
+    arr4.length = 2;
+    arr4 // ["a", "b"]
 
-		//将数组清空的一个有效方法，就是将length属性设为0。
-		var arr5 = [ 'a', 'b', 'c' ];
-		arr5.length = 0;
-		arr5 // []
+    //将数组清空的一个有效方法，就是将length属性设为0。
+    var arr5 = ['a', 'b', 'c'];
+    arr5.length = 0;
+    arr5 // []
 
-		var a = ['a'];
-		a.length = 3;
-		a[1] // undefined
+    var a = ['a'];
+    a.length = 3;
+    a[1] // undefined
 
-		var a = [];
+    var a = [];
 
-		a['p'] = 'abc';
-		a.length // 0
+    a['p'] = 'abc';
+    a.length // 0
 
-		a[2.1] = 'abc';
-		a.length // 0
+    a[2.1] = 'abc';
+    a.length // 0
 
-		a[2.00] = 'abc'
-		a.length //3
+    a[2.00] = 'abc'
+    a.length //3
 
-		//数组的空位
-		var a = [1, , 1];
-		a.length // 3
+    //数组的空位
+    var a = [1, , 1];
+    a.length // 3
 
-		var a = [1, 2, 3,];
-		a.length // 3
-		a // [1, 2, 3]
+    var a = [1, 2, 3,];
+    a.length // 3
+    a // [1, 2, 3]
 
-		var a = [, , ,];
-		a[1] // undefined
+    var a = [, , ,];
+    a[1] // undefined
 
-		// 数组的某个位置是空位，与某个位置是undefined，是不一样的。
-		// 如果是空位，使用数组的forEach方法、for...in结构、
-		// 以及Object.keys方法进行遍历，空位都会被跳过
-		// 空位就是数组没有这个元素，所以不会被遍历到，
-		// undefined则表示数组有这个元素，值是undefined，所以遍历不会跳过
+    // 数组的某个位置是空位，与某个位置是undefined，是不一样的。
+    // 如果是空位，使用数组的forEach方法、for...in结构、
+    // 以及Object.keys方法进行遍历，空位都会被跳过
+    // 空位就是数组没有这个元素，所以不会被遍历到，
+    // undefined则表示数组有这个元素，值是undefined，所以遍历不会跳过
 
-		// 类数组对象
-		var obj = {
-		  length: 0
-		};
-		obj[3] = 'd';
-		obj.length // 0
+    // 类数组对象
+    var obj = {
+      length: 0
+    };
+    obj[3] = 'd';
+    obj.length // 0
 
-		//数组的slice方法将类似数组的对象，变成真正的数组
-		var arr = Array.prototype.slice.call(arrayLike);
-		function logArgs() {
-	  	Array.prototype.forEach.call(arguments, function (elem, i) {
-	    	console.log(i+'. '+elem);
-		  });
-		}
-		// logArgs('a','b')
-		Array.prototype.forEach.call('abc', function(chr) {
-		  console.log(chr);
-		});
+    //数组的slice方法将类似数组的对象，变成真正的数组
+    var arr = Array.prototype.slice.call(arrayLike);
+    function logArgs() {
+      Array.prototype.forEach.call(arguments, function (elem, i) {
+        console.log(i + '. ' + elem);
+      });
+    }
+    // logArgs('a','b')
+    Array.prototype.forEach.call('abc', function (chr) {
+      console.log(chr);
+    });
 
-		// in 检查某个键名是否存在的运算符in，适用于对象，也适用于数组
-		var arr = [ 'a', 'b', 'c' ];
-		2 in arr  // true
-		'2' in arr // true
-		4 in arr // false
+    // in 检查某个键名是否存在的运算符in，适用于对象，也适用于数组
+    var arr = ['a', 'b', 'c'];
+    2 in arr  // true
+    '2' in arr // true
+    4 in arr // false
 
-	</script>
+  </script>
 </body>
 </html>

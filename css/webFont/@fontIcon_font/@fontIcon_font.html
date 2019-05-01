@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>@fontIcon</title>
-	<style>
-		@font-face{
-			font-family: "myFont";
-			src:url("webfont.eot");/* ie9 */
-			src:url("webfont.eot?#iefix") format("embedded-opentype"),
-					url("webfont.woff") format("woff"),
-					url("webfont.ttf") format("truetype"),
-					url("webfont.svg#webfont") format("svg"); 
-		}
-		
-		.web{
-			font-family: "myFont";
-			font-size: 16px;
-			font-style: normal;
-			-webkit-font-smoothing:antialiased;/* 字体图标在safair或chrome浏览器下被加粗 */
-			-webkit-font-stroke-width:0.2px;/* 字体图标在pc端的chrome浏览器下出现严重的锯齿 */
-			-moz-osx-font-smoothing:grayscale;
-		}
+  <meta charset="UTF-8">
+  <title>@fontIcon</title>
+  <style>
+    @font-face {
+      font-family: "myFont";
+      src: url("webfont.eot");
+      /* ie9 */
+      src: url("webfont.eot?#iefix") format("embedded-opentype"),
+        url("webfont.woff") format("woff"),
+        url("webfont.ttf") format("truetype"),
+        url("webfont.svg#webfont") format("svg");
+    }
 
-	</style>
+    .web {
+      font-family: "myFont";
+      font-size: 16px;
+      font-style: normal;
+      -webkit-font-smoothing: antialiased;
+      /* 字体图标在safair或chrome浏览器下被加粗 */
+      -webkit-font-stroke-width: 0.2px;
+      /* 字体图标在pc端的chrome浏览器下出现严重的锯齿 */
+      -moz-osx-font-smoothing: grayscale;
+    }
+  </style>
 </head>
 <body>
-	<pre>
+  <pre>
 @font-face {font-family: 'webfont';
     src: url('webfont.eot'); /* IE9*/
     src: url('webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
@@ -35,8 +37,8 @@
 }
 	</pre>
 
-<div class="web">英雄难过美人关，我不是英雄，美人让我过了关</div>
-<div class="web">英雄难过美人关</div>
-<div class="web">英雄难过美人关,你谁</div>
+  <div class="web">英雄难过美人关，我不是英雄，美人让我过了关</div>
+  <div class="web">英雄难过美人关</div>
+  <div class="web">英雄难过美人关,你谁</div>
 </body>
 </html>

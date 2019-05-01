@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>object</title>
+  <meta charset="UTF-8">
+  <title>object</title>
 </head>
 <body>
-	<script>
-		var obj = {name:'zhangsan',score:[100,98,80]};
+  <script>
+    var obj = { name: 'zhangsan', score: [100, 98, 80] };
 
-		// set attr 
-		obj.age = 20;
-		obj['gender'] = 'man';
-		console.log(obj);
-		
-		// get attr
-		console.log(obj.name) // ==> zhansan
-		console.log(obj['name']) // ==> zhansan
-		
-		// delete attr
-		delete obj.age;
-		console.log(obj);
+    // set attr
+    obj.age = 20;
+    obj['gender'] = 'man';
+    console.log(obj);
 
-		obj.test = function(){
-			for(var i=0;i<this.score.length;i++){
-				console.log(this.score[i])
-			}
-		}
-		obj.test();
+    // get attr
+    console.log(obj.name) // ==> zhansan
+    console.log(obj['name']) // ==> zhansan
 
-		// for in
-		for(var i in obj){
-			console.log(i)
-		}
+    // delete attr
+    delete obj.age;
+    console.log(obj);
 
-	</script>
+    obj.test = function () {
+      for (var i = 0; i < this.score.length; i++) {
+        console.log(this.score[i])
+      }
+    }
+    obj.test();
+
+    // for in
+    for (var i in obj) {
+      console.log(i)
+    }
+
+  </script>
 </body>
 </html>

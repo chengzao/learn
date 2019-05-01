@@ -2,88 +2,88 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ifr p</title>
-    <style>
-        .iframe {
-            border: 1px solid #ccc;
-            width: 400px;
-            height: 200px;
-            line-height: 200px;
-            text-align: center;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ifr p</title>
+  <style>
+    .iframe {
+      border: 1px solid #ccc;
+      width: 400px;
+      height: 200px;
+      line-height: 200px;
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body>
-    <p id="box">This a iframe p</p>
-    <iframe class="iframe" name="ifr" id="iframe" src="./iframe-s.html" frameborder="0"></iframe>
+  <p id="box">This a iframe p</p>
+  <iframe class="iframe" name="ifr" id="iframe" src="./iframe-s.html" frameborder="0"></iframe>
 </body>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
 <script>
-    // var iframe = document.getElementById("iframe");
-    // console.log(iframe.contentDocument);
-    //  var iwindow = iframe.contentWindow;
-    //  var iDocument = iframe.contentDocument;
-    //  var idoc = iwindow.document;
-    //         console.log("window",iwindow);//获取iframe的window对象
-    //         console.log("document",idoc);  //获取iframe的document
-    //         console.log("html",idoc.documentElement);//获取iframe的html
-    //         console.log("head",idoc.head);  //获取head
-    //         console.log("body",idoc.body);  //获取body
-    //         console.log("iDocument",iDocument);
+  // var iframe = document.getElementById("iframe");
+  // console.log(iframe.contentDocument);
+  //  var iwindow = iframe.contentWindow;
+  //  var iDocument = iframe.contentDocument;
+  //  var idoc = iwindow.document;
+  //         console.log("window",iwindow);//获取iframe的window对象
+  //         console.log("document",idoc);  //获取iframe的document
+  //         console.log("html",idoc.documentElement);//获取iframe的html
+  //         console.log("head",idoc.head);  //获取head
+  //         console.log("body",idoc.body);  //获取body
+  //         console.log("iDocument",iDocument);
 
-    //   console.log(window.frames['iframe2'].window);
-
-
-    window.onload = function () {
-        //  iframe.contentWindow, 获取iframe的window对象
-        var myIframeEl = document.getElementById("iframe").contentWindow
-            .document;
-        myIframeVal = myIframeEl.querySelector("a").innerText;
-        console.log(myIframeVal);
-
-        var jq = $('#iframe').contents().find('a');
-        //        console.log(jq);
-
-        //  iframe.contentDocument, 获取iframe的document对象
-        var ifrEl = document.getElementById("iframe").contentDocument.documentElement;
-        var tarEl = ifrEl.querySelector('body');
-        tarEl.addEventListener('click', function () {
-            console.log('Me is Clicked!!!');
-            this.style['color'] = '#ee00e0';
-        })
-
-        //            window.location.href = document.referrer
-        //            location.reload()
-
-        //        console.log(tarEl);
-
-        //  contentDocument 与 contentWindow
-        var ifr = document.getElementById("iframe");
-        var iframeDoc = ifr.contentDocument.documentElement || ifr.contentWindow.document;
-        console.log(iframeDoc.querySelector('a').innerHTML)
-
-        //    结合Name属性，通过window提供的frames获取
-        //        console.log(window.frames['ifr'].window);
-        //        console.dir(document.getElementById("iframe").contentWindow);
+  //   console.log(window.frames['iframe2'].window);
 
 
-        //    在iframe中获取父级内容
-        //    window.parent 获取上一级的window对象，如果还是iframe则是该iframe的window对象
-        //    window.top 获取最顶级容器的window对象，即，就是你打开页面的文档
-        //    window.self 返回自身window的引用。可以理解 window===window.self
-        //        console.log('window.parent', window.parent);
-        //        console.log('window.top', window.top);
-        //        console.log('window.self', window.self);
+  window.onload = function () {
+    //  iframe.contentWindow, 获取iframe的window对象
+    var myIframeEl = document.getElementById("iframe").contentWindow
+      .document;
+    myIframeVal = myIframeEl.querySelector("a").innerText;
+    console.log(myIframeVal);
+
+    var jq = $('#iframe').contents().find('a');
+    //        console.log(jq);
+
+    //  iframe.contentDocument, 获取iframe的document对象
+    var ifrEl = document.getElementById("iframe").contentDocument.documentElement;
+    var tarEl = ifrEl.querySelector('body');
+    tarEl.addEventListener('click', function () {
+      console.log('Me is Clicked!!!');
+      this.style['color'] = '#ee00e0';
+    })
+
+    //            window.location.href = document.referrer
+    //            location.reload()
+
+    //        console.log(tarEl);
+
+    //  contentDocument 与 contentWindow
+    var ifr = document.getElementById("iframe");
+    var iframeDoc = ifr.contentDocument.documentElement || ifr.contentWindow.document;
+    console.log(iframeDoc.querySelector('a').innerHTML)
+
+    //    结合Name属性，通过window提供的frames获取
+    //        console.log(window.frames['ifr'].window);
+    //        console.dir(document.getElementById("iframe").contentWindow);
 
 
+    //    在iframe中获取父级内容
+    //    window.parent 获取上一级的window对象，如果还是iframe则是该iframe的window对象
+    //    window.top 获取最顶级容器的window对象，即，就是你打开页面的文档
+    //    window.self 返回自身window的引用。可以理解 window===window.self
+    //        console.log('window.parent', window.parent);
+    //        console.log('window.top', window.top);
+    //        console.log('window.self', window.self);
 
 
 
-    }
+
+
+  }
 </script>
 
 </html>

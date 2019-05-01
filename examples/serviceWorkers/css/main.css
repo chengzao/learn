@@ -1,37 +1,37 @@
-header{
-    padding-left: 40px;
+header {
+  padding-left: 40px;
 }
 
-nav{
-    overflow: hidden;
+nav {
+  overflow: hidden;
 }
 
-nav ul{
-    list-style: none;
+nav ul {
+  list-style: none;
 }
-nav li{
-    width: 100px;
-    height: 40px;
-    float: left;
-    line-height: 40px;
-    text-align: center;
-    background-color: aliceblue;
-}
-
-nav li a{
-    color: #000;
-    text-decoration: none;
-    display: block;
+nav li {
+  width: 100px;
+  height: 40px;
+  float: left;
+  line-height: 40px;
+  text-align: center;
+  background-color: aliceblue;
 }
 
-nav li.cur{
-    background-color: #888; 
+nav li a {
+  color: #000;
+  text-decoration: none;
+  display: block;
 }
 
-nav li.cur a{
-    color: white;
+nav li.cur {
+  background-color: #888;
 }
 
-main{
-    padding-left: 40px;
+nav li.cur a {
+  color: white;
+}
+
+main {
+  padding-left: 40px;
 }

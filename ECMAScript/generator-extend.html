@@ -54,15 +54,15 @@
 
     // 句法错误，因为forEach方法的参数是一个普通函数，但是在里面使用了yield表达式
     var arr = [1, [
-            [2, 3], 4
-        ],
+        [2, 3], 4
+    ],
         [5, 6]
     ];
 
     var flat = function* (a) {
         a.forEach(function (item) {
             if (typeof item !== 'number') {
-                yield* flat(item);
+                yield * flat(item);
             } else {
                 yield item;
             }
@@ -75,8 +75,8 @@
 
     // 修改方法是改用for循环
     var arr = [1, [
-            [2, 3], 4
-        ],
+        [2, 3], 4
+    ],
         [5, 6]
     ];
 
@@ -135,8 +135,8 @@
     // next 方法的参数
     // next方法可以带一个参数，该参数就会被当作上一个 yield表达式的返回值
     function* foo(x) {
-        var y = 2 * (yield(x + 1));
-        var z = yield(y / 3);
+        var y = 2 * (yield (x + 1));
+        var z = yield (y / 3);
         return (x + y + z);
     }
 
@@ -215,7 +215,7 @@
         console.log(`${key}: ${value}`);
     }
 
-    // 
+    //
     function* numbers() {
         yield 1
         yield 2
@@ -256,7 +256,7 @@
     // 内部中： Error: 出错了！
 
 
-    // 
+    //
     var gen = function* gen() {
         try {
             yield console.log('a');
@@ -396,7 +396,7 @@
 
     let read = (function* () {
         yield 'hello';
-        yield*'hello';
+        yield* 'hello';
     })();
 
     read.next().value // "hello"
@@ -421,7 +421,7 @@
         console.log(x);
     }
 
-    // 作为对象属性的 Generator 函数 
+    // 作为对象属性的 Generator 函数
 
     let obj = {
         myGeneratorMethod: function* () {
@@ -430,11 +430,11 @@
     };
     // (简写)
     let obj = {
-        * myGeneratorMethod() {}
+        * myGeneratorMethod() { }
     };
 
     // Generator 函数的this
-    function* g() {}
+    function* g() { }
 
     g.prototype.hello = function () {
         return 'hi!';
@@ -532,8 +532,8 @@
         console.log(key, value);
     }
 
-    //callback  
-    // nodejs 
+    //callback
+    // nodejs
     fs.readFile('/etc/passwd', 'utf-8', function (err, data) {
         if (err) throw err;
         console.log(data);

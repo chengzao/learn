@@ -4,9 +4,28 @@
   <meta charset='utf-8'>
   <title>HTML 5 Application - IndexedDb</title>
   <style>
-    button{background-color: lightblue;border:1px solid #ccc;color: #fff;height:32px;margin: 10px}
-    img{border: 1px solid #ccc;margin: 10px;width:90%;height:80% }
-    div{background-color: #304242;color: red;width: 88%;margin: 10px;padding: 10px 20px 10px}
+    button {
+      background-color: lightblue;
+      border: 1px solid #ccc;
+      color: #fff;
+      height: 32px;
+      margin: 10px
+    }
+
+    img {
+      border: 1px solid #ccc;
+      margin: 10px;
+      width: 90%;
+      height: 80%
+    }
+
+    div {
+      background-color: #304242;
+      color: red;
+      width: 88%;
+      margin: 10px;
+      padding: 10px 20px 10px
+    }
   </style>
   <script type="text/javascript">
     var localDatabase = {};
@@ -50,10 +69,10 @@
         openRequest.onupgradeneeded = function (evt) {
           console.log('Creating object stores');
           //创建索引
-          var employeeStore = evt.currentTarget.result.createObjectStore("employees", {keyPath: "id"});
-          employeeStore.createIndex("stateIndex", "state", {unique: false});
-          employeeStore.createIndex("emailIndex", "email", {unique: true});
-          employeeStore.createIndex("zipIndex", "zip_code", {unique: false});
+          var employeeStore = evt.currentTarget.result.createObjectStore("employees", { keyPath: "id" });
+          employeeStore.createIndex("stateIndex", "state", { unique: false });
+          employeeStore.createIndex("emailIndex", "email", { unique: true });
+          employeeStore.createIndex("zipIndex", "zip_code", { unique: false });
         };
         deleteDbRequest.onerror = function (e) {
           console.log("Database error: " + e.target.errorCode);
@@ -468,21 +487,21 @@ IDBKeyRange.upperBound	返回指定的边界值之前的所有记录。它也有
 IDBKeyRange.only	    仅返回与指定值匹配的记录。
 
 -->
-  <img src="./indexDB.png" alt="">
-  <button onclick="createDatabase()">Create Database</button>
-  <button onclick="openDatabase()">Open Database</button>
-  <button onclick="populateDatabase()">Populate Database</button>
-  <button onclick="clearAllEmployees()">Clear All Employees</button>
-  <button onclick="fetchEmployee()">Fetch Employee</button>
-  <button onclick="updateEmployee()">Update Employee</button>
-  <button onclick="addEmployee()">Add Employee</button>
-  <button onclick="fetchEmployeeByEmail()">Fetch Employee By Email</button>
-  <button onclick="fetchEmployeeByZipCode1()">Fetch Employee By Zip Code 1</button>
-  <button onclick="fetchEmployeeByZipCode2()">Fetch Employee By Zip Code 2</button>
-  <button onclick="fetchEmployeeByZipCode3()">Fetch Employee By Zip Code 3</button>
-  <button onclick="fetchAllEmployees()">Fetch All Employees</button>
-  <button onclick="fetchNewYorkEmployees()">Fetch NY Employees</button>
-  <button onclick="deleteDatabase()">deleteDatabase</button>
-  <div id="result">这是一条小尾巴</div>
+<img src="./indexDB.png" alt="">
+<button onclick="createDatabase()">Create Database</button>
+<button onclick="openDatabase()">Open Database</button>
+<button onclick="populateDatabase()">Populate Database</button>
+<button onclick="clearAllEmployees()">Clear All Employees</button>
+<button onclick="fetchEmployee()">Fetch Employee</button>
+<button onclick="updateEmployee()">Update Employee</button>
+<button onclick="addEmployee()">Add Employee</button>
+<button onclick="fetchEmployeeByEmail()">Fetch Employee By Email</button>
+<button onclick="fetchEmployeeByZipCode1()">Fetch Employee By Zip Code 1</button>
+<button onclick="fetchEmployeeByZipCode2()">Fetch Employee By Zip Code 2</button>
+<button onclick="fetchEmployeeByZipCode3()">Fetch Employee By Zip Code 3</button>
+<button onclick="fetchAllEmployees()">Fetch All Employees</button>
+<button onclick="fetchNewYorkEmployees()">Fetch NY Employees</button>
+<button onclick="deleteDatabase()">deleteDatabase</button>
+<div id="result">这是一条小尾巴</div>
 </body>
 </html>

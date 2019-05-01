@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<link rel="stylesheet" href="js/selectivizr-development.js">
-	<style>
-		.box{
-			width: 100px;
-			height: 100px;
-			background-color: red;
-			border-radius: 20px;
-			behavior:url(ie-css3.htc);
-		}
-#test span[title]{font-weight:bold; color:#ff3300;}
-	</style>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="js/selectivizr-development.js">
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      border-radius: 20px;
+      behavior: url(ie-css3.htc);
+    }
+
+    #test span[title] {
+      font-weight: bold;
+      color: #ff3300;
+    }
+  </style>
 </head>
 <body>
-<!-- 
+  <!--
 	http://www.zhangxinxu.com/study/201009/selectivizr-test-demo.html
  -->
-	<div class="box"></div>
-<div id="test" class="">
+  <div class="box"></div>
+  <div id="test" class="">
     <span>第1个普通的文字</span>
     <span>第2个普通的文字</span>
     <span title="title">含title属性的文字</span>
@@ -29,10 +33,10 @@
     <span>第5个普通的文字</span>
     <span></span>
     <span>最后1个普通的文字</span>
-</div>
+  </div>
 </body>
 
-	<!--[if (gte IE 6)&(lte IE 8)]>
+<!--[if (gte IE 6)&(lte IE 8)]>
 		<script src="js/jquery.js"></script>
 		<script src="js/selectivizr-development.js"></script>
 	<![endif]-->

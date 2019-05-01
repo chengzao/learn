@@ -1,82 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>iframe s</title>
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>iframe s</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
 
-        .iframe-son {
-            /* border: 1px solid #ccc; */
-            width: 400px;
-            height: 200px;
-            line-height: 200px;
-            text-align: center;
-        }
+    .iframe-son {
+      /* border: 1px solid #ccc; */
+      width: 400px;
+      height: 200px;
+      line-height: 200px;
+      text-align: center;
+    }
 
-        a {
-            color: #000;
-            text-decoration: none;
-        }
+    a {
+      color: #000;
+      text-decoration: none;
+    }
 
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-<div class="iframe-son">
+  <div class="iframe-son">
     <p id="sidebar">sidebar</p>
     <a href="http://www.chenio.cn">this is a iframe s</a>
-</div>
+  </div>
 </body>
 <script>
-    //    document.documentElement.onclick=function(e){
-    //        e=window.event?window.event:e;
-    //        var e_tar=e.srcElement?e.srcElement:e.target;
-    //        console.log(e_tar)
-    //    }
+  //    document.documentElement.onclick=function(e){
+  //        e=window.event?window.event:e;
+  //        var e_tar=e.srcElement?e.srcElement:e.target;
+  //        console.log(e_tar)
+  //    }
 
 
-    //    window.parent 获取上一级的window对象，如果还是iframe则是该iframe的window对象
-    //    window.top 获取最顶级容器的window对象，即，就是你打开页面的文档
-    //    window.self 返回自身window的引用。可以理解 window===window.self
-    //    防嵌套网页
-    //    if (window != window.top) {
-    //        window.top.location.href = 'http://www.chenio.cn';
-    //    }
+  //    window.parent 获取上一级的window对象，如果还是iframe则是该iframe的window对象
+  //    window.top 获取最顶级容器的window对象，即，就是你打开页面的文档
+  //    window.self 返回自身window的引用。可以理解 window===window.self
+  //    防嵌套网页
+  //    if (window != window.top) {
+  //        window.top.location.href = 'http://www.chenio.cn';
+  //    }
 
-//    function log(msg) {
-//        console.log(msg)
-//    }
-//
-//    log(top.location.host)
-//    log(window.location.host)
-//    log(window.location.href)
-//    log(window.top.location.href)
-//    log(window != window.top)
+  //    function log(msg) {
+  //        console.log(msg)
+  //    }
+  //
+  //    log(top.location.host)
+  //    log(window.location.host)
+  //    log(window.location.href)
+  //    log(window.top.location.href)
+  //    log(window != window.top)
 
-    //  只允许同源请求嵌套
-    try {
-        top.location.hostname;  //检测是否出错
-        //如果没有出错，则降级处理
-        if (top.location.hostname != window.location.hostname) {
-            top.location.href = window.location.href;
-        }
+  //  只允许同源请求嵌套
+  try {
+    top.location.hostname;  //检测是否出错
+    //如果没有出错，则降级处理
+    if (top.location.hostname != window.location.hostname) {
+      top.location.href = window.location.href;
     }
-    catch (e) {
-        top.location.href = window.location.href;
-    }
+  }
+  catch (e) {
+    top.location.href = window.location.href;
+  }
 
 
-    window.onload = function () {
-        var sonText = window.parent.document.getElementById("box").innerText;
-        console.log(sonText);
-    }
+  window.onload = function () {
+    var sonText = window.parent.document.getElementById("box").innerText;
+    console.log(sonText);
+  }
 </script>
 </html>

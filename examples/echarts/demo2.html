@@ -4,65 +4,65 @@
   <meta charset="UTF-8">
   <title>Title</title>
   <style>
-/*     html,body{
+    /*     html,body{
   width: 98%;
   height:98%;
 } */
-/* #demo{
+    /* #demo{
   width: 100%;
   height: 100%;
   border: 1px solid #ccc;
 } */
-/*   #box{
+    /*   #box{
   width: 100%;
   height:100%;
- }  */ 
+ }  */
 
-/* #demo{
+    /* #demo{
   width: 500px;
   height: 400px;
 } */
 
 
-/* #box{
+    /* #box{
   width: 500px;
   height: 400px;
 }  */
   </style>
 </head>
 <body>
-<!--参考文档：http://echarts.baidu.com/option.html-->
+  <!--参考文档：http://echarts.baidu.com/option.html-->
 
-<div>
+  <div>
     <div id="box">
-       <div id="demo"></div>
+      <div id="demo"></div>
     </div>
-</div>
+  </div>
 
 </body>
 <script src='js/jquery.js'></script>
 <script src="js/echarts.js"></script>
 <script>
   //model6
-  var dom=document.getElementById('demo');
-  var myChart= echarts.init(dom);
+  var dom = document.getElementById('demo');
+  var myChart = echarts.init(dom);
   // 指定图表的配置项和数据
   // window.onresize = myChart.resize;
   option = {
-    title:{
-      show:true,    /*是否显示*/
-      text:"电站综合效率",
+    title: {
+      show: true,    /*是否显示*/
+      text: "电站综合效率",
       x: 'center'     /*居中*/
     },
-    tooltip : {
+    tooltip: {
       trigger: 'axis',
-      axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+      axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+        type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
       }
     },
     legend: {
-      bottom:'10',
-      data:['直接访问','邮件营销']
+      bottom: '10',
+      data: ['直接访问', '邮件营销']
     },
     grid: {
       left: '5%',
@@ -70,150 +70,150 @@
       bottom: '10%',
       containLabel: true
     },
-    xAxis : [
+    xAxis: [
       {
 
-        axisLine:{    /*是否显示x坐标线*/
-          show:false
+        axisLine: {    /*是否显示x坐标线*/
+          show: false
         },
-        axisTick:{    /*是否显示x坐标刻度*/
-          show:false
+        axisTick: {    /*是否显示x坐标刻度*/
+          show: false
         },
-        splitLine:{   /*是否显示x网格线*/
-          show:false
+        splitLine: {   /*是否显示x网格线*/
+          show: false
         },
-        type : 'category',
-        data : ['周一','周二','周三','周四','周五','周六','周日']
+        type: 'category',
+        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
       }
     ],
-    yAxis :
-      {
+    yAxis:
+    {
 
-        axisLine:{
-         show:false
-       },
-        axisTick:{
-          show:false
-        },
-        type:'value',
-        name:'装机容量（MW）',    /*名称*/
-        nameLocation:'middle',  /*文字距离y轴上的居中*/
-        nameGap:50,         /*文字距离y轴的距离*/
-        nameTextStyle:{color:'#000'},
-        nameLocation:'middle'
-      }
+      axisLine: {
+        show: false
+      },
+      axisTick: {
+        show: false
+      },
+      type: 'value',
+      name: '装机容量（MW）',    /*名称*/
+      nameLocation: 'middle',  /*文字距离y轴上的居中*/
+      nameGap: 50,         /*文字距离y轴的距离*/
+      nameTextStyle: { color: '#000' },
+      nameLocation: 'middle'
+    }
     ,
-    series : [
+    series: [
       {
-        name:'直接访问',
-        type:'bar',
-        data:[320, 332, 301, 334, 390, 330, 320]
+        name: '直接访问',
+        type: 'bar',
+        data: [320, 332, 301, 334, 390, 330, 320]
       },
       {
-        name:'邮件营销',
-        type:'bar',
+        name: '邮件营销',
+        type: 'bar',
         stack: '广告',
-        data:[120, 132, 101, 134, 90, 230, 210]
+        data: [120, 132, 101, 134, 90, 230, 210]
       },
       {
-        name:'联盟广告',
-        type:'bar',
+        name: '联盟广告',
+        type: 'bar',
         stack: '广告',
-        data:[220, 182, 191, 234, 290, 330, 310]
+        data: [220, 182, 191, 234, 290, 330, 310]
       },
       {
-        name:'视频广告',
-        type:'bar',
+        name: '视频广告',
+        type: 'bar',
         stack: '广告',
-        data:[150, 232, 201, 154, 190, 330, 410]
+        data: [150, 232, 201, 154, 190, 330, 410]
       },
       {
-        name:'搜索引擎',
-        type:'bar',
-        data:[862, 1018, 964, 1026, 1679, 1600, 1570],
-        markLine : {
+        name: '搜索引擎',
+        type: 'bar',
+        data: [862, 1018, 964, 1026, 1679, 1600, 1570],
+        markLine: {
           lineStyle: {
             normal: {
               type: 'dashed'
             }
           },
-          data : [
-            [{type : 'min'}, {type : 'max'}]
+          data: [
+            [{ type: 'min' }, { type: 'max' }]
           ]
         }
       },
       {
-        name:'百度',
-        type:'bar',
-        barWidth : 5,
+        name: '百度',
+        type: 'bar',
+        barWidth: 5,
         stack: '搜索引擎',
-        data:[620, 732, 701, 734, 1090, 1130, 1120]
+        data: [620, 732, 701, 734, 1090, 1130, 1120]
       },
       {
-        name:'谷歌',
-        type:'bar',
+        name: '谷歌',
+        type: 'bar',
         stack: '搜索引擎',
-        data:[120, 132, 101, 134, 290, 230, 220]
+        data: [120, 132, 101, 134, 290, 230, 220]
       },
       {
-        name:'必应',
-        type:'bar',
+        name: '必应',
+        type: 'bar',
         stack: '搜索引擎',
-        data:[60, 72, 71, 74, 190, 130, 110]
+        data: [60, 72, 71, 74, 190, 130, 110]
       },
       {
-        name:'其他',
-        type:'bar',
+        name: '其他',
+        type: 'bar',
         stack: '搜索引擎',
-        data:[62, 82, 91, 84, 109, 110, 120]
+        data: [62, 82, 91, 84, 109, 110, 120]
       }
     ]
   };
 
-/*  abc('demo',myChart);
-    window.onresize=function  () {
-      abc('demo',myChart);
-  }*/
+  /*  abc('demo',myChart);
+      window.onresize=function  () {
+        abc('demo',myChart);
+    }*/
 
-  def(dom,myChart);
+  def(dom, myChart);
   $(window).resize(function () {
-    def(dom,myChart);
+    def(dom, myChart);
   })
 
   myChart.setOption(option);
 
-/*
-  function abc(id,name) {
-    var box=document.getElementById(id);
-    var h=document.documentElement.clientHeight;
-    var w=document.documentElement.clientWidth;
-    box.style.height=(h*0.95)+'px';
-    box.style.width=(w*0.95)+'px';
-    name.resize();
-  }*/
-  function def(demo,name) {
-    var h=$(window).height();
-    var w=$(window).width();
-    demo.style.height=(h*0.95)+'px';
-    demo.style.width=(w*0.95)+'px';
+  /*
+    function abc(id,name) {
+      var box=document.getElementById(id);
+      var h=document.documentElement.clientHeight;
+      var w=document.documentElement.clientWidth;
+      box.style.height=(h*0.95)+'px';
+      box.style.width=(w*0.95)+'px';
+      name.resize();
+    }*/
+  function def(demo, name) {
+    var h = $(window).height();
+    var w = $(window).width();
+    demo.style.height = (h * 0.95) + 'px';
+    demo.style.width = (w * 0.95) + 'px';
     name.resize();
   }
 
 
 
 
-/*var h=document.documentElement.clientHeight;
-var w=document.documentElement.clientWidth;
-    box.style.height=h+'px';
-    box.style.width=w+'px';
-    box.style.background='red';
-function fn(){
-    var h=document.documentElement.clientHeight;
-    var w=document.documentElement.clientWidth;
-    box.style.height=h+'px';
-    box.style.width=w+'px';
-    myChart.resize();
-}*/
+  /*var h=document.documentElement.clientHeight;
+  var w=document.documentElement.clientWidth;
+      box.style.height=h+'px';
+      box.style.width=w+'px';
+      box.style.background='red';
+  function fn(){
+      var h=document.documentElement.clientHeight;
+      var w=document.documentElement.clientWidth;
+      box.style.height=h+'px';
+      box.style.width=w+'px';
+      myChart.resize();
+  }*/
 
 </script>
 </html>

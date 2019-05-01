@@ -1,86 +1,93 @@
 <!doctype html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>无标题文档</title>
-	<style>
-		/* 基础样式 */
-		* {
-			padding: 0;
-			margin: 0;
-			border: 0;
-			list-style: none;
-		}
-		body {
-			background: #000;
-		}
-		a {
-			color: #fff;
-			text-decoration: none;
-			display: block;
-			width: 100px;
-			height: 40px;
-			border-radius: 5px;
-			background: rgba(31,91,147,0.8);
-			text-align: center;
-			line-height: 40px;
-			transition: all 0.4s;
-		}
-		a:hover {
-			background: rgba(31,91,147,1);
-		}
-		.all {
-			overflow: hidden;
-		}
-		.btn {
-			float: left;
-			margin: 40px;
-			position: relative;
-			overflow: hidden;
-		}
-		/* 通过伪类给按钮添加一个冲击波层 */
-		.btn a:after {
-			content: "";
-			display: block;
-			position: absolute;
-			left: -50px;
-			top: -80px;
-			/*设置冲击波层位置在中间*/
-			width: 200px;
-			height: 200px;
-			/*设置冲击波层的尺寸*/
-			background: rgba(255,255,255,0.6);
-			border-radius: 50%;
-			opacity: 0;
-			transition: all 1s;
-		}
-		/* 设置激活按钮的效果，重点是后面的过渡时间； */
-		.btn a:active:after {
-			width: 0;
-			height: 0;
-			left: 50px;
-			top: 20px;
-			/*设置激活时冲击波层的位置在中间，保证是从中间扩散，不同位置有不同效果*/
-			opacity: 1;
-			transition-duration: 0s;
-			/*激活的时候过渡时间0s瞬间冲击波图层变成0，释放后过渡到上面.btn a:after的样式*/
-		}
-	</style>
+  <meta charset="utf-8">
+  <title>无标题文档</title>
+  <style>
+    /* 基础样式 */
+    * {
+      padding: 0;
+      margin: 0;
+      border: 0;
+      list-style: none;
+    }
+
+    body {
+      background: #000;
+    }
+
+    a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+      width: 100px;
+      height: 40px;
+      border-radius: 5px;
+      background: rgba(31, 91, 147, 0.8);
+      text-align: center;
+      line-height: 40px;
+      transition: all 0.4s;
+    }
+
+    a:hover {
+      background: rgba(31, 91, 147, 1);
+    }
+
+    .all {
+      overflow: hidden;
+    }
+
+    .btn {
+      float: left;
+      margin: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* 通过伪类给按钮添加一个冲击波层 */
+    .btn a:after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: -50px;
+      top: -80px;
+      /*设置冲击波层位置在中间*/
+      width: 200px;
+      height: 200px;
+      /*设置冲击波层的尺寸*/
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+      opacity: 0;
+      transition: all 1s;
+    }
+
+    /* 设置激活按钮的效果，重点是后面的过渡时间； */
+    .btn a:active:after {
+      width: 0;
+      height: 0;
+      left: 50px;
+      top: 20px;
+      /*设置激活时冲击波层的位置在中间，保证是从中间扩散，不同位置有不同效果*/
+      opacity: 1;
+      transition-duration: 0s;
+      /*激活的时候过渡时间0s瞬间冲击波图层变成0，释放后过渡到上面.btn a:after的样式*/
+    }
+  </style>
 </head>
 <body>
-	<ul class="all">
-		<li class="btn">
-			<a href="#">按钮</a>
-		</li>
-		<li class="btn">
-			<a href="#">按钮</a>
-		</li>
-		<li class="btn">
-			<a href="#">按钮</a>
-		</li>
-		<li class="btn">
-			<a href="#">按钮</a>
-		</li>
-	</ul>
+  <ul class="all">
+    <li class="btn">
+      <a href="#">按钮</a>
+    </li>
+    <li class="btn">
+      <a href="#">按钮</a>
+    </li>
+    <li class="btn">
+      <a href="#">按钮</a>
+    </li>
+    <li class="btn">
+      <a href="#">按钮</a>
+    </li>
+  </ul>
 </body>
 </html>

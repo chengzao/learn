@@ -21,7 +21,7 @@ import {mixins} from  "./mixins";
     descriptor.writable=false;
     return descriptor
   };
-  
+
   // readonly(Person.prototype, 'name', descriptor);
   // 类似于
   // Object.defineProperty(Person.prototype, 'name', descriptor);
@@ -86,11 +86,11 @@ import {mixins} from  "./mixins";
       target.isTestable = isTestable;
     }
   }
-  
+
   @testable(true)
   class MyTestableClass {}
   console.log('testable params => ',MyTestableClass.isTestable) // true
-  
+
   @testable(false)
   class MyClass {}
   console.log('testable params => ',MyClass.isTestable) // false
@@ -101,10 +101,10 @@ import {mixins} from  "./mixins";
   const Foo = {
     foo() { console.log('mixins form => foo') }
   };
-  
+
   @mixins(Foo)
   class MyClass {}
-  
+
   let obj = new MyClass();
   obj.foo() // 'foo'
 }

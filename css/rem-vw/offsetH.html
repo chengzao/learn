@@ -2,136 +2,137 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <style>
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
 
-        html {
-            width: 100%;
-            height: 100%;
-            overflow: scroll;
-        }
+    html {
+      width: 100%;
+      height: 100%;
+      overflow: scroll;
+    }
 
-        body {
-            height: 2000px;
-            width: 1000px;
-            background-color: azure;
-        }
+    body {
+      height: 2000px;
+      width: 1000px;
+      background-color: azure;
+    }
 
-        ul li:nth-child(2n) {
-            margin-bottom: 10px;
-        }
+    ul li:nth-child(2n) {
+      margin-bottom: 10px;
+    }
 
-        span {
-            color: red;
-        }
+    span {
+      color: red;
+    }
 
-        #box {
-            width: 200px;
-            height: 100px;
-            border: 5px solid #666;
-            padding: 15px;
-            background-color: antiquewhite;
-            margin: 20px;
-            overflow: scroll;
-        }
+    #box {
+      width: 200px;
+      height: 100px;
+      border: 5px solid #666;
+      padding: 15px;
+      background-color: antiquewhite;
+      margin: 20px;
+      overflow: scroll;
+    }
 
-        #box pre {
-            margin: 0;
-            padding: 0;
-        }
+    #box pre {
+      margin: 0;
+      padding: 0;
+    }
 
-        ol,li{
-            padding: 0;
-            margin: 0;
-        }
+    ol,
+    li {
+      padding: 0;
+      margin: 0;
+    }
 
-        .content {
-            height: 100px;
-        }
-    </style>
+    .content {
+      height: 100px;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="content"></div>
-    <div id="box">
-        <ol>
-            <li>width: 200px;</li>
-            <li> height: 100px;</li>
-            <li>border: 5px solid #666;</li>
-            <li>padding: 15px;</li>
-            <li> margin: 20px;</li>
-            <li>width: 200px;</li>
-            <li> height: 100px;</li>
-            <li>border: 5px solid #666;</li>
-            <li>padding: 15px;</li>
-            <li> margin: 20px;</li>
-        </ol>
- 
-    </div>
+  <div class="content"></div>
+  <div id="box">
+    <ol>
+      <li>width: 200px;</li>
+      <li> height: 100px;</li>
+      <li>border: 5px solid #666;</li>
+      <li>padding: 15px;</li>
+      <li> margin: 20px;</li>
+      <li>width: 200px;</li>
+      <li> height: 100px;</li>
+      <li>border: 5px solid #666;</li>
+      <li>padding: 15px;</li>
+      <li> margin: 20px;</li>
+    </ol>
 
-    <ul>
+  </div>
 
-    </ul>
+  <ul>
+
+  </ul>
 </body>
 <script>
-    function data() {
-        var box = document.getElementById('box');
-        _obj = {
-            'box': 'info',
-            'box.getBoundingClientRect()': JSON.stringify(box.getBoundingClientRect()),
-            // 'document.body.scrollIntoView()': document.getElementById('box').scrollIntoView(),
+  function data() {
+    var box = document.getElementById('box');
+    _obj = {
+      'box': 'info',
+      'box.getBoundingClientRect()': JSON.stringify(box.getBoundingClientRect()),
+      // 'document.body.scrollIntoView()': document.getElementById('box').scrollIntoView(),
 
-            'box.clientHeight': box.clientHeight,
-            'box.clientWidth': box.clientWidth,
+      'box.clientHeight': box.clientHeight,
+      'box.clientWidth': box.clientWidth,
 
-            'box.clientLeft': box.clientLeft,
-            'box.clientTop': box.clientTop,
+      'box.clientLeft': box.clientLeft,
+      'box.clientTop': box.clientTop,
 
-            'box.offsetHeight': box.offsetHeight,
-            'box.offsetWidth': box.offsetWidth,
+      'box.offsetHeight': box.offsetHeight,
+      'box.offsetWidth': box.offsetWidth,
 
-            'box.offsetLeft': box.offsetLeft,
-            'box.offsetTop': box.offsetTop,
+      'box.offsetLeft': box.offsetLeft,
+      'box.offsetTop': box.offsetTop,
 
-            'box.scrollHeight': box.scrollHeight,
-            'box.scrollWidth': box.scrollWidth,
+      'box.scrollHeight': box.scrollHeight,
+      'box.scrollWidth': box.scrollWidth,
 
-            'box.scrollLeft': box.scrollLeft,
-            'box.scrollTop': box.scrollTop,
-
-
-        }
+      'box.scrollLeft': box.scrollLeft,
+      'box.scrollTop': box.scrollTop,
 
 
-        var ul = document.querySelector('ul');
-        var dom = '';
-        for (const item in _obj) {
-            if (_obj.hasOwnProperty(item)) {
-                const element = _obj[item];
-                dom += "<li>" + item + "  ==> <span> " + element + "</span></li>"
-            }
-        }
-        ul.innerHTML = dom;
     }
-    data()
 
-    window.addEventListener('resize', function () {
-        data()
-    })
-    box.addEventListener('scroll', function () {
-        data()
-    })
-    window.addEventListener('scroll', function () {
-        data()
-    })
+
+    var ul = document.querySelector('ul');
+    var dom = '';
+    for (const item in _obj) {
+      if (_obj.hasOwnProperty(item)) {
+        const element = _obj[item];
+        dom += "<li>" + item + "  ==> <span> " + element + "</span></li>"
+      }
+    }
+    ul.innerHTML = dom;
+  }
+  data()
+
+  window.addEventListener('resize', function () {
+    data()
+  })
+  box.addEventListener('scroll', function () {
+    data()
+  })
+  window.addEventListener('scroll', function () {
+    data()
+  })
 </script>
 
 </html>

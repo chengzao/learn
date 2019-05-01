@@ -1,51 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<style>
-		body {background-color:white;padding:50px 50px}
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: white;
+      padding: 50px 50px
+    }
 
-		pre {
-		  background-color:#eee;
-		  overflow:auto;
-		  margin:0 0 1em;
-		  padding:.5em 1em;
-		}
+    pre {
+      background-color: #eee;
+      overflow: auto;
+      margin: 0 0 1em;
+      padding: .5em 1em;
+    }
 
-		pre code,
-		pre .line-number {
-		  /* Ukuran line-height antara teks di dalam tag <code> dan <span class="line-number"> harus sama! */
-		  font:normal normal 12px/14px "Courier New",Courier,Monospace;
-		  color:black;
-		  display:block;
-		}
+    pre code,
+    pre .line-number {
+      /* Ukuran line-height antara teks di dalam tag <code> dan <span class="line-number"> harus sama! */
+      font: normal normal 12px/14px "Courier New", Courier, Monospace;
+      color: black;
+      display: block;
+    }
 
-		pre .line-number {
-		  float:left;
-		  margin:0 1em 0 -1em;
-		  border-right:1px solid;
-		  text-align:right;
-		}
+    pre .line-number {
+      float: left;
+      margin: 0 1em 0 -1em;
+      border-right: 1px solid;
+      text-align: right;
+    }
 
-		pre .line-number span {
-		  display:block;
-		  padding:0 .5em 0 1em;
-		}
+    pre .line-number span {
+      display: block;
+      padding: 0 .5em 0 1em;
+    }
 
-		pre .cl {
-		  display:block;
-		  clear:both;
-		}
-	</style>
+    pre .cl {
+      display: block;
+      clear: both;
+    }
+  </style>
 </head>
 <body>
-<pre><code>
+  <pre><code>
 	&lt;div class="example"&gt;
 	    &lt;span&gt;Lorem ipsum dolor sit amet...&lt;/span&gt;
 	&lt;/div&gt;
 	</code></pre>
-<pre>
+  <pre>
 <code>(function() {
     var s = document.createElement('script');
         s.id = "some-id";
@@ -54,17 +57,17 @@
 })();</code></pre>
 </body>
 <script>
-	(function() {
+  (function () {
     var pre = document.getElementsByTagName('pre'),
-        pl = pre.length;
+      pl = pre.length;
     for (var i = 0; i < pl; i++) {
-        pre[i].innerHTML = '<span class="line-number"></span>' + pre[i].innerHTML + '<span class="cl"></span>';
-        var num = pre[i].innerHTML.split(/\n/).length;
-        for (var j = 0; j < num; j++) {
-            var line_num = pre[i].getElementsByTagName('span')[0];
-            line_num.innerHTML += '<span>' + (j + 1) + '</span>';
-        }
+      pre[i].innerHTML = '<span class="line-number"></span>' + pre[i].innerHTML + '<span class="cl"></span>';
+      var num = pre[i].innerHTML.split(/\n/).length;
+      for (var j = 0; j < num; j++) {
+        var line_num = pre[i].getElementsByTagName('span')[0];
+        line_num.innerHTML += '<span>' + (j + 1) + '</span>';
+      }
     }
-})();
+  })();
 </script>
 </html>

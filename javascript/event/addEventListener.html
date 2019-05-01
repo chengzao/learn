@@ -1,54 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>addEventListener</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>addEventListener</title>
 </head>
 <body>
-    addEventListener
+  addEventListener
 
-    <div>
-        <p>Click Me</p>
-    </div>
+  <div>
+    <p>Click Me</p>
+  </div>
 </body>
 <script>
-    // function hello() {
-    //     console.log(+new Date());
-    // }
+  // function hello() {
+  //     console.log(+new Date());
+  // }
 
-    // document.addEventListener('click', hello, false);
-    // document.addEventListener('click', hello, false);
-
-
-    // addEventListener：绑定事件的监听函数
-    // removeEventListener：移除事件的监听函数
-    // dispatchEvent：触发事件
+  // document.addEventListener('click', hello, false);
+  // document.addEventListener('click', hello, false);
 
 
-    // 事件的传播顺序，
-    // 在捕获阶段依次为: window、document、html、body、div
-    // 在冒泡阶段依次为: div、body、html、document、window
+  // addEventListener：绑定事件的监听函数
+  // removeEventListener：移除事件的监听函数
+  // dispatchEvent：触发事件
 
-    var phases = {
-        1: 'capture',
-        2: 'target',
-        3: 'bubble'
-    };
 
-    var div = document.querySelector('div');
-    var p = document.querySelector('p');
+  // 事件的传播顺序，
+  // 在捕获阶段依次为: window、document、html、body、div
+  // 在冒泡阶段依次为: div、body、html、document、window
 
-    // div.addEventListener('click', callback, true);
-    // p.addEventListener('click', callback, true);
-    div.addEventListener('click', callback, false);
-    p.addEventListener('click', callback, false);
+  var phases = {
+    1: 'capture',
+    2: 'target',
+    3: 'bubble'
+  };
 
-    function callback(event) {
-        var tag = event.currentTarget.tagName;
-        var phase = phases[event.eventPhase];
-        console.log("Tag: '" + tag + "'. EventPhase: '" + phase + "'");
-    }
+  var div = document.querySelector('div');
+  var p = document.querySelector('p');
+
+  // div.addEventListener('click', callback, true);
+  // p.addEventListener('click', callback, true);
+  div.addEventListener('click', callback, false);
+  p.addEventListener('click', callback, false);
+
+  function callback(event) {
+    var tag = event.currentTarget.tagName;
+    var phase = phases[event.eventPhase];
+    console.log("Tag: '" + tag + "'. EventPhase: '" + phase + "'");
+  }
 </script>
 </html>

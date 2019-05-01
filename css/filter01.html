@@ -1,80 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<style>
-	     /*使用这个特效，会把图片变成灰色的*/
-		.grayscale{
-          -webkit-filter:grayscale(0.5);
-      } 
-      /*sepia不知道如何译，暂时就叫他“褐色”*/
-    .sepia{
-          -webkit-filter:sepia(1);
-      } 
-       /*saturat是用来改变图片的饱和度*/
-    .saturate{
-         -webkit-filter:saturate(3);
-      }
-      /*hue-rotate用来改变图片的色相*/
-    .hue-rotate{
-           -webkit-filter:hue-rotate(90deg);
-       }
-       /*invert做出来的效果就像是我们照相机底面的效果一样*/
-        .invert{
-            -webkit-filter:invert(1);
-        }
-   /*opacity透明度*/
-         .opacity{
-        -webkit-filter:opacity(.2);
-      }
-      /*brightness改变图片的亮度*/
-            .brightness{
-            -webkit-filter:brightness(.5);
-        }
-        /*contrast对比度:改变图片的对比度，整个psd的*/
-              .contrast{
-            -webkit-filter:contrast(2);
-        }
-        /*blur模糊*/
-              .blur{
-            -webkit-filter:blur(3px);
-        }
-        /*drop-shadow阴影:给图片加阴影效果*/
-              .drop-shadow{
-            -webkit-filter:drop-shadow(5px 5px 5px #ccc);
-        }
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    /*使用这个特效，会把图片变成灰色的*/
+    .grayscale {
+      -webkit-filter: grayscale(0.5);
+    }
 
-        /*filter自己的需求进行自定义*/
-              .custom{
-            -webkit-filter:saturate(5) hue-rotate(500deg) grayscale(0.3) sepia(0.7) contrast(1.5) invert(0.2) brightness(.9);
-        }
-	</style>
+    /*sepia不知道如何译，暂时就叫他“褐色”*/
+    .sepia {
+      -webkit-filter: sepia(1);
+    }
+
+    /*saturat是用来改变图片的饱和度*/
+    .saturate {
+      -webkit-filter: saturate(3);
+    }
+
+    /*hue-rotate用来改变图片的色相*/
+    .hue-rotate {
+      -webkit-filter: hue-rotate(90deg);
+    }
+
+    /*invert做出来的效果就像是我们照相机底面的效果一样*/
+    .invert {
+      -webkit-filter: invert(1);
+    }
+
+    /*opacity透明度*/
+    .opacity {
+      -webkit-filter: opacity(.2);
+    }
+
+    /*brightness改变图片的亮度*/
+    .brightness {
+      -webkit-filter: brightness(.5);
+    }
+
+    /*contrast对比度:改变图片的对比度，整个psd的*/
+    .contrast {
+      -webkit-filter: contrast(2);
+    }
+
+    /*blur模糊*/
+    .blur {
+      -webkit-filter: blur(3px);
+    }
+
+    /*drop-shadow阴影:给图片加阴影效果*/
+    .drop-shadow {
+      -webkit-filter: drop-shadow(5px 5px 5px #ccc);
+    }
+
+    /*filter自己的需求进行自定义*/
+    .custom {
+      -webkit-filter: saturate(5) hue-rotate(500deg) grayscale(0.3) sepia(0.7) contrast(1.5) invert(0.2) brightness(.9);
+    }
+  </style>
 </head>
 <!-- http://www.w3cplus.com/css3/ten-effects-with-css3-filter -->
 <body>
-	<img class="normal" title="normal" width="128" height="128" alt="HTML5 Logo" src="http://www.w3cplus.com/sites/default/files/filter.jpg" />
-	<!-- 使用这个特效，会把图片变成灰色的 -->
-	<img class="grayscale" title="normal" width="128" height="128" alt="HTML5 Logo" src="http://www.w3cplus.com/sites/default/files/filter.jpg" />
-	<!-- sepia不知道如何译，暂时就叫他“褐色” -->
-	<img class="sepia" title="normal" width="128" height="128" alt="HTML5 Logo" src="http://www.w3cplus.com/sites/default/files/filter.jpg" />
-	<!-- saturat是用来改变图片的饱和度 -->
-	<img class="saturate" title="saturate" width="128" height="128" alt="HTML5 Logo" src="http://www.w3cplus.com/sites/default/files/filter.jpg" />
-	<!-- hue-rotate用来改变图片的色相 -->
-	<img class="hue-rotate" title="saturate" width="128" height="128" alt="HTML5 Logo" src="http://www.w3cplus.com/sites/default/files/filter.jpg" />
-	<!-- invert做出来的效果就像是我们照相机底面的效果一样 -->
-	<img class="invert" title="saturate" width="128" height="128" alt="HTML5 Logo" src="http://www.w3cplus.com/sites/default/files/filter.jpg" />
-	<!-- opacity透明度 -->
-	<img class="opacity" title="saturate" width="128" height="128" alt="HTML5 Logo" src="http://www.w3cplus.com/sites/default/files/filter.jpg" />
+  <img class="normal" title="normal" width="128" height="128" alt="HTML5 Logo"
+    src="http://www.w3cplus.com/sites/default/files/filter.jpg" />
+  <!-- 使用这个特效，会把图片变成灰色的 -->
+  <img class="grayscale" title="normal" width="128" height="128" alt="HTML5 Logo"
+    src="http://www.w3cplus.com/sites/default/files/filter.jpg" />
+  <!-- sepia不知道如何译，暂时就叫他“褐色” -->
+  <img class="sepia" title="normal" width="128" height="128" alt="HTML5 Logo"
+    src="http://www.w3cplus.com/sites/default/files/filter.jpg" />
+  <!-- saturat是用来改变图片的饱和度 -->
+  <img class="saturate" title="saturate" width="128" height="128" alt="HTML5 Logo"
+    src="http://www.w3cplus.com/sites/default/files/filter.jpg" />
+  <!-- hue-rotate用来改变图片的色相 -->
+  <img class="hue-rotate" title="saturate" width="128" height="128" alt="HTML5 Logo"
+    src="http://www.w3cplus.com/sites/default/files/filter.jpg" />
+  <!-- invert做出来的效果就像是我们照相机底面的效果一样 -->
+  <img class="invert" title="saturate" width="128" height="128" alt="HTML5 Logo"
+    src="http://www.w3cplus.com/sites/default/files/filter.jpg" />
+  <!-- opacity透明度 -->
+  <img class="opacity" title="saturate" width="128" height="128" alt="HTML5 Logo"
+    src="http://www.w3cplus.com/sites/default/files/filter.jpg" />
   <!-- brightness改变图片的亮度 -->
-	<img class="brightness" title="saturate" width="128" height="128" alt="HTML5 Logo" src="http://www.w3cplus.com/sites/default/files/filter.jpg" />
-	<!-- contrast对比度:改变图片的对比度，整个psd的 -->
-	<img class="contrast" title="saturate" width="128" height="128" alt="HTML5 Logo" src="http://www.w3cplus.com/sites/default/files/filter.jpg" />
-	<!-- blur模糊 -->
-	<img class="blur" title="saturate" width="128" height="128" alt="HTML5 Logo" src="http://www.w3cplus.com/sites/default/files/filter.jpg" />
-   <!-- drop-shadow阴影:给图片加阴影效果 -->
-	<img class="drop-shadow" title="saturate" width="128" height="128" alt="HTML5 Logo" src="http://www.w3cplus.com/sites/default/files/filter.jpg" />
-   <!-- filter自己的需求进行自定义 -->
-	<img class="custom" title="saturate" width="128" height="128" alt="HTML5 Logo" src="http://www.w3cplus.com/sites/default/files/filter.jpg" />
+  <img class="brightness" title="saturate" width="128" height="128" alt="HTML5 Logo"
+    src="http://www.w3cplus.com/sites/default/files/filter.jpg" />
+  <!-- contrast对比度:改变图片的对比度，整个psd的 -->
+  <img class="contrast" title="saturate" width="128" height="128" alt="HTML5 Logo"
+    src="http://www.w3cplus.com/sites/default/files/filter.jpg" />
+  <!-- blur模糊 -->
+  <img class="blur" title="saturate" width="128" height="128" alt="HTML5 Logo"
+    src="http://www.w3cplus.com/sites/default/files/filter.jpg" />
+  <!-- drop-shadow阴影:给图片加阴影效果 -->
+  <img class="drop-shadow" title="saturate" width="128" height="128" alt="HTML5 Logo"
+    src="http://www.w3cplus.com/sites/default/files/filter.jpg" />
+  <!-- filter自己的需求进行自定义 -->
+  <img class="custom" title="saturate" width="128" height="128" alt="HTML5 Logo"
+    src="http://www.w3cplus.com/sites/default/files/filter.jpg" />
 </body>
 </html>

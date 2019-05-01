@@ -1,80 +1,83 @@
- /* 五行 */
+/* 五行 */
 
- .wuxing-bg {
-    margin: 65px auto;
-    width: 626px;
-    height: 626px;
-    position: relative;
-    background-color: rgba(2, 57, 169, .4);
-    border: solid 1px #0239a9;
-    border-radius: 50%;
+.wuxing-bg {
+  margin: 65px auto;
+  width: 626px;
+  height: 626px;
+  position: relative;
+  background-color: rgba(2, 57, 169, 0.4);
+  border: solid 1px #0239a9;
+  border-radius: 50%;
 }
 
 .wuxing {
-    width: 420px;
-    height: 420px;
-    background-color: #efefef;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  width: 420px;
+  height: 420px;
+  background-color: #efefef;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
 /* 太极 */
 
 .wuxing .taiji {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 135px;
-    height: 135px;
-    background-color: #dfd;
-    border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 135px;
+  height: 135px;
+  background-color: #dfd;
+  border-radius: 50%;
 
-    text-align: center;
-    line-height: 135px;   
+  text-align: center;
+  line-height: 135px;
 }
-.wuxing .wx-item{
-    width: 124px;
-    height: 124px;
-    border-radius: 50%;
-    position: absolute;  
-    transform: translate(-50%, -50%);
-    top: 0;
-    left: 0;
+.wuxing .wx-item {
+  width: 124px;
+  height: 124px;
+  border-radius: 50%;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
 
-    text-align: center;
-    line-height: 124px;          
+  text-align: center;
+  line-height: 124px;
 }
 /* 金 */
 
 .wuxing .gold {
-    background-color: gold;
+  background-color: gold;
 }
 
 /* 土 */
 
 .wuxing .earth {
-    background-color: gold;
+  background-color: gold;
 }
 
 /* 水 */
 
 .wuxing .water {
-    background-color: gold;
+  background-color: gold;
 }
 
 /* 火 */
 
 .wuxing .fire {
-    background-color: gold;
+  background-color: gold;
 }
 
 /* 木 */
 
 .wuxing .wood {
-    background-color: gold;
+  background-color: gold;
 }

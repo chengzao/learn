@@ -12,41 +12,41 @@
   }
  */
 //上
-.trangle(top,@w:5px,@c:#ccc){
-	border-width: @w;
-	border-color: transparent transparent @c transparent ;
-	border-style: dashed dashed solid dashed ;
+.trangle(top,@w:5px,@c:#ccc) {
+  border-width: @w;
+  border-color: transparent transparent @c transparent;
+  border-style: dashed dashed solid dashed;
 }
 //右
-.trangle(right,@w:5px,@c:#ccc){
-	border-width: @w;
-	border-color: transparent transparent transparent @c;
-	border-style: dashed dashed dashed solid;
+.trangle(right,@w:5px,@c:#ccc) {
+  border-width: @w;
+  border-color: transparent transparent transparent @c;
+  border-style: dashed dashed dashed solid;
 }
 //下
-.trangle(bottom,@w:5px,@c:#ccc){
-	border-width: @w;
-	border-color:@c transparent transparent transparent;
-	border-style:solid dashed dashed dashed;
+.trangle(bottom,@w:5px,@c:#ccc) {
+  border-width: @w;
+  border-color: @c transparent transparent transparent;
+  border-style: solid dashed dashed dashed;
 }
 //左
-.trangle(left,@w:5px,@c:#ccc){
-	border-width: @w;
-	border-color: transparent @c transparent transparent;
-	border-style: dashed solid dashed dashed ;
+.trangle(left,@w:5px,@c:#ccc) {
+  border-width: @w;
+  border-color: transparent @c transparent transparent;
+  border-style: dashed solid dashed dashed;
 }
 //匹配通用格式
-.trangle(@_,@w:5px,@c:#ccc){
-	width: 0;
-	height: 0;
-	overflow: hidden;
+.trangle(@_,@w:5px,@c:#ccc) {
+  width: 0;
+  height: 0;
+  overflow: hidden;
 }
 //例：
-.sanjiao{
-  .trangle(right,50px);
+.sanjiao {
+  .trangle(right, 50px);
 }
 
 //例：写入错误值
-.sanjiao1{
-	.trangle(dsa,20px);
+.sanjiao1 {
+  .trangle(dsa, 20px);
 }

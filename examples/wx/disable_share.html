@@ -6,15 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>禁用分享</title>
   <style media="screen">
-    ul{
+    ul {
       list-style: none;
       margin: 0;
-      padding:0;
+      padding: 0;
     }
-    li{
-      margin-bottom:10px;
+
+    li {
+      margin-bottom: 10px;
     }
-    button{
+
+    button {
       display: block;
       padding: 5px;
     }
@@ -55,7 +57,7 @@
 </body>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
-wx.config({
+  wx.config({
     debug: false,
     appId: 'wx3d9605a1a529fc89',
     timestamp: 1517454040,
@@ -70,80 +72,80 @@ wx.config({
       'showOptionMenu',
       'closeWindow'
     ]
-});
+  });
 
-wx.ready(function () {
-  // 隐藏右上角菜单
-  document.querySelector('#hideOptionMenu').onclick = function () {
-    wx.hideOptionMenu();
-  };
+  wx.ready(function () {
+    // 隐藏右上角菜单
+    document.querySelector('#hideOptionMenu').onclick = function () {
+      wx.hideOptionMenu();
+    };
 
-  // 显示右上角菜单
-  document.querySelector('#showOptionMenu').onclick = function () {
-    wx.showOptionMenu();
-  };
+    // 显示右上角菜单
+    document.querySelector('#showOptionMenu').onclick = function () {
+      wx.showOptionMenu();
+    };
 
-  // 批量隐藏菜单项
-  document.querySelector('#hideMenuItems').onclick = function () {
-    wx.hideMenuItems({
-      menuList: [
-        'menuItem:readMode', // 阅读模式
-        'menuItem:share:timeline', // 分享到朋友圈
-        'menuItem:copyUrl' // 复制链接
-      ],
-      success: function (res) {
-        alert('已隐藏“阅读模式”，“分享到朋友圈”，“复制链接”等按钮');
-      },
-      fail: function (res) {
-        alert(JSON.stringify(res));
-      }
-    });
-  };
+    // 批量隐藏菜单项
+    document.querySelector('#hideMenuItems').onclick = function () {
+      wx.hideMenuItems({
+        menuList: [
+          'menuItem:readMode', // 阅读模式
+          'menuItem:share:timeline', // 分享到朋友圈
+          'menuItem:copyUrl' // 复制链接
+        ],
+        success: function (res) {
+          alert('已隐藏“阅读模式”，“分享到朋友圈”，“复制链接”等按钮');
+        },
+        fail: function (res) {
+          alert(JSON.stringify(res));
+        }
+      });
+    };
 
-  // 批量显示菜单项
-  document.querySelector('#showMenuItems').onclick = function () {
-    wx.showMenuItems({
-      menuList: [
-        'menuItem:readMode', // 阅读模式
-        'menuItem:share:timeline', // 分享到朋友圈
-        'menuItem:copyUrl' // 复制链接
-      ],
-      success: function (res) {
-        alert('已显示“阅读模式”，“分享到朋友圈”，“复制链接”等按钮');
-      },
-      fail: function (res) {
-        alert(JSON.stringify(res));
-      }
-    });
-  };
+    // 批量显示菜单项
+    document.querySelector('#showMenuItems').onclick = function () {
+      wx.showMenuItems({
+        menuList: [
+          'menuItem:readMode', // 阅读模式
+          'menuItem:share:timeline', // 分享到朋友圈
+          'menuItem:copyUrl' // 复制链接
+        ],
+        success: function (res) {
+          alert('已显示“阅读模式”，“分享到朋友圈”，“复制链接”等按钮');
+        },
+        fail: function (res) {
+          alert(JSON.stringify(res));
+        }
+      });
+    };
 
-  // 隐藏所有非基本菜单项
-  document.querySelector('#hideAllNonBaseMenuItem').onclick = function () {
-    wx.hideAllNonBaseMenuItem({
-      success: function () {
-        alert('已隐藏所有非基本菜单项');
-      }
-    });
-  };
+    // 隐藏所有非基本菜单项
+    document.querySelector('#hideAllNonBaseMenuItem').onclick = function () {
+      wx.hideAllNonBaseMenuItem({
+        success: function () {
+          alert('已隐藏所有非基本菜单项');
+        }
+      });
+    };
 
-  // 显示所有被隐藏的非基本菜单项
-  document.querySelector('#showAllNonBaseMenuItem').onclick = function () {
-    wx.showAllNonBaseMenuItem({
-      success: function () {
-        alert('已显示所有非基本菜单项');
-      }
-    });
-  };
+    // 显示所有被隐藏的非基本菜单项
+    document.querySelector('#showAllNonBaseMenuItem').onclick = function () {
+      wx.showAllNonBaseMenuItem({
+        success: function () {
+          alert('已显示所有非基本菜单项');
+        }
+      });
+    };
 
-  // 关闭当前窗口
-  document.querySelector('#closeWindow').onclick = function () {
-    wx.closeWindow();
-  };
-});
+    // 关闭当前窗口
+    document.querySelector('#closeWindow').onclick = function () {
+      wx.closeWindow();
+    };
+  });
 
-wx.error(function (res) {
-  alert(res.errMsg);
-});
+  wx.error(function (res) {
+    alert(res.errMsg);
+  });
 
 </script>
 <!-- 另一种方式 -->

@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>tag</title>
-    <style>
-        #mydiv div{
-            height: 50px;
-            width: 400px;
-            margin: 10px;
-            background: red;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>tag</title>
+  <style>
+    #mydiv div {
+      height: 50px;
+      width: 400px;
+      margin: 10px;
+      background: red;
+    }
+  </style>
 </head>
 <body>
-<div id='mydiv'>
+  <div id='mydiv'>
     <div></div>
     <div></div>
     <div></div>
@@ -22,90 +22,90 @@
     <div></div>
     <div></div>
     <div></div>
-</div>
+  </div>
 
 </body>
 </html>
 <script src="czh.js"></script>
 <script>
-	var dmo = document.getElementById('mydiv');
-    var divs = czh.$tag('div',mydiv);
-    for(var i=0;i<divs.length;i++){
-        divs[i].onclick =function(){
-        	// 阻止冒泡
-        	czh.stopPropagation();
-            this.style.background = 'blue';
+  var dmo = document.getElementById('mydiv');
+  var divs = czh.$tag('div', mydiv);
+  for (var i = 0; i < divs.length; i++) {
+    divs[i].onclick = function () {
+      // 阻止冒泡
+      czh.stopPropagation();
+      this.style.background = 'blue';
+    }
+  }
+
+  function $id(ele) {
+    return document.getElementById(ele);
+  }
+
+  function $tag(ele, id) {
+    var dom = $id(id);
+    return dom.getElementsByTagName(ele);
+  }
+
+  // 支持  id /  dom
+  function $tag2(ele, id) {
+    var dom;
+    if (czh.isString(id)) {
+      dom = czh.$id(id);
+
+    } else {
+      dom = id;
+    }
+    return dom.getElementsByTagName(ele);
+  }
+
+  //
+  function $tag3(ele, id) {
+    var doms = getContext(id);
+    var eles = getTags(doms, ele);
+    return eles;
+    // 1.搜索范围
+    function getContext(id) {
+      // 判断是字符串还是dom元素
+      var dom;
+      if (czh.isString(id)) {
+        dom = czh.$id(id);
+      } else {
+        dom = id;
+      }
+      return dom;
+    }
+    // 2.得到标签
+    function getTags(context, tag) {
+      return context.getElementsByTagName(tag);
+    }
+  }
+
+  // 判断是否传入id
+  function $tag4(ele, id) {
+    var doms = getContext(id);
+    var eles = getTags(doms, ele);
+    return eles;
+    // 1.搜索范围
+    function getContext(id) {
+      // 判断是否传入id
+      if (id) {
+        // 判断是字符串还是dom元素
+        var dom;
+        if (czh.isString(id)) {
+          dom = czh.$id(id);
+        } else {
+          dom = id;
         }
-    }
 
-    function $id(ele){
-    	return document.getElementById(ele);
+      } else {
+        dom = document;
+      }
+      return dom;
     }
-
-    function $tag(ele,id){
-    	var dom = $id(id);
-    	return dom.getElementsByTagName(ele);
+    // 2.得到标签
+    function getTags(context, tag) {
+      return context.getElementsByTagName(tag);
     }
-
-    // 支持  id /  dom
-    function $tag2(ele,id){
-    	var dom;
-		if(czh.isString(id)){
-		    dom = czh.$id(id);
-			
-		}else{
-			dom = id;
-		}
-    	return dom.getElementsByTagName(ele);
-    }
-
-    // 
-    function $tag3(ele,id){
-    	var doms = getContext(id);
-    	var eles = getTags(doms,ele);
-    	return eles;
-    	// 1.搜索范围
-		function getContext(id){
-			// 判断是字符串还是dom元素
-			var dom;
-			if(czh.isString(id)){
-				dom = czh.$id(id);
-			}else{
-				dom = id;
-			}
-			return dom;
-		}
-		// 2.得到标签
-		function getTags(context,tag){
-			return context.getElementsByTagName(tag);
-		}
-    }
-
-    // 判断是否传入id
-    function $tag4(ele,id){
-    	var doms = getContext(id);
-    	var eles = getTags(doms,ele);
-    	return eles;
-    	// 1.搜索范围
-		function getContext(id){
-			// 判断是否传入id
-			if(id){
-				// 判断是字符串还是dom元素
-				var dom;
-				if(czh.isString(id)){
-					dom = czh.$id(id);
-				}else{
-					dom = id;
-				}
-				
-			}else{
-				dom = document;
-			}
-			return dom;
-		}
-		// 2.得到标签
-		function getTags(context,tag){
-			return context.getElementsByTagName(tag);
-		}
-    }
+  }
 </script>

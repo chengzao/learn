@@ -1,54 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>判断类型</title>
+  <meta charset="UTF-8">
+  <title>判断类型</title>
 </head>
 <body>
-	<script>
-		var fn = function (){};
-		var obj = {};
-		var arr = [];
-		var str = 'this is a window' ;
-		var num =  123;
-		var val = true;
-		var val2 = 0;
+  <script>
+    var fn = function () { };
+    var obj = {};
+    var arr = [];
+    var str = 'this is a window';
+    var num = 123;
+    var val = true;
+    var val2 = 0;
 
-		//typeof
-		console.log(typeof(str))  // string
-		console.log(typeof(fn)) // function
-		console.log(typeof(obj)) // object
-		console.log(typeof(arr)) // object
-		console.log(typeof(val)); // boolean
-		console.log(typeof(val2)); // number
-		console.log(Object.prototype.toString.call(arr)) // Array
-		//
-		console.log("Object ypeof is : ",typeof(Object)) // function
-		console.log("Array typeof is : ",typeof(Array)) // fnuction
-		console.log("Number typeof is : ",typeof(Number)) // function
-		console.log("Function typeof is : ",typeof(Function)) // function
-		console.log("Boobean typeof is : ",typeof(Boobean)) // undefined
-		console.log("undefined typeof is : ",typeof(undefined)) // undefined
-		console.log("NaN typeof is : ",typeof(NaN))  // number
+    //typeof
+    console.log(typeof (str))  // string
+    console.log(typeof (fn)) // function
+    console.log(typeof (obj)) // object
+    console.log(typeof (arr)) // object
+    console.log(typeof (val)); // boolean
+    console.log(typeof (val2)); // number
+    console.log(Object.prototype.toString.call(arr)) // Array
+    //
+    console.log("Object ypeof is : ", typeof (Object)) // function
+    console.log("Array typeof is : ", typeof (Array)) // fnuction
+    console.log("Number typeof is : ", typeof (Number)) // function
+    console.log("Function typeof is : ", typeof (Function)) // function
+    console.log("Boobean typeof is : ", typeof (Boobean)) // undefined
+    console.log("undefined typeof is : ", typeof (undefined)) // undefined
+    console.log("NaN typeof is : ", typeof (NaN))  // number
 
 
-		//
-		function Person(){}
-		var p = new Person();
+    //
+    function Person() { }
+    var p = new Person();
 
-		console.log(typeof(p));  // object
-		console.log(typeof(Person)) // function
+    console.log(typeof (p));  // object
+    console.log(typeof (Person)) // function
 
-		console.log("----------------2017年9月5日 17:06:50--------------------")
-		// instanceof
-		var o = {};
-		var a = [];
-		console.log("o typeof is : ",typeof(o))//object
-		console.log("a typeof is : ",typeof(a))//object
-		console.log("o instanceof Array is : ",o instanceof Array); // false
-		console.log("a instanceof Array is : ",a instanceof Array); // true
-		console.log("Object.prototype.toString.call(o) is : ",Object.prototype.toString.call(o));
-		console.log("Object.prototype.toString.call(a) is : ",Object.prototype.toString.call(a));
-	</script>
+    console.log("----------------2017年9月5日 17:06:50--------------------")
+    // instanceof
+    var o = {};
+    var a = [];
+    console.log("o typeof is : ", typeof (o))//object
+    console.log("a typeof is : ", typeof (a))//object
+    console.log("o instanceof Array is : ", o instanceof Array); // false
+    console.log("a instanceof Array is : ", a instanceof Array); // true
+    console.log("Object.prototype.toString.call(o) is : ", Object.prototype.toString.call(o));
+    console.log("Object.prototype.toString.call(a) is : ", Object.prototype.toString.call(a));
+  </script>
 </body>
 </html>

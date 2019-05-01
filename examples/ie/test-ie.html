@@ -7,30 +7,55 @@
   <title>Document</title>
 
   <style type="text/css">
+    * {
+      padding: 0;
+      margin: 0;
+    }
 
-  *{ padding: 0; margin:0;}
+    body {
+      font-size: 14px;
+      color: blue;
+      font-weight: bold;
+    }
 
-  body{ font-size: 14px; color: blue; font-weight: bold;  }
+    /*div{display: inline-block; zoom:1;_display: inline;  width: 200px; height: 100px; background: #ddd}*/
+    div {
+      display: inline-block;
+      zoom: 1;
+      _display: inline;
+      *+display: inline;
+      width: 200px;
+      height: 100px;
+      background: #ddd
+    }
 
-  /*div{display: inline-block; zoom:1;_display: inline;  width: 200px; height: 100px; background: #ddd}*/
-  div{display: inline-block; zoom:1; _display:inline;*+display: inline;width: 200px; height: 100px; background: #ddd}
-  a{display: inline-block;width: 200px; height: 200px; background: red}
-  ul li{
-    width: 400px;
-    height: 100px;
-    margin: 5px;
-    background-color: #f0f0f0;
-    display:inline-block;*zoom:1;*+display:inline;
-  }
+    a {
+      display: inline-block;
+      width: 200px;
+      height: 200px;
+      background: red
+    }
 
-  .main_link{
-    position: fixed;right: 10px;bottom: 50px;
-    _position:absolute;
-    _bottom:auto;
-    _top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));
-    _margin-bottom: 50px;
-  }
-</style>
+    ul li {
+      width: 400px;
+      height: 100px;
+      margin: 5px;
+      background-color: #f0f0f0;
+      display: inline-block;
+      *zoom: 1;
+      *+display: inline;
+    }
+
+    .main_link {
+      position: fixed;
+      right: 10px;
+      bottom: 50px;
+      _position: absolute;
+      _bottom: auto;
+      _top: expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop, 10)||0)-(parseInt(this.currentStyle.marginBottom, 10)||0)));
+      _margin-bottom: 50px;
+    }
+  </style>
 
 </head>
 <body>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title></title>
-	<script>
-		// 使用 apply 可以让一个函数作为一个对象的方法来调用
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+    // 使用 apply 可以让一个函数作为一个对象的方法来调用
 		/*
 		var o = {name:"jim", sayHello:function (v) {
 			console.log("你好 " + v + " 我是 " + this.name);
@@ -47,11 +47,11 @@
 		*/
 
 
-		var o = {
-			name: "jim", sayHello: function (v1, v2, v3) {
+    var o = {
+      name: "jim", sayHello: function (v1, v2, v3) {
 
-				var str = [].join.call(arguments, "=====");
-				console.log("你好 " + str + " 我是 " + this.name);
+        var str = [].join.call(arguments, "=====");
+        console.log("你好 " + str + " 我是 " + this.name);
 				/*
 				var arr = [v1, v2, v3];
 				var str = arr.join(", ");
@@ -63,13 +63,13 @@
 								v1 + ", " +
 								v2 + ", " +
 								v3 + ", 我是 " + this.name);	*/
-			}
-		};
+      }
+    };
 
-		o.sayHello("tom1", "xiaoming", "tom2");
+    o.sayHello("tom1", "xiaoming", "tom2");
 
-		o.sayHello.apply(o, ["tom2", "tom1", "xiaoming"]);
-		o.sayHello.call(o, "tom2", "tom1", "xiaoming");
+    o.sayHello.apply(o, ["tom2", "tom1", "xiaoming"]);
+    o.sayHello.call(o, "tom2", "tom1", "xiaoming");
 
 			// apply 与 call 最大的区别是, apply 函数的参数必须是一个数组, 而 call 直接将参数放在后面即可
 			// 例如: fn.apply(o, [a1, a2, a3]);
@@ -98,7 +98,7 @@
 			// 上下文模式：环境调用模式:
 			//		语法 apply, call
 
-	</script>
+  </script>
 </head>
 <body>
 </body>

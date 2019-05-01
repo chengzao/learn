@@ -1,3 +1,3 @@
-function fn(){
-    return 'hello';
+function fn() {
+  return 'hello'
 }

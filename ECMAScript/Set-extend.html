@@ -8,75 +8,75 @@
 
 </body>
 <script>
-'use strict';
-console.log('-------------一个set不会包含相同元素----------');
-// 一个Set不会包含相同元素
-var set = new Set('abc');
-console.log(set);
-console.log('set.size -->  '+set.size);
+	'use strict';
+	console.log('-------------一个set不会包含相同元素----------');
+	// 一个Set不会包含相同元素
+	var set = new Set('abc');
+	console.log(set);
+	console.log('set.size -->  ' + set.size);
 
 
-set.add('a');
-set.add('d');
-console.log(set); //
-console.log('set.size -->  '+set.size);
+	set.add('a');
+	set.add('d');
+	console.log(set); //
+	console.log('set.size -->  ' + set.size);
 
-console.log('----------------包含性检测--------------------');
-var newArr = ['a','b','c'];
-console.log(newArr.indexOf('b')); // 1
-console.log(newArr.indexOf('m')); // -1
+	console.log('----------------包含性检测--------------------');
+	var newArr = ['a', 'b', 'c'];
+	console.log(newArr.indexOf('b')); // 1
+	console.log(newArr.indexOf('m')); // -1
 
-console.log(set.has('a')); // true
-console.log(set.has('h')); // false
+	console.log(set.has('a')); // true
+	console.log(set.has('h')); // false
 
-console.log('--------------Set不能提供的则是索引-----------');
-console.log(set[0]); //undefined
+	console.log('--------------Set不能提供的则是索引-----------');
+	console.log(set[0]); //undefined
 
-console.log('--------------Set用法-------------------------');
-/*
-1. new Set：创建一个新的、空的Set。
-2. new Set(iterable)：从任何可遍历数据中提取元素，构造出一个新的集合。
-3. set.size：获取集合的大小，即其中元素的个数。
-4. set.has(value)：判定集合中是否含有指定元素，返回一个布尔值。
-5. set.add(value)：添加元素。如果与已有重复，则不产生效果。
-6. set.delete(value)：删除元素。如果并不存在，则不产生效果。.add()和.delete()都会返回集合自身，所以我们可以用链式语法。
-7. set[Symbol.iterator]()：返回一个新的遍历整个集合的迭代器。一般这个方法不会被直接调用，因为实际上就是它使集合能够被遍历，可直接写for (v of set) {...}。
-8. set.clear()：清空集合。
-9. set.keys()、set.values()和set.entries()返回各种迭代器
-*/
-
-
-for (var v of set) {
-	console.log(v);
-}
-
-var urls = new Set;
-urls.add(new URL('https://www.baidu.com'));
-urls.add(new URL('https://www.baidu.com'));
-console.log(urls);
-
-console.log('------------------demo------------------')
-let desserts = new Set('abc');
-desserts.add('d');
-desserts.add('d');
-console.log(desserts);
-console.log(desserts.size);
-console.log(desserts.has('b'));
-desserts.delete('d');
-console.log(desserts);
-desserts.forEach(desserts=>{
-	console.log(desserts)
-})
-desserts.clear();
-console.log(desserts);
+	console.log('--------------Set用法-------------------------');
+	/*
+	1. new Set：创建一个新的、空的Set。
+	2. new Set(iterable)：从任何可遍历数据中提取元素，构造出一个新的集合。
+	3. set.size：获取集合的大小，即其中元素的个数。
+	4. set.has(value)：判定集合中是否含有指定元素，返回一个布尔值。
+	5. set.add(value)：添加元素。如果与已有重复，则不产生效果。
+	6. set.delete(value)：删除元素。如果并不存在，则不产生效果。.add()和.delete()都会返回集合自身，所以我们可以用链式语法。
+	7. set[Symbol.iterator]()：返回一个新的遍历整个集合的迭代器。一般这个方法不会被直接调用，因为实际上就是它使集合能够被遍历，可直接写for (v of set) {...}。
+	8. set.clear()：清空集合。
+	9. set.keys()、set.values()和set.entries()返回各种迭代器
+	*/
 
 
-// 去除数组的重复成员
-[...new Set(array)]
+	for (var v of set) {
+		console.log(v);
+	}
 
-//Array.from方法可以将 Set 结构转为数组
-const items = new Set([1, 2, 3, 4, 5]);
-const array = Array.from(items);
+	var urls = new Set;
+	urls.add(new URL('https://www.baidu.com'));
+	urls.add(new URL('https://www.baidu.com'));
+	console.log(urls);
+
+	console.log('------------------demo------------------')
+	let desserts = new Set('abc');
+	desserts.add('d');
+	desserts.add('d');
+	console.log(desserts);
+	console.log(desserts.size);
+	console.log(desserts.has('b'));
+	desserts.delete('d');
+	console.log(desserts);
+	desserts.forEach(desserts => {
+		console.log(desserts)
+	})
+	desserts.clear();
+	console.log(desserts);
+
+
+	// 去除数组的重复成员
+	[...new Set(array)]
+
+	//Array.from方法可以将 Set 结构转为数组
+	const items = new Set([1, 2, 3, 4, 5]);
+	const array = Array.from(items);
 
 
 // Set 结构的实例有四个遍历方法，可以用于遍历成员。

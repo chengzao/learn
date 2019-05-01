@@ -2,15 +2,15 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>scrollTop</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>scrollTop</title>
 </head>
 
 <body>
-    <div class="box" style="height:250px;width:230px;border:1px solid #ccc;overflow-y:auto;overflow-x: hidden;">
-        <pre>
+  <div class="box" style="height:250px;width:230px;border:1px solid #ccc;overflow-y:auto;overflow-x: hidden;">
+    <pre>
                         $(function() {
                             var lunar = calendar.solar2lunar();
                             $('.solarlunar').html('阳历：' + lunar.cYear + '年' + lunar.cMonth + '月' + lunar.cDay + '日（' + lunar.astro + '）<br />农历：' + lunar.lYear + '年' + lunar.IMonthCn + lunar.IDayCn + '，' + lunar.gzYear + '年' + lunar.gzMonth + '月' + lunar.gzDay + '日（' + lunar.Animal + '年）');
@@ -71,18 +71,18 @@
                             }
                         });
                 </pre>
-        <p class="top">top........</p>
-    </div>    
+    <p class="top">top........</p>
+  </div>
 </body>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
 <script>
-    $('.top').on('click', function (event) {
-      // console.log(event)
-        console.log(document.querySelector('.box').scrollTop = 60);
-    })
+  $('.top').on('click', function (event) {
+    // console.log(event)
+    console.log(document.querySelector('.box').scrollTop = 60);
+  })
   console.log(document.querySelectorAll('pre')[0].scrollHeight);
 
- 
+
 
 </script>
 

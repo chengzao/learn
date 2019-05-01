@@ -1,153 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>多行字居中</title>
-	<style>
-		ol li{list-style: none;}
-		ol{display: table;}
-		li{
-			display: table-cell;
-
-		    text-align: center;
-		    vertical-align: middle;
-		    font-size: 16px;
-		    color: #666;
-		    padding: 15px 15px;
-		    cursor: pointer;
-		    margin-right: 16px;
-		    margin-bottom: 18px;
-		    background-color: #fff;
-		    border-collapse: separate;
-		    border-spacing: 5px;
-
-
-		}
-
-
-		li a{
-			width: 197px;
-		    height: 42px;
-		    background-color: #f4f4f5;
-		    display: table-cell;
-		    vertical-align: middle;
-		    padding: 15px 32px;
-		}
-
-		li div{
-			background-color: #f4f4f5;
-		}
-
-		.tr{display: table-cell;}
-		.td{display: table-row;}
-
-
-	.box{position: relative;width: 200px;
-        height: 100px;border: 1px solid #000;}
-
-
-    .div1{
-        width: 100px;
-        height: 40px;
-        /*background-color: #6699FF;*/
-		vertical-align: middle;
-        margin:auto;
-        position: absolute;        /*父元素需要相对定位*/
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        text-align: center;
+  <meta charset="UTF-8">
+  <title>多行字居中</title>
+  <style>
+    ol li {
+      list-style: none;
     }
 
-	.panl{
-		width: 200px;
-		height: 100px;
-		border: 1px solid #000;
-		position: relative;
+    ol {
+      display: table;
+    }
 
-	}
-	.panl p{
-		width: 150px;
-		position: absolute;
-		margin:0 auto;
-		top:50%;
-		left:50%;
-		margin-left: -75px;
-		text-align: center;
-		display: inline-block;
-	}
+    li {
+      display: table-cell;
 
-	</style>
+      text-align: center;
+      vertical-align: middle;
+      font-size: 16px;
+      color: #666;
+      padding: 15px 15px;
+      cursor: pointer;
+      margin-right: 16px;
+      margin-bottom: 18px;
+      background-color: #fff;
+      border-collapse: separate;
+      border-spacing: 5px;
+
+
+    }
+
+
+    li a {
+      width: 197px;
+      height: 42px;
+      background-color: #f4f4f5;
+      display: table-cell;
+      vertical-align: middle;
+      padding: 15px 32px;
+    }
+
+    li div {
+      background-color: #f4f4f5;
+    }
+
+    .tr {
+      display: table-cell;
+    }
+
+    .td {
+      display: table-row;
+    }
+
+
+    .box {
+      position: relative;
+      width: 200px;
+      height: 100px;
+      border: 1px solid #000;
+    }
+
+
+    .div1 {
+      width: 100px;
+      height: 40px;
+      /*background-color: #6699FF;*/
+      vertical-align: middle;
+      margin: auto;
+      position: absolute;
+      /*父元素需要相对定位*/
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      text-align: center;
+    }
+
+    .panl {
+      width: 200px;
+      height: 100px;
+      border: 1px solid #000;
+      position: relative;
+
+    }
+
+    .panl p {
+      width: 150px;
+      position: absolute;
+      margin: 0 auto;
+      top: 50%;
+      left: 50%;
+      margin-left: -75px;
+      text-align: center;
+      display: inline-block;
+    }
+  </style>
 </head>
 <body>
-	<ol>
-		<li class="tr">
-			<div>
-				<a href="#">查询地名对应ID</a>
-			</div>
-		</li>
-		<li class="tr">
-			<div>
-				<a href="#">全国天气15天预报接口独家 控制质量预报</a>
-			</div>
-		</li>
-		<li class="tr">
-			<div>
-				<a href="#">查询地名对应ID</a>
-			</div>
-		</li>
+  <ol>
+    <li class="tr">
+      <div>
+        <a href="#">查询地名对应ID</a>
+      </div>
+    </li>
+    <li class="tr">
+      <div>
+        <a href="#">全国天气15天预报接口独家 控制质量预报</a>
+      </div>
+    </li>
+    <li class="tr">
+      <div>
+        <a href="#">查询地名对应ID</a>
+      </div>
+    </li>
 
-		<div class="td">
-			<li class="tr">
-				<div>
-					<a href="#">查询地名对应ID</a>
-				</div>
-			</li>
-			<li class="tr">
-				<div>
-					<a href="#">查询地名对应ID</a>
-				</div>
-			</li>
-			<li class="tr">
-				<div>
-					<a href="#">查询地名对应ID</a>
-				</div>
-			</li>
-		</div>
-	</ol>
-
-
+    <div class="td">
+      <li class="tr">
+        <div>
+          <a href="#">查询地名对应ID</a>
+        </div>
+      </li>
+      <li class="tr">
+        <div>
+          <a href="#">查询地名对应ID</a>
+        </div>
+      </li>
+      <li class="tr">
+        <div>
+          <a href="#">查询地名对应ID</a>
+        </div>
+      </li>
+    </div>
+  </ol>
 
 
 
-<div class="box">
-	<div class="div1">这里显示</div>
-</div>
-<div class="box">
-	<div class="div1">这里显示这里显示这里显示这里显示</div>
-</div>
-<div class="box">
-	<div class="div1">这里显示这里显示这里显示</div>
-</div>
 
-<div class="panl">
-	<p>这里显示里</p>
-</div>
-<div class="panl">
-	<p>这里显示示这里显示这里显显示</p>
-</div>
 
-<script>
+  <div class="box">
+    <div class="div1">这里显示</div>
+  </div>
+  <div class="box">
+    <div class="div1">这里显示这里显示这里显示这里显示</div>
+  </div>
+  <div class="box">
+    <div class="div1">这里显示这里显示这里显示</div>
+  </div>
+
+  <div class="panl">
+    <p>这里显示里</p>
+  </div>
+  <div class="panl">
+    <p>这里显示示这里显示这里显显示</p>
+  </div>
+
+  <script>
     var panls = document.getElementsByClassName('panl');
-	for(var i=0 ;i<panls.length;i++){
-		console.log(panls[i])
-		var panl = panls[i].getElementsByTagName('p')[0];
-		console.log(panl.offsetHeight)
-		panl.style.marginTop = -(panl.offsetHeight/2) +'px';
+    for (var i = 0; i < panls.length; i++) {
+      console.log(panls[i])
+      var panl = panls[i].getElementsByTagName('p')[0];
+      console.log(panl.offsetHeight)
+      panl.style.marginTop = -(panl.offsetHeight / 2) + 'px';
 
-	}
-</script>
+    }
+  </script>
 
 
 

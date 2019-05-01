@@ -128,15 +128,15 @@
         let y = R - Math.sin(_radian) * R
         if (i == 4) {
             posArr.unshift([x, y]);
-        }else{
+        } else {
             posArr.push([x, y]);
         }
         console.log('x => ', x, 'y => ', y);
     }
-    
-    for(var j =0;j<items.length;j++){
-        items[j].style.left = posArr[j][0]+'px';
-        items[j].style.top = posArr[j][1]+'px';
+
+    for (var j = 0; j < items.length; j++) {
+        items[j].style.left = posArr[j][0] + 'px';
+        items[j].style.top = posArr[j][1] + 'px';
     }
 
 

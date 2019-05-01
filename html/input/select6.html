@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>自定义select</title>
   <style type='text/css'>
-    .divselect{
+    .divselect {
       width: 218px;
       font-size: 14px;
       position: relative;
@@ -14,14 +14,16 @@
 
       border-radius: 3px;
     }
-    .divselect .title{
+
+    .divselect .title {
       position: relative;
       padding-right: 14px;
       padding-left: 14px;
       border-radius: 3px;
       border: 1px solid #e8e8ec;
     }
-    .divselect .title span{
+
+    .divselect .title span {
       line-height: 36px;
       display: block;
       overflow: hidden;
@@ -32,7 +34,8 @@
       text-overflow: ellipsis;
       color: #666;
     }
-    .divselect .title i{
+
+    .divselect .title i {
       position: absolute;
       top: 15px;
       right: 2px;
@@ -44,10 +47,12 @@
       background: url(./arrow.png) no-repeat 0 -7px;
       _display: inline;
     }
-    .divselect .title i.cur{
+
+    .divselect .title i.cur {
       background: url(./arrow.png) no-repeat 0 0;
     }
-    .divselect .container{
+
+    .divselect .container {
       position: absolute;
       top: 43px;
       left: -1px;
@@ -62,29 +67,34 @@
       background-color: #fff;
       z-index: 233;
     }
-    .divselect .container .search{
+
+    .divselect .container .search {
       display: block;
       text-align: center;
       margin: 5px auto;
-      padding:0 4px;
-      +padding-right: 8px;
+      padding: 0 4px;
+      padding-right: 8px;
     }
-    .divselect .container .search input{
+
+    .divselect .container .search input {
       width: 100%;
       height: 25px;
       line-height: 25px;
       box-sizing: border-box;
       border: 1px solid #e8e8ec;
     }
-    .divselect .container .dropdown{
+
+    .divselect .container .dropdown {
       list-style: none;
       padding: 0;
       margin: 0;
     }
-    .divselect .container .dropdown li{
+
+    .divselect .container .dropdown li {
       cursor: pointer;
     }
-    .divselect .container .dropdown a{
+
+    .divselect .container .dropdown a {
       line-height: 39px;
       display: block;
       height: 39px;
@@ -95,10 +105,12 @@
       letter-spacing: normal;
       color: #999;
     }
-    .divselect ul li a:hover{
-      background-color:#f6f6f8;
+
+    .divselect ul li a:hover {
+      background-color: #f6f6f8;
     }
-    .select-hidden{
+
+    .select-hidden {
       border: 0 !important;
       clip: rect(0 0 0 0) !important;
       height: 1px !important;
@@ -110,7 +122,7 @@
     }
 
     /*测试代码*/
-    .test{
+    .test {
       width: 1000px;
       height: 1200px;
       border: 1px solid #999;
@@ -135,138 +147,138 @@
 </body>
 <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript">
-  (function(w){
-    var divSel = function(){
-      this.options={
-        selectid:'code',  // 自定义属性: data-*
-        selSearch:false, // 开启是否显示搜索框: 默认关闭
-        zIndex:'',  // 注意：多个select同时存在时: 1.要么都不填写 2.填写时不要zindex设置一样大小
-        selVal:'默认',  // 选择框默认显示的值
-        selIdVal:'',  //自定义属性的值
-        hideMethod:'click' // 下拉框两中隐藏方式(选一): click 或 mouse
+  (function (w) {
+    var divSel = function () {
+      this.options = {
+        selectid: 'code',  // 自定义属性: data-*
+        selSearch: false, // 开启是否显示搜索框: 默认关闭
+        zIndex: '',  // 注意：多个select同时存在时: 1.要么都不填写 2.填写时不要zindex设置一样大小
+        selVal: '默认',  // 选择框默认显示的值
+        selIdVal: '',  //自定义属性的值
+        hideMethod: 'click' // 下拉框两中隐藏方式(选一): click 或 mouse
       }
     };
     divSel.prototype = {
-      constructor:divSel,
+      constructor: divSel,
       // 简易拷贝对象
-      extend:function(target,source){
-        for(var i in source){
+      extend: function (target, source) {
+        for (var i in source) {
           target[i] = source[i];
         }
         return target;
       },
       // divId和selId的ID不可相同
-      selInit:function(divId,options){
+      selInit: function (divId, options) {
         this.selAutoWidth(divId);
         this.selToggle(divId);
-        this.selGetVal(divId,options);
-        if(this.options.hideMethod=='mouse'){
+        this.selGetVal(divId, options);
+        if (this.options.hideMethod == 'mouse') {
           this.mouseHide(divId);
-        }else if(this.options.hideMethod=='click'){
+        } else if (this.options.hideMethod == 'click') {
           this.clickOther(divId);
         }
         this.selSearch(divId);
       },
       // 自适应宽度
-      selAutoWidth:function(divId){
-        var selAutoWidth = $(divId+" .container");
-				//获取下拉框字体的实际宽度
-				var lis = $(divId+" .container li span");
-				var pingR = 35;
-				var curLen = 1;  // 当前最大值默认值
-				var minLimit = 40; //最小极限值
-				var maxLimit= 800; //最大极限值
-			  $.map(lis,function(item,index){
-					//获取下拉框的字体实际宽度
-					var lisLen = item.offsetWidth;
-					// 比较取最大值并赋值给当前值
-					if(lisLen>curLen && lisLen > minLimit){
-						curLen = lisLen;
-					}
-				})
-				// 比较最小极限值
-				if(curLen<minLimit){
-					curLen = minLimit;
-				//比较最大极限值
-				}else if (curLen>maxLimit) {
-					curLen = maxLimit;
-				}
-				//自定义select赋值宽度
-				$(divId).width(curLen+pingR);
-				$(selAutoWidth).width(curLen+pingR);
+      selAutoWidth: function (divId) {
+        var selAutoWidth = $(divId + " .container");
+        //获取下拉框字体的实际宽度
+        var lis = $(divId + " .container li span");
+        var pingR = 35;
+        var curLen = 1;  // 当前最大值默认值
+        var minLimit = 40; //最小极限值
+        var maxLimit = 800; //最大极限值
+        $.map(lis, function (item, index) {
+          //获取下拉框的字体实际宽度
+          var lisLen = item.offsetWidth;
+          // 比较取最大值并赋值给当前值
+          if (lisLen > curLen && lisLen > minLimit) {
+            curLen = lisLen;
+          }
+        })
+        // 比较最小极限值
+        if (curLen < minLimit) {
+          curLen = minLimit;
+          //比较最大极限值
+        } else if (curLen > maxLimit) {
+          curLen = maxLimit;
+        }
+        //自定义select赋值宽度
+        $(divId).width(curLen + pingR);
+        $(selAutoWidth).width(curLen + pingR);
       },
       // 点击显示隐藏下拉框
-      selToggle:function(divId){
+      selToggle: function (divId) {
         var _this = this;
-        $(divId).on('click','.title',function(){
-          if($(divId + ' .container').css('visibility') == 'hidden'){
+        $(divId).on('click', '.title', function () {
+          if ($(divId + ' .container').css('visibility') == 'hidden') {
             _this.selVisible(divId);
-          }else{
+          } else {
             _this.selHidden(divId);
           }
         })
       },
       // 鼠标移除时隐藏
-      mouseHide:function(divId){
+      mouseHide: function (divId) {
         var _this = this;
-        $(divId +' .container').on('mouseleave',function(){
+        $(divId + ' .container').on('mouseleave', function () {
           _this.selHidden(divId);
         })
       },
       // 鼠标点击选择框以外的其他地方隐藏
-      clickOther:function(divId){
+      clickOther: function (divId) {
         var _this = this;
-        $(document).on('click',function(e){
+        $(document).on('click', function (e) {
           var targetE = e.target;
           var listView = $(divId + ' .container');
           // 判断是否包含下拉框主体
-          var isTrue = $(targetE).hasClass('container')&&$(targetE).parents().hasClass('container');
+          var isTrue = $(targetE).hasClass('container') && $(targetE).parents().hasClass('container');
           // 判断时候包含选择框
           var isTrue2 = $(targetE).parents().hasClass('divselect');
           // 判断目标的父级是否存在
-            if($(listView).css('visibility')=='visible'){
-                if(!isTrue&&!isTrue2){
-                  _this.selHidden(divId);
-                }
+          if ($(listView).css('visibility') == 'visible') {
+            if (!isTrue && !isTrue2) {
+              _this.selHidden(divId);
             }
+          }
         })
       },
       // 显示下拉框
-      selVisible:function(divId){
+      selVisible: function (divId) {
         var listView = $(divId + ' .container');
         var arrow = $(divId + ' .title i');
         // 如果下拉框没有任何子节点隐藏
-        if($(divId+' .dropdown li').length == 0){
-          $(divId +' .container').css('visibility','hidden');
-        }else{
-          $(listView).css('visibility','visible');
+        if ($(divId + ' .dropdown li').length == 0) {
+          $(divId + ' .container').css('visibility', 'hidden');
+        } else {
+          $(listView).css('visibility', 'visible');
           $(arrow).addClass('cur');
         }
       },
       // 隐藏下拉框
-      selHidden:function(divId){
+      selHidden: function (divId) {
         var listView = $(divId + ' .container');
         var arrow = $(divId + ' .title i');
-        $(listView).css('visibility','hidden');
+        $(listView).css('visibility', 'hidden');
         $(arrow).removeClass('cur');
       },
       // 获得下拉列表选中的值并赋值
-      selGetVal:function(divId,options){
+      selGetVal: function (divId, options) {
         var options = options || {};
-        var selectid = options.selectid||this.options.selectid;
-        var ipt = $(divId +' .iptVal');
+        var selectid = options.selectid || this.options.selectid;
+        var ipt = $(divId + ' .iptVal');
         var _this = this;
         var lis = $(divId + ' .container li');
         // 获得显示值节点
         var curTxt = $(divId + ' .title span');
-        $(lis).on('click',function(){
+        $(lis).on('click', function () {
           // 获得当前选中的值
           var lisVal = $(this).text();
           // 获得当前自定义属性的值
-          var selectidVal = $(this).attr('data-'+selectid);
+          var selectidVal = $(this).attr('data-' + selectid);
           // 赋值给ipt
           $(ipt).val(selectidVal);
-          $(curTxt).attr('data-'+selectid,selectidVal)
+          $(curTxt).attr('data-' + selectid, selectidVal)
           // 赋值显示
           $(curTxt).text(lisVal);
           // 隐藏下拉选项
@@ -274,26 +286,26 @@
         })
       },
       // 下拉框的字符串拼接
-      selStr:function(divId,options){
+      selStr: function (divId, options) {
         var options = options || {};
-        var selectid = options.selectid||this.options.selectid;
+        var selectid = options.selectid || this.options.selectid;
         var divId = divId.slice(1);
         // 得到原生select的option参数
         var selOptions = this.options.selOptions;
         selStr = '';
-        selStr += '<div class="divselect" id="'+divId+'">';
+        selStr += '<div class="divselect" id="' + divId + '">';
         selStr += '<div class="title"><span>请选择</span><i></i></div>';
         selStr += '<div class="container">';
         selStr += '<span class="search"><input type="text" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></span>';
         selStr += '<ul class="dropdown">';
         // 循环得到的option参数到列表中
-        if(selOptions.length >0){
-          $.map(selOptions,function(item,index) {
-            selStr += '<li data-'+selectid+'="'+$(item).val()+'"><a href="javascript:;"><span>'+$(item).text()+'</span></a></li>';
+        if (selOptions.length > 0) {
+          $.map(selOptions, function (item, index) {
+            selStr += '<li data-' + selectid + '="' + $(item).val() + '"><a href="javascript:;"><span>' + $(item).text() + '</span></a></li>';
           })
-        }else if(selOptions.length == 0){
+        } else if (selOptions.length == 0) {
           var callback = this.options.callback;
-          if(typeof(callback) == 'function'){
+          if (typeof (callback) == 'function') {
             callback();
           }
         }
@@ -305,47 +317,47 @@
       },
       // 检测需要替换的节点
       // selId 需要替换的节点的ID名
-      selCheck:function(selId,divId,options){
+      selCheck: function (selId, divId, options) {
         var options = options || {};
         var _this = this;
-        var zIndex = options.zIndex||this.options.zIndex;
-        var callback = options.callback||'';
+        var zIndex = options.zIndex || this.options.zIndex;
+        var callback = options.callback || '';
         // 判断替换节点是否存在
-        if(selId && $('select'+selId)[0]){
-          $('select'+selId).addClass('select-hidden');
-          var selOptions = $(selId).find('option')||{};
+        if (selId && $('select' + selId)[0]) {
+          $('select' + selId).addClass('select-hidden');
+          var selOptions = $(selId).find('option') || {};
           // 将得到的原生select下的option绑定到原型默认值里
-          this.extend(this.options,{selOptions:selOptions,callback:callback});
+          this.extend(this.options, { selOptions: selOptions, callback: callback });
           // 获得原select标签默认值
           var selDefault = $(selId).find('option:selected').text();
           //传入的值 > 原select标签默认值 > 初始值
-          var selVal = options.selVal||selDefault||this.options.selVal;
-          $(selId).after(this.selStr(divId,options));
+          var selVal = options.selVal || selDefault || this.options.selVal;
+          $(selId).after(this.selStr(divId, options));
           $(selId).remove();
           //设置层级
-          $(divId).css('zIndex',zIndex);
+          $(divId).css('zIndex', zIndex);
           // 默认取值
           $(divId + " .title span").html(selVal);
-        }else{
+        } else {
           return;
         };
-        this.selInit(divId,options);
+        this.selInit(divId, options);
       },
-      selAjax:function(boxId,divId,callback,options){
+      selAjax: function (boxId, divId, callback, options) {
         var options = options || {};
         var _this = this;
-        var zIndex = options.zIndex||this.options.zIndex;
-        var callback2 = callback||'';
-        var selVal = options.selVal||this.options.selVal;
-        var selectid = options.selectid||this.options.selectid;
+        var zIndex = options.zIndex || this.options.zIndex;
+        var callback2 = callback || '';
+        var selVal = options.selVal || this.options.selVal;
+        var selectid = options.selectid || this.options.selectid;
         var divId2 = divId.slice(1);
         selStr = '';
-        selStr += '<div class="divselect" id="'+divId2+'">';
+        selStr += '<div class="divselect" id="' + divId2 + '">';
         selStr += '<div class="title"><span>请选择</span><i></i></div>';
         selStr += '<div class="container">';
         selStr += '<span class="search"><input type="text" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></span>';
         selStr += '<ul class="dropdown">';
-        if(typeof(callback2) == 'function'){
+        if (typeof (callback2) == 'function') {
           callback2();
         }
         selStr += '</ul>';
@@ -354,94 +366,94 @@
         selStr += '</div>';
         $(boxId).append(selStr);
         //设置层级
-        $(divId).css('zIndex',zIndex);
+        $(divId).css('zIndex', zIndex);
         // 默认取值
         $(divId + " .title span").html(selVal);
-        this.selInit(divId,options);
+        this.selInit(divId, options);
       },
       // 删除指定项
-      selDel:function(divId,options){
+      selDel: function (divId, options) {
         var options = options || {};
-        var selectid = options.selectid||this.options.selectid;
-        var selIdVal = options.selIdVal||this.options.selIdVal;
-        var selLis= $(divId + ' .dropdown li');
-        if(selLis.length ==0){return;}
-        $.map(selLis,function(item,index){
-					var selLisid = $(item).attr('data-'+selectid);
-					if(selIdVal == selLisid){
-						$(item).remove();
-					}else{
+        var selectid = options.selectid || this.options.selectid;
+        var selIdVal = options.selIdVal || this.options.selIdVal;
+        var selLis = $(divId + ' .dropdown li');
+        if (selLis.length == 0) { return; }
+        $.map(selLis, function (item, index) {
+          var selLisid = $(item).attr('data-' + selectid);
+          if (selIdVal == selLisid) {
+            $(item).remove();
+          } else {
             return;
           }
-				})
+        })
         this.selAutoWidth(divId);
       },
       // 添加指定项
-      selAdd:function(divId,options){
+      selAdd: function (divId, options) {
         var options = options || {};
-        var selectid = options.selectid||this.options.selectid;
-        var selVal = options.selVal||this.options.selVal;
-        var selIdVal = options.selIdVal||this.options.selIdVal;
-        var addLi = '<li data-'+selectid+'="'+selIdVal+'"><a href="javascript:;"><span>'+selVal+'</span></a></li>';
-        var selLis= $(divId +' .dropdown li');
-        if(selLis.length !=0){
+        var selectid = options.selectid || this.options.selectid;
+        var selVal = options.selVal || this.options.selVal;
+        var selIdVal = options.selIdVal || this.options.selIdVal;
+        var addLi = '<li data-' + selectid + '="' + selIdVal + '"><a href="javascript:;"><span>' + selVal + '</span></a></li>';
+        var selLis = $(divId + ' .dropdown li');
+        if (selLis.length != 0) {
           var addLiTemp = ''; // 临时存储
-  				$.map(selLis,function(item,index){
-  					var selCurVal = $(item).attr('data-'+selectid);
-  					if(selCurVal != selIdVal){
-  						addLiTemp = addLi; // 临时存储需要添加的选项
-  					}else if(selCurVal == selIdVal){
-  						addLiTemp = null;
-  					}
-  				});
-          $(divId +' .dropdown').append(addLiTemp);
-        }else{
-          $(divId +' .dropdown').append(addLi);
+          $.map(selLis, function (item, index) {
+            var selCurVal = $(item).attr('data-' + selectid);
+            if (selCurVal != selIdVal) {
+              addLiTemp = addLi; // 临时存储需要添加的选项
+            } else if (selCurVal == selIdVal) {
+              addLiTemp = null;
+            }
+          });
+          $(divId + ' .dropdown').append(addLiTemp);
+        } else {
+          $(divId + ' .dropdown').append(addLi);
         };
 
         this.selAutoWidth(divId);
-        this.selGetVal(divId,options);
+        this.selGetVal(divId, options);
       },
       // 更新指定项
-      selUpdate:function(divId,options){
+      selUpdate: function (divId, options) {
         var options = options || {};
-        var selectid = options.selectid||this.options.selectid;
-        var selVal = options.selVal||this.options.selVal;
-        var selIdVal = options.selIdVal||this.options.selIdVal;
-        var selLis= $(divId +' .dropdown li');
-        if(selLis.length ==0){return;}
-				$.map(selLis,function(item,index){
-					var selCurVal = $(item).attr('data-'+selectid);
-					if(selCurVal == selIdVal){
-						$(item).find('span').text(selVal);
-					}else{
+        var selectid = options.selectid || this.options.selectid;
+        var selVal = options.selVal || this.options.selVal;
+        var selIdVal = options.selIdVal || this.options.selIdVal;
+        var selLis = $(divId + ' .dropdown li');
+        if (selLis.length == 0) { return; }
+        $.map(selLis, function (item, index) {
+          var selCurVal = $(item).attr('data-' + selectid);
+          if (selCurVal == selIdVal) {
+            $(item).find('span').text(selVal);
+          } else {
             return;
           }
-				});
-				this.selAutoWidth(divId);
-				this.selGetVal(divId,options);
+        });
+        this.selAutoWidth(divId);
+        this.selGetVal(divId, options);
       },
       // 搜索关键词  isHide 是否隐藏搜索框  默认false
-      selSearch:function(divId,isHide){
-        var selSearch = $(divId+' .search input');
+      selSearch: function (divId, isHide) {
+        var selSearch = $(divId + ' .search input');
         var isHide = isHide || this.options.selSearch;
-        if(!isHide){
+        if (!isHide) {
           selSearch.hide();
           return;
         }
         var _this = this;
-        $(document).ready(function(){
-          var selLis = $(divId+' .container li');
-          if(selLis.length ==0){return;}
-          $(selSearch).on('keyup',function(){
+        $(document).ready(function () {
+          var selLis = $(divId + ' .container li');
+          if (selLis.length == 0) { return; }
+          $(selSearch).on('keyup', function () {
             selSearchVal = $(selSearch).val();
-            $.map(selLis,function(item,index){
+            $.map(selLis, function (item, index) {
               var lisCurTxt = $(item).text();
               $(item).remove();
               var isTrue = lisCurTxt.indexOf(selSearchVal);
-              if(isTrue>-1){
-                $(divId+' .container .dropdown').append(item);
-                _this.selGetVal(divId,options);
+              if (isTrue > -1) {
+                $(divId + ' .container .dropdown').append(item);
+                _this.selGetVal(divId, options);
               }
             })
           });
@@ -452,25 +464,25 @@
     w.divsel = divsel;
   })(window)
 
-  divsel.selCheck('#sel1','#select1',{zIndex:12,callback:fn});
-  divsel.selCheck('#sel2','#select2',{zIndex:10,selectid:'test'});
-  divsel.selDel('#select1',{selIdVal:'0003'});
-  divsel.selAdd('#select1',{selIdVal:'0004',selVal:'湖北'});
-  divsel.selAdd('#select1',{selIdVal:'0005',selVal:'河北'});
-  divsel.selUpdate('#select1',{selIdVal:'0004',selVal:'重庆'});
-  divsel.selUpdate('#select1',{selIdVal:'0005',selVal:'四川'});
-  divsel.selUpdate('#select1',{selIdVal:'test',selVal:'浙江'});
+  divsel.selCheck('#sel1', '#select1', { zIndex: 12, callback: fn });
+  divsel.selCheck('#sel2', '#select2', { zIndex: 10, selectid: 'test' });
+  divsel.selDel('#select1', { selIdVal: '0003' });
+  divsel.selAdd('#select1', { selIdVal: '0004', selVal: '湖北' });
+  divsel.selAdd('#select1', { selIdVal: '0005', selVal: '河北' });
+  divsel.selUpdate('#select1', { selIdVal: '0004', selVal: '重庆' });
+  divsel.selUpdate('#select1', { selIdVal: '0005', selVal: '四川' });
+  divsel.selUpdate('#select1', { selIdVal: 'test', selVal: '浙江' });
 
-  function fn(){
-    var obj = {selectid:'code2',selIdVal:'test',selVal:'value'}
-    selStr += '<li data-'+obj.selectid+'="'+obj.selIdVal+'"><a href="javascript:;"><span>'+obj.selVal+'</span></a></li>';
+  function fn() {
+    var obj = { selectid: 'code2', selIdVal: 'test', selVal: 'value' }
+    selStr += '<li data-' + obj.selectid + '="' + obj.selIdVal + '"><a href="javascript:;"><span>' + obj.selVal + '</span></a></li>';
     return selStr;
   }
 
 
-  divsel.selAjax('#box','#select13',fn,{zIndex:19})
-  divsel.selAjax('#box','#select14',fn,{selVal:'湖南'})
-  divsel.selAdd('#select14',{selIdVal:'0004',selVal:'湖北'});
-  divsel.selAdd('#select14',{selIdVal:'0007',selVal:'湖南'});
+  divsel.selAjax('#box', '#select13', fn, { zIndex: 19 })
+  divsel.selAjax('#box', '#select14', fn, { selVal: '湖南' })
+  divsel.selAdd('#select14', { selIdVal: '0004', selVal: '湖北' });
+  divsel.selAdd('#select14', { selIdVal: '0007', selVal: '湖南' });
 </script>
 </html>

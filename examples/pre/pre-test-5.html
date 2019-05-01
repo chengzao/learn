@@ -11,11 +11,11 @@
             background-color: #f0f0f0;
             width: 500px;
         }
-        
+
         .code ol li {
             background-color: rgba(204, 204, 204, 0.29);
         }
-        
+
         .code ol,
         .code li {
             margin: 0;
@@ -27,7 +27,7 @@
     <code class="box code">
     <style>
         body{
-            background-color: #f0f0f0;	
+            background-color: #f0f0f0;
         }
     </style>
     <div>
@@ -52,7 +52,7 @@
     <div>sd</div>
 
     <script>
-        function ff(){
+        function ff() {
             console.log(111)
         }
     </script>
@@ -65,13 +65,13 @@
     var _tmpArr = [],
         initItemSpace = 0, // 初始值
         _tmp = [];
-    $.each(arr, function(idx, item) {
+    $.each(arr, function (idx, item) {
         var _item = item.replace(/\s+/g, '');
         if (_item.length != 0) {
             _tmpArr.push(item);
         }
     });
-    $.each(_tmpArr, function(indx, item) {
+    $.each(_tmpArr, function (indx, item) {
         var itemL = item.length; //总长度
         var item = $.trim(item);
         iteml = item.length; //去掉空格后的长度
@@ -79,7 +79,7 @@
         _tmp.push(itemSpaceL);
     });
     initItemSpace = Math.min.apply(this, _tmp);
-    $.each(_tmpArr, function(i, item) {
+    $.each(_tmpArr, function (i, item) {
         var itemL = item.length; //总长度
         var item = $.trim(item);
         iteml = item.length; //去掉空格后的长度

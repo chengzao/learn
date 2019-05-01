@@ -7,7 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        html,body{margin: 0;padding: 0;}
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
         html {
             width: 100%;
             height: 100%;
@@ -49,15 +54,15 @@
 <script>
     var box = document.getElementById('box');
     function data(ev) {
-        
+
         // console.log(ev)
 
         _obj = {
-           "ev.clientX": ev.clientX,
-           "ev.clientY": ev.clientY,
+            "ev.clientX": ev.clientX,
+            "ev.clientY": ev.clientY,
 
-           "ev.offsetX": ev.offsetX,
-           "ev.offsetY": ev.offsetY,
+            "ev.offsetX": ev.offsetX,
+            "ev.offsetY": ev.offsetY,
 
             "ev.pageX": ev.pageX,
             "ev.pageY": ev.pageY,
@@ -83,7 +88,7 @@
         ul.innerHTML = dom;
     }
 
-     box.addEventListener('mousemove', function (ev) {
+    box.addEventListener('mousemove', function (ev) {
         data(ev)
     })
 

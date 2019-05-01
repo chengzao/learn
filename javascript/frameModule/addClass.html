@@ -1,68 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title></title>
-    <style>
-        div{
-            height: 50px;
-            width: 500px;
-            background: red;
-            margin: 10px;
-        }
-        .show{display: block}
-        .hide{display:none}
-    </style>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    div {
+      height: 50px;
+      width: 500px;
+      background: red;
+      margin: 10px;
+    }
+
+    .show {
+      display: block
+    }
+
+    .hide {
+      display: none
+    }
+  </style>
 
 </head>
 <body>
-<div name = 'web' class='my value test'></div>
-<div name = 'web' class='my value'></div>
-<div name = 'web' class='my value'></div>
-<button id='show'>显示</button>
-<button id='hide'>隐藏</button>
-<button id='removeall'>去除属性</button>
+  <div name='web' class='my value test'></div>
+  <div name='web' class='my value'></div>
+  <div name='web' class='my value'></div>
+  <button id='show'>显示</button>
+  <button id='hide'>隐藏</button>
+  <button id='removeall'>去除属性</button>
 </body>
 </html>
 <script src='czh.js'></script>
 <script>
-    /*测试代码*/
-    czh.on('hide','click',function(){
-        /*  hide('div')*/
-       /* attr('div','class','hide');*/
-        addClass('div','hide')
-    })
+  /*测试代码*/
+  czh.on('hide', 'click', function () {
+    /*  hide('div')*/
+    /* attr('div','class','hide');*/
+    addClass('div', 'hide')
+  })
 
-    czh.on('show','click',function(){
-        /* show('div')*/
-        /* attr('div','class','show')*/
-       /* removeAttr('div','class','name');*/
-        removeClass('div','hide')
-    })
+  czh.on('show', 'click', function () {
+    /* show('div')*/
+    /* attr('div','class','show')*/
+    /* removeAttr('div','class','name');*/
+    removeClass('div', 'hide')
+  })
 
 
-    /*添加*/
-    function addClass(context,className){
-        var doms = czh.$all(context);
-        for(var i=0;i<doms.length;i++){
-            //给每个元素添加
-            addOne(doms[i]);
-        }
-        function addOne(dom){
-            dom.className =  dom.className+ " "+className;
-        }
+  /*添加*/
+  function addClass(context, className) {
+    var doms = czh.$all(context);
+    for (var i = 0; i < doms.length; i++) {
+      //给每个元素添加
+      addOne(doms[i]);
+    }
+    function addOne(dom) {
+      dom.className = dom.className + " " + className;
+    }
+  }
+
+  /*移除class*/
+  function removeClass(context, className) {
+    var doms = czh.$all(context);
+    for (var i = 0; i < doms.length; i++) {
+      //移除一个元素的className
+      removeOne(doms[i]);
     }
 
-    /*移除class*/
-    function removeClass(context,className){
-        var doms = czh.$all(context);
-        for(var i=0;i<doms.length;i++){
-            //移除一个元素的className
-            removeOne(doms[i]);
-        }
-
-        function removeOne(dom){
-           dom.className =  dom.className.replace(className,'');
-        }
+    function removeOne(dom) {
+      dom.className = dom.className.replace(className, '');
     }
+  }
 </script>

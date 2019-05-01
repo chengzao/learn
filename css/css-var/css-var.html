@@ -1,47 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>css var</title>
-    <style>
-        /* 定义全局变量 */
-        :root{
-            --color:green;
-            --font-size-13: 13px;
-            --font-size-14: 14px;
-        }
-        .p{
-            /* 定义局部变量 */
-            --color:#555;
-            /* var(变量,默认值) */
-            color: var(--color,pink);
-        }
-        .div{
-            color: var(--color2, red);
-        }
-        .h3{
-            color: var(--color);
-        }
-        .other{
-            color: var(--color,yellow);
-            font-size: var(--font-size-14);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>css var</title>
+  <style>
+    /* 定义全局变量 */
+    :root {
+      --color: green;
+      --font-size-13: 13px;
+      --font-size-14: 14px;
+    }
+
+    .p {
+      /* 定义局部变量 */
+      --color: #555;
+      /* var(变量,默认值) */
+      color: var(--color, pink);
+    }
+
+    .div {
+      color: var(--color2, red);
+    }
+
+    .h3 {
+      color: var(--color);
+    }
+
+    .other {
+      color: var(--color, yellow);
+      font-size: var(--font-size-14);
+    }
+  </style>
 </head>
 <body>
-    <p class="p">Lorem ipsum dolor sit amet.</p>
-    <div class="div">Lorem ipsum dolor sit.</div>
-    <h3 class="h3">Lorem, ipsum dolor.</h3>
-    <div class="other">Lorem ipsum dolor sit.</div>
+  <p class="p">Lorem ipsum dolor sit amet.</p>
+  <div class="div">Lorem ipsum dolor sit.</div>
+  <h3 class="h3">Lorem, ipsum dolor.</h3>
+  <div class="other">Lorem ipsum dolor sit.</div>
 </body>
 <script>
-    var pEl = document.querySelector('.other');
-    // 设置--color的值
-    pEl.style.setProperty('--color','blue');
-    // 获取--color的值
-    curColor = pEl.style.getPropertyValue("--color")
-    console.log(curColor);
+  var pEl = document.querySelector('.other');
+  // 设置--color的值
+  pEl.style.setProperty('--color', 'blue');
+  // 获取--color的值
+  curColor = pEl.style.getPropertyValue("--color")
+  console.log(curColor);
 </script>
 </html>

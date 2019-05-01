@@ -36,7 +36,7 @@
 </head>
 <body>
 
-<!-- 
+  <!--
 
   setInterval
   background
@@ -44,26 +44,26 @@
  -->
 
 
-<div class="loading">
-  <div class="loading1"></div>
-  <div class="loading2"></div>
-</div>
-<script>
-  // 第一种 方案
-  var loading = document.getElementsByClassName("loading2")[0];
-  var timer=null;
-  var h = 0;
-  timer=setInterval(function () {
-    h++;
-    if (h > 120) {
-      console.log('loading over');
-      //return;
-      clearInterval(timer);
-      console.log('test');
-    }
-    loading.style.height = h + "px";
-  }, 10);
-   
-</script>
+  <div class="loading">
+    <div class="loading1"></div>
+    <div class="loading2"></div>
+  </div>
+  <script>
+    // 第一种 方案
+    var loading = document.getElementsByClassName("loading2")[0];
+    var timer = null;
+    var h = 0;
+    timer = setInterval(function () {
+      h++;
+      if (h > 120) {
+        console.log('loading over');
+        //return;
+        clearInterval(timer);
+        console.log('test');
+      }
+      loading.style.height = h + "px";
+    }, 10);
+
+  </script>
 </body>
 </html>

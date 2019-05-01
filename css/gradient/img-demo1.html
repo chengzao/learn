@@ -2,79 +2,80 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>transparent</title>
-    <style>
-        body {
-            background: black;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>transparent</title>
+  <style>
+    body {
+      background: black;
+    }
 
-        
 
-        .wrap{
-            height: 500px;
-        }
 
-        .shan {
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            right:0px;
-            bottom: 0px;
-            margin: auto;
+    .wrap {
+      height: 500px;
+    }
 
-            
-            
-            
-            background: rgb(255, 230, 0);
-             width: 100px; 
-            height: 100px;
-            border-radius: 100%;
-            animation: show-animation 2s ease-in-out 0s infinite;
-            -moz-animation: show-animation 2s ease-in-out 0s infinite;
-            -webkit-animation: show-animation 2s ease-in-out 0s infinite;
-        }
+    .shan {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      margin: auto;
 
-        @keyframes show-animation{
-            0%{
-                transform: scale(0);
-                -moz-transform: scale(0);
-                -webkit-transform: scale(0);
-            }
-            100%{
-                transform: scale(1);
-                -moz-transform: scale(1);
-                -webkit-transform: scale(1);
-                opacity: 0;
-            }
-        }
 
-        p {
-            display: inline-block;
-            
-            color: #fff;
-            width: 100px;
-            height: 20px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            margin-left: -50px;
-            margin-top: -10px;
-        }
-    </style>
+
+
+      background: rgb(255, 230, 0);
+      width: 100px;
+      height: 100px;
+      border-radius: 100%;
+      animation: show-animation 2s ease-in-out 0s infinite;
+      -moz-animation: show-animation 2s ease-in-out 0s infinite;
+      -webkit-animation: show-animation 2s ease-in-out 0s infinite;
+    }
+
+    @keyframes show-animation {
+      0% {
+        transform: scale(0);
+        -moz-transform: scale(0);
+        -webkit-transform: scale(0);
+      }
+
+      100% {
+        transform: scale(1);
+        -moz-transform: scale(1);
+        -webkit-transform: scale(1);
+        opacity: 0;
+      }
+    }
+
+    p {
+      display: inline-block;
+
+      color: #fff;
+      width: 100px;
+      height: 20px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -50px;
+      margin-top: -10px;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="div-border">
+  <div class="div-border">
 
-    </div>
+  </div>
 
-    <div class="wrap">
-        <div class="shan"></div>
-        <p>提醒用户点击</p>
-    </div>
+  <div class="wrap">
+    <div class="shan"></div>
+    <p>提醒用户点击</p>
+  </div>
 </body>
 
 </html>

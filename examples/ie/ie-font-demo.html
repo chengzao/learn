@@ -1,37 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>水平垂直居中</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        * { margin: 0; padding: 0; font-size: 12px; color: #FFF; }
-        .container {
-            /*display: table; */
-            *position: relative;  /*for ie67*/
-            background-color: #FF5E53; width: 800px; height: 200px; overflow: hidden; margin: 0 auto;
-        }
-        .content {
-            vertical-align: middle; display: table-cell; text-align: center; /*主要代码*/
-            *position: absolute; *top: 50%; *left: 50%; /*for ie67*/
-        }
-        .center {
-            display: inline-block; /*主要代码*/
-            *display: inline; zoom: 1; *position: relative; *top: -50%; *left: -50%; /*for ie67*/
-            padding: 10px; border: 1px solid #fff;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>水平垂直居中</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-size: 12px;
+      color: #FFF;
+    }
+
+    .container {
+      /*display: table; */
+      *position: relative;
+      /*for ie67*/
+      background-color: #FF5E53;
+      width: 800px;
+      height: 200px;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+
+    .content {
+      vertical-align: middle;
+      display: table-cell;
+      text-align: center;
+      /*主要代码*/
+      *position: absolute;
+      *top: 50%;
+      *left: 50%;
+      /*for ie67*/
+    }
+
+    .center {
+      display: inline-block;
+      /*主要代码*/
+      *display: inline;
+      zoom: 1;
+      *position: relative;
+      *top: -50%;
+      *left: -50%;
+      /*for ie67*/
+      padding: 10px;
+      border: 1px solid #fff;
+    }
+  </style>
 
 </head>
 <body>
-<div class="container">
+  <div class="container">
     <div class="content">
-        <div class="center">
-            啦啦啦，啦啦啦，我是卖报的小行家....
-        </div>
+      <div class="center">
+        啦啦啦，啦啦啦，我是卖报的小行家....
+      </div>
     </div>
-</div>
+  </div>
 </body>
 </html>

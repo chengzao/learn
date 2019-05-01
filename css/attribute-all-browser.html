@@ -1,44 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>attribute兼容</title>
+  <meta charset="UTF-8">
+  <title>attribute兼容</title>
 </head>
 <body>
-	<div id="idHeader" class="class-header" title="kingwell" status="1"></div>
-	<label id="forUserName" for="userName" title="kingwell" status="1"></label>
+  <div id="idHeader" class="class-header" title="kingwell" status="1"></div>
+  <label id="forUserName" for="userName" title="kingwell" status="1"></label>
 
-	<script type='text/javascript'>
-      var el = document.getElementById("idHeader");
-      console.log(el.getAttribute("id"));
-      console.log(el.id);
-      //IE Firfox->idHeader
+  <script type='text/javascript'>
+    var el = document.getElementById("idHeader");
+    console.log(el.getAttribute("id"));
+    console.log(el.id);
+    //IE Firfox->idHeader
 
-      console.log(el.getAttribute("class"));
-      //IE6,IE7 -> null ; chrome,IE8,IE9,Firefox ->class-header
+    console.log(el.getAttribute("class"));
+    //IE6,IE7 -> null ; chrome,IE8,IE9,Firefox ->class-header
 
-      console.log(el.class);
-      //IE6,IE7,IE8->报错    chrome,IE9,Firefox->undefined
-      console.log(el.getAttribute("className"));
-      //IE6,IE7->class-header ; chrome,IE8,IE9,Firefox -> null
+    console.log(el.class);
+    //IE6,IE7,IE8->报错    chrome,IE9,Firefox->undefined
+    console.log(el.getAttribute("className"));
+    //IE6,IE7->class-header ; chrome,IE8,IE9,Firefox -> null
 
-      console.log(el.className);
-      //All -> class-header
+    console.log(el.className);
+    //All -> class-header
 
 
-      var elfor = document.getElementById("forUserName");
-      console.log(elfor.getAttribute("for"));
-      //IE6,IE7->undefined IE8,9,Firefox->forUseName
+    var elfor = document.getElementById("forUserName");
+    console.log(elfor.getAttribute("for"));
+    //IE6,IE7->undefined IE8,9,Firefox->forUseName
 
-      console.log(elfor.for )
-      //IE6,IE7报错,其它为undefined
-      console.log(elfor.title)
-      //全部输出kingwell
-      console.log(elfor.status);
-      //IE6-8 -> 1 IE9,Firefox->undefined
+    console.log(elfor.for)
+    //IE6,IE7报错,其它为undefined
+    console.log(elfor.title)
+    //全部输出kingwell
+    console.log(elfor.status);
+    //IE6-8 -> 1 IE9,Firefox->undefined
 
-      console.log(elfor.getAttribute("status"))
+    console.log(elfor.getAttribute("status"))
       //全部输出 1
-	</script>
+  </script>
 </body>
 </html>

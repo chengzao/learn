@@ -1,76 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-	<title>Geolocation</title>
-	<style type="text/css">  
-		html {
-			height: 100%
-		}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Geolocation</title>
+  <style type="text/css">
+    html {
+      height: 100%
+    }
 
-		body {
-			height: 100%;
-			margin: 0px;
-			padding: 0px;
-		}
+    body {
+      height: 100%;
+      margin: 0px;
+      padding: 0px;
+    }
 
-		#container {
-			height:100%
-		}
-	</style>
+    #container {
+      height: 100%
+    }
+  </style>
 </head>
 <body>
-	<div id="container"></div>
-	<!-- 引入百度javascript版 API -->
-	<script src="http://api.map.baidu.com/api?v=2.0&ak=	0A5bc3c4fb543c8f9bc54b77bc155724"></script>
-	<script>
+  <div id="container"></div>
+  <!-- 引入百度javascript版 API -->
+  <script src="http://api.map.baidu.com/api?v=2.0&ak=	0A5bc3c4fb543c8f9bc54b77bc155724"></script>
+  <script>
 
-		// 提供了一个对象 navigator.geolocation
-		// 此对象下有一个方法 getCurrentPosition(); 是用来获取用户当前位置
-		
-		// navigator.geolocation.getCurrentPosition(function (position) {
-		// 	console.log(position);
-		// }, function (error) {
-		// 	console.log(1);
-		// 	console.log(error);
-		// }, {
-		// 	enableHighAccuracy: 
-		// });
+    // 提供了一个对象 navigator.geolocation
+    // 此对象下有一个方法 getCurrentPosition(); 是用来获取用户当前位置
+
+    // navigator.geolocation.getCurrentPosition(function (position) {
+    // 	console.log(position);
+    // }, function (error) {
+    // 	console.log(1);
+    // 	console.log(error);
+    // }, {
+    // 	enableHighAccuracy:
+    // });
 
 
-		if(navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(function (position) {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
 
-				var latitude = position.coords.latitude; // 纬度
-				var longitude = position.coords.longitude; // 经度
+        var latitude = position.coords.latitude; // 纬度
+        var longitude = position.coords.longitude; // 经度
 
-				// 
-				console.log(position);
+        //
+        console.log(position);
 
-				console.log(latitude,longitude);
-				/********************/
-				// 这些都是写死
-				var map = new BMap.Map("container"); // container表示主到哪个容器
+        console.log(latitude, longitude);
+        /********************/
+        // 这些都是写死
+        var map = new BMap.Map("container"); // container表示主到哪个容器
 
-				// 把经度纬度传给百度
-				var point = new BMap.Point(longitude, latitude);
+        // 把经度纬度传给百度
+        var point = new BMap.Point(longitude, latitude);
 
-				map.centerAndZoom(point, 15);
+        map.centerAndZoom(point, 15);
 
-				/****************************/
+        /****************************/
 
-				// 只写上面三行就可出现地图了，并且会定位
+        // 只写上面三行就可出现地图了，并且会定位
 
-				// 定义好了一个图片标记
-				var myIcon = new BMap.Icon("http://developer.baidu.com/map/jsdemo/img/fox.gif", new BMap.Size(300, 157));
+        // 定义好了一个图片标记
+        var myIcon = new BMap.Icon("http://developer.baidu.com/map/jsdemo/img/fox.gif", new BMap.Size(300, 157));
 
-				// 创建标注
-				var marker = new BMap.Marker(point, {icon: myIcon});
-				map.addOverlay(marker);
-			});
-		}
+        // 创建标注
+        var marker = new BMap.Marker(point, { icon: myIcon });
+        map.addOverlay(marker);
+      });
+    }
 
-	</script>
+  </script>
 </body>
 </html>

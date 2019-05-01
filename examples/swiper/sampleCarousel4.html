@@ -4,37 +4,49 @@
 	<meta charset="UTF-8">
 	<title>简单轮播图</title>
 	<style>
-		ol,ul,li{list-style: none;margin: 0;padding: 0;}
-    .carousel{
-    	width: 490px;
-    	height: 170px;
-    	margin: 50px auto;
-    	position: relative;
-    }		
-    .inner{
-    	background-color: pink;
-    	width: 490px;
-    	height: 170px;
-    	overflow: hidden;
-    	position: relative;
-    }
-    .inner ul{
-    	width: 1000%;
-    	position: absolute;
-    	top: 0;
-    	left: 0;
-    }
-    .inner li{
-    	float: left;
-    }
-    .square{
-    	position: absolute;
-    	left: 50%;
-    	bottom: 10px;
-    	cursor: pointer;
-    	transform: translate(-50%);
-    }
-    .square li{
+		ol,
+		ul,
+		li {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		.carousel {
+			width: 490px;
+			height: 170px;
+			margin: 50px auto;
+			position: relative;
+		}
+
+		.inner {
+			background-color: pink;
+			width: 490px;
+			height: 170px;
+			overflow: hidden;
+			position: relative;
+		}
+
+		.inner ul {
+			width: 1000%;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		.inner li {
+			float: left;
+		}
+
+		.square {
+			position: absolute;
+			left: 50%;
+			bottom: 10px;
+			cursor: pointer;
+			transform: translate(-50%);
+		}
+
+		.square li {
 			width: 16px;
 			height: 16px;
 			background-color: #fff;
@@ -42,35 +54,39 @@
 			text-align: center;
 			line-height: 16px;
 			margin-left: 2px;
-    }
-    .square .cur{
-    	width: 16px;
-    	height: 16px;
+		}
+
+		.square .cur {
+			width: 16px;
+			height: 16px;
 			background-color: pink;
 			color: #fff;
-    }
-
-    .arr {
-    	display: none;
-    }
-    .arr span{
-    	width: 40px;
-    	height: 40px;
-    	position: absolute;
-    	top:50%;
-    	background-color: rgba(0,0,0,0.6);
-    	margin-top: -20px;
-    	line-height: 40px;
-    	text-align: center;
-    	font-size: 40px;
-    	cursor: pointer;
-    	color: #fff;
-    }
-		.arr #left{
-    	left: 5px;
 		}
-		.arr #right{
-			right:5px;
+
+		.arr {
+			display: none;
+		}
+
+		.arr span {
+			width: 40px;
+			height: 40px;
+			position: absolute;
+			top: 50%;
+			background-color: rgba(0, 0, 0, 0.6);
+			margin-top: -20px;
+			line-height: 40px;
+			text-align: center;
+			font-size: 40px;
+			cursor: pointer;
+			color: #fff;
+		}
+
+		.arr #left {
+			left: 5px;
+		}
+
+		.arr #right {
+			right: 5px;
 			left: auto;
 		}
 	</style>
@@ -94,129 +110,129 @@
 	</div>
 </body>
 <script>
-  var box = document.getElementById('box');
-  var inner = box.children[0];
-  var ul = inner.children[0];  
-  var ulis = ul.children;
-  var ol = inner.children[1];
-  var olLis = ol.children;
-  var arr = box.children[1];
-  var left = document.getElementById('left');
-  var right = document.getElementById('right');
-  var imgW = inner.offsetWidth;
+	var box = document.getElementById('box');
+	var inner = box.children[0];
+	var ul = inner.children[0];
+	var ulis = ul.children;
+	var ol = inner.children[1];
+	var olLis = ol.children;
+	var arr = box.children[1];
+	var left = document.getElementById('left');
+	var right = document.getElementById('right');
+	var imgW = inner.offsetWidth;
 
-  var pic = 0;
-  var square = 0;
-  var timer =null;
+	var pic = 0;
+	var square = 0;
+	var timer = null;
 
-    // 根据图片数量，动态生成小圆点
-  for(var i= 0;i<ulis.length;i++ ){
-  	var li = document.createElement('li');
-  	li.innerHTML=i+1;
-  	ol.appendChild(li);
-  }
-  ol.children[0].className = 'cur';
+	// 根据图片数量，动态生成小圆点
+	for (var i = 0; i < ulis.length; i++) {
+		var li = document.createElement('li');
+		li.innerHTML = i + 1;
+		ol.appendChild(li);
+	}
+	ol.children[0].className = 'cur';
 
-  for(var j=0;j<olLis.length;j++){
-  	olLis[j].index = j;
-  		olLis[j].onmouseover=function(){
-  			for(var k=0;k<olLis.length;k++){
-  				olLis[k].className = '';
-  			}
-  			this.className = 'cur';
-  			var target = - imgW * this.index;
-  			animate(ul,target);
+	for (var j = 0; j < olLis.length; j++) {
+		olLis[j].index = j;
+		olLis[j].onmouseover = function () {
+			for (var k = 0; k < olLis.length; k++) {
+				olLis[k].className = '';
+			}
+			this.className = 'cur';
+			var target = - imgW * this.index;
+			animate(ul, target);
 
-        // 鼠标滑上去的时候记录当前位置
-				pic = this.index;
-				square = this.index;
-  		}
-  }
+			// 鼠标滑上去的时候记录当前位置
+			pic = this.index;
+			square = this.index;
+		}
+	}
 
-  //动态克隆第一张到最后去
-  ul.appendChild(ulis[0].cloneNode(true));
+	//动态克隆第一张到最后去
+	ul.appendChild(ulis[0].cloneNode(true));
 	ul.style.width = imgW * ulis.length + 'px';
-  //console.log(ul.offsetWidth)
-// $(this).children('li').last().after($(this).children('li').first());
+	//console.log(ul.offsetWidth)
+	// $(this).children('li').last().after($(this).children('li').first());
 
-  // 自动播放
-  timer=setInterval(autoplay,1500);
-  // 鼠标移动上去 显示  并清除定时器
-  box.onmouseover=function(){
-  	arr.style.display = 'block';
-  	clearInterval(timer);
-  }
-  // 鼠标离开  隐藏  并开始计时
-  box.onmouseout=function(){
-  	arr.style.display = 'none';
-  	timer=setInterval(autoplay,1500);
-  }
+	// 自动播放
+	timer = setInterval(autoplay, 1500);
+	// 鼠标移动上去 显示  并清除定时器
+	box.onmouseover = function () {
+		arr.style.display = 'block';
+		clearInterval(timer);
+	}
+	// 鼠标离开  隐藏  并开始计时
+	box.onmouseout = function () {
+		arr.style.display = 'none';
+		timer = setInterval(autoplay, 1500);
+	}
 
-  //点击左侧按钮
-  left.onclick=function(){
-  	if(pic>0){
-  		pic--;
-  	}else{
-  		pic = ulis.length-1
-  		ul.style.left = - imgW*(pic+1) + 'px';
-  	}
-  	var target = -imgW * pic;
-  	animate(ul,target);
+	//点击左侧按钮
+	left.onclick = function () {
+		if (pic > 0) {
+			pic--;
+		} else {
+			pic = ulis.length - 1
+			ul.style.left = - imgW * (pic + 1) + 'px';
+		}
+		var target = -imgW * pic;
+		animate(ul, target);
 
-  	if(square>0){
-  		square--;
-  	}else{
-  		square=olLis.length-1;
-  	}
+		if (square > 0) {
+			square--;
+		} else {
+			square = olLis.length - 1;
+		}
 
-  	for(var i=0;i<olLis.length;i++){
-  		olLis[i].className = '';
-  	}
-  	olLis[square].className='cur';  	
-  }
-  // 点击右侧按钮
-  right.onclick=function(){
-  	autoplay();
-  }
-  // 自动播放函数
-  function autoplay(){
+		for (var i = 0; i < olLis.length; i++) {
+			olLis[i].className = '';
+		}
+		olLis[square].className = 'cur';
+	}
+	// 点击右侧按钮
+	right.onclick = function () {
+		autoplay();
+	}
+	// 自动播放函数
+	function autoplay() {
 
-  	if(pic<ulis.length-1){
-  		pic++;
-  	}else{
-  		pic=1;
-  		ul.style.left = 0;
-  	}
-  	var target = -imgW * pic;
-  	animate(ul,target);
+		if (pic < ulis.length - 1) {
+			pic++;
+		} else {
+			pic = 1;
+			ul.style.left = 0;
+		}
+		var target = -imgW * pic;
+		animate(ul, target);
 
-  	if(square<olLis.length-1){
-  		square++;
-  	}else{
-  		square=0;
-  	}
-  	// 显示当前小圆点   排他法
-  	for(var i=0;i<olLis.length;i++){
-  		olLis[i].className = '';
-  	}
-  	olLis[square].className='cur';
+		if (square < olLis.length - 1) {
+			square++;
+		} else {
+			square = 0;
+		}
+		// 显示当前小圆点   排他法
+		for (var i = 0; i < olLis.length; i++) {
+			olLis[i].className = '';
+		}
+		olLis[square].className = 'cur';
 
 
-  }
+	}
 
-  // animate  ele传入目标移动的盒子 target移动的距离
-	function animate (ele,target) {
+	// animate  ele传入目标移动的盒子 target移动的距离
+	function animate(ele, target) {
 		clearInterval(ele.timer);
-		ele.timer=setInterval(function(){
-			var step=10;
-			step=ele.offsetLeft<target ? step : -step;
-			if( Math.abs(ele.offsetLeft - target) > Math.abs(step) ){
-				ele.style.left = ele.offsetLeft + step +'px';	
-			}else{
+		ele.timer = setInterval(function () {
+			var step = 10;
+			step = ele.offsetLeft < target ? step : -step;
+			if (Math.abs(ele.offsetLeft - target) > Math.abs(step)) {
+				ele.style.left = ele.offsetLeft + step + 'px';
+			} else {
 				ele.style.left = target + 'px';
 				clearInterval(ele.timer);
 			}
-		},5);
+		}, 5);
 	}
 </script>
 </html>

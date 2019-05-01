@@ -1,115 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<style>
-		ul,li{margin:0;padding:0;list-style: none;}
-		.id2,.id3{margin-left:40px;display:none;}
-	</style>
-	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    ul,
+    li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .id2,
+    .id3 {
+      margin-left: 40px;
+      display: none;
+    }
+  </style>
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
-	<ul class="id1">
-		<li>一级菜单
-			<ul class="id2">
-				<li>二级菜单
-					<ul class="id3">
-						<li>三级菜单</li>
-						<li>三级菜单</li>
-						<li>三级菜单</li>
-					</ul>
-				</li>
-				<li>二级菜单
-					<ul class="id3">
-						<li>三级菜单</li>
-						<li>三级菜单</li>
-						<li>三级菜单</li>
-					</ul>
-				</li>
-				<li>二级菜单
-					<ul class="id3">
-						<li>三级菜单</li>
-						<li>三级菜单</li>
-						<li>三级菜单</li>
-					</ul>
-				</li>
-			</ul>
-		</li>
-		<li>一级菜单
-			<ul class="id2">
-				<li>二级菜单
-					<ul class="id3">
-						<li>三级菜单</li>
-						<li>三级菜单</li>
-						<li>三级菜单</li>
-					</ul>
-				</li>
-				<li>二级菜单
-					<ul class="id3">
-						<li>三级菜单</li>
-						<li>三级菜单</li>
-						<li>三级菜单</li>
-					</ul>
-				</li>
-				<li>二级菜单
-					<ul class="id3">
-						<li>三级菜单</li>
-						<li>三级菜单</li>
-						<li>三级菜单</li>
-					</ul>
-				</li>
-			</ul>
-		</li>
-		<li>一级菜单
-			<ul class="id2">
-				<li>二级菜单
-					<ul class="id3">
-						<li>三级菜单</li>
-						<li>三级菜单</li>
-						<li>三级菜单</li>
-					</ul>
-				</li>
-				<li>二级菜单
-					<ul class="id3">
-						<li>三级菜单</li>
-						<li>三级菜单</li>
-						<li>三级菜单</li>
-					</ul>
-				</li>
-				<li>二级菜单
-					<ul class="id3">
-						<li>三级菜单</li>
-						<li>三级菜单</li>
-						<li>三级菜单</li>
-					</ul>
-				</li>
-			</ul>
-		</li>
-	</ul>
+  <ul class="id1">
+    <li>一级菜单
+      <ul class="id2">
+        <li>二级菜单
+          <ul class="id3">
+            <li>三级菜单</li>
+            <li>三级菜单</li>
+            <li>三级菜单</li>
+          </ul>
+        </li>
+        <li>二级菜单
+          <ul class="id3">
+            <li>三级菜单</li>
+            <li>三级菜单</li>
+            <li>三级菜单</li>
+          </ul>
+        </li>
+        <li>二级菜单
+          <ul class="id3">
+            <li>三级菜单</li>
+            <li>三级菜单</li>
+            <li>三级菜单</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>一级菜单
+      <ul class="id2">
+        <li>二级菜单
+          <ul class="id3">
+            <li>三级菜单</li>
+            <li>三级菜单</li>
+            <li>三级菜单</li>
+          </ul>
+        </li>
+        <li>二级菜单
+          <ul class="id3">
+            <li>三级菜单</li>
+            <li>三级菜单</li>
+            <li>三级菜单</li>
+          </ul>
+        </li>
+        <li>二级菜单
+          <ul class="id3">
+            <li>三级菜单</li>
+            <li>三级菜单</li>
+            <li>三级菜单</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>一级菜单
+      <ul class="id2">
+        <li>二级菜单
+          <ul class="id3">
+            <li>三级菜单</li>
+            <li>三级菜单</li>
+            <li>三级菜单</li>
+          </ul>
+        </li>
+        <li>二级菜单
+          <ul class="id3">
+            <li>三级菜单</li>
+            <li>三级菜单</li>
+            <li>三级菜单</li>
+          </ul>
+        </li>
+        <li>二级菜单
+          <ul class="id3">
+            <li>三级菜单</li>
+            <li>三级菜单</li>
+            <li>三级菜单</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </body>
-	<script>
-	$(function(){
-		var firstLi = $('.id1').find('>li');
-		var secLi = $('.id2').find('>li');
-		var thirdLi = $('.id3').find('>li');
+<script>
+  $(function () {
+    var firstLi = $('.id1').find('>li');
+    var secLi = $('.id2').find('>li');
+    var thirdLi = $('.id3').find('>li');
 
-		var obj = [
-			{id1:firstLi},
-			{id2:secLi},
-		];
+    var obj = [
+      { id1: firstLi },
+      { id2: secLi },
+    ];
 
-		obj[0].id1.click(function(){
-			obj[0].id1.children('ul').css('display', 'none');
+    obj[0].id1.click(function () {
+      obj[0].id1.children('ul').css('display', 'none');
 
-			$(this).children('ul').css('display', 'block');
+      $(this).children('ul').css('display', 'block');
 
-			obj[1].id2.click(function(){
-				obj[1].id2.children('ul').css('display','none');
-				$(this).children('ul').css('display','block');
-			});
+      obj[1].id2.click(function () {
+        obj[1].id2.children('ul').css('display', 'none');
+        $(this).children('ul').css('display', 'block');
+      });
 
-		});
-	})
-	</script>
+    });
+  })
+</script>
 </html>

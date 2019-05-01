@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>CSS3 3D转换</title>
-	<style>
-		body {
-			margin: 0;
-			padding: 0;
-			background-color: #F7F7F7;
-		}
+  <meta charset="UTF-8">
+  <title>CSS3 3D转换</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #F7F7F7;
+    }
 
-		.translate {
-			/*perspective: 600px;*/
-		}
+    .translate {
+      /*perspective: 600px;*/
+    }
 
-		.translateZ {
-			width: 200px;
-			height: 200px;
-			margin: 100px auto;
-			background-color: green;
-			transition: all 1s;
-		}
+    .translateZ {
+      width: 200px;
+      height: 200px;
+      margin: 100px auto;
+      background-color: green;
+      transition: all 1s;
+    }
 
-		.translateZ:hover {
-			transform: perspective(1000px) translateZ(-400px);
-		}
-	</style>
+    .translateZ:hover {
+      transform: perspective(1000px) translateZ(-400px);
+    }
+  </style>
 </head>
 <body>
-	<div class="translate">
-		<div class="translateZ"></div>
-	</div>
+  <div class="translate">
+    <div class="translateZ"></div>
+  </div>
 </body>
 </html>

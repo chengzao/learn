@@ -1,59 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>不定宽 自适应</title>
-    <style>
-        .left{
-            float: left;
-            margin-right: 20px;
-        }
-        .right{
-            overflow: hidden;
-        }
-        .left p{
-            width: 200px;
-        }
-        .p{
-            background-color: palegoldenrod;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>不定宽 自适应</title>
+  <style>
+    .left {
+      float: left;
+      margin-right: 20px;
+    }
 
-        }
-        .l{
-            background-color: palegreen;
-        }
-        .r{
-            background-color: paleturquoise;
-        }
-      p{
-        width: 300px;
-        display: inline-block;
-      }
-      .main{
-        overflow: auto;
-        white-space: nowrap;
-      }
-    </style>
+    .right {
+      overflow: hidden;
+    }
+
+    .left p {
+      width: 200px;
+    }
+
+    .p {
+      background-color: palegoldenrod;
+
+    }
+
+    .l {
+      background-color: palegreen;
+    }
+
+    .r {
+      background-color: paleturquoise;
+    }
+
+    p {
+      width: 300px;
+      display: inline-block;
+    }
+
+    .main {
+      overflow: auto;
+      white-space: nowrap;
+    }
+  </style>
 </head>
 <body>
-    <div class="parent p">
-        <div class="left l">
-            <p>left</p>
-        </div>
-        <div class="right r">
-              <div class="main">
-                <p>right</p>
-                <p>right</p>
-              </div>
-        </div>
+  <div class="parent p">
+    <div class="left l">
+      <p>left</p>
     </div>
+    <div class="right r">
+      <div class="main">
+        <p>right</p>
+        <p>right</p>
+      </div>
+    </div>
+  </div>
 </body>
 <script>
   var dom = document.querySelector('.main')
   var html = ''
-  for (var i =0; i< 20; i++){
-    html += '<p>'+i+'</p>'
+  for (var i = 0; i < 20; i++) {
+    html += '<p>' + i + '</p>'
   }
   dom.innerHTML = html
 </script>

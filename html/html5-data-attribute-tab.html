@@ -1,148 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Tab 标签</title>
-    <style>
-		body {
-			margin: 0;
-			padding: 0;
-			background-color: #F7F7F7;
-		}
-	
-		.tabs {
-			width: 400px;
-			margin: 30px auto;
-			background-color: #FFF;
-			border: 1px solid #C0DCC0;
-			box-sizing: border-box;
-		}
+  <meta charset="UTF-8">
+  <title>Tab 标签</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #F7F7F7;
+    }
 
-		.tabs nav {
-			height: 40px;
-			text-align: center;
-			line-height: 40px;
-			overflow: hidden;
-			background-color: #C0DCC0;
-			display: flex;
-		}
+    .tabs {
+      width: 400px;
+      margin: 30px auto;
+      background-color: #FFF;
+      border: 1px solid #C0DCC0;
+      box-sizing: border-box;
+    }
 
-		nav a {
-			display: block;
-			width: 100px;
-			border-right: 1px solid #FFF;
-			color: #000;
-			text-decoration: none;
-		}
+    .tabs nav {
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+      overflow: hidden;
+      background-color: #C0DCC0;
+      display: flex;
+    }
 
-		nav a:last-child {
-			border-right: 0 none;
-		}
+    nav a {
+      display: block;
+      width: 100px;
+      border-right: 1px solid #FFF;
+      color: #000;
+      text-decoration: none;
+    }
 
-		nav a.active {
-			background-color: #9BAF9B;
-		}
+    nav a:last-child {
+      border-right: 0 none;
+    }
 
-		.cont {
-			overflow: hidden;
-			display: none;
-		}
+    nav a.active {
+      background-color: #9BAF9B;
+    }
 
-		.cont ol {
-			line-height: 30px;
-		}
+    .cont {
+      overflow: hidden;
+      display: none;
+    }
 
-    </style>
+    .cont ol {
+      line-height: 30px;
+    }
+  </style>
 </head>
 <body>
-	<div class="tabs">
-		<nav>
-			<a href="javascript:;" data-cont="local">国内新闻</a>
-			<a href="javascript:;" data-cont="global">国际新闻</a>
-			<a href="javascript:;" data-cont="sports">体育新闻</a>
-			<a href="javascript:;" data-cont="funny">娱乐新闻</a>
-		</nav>
-		<section class="cont" id="local">
-			<ol>
-				<li>河感在生矿难，死伤在全10</li>
-				<li>禽流感在感在广1处继续蔓延，温家宝指示</li>
-				<li>南方大旱，农作物减产绝收面积上亩</li>
-				<li>猪流感在广在全国暴发</li>
-				<li>禽流感在全国多处继续蔓延，温家宝指示</li>
-				<li>南方大旱，农作物减产绝收面积上亩</li>
-				<li>猪流感在广东群体性暴发</li>
-			</ol>
-		</section>
-		<section class="cont" id="global">
-			<ol>
-				<li>河南再次发生矿难，死伤人数超过100</li>
-				<li>禽流感次发生蔓延，温家宝指示</li>
-				<li>南方大旱，农作物减产绝收面积上亩</li>
-				<li>猪流感在广减产绝收发</li>
-				<li>禽流感在全国多作物减产绝收面积上亩</li>
-				<li>猪流感在广东群体性暴发</li>
-			</ol>
-		</section>
-		<section class="cont" id="sports">
-			<ol>
-				<li>河南再次发生矿难，死伤人数超过100</li>
-				<li>禽流感在全国多处农作物农延，温家宝指示</li>
-				<li>南方大旱，农作物减产绝收面积上亩</li>
-				<li>猪流感在广东群体性暴发</li>
-				<li>禽流感在全农作物继续蔓延，温家宝指示</li>
-				<li>南方大农作物减产绝收面积上亩</li>
-				<li>猪流感在广东群体性暴发</li>
-			</ol>
-		</section>
-		<section class="cont" id="funny">
-			<ol>
-				<li>河南再次发生矿难，死伤人数超过100</li>
-				<li>禽流感在全国多处农作物农延，温家宝指示</li>
-				<li>南方大旱，农作物减产绝收面积上亩</li>
-				<li>猪流感在广东群体性暴发</li>
-				<li>禽流感在全农作物继续蔓延，温家宝指示</li>
-				<li>南方大农作物减产绝收面积上亩</li>
-				<li>猪流感在广东群体性暴发</li>
-			</ol>
-		</section>
-    </div>
-    <script>
-		(function (key) {
+  <div class="tabs">
+    <nav>
+      <a href="javascript:;" data-cont="local">国内新闻</a>
+      <a href="javascript:;" data-cont="global">国际新闻</a>
+      <a href="javascript:;" data-cont="sports">体育新闻</a>
+      <a href="javascript:;" data-cont="funny">娱乐新闻</a>
+    </nav>
+    <section class="cont" id="local">
+      <ol>
+        <li>河感在生矿难，死伤在全10</li>
+        <li>禽流感在感在广1处继续蔓延，温家宝指示</li>
+        <li>南方大旱，农作物减产绝收面积上亩</li>
+        <li>猪流感在广在全国暴发</li>
+        <li>禽流感在全国多处继续蔓延，温家宝指示</li>
+        <li>南方大旱，农作物减产绝收面积上亩</li>
+        <li>猪流感在广东群体性暴发</li>
+      </ol>
+    </section>
+    <section class="cont" id="global">
+      <ol>
+        <li>河南再次发生矿难，死伤人数超过100</li>
+        <li>禽流感次发生蔓延，温家宝指示</li>
+        <li>南方大旱，农作物减产绝收面积上亩</li>
+        <li>猪流感在广减产绝收发</li>
+        <li>禽流感在全国多作物减产绝收面积上亩</li>
+        <li>猪流感在广东群体性暴发</li>
+      </ol>
+    </section>
+    <section class="cont" id="sports">
+      <ol>
+        <li>河南再次发生矿难，死伤人数超过100</li>
+        <li>禽流感在全国多处农作物农延，温家宝指示</li>
+        <li>南方大旱，农作物减产绝收面积上亩</li>
+        <li>猪流感在广东群体性暴发</li>
+        <li>禽流感在全农作物继续蔓延，温家宝指示</li>
+        <li>南方大农作物减产绝收面积上亩</li>
+        <li>猪流感在广东群体性暴发</li>
+      </ol>
+    </section>
+    <section class="cont" id="funny">
+      <ol>
+        <li>河南再次发生矿难，死伤人数超过100</li>
+        <li>禽流感在全国多处农作物农延，温家宝指示</li>
+        <li>南方大旱，农作物减产绝收面积上亩</li>
+        <li>猪流感在广东群体性暴发</li>
+        <li>禽流感在全农作物继续蔓延，温家宝指示</li>
+        <li>南方大农作物减产绝收面积上亩</li>
+        <li>猪流感在广东群体性暴发</li>
+      </ol>
+    </section>
+  </div>
+  <script>
+    (function (key) {
 
-			// 获取所有导航
-			var navs = document.querySelectorAll('nav a'),
-				cont;
+      // 获取所有导航
+      var navs = document.querySelectorAll('nav a'),
+        cont;
 
-			for(var i=0; i<navs.length; i++) {
+      for (var i = 0; i < navs.length; i++) {
 
-				// 默认选中
-				if(i == key) {
-					navs[i].classList.add('active');
-					cont = navs[i].dataset['cont'];
-					document.querySelector('#' + cont).style.display = 'block';
-				}
+        // 默认选中
+        if (i == key) {
+          navs[i].classList.add('active');
+          cont = navs[i].dataset['cont'];
+          document.querySelector('#' + cont).style.display = 'block';
+        }
 
-				navs[i].onclick = function () {
-					// 过滤无效点击
-					if(this.classList.contains('active')) return;
+        navs[i].onclick = function () {
+          // 过滤无效点击
+          if (this.classList.contains('active')) return;
 
-					var active = document.querySelector('.active');
+          var active = document.querySelector('.active');
 
-					active.classList.remove('active');
+          active.classList.remove('active');
 
-					cont = active.dataset['cont'];
+          cont = active.dataset['cont'];
 
-					document.querySelector('#' + cont).style.display = 'none';
+          document.querySelector('#' + cont).style.display = 'none';
 
-					this.classList.toggle('active');
+          this.classList.toggle('active');
 
-					cont = this.dataset['cont'];
-					
-					document.querySelector('#' + cont).style.display = 'block';
-				}
-			}
+          cont = this.dataset['cont'];
 
-		})(3);
-	</script>
+          document.querySelector('#' + cont).style.display = 'block';
+        }
+      }
+
+    })(3);
+  </script>
 </body>
 </html>

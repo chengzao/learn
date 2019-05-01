@@ -7,7 +7,7 @@
   <title>类型转换</title>
 </head>
 <body>
-Number()
+  Number()
 </body>
 <script type="text/javascript">
   //原始类型值的转换规则
@@ -35,7 +35,7 @@ Number()
 
 
   //对象的转换规则
-  Number({a: 1}) // NaN
+  Number({ a: 1 }) // NaN
   Number([1, 2, 3]) // NaN
   Number([5]) // 5
 
@@ -44,7 +44,7 @@ Number()
   // 如果valueOf方法返回的还是对象，则改为调用对象自身的toString方法。如果toString方法返回原始类型的值，则对该值使用Number函数，不再进行后续步骤。
   //
   // 如果toString方法返回的是对象，就报错
-  var obj = {x: 1};
+  var obj = { x: 1 };
   Number(obj) // NaN
 
   // 等同于
@@ -55,8 +55,8 @@ Number()
   }
 
   Number({
-  valueOf: function () {
-    return 2;
+    valueOf: function () {
+      return 2;
     }
   })
   // 2

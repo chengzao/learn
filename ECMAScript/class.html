@@ -1,57 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>class extend</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>class extend</title>
 </head>
 <body>
 
 </body>
 <script>
-     class ParentClass {
-      constructor(name) {
-        this.name = name;
-      }
-      static sayHello() {
-        console.log("I'm parent!" + this.name);
-      }
-
-      static testFunc(){
-        console.log('emm...Parent test static Func')
-      }
+  class ParentClass {
+    constructor(name) {
+      this.name = name;
+    }
+    static sayHello() {
+      console.log("I'm parent!" + this.name);
     }
 
-    class SubClass extends ParentClass {
-      constructor(name) {
-        super(name);
-      }
-      sayChildHello() {
-        console.log("I'm child " + this.name)
-      }
-      static sayHello() {
-        console.log("override parent method !,I'm sayHello Method")
-      }
-
-      static testFunc2() {
-        console.log(super.testFunc() + 'fsdafasdf');
-      }
+    static testFunc() {
+      console.log('emm...Parent test static Func')
     }
-    // 如果在一个方法前，加上static关键字，就表示该方法不会被实例继承，
-    // 而是直接通过类来调用，这就称为“静态方法”
-    ParentClass.sayHello(); // success print
+  }
 
-    let a = new ParentClass('test');
-    //a.sayHello() // throw error
+  class SubClass extends ParentClass {
+    constructor(name) {
+      super(name);
+    }
+    sayChildHello() {
+      console.log("I'm child " + this.name)
+    }
+    static sayHello() {
+      console.log("override parent method !,I'm sayHello Method")
+    }
 
-    SubClass.sayHello(); // 同名 static 可以继承且覆盖
+    static testFunc2() {
+      console.log(super.testFunc() + 'fsdafasdf');
+    }
+  }
+  // 如果在一个方法前，加上static关键字，就表示该方法不会被实例继承，
+  // 而是直接通过类来调用，这就称为“静态方法”
+  ParentClass.sayHello(); // success print
 
-    SubClass.testFunc2(); // 可以继承
+  let a = new ParentClass('test');
+  //a.sayHello() // throw error
 
-    let testA = new SubClass('CRPER');
+  SubClass.sayHello(); // 同名 static 可以继承且覆盖
 
-    testA.sayHello();  //testA.sayHello is not a function
+  SubClass.testFunc2(); // 可以继承
+
+  let testA = new SubClass('CRPER');
+
+  testA.sayHello();  //testA.sayHello is not a function
 
 
 

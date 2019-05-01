@@ -95,8 +95,8 @@
         }
     }
     Object.assign(Point.prototype, {
-        toString() {},
-        toValue() {}
+        toString() { },
+        toValue() { }
     });
 
     Point.prototype.constructor === Point // true
@@ -190,7 +190,7 @@
 
     p1.__proto__ === p2.__proto__ //true
 
-    // Class 表达式 
+    // Class 表达式
     // 类的名字是MyClass , Me只在 Class 的内部代码可用，指代当前类
     const MyClass = class Me {
         getClassName() {
@@ -215,7 +215,7 @@
 
     // 不存在变量提升
     new Foo(); // ReferenceError
-    class Foo {}
+    class Foo { }
 
     // 私有方法
     const bar = Symbol('bar');
@@ -283,13 +283,13 @@
     // Class 的 Generator 方法
     class Foo {
         constructor(...args) {
-                this.args = args;
+            this.args = args;
+        }
+        *[Symbol.iterator]() {
+            for (let arg of this.args) {
+                yield arg;
             }
-            *[Symbol.iterator]() {
-                for (let arg of this.args) {
-                    yield arg;
-                }
-            }
+        }
     }
 
     for (let x of new Foo('hello', 'world')) {
@@ -334,7 +334,7 @@
         }
     }
 
-    class Bar extends Foo {}
+    class Bar extends Foo { }
 
     Bar.classMethod() // 'hello'
 
@@ -359,7 +359,7 @@
     // Class 的静态属性和实例属性
 
     // 类的静态属性
-    class Foo {}
+    class Foo { }
 
     Foo.prop = 1;
     Foo.prop // 1
@@ -369,7 +369,7 @@
         static prop = 1;
     }
 
-    // 类的实例属性 
+    // 类的实例属性
     class MyClass {
         myProp = 42;
         constructor() {
@@ -495,7 +495,7 @@
         }
     }
 
-    class B extends A {}
+    class B extends A { }
 
     B.hello() // hello world
 
@@ -505,7 +505,7 @@
 
 
     // super 作为函数调用时，代表父类的构造函数
-    class A {}
+    class A { }
 
     class B extends A {
         constructor() {
@@ -557,7 +557,7 @@
     b.m // undefined
 
     // 属性定义在父类的原型对象上，super就可以取到
-    class A {}
+    class A { }
     A.prototype.x = 2;
 
     class B extends A {
@@ -619,16 +619,16 @@
     child.myMethod(2); // instance 2
 
     // 类的 prototype 属性和__proto__属性
-    class A {}
+    class A { }
 
-    class B extends A {}
+    class B extends A { }
 
     B.__proto__ === A // true
     B.prototype.__proto__ === A.prototype // true
 
-    
 
-    
+
+
 </script>
 
 </html>

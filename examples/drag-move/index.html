@@ -1,107 +1,107 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
 
-        .nav {
-            height: 30px;
-            background: #036663;
-            border-bottom: 1px solid #369;
-            line-height: 30px;
-            padding-left: 30px;
-        }
+    .nav {
+      height: 30px;
+      background: #036663;
+      border-bottom: 1px solid #369;
+      line-height: 30px;
+      padding-left: 30px;
+    }
 
-        .nav a {
-            color: #fff;
-            text-align: center;
-            font-size: 14px;
-            text-decoration: none;
+    .nav a {
+      color: #fff;
+      text-align: center;
+      font-size: 14px;
+      text-decoration: none;
 
-        }
+    }
 
-        .d-box {
-            width: 400px;
-            height: 300px;
-            border: 5px solid #eee;
-            box-shadow: 2px 2px 2px 2px #666;
-            position: absolute;
-            top: 40%;
-            left: 40%;
-        }
+    .d-box {
+      width: 400px;
+      height: 300px;
+      border: 5px solid #eee;
+      box-shadow: 2px 2px 2px 2px #666;
+      position: absolute;
+      top: 40%;
+      left: 40%;
+    }
 
-        .hd {
-            width: 100%;
-            height: 25px;
-            background-color: #7c9299;
-            border-bottom: 1px solid #369;
-            line-height: 25px;
-            color: white;
-            cursor: move;
-        }
+    .hd {
+      width: 100%;
+      height: 25px;
+      background-color: #7c9299;
+      border-bottom: 1px solid #369;
+      line-height: 25px;
+      color: white;
+      cursor: move;
+    }
 
-        #box_close {
-            float: right;
-            cursor: pointer;
-        }
-    </style>
+    #box_close {
+      float: right;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-<div class="nav">
+  <div class="nav">
     <a href="javascript:;" id="register">注册信息</a>
-</div>
-<div class="d-box" id="d_box">
+  </div>
+  <div class="d-box" id="d_box">
     <div class="hd" id="drop">注册信息 (可以拖拽)
-        <span id="box_close">【关闭】</span>
+      <span id="box_close">【关闭】</span>
     </div>
     <div class="bd"></div>
-</div>
+  </div>
 </body>
 </html>
 <script>
-    //获取元素
-    var d_box = document.getElementById("d_box");//获取的是要拖拽的窗体
-    var drop = document.getElementById("drop");//拖动条
-    //alert(d_box.offsetLeft);
+  //获取元素
+  var d_box = document.getElementById("d_box");//获取的是要拖拽的窗体
+  var drop = document.getElementById("drop");//拖动条
+  //alert(d_box.offsetLeft);
 
-    //鼠标在拖动条drop身上按下的时候 d_box变成可以拖动的状态
-    drop.onmousedown = function (event) {
-        var event = event || window.event;
-        var pageX = event.pageX || event.clientX + document.documentElement.scrollLeft;
-        var pageY = event.pageY || event.clientY + document.documentElement.scrollTop;
+  //鼠标在拖动条drop身上按下的时候 d_box变成可以拖动的状态
+  drop.onmousedown = function (event) {
+    var event = event || window.event;
+    var pageX = event.pageX || event.clientX + document.documentElement.scrollLeft;
+    var pageY = event.pageY || event.clientY + document.documentElement.scrollTop;
 
-        //在按下鼠标的时候 对鼠标在盒子中的位置 进行记录
-        //鼠标在盒子中的位置 就是 鼠标在页面上的位置减去盒子在页面的位置
-        var spaceX = pageX - d_box.offsetLeft;
-        var spaceY = pageY - d_box.offsetTop;
+    //在按下鼠标的时候 对鼠标在盒子中的位置 进行记录
+    //鼠标在盒子中的位置 就是 鼠标在页面上的位置减去盒子在页面的位置
+    var spaceX = pageX - d_box.offsetLeft;
+    var spaceY = pageY - d_box.offsetTop;
 
-        //注意 一定要写 document 是 鼠标在页面上移动的时候 窗体都跟随
-        //如果写drop或者d_box 当鼠标运动幅度比较大的时候 离开了drop或者d_box 窗体就不动了
-        document.onmousemove = function (event) {
-            var event = event || window.event;
-            var pageX = event.pageX || event.clientX + document.documentElement.scrollLeft;
-            var pageY = event.pageY || event.clientY + document.documentElement.scrollTop;
+    //注意 一定要写 document 是 鼠标在页面上移动的时候 窗体都跟随
+    //如果写drop或者d_box 当鼠标运动幅度比较大的时候 离开了drop或者d_box 窗体就不动了
+    document.onmousemove = function (event) {
+      var event = event || window.event;
+      var pageX = event.pageX || event.clientX + document.documentElement.scrollLeft;
+      var pageY = event.pageY || event.clientY + document.documentElement.scrollTop;
 
-            //根据鼠标在页面上的位置 设置d_box的位置
-            //d_box的位置是按照左上角进行计算的 所以我们要减去 鼠标按下时 鼠标在盒子中的位置
-            d_box.style.left = pageX - spaceX + "px";
-            d_box.style.top = pageY - spaceY + "px";
+      //根据鼠标在页面上的位置 设置d_box的位置
+      //d_box的位置是按照左上角进行计算的 所以我们要减去 鼠标按下时 鼠标在盒子中的位置
+      d_box.style.left = pageX - spaceX + "px";
+      d_box.style.top = pageY - spaceY + "px";
 
-            //这句话是用来清楚选中内容的
-            window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+      //这句话是用来清楚选中内容的
+      window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
 
-        }
     }
+  }
 
-    //当鼠标在页面上弹起的时候
-    document.onmouseup = function () {
-        //把页面的鼠标移动事件清空
-        document.onmousemove = null;
-    }
+  //当鼠标在页面上弹起的时候
+  document.onmouseup = function () {
+    //把页面的鼠标移动事件清空
+    document.onmousemove = null;
+  }
 
 </script>

@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>百度LOGO</title>
-	<style>
-		body {
-			margin: 0;
-			padding: 0;
-			background-color: #F7F7F7;
-		}
+  <meta charset="UTF-8">
+  <title>百度LOGO</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #F7F7F7;
+    }
 
-		.logo {
-			width: 270px;
-			height: 129px;
-			margin: 100px auto;
-			background-image: url(./images/baidu.png);
-			background-position: 0 0;
-		}
-	</style>
+    .logo {
+      width: 270px;
+      height: 129px;
+      margin: 100px auto;
+      background-image: url(./images/baidu.png);
+      background-position: 0 0;
+    }
+  </style>
 </head>
 <body>
-	<div class="logo"></div>
-	<script>
-		var logo = document.querySelector('.logo');
+  <div class="logo"></div>
+  <script>
+    var logo = document.querySelector('.logo');
 
-		var offset = -270;
-		var n = 0;
+    var offset = -270;
+    var n = 0;
 
-		setInterval(function () {
-			n++;
+    setInterval(function () {
+      n++;
 
-			logo.style.backgroundPosition = offset * n + 'px 0px';
-			
-			if(n >= 64) n = 0;
-		}, 100);
-	</script>
+      logo.style.backgroundPosition = offset * n + 'px 0px';
+
+      if (n >= 64) n = 0;
+    }, 100);
+  </script>
 </body>
 </html>

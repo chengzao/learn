@@ -2,47 +2,47 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>UrlSearchParams</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>UrlSearchParams</title>
 </head>
 
 <body>
-    <h1>UrlSearchParams</h1>
+  <h1>UrlSearchParams</h1>
 </body>
 <script>
-    // URLSearchParams有以下方法，用来操作某个参数 :
+  // URLSearchParams有以下方法，用来操作某个参数 :
 
-    // has()：返回一个布尔值，表示是否具有某个参数
-    // get()：返回指定参数的第一个值
-    // getAll()：返回一个数组，成员是指定参数的所有值
-    // set()：设置指定参数
-    // delete()：删除指定参数
-    // append()：在查询字符串之中，追加一个键值对
-    // toString()：返回整个查询字符串
-
-
-    var paramsString = 'q=URLUtils.searchParams&topic=api';
-    history.pushState(null, null, paramsString);
-    var searchParams = new URLSearchParams(paramsString);
-    console.log('searchParams.has', searchParams.has('topic'))
-    console.log('toString', searchParams.toString())
+  // has()：返回一个布尔值，表示是否具有某个参数
+  // get()：返回指定参数的第一个值
+  // getAll()：返回一个数组，成员是指定参数的所有值
+  // set()：设置指定参数
+  // delete()：删除指定参数
+  // append()：在查询字符串之中，追加一个键值对
+  // toString()：返回整个查询字符串
 
 
+  var paramsString = 'q=URLUtils.searchParams&topic=api';
+  history.pushState(null, null, paramsString);
+  var searchParams = new URLSearchParams(paramsString);
+  console.log('searchParams.has', searchParams.has('topic'))
+  console.log('toString', searchParams.toString())
 
 
-    // URLSearchParams还有三个方法，用来遍历所有参数 : 
 
-    // keys()：遍历所有参数名
-    // values()：遍历所有参数值
-    // entries()：遍历所有参数的键值对
 
-    var searchParams = new URLSearchParams('key1=value1&key2=value2');
+  // URLSearchParams还有三个方法，用来遍历所有参数 :
 
-    for (var key of searchParams.keys()) {
-        console.log(key);
-    }
+  // keys()：遍历所有参数名
+  // values()：遍历所有参数值
+  // entries()：遍历所有参数的键值对
+
+  var searchParams = new URLSearchParams('key1=value1&key2=value2');
+
+  for (var key of searchParams.keys()) {
+    console.log(key);
+  }
 </script>
 
 </html>

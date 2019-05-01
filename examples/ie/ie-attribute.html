@@ -4,30 +4,32 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<style>
-	span{
-		font-size: 40px;
-	}
-	i{
-		font-size: 40px;
-	}
-	div{
-		font-size: 20px;
-	}
+		span {
+			font-size: 40px;
+		}
+
+		i {
+			font-size: 40px;
+		}
+
+		div {
+			font-size: 20px;
+		}
 	</style>
 </head>
 <body>
-<span>20</span>
-<i>20</i>
-<div>
-	20
-</div>
-<script id="test">
-test.addBehavior("#default#userData");
-test.setAttribute("data-data","测试数据");
-test.save("my test data");
-test.setAttribute("data-data","");
-test.load("my test data");
-document.write(test.getAttribute("data-data"));
-</script>	
+	<span>20</span>
+	<i>20</i>
+	<div>
+		20
+	</div>
+	<script id="test">
+		test.addBehavior("#default#userData");
+		test.setAttribute("data-data", "测试数据");
+		test.save("my test data");
+		test.setAttribute("data-data", "");
+		test.load("my test data");
+		document.write(test.getAttribute("data-data"));
+	</script>
 </body>
 </html>

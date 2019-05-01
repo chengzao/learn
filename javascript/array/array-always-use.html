@@ -15,7 +15,7 @@
     var str = '123456789';
     str = str.split('').reverse().join('');
     console.log(str);
-    //2.将数字 12345678 转化成 RMB形式 如： 12,345,678 
+    //2.将数字 12345678 转化成 RMB形式 如： 12,345,678
     function re(str) {
         str += '';
         return str.split("").reverse().join("");
@@ -25,7 +25,7 @@
         var tmp = '';
         for (var i = 1; i <= re(num).length; i++) {
             tmp += re(num)[i - 1];
-            // console.log(tmp) 
+            // console.log(tmp)
             if (i % 3 == 0 && i != re(num).length) {
                 tmp += ',';
             }
@@ -228,7 +228,7 @@
             }
         }
 
-        //遍历json对象。比较json[key]的value值大小 
+        //遍历json对象。比较json[key]的value值大小
         var iMax = 0;
         var iIndex = "";
         var str = '';
