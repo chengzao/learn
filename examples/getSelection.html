@@ -4,10 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>获取选中的值</title>
 </head>
 <body>
-  <p id='test'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius aliquid voluptatibus quibusdam, repellendus! Soluta ipsa ad quae non, debitis temporibus deserunt sit ipsum voluptatibus ullam dolorem, numquam aperiam doloremque labore.</p>
+  <p id='test'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius aliquid voluptatibus quibusdam,
+    repellendus! Soluta ipsa ad quae non, debitis temporibus deserunt sit ipsum voluptatibus ullam dolorem, numquam
+    aperiam doloremque labore.</p>
   <div id='demo'>Lorem ipsum dolor sit.</div>
 </body>
 <script type="text/javascript">
@@ -18,23 +20,23 @@
   //在test上 鼠标弹起 显示demo
   //根据鼠标位置 确定 demo显示的位置
   test.onmouseup = function (event) {
-      var event = event || window.event;
-      var pageX = event.pageX || event.clientX + document.documentElement.scrollLeft;
-      var pageY = event.pageY || event.clientY + document.documentElement.scrollTop;
+    var event = event || window.event;
+    var pageX = event.pageX || event.clientX + document.documentElement.scrollLeft;
+    var pageY = event.pageY || event.clientY + document.documentElement.scrollTop;
 
-      //判断是否选中了文字
-      var txt = window.getSelection ? window.getSelection().toString() : document.selection.createRange().text;
-      if(txt){
-        alert(txt);
-      }
-      //如果选中了文字 才会让demo盒子显示出来
+    //判断是否选中了文字
+    var txt = window.getSelection ? window.getSelection().toString() : document.selection.createRange().text;
+    if (txt) {
+      alert(txt);
+    }
+    //如果选中了文字 才会让demo盒子显示出来
   }
 
   //用户点击其他地方让demo盒子消失
   document.onmousedown = function (event) {
-      var event = event || window.event;
-      var targetId = event.target ? event.target.id : event.srcElement.id;
-      console.log(targetId);
+    var event = event || window.event;
+    var targetId = event.target ? event.target.id : event.srcElement.id;
+    console.log(targetId);
   }
 </script>
 </html>

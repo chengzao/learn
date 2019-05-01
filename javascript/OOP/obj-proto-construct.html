@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>对象的原型链结构</title>
-		<script>
+<head>
+  <meta charset="UTF-8">
+  <title>对象的原型链结构</title>
+  <script>
 		/*
 			function Dog() {}
 			var dog = new Dog();
@@ -56,28 +56,28 @@
 		*/
 
 
-		// 在他的基础之上 添加 Object
+    // 在他的基础之上 添加 Object
 
 
-			function Dog() {}
-			function Animal() {
+    function Dog() { }
+    function Animal() {
 
-				this.hahah = "哈哈";
-			}
+      this.hahah = "哈哈";
+    }
 
-			var animal = new Animal();
+    var animal = new Animal();
 
-			Dog.prototype = animal;
+    Dog.prototype = animal;
 
-			var dog = new Dog();
+    var dog = new Dog();
 
-			console.log(dog.__proto__ === animal);
-
-
+    console.log(dog.__proto__ === animal);
 
 
-		</script>
-	</head>
-	<body>
-	</body>
+
+
+  </script>
+</head>
+<body>
+</body>
 </html>

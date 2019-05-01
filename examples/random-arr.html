@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>数组混淆</title>
+</head>
+<!-- // 创建本地时间 -->
+<body onload="setInterval(()=>document.body.innerHTML=new Date().toLocaleString().split(' ')[1])">
+  <script>
+    // 随机更改数组元素顺序，混淆数组
+    (arr) => arr.slice().sort(() => Math.random() - 0.5)
+    /*
+      let a = (arr) => arr.slice().sort(() => Math.random() - 0.5)
+      let b = a([1,2,3,4,5])
+      console.log(b)
+    */
+
+    // 创建特定大小的数组
+    let arr = [...Array(3).keys()] // [0, 1, 2]
+
+    // 获取URL的查询参数
+    let q = {}; location.search.replace(/([^?&=]+)=([^&]+)/g, (_, k, v) => q[k] = v); q;
+
+
+    // 返回一个键盘
+    // 用字符串返回一个键盘图形
+    let keys = (_ => [..."`1234567890-=~~QWERTYUIOP[]\\~ASDFGHJKL;'~~ZXCVBNM,./~"].map(x => (o += `/${b = '_'.repeat(w = x < y ? 2 : ' 667699'[x = ["BS", "TAB", "CAPS", "ENTER"][p++] || 'SHIFT', p])}\\|`, m += y + (x + '    ').slice(0, w) + y + y, n += y + b + y + y, l += ' __' + b)[73] && (k.push(l, m, n, o), l = '', m = n = o = y), m = n = o = y = '|', p = l = k = []) && k.join`
+`)()
+
+  </script>
+</body>
+</html>

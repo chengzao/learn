@@ -102,9 +102,9 @@ function updateBalls(){
     var c = 1.0;
 	if( balls[i].y + RADIUS + balls[i].vy >= WINDOW_HEIGHT ){
 	    c = ( WINDOW_HEIGHT - (balls[i].y+ RADIUS) ) / balls[i].vy;
-	    console.log( c );	
+	    console.log( c );
 	}
-        
+
 	balls[i].y += balls[i].vy;
 	balls[i].vy += c * balls[i].g;;
 

@@ -5,7 +5,7 @@
   "scripts": {
     "build": "babel es2015 -d lib",
     "descriptor": "babel ECMAScript/class/decorators-demo.js --out-file ECMAScript/class/descriptor.js",
-    "es9": "babel ECMAScript/es9 -d ECMAScript/es9/dist",
+    "es9": "babel ECMAScript/es9 -d ECMAScript/es9/dist"
   },
   "devDependencies": {
     "autoprefixer": "^7.2.6",

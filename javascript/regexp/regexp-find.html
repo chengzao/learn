@@ -1,94 +1,94 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>regexp查找功能</title>
-		<script>
-			// var i;
-			// var s = "abcdefg"; // 找出字符串中的字符 e, 如果没有就打印没有找到
+<head>
+  <meta charset="UTF-8">
+  <title>regexp查找功能</title>
+  <script>
+    // var i;
+    // var s = "abcdefg"; // 找出字符串中的字符 e, 如果没有就打印没有找到
 
-			/*
-			for (i = 0; i < s.length; i++) {
-				if (s.charAt(i) === 'e') {
-					console.log("e");
-					console.log(i);
-					break;
-				}
-			}
-			if (i === s.length) {
-				console.log("没找到");
-			}
-			*/
+    /*
+    for (i = 0; i < s.length; i++) {
+      if (s.charAt(i) === 'e') {
+        console.log("e");
+        console.log(i);
+        break;
+      }
+    }
+    if (i === s.length) {
+      console.log("没找到");
+    }
+    */
 
-			/*
-			function indexOf(str, ch) {
-				var i;
-				for (i = 0; i < str.length; i++) {
-					if (str.charAt(i) === ch) {
-						return i;
-					}
-				}
-				return -1;
-			}
+    /*
+    function indexOf(str, ch) {
+      var i;
+      for (i = 0; i < str.length; i++) {
+        if (str.charAt(i) === ch) {
+          return i;
+        }
+      }
+      return -1;
+    }
 
-			var s = "abcdgfg", index;
+    var s = "abcdgfg", index;
 
-			if ((index = indexOf(s, "e")) != -1) {
-				console.log("e" + ", " + index);
-			} else {
-				console.log("没找到");
-			}
-			*/
+    if ((index = indexOf(s, "e")) != -1) {
+      console.log("e" + ", " + index);
+    } else {
+      console.log("没找到");
+    }
+    */
 
 
-			// exec 方法, 返回找到的对象
-			/*
-			var s = "abcdfeg";
-			var r = new RegExp("e");
-			var m = r.exec(s); 	// 在 s 中找是否符合 r 的字符串, 如果找到返回找到的结果对象,
-								// 如果没有找到则返回 null
-			if (m) {
-				console.log(m[0] + ", " + m.index);
-			} else {
-				console.log("error");
-			}
-			*/
+    // exec 方法, 返回找到的对象
+    /*
+    var s = "abcdfeg";
+    var r = new RegExp("e");
+    var m = r.exec(s); 	// 在 s 中找是否符合 r 的字符串, 如果找到返回找到的结果对象,
+              // 如果没有找到则返回 null
+    if (m) {
+      console.log(m[0] + ", " + m.index);
+    } else {
+      console.log("error");
+    }
+    */
 
-			/*
-			var s = "abcdfeg",
-				m,
-				r = new RegExp("e");
-			if (m = r.exec(s)) {
-				console.log(m[0] + ", " + m.index);
-			} else {
-				console.log("err");
-			}
-			*/
-			// 在 字符串中 找到  book 单词, 如果找到返回开始的位置
-			// "abcbook123"
-			// "book", "jquery"
+    /*
+    var s = "abcdfeg",
+      m,
+      r = new RegExp("e");
+    if (m = r.exec(s)) {
+      console.log(m[0] + ", " + m.index);
+    } else {
+      console.log("err");
+    }
+    */
+    // 在 字符串中 找到  book 单词, 如果找到返回开始的位置
+    // "abcbook123"
+    // "book", "jquery"
 
-//			var s = "12345678765bomok43asdfghhgfdsasdfghj",
-//				m,
-//				r = new RegExp("book");
-//			if (m = r.exec(s)) {
-//				console.log(m[0] + ", " + m.index);
-//			} else {
-//				console.log("err");
-//			}
+    //			var s = "12345678765bomok43asdfghhgfdsasdfghj",
+    //				m,
+    //				r = new RegExp("book");
+    //			if (m = r.exec(s)) {
+    //				console.log(m[0] + ", " + m.index);
+    //			} else {
+    //				console.log("err");
+    //			}
 
-			// 把所有的数字的位置找出来
-			//		 0123456789012
-			var s = "abcdefghijklmn123def",
-				m,
-				r = new RegExp("\\d+");
-			if (m = r.exec(s)) {
-				console.log(m[0] + ", " + m.index + ", " + m[0].length);
-			} else {
-				console.log("err");
-			}
-		</script>
-	</head>
-	<body>
-	</body>
+    // 把所有的数字的位置找出来
+    //		 0123456789012
+    var s = "abcdefghijklmn123def",
+      m,
+      r = new RegExp("\\d+");
+    if (m = r.exec(s)) {
+      console.log(m[0] + ", " + m.index + ", " + m[0].length);
+    } else {
+      console.log("err");
+    }
+  </script>
+</head>
+<body>
+</body>
 </html>

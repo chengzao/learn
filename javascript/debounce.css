@@ -18,7 +18,8 @@ html, body {
 .dashi-marry .nav .txt {
   position: absolute;
   bottom: 0.78125rem;
-  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   color: #FDC700;
   font-size: 0.875rem;
 }
@@ -94,7 +95,8 @@ html, body {
   background-color: rgba(74,74,74,.3);
   margin-top: 0.9375rem;
   padding: 0.6875rem 0.625rem 0 0.625rem;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   display: none;
 }
 .dashi-marry .foot .start-btn {

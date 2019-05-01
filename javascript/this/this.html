@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>this</title>
+  <meta charset="UTF-8">
+  <title>this</title>
 </head>
 <body>
 
-<img src="dsa.png" alt="" id="pic">
+  <img src="dsa.png" alt="" id="pic">
 
-<select name="" id="sel" onchange="vi(this)">
-	<option value="d.png">1</option>
-	<option value="dsa.png">2</option>
-	<option value="da.png">3</option>
-	<option value="ds3a.png">4</option>
-	<option value="dsqa.png">5</option>
-</select>
+  <select name="" id="sel" onchange="vi(this)">
+    <option value="d.png">1</option>
+    <option value="dsa.png">2</option>
+    <option value="da.png">3</option>
+    <option value="ds3a.png">4</option>
+    <option value="dsqa.png">5</option>
+  </select>
 
 
-<script>
-	var sel=document.getElementById('sel');
-	var pic=document.getElementById('pic');
+  <script>
+    var sel = document.getElementById('sel');
+    var pic = document.getElementById('pic');
 
-	function vi(){
-		pic.setAttribute('src', sel.value);
-	} 
+    function vi() {
+      pic.setAttribute('src', sel.value);
+    }
 /*	sel.onchange=function(){
-		console.log(this)
-	}*/
+        console.log(this)
+      }*/
 
 	// url:https://www.zhihu.com/question/19636194
 	//http://otakustay.com/object-lookup-in-javascript/
@@ -34,26 +34,26 @@
 	//
 	//
 
-	/*
-	foo = function() {
+    /*
+    foo = function() {
 
-		this.myName = "Foo function.";
-	}
-	foo.prototype.sayHello = function() {
-		console.log(this.myName);
-	}
+      this.myName = "Foo function.";
+    }
+    foo.prototype.sayHello = function() {
+      console.log(this.myName);
+    }
 
-	foo.prototype.bar = function() {
+    foo.prototype.bar = function() {
 
-		//setTimeout(this.sayHello.bind(this), 1000);
-		setTimeout(this.sayHello.call(this), 1000);
-		//setTimeout(this.sayHello.apply(this), 1000);
-	}
-	var f = new foo;
-	f.bar()
-	*/
+      //setTimeout(this.sayHello.bind(this), 1000);
+      setTimeout(this.sayHello.call(this), 1000);
+      //setTimeout(this.sayHello.apply(this), 1000);
+    }
+    var f = new foo;
+    f.bar()
+    */
 
 
-</script>
+  </script>
 </body>
 </html>

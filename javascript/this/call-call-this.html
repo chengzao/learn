@@ -9,7 +9,7 @@
     //1
     window.color = "red";
 
-    var o = {color: "blue"};
+    var o = { color: "blue" };
 
     function sayColor() {
       console.log(this.color);
@@ -18,7 +18,7 @@
     sayColor(); //red  window
     sayColor.call(this); //red  window
     sayColor.call(window); //red  window
-    sayColor.call(o); //blue  
+    sayColor.call(o); //blue
 
     //2.
     //这个例子中的意思就是用 add 来替换 sub
@@ -89,6 +89,6 @@
     test.showSub(10, 8);//2
     test.showAdd(10, 8);//18
 
-</script>
+  </script>
 </body>
 </html>

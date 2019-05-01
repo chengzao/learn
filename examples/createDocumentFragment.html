@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<style media="screen">
-		.box{width: 100px;height: 50px;border: 2px solid #000;margin: 100px auto;padding: 20px;background-color: #f0f0f0}
-	</style>
+  <meta charset="UTF-8">
+  <title>DocumentFragment</title>
+  <style media="screen">
+    .box {
+      width: 100px;
+      height: 50px;
+      border: 2px solid #000;
+      margin: 100px auto;
+      padding: 20px;
+      background-color: #f0f0f0
+    }
+  </style>
 </head>
 <body>
-	<div class="box">
+  <div class="box">
 
-	</div>
+  </div>
 
-	<div id="mydiv" foo="bar"></div>
+  <div id="mydiv" foo="bar"></div>
 
-	<div id="mydiv2" data-foo="bar"></div>
+  <div id="mydiv2" data-foo="bar"></div>
 
-	<ul></ul>
+  <ul></ul>
 </body>
 
 <!--
@@ -28,34 +35,34 @@
  -->
 
 <script>
-    window.onresize=function () {
-    		var x=document.documentElement.clientHeight;
-				//console.log(x);
-    }
+  window.onresize = function () {
+    var x = document.documentElement.clientHeight;
+    //console.log(x);
+  }
 
-		var box = document.querySelectorAll('.box')[0]
-		box.getBoundingClientRect().left
+  var box = document.querySelectorAll('.box')[0]
+  box.getBoundingClientRect().left
 
-		var n = document.querySelector('#mydiv')
-		n.getAttribute('foo') // bar
-		n.setAttribute('foo', 'baz')
-		n.removeAttribute('foo')
+  var n = document.querySelector('#mydiv')
+  n.getAttribute('foo') // bar
+  n.setAttribute('foo', 'baz')
+  n.removeAttribute('foo')
 
 
-		var n1 = document.getElementById('mydiv2');
-		n1.dataset.foo; // bar
-		n1.dataset.foo = 'baz';
-		delete n1.dataset.foo;
+  var n1 = document.getElementById('mydiv2');
+  n1.dataset.foo; // bar
+  n1.dataset.foo = 'baz';
+  delete n1.dataset.foo;
 
-		// var docFrag = document.createDocumentFragment();
-		// or
-		var docFrag = new DocumentFragment();
+  // var docFrag = document.createDocumentFragment();
+  // or
+  var docFrag = new DocumentFragment();
 
-		var li = document.createElement('li');
-		li.textContent = 'Hello World';
-		docFrag.appendChild(li);
-		console.log(docFrag.textContent); //Hello World
-		document.querySelector('ul').appendChild(docFrag);
-		console.log(docFrag.textContent); // ''
+  var li = document.createElement('li');
+  li.textContent = 'Hello World';
+  docFrag.appendChild(li);
+  console.log(docFrag.textContent); //Hello World
+  document.querySelector('ul').appendChild(docFrag);
+  console.log(docFrag.textContent); // ''
 </script>
 </html>

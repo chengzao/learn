@@ -1,82 +1,82 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
+  <meta charset="UTF-8">
+  <title></title>
 </head>
 <body>
-<div></div>
-<div id="box"></div>
-<div></div>
-<div class="box1"></div>
-<div class="box1"></div>
+  <div></div>
+  <div id="box"></div>
+  <div></div>
+  <div class="box1"></div>
+  <div class="box1"></div>
 
-<script>
+  <script>
     //封装方法。
-    function $(str){
-        //对传过来的值（参数），进行判断。
-        var val = str.charAt(0);
-        switch (val){
-            //  2.第一个字符如果是#，用document.get...Id().
-            case "#":
-            //我们使用的字符串中包含#，所以我们从第二个字符开始使用
-                return document.getElementById(str.slice(1));
-                break;
+    function $(str) {
+      //对传过来的值（参数），进行判断。
+      var val = str.charAt(0);
+      switch (val) {
+        //  2.第一个字符如果是#，用document.get...Id().
+        case "#":
+          //我们使用的字符串中包含#，所以我们从第二个字符开始使用
+          return document.getElementById(str.slice(1));
+          break;
 
-            //第一个字符如果是.，用document.get...ClassName().
-            case ".":
-                return fn(str.slice(1));
-                break;
+        //第一个字符如果是.，用document.get...ClassName().
+        case ".":
+          return fn(str.slice(1));
+          break;
 
-            //用document.get...TagName().
-            default :
-                return document.getElementsByTagName(str);
-        }
+        //用document.get...TagName().
+        default:
+          return document.getElementsByTagName(str);
+      }
 
     }
     //2.使用方法更改盒子。
-   var divArr = $("div");
-    for(var i=0;i<divArr.length;i++){
-        divArr[i].style.width = "100px";
-        divArr[i].style.height = "100px";
-        divArr[i].style.border = "1px solid red";
+    var divArr = $("div");
+    for (var i = 0; i < divArr.length; i++) {
+      divArr[i].style.width = "100px";
+      divArr[i].style.height = "100px";
+      divArr[i].style.border = "1px solid red";
     }
 
     $("#box").style.backgroundColor = "pink";
 
     var boxArr = $(".box1");
-    for(var i=0;i<boxArr.length;i++){
-        boxArr[i].style.backgroundColor = "purple";
+    for (var i = 0; i < boxArr.length; i++) {
+      boxArr[i].style.backgroundColor = "purple";
     }
 
 
-    function fn(str){
-        if(document.getElementsByClassName){
-            return document.getElementsByClassName(str);
+    function fn(str) {
+      if (document.getElementsByClassName) {
+        return document.getElementsByClassName(str);
+      }
+      var allNodes = document.getElementsByTagName("*");
+      var arr = [];
+      for (var i = 0; i < allNodes.length; i++) {
+        //判断节点，如果Class属性值是传过来的值。放进数组。
+        //需求：因为很多类名是多类名，所以，只要类名中包含str,就把他放进数组。
+        //步骤：
+        //把类名变成数组（按“ ”）
+        //遍历数组中所有的元素
+        //在判断，如果Class属性值是传过来的值。放进数组。
+        //把类名变成数组（按“ ”）
+        var arrClassName = allNodes[i].className.split(" ");
+        //遍历数组中所有的元素（遍历数组中所有的元素用的）
+        for (var j = 0; j < arrClassName.length; j++) {
+          //在判断，如果Class属性值是传过来的值。放进数组。
+          if (arrClassName[j] == str) {
+            arr.push(allNodes[i]);
+          }
         }
-        var allNodes = document.getElementsByTagName("*");
-        var arr = [];
-        for(var i=0; i<allNodes.length; i++){
-            //判断节点，如果Class属性值是传过来的值。放进数组。
-            //需求：因为很多类名是多类名，所以，只要类名中包含str,就把他放进数组。
-            //步骤：
-            //把类名变成数组（按“ ”）
-            //遍历数组中所有的元素
-            //在判断，如果Class属性值是传过来的值。放进数组。
-            //把类名变成数组（按“ ”）
-            var arrClassName = allNodes[i].className.split(" ");
-            //遍历数组中所有的元素（遍历数组中所有的元素用的）
-            for(var j = 0; j<arrClassName.length; j++){
-                //在判断，如果Class属性值是传过来的值。放进数组。
-                if(arrClassName[j] == str){
-                    arr.push(allNodes[i]);
-                }
-            }
-        }
-        //返回数组。
-        return arr;
+      }
+      //返回数组。
+      return arr;
     }
 
-</script>
+  </script>
 </body>
 </html>

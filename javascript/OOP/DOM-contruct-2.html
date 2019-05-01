@@ -1,66 +1,66 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>dom的闭包案例改进</title>
-		<style>
-			input {
-				margin: 5px;
-				width: 100px;
-				height: 50px;
+<head>
+	<meta charset="UTF-8">
+	<title>dom的闭包案例改进</title>
+	<style>
+		input {
+			margin: 5px;
+			width: 100px;
+			height: 50px;
+		}
+	</style>
+	<script>
+		// 在页面中有很多 按钮
+		// 按钮上是文字 点击
+		// 要求点击按钮, 修改其文字为 被点击
+		// 然后点击其他按钮时, 还原上一次点击的按钮, 并将新的按钮文字修改为被点击
+		window.onload = function () {
+			// 在里面获得 input
+			var btns = document.getElementsByTagName("input");
+			var prevBtn;
+			for (var i = 0; i < btns.length; i++) {
+				btns[i].onclick = function () {
+					// 将上一个设置为 "点击"
+					if (prevBtn) {
+						prevBtn.value = "点击";
+					}
+					console.log(prevBtn);
+					this.value = "被点击";
+
+					// 点击的时候, 将现在点击的存起来, 然后这个就是下一次点击的上一个
+					prevBtn = this;
+				};
+
 			}
-		</style>
-		<script>
-			// 在页面中有很多 按钮
-			// 按钮上是文字 点击
-			// 要求点击按钮, 修改其文字为 被点击
-			// 然后点击其他按钮时, 还原上一次点击的按钮, 并将新的按钮文字修改为被点击
-			window.onload = function () {
-				// 在里面获得 input
-				var btns = document.getElementsByTagName("input");
-				var prevBtn;
-				for (var i = 0; i < btns.length; i++) {
-					btns[i].onclick = function () {
-						// 将上一个设置为 "点击"
-						if (prevBtn) {
-							prevBtn.value = "点击";
-						}
-						console.log(prevBtn);
-						this.value = "被点击";
+		};
 
-						// 点击的时候, 将现在点击的存起来, 然后这个就是下一次点击的上一个
-						prevBtn = this;
-					};
-
-				}
-			};
-
-		</script>
-	</head>
-	<body>
-		<input type="button" value="点击"/>
-		<input type="button" value="点击"/>
-		<input type="button" value="点击"/>
-		<input type="button" value="点击"/>
-		<input type="button" value="点击"/><br />
-		<input type="button" value="点击"/>
-		<input type="button" value="点击"/>
-		<input type="button" value="点击"/>
-		<input type="button" value="点击"/>
-		<input type="button" value="点击"/><br />
-		<input type="button" value="点击"/>
-		<input type="button" value="点击"/>
-		<input type="button" value="点击"/>
-		<input type="button" value="点击"/>
-		<input type="button" value="点击"/><br />
-		<input type="button" value="点击"/>
-		<input type="button" value="点击"/>
-		<input type="button" value="点击"/>
-		<input type="button" value="点击"/>
-		<input type="button" value="点击"/><br />
-		<input type="button" value="点击"/>
-		<input type="button" value="点击"/>
-		<input type="button" value="点击"/>
-		<input type="button" value="点击"/>
-	</body>
+	</script>
+</head>
+<body>
+	<input type="button" value="点击" />
+	<input type="button" value="点击" />
+	<input type="button" value="点击" />
+	<input type="button" value="点击" />
+	<input type="button" value="点击" /><br />
+	<input type="button" value="点击" />
+	<input type="button" value="点击" />
+	<input type="button" value="点击" />
+	<input type="button" value="点击" />
+	<input type="button" value="点击" /><br />
+	<input type="button" value="点击" />
+	<input type="button" value="点击" />
+	<input type="button" value="点击" />
+	<input type="button" value="点击" />
+	<input type="button" value="点击" /><br />
+	<input type="button" value="点击" />
+	<input type="button" value="点击" />
+	<input type="button" value="点击" />
+	<input type="button" value="点击" />
+	<input type="button" value="点击" /><br />
+	<input type="button" value="点击" />
+	<input type="button" value="点击" />
+	<input type="button" value="点击" />
+	<input type="button" value="点击" />
+</body>
 </html>

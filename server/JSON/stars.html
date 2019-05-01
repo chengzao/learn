@@ -1,63 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>JSON</title>
-	<style>
-		table {
-			width: 300px;
-			border-collapse: collapse;
-		}
-		td {
-			height: 40px;
-			text-align: center;
-			border: 1px solid #CCC;
-		}
-	</style>
+  <meta charset="UTF-8">
+  <title>JSON</title>
+  <style>
+    table {
+      width: 300px;
+      border-collapse: collapse;
+    }
+
+    td {
+      height: 40px;
+      text-align: center;
+      border: 1px solid #CCC;
+    }
+  </style>
 </head>
 <body>
-	<table>
-		
-	</table>
-	<div class="btn"><input type="button" value="获取数据"></div>
+  <table>
 
-	<script>
-		var btn = document.querySelector('.btn');
+  </table>
+  <div class="btn"><input type="button" value="获取数据"></div>
 
-		btn.onclick = function () {
-			var xhr = new XMLHttpRequest;
+  <script>
+    var btn = document.querySelector('.btn');
 
-			xhr.open('get', './stars.php');
+    btn.onclick = function () {
+      var xhr = new XMLHttpRequest;
 
-			xhr.send(null);
+      xhr.open('get', './stars.php');
 
-			xhr.onreadystatechange = function () {
-				if(xhr.readyState == 4 && xhr.status == 200) {
-					var result = xhr.responseText;
+      xhr.send(null);
 
-					result = JSON.parse(result);
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          var result = xhr.responseText;
 
-					console.log(result);
+          result = JSON.parse(result);
 
-					var html = '';
-					for(var i=0; i<result.length; i++) {
-						html += '<tr>';
+          console.log(result);
 
-						html += '<td>' + result[i].name + '</td>';
+          var html = '';
+          for (var i = 0; i < result.length; i++) {
+            html += '<tr>';
 
-						html += '<td>' + result[i].sex + '</td>';
+            html += '<td>' + result[i].name + '</td>';
 
-						html += '<td>' + result[i].age + '</td>';
+            html += '<td>' + result[i].sex + '</td>';
 
-						html += '<td>' + result[i].ablum + '</td>';
+            html += '<td>' + result[i].age + '</td>';
 
-						html += '</tr>';
-					}
+            html += '<td>' + result[i].ablum + '</td>';
 
-					document.querySelector('table').innerHTML = html;
-				}
-			}
-		}
-	</script>
+            html += '</tr>';
+          }
+
+          document.querySelector('table').innerHTML = html;
+        }
+      }
+    }
+  </script>
 </body>
 </html>

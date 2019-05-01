@@ -5,15 +5,15 @@
 	<title>构造方法</title>
 </head>
 <body>
-	
+
 </body>
 
 <script>
-	
-	function Person (name) {
-		this.name=name; 
 
-		this.sayHello=function(){
+	function Person(name) {
+		this.name = name;
+
+		this.sayHello = function () {
 			console.log(this.name);
 		}
 	}
@@ -24,7 +24,7 @@
 	var person2 = new Person('xiao wang');
 	person2.sayHello();  // xiao wang
 
-    console.log(person.sayHello == person2.sayHello);//false
+	console.log(person.sayHello == person2.sayHello);//false
 
 
 </script>

@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>IIFE return模式</title>
+  <meta charset="UTF-8">
+  <title>IIFE return模式</title>
 </head>
 <body>
 
 </body>
 </html>
 <script>
-    /*我们可以定义一个对象来保存一切需要暴露的属性和方法*/
-   var $ =  (function(){
-        var sum  =   10;
-        var name = 10;
-        var json = {
-            sum:sum,
-            name:name,
-            on:function(){},
-            css:function(){
-                console.log('css模块中的css方法')
-            },
-            extend:function(){},
-            isString:function(){}
-        };
-       return json;
-    })();
+  /*我们可以定义一个对象来保存一切需要暴露的属性和方法*/
+  var $ = (function () {
+    var sum = 10;
+    var name = 10;
+    var json = {
+      sum: sum,
+      name: name,
+      on: function () { },
+      css: function () {
+        console.log('css模块中的css方法')
+      },
+      extend: function () { },
+      isString: function () { }
+    };
+    return json;
+  })();
 
-    $.css();
+  $.css();
 
 </script>

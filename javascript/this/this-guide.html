@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>this 指向</title>
+  <meta charset="UTF-8">
+  <title>this 指向</title>
 </head>
 <body>
-<!--
+  <!--
 this:
 
 如果一个方法通过Function.call()或者Function.apply()方法来触发的，关键字”this“将会被设置为第一个传递到这两个方法中的参数。如果传递进来的第一个参数是null或者undefined，那么关键字”this“将参考全局对象（通常是浏览器的window对象）
@@ -13,71 +13,71 @@ this:
 如果一个方法在一个对象中触发，那么关键字"this”将是这个对象本身
 
 -->
-<script>
-  //使用call()或者apply()
-  var obja = {
-    sayHello: function() {
-      console.log( "我是对象" + this.objName );
-    },
-    objName: "ObjectA - gbtags.com"
-  };
-  var objb = {
-    objName: "ObjectB - gbtags.com"
-  };
-  obja.sayHello();//我是对象ObjectA - gbtags.com
-  obja.sayHello.call( objb );//我是对象ObjectB - gbtags.com
-  //使用bind()方法
-  var myName = "全局对象";
-  var sayHello = function() {
-    console.log( "我是" + this.myName );
-  };
-  var obja = {
-    myName: "对象A"
-  };
-  var myObjectHello = sayHello.bind( obja );
-  sayHello();//我是全局对象
-  myObjectHello();//我是对象A
-  //对象中参考this
-  var myName = "全局变量";
-  var sayHello = function() {
-    console.log( "我是" + this.myName );
-  };
-  var obja = {
-    myName: "对象A"
-  };
-  var objb = {
-    myName: "对象B"
-  };
-  obja.sayHello = sayHello;
-  objb.sayHello = sayHello;
-  sayHello();//我是全局变量
-  obja.sayHello();//我是对象A
-  objb.sayHello();//我是对象B
-
-  //对象中参考this  demo1
-  var myNamespace = {
-    myObject: {
-      whoareYou: function() {
-        console.log( "我是" + this.myName );
+  <script>
+    //使用call()或者apply()
+    var obja = {
+      sayHello: function () {
+        console.log("我是对象" + this.objName);
       },
-      myName: "极客标签社区"
-    }
-  };
-  var who = myNamespace.myObject.whoareYou;
-  who();//我是undefined
+      objName: "ObjectA - gbtags.com"
+    };
+    var objb = {
+      objName: "ObjectB - gbtags.com"
+    };
+    obja.sayHello();//我是对象ObjectA - gbtags.com
+    obja.sayHello.call(objb);//我是对象ObjectB - gbtags.com
+    //使用bind()方法
+    var myName = "全局对象";
+    var sayHello = function () {
+      console.log("我是" + this.myName);
+    };
+    var obja = {
+      myName: "对象A"
+    };
+    var myObjectHello = sayHello.bind(obja);
+    sayHello();//我是全局对象
+    myObjectHello();//我是对象A
+    //对象中参考this
+    var myName = "全局变量";
+    var sayHello = function () {
+      console.log("我是" + this.myName);
+    };
+    var obja = {
+      myName: "对象A"
+    };
+    var objb = {
+      myName: "对象B"
+    };
+    obja.sayHello = sayHello;
+    objb.sayHello = sayHello;
+    sayHello();//我是全局变量
+    obja.sayHello();//我是对象A
+    objb.sayHello();//我是对象B
 
-  //对象中参考this  demo2
-  var myNamespace = {
-    myObject: {
-      whoareYou: function() {
-        console.log( "我是" + this.myName );
-      },
-      myName: "极客标签社区"
-    }
-  };
-  var who = myNamespace.myObject;
-  who.whoareYou();//我是极客标签社区
+    //对象中参考this  demo1
+    var myNamespace = {
+      myObject: {
+        whoareYou: function () {
+          console.log("我是" + this.myName);
+        },
+        myName: "极客标签社区"
+      }
+    };
+    var who = myNamespace.myObject.whoareYou;
+    who();//我是undefined
 
-</script>
+    //对象中参考this  demo2
+    var myNamespace = {
+      myObject: {
+        whoareYou: function () {
+          console.log("我是" + this.myName);
+        },
+        myName: "极客标签社区"
+      }
+    };
+    var who = myNamespace.myObject;
+    who.whoareYou();//我是极客标签社区
+
+  </script>
 </body>
 </html>

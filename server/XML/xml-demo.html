@@ -1,83 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>XML</title>
-	<style>
-		table {
-			width: 300px;
-			border-collapse: collapse;
-		}
-		td {
-			height: 40px;
-			text-align: center;
-			border: 1px solid #CCC;
-		}
-	</style>
+  <meta charset="UTF-8">
+  <title>XML</title>
+  <style>
+    table {
+      width: 300px;
+      border-collapse: collapse;
+    }
+
+    td {
+      height: 40px;
+      text-align: center;
+      border: 1px solid #CCC;
+    }
+  </style>
 </head>
 <body>
-	<table>
+  <table>
 
-	</table>
+  </table>
 
-	<div class="btn"><input type="button" value="获取数据"></div>
-
-
-	<script>
-		var btn = document.querySelector('.btn');
-
-		btn.onclick = function () {
-
-			var xhr = new XMLHttpRequest;
-
-			xhr.open('get', 'stars.php');
-
-			xhr.send(null);
-
-			xhr.onreadystatechange = function () {
-				if(xhr.readyState == 4 && xhr.status == 200) {
-					// 一个新的属性，用来接收XML格式的数据
-					var result = xhr.responseXML;
-
-					console.log(result);
-					
-					var items = result.getElementsByTagName('root')[0];
-
-					// var item = items.childNodes;
-					var item = items.getElementsByTagName('item');
-
-					var html = '';
-					for(var i=0; i<item.length; i++) {
-
-						var name = item[i].getElementsByTagName('name')[0];
-						var photo = item[i].getElementsByTagName('photo')[0];
-						var album = item[i].getElementsByTagName('album')[0];
-						var age = item[i].getElementsByTagName('age')[0];
-						var sex = item[i].getElementsByTagName('sex')[0];
-
-						var nameText = name.firstChild.nodeValue;
-						var photoText = photo.firstChild.nodeValue;
-						var albumText = album.firstChild.nodeValue;
-						var ageText = age.firstChild.nodeValue;
-						var sexText = sex.firstChild.nodeValue;
-
-						html += '<tr>';
-						html += '<td>' + nameText + '</td>';
-						html += '<td>' + albumText + '</td>';
-						html += '<td>' + ageText + '</td>';
-						html += '<td>' + sexText + '</td>';
-						html += '</tr>';
-
-					}
-
-					document.querySelector('table').innerHTML = html;
-
-				}
-			}
+  <div class="btn"><input type="button" value="获取数据"></div>
 
 
-		}
+  <script>
+    var btn = document.querySelector('.btn');
 
-	</script>
+    btn.onclick = function () {
+
+      var xhr = new XMLHttpRequest;
+
+      xhr.open('get', 'stars.php');
+
+      xhr.send(null);
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          // 一个新的属性，用来接收XML格式的数据
+          var result = xhr.responseXML;
+
+          console.log(result);
+
+          var items = result.getElementsByTagName('root')[0];
+
+          // var item = items.childNodes;
+          var item = items.getElementsByTagName('item');
+
+          var html = '';
+          for (var i = 0; i < item.length; i++) {
+
+            var name = item[i].getElementsByTagName('name')[0];
+            var photo = item[i].getElementsByTagName('photo')[0];
+            var album = item[i].getElementsByTagName('album')[0];
+            var age = item[i].getElementsByTagName('age')[0];
+            var sex = item[i].getElementsByTagName('sex')[0];
+
+            var nameText = name.firstChild.nodeValue;
+            var photoText = photo.firstChild.nodeValue;
+            var albumText = album.firstChild.nodeValue;
+            var ageText = age.firstChild.nodeValue;
+            var sexText = sex.firstChild.nodeValue;
+
+            html += '<tr>';
+            html += '<td>' + nameText + '</td>';
+            html += '<td>' + albumText + '</td>';
+            html += '<td>' + ageText + '</td>';
+            html += '<td>' + sexText + '</td>';
+            html += '</tr>';
+
+          }
+
+          document.querySelector('table').innerHTML = html;
+
+        }
+      }
+
+
+    }
+
+  </script>
 </body>
 </html>

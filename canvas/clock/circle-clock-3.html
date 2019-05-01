@@ -2,201 +2,199 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>无标题文档</title>
-    <style type="text/css">
-        body {
-            margin: 0;
-        }
+  <meta charset="utf-8">
+  <title>无标题文档</title>
+  <style type="text/css">
+    body {
+      margin: 0;
+    }
 
-        #clock {
-            width: 406px;
-            height: 406px;
-            margin: 50px auto;
-        }
+    #clock {
+      width: 406px;
+      height: 406px;
+      margin: 50px auto;
+    }
 
-        #clock .outside {
-            width: 400px;
-            height: 400px;
-            border: 3px solid #000;
-            border-radius: 50%;
-            -webkit-border-radius: 50%;
-            -moz-border-radius: 50%;
-            position: relative;
-        }
+    #clock .outside {
+      width: 400px;
+      height: 400px;
+      border: 3px solid #000;
+      border-radius: 50%;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      position: relative;
+    }
 
-        #scale {
-            width: 400px;
-            height: 400px;
-            position: absolute;
-            left: 0;
-            top: 0;
-            border-radius: 50%;
-            -webkit-border-radius: 50%;
-            -moz-border-radius: 50%;
-        }
+    #scale {
+      width: 400px;
+      height: 400px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-radius: 50%;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+    }
 
-        #scale span {
-            width: 2px;
-            height: 10px;
-            position: absolute;
-            left: 199px;
-            top: 0;
-            background: #000;
-            transform-origin: 1px 200px;
-            -webkit-transform-origin: 1px 200px;
-            -moz-transform-origin: 1px 200px;
-        }
+    #scale span {
+      width: 2px;
+      height: 10px;
+      position: absolute;
+      left: 199px;
+      top: 0;
+      background: #000;
+      transform-origin: 1px 200px;
+      -webkit-transform-origin: 1px 200px;
+      -moz-transform-origin: 1px 200px;
+    }
 
-        #scale span:nth-child(5n+1) {
-            height: 20px;
-            background: #099;
-        }
+    #scale span:nth-child(5n+1) {
+      height: 20px;
+      background: #099;
+    }
 
-        #roller {
-            width: 20px;
-            height: 20px;
-            position: absolute;
-            left: 188px;
-            top: 188px;
-            background: #000;
-            -webkit-border-radius: 50%;
-            -moz-border-radius: 50%;
-            border-radius: 50%;
-            border: 2px solid red;
-        }
+    #roller {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      left: 188px;
+      top: 188px;
+      background: #000;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+      border: 2px solid red;
+    }
 
-        #hour {
-            width: 4px;
-            height: 80px;
-            background: #000;
-            position: absolute;
-            left: 198px;
-            top: 120px;
-            z-index: 2;
-            transform-origin: bottom;
-            -webkit-transform-origin: bottom;
-            -moz-transform-origin: bottom;
-        }
+    #hour {
+      width: 4px;
+      height: 80px;
+      background: #000;
+      position: absolute;
+      left: 198px;
+      top: 120px;
+      z-index: 2;
+      transform-origin: bottom;
+      -webkit-transform-origin: bottom;
+      -moz-transform-origin: bottom;
+    }
 
-        #min {
-            width: 4px;
-            height: 100px;
-            background: #666;
-            position: absolute;
-            left: 198px;
-            top: 100px;
-            z-index: 3;
-            transform-origin: bottom;
-            -webkit-transform-origin: bottom;
-            -moz-transform-origin: bottom;
-        }
+    #min {
+      width: 4px;
+      height: 100px;
+      background: #666;
+      position: absolute;
+      left: 198px;
+      top: 100px;
+      z-index: 3;
+      transform-origin: bottom;
+      -webkit-transform-origin: bottom;
+      -moz-transform-origin: bottom;
+    }
 
-        #second {
-            width: 2px;
-            height: 140px;
-            background: red;
-            position: absolute;
-            left: 199px;
-            top: 50px;
-            z-index: 4;
-            transform-origin: 2px 150px;
-            -webkit-transform-origin: 2px 150px;
-            -moz-transform-origin: 2px 150px;
-        }
+    #second {
+      width: 2px;
+      height: 140px;
+      background: red;
+      position: absolute;
+      left: 199px;
+      top: 50px;
+      z-index: 4;
+      transform-origin: 2px 150px;
+      -webkit-transform-origin: 2px 150px;
+      -moz-transform-origin: 2px 150px;
+    }
 
-        #circle_bot {
-            background-color: #E09;
-            width: 150px;
-            height: 150px;
-            margin: 0px 0 0 0px;
-            border-radius: 50%;
-        }
+    #circle_bot {
+      background-color: #E09;
+      width: 150px;
+      height: 150px;
+      margin: 0px 0 0 0px;
+      border-radius: 50%;
+    }
 
-        #circle_mid {
-            background-color: #EAA;
-            width: 100px;
-            height: 100px;
-            margin: -125px 0 0 25px;
-            border-radius: 50%;
-        }
+    #circle_mid {
+      background-color: #EAA;
+      width: 100px;
+      height: 100px;
+      margin: -125px 0 0 25px;
+      border-radius: 50%;
+    }
 
-        #circle_top {
-            background-color: #ED9;
-            width: 50px;
-            height: 50px;
-            margin: -75px 0 0 50px;
-            border-radius: 50%;
-        }
-    </style>
+    #circle_top {
+      background-color: #ED9;
+      width: 50px;
+      height: 50px;
+      margin: -75px 0 0 50px;
+      border-radius: 50%;
+    }
+  </style>
 
-    <script type="text/javascript">
-        window.onload = function ()
-        {
-            var o_scale = document.getElementById('scale');
-            var o_hour = document.getElementById('hour');
-            var o_min = document.getElementById('min');
-            var o_second = document.getElementById('second');
+  <script type="text/javascript">
+    window.onload = function () {
+      var o_scale = document.getElementById('scale');
+      var o_hour = document.getElementById('hour');
+      var o_min = document.getElementById('min');
+      var o_second = document.getElementById('second');
 
-            var date = new Date();
-            var h = date.getHours();
-            var m = date.getMinutes();
-            var s = date.getSeconds();
+      var date = new Date();
+      var h = date.getHours();
+      var m = date.getMinutes();
+      var s = date.getSeconds();
 
-            var htm = '';
-            for (var i = 0; i < 60; i++)
-            {
-                htm += "<span style='transform:rotate(" + i * 6 + "deg)'></span>"
-            }
-            o_scale.innerHTML = htm;
+      var htm = '';
+      for (var i = 0; i < 60; i++) {
+        htm += "<span style='transform:rotate(" + i * 6 + "deg)'></span>"
+      }
+      o_scale.innerHTML = htm;
 
-            o_hour.style.transform = o_hour.style.WebkitTransform = o_hour.style.MozTransform = 'rotate(' + (h + m / 60) * 360 / 12 + 'deg)';
-            o_min.style.transform = o_min.style.WebkitTransform = o_min.style.MozTransform = 'rotate(' + (m + s / 60) * 6 + 'deg)';
-            o_second.style.transform = o_second.style.WebkitTransform = o_second.style.MozTransform = 'rotate(' + s * 6 + 'deg)';
+      o_hour.style.transform = o_hour.style.WebkitTransform = o_hour.style.MozTransform = 'rotate(' + (h + m / 60) * 360 / 12 + 'deg)';
+      o_min.style.transform = o_min.style.WebkitTransform = o_min.style.MozTransform = 'rotate(' + (m + s / 60) * 6 + 'deg)';
+      o_second.style.transform = o_second.style.WebkitTransform = o_second.style.MozTransform = 'rotate(' + s * 6 + 'deg)';
 
-            setInterval(function () {
-                var date = new Date();
-                var h = date.getHours();
-                var m = date.getMinutes();
-                var s = date.getSeconds();
-                o_hour.style.transform = o_hour.style.WebkitTransform = o_hour.style.MozTransform = 'rotate(' + (h + m / 60) * 360 / 12 + 'deg)';
-                o_min.style.transform = o_min.style.WebkitTransform = o_min.style.MozTransform = 'rotate(' + (m + s / 60) * 6 + 'deg)';
-                o_second.style.transform = o_second.style.WebkitTransform = o_second.style.MozTransform = 'rotate(' + s * 6 + 'deg)';
-            }, 1000);
+      setInterval(function () {
+        var date = new Date();
+        var h = date.getHours();
+        var m = date.getMinutes();
+        var s = date.getSeconds();
+        o_hour.style.transform = o_hour.style.WebkitTransform = o_hour.style.MozTransform = 'rotate(' + (h + m / 60) * 360 / 12 + 'deg)';
+        o_min.style.transform = o_min.style.WebkitTransform = o_min.style.MozTransform = 'rotate(' + (m + s / 60) * 6 + 'deg)';
+        o_second.style.transform = o_second.style.WebkitTransform = o_second.style.MozTransform = 'rotate(' + s * 6 + 'deg)';
+      }, 1000);
 
-        }
-    </script>
+    }
+  </script>
 </head>
 
 <body>
 
-    <figure id="clock">
-        <!--时钟最外面的容器-->
-        <div class="outside">
-            <!--设置时钟最外面的边框样式，以及包裹时钟内部所有部件-->
-            <div id="scale">
-                <!--用来存放刻度-->
-                <span></span>
-                <!--每一个span是一个刻度，用js动态生成所有刻度-->
-            </div>
-            <div id="roller"></div>
-            <!--轴-->
-            <div id="hour"></div>
-            <!--时针-->
-            <div id="min"></div>
-            <!--分针-->
-            <div id="second"></div>
-            <!--秒针-->
-        </div>
-    </figure>
+  <figure id="clock">
+    <!--时钟最外面的容器-->
+    <div class="outside">
+      <!--设置时钟最外面的边框样式，以及包裹时钟内部所有部件-->
+      <div id="scale">
+        <!--用来存放刻度-->
+        <span></span>
+        <!--每一个span是一个刻度，用js动态生成所有刻度-->
+      </div>
+      <div id="roller"></div>
+      <!--轴-->
+      <div id="hour"></div>
+      <!--时针-->
+      <div id="min"></div>
+      <!--分针-->
+      <div id="second"></div>
+      <!--秒针-->
+    </div>
+  </figure>
 
 
-    <div id="circle_bot">
-    </div>
-    <div id="circle_mid">
-    </div>
-    <div id="circle_top">
-    </div>
+  <div id="circle_bot">
+  </div>
+  <div id="circle_mid">
+  </div>
+  <div id="circle_top">
+  </div>
 </body>
 
 </html>

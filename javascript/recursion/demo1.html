@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>首尾递归</title>
+  <meta charset="UTF-8">
+  <title>首尾递归</title>
 </head>
 <body>
 
@@ -10,26 +10,26 @@
 <script>
 
 
-function f(n){
-	if(n == 0){ return; }
+  function f(n) {
+    if (n == 0) { return; }
 
-	f(n-1);  // 首递归
+    f(n - 1);  // 首递归
 
-	console.log(n);
-}
+    console.log(n);
+  }
 
-f(5); // 12345
+  f(5); // 12345
 
 
-function f2(n){
-	if(n == 0){ return; }
+  function f2(n) {
+    if (n == 0) { return; }
 
-	console.log(n);
+    console.log(n);
 
-	f2(n-1);  // 尾递归
-}
+    f2(n - 1);  // 尾递归
+  }
 
-f2(5); // 54321
+  f2(5); // 54321
 
 </script>
 </html>

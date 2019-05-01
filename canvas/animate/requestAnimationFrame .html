@@ -2,42 +2,42 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>requestAnimationFrame </title>
-    <style>
-        body {
-            height: 11111pt;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>requestAnimationFrame </title>
+  <style>
+    body {
+      height: 11111pt;
+    }
+  </style>
 </head>
 
 <body>
 
 </body>
 <script type="text/javascript">
-    const animation = timestamp => console.log('animation called at', timestamp)
+  const animation = timestamp => console.log('animation called at', timestamp)
 
-    // window.requestAnimationFrame(animation)
-    // window.requestAnimationFrame(animation)
-    // animation called at 320.7559999991645
-    // animation called at 320.7559999991645
+  // window.requestAnimationFrame(animation)
+  // window.requestAnimationFrame(animation)
+  // animation called at 320.7559999991645
+  // animation called at 320.7559999991645
 
 
-    window.addEventListener('scroll', e => {
-        window.requestAnimationFrame(timestamp => {
-            // console.log(timestamp)  //performance.now() 返回的时间
-            animation(timestamp)
-        });
-    })
+  window.addEventListener('scroll', e => {
+    window.requestAnimationFrame(timestamp => {
+      // console.log(timestamp)  //performance.now() 返回的时间
+      animation(timestamp)
+    });
+  })
 
 
     // const onScroll = e => {
     //     if (scheduledAnimationFrame) {
     //         return
     //     }
-    //     var scheduledAnimationFrame = true; 
+    //     var scheduledAnimationFrame = true;
     //     window.requestAnimationFrame(timestamp => {
     //         scheduledAnimationFrame = false
     //         animation(timestamp)
@@ -46,7 +46,7 @@
     // window.addEventListener('scroll', onScroll)
 
     //https://github.com/weiying-shenzhen/raf-plus/blob/master/README_zh.md
-    
+
 </script>
 
 </html>

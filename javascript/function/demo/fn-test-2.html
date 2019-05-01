@@ -2,37 +2,37 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <title></title>
+  <meta charset="UTF-8">
+  <title></title>
 
 </head>
 
 <body>
 </body>
 <script>
-    function Person(name, age, gender) {
-        this.name = name;
-        this.age = age;
-        this.gender = gender;
-    }
+  function Person(name, age, gender) {
+    this.name = name;
+    this.age = age;
+    this.gender = gender;
+  }
 
-    // 写一个 Student, 继承自 Person, 并提供一个 分数的属性 score
-    /*
-    function Student() {
-    	this.score = ...
-    }
-    Student.prototype = new Person(...);
-    */
+  // 写一个 Student, 继承自 Person, 并提供一个 分数的属性 score
+  /*
+  function Student() {
+    this.score = ...
+  }
+  Student.prototype = new Person(...);
+  */
 
-    // 借用构造函数
-    function Student(name, age, gender, score) {
-        // -> this 新对象
-        // Person.call(this, name, age, gender);
-        Person.apply(this, [name, age, gender]);
-        this.score = score;
-    }
+  // 借用构造函数
+  function Student(name, age, gender, score) {
+    // -> this 新对象
+    // Person.call(this, name, age, gender);
+    Person.apply(this, [name, age, gender]);
+    this.score = score;
+  }
 
-    var s = new Student("jim", 19, "男", 100);
+  var s = new Student("jim", 19, "男", 100);
 </script>
 
 </html>

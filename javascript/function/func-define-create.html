@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>函数创造方式</title>
+  <meta charset="UTF-8">
+  <title>函数创造方式</title>
 </head>
 <body>
 
 </body>
 <script>
-		// 1.以关键字形式定义一个函数
-		function fn() {
-			console.log(1);
-		};
+  // 1.以关键字形式定义一个函数
+  function fn() {
+    console.log(1);
+  };
 
-		// fn();
+  // fn();
 
-		// 2.以表达式的形式定义一个函数
-		var fn2 = function () {
-			console.log(2);
-		}();
+  // 2.以表达式的形式定义一个函数
+  var fn2 = function () {
+    console.log(2);
+  }();
 
-		// fn2(key)
+  // fn2(key)
 
-		// 自调用
-		(function(){console.log('zidiaoyong')})();
+  // 自调用
+  (function () { console.log('zidiaoyong') })();
 
-		//3. new Function
-		var fn3=new Function('x,y','return x+y');
-		console.log(fn3(4,5));
-		// 我想达到一个目的，以关键字形式定义的函数，也可以通
-		// 过添加一个()来执行
-		(function (key) {
-			console.log(key);
-		})(3);
+  //3. new Function
+  var fn3 = new Function('x,y', 'return x+y');
+  console.log(fn3(4, 5));
+  // 我想达到一个目的，以关键字形式定义的函数，也可以通
+  // 过添加一个()来执行
+  (function (key) {
+    console.log(key);
+  })(3);
 
-		// 从形式上看是一个关键字定义的，但是，浏览器在解析过程中会
-		// 以一个表达式的形式来对待
-		// (function () {})();
+  // 从形式上看是一个关键字定义的，但是，浏览器在解析过程中会
+  // 以一个表达式的形式来对待
+  // (function () {})();
 
-		// 假如没有理解，暂时可以先记住这种写法
-		(function (num1, num2) {
-            console.log(num1 + num2);
-		})(1, 21);
+  // 假如没有理解，暂时可以先记住这种写法
+  (function (num1, num2) {
+    console.log(num1 + num2);
+  })(1, 21);
 </script>
 </html>

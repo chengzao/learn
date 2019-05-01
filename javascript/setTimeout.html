@@ -5,27 +5,27 @@
   <title>Title</title>
 </head>
 <body>
-<div id="result"></div>
-<script>
-  //1.0
-  for ( var i = 0; i < 5; i++ ) {
-    setTimeout((function() {
-      document.getElementById('result').innerHTML+='<p>第' + i + '次调用</p>';
-    })(i), i * 100 );
-  }
+  <div id="result"></div>
+  <script>
+    //1.0
+    for (var i = 0; i < 5; i++) {
+      setTimeout((function () {
+        document.getElementById('result').innerHTML += '<p>第' + i + '次调用</p>';
+      })(i), i * 100);
+    }
 
-  //2.0
-  var hijs = function( i ) {
-    return function() {
-      document.getElementById('result').innerHTML+='<p>第' + i + '次调用</p>';
+    //2.0
+    var hijs = function (i) {
+      return function () {
+        document.getElementById('result').innerHTML += '<p>第' + i + '次调用</p>';
+      };
     };
-  };
 
-  for ( var i = 0; i < 5; i++ ) {
-    setTimeout( hijs( i ), i * 1000 );
-  }
+    for (var i = 0; i < 5; i++) {
+      setTimeout(hijs(i), i * 1000);
+    }
 
 
-</script>
+  </script>
 </body>
 </html>

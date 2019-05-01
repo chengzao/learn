@@ -1,96 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>page visible</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>判断页面是否可见</title>
 </head>
 <body>
-    <p>判断页面是否可见</p>
-    <audio id="music" src="http://mx.djkk.com/mix/2016/2016-5/2016-5-17/2016517225932.m4a" controls autoplay></audio>
+  <p>判断页面是否可见</p>
+  <audio id="music" src="http://mx.djkk.com/mix/2016/2016-5/2016-5-17/2016517225932.m4a" controls autoplay></audio>
 </body>
 <script>
-    // https://github.com/chenxiaochun/blog/issues/9
-    // https://www.zhihu.com/question/31604369
-    // http://www.webhek.com/post/page-visibility.html
+  // https://github.com/chenxiaochun/blog/issues/9
+  // https://www.zhihu.com/question/31604369
+  // http://www.webhek.com/post/page-visibility.html
 
-    /* 
-        document.hidden：
+  /*
+      document.hidden：
 
-        它是一个只读属性，当用户切换到浏览器的其它页面或者最小化浏览器窗口的时候，
-        它的属性值就会变为true，否则就为false，同时会触发一个visibilitychange事件，
-        我们就可以监听这个事件，然后在其中去编写自己的处理逻辑。
-    */
+      它是一个只读属性，当用户切换到浏览器的其它页面或者最小化浏览器窗口的时候，
+      它的属性值就会变为true，否则就为false，同时会触发一个visibilitychange事件，
+      我们就可以监听这个事件，然后在其中去编写自己的处理逻辑。
+  */
 
 
-    /*  
-        document.visibilityState 
-        只读属性也可以用来判断当前页面的可见状态，有四种状态值
+  /*
+      document.visibilityState
+      只读属性也可以用来判断当前页面的可见状态，有四种状态值
 
-        visible：当页面没有被最小化，并且是可见状态时
-        hidden：当页面已经被最小化，或者不是可见状态时，或者是操作系统处于锁屏状态时
-        prerender：页面已经被预渲染完毕，还没有展示给用户时
-        unloaded：页面没有从内存中被加载出来时 
-    */
+      visible：当页面没有被最小化，并且是可见状态时
+      hidden：当页面已经被最小化，或者不是可见状态时，或者是操作系统处于锁屏状态时
+      prerender：页面已经被预渲染完毕，还没有展示给用户时
+      unloaded：页面没有从内存中被加载出来时
+  */
 
-    var music = document.querySelector('#music');
+  var music = document.querySelector('#music');
 
-    document.addEventListener('visibilitychange', function(){
-        visibilitychange();
-    }, false);
+  document.addEventListener('visibilitychange', function () {
+    visibilitychange();
+  }, false);
 
-    function visibilitychange(){
-        console.log(document.visibilityState + ' ' + new Date().getTime());
-        if(document.hidden){
-            music.pause();
-        }else{
-            music.play();
-        }
-    }
-
+  function visibilitychange() {
     console.log(document.visibilityState + ' ' + new Date().getTime());
-
-
-    // ios
-    var lastFired = new Date().getTime();
-    setInterval(function() {
-        now = new Date().getTime();
-        if(now - lastFired > 5000) { // if it's been more than 5 seconds
-            alert("onfocus");
-        }
-        lastFired = now;
-    }, 500);
-
-
-
-    // 各种浏览器兼容
-    var hidden, state, visibilityChange; 
-    if (typeof document.hidden !== "undefined") {
-        hidden = "hidden";
-        visibilityChange = "visibilitychange";
-        state = "visibilityState";
-    } else if (typeof document.mozHidden !== "undefined") {
-        hidden = "mozHidden";
-        visibilityChange = "mozvisibilitychange";
-        state = "mozVisibilityState";
-    } else if (typeof document.msHidden !== "undefined") {
-        hidden = "msHidden";
-        visibilityChange = "msvisibilitychange";
-        state = "msVisibilityState";
-    } else if (typeof document.webkitHidden !== "undefined") {
-        hidden = "webkitHidden";
-        visibilityChange = "webkitvisibilitychange";
-        state = "webkitVisibilityState";
+    if (document.hidden) {
+      music.pause();
+    } else {
+      music.play();
     }
+  }
 
-    // 添加监听器，在title里显示状态变化
-    document.addEventListener(visibilityChange, function() {
-        document.title = document[state];
-    }, false);
+  console.log(document.visibilityState + ' ' + new Date().getTime());
 
-    // 初始化
+
+  // ios
+  var lastFired = new Date().getTime();
+  setInterval(function () {
+    now = new Date().getTime();
+    if (now - lastFired > 5000) { // if it's been more than 5 seconds
+      alert("onfocus");
+    }
+    lastFired = now;
+  }, 500);
+
+
+
+  // 各种浏览器兼容
+  var hidden, state, visibilityChange;
+  if (typeof document.hidden !== "undefined") {
+    hidden = "hidden";
+    visibilityChange = "visibilitychange";
+    state = "visibilityState";
+  } else if (typeof document.mozHidden !== "undefined") {
+    hidden = "mozHidden";
+    visibilityChange = "mozvisibilitychange";
+    state = "mozVisibilityState";
+  } else if (typeof document.msHidden !== "undefined") {
+    hidden = "msHidden";
+    visibilityChange = "msvisibilitychange";
+    state = "msVisibilityState";
+  } else if (typeof document.webkitHidden !== "undefined") {
+    hidden = "webkitHidden";
+    visibilityChange = "webkitvisibilitychange";
+    state = "webkitVisibilityState";
+  }
+
+  // 添加监听器，在title里显示状态变化
+  document.addEventListener(visibilityChange, function () {
     document.title = document[state];
+  }, false);
+
+  // 初始化
+  document.title = document[state];
 
 
 </script>

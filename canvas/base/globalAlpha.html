@@ -1,70 +1,74 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta charset="UTF-8">
-    <title>全局透明</title>
-    <style>
-        canvas { border: 1px solid #aaaaaa; display: block; margin: 50px auto; }
-    </style>
+  <meta charset="UTF-8">
+  <title>全局透明</title>
+  <style>
+    canvas {
+      border: 1px solid #aaaaaa;
+      display: block;
+      margin: 50px auto;
+    }
+  </style>
 </head>
 <body>
-<div id="canvas-warp">
+  <div id="canvas-warp">
     <canvas id="canvas">
-        你的浏览器居然不支持Canvas？！赶快换一个吧！！
+      你的浏览器居然不支持Canvas？！赶快换一个吧！！
     </canvas>
     <canvas id="canvas2">
-        你的浏览器居然不支持Canvas？！赶快换一个吧！！
+      你的浏览器居然不支持Canvas？！赶快换一个吧！！
     </canvas>
-</div>
+  </div>
 
-<script>
-    window.onload = function(){
-        fn();
-        fn2();
+  <script>
+    window.onload = function () {
+      fn();
+      fn2();
     };
-    function fn(){
-        var canvas = document.getElementById("canvas");
-        canvas.width = 800;
-        canvas.height = 600;
-        var context = canvas.getContext("2d");
-        context.fillStyle = "#FFF";
-        context.fillRect(0,0,800,600);
+    function fn() {
+      var canvas = document.getElementById("canvas");
+      canvas.width = 800;
+      canvas.height = 600;
+      var context = canvas.getContext("2d");
+      context.fillStyle = "#FFF";
+      context.fillRect(0, 0, 800, 600);
 
-        context.globalAlpha = 0.5;
-        
-        for(var i=0; i<=50; i++){
-            var R = Math.floor(Math.random() * 255);
-            var G = Math.floor(Math.random() * 255);
-            var B = Math.floor(Math.random() * 255);
+      context.globalAlpha = 0.5;
 
-            context.fillStyle = "rgb(" + R + "," + G + "," + B + ")";
+      for (var i = 0; i <= 50; i++) {
+        var R = Math.floor(Math.random() * 255);
+        var G = Math.floor(Math.random() * 255);
+        var B = Math.floor(Math.random() * 255);
 
-            context.beginPath();
-            context.arc(Math.random() * canvas.width, Math.random() * canvas.height, Math.random() * 100, 0, Math.PI * 2);
-            context.fill();
-        }
+        context.fillStyle = "rgb(" + R + "," + G + "," + B + ")";
+
+        context.beginPath();
+        context.arc(Math.random() * canvas.width, Math.random() * canvas.height, Math.random() * 100, 0, Math.PI * 2);
+        context.fill();
+      }
     }
-    function fn2(){
-        var canvas = document.getElementById("canvas2");
-        canvas.width = 800;
-        canvas.height = 600;
-        var context = canvas.getContext("2d");
+    function fn2() {
+      var canvas = document.getElementById("canvas2");
+      canvas.width = 800;
+      canvas.height = 600;
+      var context = canvas.getContext("2d");
 
-        context.globalCompositeOperation = "source-out";
-        context.globalAlpha = 0.5;
+      context.globalCompositeOperation = "source-out";
+      context.globalAlpha = 0.5;
 
-        for(var i=0; i<=50; i++){
-            var R = Math.floor(Math.random() * 255);
-            var G = Math.floor(Math.random() * 255);
-            var B = Math.floor(Math.random() * 255);
+      for (var i = 0; i <= 50; i++) {
+        var R = Math.floor(Math.random() * 255);
+        var G = Math.floor(Math.random() * 255);
+        var B = Math.floor(Math.random() * 255);
 
-            context.fillStyle = "rgb(" + R + "," + G + "," + B + ")";
+        context.fillStyle = "rgb(" + R + "," + G + "," + B + ")";
 
-            context.beginPath();
-            context.arc(Math.random() * canvas.width, Math.random() * canvas.height, Math.random() * 100, 0, Math.PI * 2);
-            context.fill();
-        }
+        context.beginPath();
+        context.arc(Math.random() * canvas.width, Math.random() * canvas.height, Math.random() * 100, 0, Math.PI * 2);
+        context.fill();
+      }
     }
-</script>
+  </script>
 </body>
 </html>

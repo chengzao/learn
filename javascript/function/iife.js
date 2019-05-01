@@ -9,7 +9,7 @@
     }
   }(typeof self !== 'undefined' ? self : this, function() {
     'use strict';
-  
+
     // 方法的浅拷贝
     function extend(o, n, override) {
       for (var p in n) {
@@ -17,7 +17,7 @@
           o[p] = n[p];
       }
     }
-  
+
     // polyfill
     var EventUtil = {
       addEvent: function(element, type, handler) {
@@ -121,7 +121,7 @@
         }
       }
     };
-  
+
     // plugin construct function
     function Plugin(selector, userOptions) {
       // Plugin() or new Plugin()
@@ -136,6 +136,6 @@
         extend(this.options, userOptions, true);
       }
     };
-  
+
     return Plugin;
   }));

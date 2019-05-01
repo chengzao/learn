@@ -1,89 +1,88 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>demo</title>
+  <meta charset="utf-8">
+  <title>demo</title>
 </head>
 <body>
 
-<div class="center" >
-	<div id="videoDiv" style="display: none;">
-		
-	</div>
-<div id="clickme">click</div>
-<canvas id="icanvas" width="500" height="400">
-	you cant see me~
-</canvas>
-<canvas id="icanvasimg" width="500" height="400">
-	you cant see me~
-</canvas>
-</div>
+  <div class="center">
+    <div id="videoDiv" style="display: none;">
 
-<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.js"></script>
-<script type="text/javascript">
+    </div>
+    <div id="clickme">click</div>
+    <canvas id="icanvas" width="500" height="400">
+      you cant see me~
+    </canvas>
+    <canvas id="icanvasimg" width="500" height="400">
+      you cant see me~
+    </canvas>
+  </div>
 
-/**
- * 原文:http://www.cnblogs.com/zhangwenjiajessy/p/6158131.html
- * 
- */
+  <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.js"></script>
+  <script type="text/javascript">
 
-var videoElem;
-var videoDiv;
-//使用video的canPlayType()方法判断支持格式
-// <source src="test.mp4" type="video/mp4"> 
-function videoType(video){
-    var returnType='';
-    if(video.canPlayType('video/mp4')=='probably'||video.canPlayType('video/mp4')=='maybe'){
-    　　returnType= 'mp4';
-    }else if(video.canPlayType('video/ogg')=='probably'||video.canPlayType('video/ogg')=='maybe'){
- 　　　　returnType= 'ogg'; 　　 
-　　 }else if(video.canPlayType('video/webm')=='probably'||video.canPlayType('video/webm')=='maybe'){
- 　　　　returnType= 'webm'; 　　 
-　　 }
-　　 return returnType;
-}
+    /**
+     * 原文:http://www.cnblogs.com/zhangwenjiajessy/p/6158131.html
+     *
+     */
 
-function createVideo(){
-     videoElem=document.createElement("video");//创建video
-     videoElem.width="500";
-     videoElem.height="400";
-     videoElem.loop=true;
-     videoDiv=document.getElementById("videoDiv");//获取video的外层容器
-     videoDiv.appendChild(videoElem);
-     var vtype=videoType(videoElem);//判断浏览器支持的格式
-     if(vtype==""){
-        videoDiv.innerHtml('不支持video')
-    }else{
-        videoElem.setAttribute('src',"test."+vtype);
+    var videoElem;
+    var videoDiv;
+    //使用video的canPlayType()方法判断支持格式
+    // <source src="test.mp4" type="video/mp4">
+    function videoType(video) {
+      var returnType = '';
+      if (video.canPlayType('video/mp4') == 'probably' || video.canPlayType('video/mp4') == 'maybe') {
+        returnType = 'mp4';
+      } else if (video.canPlayType('video/ogg') == 'probably' || video.canPlayType('video/ogg') == 'maybe') {
+        returnType = 'ogg';
+      } else if (video.canPlayType('video/webm') == 'probably' || video.canPlayType('video/webm') == 'maybe') {
+        returnType = 'webm';
+      }
+      return returnType;
     }
 
-}  
-function drawvideo(){	
-	icanvas=document.getElementById("icanvas");
-	var context=icanvas.getContext("2d");//第一个复制video的画布
-	context.drawImage(videoElem,0,0,videoElem.width,videoElem.height);
-}
+    function createVideo() {
+      videoElem = document.createElement("video");//创建video
+      videoElem.width = "500";
+      videoElem.height = "400";
+      videoElem.loop = true;
+      videoDiv = document.getElementById("videoDiv");//获取video的外层容器
+      videoDiv.appendChild(videoElem);
+      var vtype = videoType(videoElem);//判断浏览器支持的格式
+      if (vtype == "") {
+        videoDiv.innerHtml('不支持video')
+      } else {
+        videoElem.setAttribute('src', "test." + vtype);
+      }
 
-function drawimg(){
-	var firstcanvas=document.getElementById("icanvas");
-	var icanvasimg=document.getElementById("icanvasimg");
-	var contextimg=icanvasimg.getContext("2d");//第二个截图的画布
-	contextimg.drawImage(firstcanvas,0,0,firstcanvas.width,firstcanvas.height);
-}
+    }
+    function drawvideo() {
+      icanvas = document.getElementById("icanvas");
+      var context = icanvas.getContext("2d");//第一个复制video的画布
+      context.drawImage(videoElem, 0, 0, videoElem.width, videoElem.height);
+    }
 
-window.onload=function(){
-	createVideo();
-	videoElem.play();
-	setInterval(drawvideo,100);
-	
-	var clickbtn=document.getElementById('clickme');
-	clickbtn.onclick=function(){
-		drawimg();
-	};
-}
+    function drawimg() {
+      var firstcanvas = document.getElementById("icanvas");
+      var icanvasimg = document.getElementById("icanvasimg");
+      var contextimg = icanvasimg.getContext("2d");//第二个截图的画布
+      contextimg.drawImage(firstcanvas, 0, 0, firstcanvas.width, firstcanvas.height);
+    }
 
-</script>
+    window.onload = function () {
+      createVideo();
+      videoElem.play();
+      setInterval(drawvideo, 100);
+
+      var clickbtn = document.getElementById('clickme');
+      clickbtn.onclick = function () {
+        drawimg();
+      };
+    }
+
+  </script>
 
 </body>
 </html>
-	

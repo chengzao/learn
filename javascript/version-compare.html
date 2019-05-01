@@ -1,82 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
+  <meta charset="UTF-8">
+  <title>Document</title>
 </head>
 <body>
-	
+
 </body>
 <script>
-// 示例：v1.2222.1111a; 以这种格式  不要超过5位
-//提取数字部分
-function CompareNum(str){
-	Array.prototype.trim=function(){
-		var arr = [];
-		this.forEach(function(str) {
-				// \S 匹配得到可见字符
-				if (str.match(/\S+/)) {
-					arr.push(str);
-				}
-			})
-		return arr;
- 	}
-	var str = str.toString();
-	console.log(str)
-	//  \D 表示为[^0-9] 非数字字符
-	//  以非数字为分隔符 把字符串分割成数组 在去掉空
-	var arr = str.split(/\D/).trim();
-	//  假设版本长度为 5
-	var num_place = ["", "0", "00", "000", "0000",['00000']];
-	var arr1 = num_place.reverse();
-	for (var i = 0; i < arr.length; i++) {
-		var len = arr[i].length;
-		// 根据arr[i]中的数字位数拼接
-		arr[i] = arr1[len] + arr[i];
-	}
-	var res = arr.join('');
-	return res;
- } 
+  // 示例：v1.2222.1111a; 以这种格式  不要超过5位
+  //提取数字部分
+  function CompareNum(str) {
+    Array.prototype.trim = function () {
+      var arr = [];
+      this.forEach(function (str) {
+        // \S 匹配得到可见字符
+        if (str.match(/\S+/)) {
+          arr.push(str);
+        }
+      })
+      return arr;
+    }
+    var str = str.toString();
+    console.log(str)
+    //  \D 表示为[^0-9] 非数字字符
+    //  以非数字为分隔符 把字符串分割成数组 在去掉空
+    var arr = str.split(/\D/).trim();
+    //  假设版本长度为 5
+    var num_place = ["", "0", "00", "000", "0000", ['00000']];
+    var arr1 = num_place.reverse();
+    for (var i = 0; i < arr.length; i++) {
+      var len = arr[i].length;
+      // 根据arr[i]中的数字位数拼接
+      arr[i] = arr1[len] + arr[i];
+    }
+    var res = arr.join('');
+    return res;
+  }
 
-//提取字符
-function CompareChar(str){
-	var str = str.toString();
-	var res = str.split(/\.|\d/).join('');
-	return res;
-}
-//比较
-function versionCompare(v1, v2) {
-	var a1 = CompareNum(v1),
-		a2 = CompareChar(v1),
-		b1 = CompareNum(v2),
-		b2 = CompareChar(v2);
-	// 判断数字部分大小
-	if (a1 > b1){ 
-		console.log("The latest version: " + v1);
-	}else if(a1 < b1){
-		console.log("The latest version: " + v2);
-	}else{
-		// 判断字母
-		if (a1 === b1) {
-			//将 字符串转换为16进制 进行比较
-			a2 = a2.charCodeAt(0).toString(16);
-			b2 = b2.charCodeAt(0).toString(16);
-			if (a2 > b2){
-				console.log("The latest version: " + v1 );
-			} else if(a2 === b2){
-				console.log("The version 相等");
-			}else{
-				console.log("The latest version:" + v2);
-			}
-		}
-	}
+  //提取字符
+  function CompareChar(str) {
+    var str = str.toString();
+    var res = str.split(/\.|\d/).join('');
+    return res;
+  }
+  //比较
+  function versionCompare(v1, v2) {
+    var a1 = CompareNum(v1),
+      a2 = CompareChar(v1),
+      b1 = CompareNum(v2),
+      b2 = CompareChar(v2);
+    // 判断数字部分大小
+    if (a1 > b1) {
+      console.log("The latest version: " + v1);
+    } else if (a1 < b1) {
+      console.log("The latest version: " + v2);
+    } else {
+      // 判断字母
+      if (a1 === b1) {
+        //将 字符串转换为16进制 进行比较
+        a2 = a2.charCodeAt(0).toString(16);
+        b2 = b2.charCodeAt(0).toString(16);
+        if (a2 > b2) {
+          console.log("The latest version: " + v1);
+        } else if (a2 === b2) {
+          console.log("The version 相等");
+        } else {
+          console.log("The latest version:" + v2);
+        }
+      }
+    }
 
-}
-// demo
-var a="v1.1.13210a",b="v1.1.17202b";
-versionCompare(a,b);
-//demo2
-var a="v1.3.0c",b="v1.3.0c";
-versionCompare(a,b);
+  }
+  // demo
+  var a = "v1.1.13210a", b = "v1.1.17202b";
+  versionCompare(a, b);
+  //demo2
+  var a = "v1.3.0c", b = "v1.3.0c";
+  versionCompare(a, b);
 </script>
 </html>

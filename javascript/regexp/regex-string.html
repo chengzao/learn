@@ -1,44 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>regex字符类</title>
+  <meta charset="UTF-8">
+  <title>regex字符类</title>
 </head>
 <body>
 
 </body>
 </html>
 <script>
-    console.log("----------简单类--------");
-    console.log(/c/.test("c"));//我要一个c给我一个c 所以是true
-    console.log(/chuan/.test("chuan"));//我要一个chuan给我一个chuan 所以是true
-    console.log(/chuan/.test("chuang"));//true 只要包含我想要的就可以
-    console.log(/chuan/.test("chua"));//false 我要的东西没给全
+  console.log("----------简单类--------");
+  console.log(/c/.test("c"));//我要一个c给我一个c 所以是true
+  console.log(/chuan/.test("chuan"));//我要一个chuan给我一个chuan 所以是true
+  console.log(/chuan/.test("chuang"));//true 只要包含我想要的就可以
+  console.log(/chuan/.test("chua"));//false 我要的东西没给全
 
-    console.log("----------[]--------");//[]代表一个字符的位置
-    console.log(/[abc]/.test("a"));//这个位置可以是a可以是b可以是c 给了一个a true
-    console.log(/[abc]/.test("b"));//这个位置可以是a可以是b可以是c 给了一个b true
-    console.log(/[abc]/.test("c"));//这个位置可以是a可以是b可以是c 给了一个c true
-    console.log(/[abc]/.test("d"));//这个位置可以是a可以是b可以是c 给了一个d false
-    console.log(/[abc]/.test("abcd"));
+  console.log("----------[]--------");//[]代表一个字符的位置
+  console.log(/[abc]/.test("a"));//这个位置可以是a可以是b可以是c 给了一个a true
+  console.log(/[abc]/.test("b"));//这个位置可以是a可以是b可以是c 给了一个b true
+  console.log(/[abc]/.test("c"));//这个位置可以是a可以是b可以是c 给了一个c true
+  console.log(/[abc]/.test("d"));//这个位置可以是a可以是b可以是c 给了一个d false
+  console.log(/[abc]/.test("abcd"));
 
-    console.log("----------[^]--------")//负向类
-    console.log(/[^abc]/.test("a"));//这个位置不可以是a不可以是b不可以是c 给了一个a false
-    console.log(/[^abc]/.test("b"));//这个位置不可以是a不可以是b不可以是c 给了一个b false
-    console.log(/[^abc]/.test("c"));//这个位置不可以是a不可以是b不可以是c 给了一个c false
-    console.log(/[^abc]/.test("d"));//这个位置不可以是a不可以是b不可以是c 给了一个d true
-    console.log(/[^abc]/.test("da"));//这个位置不可以是a不可以是b不可以是c 给了一个d true
-    console.log(/[^abc]/.test("ad"));//这个位置不可以是a不可以是b不可以是c 给了一个d true
+  console.log("----------[^]--------")//负向类
+  console.log(/[^abc]/.test("a"));//这个位置不可以是a不可以是b不可以是c 给了一个a false
+  console.log(/[^abc]/.test("b"));//这个位置不可以是a不可以是b不可以是c 给了一个b false
+  console.log(/[^abc]/.test("c"));//这个位置不可以是a不可以是b不可以是c 给了一个c false
+  console.log(/[^abc]/.test("d"));//这个位置不可以是a不可以是b不可以是c 给了一个d true
+  console.log(/[^abc]/.test("da"));//这个位置不可以是a不可以是b不可以是c 给了一个d true
+  console.log(/[^abc]/.test("ad"));//这个位置不可以是a不可以是b不可以是c 给了一个d true
 
-    console.log("----------[ - ]--------")//范围类
-    console.log(/[a-g]/.test("a"));//true a在我要的范围内
-    console.log(/[a-g]/.test("z"));//false z不再我要的范围内
-    console.log(/[a-g]/.test("cz"));//true 有我想要的就行
-    console.log(/[a-z]/.test("cz"));//a-z代表了所有的小写字母
-    console.log(/[A-Z]/.test("cz"));//a-z代表了所有的大写字母
-    console.log(/[0-9]/.test("cz"));//a-z代表了所有的数字
+  console.log("----------[ - ]--------")//范围类
+  console.log(/[a-g]/.test("a"));//true a在我要的范围内
+  console.log(/[a-g]/.test("z"));//false z不再我要的范围内
+  console.log(/[a-g]/.test("cz"));//true 有我想要的就行
+  console.log(/[a-z]/.test("cz"));//a-z代表了所有的小写字母
+  console.log(/[A-Z]/.test("cz"));//a-z代表了所有的大写字母
+  console.log(/[0-9]/.test("cz"));//a-z代表了所有的数字
 
-    console.log("----------[ - ]--------")//组合类
-    console.log(/[a-zA-Z]/.test("0c"));//代表了所有的大写字母和小写字母
+  console.log("----------[ - ]--------")//组合类
+  console.log(/[a-zA-Z]/.test("0c"));//代表了所有的大写字母和小写字母
 
 </script>

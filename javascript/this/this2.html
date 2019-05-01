@@ -1,80 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>this demo</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>this demo</title>
 </head>
 <body>
-    
+
 </body>
 <script>
-    function identify() {
-        return this.name.toUpperCase();
-    }
+  function identify() {
+    return this.name.toUpperCase();
+  }
 
-    function speak() {
-        var greeting = "Hello, I'm " + identify.call( this );
-        console.log( greeting );
-    }
+  function speak() {
+    var greeting = "Hello, I'm " + identify.call(this);
+    console.log(greeting);
+  }
 
-    var me = {
-        name: "Kyle"
-    };
+  var me = {
+    name: "Kyle"
+  };
 
-    var you = {
-        name: "Reader"
-    };
+  var you = {
+    name: "Reader"
+  };
 
-    identify.call( me ); // KYLE
-    identify.call( you ); // READER
+  identify.call(me); // KYLE
+  identify.call(you); // READER
 
-    speak.call( me ); // Hello, I'm KYLE
-    speak.call( you ); // Hello, I'm READER
+  speak.call(me); // Hello, I'm KYLE
+  speak.call(you); // Hello, I'm READER
 
 
-function foo(num) {
-    console.log( "foo: " + num );
+  function foo(num) {
+    console.log("foo: " + num);
 
     // keep track of how many times `foo` is called
     foo.count++;
     obj.count++;
     this.count++;//NaN
-}
+  }
 
-foo.count = 0;
+  foo.count = 0;
 
-var obj = {
-    count:0
-}
+  var obj = {
+    count: 0
+  }
 
-var i;
+  var i;
 
-for (i=0; i<10; i++) {
+  for (i = 0; i < 10; i++) {
     if (i > 5) {
-        foo( i );
-        //  foo.call( foo, i );
+      foo(i);
+      //  foo.call( foo, i );
     }
-}
+  }
 
-// how many times was `foo` called?
-console.log( foo.count ); // 0 -- WTF?
-console.log(obj.count);
+  // how many times was `foo` called?
+  console.log(foo.count); // 0 -- WTF?
+  console.log(obj.count);
 
 
 
-function foo2() {
+  function foo2() {
     var a = 2;
     bar();
-   
-}
 
-function bar() {
-    console.log( this.a );
-}
+  }
 
-foo2(); //undefined
+  function bar() {
+    console.log(this.a);
+  }
+
+  foo2(); //undefined
 
 
 

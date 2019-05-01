@@ -2,59 +2,59 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Math random</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Math random</title>
 </head>
 
 <body>
 
 </body>
 <script>
-    // let _rotate = 15 - Math.ceil(Math.random()*30);
-   
-    function getRound() {
-        var a = 0,b=0;
-        for(var i= 0;i<10;i++){
-            let _num = Math.random();
-            if (0 <= _num && _num <= 0.8) {
-               a++;
-                // return false
-            } else {
-               b++;
-                // return true
-            }
-        }
-        console.log(a,b);
+  // let _rotate = 15 - Math.ceil(Math.random()*30);
+
+  function getRound() {
+    var a = 0, b = 0;
+    for (var i = 0; i < 10; i++) {
+      let _num = Math.random();
+      if (0 <= _num && _num <= 0.8) {
+        a++;
+        // return false
+      } else {
+        b++;
+        // return true
+      }
     }
-   
-
-    getRound()
-
+    console.log(a, b);
+  }
 
 
-    function updateRandom() {
-        var p = Math.random(),
-            n = Math.random() / 4;
+  getRound()
 
-            n = 0;
 
-        if (p < 0.01)
-            return 0 + n;
 
-        if (p < 0.04)
-            return 0.25 + n;
+  function updateRandom() {
+    var p = Math.random(),
+      n = Math.random() / 4;
 
-        if (p < 0.1)
-            return 0.5 + n;
+    n = 0;
 
-        if (p < 1)
-            return 0.75 + n;
-    }
-    var objects = ['登山包', '旅行箱', '移动电源', '不中奖'];
-    var randomIndex = Math.floor(objects.length * updateRandom());
-    var object = objects[randomIndex];
+    if (p < 0.01)
+      return 0 + n;
+
+    if (p < 0.04)
+      return 0.25 + n;
+
+    if (p < 0.1)
+      return 0.5 + n;
+
+    if (p < 1)
+      return 0.75 + n;
+  }
+  var objects = ['登山包', '旅行箱', '移动电源', '不中奖'];
+  var randomIndex = Math.floor(objects.length * updateRandom());
+  var object = objects[randomIndex];
     // console.log(object)
 
 </script>

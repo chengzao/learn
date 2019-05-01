@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>函数callback模式</title>
+  <meta charset="UTF-8">
+  <title>函数callback模式</title>
 </head>
 <body>
 
@@ -10,15 +10,15 @@
 </html>
 <script>
 
-    function fn(fn2) {
-        console.log("fn在执行");
-        fn2();
-    }
+  function fn(fn2) {
+    console.log("fn在执行");
+    fn2();
+  }
 
-    function callback() {
-        console.log("callback在执行");
-    }
+  function callback() {
+    console.log("callback在执行");
+  }
 
-    fn(callback);
+  fn(callback);
 
 </script>

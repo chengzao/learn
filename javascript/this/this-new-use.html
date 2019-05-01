@@ -1,117 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title></title>
+  <meta charset="UTF-8">
+  <title></title>
 </head>
 <body>
 
 </body>
 </html>
 <script>
-    function fn() {
-        this.x = 10;
+  function fn() {
+    this.x = 10;
+  }
+  //window.fn();//window调用了fn
+  fn();//window可以省略
+  console.log(x); 10
+  //console.log(window.x);
+  //console.log(x);
+  //window调用了fn this就指向了window this.x就相当于window.x window可以省略 所以x的数值能够获取到
+
+
+  //    var date = new Date();
+  //    var arr = new Array();
+  //new 是用来改变this的指向的
+  function fn2() {
+    this.y = 20;
+  }
+  var demo = new fn2();
+  console.log(demo.y);//20
+
+  var a = 'demo1'
+  var obj = {
+    a: 'demo2',
+    fn: function () {
+      console.log(this.a);
     }
-    //window.fn();//window调用了fn
-    fn();//window可以省略
-    console.log(x);10
-    //console.log(window.x);
-    //console.log(x);
-    //window调用了fn this就指向了window this.x就相当于window.x window可以省略 所以x的数值能够获取到
+  }
+
+  obj.fn(); //demo2
+  var a1 = obj.fn;
+  a1();  // demo1
+  var a2 = obj.fn();
+  a2; //demo2
 
 
-    //    var date = new Date();
-    //    var arr = new Array();
-    //new 是用来改变this的指向的
-    function fn2() {
-        this.y = 20;
+  function setName(obj) {
+    obj.name = "tom";
+    obj = new Object();
+    obj.name = "mike";
+  }
+  var person = new Object();
+  setName(person);
+  console.log(person.name);//tom
+  //结果
+  (function () {
+    Array.prototype.push.call(arguments, 1);
+    console.log(arguments);
+  })(1, 2);
+  //结果   [1,2,1]
+
+  var m = { k: 5 };
+  function _a(m) {
+    m = { v: 6 }
+  }
+  _a(m);
+  console.log(m); // {k:5}
+
+
+  var a0 = 123;
+  function go0() {
+    //a0 = 333;
+    console.log(this.a0)
+    //a0 = 888;
+  }
+  go0();
+
+  this.aa2 = 233;
+  function go2() {
+    this.aa2 = 2233;
+    console.log(this.aa2);
+  }
+  go2();
+
+
+  this.aa = 66;
+  var o = {
+    aa: 5,
+    fn: function () {
+      function go() {
+        this.aa = 10;
+        console.log(this.aa);
+      }
+      return go;
     }
-    var demo = new fn2();
-    console.log(demo.y);//20
+  }
+  console.log(o.fn()); //
+  o.fn()();  // 10
 
-    var a = 'demo1'
-    var obj ={
-        a:'demo2',
-        fn:function(){
-            console.log(this.a);
-        }
+  this.bb = 20;
+  var test = {
+    bb: 36,
+    init: function () {
+      function go() {
+        //this.bb = 60;
+        console.log(this.bb);
+      }
+      go.prototype.bb = 50;
+      return go;
     }
-
-    obj.fn(); //demo2
-    var a1 = obj.fn;
-    a1();  // demo1
-    var a2 = obj.fn();
-    a2; //demo2
-
-
-    function setName(obj){
-        obj.name="tom";
-        obj=new Object();
-        obj.name="mike";
-    }
-    var person=new Object();
-    setName(person);
-    console.log(person.name);//tom
-    //结果
-    (function(){
-        Array.prototype.push.call(arguments,1);
-        console.log(arguments);
-    })(1,2);
-    //结果   [1,2,1]
-
-    var m = {k:5};
-    function _a(m){
-        m = {v:6}
-    }
-    _a(m);
-    console.log(m); // {k:5}
-
-
-    var a0 = 123;
-    function go0(){
-        //a0 = 333;
-        console.log(this.a0) 
-        //a0 = 888; 
-    }
-    go0();
-
-    this.aa2 = 233;
-    function go2(){
-        this.aa2 = 2233;
-        console.log(this.aa2);
-    }
-    go2();
-
-
-    this.aa = 66;
-    var o = {
-        aa:5,
-        fn:function(){
-            function go(){
-                this.aa = 10;
-                console.log(this.aa);
-            }
-            return go;
-        }
-    }
-    console.log( o.fn()); // 
-    o.fn()();  // 10
-
-    this.bb = 20;
-    var test = {
-        bb:36,
-        init:function(){
-            function go(){
-                //this.bb = 60;
-                console.log(this.bb);
-            }
-            go.prototype.bb = 50;
-            return go;
-        }
-    }
-    test.init()(); // 20 
-    var p = test.init();
-    p(); // 20 
-    new (test.init())(); // 50
+  }
+  test.init()(); // 20
+  var p = test.init();
+  p(); // 20
+  new (test.init())(); // 50
 
 </script>

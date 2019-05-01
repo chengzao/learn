@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>nginx跨域</title>
+  <meta charset="UTF-8">
+  <title>nginx跨域</title>
 </head>
 <body>
-   <p>http-proxy-middleware</p>
-   <p>server up this page , port is 5500</p>
-   <p>cd ../jsonp2 && node http-proxy.js && node http-proxy-middleware.js</p>
+  <p>http-proxy-middleware</p>
+  <p>server up this page , port is 5500</p>
+  <p>cd ../jsonp2 && node http-proxy.js && node http-proxy-middleware.js</p>
 </body>
 <script>
-        var xhr = new XMLHttpRequest();
+  var xhr = new XMLHttpRequest();
 
-        // 前端开关：浏览器是否读写 cookie
-        xhr.withCredentials = true;
+  // 前端开关：浏览器是否读写 cookie
+  xhr.withCredentials = true;
 
-        // 访问 http-proxy-middleware 代理服务器
-        xhr.open('get', 'http://127.0.0.1:3000/api', true);
+  // 访问 http-proxy-middleware 代理服务器
+  xhr.open('get', 'http://127.0.0.1:3000/api', true);
 
-        xhr.onreadystatechange = function(){
-            if(xhr.readyState == 4){
-                if(xhr.status >=200 && xhr.status <300 || xhr.status == 304){
-                    console.log(JSON.parse(xhr.response));
-                }
-            }
-        }
-        xhr.send(null);
-    </script>
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4) {
+      if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+        console.log(JSON.parse(xhr.response));
+      }
+    }
+  }
+  xhr.send(null);
+</script>
 </html>

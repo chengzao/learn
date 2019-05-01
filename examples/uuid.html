@@ -23,17 +23,27 @@
 
   console.log(uuid())
 
-  var arr = [{a: 'aa', children:[]}, { d: 'dd', children: [undefined] }, {'b': 'bb', children:["ccc", undefined]}]
+  // 生成随机ID
+  // 生成长度为11的随机字母数字字符串
+  Math.random().toString(36).substring(2);
+  // hg7znok52x
+
+
+  // 创建过去七天的数组
+  [...Array(7).keys()].map(days => new Date(Date.now() - 86400000 * days));
+
+
+  var arr = [{ a: 'aa', children: [] }, { d: 'dd', children: [undefined] }, { 'b': 'bb', children: ["ccc", undefined] }]
 
   arr.map((item) => {
-    if(item.children.length == 0){
+    if (item.children.length == 0) {
       delete item.children
-    }else if(item.children.length > 0){
-        item.children = item.children.filter(item => {
-          return item != undefined
-        })
-        item.children.length > 0 ? item.children : delete item.children
-      }
+    } else if (item.children.length > 0) {
+      item.children = item.children.filter(item => {
+        return item != undefined
+      })
+      item.children.length > 0 ? item.children : delete item.children
+    }
   })
 
   console.log(arr)

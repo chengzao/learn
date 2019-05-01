@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>原型模式</title>
+  <meta charset="UTF-8">
+  <title>原型模式</title>
 </head>
 <body>
 
 </body>
 </html>
 <script>
-    //构造函数模式
-    function Person(name, age) {
-        this.name = name;
-        this.age = age;
-    }
+  //构造函数模式
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+  }
 
-    Person.prototype.sayHello = function () {
-        alert("大家好，我是" + this.name);
-    }
-    Person.prototype.showAge = function () {
-        alert("我永远" + this.age);
-    }
+  Person.prototype.sayHello = function () {
+    alert("大家好，我是" + this.name);
+  }
+  Person.prototype.showAge = function () {
+    alert("我永远" + this.age);
+  }
 
-    var person1 = new Person("xiaolong1", 18);
-    var person2 = new Person("xiaolong2", 12);
-    var person3 = new Person("xiaolong3", 13);
+  var person1 = new Person("xiaolong1", 18);
+  var person2 = new Person("xiaolong2", 12);
+  var person3 = new Person("xiaolong3", 13);
 
 
 
-    console.log(person1.sayHello);
-    console.log(person2.sayHello);
-    //两个函数是一样的
-    console.log(person1.sayHello == person2.sayHello);//这回 通过prototype原型 使用的方法就是一个方法了 这样更加节省资源
+  console.log(person1.sayHello);
+  console.log(person2.sayHello);
+  //两个函数是一样的
+  console.log(person1.sayHello == person2.sayHello);//这回 通过prototype原型 使用的方法就是一个方法了 这样更加节省资源
 
 
 </script>

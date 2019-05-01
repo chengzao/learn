@@ -2,73 +2,73 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>函数的参数</title>
+  <meta charset="UTF-8">
+  <title>函数的参数</title>
 </head>
 
 <body>
 </body>
 
 <script>
-    // 1> 函数内部的成员
-    // 2> Function.prototype 的成员
+  // 1> 函数内部的成员
+  // 2> Function.prototype 的成员
 
-    function foo() {}
+  function foo() { }
 
-    // arguments
-    // caller	调用的函数引用
-    // length	形式参数的个数
-    // name		函数名
-    //
+  // arguments
+  // caller	调用的函数引用
+  // length	形式参数的个数
+  // name		函数名
+  //
 
-    function foo1(a, b) {
-        // console.log(foo1.caller);
-        console.log(foo1.length);
-    }
-    // foo1(); // foo1 是被谁调用的呢?
+  function foo1(a, b) {
+    // console.log(foo1.caller);
+    console.log(foo1.length);
+  }
+  // foo1(); // foo1 是被谁调用的呢?
 
-    function func() {
+  function func() {
 
-        foo1();
-    }
-    // foo1  就是被调用的函数
-    // func 就是调用函数
-    // func();
-
-
-
-    // 运算符: ||
-    // 对象:  o1 || o2
-    // 如果 o1 转换成真假为真, 那么表达式就是 o1
-    // 如果 o1 转换成真假为假, 那么表达式就是 o2
+    foo1();
+  }
+  // foo1  就是被调用的函数
+  // func 就是调用函数
+  // func();
 
 
-    //  huoque leixing
-    Object.prototype.type = function () {
-        // return this.constructor.name;
-        // if (this.constructor.name) {
-        //     return this.constructor.name;
-        // } else {
-        //     return /function\s+(.+?)\(/.exec(this.constructor.toString())[1];
-        // };
 
-        return this.constructor.name ||
-            /function\s+(.+?)\(/.exec(this.constructor.toString())[1];
-    }
+  // 运算符: ||
+  // 对象:  o1 || o2
+  // 如果 o1 转换成真假为真, 那么表达式就是 o1
+  // 如果 o1 转换成真假为假, 那么表达式就是 o2
 
-    var o1 = {};
-    console.log(o1.type());
 
-    var o2 = new Array();
-    console.log(o2.type());
+  //  huoque leixing
+  Object.prototype.type = function () {
+    // return this.constructor.name;
+    // if (this.constructor.name) {
+    //     return this.constructor.name;
+    // } else {
+    //     return /function\s+(.+?)\(/.exec(this.constructor.toString())[1];
+    // };
 
-    function F1234567() {};
-    var o3 = new F1234567();
-    console.log(o3.type());
+    return this.constructor.name ||
+      /function\s+(.+?)\(/.exec(this.constructor.toString())[1];
+  }
 
-    console.log(Function.type());
+  var o1 = {};
+  console.log(o1.type());
 
-    console.log(Object.type());
+  var o2 = new Array();
+  console.log(o2.type());
+
+  function F1234567() { };
+  var o3 = new F1234567();
+  console.log(o3.type());
+
+  console.log(Function.type());
+
+  console.log(Object.type());
 </script>
 
 </html>

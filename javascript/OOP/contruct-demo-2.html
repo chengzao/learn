@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>构造方法</title>
+  <meta charset="UTF-8">
+  <title>构造方法</title>
 </head>
 <body>
-	
+
 </body>
 
 <script>
-	
-	function Person (name) {
-		this.name=name; 
 
-		// this.sayHello=function(){
-		// 	console.log('abc');
-		// }
-	}
+  function Person(name) {
+    this.name = name;
 
-	Person.prototype.sayHello=function(){
-		console.log(this.name);
-	}
+    // this.sayHello=function(){
+    // 	console.log('abc');
+    // }
+  }
+
+  Person.prototype.sayHello = function () {
+    console.log(this.name);
+  }
 
 
-	var person = new Person('xiao ming');
-	person.sayHello();	// xiao ming
-	var person2 = new Person('xiao wang');
-	person2.sayHello();  // xiao wang
+  var person = new Person('xiao ming');
+  person.sayHello();	// xiao ming
+  var person2 = new Person('xiao wang');
+  person2.sayHello();  // xiao wang
 
-    console.log(person.sayHello == person2.sayHello);// true
+  console.log(person.sayHello == person2.sayHello);// true
 
 
 

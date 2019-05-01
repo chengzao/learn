@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="./debounce.css">
   <title>debounce</title>
@@ -37,107 +38,107 @@
   </div>
 </body>
 <script type="text/javascript">
-function scroll() {
+  function scroll() {
     if (window.pageYOffset != null) {
-        return {
-            top: window.pageYOffset,
-            left: window.pageXOffset
-        }
+      return {
+        top: window.pageYOffset,
+        left: window.pageXOffset
+      }
     } else if (document.compatMode == "CSS1Compat") {
-        return {
-            top: document.documentElement.scrollTop,
-            left: document.documentElement.scrollLeft
-        }
+      return {
+        top: document.documentElement.scrollTop,
+        left: document.documentElement.scrollLeft
+      }
     } else {
-        return {
-            top: document.body.scrollTop,
-            left: document.body.scrollLeft
-        }
+      return {
+        top: document.body.scrollTop,
+        left: document.body.scrollLeft
+      }
     }
-}
+  }
 
-function debounce(func, wait, immediate) {
+  function debounce(func, wait, immediate) {
     var timeout;
-    return function() {
-        var context = this, args = arguments;
-        var later = function() {
-            timeout = null;
-            if (!immediate) func.apply(context, args);
-        };
-        var callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if (callNow) func.apply(context, args);
+    return function () {
+      var context = this, args = arguments;
+      var later = function () {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
     };
-};
+  };
 
-// window.addEventListener('scroll',debounce(realFunc,100));
+  // window.addEventListener('scroll',debounce(realFunc,100));
 
-function realFunc(){
-  var curH=scroll().top;
-  console.log(curH);
-  var clientH = document.documentElement.clientHeight;
-  var box = document.getElementsByClassName('foot')[0]
-  if(curH > clientH){
-    box.style.display = 'block';
-  }else{
-    box.style.display = 'none';
-  }
-}
-
-
-(function() {
-    var lastTime = 0;
-    var vendors = ['webkit', 'moz', 'o', 'ms'];
-    for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
-        window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
-        window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] ||
-            // name has changed in Webkit
-            window[vendors[x] + 'CancelRequestAnimationFrame'];
-    }
-
-    if (!window.requestAnimationFrame) {
-        window.requestAnimationFrame = function(callback, element) {
-            var currTime = new Date().getTime();
-            var timeToCall = Math.max(0, 16.7 - (currTime - lastTime));
-            var id = window.setTimeout(function() {
-                callback(currTime + timeToCall);
-            }, timeToCall);
-            lastTime = currTime + timeToCall;
-            return id;
-        };
-    }
-    if (!window.cancelAnimationFrame) {
-        window.cancelAnimationFrame = function(id) {
-            clearTimeout(id);
-        };
-    }
-}());
-
-
-var ticking = false; // rAF 触发锁
-
-function onScroll(){
-  if(!ticking) {
-    requestAnimationFrame(realFunc);
-    ticking = true;
-  }
-}
-
-function realFunc(){
-    var curH=scroll().top;
+  function realFunc() {
+    var curH = scroll().top;
     console.log(curH);
     var clientH = document.documentElement.clientHeight;
     var box = document.getElementsByClassName('foot')[0]
-    if(curH > clientH){
+    if (curH > clientH) {
       box.style.display = 'block';
-    }else{
+    } else {
+      box.style.display = 'none';
+    }
+  }
+
+
+  (function () {
+    var lastTime = 0;
+    var vendors = ['webkit', 'moz', 'o', 'ms'];
+    for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+      window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
+      window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] ||
+        // name has changed in Webkit
+        window[vendors[x] + 'CancelRequestAnimationFrame'];
+    }
+
+    if (!window.requestAnimationFrame) {
+      window.requestAnimationFrame = function (callback, element) {
+        var currTime = new Date().getTime();
+        var timeToCall = Math.max(0, 16.7 - (currTime - lastTime));
+        var id = window.setTimeout(function () {
+          callback(currTime + timeToCall);
+        }, timeToCall);
+        lastTime = currTime + timeToCall;
+        return id;
+      };
+    }
+    if (!window.cancelAnimationFrame) {
+      window.cancelAnimationFrame = function (id) {
+        clearTimeout(id);
+      };
+    }
+  }());
+
+
+  var ticking = false; // rAF 触发锁
+
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(realFunc);
+      ticking = true;
+    }
+  }
+
+  function realFunc() {
+    var curH = scroll().top;
+    console.log(curH);
+    var clientH = document.documentElement.clientHeight;
+    var box = document.getElementsByClassName('foot')[0]
+    if (curH > clientH) {
+      box.style.display = 'block';
+    } else {
       box.style.display = 'none';
     }
     ticking = false;
-}
-// 滚动事件监听
-window.addEventListener('scroll', onScroll, false);
+  }
+  // 滚动事件监听
+  window.addEventListener('scroll', onScroll, false);
 
 </script>
 </html>

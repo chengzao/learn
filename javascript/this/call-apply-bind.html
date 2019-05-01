@@ -1,80 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>call apply bind</title>
-  </head>
-  <body></body>
-  <script type="text/javascript">
-    // url:http://www.cnblogs.com/52fhy/p/5118877.html
-    function add(a, b) {
-      console.log(a + b)
-    }
-    function sub(a, b) {
-      console.log(a - b)
-    }
-    //obj.call(thisObj, arg1, arg2, ...); obj.apply(thisObj, [arg1, arg2, ...]); 把obj(即this)绑定到thisObj，这时候thisObj具备了obj的属性和方法 thisObj『继承』了obj的属性和方法 绑定后会立即执行函数
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>call apply bind</title>
+</head>
+<body></body>
+<script type="text/javascript">
+  // url:http://www.cnblogs.com/52fhy/p/5118877.html
+  function add(a, b) {
+    console.log(a + b)
+  }
+  function sub(a, b) {
+    console.log(a - b)
+  }
+  //obj.call(thisObj, arg1, arg2, ...); obj.apply(thisObj, [arg1, arg2, ...]); 把obj(即this)绑定到thisObj，这时候thisObj具备了obj的属性和方法 thisObj『继承』了obj的属性和方法 绑定后会立即执行函数
 
-    add(5, 3) //8
-    add.call(this, 5, 3) //8
-    add.call(sub, 5, 3) //8
-    add.apply(sub, [5, 3]) //8
+  add(5, 3) //8
+  add.call(this, 5, 3) //8
+  add.call(sub, 5, 3) //8
+  add.apply(sub, [5, 3]) //8
 
-    sub(5, 3); //2
-    sub.apply(this, [5, 3]) //2
-    sub.apply(null, [5, 3]) //2
-    sub.call(add, 5, 3); //2
-    sub.apply(add, [5, 3]); //2
+  sub(5, 3); //2
+  sub.apply(this, [5, 3]) //2
+  sub.apply(null, [5, 3]) //2
+  sub.call(add, 5, 3); //2
+  sub.apply(add, [5, 3]); //2
 
-    var a = [10, 2, 4, 15, 9];
-    Math.max.apply(null, a)
-    // 15 调用原生对象的方法
-    var a = {
-      0: 1,
-      1: "yjc",
-      length: 2
-    };
+  var a = [10, 2, 4, 15, 9];
+  Math.max.apply(null, a)
+  // 15 调用原生对象的方法
+  var a = {
+    0: 1,
+    1: "yjc",
+    length: 2
+  };
 
-    //console.log(a.slice()); //TypeError: a.slice is not a function
+  //console.log(a.slice()); //TypeError: a.slice is not a function
 
-    var arr = Array.prototype.slice.call(a); //[1, "yjc"]
-    console.log(arr);
+  var arr = Array.prototype.slice.call(a); //[1, "yjc"]
+  console.log(arr);
 
-    //实现继承
-    var Parent = function () {
-      this.name = "yjc";
-      this.age = 22;
-    }
-    var child = {};
-    console.log(child); //Object {} ,空对象
-    Parent.call(child);
-    console.log(child); //Object {name: "yjc", age: 22}
+  //实现继承
+  var Parent = function () {
+    this.name = "yjc";
+    this.age = 22;
+  }
+  var child = {};
+  console.log(child); //Object {} ,空对象
+  Parent.call(child);
+  console.log(child); //Object {name: "yjc", age: 22}
 
-    //obj.bind(thisObj, arg1, arg2, ...); 把obj绑定到thisObj，这时候thisObj具备了obj的属性和方法 把与call和apply不同的是，bind绑定后不会立即执行 如果bind的第一个参数是null或者undefined，等于将this绑定到全局对象
-    add.bind(sub, 5, 3); //不再返回8
-    add.bind(sub, 5, 3)(); //8
+  //obj.bind(thisObj, arg1, arg2, ...); 把obj绑定到thisObj，这时候thisObj具备了obj的属性和方法 把与call和apply不同的是，bind绑定后不会立即执行 如果bind的第一个参数是null或者undefined，等于将this绑定到全局对象
+  add.bind(sub, 5, 3); //不再返回8
+  add.bind(sub, 5, 3)(); //8
 
-    function args() {
+  function args() {
+    var args = Array.prototype.slice.call(arguments, 1);
+    console.log(args);
+  }
+  args("a", "b") //["b"]
+
+  if (!('bind' in Function.prototype)) {
+    Function.prototype.bind = function () {
+      var fn = this;
+      var context = arguments[0];
       var args = Array.prototype.slice.call(arguments, 1);
-      console.log(args);
-    }
-    args("a", "b") //["b"]
-
-    if (!('bind' in Function.prototype)) {
-      Function.prototype.bind = function () {
-        var fn = this;
-        var context = arguments[0];
-        var args = Array.prototype.slice.call(arguments, 1);
-        return function () {
-          return fn.apply(context, args);
-        }
+      return function () {
+        return fn.apply(context, args);
       }
     }
+  }
 
 
 
 
-  </script>
+</script>
 </html>

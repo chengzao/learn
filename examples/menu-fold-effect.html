@@ -2,110 +2,108 @@
 <html>
 
 <head>
-    <meta charset=utf-8>
-    <title>菜单折叠效果</title>
-    <style>
-        .accordion {
-            width: 500px;
-            border: 1px solid #ccc;
-            border-bottom: none;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 12px;
-        }
+  <meta charset=utf-8>
+  <title>菜单折叠效果</title>
+  <style>
+    .accordion {
+      width: 500px;
+      border: 1px solid #ccc;
+      border-bottom: none;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+    }
 
-        .accordion dt,
-        .accordion dd {
-            border-bottom: 1px solid #ccc;
-            margin: 0px;
-        }
+    .accordion dt,
+    .accordion dd {
+      border-bottom: 1px solid #ccc;
+      margin: 0px;
+    }
 
-        .accordion dt {
-            background: #eaeaea;
-            cursor: pointer;
-            padding: 8px 4px;
-            font-size: 13px;
-            font-weight: bold;
-        }
+    .accordion dt {
+      background: #eaeaea;
+      cursor: pointer;
+      padding: 8px 4px;
+      font-size: 13px;
+      font-weight: bold;
+    }
 
-        .accordion dd {
-            padding: 12px 8px;
-        }
-    </style>
-    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+    .accordion dd {
+      padding: 12px 8px;
+    }
+  </style>
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
 </head>
 
 <body>
-    <dl class="accordion" id="my-accordion">
-        <dt>Section 1</dt>
-        <dd>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam.</dd>
-        <dt>Section 2</dt>
-        <dd>Vestibulum a velit eu ante scelerisque vulputate.</dd>
-        <dt>Section 3</dt>
-        <dd>Nam mi. Proin viverra leo ut odio. Curabitur malesuada.</dd>
-        <dt>Section 4</dt>
-        <dd>Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc.</dd>
-    </dl>
+  <dl class="accordion" id="my-accordion">
+    <dt>Section 1</dt>
+    <dd>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam.</dd>
+    <dt>Section 2</dt>
+    <dd>Vestibulum a velit eu ante scelerisque vulputate.</dd>
+    <dt>Section 3</dt>
+    <dd>Nam mi. Proin viverra leo ut odio. Curabitur malesuada.</dd>
+    <dt>Section 4</dt>
+    <dd>Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc.</dd>
+  </dl>
 
 
 </body>
 <script>
-    $(function () {
-        var dl = $('.accordion');
-        var dd = dl.find('>dd');
-        var dt = dl.find('>dt');
-        console.log(dt);
-        dd.hide();
-        dt.click(function () {
-            dd.hide();
-            $(this).next('dd').show(500);
+  $(function () {
+    var dl = $('.accordion');
+    var dd = dl.find('>dd');
+    var dt = dl.find('>dt');
+    console.log(dt);
+    dd.hide();
+    dt.click(function () {
+      dd.hide();
+      $(this).next('dd').show(500);
+    });
+  })
+
+
+
+  /*
+  (function($){
+    $(".accordion dd").hide();
+    $(".accordion dt").click(function(){
+      // $(this).next("dd:not(:visible)").hide();
+      $(this).siblings("dd:not(:first)").hide();
+      $(this).next("dd:first").slideToggle('slow');
+    });
+  })(jQuery);
+  */
+
+  /*
+    (function ($) {
+      $.fn.accordion = function (options) {
+        return this.each(function () {
+          var dts = $(this).children('dt');
+          dts.click(onClick);
+          dts.each(reset);
         });
+
+        function onClick() {
+          $(this).siblings('dt').each(hide);
+          $(this).next().slideDown('fast');
+          return false;
+        }
+
+        function hide() {
+          $(this).next().slideUp('fast');
+        }
+
+        function reset() {
+          $(this).next().hide();
+        }
+      }
+    })(jQuery);
+
+    //调用插件
+    $(function () {
+      $('dl#my-accordion').accordion();
     })
-
-
-
-    /*    (function($){
-            $(".accordion dd").hide();
-            $(".accordion dt").click(function(){
-               // $(this).next("dd:not(:visible)").hide();
-                $(this).siblings("dd:not(:first)").hide();
-                $(this).next("dd:first").slideToggle('slow');
-
-            });
-
-
-        })(jQuery);
-    */
-
-
-    /*
-        (function($) {
-            $.fn.accordion = function(options) {
-                return this.each(function() {
-                    var dts = $(this).children('dt');
-                    dts.click(onClick);
-                    dts.each(reset);
-                });
-
-                function onClick() {
-                    $(this).siblings('dt').each(hide);
-                    $(this).next().slideDown('fast');
-                    return false;
-                }
-
-                function hide() {
-                    $(this).next().slideUp('fast');
-                }
-
-                function reset() {
-                    $(this).next().hide();
-                }
-            }
-        })(jQuery);
-
-        //调用插件
-        $(function(){
-            $('dl#my-accordion').accordion();
-        })*/
+  */
 </script>
 
 </html>

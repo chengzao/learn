@@ -1,44 +1,44 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>regexp表达式</title>
-		<script>
-			// 什么是正则表达式?
-			// regexp, regular expression
-			// 正则表达式是包含元字符与匹配字符的用来匹配字符串用的一个字符串 初始化的对象
+<head>
+  <meta charset="UTF-8">
+  <title>regexp表达式</title>
+  <script>
+    // 什么是正则表达式?
+    // regexp, regular expression
+    // 正则表达式是包含元字符与匹配字符的用来匹配字符串用的一个字符串 初始化的对象
 
-			/*
-			"1"
-			"abc"
-			"1.234"
-			"jquery"
+    /*
+    "1"
+    "abc"
+    "1.234"
+    "jquery"
 
-			"\\d+"
-			*/
+    "\\d+"
+    */
 
-			// 在 js 中, 学习正则表达式, 有两个重点
-			// 1> 如何使用元字符
-			// 2> 如果使用代码找出我要的东西
+    // 在 js 中, 学习正则表达式, 有两个重点
+    // 1> 如何使用元字符
+    // 2> 如果使用代码找出我要的东西
 
 
-			// regexp
+    // regexp
 
-			// 正则表达式对象的构造方法
-			var r = new RegExp("jquery"); // sizzle
+    // 正则表达式对象的构造方法
+    var r = new RegExp("jquery"); // sizzle
 
-			// 正则表达式是用来匹配的, 呢么有一个方法叫 test
-			var str = "abcdgk1234abcdgk1234heheabcd"+
-			"gk1234heheabcdgk1234heheabcdgk1234hehea"+
-			"bcdgk1234heheabcdgk1234heheabcdgk1234he"+
-			"heabcdgk1234hehehehehj1queryahabcdgk1234"+
-			"heheabcdgk1234heheabcdgk1234heheabcdgk1234hehexixi";
+    // 正则表达式是用来匹配的, 呢么有一个方法叫 test
+    var str = "abcdgk1234abcdgk1234heheabcd" +
+      "gk1234heheabcdgk1234heheabcdgk1234hehea" +
+      "bcdgk1234heheabcdgk1234heheabcdgk1234he" +
+      "heabcdgk1234hehehehehj1queryahabcdgk1234" +
+      "heheabcdgk1234heheabcdgk1234heheabcdgk1234hehexixi";
 
-			var isTrue = r.test(str); // 在 字符串 str 中查找是否包含 正则表达式 r 所描述的字符串
+    var isTrue = r.test(str); // 在 字符串 str 中查找是否包含 正则表达式 r 所描述的字符串
 
-			console.log(isTrue);
-		</script>
-	</head>
-	<body>
-	</body>
+    console.log(isTrue);
+  </script>
+</head>
+<body>
+</body>
 </html>

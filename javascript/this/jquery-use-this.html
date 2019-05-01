@@ -4,51 +4,51 @@
   <meta charset="UTF-8">
   <title>jquery链式访问this</title>
   <style>
-    #dv{
+    #dv {
       width: 100px;
       height: 100px;
-      background-color:red;
+      background-color: red;
     }
   </style>
 </head>
 <body>
-<div id='dv'></div>
-<script>
-  var Jquery=function () {
-    this.element='';
-  }
-  Jquery.prototype= {
-    //拓展
-    extend: function (tag, source) {
-      for (var item in source) {
-        tag[item] = source[item];
-      }
-      return tag;
+  <div id='dv'></div>
+  <script>
+    var Jquery = function () {
+      this.element = '';
     }
-  }
+    Jquery.prototype = {
+      //拓展
+      extend: function (tag, source) {
+        for (var item in source) {
+          tag[item] = source[item];
+        }
+        return tag;
+      }
+    }
 
-    var $=new Jquery();
+    var $ = new Jquery();
 
-    $.extend($,{
-      id:function (str) {
-        this.element= document.getElementById(str);
+    $.extend($, {
+      id: function (str) {
+        this.element = document.getElementById(str);
         return this;
       },
-      hide:function () {
+      hide: function () {
         console.log('hide');
-        var dom=this.element;
-        dom.style.display='none';
+        var dom = this.element;
+        dom.style.display = 'none';
         return this;
       },
-      show:function () {
+      show: function () {
         console.log('show');
-        var dom=this.element;
-        dom.style["display"]='block';
+        var dom = this.element;
+        dom.style["display"] = 'block';
         return this;
       }
     })
 
-  $.id('dv').hide().show()
-</script>
+    $.id('dv').hide().show()
+  </script>
 </body>
 </html>

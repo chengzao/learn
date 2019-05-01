@@ -5,92 +5,92 @@
   <title>构造函数this</title>
 </head>
 <body>
-<script>
-//  构造器里的this 就指向返回的这个对象
-  var Foo=function () {
-    this.name='test';
-  }
-  Foo.prototype={
-    constructor:Foo,
-    name:'abc',
-    fun:function () {
-      console.log(this.name);
+  <script>
+    //  构造器里的this 就指向返回的这个对象
+    var Foo = function () {
+      this.name = 'test';
     }
-  }
-  var foo=new Foo();
-  foo.fun();//test
-
-
-//1.
-  var name='boo';
-  var Foo1=function () {
-    this.name='Foo1';
-  }
-  var foo1=new Foo1();
-  console.log(foo1.name);//Foo1
-
-//2.
-  var Foo2=function () {
-    this.name='Foo2';
-    return 'boo2';//返回字符串string
-  }
-  var foo2=new Foo2();
-  console.log(foo2.name);//Foo2
-
-
-//3.
-var Foo3=function () {
-  this.name='Foo3';
-  return {
-    name:'boo3'
-  }
-}
-var foo3=new Foo3();
-console.log(foo3.name);//boo3
-
-
-//4.1
-var Foo4=function () {
-  this.name='Foo4';
-  return {
-    name:'return',
-    fn:function () {
-      this.name='boo4';
+    Foo.prototype = {
+      constructor: Foo,
+      name: 'abc',
+      fun: function () {
+        console.log(this.name);
+      }
     }
-  }
-}
-var foo4=new Foo4();
-console.log(foo4.name);//return
-console.log(foo4.fn());//undefined
+    var foo = new Foo();
+    foo.fun();//test
 
-//4.2
-var Foo5=function () {
-  this.name='Foo5';
-  return {
-    name:'return',
-    fn:function () {
-//      name='boo5';
-      console.log(this.name);
+
+    //1.
+    var name = 'boo';
+    var Foo1 = function () {
+      this.name = 'Foo1';
     }
-  }
-}
-var foo5=new Foo5();
-console.log(foo5.name);//return
-foo5.fn();//return
+    var foo1 = new Foo1();
+    console.log(foo1.name);//Foo1
+
+    //2.
+    var Foo2 = function () {
+      this.name = 'Foo2';
+      return 'boo2';//返回字符串string
+    }
+    var foo2 = new Foo2();
+    console.log(foo2.name);//Foo2
+
+
+    //3.
+    var Foo3 = function () {
+      this.name = 'Foo3';
+      return {
+        name: 'boo3'
+      }
+    }
+    var foo3 = new Foo3();
+    console.log(foo3.name);//boo3
+
+
+    //4.1
+    var Foo4 = function () {
+      this.name = 'Foo4';
+      return {
+        name: 'return',
+        fn: function () {
+          this.name = 'boo4';
+        }
+      }
+    }
+    var foo4 = new Foo4();
+    console.log(foo4.name);//return
+    console.log(foo4.fn());//undefined
+
+    //4.2
+    var Foo5 = function () {
+      this.name = 'Foo5';
+      return {
+        name: 'return',
+        fn: function () {
+          //      name='boo5';
+          console.log(this.name);
+        }
+      }
+    }
+    var foo5 = new Foo5();
+    console.log(foo5.name);//return
+    foo5.fn();//return
 
 
 
-//5.
-var Foo6=function (fn) {
-  this.name='Foo6';
-  return fn();
-}
+    //5.
+    var Foo6 = function (fn) {
+      this.name = 'Foo6';
+      return fn();
+    }
 
-var foo6 =new Foo6(function () {
-  console.log(this.name);//boo
-})
-console.log(foo6.name);//Foo6
+    var foo6 = new Foo6(function () {
+      console.log(this.name);//boo
+    })
+    console.log(foo6.name);//Foo6
 
-</script>
+  </script>
 </body>
 </html>

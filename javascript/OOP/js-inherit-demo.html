@@ -2,37 +2,37 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>js的继承</title>
-    <script>
-        // 1, 对象的原型链
-        // 2, 函数的原型链
-        // 3, 继承的概念
-        //	1> 原型链			层次的传统继承
-        //	2> 借用构造函数 	组合式的继承(混乱, 没有类型的要求)
-        //		extend
+  <meta charset="UTF-8">
+  <title>js的继承</title>
+  <script>
+    // 1, 对象的原型链
+    // 2, 函数的原型链
+    // 3, 继承的概念
+    //	1> 原型链			层次的传统继承
+    //	2> 借用构造函数 	组合式的继承(混乱, 没有类型的要求)
+    //		extend
 
-        //顶一个父母类，注意：类名都是首字母大写的哦！
-        function Parent(name, money) {
-            this.name = name;
-            this.money = money;
-            this.info = function () {
-                alert('姓名： ' + this.name + ' 钱： ' + this.money);
-            }
-        }
-        //定义孩子类
-        function Children(name) {
-            Parent.call(this, name); //继承 姓名属性，不要钱。  
-            this.info = function () {
-                alert('姓名： ' + this.name);
-            }
-        }
-        //实例化类
-        var per = new Parent('parent', 800000000000); //
-        var chi = new Children('child');
-        per.info(); //parent 800000000000
-        chi.info(); //child
-    </script>
+    //顶一个父母类，注意：类名都是首字母大写的哦！
+    function Parent(name, money) {
+      this.name = name;
+      this.money = money;
+      this.info = function () {
+        alert('姓名： ' + this.name + ' 钱： ' + this.money);
+      }
+    }
+    //定义孩子类
+    function Children(name) {
+      Parent.call(this, name); //继承 姓名属性，不要钱。
+      this.info = function () {
+        alert('姓名： ' + this.name);
+      }
+    }
+    //实例化类
+    var per = new Parent('parent', 800000000000); //
+    var chi = new Children('child');
+    per.info(); //parent 800000000000
+    chi.info(); //child
+  </script>
 </head>
 
 <body>

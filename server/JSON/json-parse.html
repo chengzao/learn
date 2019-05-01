@@ -1,58 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>JSON- parse</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JSON- parse</title>
 </head>
 <body>
-    <h3>JSON.parse()</h3>
+  <h3>JSON.parse()</h3>
 </body>
 <script>
-    // JSON.parse() 方法将一个 JSON字符串解析成一个javascript值。
+  // JSON.parse() 方法将一个 JSON字符串解析成一个javascript值。
 
-    // 语法：JSON.parse(text[, reviver])
+  // 语法：JSON.parse(text[, reviver])
 
-    // text:必需， 一个有效的 JSON 字符串。
-    // reviver: 可选，一个转换结果的函数， 将为对象的每个成员调用此函数。
-    // JSON属性名称必须用双引号包裹；最后一个属性后面不能有逗号。
+  // text:必需， 一个有效的 JSON 字符串。
+  // reviver: 可选，一个转换结果的函数， 将为对象的每个成员调用此函数。
+  // JSON属性名称必须用双引号包裹；最后一个属性后面不能有逗号。
 
-    // 若被解析的 JSON 字符串是非法的，则会抛出 一个语法错误 异常。
+  // 若被解析的 JSON 字符串是非法的，则会抛出 一个语法错误 异常。
 
-    // JSON.parse() 不允许用逗号作为结尾
+  // JSON.parse() 不允许用逗号作为结尾
 
-    JSON.parse('{}');              // {}
-    JSON.parse('true');            // true
-    JSON.parse('"foo"');           // "foo"
-    JSON.parse('[1, 5, "false"]'); // [1, 5, "false"]
-    JSON.parse('null');            // null
-    JSON.parse('{name:tom}');      //Unexpected token 
-    JSON.parse('{name:"tom"}');    //Unexpected token 
-    JSON.parse('{"name":tom}');    //Unexpected token 
-    JSON.parse('{"age":undefined}');//Unexpected token 
-    JSON.parse('{"name":"tom"}');  //{name: "tom"}
-    JSON.parse('{"age":10}');      //{age: 10}
-    JSON.parse('{"age":null}');     //{age: null}
-    var str='{"p": 5}';
-    JSON.parse(str, function (k, v) {
-        if(k === '') return v;     // 如果到了最顶层，则直接返回属性值，
-        return v * 2;              // 否则将属性值变为原来的 2 倍。
-    });                            // { p: 10 }
+  JSON.parse('{}');              // {}
+  JSON.parse('true');            // true
+  JSON.parse('"foo"');           // "foo"
+  JSON.parse('[1, 5, "false"]'); // [1, 5, "false"]
+  JSON.parse('null');            // null
+  JSON.parse('{name:tom}');      //Unexpected token
+  JSON.parse('{name:"tom"}');    //Unexpected token
+  JSON.parse('{"name":tom}');    //Unexpected token
+  JSON.parse('{"age":undefined}');//Unexpected token
+  JSON.parse('{"name":"tom"}');  //{name: "tom"}
+  JSON.parse('{"age":10}');      //{age: 10}
+  JSON.parse('{"age":null}');     //{age: null}
+  var str = '{"p": 5}';
+  JSON.parse(str, function (k, v) {
+    if (k === '') return v;     // 如果到了最顶层，则直接返回属性值，
+    return v * 2;              // 否则将属性值变为原来的 2 倍。
+  });                            // { p: 10 }
 
-    var str2='{"1": 1, "2": 2,"3": {"4": 4, "5": {"6": 6}}}';
-    JSON.parse(str2, function (k, v) {
-        console.log(k); // 输出当前的属性名，从而得知遍历顺序是从内向外的，
-                        // 最后一个属性名会是个空字符串。
-        return v;       // 返回原始属性值，相当于没有传递 reviver 参数。
-    });
+  var str2 = '{"1": 1, "2": 2,"3": {"4": 4, "5": {"6": 6}}}';
+  JSON.parse(str2, function (k, v) {
+    console.log(k); // 输出当前的属性名，从而得知遍历顺序是从内向外的，
+    // 最后一个属性名会是个空字符串。
+    return v;       // 返回原始属性值，相当于没有传递 reviver 参数。
+  });
 
     // 1
     // 2
     // 4
     // 6
     // 5
-    // 3 
+    // 3
     // ""
 </script>
 </html>

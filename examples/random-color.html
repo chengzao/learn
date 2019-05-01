@@ -2,27 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>randomColor</title>
+  <title>随机颜色</title>
 </head>
 <body>
-<button id="btn" style="cursor:pointer;">点击切换颜色</button>
-<span></span><span style="width:40px;height:30px;display: inline-block;"></span>
-<script>
-  function RandomColor() {
-    return "#"+("00000"+((Math.random()*16777215+0.5)>>0).toString(16)).slice(-6);
-  }
-  var btn=document.getElementById("btn");
-  var span1=document.getElementsByTagName("span")[0];
-  var span2=document.getElementsByTagName("span")[1];
+  <button id="btn" style="cursor:pointer;">点击切换颜色</button>
+  <span></span><span style="width:40px;height:30px;display: inline-block;"></span>
+  <script>
+    function RandomColor() {
+      return "#" + ("00000" + ((Math.random() * 16777215 + 0.5) >> 0).toString(16)).slice(-6);
+    }
 
-  btn.onclick=function () {
-    var m=RandomColor();
-//    var dom=document.createElement("h1");
-//    dom.innerHTML=m;
-//    span.appendChild(dom);
-      span1.innerHTML="<h1>"+m+"</h1>";
-      span2.style.background=m;
-  }
-</script>
+    // 生成随机十六进制代码 如：'#c618b2'
+    // '#' + Math.floor(Math.random() * 0xffffff).toString(16).padEnd(6, '0');
+
+
+    var btn = document.getElementById("btn");
+    var span1 = document.getElementsByTagName("span")[0];
+    var span2 = document.getElementsByTagName("span")[1];
+
+    btn.onclick = function () {
+      var m = RandomColor();
+      //    var dom=document.createElement("h1");
+      //    dom.innerHTML=m;
+      //    span.appendChild(dom);
+      span1.innerHTML = "<h1>" + m + "</h1>";
+      span2.style.background = m;
+    }
+  </script>
 </body>
 </html>

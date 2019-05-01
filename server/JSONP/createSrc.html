@@ -1,64 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>JSONP</title>
-	<style>
-		table {
-			width: 600px;
-			border-collapse: collapse;
-		}
-		td {
-			height: 40px;
-			text-align: center;
-			border: 1px solid #CCC;
-		}
-	</style>
+  <meta charset="UTF-8">
+  <title>JSONP</title>
+  <style>
+    table {
+      width: 600px;
+      border-collapse: collapse;
+    }
+
+    td {
+      height: 40px;
+      text-align: center;
+      border: 1px solid #CCC;
+    }
+  </style>
 </head>
 <body>
-<h4>如果无效需要安装配置wamp环境查看，查看<a href="jsonp.md">jsonp</a></h4>
-	<table></table>
+  <h4>如果无效需要安装配置wamp环境查看，查看<a href="jsonp.md">jsonp</a></h4>
+  <table></table>
 </body>
 <script src="js/jquery.min.js"></script>
 <script src="js/template-native.js"></script>
 <script>
-		//它只支持GET请求而不支持POST等其它类型的HTTP请求；它只支持跨域HTTP请求这种情况，不能解决不同域的两个页面之间如何进行JavaScript调用的问题。
-		// 本页面为：www.chenio.com下访问
-		// http://api.chenio.com/weather.php?location=北京&callback=weather
+  //它只支持GET请求而不支持POST等其它类型的HTTP请求；它只支持跨域HTTP请求这种情况，不能解决不同域的两个页面之间如何进行JavaScript调用的问题。
+  // 本页面为：www.chenio.com下访问
+  // http://api.chenio.com/weather.php?location=北京&callback=weather
 
-		function creaScript(url){
-			var spt = document.createElement('script');
-			spt.src = url;
-			spt.type = 'text/javascript';
-			document.body.append(spt);
-		}
+  function creaScript(url) {
+    var spt = document.createElement('script');
+    spt.src = url;
+    spt.type = 'text/javascript';
+    document.body.append(spt);
+  }
 
-		// 访问的回调函数
-		function weather(data){
-			console.log('weather function');
-			console.log(data);
-			var items = data.results[0]['weather_data'];
+  // 访问的回调函数
+  function weather(data) {
+    console.log('weather function');
+    console.log(data);
+    var items = data.results[0]['weather_data'];
 
-			console.log(items);
+    console.log(items);
 
-			// var arr = [0, 1, 2];
+    // var arr = [0, 1, 2];
 
-			var info = {
-				items: items
-			}
+    var info = {
+      items: items
+    }
 
-			// info.items
+    // info.items
 
-			var html = template('tpl', info);
+    var html = template('tpl', info);
 
-			// console.log(html);
+    // console.log(html);
 
-			$('table').append(html);
-		}
+    $('table').append(html);
+  }
 
-		// 调用		
-		var url =" http://api.chenio.com/weather.php?location=北京&callback=weather";
-		creaScript(url);
+  // 调用
+  var url = " http://api.chenio.com/weather.php?location=北京&callback=weather";
+  creaScript(url);
 
 
 

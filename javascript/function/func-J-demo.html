@@ -1,126 +1,126 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-		<script>
-			var util = {
-				id: function (idName) {
-					return document.getElementById(idName);
-				},
-				tag: function (tagName, parent) {
-					parent = parent || document;
-					// return parent.getElementsByTagName(tagName);
-					
-					
-					// 支持 ie8
-					var temp = parent.getElementsByTagName(tagName), res = [];
-					for (var i = 0; i < temp.length; i++) {
-						res.push(temp[i]);
-					}
-					return res;
-					
-				},
-				cName: function (className, parent) {
-					parent = parent || document;
-					if (parent.getElementsByClassName) {
-						return parent.getElementsByClassName(className);
-						
-					} else { // 支持 ie8
-						var fn = function (className) {
-							var temp = [],
-								i = 0,
-								tags = parent.getElementsByTagName("*");
-							for (i = 0; i < tags.length; i++) {
-								var c = tags[i].getAttribute("class");
-								if (c != null && (new RegExp("(^|\\s+)" + className + "(\\s+|$)")).exec(c)) {
-									temp.push(tags[i]);
-								}
-							}
-							return temp;
-						};
-						return fn(className);
-					}
-				}
-			};
-		
-			function J(selector, parent) {
-				
-				
-				
-				if (arguments.length == 1) {
-				
-					if (typeof selector === "function") {
-						if (typeof window.onload === "function") {
-							var oldfn = window.onload;
-							window.onload = function () {
-								oldfn();
-								selector();
-							}
-						} else {
-							window.onload = selector;
-						}
-						
-					} else if (typeof selector === "string"){
-						var m;
-						if (m = /#(.+)/.exec(selector)) {
-							return [util.id(m[1])];
-						} else if(m = /\.(.+)/.exec(selector)) {
-							return util.cName(m[1]);
-						} else {
-							return util.tag(selector);
-						}
-						
-					}
-				} else if (arguments.length == 2 && typeof selector === "string" && typeof parent === "string") {
-					var parents = [], res = [];
-					if (m = /#(.+)/.exec(parent)) {
-						parents = parents.concat.apply(parents, [util.id(m[1])]);
-					} else if(m = /\.(.+)/.exec(parent)) {
-						parents = parents.concat.apply(parents, util.cName(m[1]));
-					} else {
-						parents = parents.concat.apply(parents, util.tag(parent));
-					}
-					
-					for (var i = 0; i < parents.length; i++) {
-						if (m = /#(.+)/.exec(selector)) {
-							res = res.concat.apply(res, [util.id(m[1])]);
-						} else if(m = /\.(.+)/.exec(selector)) {
-							res = res.concat.apply(res, util.cName(m[1], parents[i]));
-						} else {
-							res = res.concat.apply(res, util.tag(selector, parents[i]));
-						}
-					}
-					return res;
-				}
-			}
-			
-			
-			
-			J(function () {
-				var nodes = J("div");
-				for (var i = 0; i < nodes.length; i++) {
-					nodes[i].style.border = "1px solid red";
-					nodes[i].style.width = "100px";
-					nodes[i].style.height = "20px";
-					nodes[i].style.margin = "5px";
-				}
-				
-				nodes = J("span", ".c3" );
-				for (var i = 0; i < nodes.length; i++) {
-					nodes[i].style.border = "1px dashed blue";
-				}
-			});
-			
-		</script>
-	</head>
-	<body>
-		<div class="c1"><span>1</span></div>
-		<div class="c1 c2"><span>2</span></div>
-		<div class="c2 c1 c3"><span>3</span></div>
-		<div class="c2 c1"><span>4</span></div>
-		<div class="c2 c3"><span>5</span></div>
-		<div id="dv"><span>6</span></div>
-		<p><span>7</span></p>
-	</body>
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+    var util = {
+      id: function (idName) {
+        return document.getElementById(idName);
+      },
+      tag: function (tagName, parent) {
+        parent = parent || document;
+        // return parent.getElementsByTagName(tagName);
+
+
+        // 支持 ie8
+        var temp = parent.getElementsByTagName(tagName), res = [];
+        for (var i = 0; i < temp.length; i++) {
+          res.push(temp[i]);
+        }
+        return res;
+
+      },
+      cName: function (className, parent) {
+        parent = parent || document;
+        if (parent.getElementsByClassName) {
+          return parent.getElementsByClassName(className);
+
+        } else { // 支持 ie8
+          var fn = function (className) {
+            var temp = [],
+              i = 0,
+              tags = parent.getElementsByTagName("*");
+            for (i = 0; i < tags.length; i++) {
+              var c = tags[i].getAttribute("class");
+              if (c != null && (new RegExp("(^|\\s+)" + className + "(\\s+|$)")).exec(c)) {
+                temp.push(tags[i]);
+              }
+            }
+            return temp;
+          };
+          return fn(className);
+        }
+      }
+    };
+
+    function J(selector, parent) {
+
+
+
+      if (arguments.length == 1) {
+
+        if (typeof selector === "function") {
+          if (typeof window.onload === "function") {
+            var oldfn = window.onload;
+            window.onload = function () {
+              oldfn();
+              selector();
+            }
+          } else {
+            window.onload = selector;
+          }
+
+        } else if (typeof selector === "string") {
+          var m;
+          if (m = /#(.+)/.exec(selector)) {
+            return [util.id(m[1])];
+          } else if (m = /\.(.+)/.exec(selector)) {
+            return util.cName(m[1]);
+          } else {
+            return util.tag(selector);
+          }
+
+        }
+      } else if (arguments.length == 2 && typeof selector === "string" && typeof parent === "string") {
+        var parents = [], res = [];
+        if (m = /#(.+)/.exec(parent)) {
+          parents = parents.concat.apply(parents, [util.id(m[1])]);
+        } else if (m = /\.(.+)/.exec(parent)) {
+          parents = parents.concat.apply(parents, util.cName(m[1]));
+        } else {
+          parents = parents.concat.apply(parents, util.tag(parent));
+        }
+
+        for (var i = 0; i < parents.length; i++) {
+          if (m = /#(.+)/.exec(selector)) {
+            res = res.concat.apply(res, [util.id(m[1])]);
+          } else if (m = /\.(.+)/.exec(selector)) {
+            res = res.concat.apply(res, util.cName(m[1], parents[i]));
+          } else {
+            res = res.concat.apply(res, util.tag(selector, parents[i]));
+          }
+        }
+        return res;
+      }
+    }
+
+
+
+    J(function () {
+      var nodes = J("div");
+      for (var i = 0; i < nodes.length; i++) {
+        nodes[i].style.border = "1px solid red";
+        nodes[i].style.width = "100px";
+        nodes[i].style.height = "20px";
+        nodes[i].style.margin = "5px";
+      }
+
+      nodes = J("span", ".c3");
+      for (var i = 0; i < nodes.length; i++) {
+        nodes[i].style.border = "1px dashed blue";
+      }
+    });
+
+  </script>
+</head>
+<body>
+  <div class="c1"><span>1</span></div>
+  <div class="c1 c2"><span>2</span></div>
+  <div class="c2 c1 c3"><span>3</span></div>
+  <div class="c2 c1"><span>4</span></div>
+  <div class="c2 c3"><span>5</span></div>
+  <div id="dv"><span>6</span></div>
+  <p><span>7</span></p>
+</body>
 </html>

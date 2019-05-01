@@ -1,93 +1,93 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Object.prototype中的方法</title>
-		<script>
-			// 1, 数据类型的转换
-			// 2, 内置对象的常用方法
+<head>
+  <meta charset="UTF-8">
+  <title>Object.prototype中的方法</title>
+  <script>
+    // 1, 数据类型的转换
+    // 2, 内置对象的常用方法
 
-			// 3, Object.prototype 中提供的方法
-			var o = Object.prototype;
+    // 3, Object.prototype 中提供的方法
+    var o = Object.prototype;
 
-			// constructor 就是原型对象描述的构造函数
-			/*
-			function Foo(){}
-			var f1 = new Foo();
-			var f2 = new Foo.prototype.constructor();
+    // constructor 就是原型对象描述的构造函数
+    /*
+    function Foo(){}
+    var f1 = new Foo();
+    var f2 = new Foo.prototype.constructor();
 
-			console.log(Foo === Foo.prototype.constructor);
-			*/
-
-
-			// hasOwnProperty()			// property 属性    attribute 特性
-			// 有自己的属性
-			/*
-			function Foo () {
-				this.name = "张三";
-			}
-			Foo.prototype = {
-				constructor: Foo,
-				age: 19,
-				gender: "男"
-			};
-
-			var f = new Foo();
-			var isTrue = f.hasOwnProperty("name");
-			console.log("name -> " + isTrue);
-
-			isTrue = f.hasOwnProperty("age");
-			console.log("age -> " + isTrue);
-
-			isTrue = f.hasOwnProperty("gender");
-			console.log("gender -> " + isTrue);
-
-			isTrue = f.hasOwnProperty("web");
-			console.log("web -> " + isTrue);
-			// 无法判断这个属性是否存在
-			*/
+    console.log(Foo === Foo.prototype.constructor);
+    */
 
 
-			// isPrototypeOf(???)			of 翻译成的   book of student
-			// is prototype of ???
-			/*
-			function Foo() {}
-			var o = {};
-			var f = new Foo();
+    // hasOwnProperty()			// property 属性    attribute 特性
+    // 有自己的属性
+    /*
+    function Foo () {
+      this.name = "张三";
+    }
+    Foo.prototype = {
+      constructor: Foo,
+      age: 19,
+      gender: "男"
+    };
 
-			var isTrue = Foo.prototype.isPrototypeOf(o);
-			console.log("Foo.prototype.isPrototypeOf(o) = " + isTrue);
+    var f = new Foo();
+    var isTrue = f.hasOwnProperty("name");
+    console.log("name -> " + isTrue);
 
+    isTrue = f.hasOwnProperty("age");
+    console.log("age -> " + isTrue);
 
-			isTrue = Foo.prototype.isPrototypeOf(f);
-			console.log("Foo.prototype.isPrototypeOf(f) = " + isTrue);
+    isTrue = f.hasOwnProperty("gender");
+    console.log("gender -> " + isTrue);
 
-			isTrue = f.isPrototypeOf(Foo.prototype);
-			console.log("f.isPrototypeOf(Foo.prototype) = " + isTrue);
-			*/
-
-
-			// propertyIsEnumerable
-			// 属性 是 可以枚举的
-			// 可枚举的, 以及是自己实现的就返回 true
-
-			var o = {name : "张三"};
-			function Foo() {
-				this.a = 1;
-				this.b = 2;
-			}
-			Foo.prototype = o;
-
-			var f = new Foo();
-
-			for (var k in f) {
-
-				console.log(k + "   isE = " + f.propertyIsEnumerable(k));
-			}
-			// for in 可以遍历对象的属性, 但是内置方法无法遍历
+    isTrue = f.hasOwnProperty("web");
+    console.log("web -> " + isTrue);
+    // 无法判断这个属性是否存在
+    */
 
 
-			console.log(Number("1") + 2);
+    // isPrototypeOf(???)			of 翻译成的   book of student
+    // is prototype of ???
+    /*
+    function Foo() {}
+    var o = {};
+    var f = new Foo();
+
+    var isTrue = Foo.prototype.isPrototypeOf(o);
+    console.log("Foo.prototype.isPrototypeOf(o) = " + isTrue);
+
+
+    isTrue = Foo.prototype.isPrototypeOf(f);
+    console.log("Foo.prototype.isPrototypeOf(f) = " + isTrue);
+
+    isTrue = f.isPrototypeOf(Foo.prototype);
+    console.log("f.isPrototypeOf(Foo.prototype) = " + isTrue);
+    */
+
+
+    // propertyIsEnumerable
+    // 属性 是 可以枚举的
+    // 可枚举的, 以及是自己实现的就返回 true
+
+    var o = { name: "张三" };
+    function Foo() {
+      this.a = 1;
+      this.b = 2;
+    }
+    Foo.prototype = o;
+
+    var f = new Foo();
+
+    for (var k in f) {
+
+      console.log(k + "   isE = " + f.propertyIsEnumerable(k));
+    }
+    // for in 可以遍历对象的属性, 但是内置方法无法遍历
+
+
+    console.log(Number("1") + 2);
 
 
 
@@ -95,8 +95,8 @@
 			// 如何判断一个成员是被继承的
 			// if (对象.属性 && !对象.propertyIsEnumerable("属性名"))
 
-		</script>
-	</head>
-	<body>
-	</body>
+  </script>
+</head>
+<body>
+</body>
 </html>

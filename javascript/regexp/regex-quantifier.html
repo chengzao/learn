@@ -1,41 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>regex量词</title>
+  <meta charset="UTF-8">
+  <title>regex量词</title>
 </head>
 <body>
 
 </body>
 </html>
 <script>
-    console.log("--------*--------");//重复零次或更多{0,}
-    console.log(/^a*$/.test("a")); //0次或多次 1次可以
-    console.log(/^a*$/.test("aa")); //0次或多次 2次可以
-    console.log(/^a*$/.test("")); //0次或多次 0次可以
-    console.log(/^a*$/.test("b")); //0次或多次 0次可以 进入严格模式 就只能是我要什么你给什么
-    console.log("--------+--------");//重复一次或更多次{1,}
-    console.log(/^a+$/.test("a"));//重复1次或更多次 1次可以
-    console.log(/^a+$/.test(""));//false 重复1次或更多次 0次不可以
-    console.log(/^a+$/.test("aaaaaaaaa"));//true 重复1次或更多次 多次次可以
-    console.log("--------?--------");//重复零次或一次{0,1}
-    console.log(/^a?$/.test("a"));//1次可以
-    console.log(/^a?$/.test("aa"));//false 2次不可以
-    console.log(/^a?$/.test(""));//true 0次可以
-    console.log("-------{n}------")//可以出现n次
-    console.log(/^a{4}$/.test("a"));//false 必须出现4次
-    console.log(/^a{4}$/.test("aaaa"));//true 必须出现4次
-    console.log("-------{n,}------")//可以出现n次或者更多
-    console.log(/^a{4,}$/.test("a"));//false 1次不行
-    console.log(/^a{4,}$/.test("aaaa"));//true 4次可以
-    console.log(/^a{4,}$/.test("aaaaaaaa"));//true 更多次可以
-    console.log("-------{n,m}------")//{n,m}最少出现n次 最多出现m次
-    console.log(/^a{2,5}$/.test("a"));//2到5次 1次不行
-    console.log(/^a{2,5}$/.test("aa"));// true 2到5次 2次可以
-    console.log(/^a{2,5}$/.test("aaaaa"));// true 2到5次 5次可以
-    console.log(/^a{2,5}$/.test("aaaaaa"));// true 2到5次 6次不可以
+  console.log("--------*--------");//重复零次或更多{0,}
+  console.log(/^a*$/.test("a")); //0次或多次 1次可以
+  console.log(/^a*$/.test("aa")); //0次或多次 2次可以
+  console.log(/^a*$/.test("")); //0次或多次 0次可以
+  console.log(/^a*$/.test("b")); //0次或多次 0次可以 进入严格模式 就只能是我要什么你给什么
+  console.log("--------+--------");//重复一次或更多次{1,}
+  console.log(/^a+$/.test("a"));//重复1次或更多次 1次可以
+  console.log(/^a+$/.test(""));//false 重复1次或更多次 0次不可以
+  console.log(/^a+$/.test("aaaaaaaaa"));//true 重复1次或更多次 多次次可以
+  console.log("--------?--------");//重复零次或一次{0,1}
+  console.log(/^a?$/.test("a"));//1次可以
+  console.log(/^a?$/.test("aa"));//false 2次不可以
+  console.log(/^a?$/.test(""));//true 0次可以
+  console.log("-------{n}------")//可以出现n次
+  console.log(/^a{4}$/.test("a"));//false 必须出现4次
+  console.log(/^a{4}$/.test("aaaa"));//true 必须出现4次
+  console.log("-------{n,}------")//可以出现n次或者更多
+  console.log(/^a{4,}$/.test("a"));//false 1次不行
+  console.log(/^a{4,}$/.test("aaaa"));//true 4次可以
+  console.log(/^a{4,}$/.test("aaaaaaaa"));//true 更多次可以
+  console.log("-------{n,m}------")//{n,m}最少出现n次 最多出现m次
+  console.log(/^a{2,5}$/.test("a"));//2到5次 1次不行
+  console.log(/^a{2,5}$/.test("aa"));// true 2到5次 2次可以
+  console.log(/^a{2,5}$/.test("aaaaa"));// true 2到5次 5次可以
+  console.log(/^a{2,5}$/.test("aaaaaa"));// true 2到5次 6次不可以
 
-    console.log('---------()----------- ')  //组
-    console.log(/^(chuan)*$/.test("chuanchuan"));
+  console.log('---------()----------- ')  //组
+  console.log(/^(chuan)*$/.test("chuanchuan"));
     //()表示一组 []表示一个 {}用来修饰次数
 </script>

@@ -1,109 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>递归</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>递归</title>
 </head>
-
 <body>
-    <div class="main">
-        <ul>
-            <li>
-                <p class="p p1">1</p>
-            </li>
-            <li>
-                <p class="p p2">22</p>
-                <li>
-                    <p class="p p3">333</p>
-                </li>
-            </li>
-            <div class="p">4444</div>
-        </ul>
-        <p id="test">aaa</p>
-        <span class="p">0000</span>
-    </div>
+  <div class="main">
+    <ul>
+      <li>
+        <p class="p p1">1</p>
+      </li>
+      <li>
+        <p class="p p2">22</p>
+      <li>
+        <p class="p p3">333</p>
+      </li>
+      </li>
+      <div class="p">4444</div>
+    </ul>
+    <p id="test">aaa</p>
+    <span class="p">0000</span>
+  </div>
 </body>
 <script>
-    // 1. 递归
-    var ids = [34112, 98325, 68125];
-    (function sendRequest() {
-        var id = ids.shift();
-        if (id) {
-            //do sth.
-            console.log("sth finished");
-            sendRequest();
-        } else {
-            console.log("finished");
-        }
-    })();
-
-    /**
-     * node : 查找节点范围
-     * id   : class类名
-     * arr  : 返回包含目标类名的节点数组
-     */
-    function getElClassName(node, id, arr) {
-        if (!node || !id || !arr) return false;
-        for (var i = 0; i < node.childNodes.length; i++) {
-            var el = (node.childNodes[i].className);
-            if (typeof el == 'string') {
-                var patt1 = new RegExp(id);
-                if (patt1.test(el)) {
-                    arr.push(node.childNodes[i]);
-                }
-                getElClassName(node.childNodes[i], id, arr);
-            }
-        }
-        return arr;
+  // 1. 递归
+  var ids = [34112, 98325, 68125];
+  (function sendRequest() {
+    var id = ids.shift();
+    if (id) {
+      //do sth.
+      console.log("sth finished");
+      sendRequest();
+    } else {
+      console.log("finished");
     }
-    var _arr1 = [];
-    var ulEl = document.querySelector('ul');
-    console.log(getElClassName(ulEl, "p", _arr1))
+  })();
 
-    /**
-    * 递归查找DOM的id
-    */
-    function getById(node,id) {
-        if(!node) return null;
-        if(node.id === id ) return node;
-        for(var i=0;i<node.childNodes.length;i++){
-            var found  = getById(node.childNodes[i],id);
-            if(found) return found;
+  /**
+   * node : 查找节点范围
+   * id   : class类名
+   * arr  : 返回包含目标类名的节点数组
+   */
+  function getElClassName(node, id, arr) {
+    if (!node || !id || !arr) return false;
+    for (var i = 0; i < node.childNodes.length; i++) {
+      var el = (node.childNodes[i].className);
+      if (typeof el == 'string') {
+        var patt1 = new RegExp(id);
+        if (patt1.test(el)) {
+          arr.push(node.childNodes[i]);
         }
-        return null;
+        getElClassName(node.childNodes[i], id, arr);
+      }
     }
-    console.log('getById',getById(document,'test'))
+    return arr;
+  }
+  var _arr1 = [];
+  var ulEl = document.querySelector('ul');
+  console.log(getElClassName(ulEl, "p", _arr1))
 
-
-    /**
-    * 非递归查找DOM的id
-    */
-    function getElId(node,id){
-        while(node){
-            if(node.id == id) return node;
-            node = nextElement(node);
-        }
+  /**
+  * 递归查找DOM的id
+  */
+  function getById(node, id) {
+    if (!node) return null;
+    if (node.id === id) return node;
+    for (var i = 0; i < node.childNodes.length; i++) {
+      var found = getById(node.childNodes[i], id);
+      if (found) return found;
     }
-    function nextElement(node) {
-        if(node.children.length){
-            return node.children[0];
-        }
-        if(node.nextElementSibling){
-            return node.nextElementSibling;
-        }
-        if(node.parentNode){
-            if(node.parentNode.nextElementSibling){
-                return node.parentNode.nextElementSibling;
-            }
-            node = node.parentNode;
-        }
-        return null;
-    }
+    return null;
+  }
+  console.log('getById', getById(document, 'test'))
 
-    console.log('nextElement',getElId(document,'test'))    
+
+  /**
+  * 非递归查找DOM的id
+  */
+  function getElId(node, id) {
+    while (node) {
+      if (node.id == id) return node;
+      node = nextElement(node);
+    }
+  }
+  function nextElement(node) {
+    if (node.children.length) {
+      return node.children[0];
+    }
+    if (node.nextElementSibling) {
+      return node.nextElementSibling;
+    }
+    if (node.parentNode) {
+      if (node.parentNode.nextElementSibling) {
+        return node.parentNode.nextElementSibling;
+      }
+      node = node.parentNode;
+    }
+    return null;
+  }
+
+  console.log('nextElement', getElId(document, 'test'))
 
 </script>
 

@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>cors</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>cors</title>
 </head>
 <body>
-    <button id="cors">send cors</button>
+  <button id="cors">send cors</button>
 
-    <p>cd ../jsonp2 && node cors.js</p>
+  <p>cd ../jsonp2 && node cors.js</p>
 </body>
 <script>
-    var cors=document.querySelector('#cors');
-    cors.onclick=function () {
-        var xhr=new XMLHttpRequest();
-        xhr.open('GET','http://localhost:3001/getName',true);
-        xhr.withCredentials=true;
-        // 设置自定义请求头
-        xhr.setRequestHeader('name','haoxl')
-        xhr.onreadystatechange = function(){
-        if(xhr.readyState === 4){
-            if(xhr.status>=200 && xhr.status < 300 || xhr.status === 304){
-                console.log(xhr.response);
-            }
+  var cors = document.querySelector('#cors');
+  cors.onclick = function () {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'http://localhost:3001/getName', true);
+    xhr.withCredentials = true;
+    // 设置自定义请求头
+    xhr.setRequestHeader('name', 'haoxl')
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
+          console.log(xhr.response);
         }
+      }
     }
 
-        xhr.send(null);
-    }
+    xhr.send(null);
+  }
 </script>
 </html>

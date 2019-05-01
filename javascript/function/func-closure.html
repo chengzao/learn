@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>函数闭包模式</title>
+  <meta charset="UTF-8">
+  <title>函数闭包模式</title>
 </head>
 <body>
 
 </body>
 </html>
 <script>
-    function fn() {
-        var num = 1;//局部变量
-        //console.log(num);//在函数内部可以使用
+  function fn() {
+    var num = 1;//局部变量
+    //console.log(num);//在函数内部可以使用
 
-        return function fn2() {
-            return num;//在函数作用域链内可用这个变量
-        }
+    return function fn2() {
+      return num;//在函数作用域链内可用这个变量
     }
+  }
 
-    console.log(fn);
-    console.log(fn());
-    console.log(fn()()); // 1
+  console.log(fn);
+  console.log(fn());
+  console.log(fn()()); // 1
 
 </script>

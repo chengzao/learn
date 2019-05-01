@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>objExtend</title>
+  <meta charset="UTF-8">
+  <title>objExtend</title>
 </head>
 <body>
-	
+
 </body>
 <script>
-	// 实例化对象
-	var o = new Object();
+  // 实例化对象
+  var o = new Object();
 
-	// 对象扩展方法
-	o.extend=function (obj) {
-		for (var k in obj){
-			this[k] = obj[k];
-		}
-	}
+  // 对象扩展方法
+  o.extend = function (obj) {
+    for (var k in obj) {
+      this[k] = obj[k];
+    }
+  }
 
-	o.extend({
-		name:'xiao',
-		age:20
-	});
+  o.extend({
+    name: 'xiao',
+    age: 20
+  });
 
-	console.log(o);
-	console.log(o.name);   // xiao
-	console.log(o['age']); // 20
+  console.log(o);
+  console.log(o.name);   // xiao
+  console.log(o['age']); // 20
 </script>
 </html>

@@ -1,89 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Time</title>
+  <meta charset="UTF-8">
+  <title>Time</title>
 </head>
 <body>
-<script>
-var tools = {
-    // 格式化时间: '2019/4/22 14:40:00' || 时间戳
-    formateDate(date) {
-      let dateTime = new Date(date)
-      let o = {
-        year: dateTime.getFullYear(), // 年
-        month: dateTime.getMonth() + 1, // 月份
-        day: dateTime.getDate(), // 日
-        hour: dateTime.getHours(), // 小时
-        minute: dateTime.getMinutes(), // 分
-        second: dateTime.getSeconds(), // 秒
-        week: dateTime.getDay(), // 星期
-        millisecond: dateTime.getMilliseconds(), // 毫秒
-        dateTime:dateTime.getTime()
-      }
-      let days = new Date(o.year, o.month, 0).getDate()
-      o['days'] = days
-      return o
-    },
-    startAndLastTime(start, last, distance) {
-      let startDetailDate = this.formateDate(start)
-      let endDetailDate = this.formateDate(last)
-      // 获取最早日期零点时间戳
-      let startStamp =
-        new Date(
-          startDetailDate.year,
-          startDetailDate.month - 1,
-          startDetailDate.day,
-        ).getTime() - distance
-      // 获取最晚日期24：00时间戳
-      let lastStamp =
-        new Date(
-          endDetailDate.year,
-          endDetailDate.month - 1,
-          endDetailDate.day,
-        ).getTime() + distance
-      let outputStart = this.formateDate(startStamp)
-      let outputLast = this.formateDate(lastStamp)
-      let entryStart = this.formateDate(start)
-      let entryLast = this.formateDate(last)
-      return {
-        outputStart,
-        outputLast,
-        entryStart,
-        entryLast,
-      }
-    },
-    getWeek(time) {
-      // 将字符串转为标准时间格式
-      let currentDate = new Date(time);
-      // 先计算出该日期为第几周
-      // 获取这一年的1月1号
-      let firstDate = new Date(currentDate.getFullYear(), 0, 1)
+  <script>
+    var tools = {
+      // 格式化时间: '2019/4/22 14:40:00' || 时间戳
+      formateDate(date) {
+        let dateTime = new Date(date)
+        let o = {
+          year: dateTime.getFullYear(), // 年
+          month: dateTime.getMonth() + 1, // 月份
+          day: dateTime.getDate(), // 日
+          hour: dateTime.getHours(), // 小时
+          minute: dateTime.getMinutes(), // 分
+          second: dateTime.getSeconds(), // 秒
+          week: dateTime.getDay(), // 星期
+          millisecond: dateTime.getMilliseconds(), // 毫秒
+          dateTime: dateTime.getTime()
+        }
+        let days = new Date(o.year, o.month, 0).getDate()
+        o['days'] = days
+        return o
+      },
+      startAndLastTime(start, last, distance) {
+        let startDetailDate = this.formateDate(start)
+        let endDetailDate = this.formateDate(last)
+        // 获取最早日期零点时间戳
+        let startStamp =
+          new Date(
+            startDetailDate.year,
+            startDetailDate.month - 1,
+            startDetailDate.day,
+          ).getTime() - distance
+        // 获取最晚日期24：00时间戳
+        let lastStamp =
+          new Date(
+            endDetailDate.year,
+            endDetailDate.month - 1,
+            endDetailDate.day,
+          ).getTime() + distance
+        let outputStart = this.formateDate(startStamp)
+        let outputLast = this.formateDate(lastStamp)
+        let entryStart = this.formateDate(start)
+        let entryLast = this.formateDate(last)
+        return {
+          outputStart,
+          outputLast,
+          entryStart,
+          entryLast,
+        }
+      },
+      getWeek(time) {
+        // 将字符串转为标准时间格式
+        let currentDate = new Date(time);
+        // 先计算出该日期为第几周
+        // 获取这一年的1月1号
+        let firstDate = new Date(currentDate.getFullYear(), 0, 1)
 
-      let firstWeek = firstDate.getDay() == 0 ? 7 : firstDate.getDay()
+        let firstWeek = firstDate.getDay() == 0 ? 7 : firstDate.getDay()
 
-      let currentDateWeek = currentDate.getDay() == 0 ? 7 : firstDate.getDay()
+        let currentDateWeek = currentDate.getDay() == 0 ? 7 : firstDate.getDay()
 
-      // 一天的时间戳
-      let dayStamp = 1000 * 24 * 60 * 60
+        // 一天的时间戳
+        let dayStamp = 1000 * 24 * 60 * 60
 
-      // 传入时间与1月1日的天数
-      let days = Math.ceil((currentDate.getTime() - firstDate.getTime()) / dayStamp)
+        // 传入时间与1月1日的天数
+        let days = Math.ceil((currentDate.getTime() - firstDate.getTime()) / dayStamp)
 
-      let weeks = Math.ceil((days + firstWeek) / 7)
-      return {
-        weeks: weeks,
-        year: currentDate.getFullYear(),
-        month: currentDate.getMonth() + 1,
-        day: currentDate.getDate(),
-        week: currentDate.getDay()
-      }
-    },
-    getYearWeek(date = new Date()) {
-      date = new Date(date)
-      let date2 = new Date(date.getFullYear(), 0, 1)
-      let day1 = date.getDay()
-      if (day1 == 0) day1 = 7
+        let weeks = Math.ceil((days + firstWeek) / 7)
+        return {
+          weeks: weeks,
+          year: currentDate.getFullYear(),
+          month: currentDate.getMonth() + 1,
+          day: currentDate.getDate(),
+          week: currentDate.getDay()
+        }
+      },
+      getYearWeek(date = new Date()) {
+        date = new Date(date)
+        let date2 = new Date(date.getFullYear(), 0, 1)
+        let day1 = date.getDay()
+        if (day1 == 0) day1 = 7
         let day2 = date2.getDay()
         if (day2 == 0) day2 = 7
         let d = Math.round(
@@ -99,52 +99,191 @@ var tools = {
           day: date.getDate(),
           week: date.getDay()
         }
-    },
-    getAllDate(first, last) {
-      // 一天的时间戳
-      let firstDate = new Date(first)
-      let firstDateYear = firstDate.getFullYear();
-      //
-      let initDate = +new Date(firstDateYear, 0, 1)
-      let lastDate = new Date(last)
-      let dayStamp = 1000 * 24 * 60 * 60
+      },
+      getAllDate(first, last) {
+        // 一天的时间戳
+        let firstDate = new Date(first)
+        let firstDateYear = firstDate.getFullYear();
+        //
+        let initDate = +new Date(firstDateYear, 0, 1)
+        let lastDate = new Date(last)
+        let dayStamp = 1000 * 24 * 60 * 60
 
-      let firstWeek = firstDate.getDay() == 0 ? 7 : firstDate.getDay()
-      let lastDateWeek = lastDate.getDay() == 0 ? 7 : lastDate.getDay()
+        let firstWeek = firstDate.getDay() == 0 ? 7 : firstDate.getDay()
+        let lastDateWeek = lastDate.getDay() == 0 ? 7 : lastDate.getDay()
 
-      // 开始时间与1月1日天数
-      let day1 = Math.ceil((firstDate - initDate) / dayStamp)
-      let _day1 = day1 - (firstWeek-1)
+        // 开始时间与1月1日天数
+        let day1 = Math.ceil((firstDate - initDate) / dayStamp)
+        let _day1 = day1 - (firstWeek - 1)
 
-      // 开始时间与结束时间的天数
-      let day2 = Math.ceil((lastDate - firstDate) / dayStamp)
-      let _day2 = day2 + (7 - lastDateWeek) + 1
+        // 开始时间与结束时间的天数
+        let day2 = Math.ceil((lastDate - firstDate) / dayStamp)
+        let _day2 = day2 + (7 - lastDateWeek) + 1
 
-      let dates = []
-      let _start = _day1+1, _last = day1+ _day2
-      for (var i = _start; i <= _last; i++) {
-        let _time = new Date(firstDateYear, 0, i)
-        let week = this.getWeek(_time)
-        // let week = this.getYearWeek(_time)
-        dates.push(week)
+        let dates = []
+        let _start = _day1 + 1, _last = day1 + _day2
+        for (var i = _start; i <= _last; i++) {
+          let _time = new Date(firstDateYear, 0, i)
+          let week = this.getWeek(_time)
+          // let week = this.getYearWeek(_time)
+          dates.push(week)
+        }
+        return dates
+      },
+      splitArr(arr) {
+        var map = {},
+          dest = [];
+        for (var i = 0; i < arr.length; i++) {
+          var item = arr[i];
+          if (!map[item.weeks]) {
+            dest.push({
+              weeks: item.weeks,
+              data: [item]
+            });
+            map[item.weeks] = item;
+          } else {
+            for (var j = 0; j < dest.length; j++) {
+              var output = dest[j];
+              if (output.weeks == item.weeks) {
+                output.data.push(item);
+                break;
+              }
+            }
+          }
+        }
+        return dest
+      },
+      spliteYearArr(data) {
+        let newArr = []
+        for (var i = 0, len = data.length; i < len; i += 7) {
+          newArr.push(data.slice(i, i + 7));
+        }
+        return newArr
       }
-      return dates
-    },
-    splitArr(arr){
+    }
+
+
+
+
+    var aaa = {
+      earliestDate: 1554109200000,
+      latestDate: 1556614800000
+    }
+    var bbb = {
+      earliestDate: 1554886800000,
+      latestDate: 1555060500000
+    }
+    var ccc = {
+      earliestDate: +new Date(2018, 12, 5),
+      latestDate: +new Date(2019, 1, 15)
+    }
+
+    let weeks7 = 1000 * 60 * 60 * 24 * 7
+    let res = tools.startAndLastTime(ccc.earliestDate, ccc.latestDate, weeks7)
+    let arr = tools.getAllDate(res.outputStart.dateTime, res.outputLast.dateTime)
+    // console.log(arr)
+
+    // console.log(tools.splitArr(arr));
+    console.log(tools.spliteYearArr(arr));
+
+    var ddd = {
+      earliestDate: +new Date(2019, 1, 5),
+      latestDate: +new Date(2019, 3, 15)
+    }
+
+    // let monthArr = [...Array(12).keys()].map(item => item+1);
+
+    function timeToJson(time) {
+      let date = new Date(time)
+      return {
+        year: date.getFullYear(),
+        month: date.getMonth() + 1,
+        day: date.getDate(),
+        week: date.getDay(),
+        hour: date.getHours(),
+        minute: date.getMinutes(),
+        second: date.getSeconds(),
+        stamp: date.getTime()
+      }
+    }
+
+    function formateYear(first, last, months) {
+      let firstDate = new Date(first)
+      let lastDate = new Date(last)
+
+      let _firstYear = firstDate.getFullYear()
+      let _firstMonth = firstDate.getMonth()
+      let _firstDate = firstDate.getDate()
+      let firstStamp = new Date(_firstYear, _firstMonth - months, _firstDate).getTime()
+
+      let _lastYear = lastDate.getFullYear()
+      let _lastMonth = lastDate.getMonth()
+      let _lastDate = lastDate.getDate()
+      let lastStamp = new Date(_lastYear, _lastMonth + months, _lastDate).getTime()
+
+      let outputStart = timeToJson(firstStamp)
+      let outputEnd = timeToJson(lastStamp)
+
+      let entryStart = timeToJson(first)
+      let entryEnd = timeToJson(last)
+
+      return {
+        outputStart,
+        outputEnd,
+        entryStart,
+        entryEnd
+      }
+    }
+
+    function getYearMonths(start, end) {
+      let startDate = new Date(start)
+      let startDateY = startDate.getFullYear(),
+        startDateM = startDate.getMonth() + 1;
+      startDateD = startDate.getDate();
+
+      let endDate = new Date(end)
+      let endDateY = endDate.getFullYear(),
+        endDateM = endDate.getMonth() + 1;
+
+      let months = null
+      let years = endDateY - startDateY
+      if (years == 0) {
+        months = endDateM - startDateM + 1
+      } else if (years == 1) {
+        months = 12 - startDateM + endDateM + 1
+      } else if (years > 1) {
+        months = 12 - startDateM + endDateM + 12 * (years - 1) + 1
+      }
+      console.log('months', months);
+
+      let arr = []
+      for (var i = 0; i < months; i++) {
+        var fff = new Date(startDateY, startDateM + i - 1, startDateD).getTime()
+        arr.push(timeToJson(fff))
+      }
+      return {
+        months: months,
+        data: arr,
+        startStamp: startDate.getTime(),
+        endStamp: endDate.getTime()
+      }
+    }
+
+    function splitArrYear(arr) {
       var map = {},
-      dest = [];
+        dest = [];
       for (var i = 0; i < arr.length; i++) {
         var item = arr[i];
-        if (!map[item.weeks]) {
+        if (!map[item.year]) {
           dest.push({
-            weeks: item.weeks,
+            year: item.year,
             data: [item]
           });
-          map[item.weeks] = item;
+          map[item.year] = item;
         } else {
           for (var j = 0; j < dest.length; j++) {
             var output = dest[j];
-            if (output.weeks == item.weeks) {
+            if (output.year == item.year) {
               output.data.push(item);
               break;
             }
@@ -152,155 +291,16 @@ var tools = {
         }
       }
       return dest
-    },
-    spliteYearArr(data){
-      let newArr = []
-     for (var i = 0, len = data.length; i < len; i += 7) {
-        newArr.push(data.slice(i, i + 7));
-      }
-      return newArr
     }
-  }
 
 
+    res = formateYear(ddd.earliestDate, ddd.latestDate, 3)
+
+    var result = getYearMonths(res.outputStart.stamp, res.outputEnd.stamp)
 
 
-  var aaa = {
-    earliestDate:1554109200000,
-    latestDate:1556614800000
-  }
-  var bbb = {
-    earliestDate: 1554886800000,
-    latestDate: 1555060500000
-  }
-  var ccc = {
-    earliestDate: +new Date(2018,12,5),
-    latestDate: +new Date(2019, 1, 15)
-  }
+    console.log(splitArrYear(result.data));
 
-  let weeks7 = 1000*60*60*24*7
-  let res = tools.startAndLastTime(ccc.earliestDate, ccc.latestDate, weeks7)
-  let arr = tools.getAllDate(res.outputStart.dateTime,res.outputLast.dateTime)
-  // console.log(arr)
-
-  // console.log(tools.splitArr(arr));
-  console.log(tools.spliteYearArr(arr));
-
-  var ddd = {
-    earliestDate: +new Date(2019, 1, 5),
-    latestDate: +new Date(2019, 3, 15)
-  }
-
-  // let monthArr = [...Array(12).keys()].map(item => item+1);
-
-  function timeToJson(time){
-    let date = new Date(time)
-    return {
-      year: date.getFullYear(),
-      month: date.getMonth()+1,
-      day: date.getDate(),
-      week: date.getDay(),
-      hour: date.getHours(),
-      minute: date.getMinutes(),
-      second: date.getSeconds(),
-      stamp: date.getTime()
-    }
-  }
-
-  function formateYear(first, last, months){
-    let firstDate = new Date(first)
-    let lastDate = new Date(last)
-
-    let _firstYear = firstDate.getFullYear()
-    let _firstMonth = firstDate.getMonth()
-    let _firstDate = firstDate.getDate()
-    let firstStamp = new Date(_firstYear, _firstMonth-months, _firstDate).getTime()
-
-    let _lastYear = lastDate.getFullYear()
-    let _lastMonth = lastDate.getMonth()
-    let _lastDate = lastDate.getDate()
-    let lastStamp = new Date(_lastYear, _lastMonth+months, _lastDate).getTime()
-
-    let outputStart = timeToJson(firstStamp)
-    let outputEnd = timeToJson(lastStamp)
-
-    let entryStart = timeToJson(first)
-    let entryEnd = timeToJson(last)
-
-    return {
-      outputStart,
-      outputEnd,
-      entryStart,
-      entryEnd
-    }
-  }
-
-  function getYearMonths(start, end){
-    let startDate = new Date(start)
-    let startDateY = startDate.getFullYear(),
-        startDateM = startDate.getMonth()+1;
-        startDateD = startDate.getDate();
-
-    let endDate = new Date(end)
-    let endDateY = endDate.getFullYear(),
-        endDateM = endDate.getMonth() + 1;
-
-    let months = null
-    let years = endDateY - startDateY
-      if(years == 0){
-        months = endDateM - startDateM +1
-      }else if(years == 1){
-        months = 12 - startDateM + endDateM + 1
-      }else if(years > 1 ){
-        months = 12 - startDateM + endDateM + 12 * (years - 1) + 1
-      }
-    console.log('months', months);
-
-    let arr = []
-    for(var i=0; i<months; i++){
-      var fff = new Date(startDateY, startDateM+i-1,startDateD).getTime()
-      arr.push(timeToJson(fff))
-    }
-    return {
-      months: months,
-      data: arr,
-      startStamp: startDate.getTime(),
-      endStamp: endDate.getTime()
-    }
-  }
-
-  function splitArrYear(arr){
-  var map = {},
-    dest = [];
-  for (var i = 0; i < arr.length; i++) {
-    var item = arr[i];
-    if (!map[item.year]) {
-      dest.push({
-        year: item.year,
-        data: [item]
-      });
-      map[item.year] = item;
-    } else {
-      for (var j = 0; j < dest.length; j++) {
-        var output = dest[j];
-        if (output.year == item.year) {
-          output.data.push(item);
-          break;
-        }
-      }
-    }
-  }
-  return dest
-}
-
-
-  res= formateYear(ddd.earliestDate,ddd.latestDate,  3)
-
-  var result = getYearMonths(res.outputStart.stamp, res.outputEnd.stamp)
-
-
-  console.log(splitArrYear(result.data));
-
-</script>
+  </script>
 </body>
 </html>

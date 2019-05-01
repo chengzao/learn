@@ -12,11 +12,11 @@
 <script>
   function squareDigits(num) {
     //may the code be with you
-    let _arr= String(num).split('')
-    let res = _arr.reduce((prev, current) =>{
-      let _cur = Math.pow(current,2)
-      return prev+_cur
-    },'')
+    let _arr = String(num).split('')
+    let res = _arr.reduce((prev, current) => {
+      let _cur = Math.pow(current, 2)
+      return prev + _cur
+    }, '')
     return res;
   }
 
@@ -74,21 +74,21 @@
   console.log('====================================');
 
   function duplicateCount(text) {
-      var str = [],
-        obj = {},
-        res = 1;
-      if(text === ''){return 0}
-      for (const item of text) {
-        let lowerCaseStr = item.toLowerCase()
-        if(!str.includes(lowerCaseStr)){
-          str.push(lowerCaseStr)
-          obj[lowerCaseStr] = res
-        }else{
-          obj[lowerCaseStr] += 1
-        }
+    var str = [],
+      obj = {},
+      res = 1;
+    if (text === '') { return 0 }
+    for (const item of text) {
+      let lowerCaseStr = item.toLowerCase()
+      if (!str.includes(lowerCaseStr)) {
+        str.push(lowerCaseStr)
+        obj[lowerCaseStr] = res
+      } else {
+        obj[lowerCaseStr] += 1
       }
-      let count = Object.values(obj).sort((a, b) => a - b).reverse()
-      return count
+    }
+    let count = Object.values(obj).sort((a, b) => a - b).reverse()
+    return count
   }
   console.log('====================================');
   console.log(duplicateCount('abcdefghabcdABCABA'));

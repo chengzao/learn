@@ -1,83 +1,83 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title></title>
+  <meta charset="UTF-8">
+  <title></title>
 </head>
 <body>
-	<div id="dv"></div>
+  <div id="dv"></div>
 </body>
 <script>
-	var jkdebug = function (msg) {
-		
-		// jkdebug.isTrue = true;
-		
-		if (jkdebug.isTrue) {
-			
-			console.log(msg);
-		}
-		
-	}
+  var jkdebug = function (msg) {
 
-	var event = (function () {
-		var fns = [], // {name:"", fn:function() {}}
-			length = 0,
-			temp = [],
-			c = 0;
-		window.onload = function () {
-			for (var i = 0; i < fns.length; i++) {
-				if (fns[i] == null) continue;
-				fns[i].fn();
-			}
-		}
-		return {
-			addLoadEvent: function (fName, fn) {
-				fns.push({name:fName, fn:fn});
-				length++;
-			},
-			removeLoadEvent: function (fName) {
-				for (var i = 0; i < fns.length; i++) {
-					if(fns[i] != null && fns[i].name === fName) {
-						delete fns[i];
-						length--;
-						break;
-					}
-				}
-				
-				if (length * 2 < fns.length) {
-					for (var i = 0; i < fns.length; i++) {
-						if (fns[i] != null) {
-							temp.push(fns[i]);
-						}
-					}
-					fns = temp.concat();
-					temp = [];
-					
-					jkdebug("collection" + c++);
-				}
-			},
-			__test__: function () {
-				jkdebug(length);
-				jkdebug(fns.length);
-			}
-		};
-	})();
-	
-	
-	event.addLoadEvent("f1", function () {
-		console.log("f1");
-	});
-	event.addLoadEvent("f2", function () {
-		console.log("f2");
-	});
-	event.addLoadEvent("f3", function () {
-		console.log("f3");
-	});
+    // jkdebug.isTrue = true;
 
-	
-	event.removeLoadEvent("f2");
-	
-	event.__test__();
-	
+    if (jkdebug.isTrue) {
+
+      console.log(msg);
+    }
+
+  }
+
+  var event = (function () {
+    var fns = [], // {name:"", fn:function() {}}
+      length = 0,
+      temp = [],
+      c = 0;
+    window.onload = function () {
+      for (var i = 0; i < fns.length; i++) {
+        if (fns[i] == null) continue;
+        fns[i].fn();
+      }
+    }
+    return {
+      addLoadEvent: function (fName, fn) {
+        fns.push({ name: fName, fn: fn });
+        length++;
+      },
+      removeLoadEvent: function (fName) {
+        for (var i = 0; i < fns.length; i++) {
+          if (fns[i] != null && fns[i].name === fName) {
+            delete fns[i];
+            length--;
+            break;
+          }
+        }
+
+        if (length * 2 < fns.length) {
+          for (var i = 0; i < fns.length; i++) {
+            if (fns[i] != null) {
+              temp.push(fns[i]);
+            }
+          }
+          fns = temp.concat();
+          temp = [];
+
+          jkdebug("collection" + c++);
+        }
+      },
+      __test__: function () {
+        jkdebug(length);
+        jkdebug(fns.length);
+      }
+    };
+  })();
+
+
+  event.addLoadEvent("f1", function () {
+    console.log("f1");
+  });
+  event.addLoadEvent("f2", function () {
+    console.log("f2");
+  });
+  event.addLoadEvent("f3", function () {
+    console.log("f3");
+  });
+
+
+  event.removeLoadEvent("f2");
+
+  event.__test__();
+
 </script>
 </html>

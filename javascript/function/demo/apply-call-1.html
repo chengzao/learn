@@ -1,54 +1,55 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-		<script>
-			// 使用 apply 可以让一个函数作为一个对象的方法来调用
-			/*
-			var o = {name:"jim", sayHello:function (v) {
-				console.log("你好 " + v + " 我是 " + this.name);
-			}};
-			
-			// o.sayHello("tom");
-			
-			
-			var say = function (v) {
-				console.log("你好 " + v + " 我是 " + this.name);
-			};
-			say.apply(o, ["tom1", "tom2", "tom3"]);  // o.say("tom1", "tom2", "tom3")
-			
-			
-			
-			var say = function () {
-				console.log("你好我是 " + this.name);
-			};
-			say.apply(o);  // o.say()
-			*/
-			
-			/*
-			var o = {name:"jim", sayHello:function (v) {
-				console.log("你好 " + v + " 我是 " + this.name);
-			}};
-			o.sayHello("tom1");
-			o.sayHello.apply(o, ["tom2"]);
-			*/
-		
-			/*
-			var o = {length:0};
-			o[0] = 123;
-			o.length++;
-			
-			// [].push(456);
-			// o.push(456);
-			
-			[].push.apply(o, [456]);
-			
-			*/
-		
-		
-			var o = {name: "jim", sayHello: function (v1,v2,v3) {
-				
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script>
+		// 使用 apply 可以让一个函数作为一个对象的方法来调用
+		/*
+		var o = {name:"jim", sayHello:function (v) {
+			console.log("你好 " + v + " 我是 " + this.name);
+		}};
+
+		// o.sayHello("tom");
+
+
+		var say = function (v) {
+			console.log("你好 " + v + " 我是 " + this.name);
+		};
+		say.apply(o, ["tom1", "tom2", "tom3"]);  // o.say("tom1", "tom2", "tom3")
+
+
+
+		var say = function () {
+			console.log("你好我是 " + this.name);
+		};
+		say.apply(o);  // o.say()
+		*/
+
+		/*
+		var o = {name:"jim", sayHello:function (v) {
+			console.log("你好 " + v + " 我是 " + this.name);
+		}};
+		o.sayHello("tom1");
+		o.sayHello.apply(o, ["tom2"]);
+		*/
+
+		/*
+		var o = {length:0};
+		o[0] = 123;
+		o.length++;
+
+		// [].push(456);
+		// o.push(456);
+
+		[].push.apply(o, [456]);
+
+		*/
+
+
+		var o = {
+			name: "jim", sayHello: function (v1, v2, v3) {
+
 				var str = [].join.call(arguments, "=====");
 				console.log("你好 " + str + " 我是 " + this.name);
 				/*
@@ -56,48 +57,49 @@
 				var str = arr.join(", ");
 				console.log("你好 " + str + " 我是 " + this.name);
 				*/
-				
+
 				/*
-				console.log("你好 " + 
-								v1 + ", " + 
-								v2 + ", " + 
+				console.log("你好 " +
+								v1 + ", " +
+								v2 + ", " +
 								v3 + ", 我是 " + this.name);	*/
-			}};
-			
-			o.sayHello("tom1", "xiaoming", "tom2");
-			
-			o.sayHello.apply(o, ["tom2", "tom1", "xiaoming"]);
-			o.sayHello.call(o, "tom2", "tom1", "xiaoming");
-			
+			}
+		};
+
+		o.sayHello("tom1", "xiaoming", "tom2");
+
+		o.sayHello.apply(o, ["tom2", "tom1", "xiaoming"]);
+		o.sayHello.call(o, "tom2", "tom1", "xiaoming");
+
 			// apply 与 call 最大的区别是, apply 函数的参数必须是一个数组, 而 call 直接将参数放在后面即可
 			// 例如: fn.apply(o, [a1, a2, a3]);
 			//		fn.call(o, a1, a2, a3);
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			// 函数.apply(对象)    => 逻辑 		 对象.函数()
-			
-			
-			
+
+
+
 			// 函数:  无任何修饰, 直接调用, this 就是全局对象
 			// 方法:  不是直接调用函数, 而是借助于对象的方法, 或数组的元素进行调用
 			// 构造器: new 和 return
-			// 上下文模式：环境调用模式: 
+			// 上下文模式：环境调用模式:
 			//		语法 apply, call
-			
-		</script>
-	</head>
-	<body>
-	</body>
+
+	</script>
+</head>
+<body>
+</body>
 </html>

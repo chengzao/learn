@@ -5,68 +5,68 @@
 	<title>构造方法</title>
 </head>
 <body>
-	
+
 </body>
 
 <script>
-	
-	function Person (name) {
-		this.name=name; 
-		this.fn = function(){
+
+	function Person(name) {
+		this.name = name;
+		this.fn = function () {
 			console.log('aaaaa');
 		};
 	}
 
-	Person.prototype={
-		constructor:Person,
-		sayHello:function(){
-			console.log(this.name);	
+	Person.prototype = {
+		constructor: Person,
+		sayHello: function () {
+			console.log(this.name);
 		},
-		fn:function(){
+		fn: function () {
 			console.log('bbbbb');
 		}
 	}
 
 	var person = new Person('xiao ming');
 	person.sayHello();	// xiao ming
-	
+
 	// 如果在当前对象中有属性，则直接使用；没有则到构造方法法中寻找，有就使用；没有则继续寻找指导Object.prototype;如果还是没有寻找到则抛出错误
 	person.fn();   // a
-	
+
 	var person2 = new Person('xiao wang');
 	person2.sayHello();  // xiao wang
 
-    console.log(person.sayHello == person2.sayHello);// true
+	console.log(person.sayHello == person2.sayHello);// true
 
-    console.log(Person.prototype == person.__proto__);//true
+	console.log(Person.prototype == person.__proto__);//true
 
 
-    // prototype 每一个函数都有原型 prototype
+	// prototype 每一个函数都有原型 prototype
 
-    //__proto__ 是对象的属性，任何对象都有的属性，作用是访问其原型对象
+	//__proto__ 是对象的属性，任何对象都有的属性，作用是访问其原型对象
 
-    // constructor 构造器
-    
-    var o = {};
+	// constructor 构造器
 
-    console.log(o.constructor === Object); // true
+	var o = {};
 
-    // __proto__ 兼容
-    function getProto(attr){
-    	if(attr.__proto__){
-    		return attr.__proto__;
-    	}else{
-    		return attr.constructor.prototype;
-    	}
-    }
+	console.log(o.constructor === Object); // true
 
-    function Hello(){}
+	// __proto__ 兼容
+	function getProto(attr) {
+		if (attr.__proto__) {
+			return attr.__proto__;
+		} else {
+			return attr.constructor.prototype;
+		}
+	}
 
-    var hello = new Hello();
-    getProto(hello).sayHello=function(){
-    	console.log('hello');
-    }
-    hello.sayHello();
+	function Hello() { }
+
+	var hello = new Hello();
+	getProto(hello).sayHello = function () {
+		console.log('hello');
+	}
+	hello.sayHello();
 </script>
 
 </html>

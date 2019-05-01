@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
 </head>
 <body>
-    <p>postMessage2</p>
-    <p>open this page on server</p>
+  <p>postMessage2</p>
+  <p>open this page on server</p>
 </body>
 <script>
-    //监听a.html发来的消息
-    window.onmessage = function(e){
-        console.log('posMessage2 => ',e.data)
-        //给发送源回消息
-        e.source.postMessage('nice to meet you',e.origin)
-    }
-    </script>
+  //监听a.html发来的消息
+  window.onmessage = function (e) {
+    console.log('posMessage2 => ', e.data)
+    //给发送源回消息
+    e.source.postMessage('nice to meet you', e.origin)
+  }
+</script>
 </html>

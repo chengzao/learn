@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>范围元字符</title>
-		<script>
-			// +
-			// *		0 个或多个
-			// {n}		n 个
-			// {n,}		至少 n 个
-			// {n,m}	n 到 m 个
-			// ?		紧跟前面的出现 0 次或 1 次
+<head>
+  <meta charset="UTF-8">
+  <title>范围元字符</title>
+  <script>
+    // +
+    // *		0 个或多个
+    // {n}		n 个
+    // {n,}		至少 n 个
+    // {n,m}	n 到 m 个
+    // ?		紧跟前面的出现 0 次或 1 次
 
-			// www.baidu.cn
-			// www.baidu.com.cn
-			// www.123.com.org.cn.gz.aaa
+    // www.baidu.cn
+    // www.baidu.com.cn
+    // www.123.com.org.cn.gz.aaa
 
-			// ^www\.[a-zA-Z0-9]+(\.[a-zA-Z]+)+$
+    // ^www\.[a-zA-Z0-9]+(\.[a-zA-Z]+)+$
 
-			// https?://
+    // https?://
 
-			var r = new RegExp("^www\\.[a-zA-Z0-9]+(\\.[a-zA-Z]+)+$");
-			var s = "www.baidu.com.cn.123";
+    var r = new RegExp("^www\\.[a-zA-Z0-9]+(\\.[a-zA-Z]+)+$");
+    var s = "www.baidu.com.cn.123";
 
-			console.log(r.test(s));
+    console.log(r.test(s));
 
-		</script>
-	</head>
-	<body>
-	</body>
+  </script>
+</head>
+<body>
+</body>
 </html>

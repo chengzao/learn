@@ -2,55 +2,55 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
 </head>
 
 <body>
 
 </body>
 <script type="text/javascript">
-    function observe(data) {
-        if (!data || typeof data !== 'object') {
-            return;
+  function observe(data) {
+    if (!data || typeof data !== 'object') {
+      return;
+    }
+    Object.keys(data).forEach(key => {
+      observeProperty(data, key, data[key])
+    })
+  }
+
+  function observeProperty(obj, key, val) {
+    observe(val);
+    Object.defineProperty(obj, key, {
+      enumerable: true, // 可枚举
+      configurable: true, // 可重新定义
+      get: function () {
+        return val;
+      },
+      set: function (newVal) {
+        if (val === newVal || (newVal !== newVal && val !== val)) {
+          return;
         }
-        Object.keys(data).forEach(key => {
-            observeProperty(data, key, data[key])
-        })
+        console.log('数据更新啦 ', val, '=>', newVal);
+        val = newVal;
+      }
+    });
+  }
+
+  var data = {
+    a: 'hello',
+    b: {
+      name: 'xiaoming'
     }
-
-    function observeProperty(obj, key, val) {
-        observe(val);
-        Object.defineProperty(obj, key, {
-            enumerable: true, // 可枚举
-            configurable: true, // 可重新定义
-            get: function () {
-                return val;
-            },
-            set: function (newVal) {
-                if (val === newVal || (newVal !== newVal && val !== val)) {
-                    return;
-                }
-                console.log('数据更新啦 ', val, '=>', newVal);
-                val = newVal;
-            }
-        });
-    }
-
-    var data = {
-        a: 'hello',
-        b:{
-            name:'xiaoming'
-        }
-    }
-    observe(data);
+  }
+  observe(data);
 
 
-    var obj = { 0 : "a", 1 : "b", 2 : "c",1:'d'};
-    console.log(Object.keys(obj)); 
-    
+  var obj = { 0: "a", 1: "b", 2: "c", 1: 'd' };
+  console.log(Object.keys(obj));
+
 </script>
 
 </html>

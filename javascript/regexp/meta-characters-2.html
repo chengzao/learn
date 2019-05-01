@@ -2,21 +2,21 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>首尾元字符</title>
-    <script>
+  <meta charset="UTF-8">
+  <title>首尾元字符</title>
+  <script>
         // ^	^正则表达式		必须以这个正则表达式开头
         // $	正则表达式$		必须以这个正则表达式结尾
 
-        /*
-        [0-9]+
+    /*
+    [0-9]+
 
-        189***
-        ^189[0-9]{8}
+    189***
+    ^189[0-9]{8}
 
-        // 手机号最后一个是 6
-        [0-9]{10}6$
-        */
+    // 手机号最后一个是 6
+    [0-9]{10}6$
+    */
 
 
 
@@ -39,47 +39,47 @@
         // exec :  如果正则表示式包含圆括号（即含有“组匹配”），则返回的数组会包括多个成员。
         // 第一个成员是整个匹配成功的结果，后面的成员就是圆括号对应的匹配成功的组。
         // 也就是说，第二个成员对应第一个括号，第三个成员对应第二个括号，以此类推。
-        // 整个数组的length属性等于组匹配的数量再加1    
+        // 整个数组的length属性等于组匹配的数量再加1
 
 
 
-        /*
-        //					 1 2
-        var r = new RegExp("a(b(c))d");
-        // var r = new RegExp("abcd");
-        var s = "aaabcdefghijklmn"
-        var m = r.exec(s);
+    /*
+    //					 1 2
+    var r = new RegExp("a(b(c))d");
+    // var r = new RegExp("abcd");
+    var s = "aaabcdefghijklmn"
+    var m = r.exec(s);
 
 
-        function f0123456789() {
+    function f0123456789() {
 
-        }
+    }
 
-        var o = new f0123456789();
-        var s = o.constructor.toString()
+    var o = new f0123456789();
+    var s = o.constructor.toString()
 
-        var r = new RegExp("function (.+)\\(");
+    var r = new RegExp("function (.+)\\(");
 
-        var m = r.exec(s)[1];
-        alert("|"+m+"|");
+    var m = r.exec(s)[1];
+    alert("|"+m+"|");
 
-        */
+    */
 
 
 
 
         // 替换引用
-        /*
-        var s = "今天是 2001-1-19, 哈哈哈";
-        // 					1			2			3
-        var r = new RegExp("([0-9]+)\\-([0-9]+)\\-([0-9]+)");
+    /*
+    var s = "今天是 2001-1-19, 哈哈哈";
+    // 					1			2			3
+    var r = new RegExp("([0-9]+)\\-([0-9]+)\\-([0-9]+)");
 
-        // 可以使用 $数字 表示前面匹配的引用
-        // var res = s.replace(r, "$1年$2月$3日");
-        var res = s.replace(r, "$3/$2/$1");
+    // 可以使用 $数字 表示前面匹配的引用
+    // var res = s.replace(r, "$1年$2月$3日");
+    var res = s.replace(r, "$3/$2/$1");
 
-        alert(res);
-        */
+    alert(res);
+    */
 
 
 
@@ -88,17 +88,17 @@
 
         // "#(.+)"
 
-        /*
-        if (m = r.exec(...)) {
-        	return document.getElementById(m[1]);
-        	//	new RegExp("\\.(.+)")
-        } else if (m = /\.(.+)/.exec(...)) {
+    /*
+    if (m = r.exec(...)) {
+      return document.getElementById(m[1]);
+      //	new RegExp("\\.(.+)")
+    } else if (m = /\.(.+)/.exec(...)) {
 
-        	return document.getElementsByClassName(m[1]);
-        } else {
+      return document.getElementsByClassName(m[1]);
+    } else {
 
-        }
-        */
+    }
+    */
 
 
         // new RegExp("...")
@@ -111,7 +111,7 @@
         // \d		\D			digital
         // \w		\W			word
         // \s		\S			space
-    </script>
+  </script>
 </head>
 
 <body>

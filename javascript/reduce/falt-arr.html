@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>数组扁平化</title>
+</head>
+<body>
+  <script>
+    let arr = [1, 2, '3js', [4, 5, [6], [7, 8, [9, 10, 11], null, 'abc'], { age: 58 }, [13, 14]], '[]', null];
+    function f(arr) {
+      if (Array.isArray(arr)) {
+        return arr.reduce((prev, item) => {
+          return Array.isArray(item) ? prev.concat(f(item)) : prev.concat(item)
+        }, [])
+      } else {
+        throw new Error("arr + ' is not array'")
+      }
+    }
+    console.log(f(arr))
+  </script>
+</body>
+</html>

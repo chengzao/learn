@@ -1,26 +1,26 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>无标题文档</title>
-<script src="sea/sea.js" id="seajsnode"></script>
-<script>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>无标题文档</title>
+  <script src="sea/sea.js" id="seajsnode"></script>
+  <script>
 
 
-/*seajs.use('./js/module1.js',function(ex){
-	ex.show();
-});
+    /*seajs.use('./js/module1.js',function(ex){
+      ex.show();
+    });
 
-seajs.use('./js/module2.js',function(ex){
-	ex.show();
-});*/
+    seajs.use('./js/module2.js',function(ex){
+      ex.show();
+    });*/
 
-seajs.use(['./js/module1.js','./js/module2.js'],function(ex,ex2){
-	ex.show();//1
-	ex2.show();//100
-});
+    seajs.use(['./js/module1.js', './js/module2.js'], function (ex, ex2) {
+      ex.show();//1
+      ex2.show();//100
+    });
 
-</script>
+  </script>
 </head>
 
 <body>

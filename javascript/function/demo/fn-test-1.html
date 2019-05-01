@@ -2,68 +2,68 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <title></title>
+  <meta charset="UTF-8">
+  <title></title>
 
 </head>
 
 <body>
 </body>
 <script>
-    var o = {};
-    // 在 js 中数组是有元素, 有下标, 有 length 的一个对象
-    //  原始|加一
-    /*
-    //  0|1
-    o[o.length++] = 1;   // o[0] = 1
-    //  1|2
-    o[o.length++] = 2;   // o[1] = 2
-    //  2|3
-    o[o.length++] = 3;   // o[2] = 3
-    */
+  var o = {};
+  // 在 js 中数组是有元素, 有下标, 有 length 的一个对象
+  //  原始|加一
+  /*
+  //  0|1
+  o[o.length++] = 1;   // o[0] = 1
+  //  1|2
+  o[o.length++] = 2;   // o[1] = 2
+  //  2|3
+  o[o.length++] = 3;   // o[2] = 3
+  */
 
-    // 注意: 它就像数组, 但是不是数组
-    // [].push()
-    // [].join()
-    // [].concat(1, 2, 3);
-
-
-    // console.log(o.push); // o.push() => push.apply(o)
-    // console.log(o.pop);
-    // console.log(o.join);
-    // console.log(o.concat);
-
-    // [].push.apply(o, [1]);
-    // [].push.call(o, 2);
-    // [].push.call(o, "a");
-    // [].push.call(o, "b");
-
-    // console.log(o.join("---"));  // o.join => join.apply(o)
-    console.log([].join.call(o, "---"))
+  // 注意: 它就像数组, 但是不是数组
+  // [].push()
+  // [].join()
+  // [].concat(1, 2, 3);
 
 
-    // [11, 22].concat(1, 2, 3); //=> [11, 22, 1, 2, 3]
+  // console.log(o.push); // o.push() => push.apply(o)
+  // console.log(o.pop);
+  // console.log(o.join);
+  // console.log(o.concat);
 
-    // o.concat("c", "d") => concat.apply(o)
-    var arr = [].concat.apply(o, ["c", "d"]);
+  // [].push.apply(o, [1]);
+  // [].push.call(o, 2);
+  // [].push.call(o, "a");
+  // [].push.call(o, "b");
 
-    var min = Math.min.apply(this, arr);
-
-    // var arr1 = [].concat.apply([], o); // [].concat(o[0], o[1], ...);
-
-    // var arr = [].concat.apply(arr1, ["c", "d"]);
+  // console.log(o.join("---"));  // o.join => join.apply(o)
+  console.log([].join.call(o, "---"))
 
 
-	{
-		var o = { length: 0 };
-		o[0] = 123;
-		o.length++;
+  // [11, 22].concat(1, 2, 3); //=> [11, 22, 1, 2, 3]
 
-		// [].push(456);
-		// o.push(456);
+  // o.concat("c", "d") => concat.apply(o)
+  var arr = [].concat.apply(o, ["c", "d"]);
 
-		[].push.apply(o, [456]);
-	}
+  var min = Math.min.apply(this, arr);
+
+  // var arr1 = [].concat.apply([], o); // [].concat(o[0], o[1], ...);
+
+  // var arr = [].concat.apply(arr1, ["c", "d"]);
+
+
+  {
+    var o = { length: 0 };
+    o[0] = 123;
+    o.length++;
+
+    // [].push(456);
+    // o.push(456);
+
+    [].push.apply(o, [456]);
+  }
 </script>
 
 </html>

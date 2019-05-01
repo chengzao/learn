@@ -1,76 +1,80 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta charset="UTF-8">
-    <title>新的画布</title>
-    <style>
-        canvas { border: 1px solid #aaaaaa; display: block; margin: 50px auto; }
-    </style>
+  <meta charset="UTF-8">
+  <title>新的画布</title>
+  <style>
+    canvas {
+      border: 1px solid #aaaaaa;
+      display: block;
+      margin: 50px auto;
+    }
+  </style>
 </head>
 <body>
-<div id="canvas-warp">
+  <div id="canvas-warp">
     <canvas id="canvas">
-        你的浏览器居然不支持Canvas？！赶快换一个吧！！
+      你的浏览器居然不支持Canvas？！赶快换一个吧！！
     </canvas>
     <canvas id="canvas2">
-        你的浏览器居然不支持Canvas？！赶快换一个吧！！
+      你的浏览器居然不支持Canvas？！赶快换一个吧！！
     </canvas>
-</div>
+  </div>
 
-<script>
-    window.onload = function(){
-       fn();
-       fn1();
+  <script>
+    window.onload = function () {
+      fn();
+      fn1();
     }
     // context.arc(x,y,radius,startAngle,endAngle,anticlockwise)
-    // x,y,radius圆心坐标与圆半径; startAngle、endAngle使用的是弧度值; 
+    // x,y,radius圆心坐标与圆半径; startAngle、endAngle使用的是弧度值;
     // anticlockwise表示绘制的方法,true表示逆时针绘制，false表示顺时针绘制，缺省值为false
-    function drawRoundRect(cxt, x, y, width, height, radius){
-        cxt.beginPath();
-        cxt.arc(x + radius, y + radius, radius, Math.PI, Math.PI * 3 / 2);
-        cxt.lineTo(width - radius + x, y);
-        cxt.arc(width - radius + x, radius + y, radius, Math.PI * 3 / 2, Math.PI * 2);
-        cxt.lineTo(width + x, height + y - radius);
-        cxt.arc(width - radius + x, height - radius + y, radius, 0, Math.PI * 1 / 2);
-        cxt.lineTo(radius + x, height +y);
-        cxt.arc(radius + x, height - radius + y, radius, Math.PI * 1 / 2, Math.PI);
-        cxt.closePath();
+    function drawRoundRect(cxt, x, y, width, height, radius) {
+      cxt.beginPath();
+      cxt.arc(x + radius, y + radius, radius, Math.PI, Math.PI * 3 / 2);
+      cxt.lineTo(width - radius + x, y);
+      cxt.arc(width - radius + x, radius + y, radius, Math.PI * 3 / 2, Math.PI * 2);
+      cxt.lineTo(width + x, height + y - radius);
+      cxt.arc(width - radius + x, height - radius + y, radius, 0, Math.PI * 1 / 2);
+      cxt.lineTo(radius + x, height + y);
+      cxt.arc(radius + x, height - radius + y, radius, Math.PI * 1 / 2, Math.PI);
+      cxt.closePath();
     }
-    function fn(){
-        var canvas = document.getElementById("canvas");
-        canvas.width = 800;
-        canvas.height = 600;
-        var context = canvas.getContext("2d");
-        context.fillStyle = "#FFF";
-        context.fillRect(0,0,800,600);
-        context.strokeStyle = "#0078AA";
-        drawRoundRect(context, 200, 100, 400, 400, 50);
-        context.stroke();
+    function fn() {
+      var canvas = document.getElementById("canvas");
+      canvas.width = 800;
+      canvas.height = 600;
+      var context = canvas.getContext("2d");
+      context.fillStyle = "#FFF";
+      context.fillRect(0, 0, 800, 600);
+      context.strokeStyle = "#0078AA";
+      drawRoundRect(context, 200, 100, 400, 400, 50);
+      context.stroke();
     }
-    function fn1(){
-        var canvas = document.getElementById("canvas2");
-        canvas.width = 800;
-        canvas.height = 600;
-        var context = canvas.getContext("2d");
-        context.fillStyle = "#FFF";
-        context.fillRect(0,0,800,600);
+    function fn1() {
+      var canvas = document.getElementById("canvas2");
+      canvas.width = 800;
+      canvas.height = 600;
+      var context = canvas.getContext("2d");
+      context.fillStyle = "#FFF";
+      context.fillRect(0, 0, 800, 600);
 
-        drawRoundRect(context, 200, 100, 400, 400, 5);
-        context.fillStyle = "#AA7B41";
-        context.strokeStyle = "#0078AA";
-        context.stroke();
-        context.fill();
+      drawRoundRect(context, 200, 100, 400, 400, 5);
+      context.fillStyle = "#AA7B41";
+      context.strokeStyle = "#0078AA";
+      context.stroke();
+      context.fill();
 
-        for(var i = 1; i <= 4; i++){
-            for(var j = 1; j <= 4; j++){
-                drawRoundRect(context, 200 + 16 * i + 80 * (i - 1), 100 + 16 * j + 80 * (j - 1), 80, 80, 5);
-                context.fillStyle = "#CCBFB4";
-                context.strokeStyle = "#0078AA";
-                context.stroke();
-                context.fill();
-            }
+      for (var i = 1; i <= 4; i++) {
+        for (var j = 1; j <= 4; j++) {
+          drawRoundRect(context, 200 + 16 * i + 80 * (i - 1), 100 + 16 * j + 80 * (j - 1), 80, 80, 5);
+          context.fillStyle = "#CCBFB4";
+          context.strokeStyle = "#0078AA";
+          context.stroke();
+          context.fill();
         }
+      }
     }
-</script>
+  </script>
 </body>
 </html>

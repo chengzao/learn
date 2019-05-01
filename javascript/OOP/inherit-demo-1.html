@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>继承练习</title>
+  <meta charset="UTF-8">
+  <title>继承练习</title>
 </head>
 <body>
-<img src="images/prototype.png" alt="">
-<img src="images/__proto__.png" alt="">
+  <img src="images/prototype.png" alt="">
+  <img src="images/__proto__.png" alt="">
 </body>
 <script>
 
-// foo 继承 obj 属性
+  // foo 继承 obj 属性
 
-var obj= {'name':'zhangsan'};
+  var obj = { 'name': 'zhangsan' };
 
-function Foo (age,gender) {
-	this.age = age;
-	this.gender = gender;
-}
+  function Foo(age, gender) {
+    this.age = age;
+    this.gender = gender;
+  }
 
-Foo.prototype = obj;
+  Foo.prototype = obj;
 
-//Foo.prototype.__proto__ =obj;
+  //Foo.prototype.__proto__ =obj;
 
-var foo = new Foo();
+  var foo = new Foo();
 
-console.log(foo.name);
+  console.log(foo.name);
 
 
 </script>

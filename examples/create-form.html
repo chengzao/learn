@@ -1,35 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>js动态创建form</title>
+  <meta charset="UTF-8">
+  <title>js动态创建form</title>
 </head>
 <body>
-
-
-<script>
-/*	写出一个程序，在页面加载完成后动态创建一个form表单，
-并在里面添加一个input对象并给它任意赋值后义
-post方式提交到：http://127.0.0.1/save.php
-*/
-
-window.onload=function(){
-    var form=document.createElement("form");
-    form.setAttribute("method", "post");
-    form.setAttribute("action", "http://127.0.0.1/save.php");
-    var input=document.createElement("input");
-    form.appendChild(input);
-    document.body.appendChild(form);
-    input.value="cxc";
-    form.submit();//提交表单
-}
-
-
-
-
-</script>
-
-
-
+  <script>
+    /*	写出一个程序，在页面加载完成后动态创建一个form表单，
+    并在里面添加一个input对象并给它任意赋值后义
+    post方式提交到：http://127.0.0.1/save.php
+    */
+    window.onload = function () {
+      var form = document.createElement("form");
+      form.setAttribute("method", "post");
+      form.setAttribute("action", "http://127.0.0.1/save.php");
+      var input = document.createElement("input");
+      form.appendChild(input);
+      document.body.appendChild(form);
+      input.value = "cxc";
+      form.submit();//提交表单
+    }
+  </script>
 </body>
 </html>

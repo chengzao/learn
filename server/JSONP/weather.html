@@ -1,60 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>天气预报</title>
-	<style>
-		table {
-			width: 600px;
-			border-collapse: collapse;
-		}
-		td {
-			height: 40px;
-			text-align: center;
-			border: 1px solid #CCC;
-		}
-	</style>
+  <meta charset="UTF-8">
+  <title>天气预报</title>
+  <style>
+    table {
+      width: 600px;
+      border-collapse: collapse;
+    }
+
+    td {
+      height: 40px;
+      text-align: center;
+      border: 1px solid #CCC;
+    }
+  </style>
 </head>
 <body>
-	<h4>如果无效需要安装配置wamp环境查看，查看<a href="jsonp.md">jsonp</a></h4>
-	<table>
-		
-	</table>
-	<script src="./js/jquery.min.js"></script>
-	<script src="./js/template-native.js"></script>
-	<script>
+  <h4>如果无效需要安装配置wamp环境查看，查看<a href="jsonp.md">jsonp</a></h4>
+  <table>
 
-		url='http://api.map.baidu.com/telematics/v3/weather?output=json&ak=0A5bc3c4fb543c8f9bc54b77bc155724';
-		$.ajax({
-			url:url ,
-			type: 'get',
-			data: {location: '北京'},
-			// 指定为跨域请求
-			dataType: 'jsonp',
-			success: function (data) {
-				// console.log(data);
+  </table>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/template-native.js"></script>
+  <script>
 
-				var items = data.results[0]['weather_data'];
+    url = 'http://api.map.baidu.com/telematics/v3/weather?output=json&ak=0A5bc3c4fb543c8f9bc54b77bc155724';
+    $.ajax({
+      url: url,
+      type: 'get',
+      data: { location: '北京' },
+      // 指定为跨域请求
+      dataType: 'jsonp',
+      success: function (data) {
+        // console.log(data);
 
-				console.log(items);
+        var items = data.results[0]['weather_data'];
 
-				// var arr = [0, 1, 2];
+        console.log(items);
 
-				var info = {
-					items: items
-				}
+        // var arr = [0, 1, 2];
 
-				// info.items
+        var info = {
+          items: items
+        }
 
-				var html = template('tpl', info);
+        // info.items
 
-				// console.log(html);
+        var html = template('tpl', info);
 
-				$('table').append(html);
-			}
-		})		
-	</script>
-	<script type="text/template" id="tpl">
+        // console.log(html);
+
+        $('table').append(html);
+      }
+    })
+  </script>
+  <script type="text/template" id="tpl">
 		<% for(var i=0; i<items.length; i++) { %>
 			<tr>
 				<td><%= items[i].date %></td>
