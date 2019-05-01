@@ -1,82 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <style>
-    .box{
-        width: 100px;
-        height: 100px;
-        border: 1px solid #ccc;
-        opacity: 0;
-        animation: fadeIn 2s linear;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #ccc;
+      opacity: 0;
+      animation: fadeIn 2s linear;
     }
 
     @keyframes fadeIn {
-        0% {
-            opacity: 1; /*初始状态 透明度为0*/
-        }
-       
-        100% {
-            opacity: 0; /*结尾状态 透明度为1*/
-        }
+      0% {
+        opacity: 1; /*初始状态 透明度为0*/
+      }
+
+      100% {
+        opacity: 0; /*结尾状态 透明度为1*/
+      }
     }
 
-    </style>
+  </style>
 </head>
 <body>
- <button id="btn">click</button>   
- <div class="box"></div>
+<button id="btn">click</button>
+<div class="box"></div>
 
 </body>
 <script>
   var obj = {}
-  console.log('obj.__proto__ === Object.prototype : ',obj.__proto__ === Object.prototype)
+  console.log('obj.__proto__ === Object.prototype : ', obj.__proto__ === Object.prototype)
 
 
-  var Fn = function(){}
+  var Fn = function () {
+  }
   var fn = new Fn()
 
-  console.log('Fn.prototype === fn.__proto__ : ',Fn.prototype === fn.__proto__)  
-  console.log('Fn.prototype.constructor === Fn : ',Fn.prototype.constructor === Fn)  
+  console.log('Fn.prototype === fn.__proto__ : ', Fn.prototype === fn.__proto__)
+  console.log('Fn.prototype.constructor === Fn : ', Fn.prototype.constructor === Fn)
 
-  console.log('Object.prototype.__proto__ === null : ',Object.prototype.__proto__ === null)  
+  console.log('Object.prototype.__proto__ === null : ', Object.prototype.__proto__ === null)
 
 
   var zepto = {}, $
 
-function Z(doms) {
-  var len = doms.length 
-  for (var i = 0; i < len; i++) {
-    this[i] = doms[i]
+  function Z(doms) {
+    var len = doms.length
+    for (var i = 0; i < len; i++) {
+      this[i] = doms[i]
+    }
+    this.length = doms.length
   }
-  this.length = doms.length
-}
 
-zepto.Z = function(doms) {
-  return new Z(doms)
-}
-
-zepto.init = function(doms) {
-  return zepto.Z(doms)
-}
-
-$ = function(doms) {
-  return zepto.init(doms)
-}
-
-$.fn = {
-  constructor: zepto.Z,
-  method: function() {
-    return this
+  zepto.Z = function (doms) {
+    return new Z(doms)
   }
-}
 
-zepto.Z.prototype = Z.prototype = $.fn
+  zepto.init = function (doms) {
+    return zepto.Z(doms)
+  }
 
-console.log($(['domObj1','domObj2','domObj3']))
+  $ = function (doms) {
+    return zepto.init(doms)
+  }
+
+  $.fn = {
+    constructor: zepto.Z,
+    method: function () {
+      return this
+    }
+  }
+
+  zepto.Z.prototype = Z.prototype = $.fn
+
+  console.log($(['domObj1', 'domObj2', 'domObj3']))
 
 </script>
 </html>

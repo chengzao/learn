@@ -2,121 +2,124 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
-    <meta content="yes" name="apple-mobile-web-app-capable" />
-    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
-    <meta content="telephone=no" name="format-detection" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>calendar</title>
-    <style>
-        input {
-            width: 90%;
-            height: 40px;
-            font-size: 18px;
-            border: 1px solid #19b5ee;
-            border-radius: 5px;
-            margin: 20px 5% 0 5%;
-            padding: 5px;
-        }
-        .clearIptVal span {
-            top: 30px;
-            right: 11px;
-        }
+  <meta charset="UTF-8">
+  <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+  <meta content="yes" name="apple-mobile-web-app-capable"/>
+  <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+  <meta content="telephone=no" name="format-detection"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>calendar</title>
+  <style>
+    input {
+      width: 90%;
+      height: 40px;
+      font-size: 18px;
+      border: 1px solid #19b5ee;
+      border-radius: 5px;
+      margin: 20px 5% 0 5%;
+      padding: 5px;
+    }
+
+    .clearIptVal span {
+      top: 30px;
+      right: 11px;
+    }
 
 
-        .demo{
-            width: 300px;
-            height: 200px;
-            border: 1px solid #888;
-            margin: 10px auto;
-        }
+    .demo {
+      width: 300px;
+      height: 200px;
+      border: 1px solid #888;
+      margin: 10px auto;
+    }
 
-        .demo{
-            background: linear-gradient( #e9e9e9 20px,transparent 20%,transparent 20px,#e9e9e9);
-            /* -webkit-mask-image: linear-gradient(to top,black, rgba(0, 0, 0, 1) 10px,black); */
-        }
-        .demo ul{
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            -webkit-mask-image: linear-gradient(to top,black, rgba(0, 0, 0, 1) 10px,black);
-        }
-        .grid {
-            width: 225px;
-            height: 225px;
-            background: #58a;
-            background-image: linear-gradient(white 2px, transparent 0),linear-gradient(90deg,white 2px,transparent 0);
-            background-size: 75px 75px, 75px, 75px;
-        }
-    </style>
+    .demo {
+      background: linear-gradient(#e9e9e9 20px, transparent 20%, transparent 20px, #e9e9e9);
+      /* -webkit-mask-image: linear-gradient(to top,black, rgba(0, 0, 0, 1) 10px,black); */
+    }
+
+    .demo ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      -webkit-mask-image: linear-gradient(to top, black, rgba(0, 0, 0, 1) 10px, black);
+    }
+
+    .grid {
+      width: 225px;
+      height: 225px;
+      background: #58a;
+      background-image: linear-gradient(white 2px, transparent 0), linear-gradient(90deg, white 2px, transparent 0);
+      background-size: 75px 75px, 75px, 75px;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="clearIptVal">
-        <input type="datetime" autocomplete="off" class="inp" value="点击选择生日" readonly="" id="cal_0">
-        <div style="display: none" id="timeData_0">
-            <input type="text" name="orderkind_0" value="1">
-            <input type="text" name="orderyear_0" value="2017">
-            <input type="text" name="ordermonth_0" value="10">
-            <input type="text" name="orderday_0" value="7">
-        </div>
-        <span id="clearIptVal_0" class="hidden" style="top:30px;right:11px">
+<div class="clearIptVal">
+  <input type="datetime" autocomplete="off" class="inp" value="点击选择生日" readonly="" id="cal_0">
+  <div style="display: none" id="timeData_0">
+    <input type="text" name="orderkind_0" value="1">
+    <input type="text" name="orderyear_0" value="2017">
+    <input type="text" name="ordermonth_0" value="10">
+    <input type="text" name="orderday_0" value="7">
+  </div>
+  <span id="clearIptVal_0" class="hidden" style="top:30px;right:11px">
             <i></i>
         </span>
-    </div>
+</div>
 
 
-    <div class="clearIptVal">
-        <input type="datetime" autocomplete="off" class="inp" value="点击选择生日" readonly="" id="cal_1">
-        <div style="display: none" id="timeData_1">
-            <input type="text" name="orderkind_0" value="1">
-            <input type="text" name="orderyear_0" value="2017">
-            <input type="text" name="ordermonth_0" value="10">
-            <input type="text" name="orderday_0" value="7">
-        </div>
-        <span id="clearIptVal_1" class="hidden" style="top:30px;right:11px">
+<div class="clearIptVal">
+  <input type="datetime" autocomplete="off" class="inp" value="点击选择生日" readonly="" id="cal_1">
+  <div style="display: none" id="timeData_1">
+    <input type="text" name="orderkind_0" value="1">
+    <input type="text" name="orderyear_0" value="2017">
+    <input type="text" name="ordermonth_0" value="10">
+    <input type="text" name="orderday_0" value="7">
+  </div>
+  <span id="clearIptVal_1" class="hidden" style="top:30px;right:11px">
             <i></i>
         </span>
-    </div>
+</div>
 
-    <div class="demo">
-        <ul>
-            <li>1 -webkit-mask-image: url(mask.png);</li>
-            <li>2 -webkit-mask-image: url(mask.png);</li>
-            <li>3 -webkit-mask-image: url(mask.png);</li>
-        </ul>     
-    </div>
-    <div class="grid"></div>
+<div class="demo">
+  <ul>
+    <li>1 -webkit-mask-image: url(mask.png);</li>
+    <li>2 -webkit-mask-image: url(mask.png);</li>
+    <li>3 -webkit-mask-image: url(mask.png);</li>
+  </ul>
+</div>
+<div class="grid"></div>
 </body>
 <script>
-    var calendarObj = {
-        // 插入script标签
-        createSrc: function (url) {
-            var scrEle = document.createElement("script");
-            scrEle.src = url;
-            document.body.appendChild(scrEle);
-        },
-        // 插入样式表
-        createStyle: function (url) {
-            var scrEle = document.createElement("link");
-            scrEle.rel = "stylesheet";
-            scrEle.href = url;
-            document.head.appendChild(scrEle);
-        },
-        on: function (url) {
-            if (!url) {
-                return false;
-            }
-            if (window.addEventListener)
-                window.addEventListener("load", this.createSrc.bind(this, url), false);
-            else if (window.attachEvent)
-                window.attachEvent("onload", this.createSrc.bind(this, url));
-            else window.onload = this.createSrc.bind(this, url);
-        }
+  var calendarObj = {
+    // 插入script标签
+    createSrc: function (url) {
+      var scrEle = document.createElement("script");
+      scrEle.src = url;
+      document.body.appendChild(scrEle);
+    },
+    // 插入样式表
+    createStyle: function (url) {
+      var scrEle = document.createElement("link");
+      scrEle.rel = "stylesheet";
+      scrEle.href = url;
+      document.head.appendChild(scrEle);
+    },
+    on: function (url) {
+      if (!url) {
+        return false;
+      }
+      if (window.addEventListener)
+        window.addEventListener("load", this.createSrc.bind(this, url), false);
+      else if (window.attachEvent)
+        window.attachEvent("onload", this.createSrc.bind(this, url));
+      else window.onload = this.createSrc.bind(this, url);
     }
-    calendarObj.createStyle('calendar-m-2.css');
-    calendarObj.on("calendar-m-2.js");
+  }
+  calendarObj.createStyle('calendar-m-2.css');
+  calendarObj.on("calendar-m-2.js");
 </script>
 
 </html>

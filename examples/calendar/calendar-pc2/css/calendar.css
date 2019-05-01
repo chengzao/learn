@@ -1,227 +1,227 @@
 /* 日历 */
 
 .zh-almanac {
-    overflow: hidden;
+  overflow: hidden;
 
-    width: 359px;
-    height: auto;
-    margin-top: 7px;
-    margin-right: auto;
-    margin-left: 3px;
+  width: 359px;
+  height: auto;
+  margin-top: 7px;
+  margin-right: auto;
+  margin-left: 3px;
 
-    background-color: #FFFFFF;
+  background-color: #FFFFFF;
 }
 
 .zh-almanac * {
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .alc-container {
-    position: relative;
+  position: relative;
 
-    color: #333;
-    border: 1px solid #d2d2d2;
+  color: #333;
+  border: 1px solid #d2d2d2;
 }
 
 .alc-container .main {
-    width: 100%;
-    padding: 0;
+  width: 100%;
+  padding: 0;
 }
 
 .hint-bar {
-    position: relative;
-    z-index: 200;
+  position: relative;
+  z-index: 200;
 
-    height: 40px;
+  height: 40px;
 
-    border: 1px solid #d2d2d2;
-    border-bottom-width: 0;
-    background-color: #f3f5fa;
+  border: 1px solid #d2d2d2;
+  border-bottom-width: 0;
+  background-color: #f3f5fa;
 
-    line-height: 40px;
+  line-height: 40px;
 }
 
 .control-bar {
-    position: absolute;
-    top: 0;
-    left: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
 
-    width: 100%;
-    padding: 7px;
+  width: 100%;
+  padding: 7px;
 }
 
 .control-bar .control-module {
-    position: relative;
+  position: relative;
 
-    float: left;
+  float: left;
 
-    margin-right: 5px;
+  margin-right: 5px;
 
-    border: 1px solid #c9cccf;
-    background-color: #fff;
+  border: 1px solid #c9cccf;
+  background-color: #fff;
 }
 
 .control-bar .control {
-    float: left;
+  float: left;
 
-    height: 12px;
-    padding: 4px 10px 0;
+  height: 12px;
+  padding: 4px 10px 0;
 
-    border-right: 1px solid #c9cccf;
-    border-left: 1px solid #c9cccf;
+  border-right: 1px solid #c9cccf;
+  border-left: 1px solid #c9cccf;
 
-    line-height: 12px;
+  line-height: 12px;
 }
 
 .control .field {
-    height: 12px;
-    margin-left: -5px;
-    padding: 0;
+  height: 12px;
+  margin-left: -5px;
+  padding: 0;
 
-    line-height: 16px;
+  line-height: 16px;
 }
 
 .year-control .control {
-    width: 82px;
-    height: 24px;
+  width: 82px;
+  height: 24px;
 
-    text-align: center;
+  text-align: center;
 }
 
 .month-control .control {
-    width: 82px;
-    height: 24px;
+  width: 82px;
+  height: 24px;
 
-    text-align: center;
+  text-align: center;
 }
 
 .sel-control .control {
-    width: 69px;
-    height: 24px;
+  width: 69px;
+  height: 24px;
 
-    text-align: center;
+  text-align: center;
 }
 
 .control-module .prev,
 .control-module .next {
-    /*hide 左右按钮*/
-    display: none;
-    float: left;
+  /*hide 左右按钮*/
+  display: none;
+  float: left;
 
-    width: 15px;
-    height: 24px;
+  width: 15px;
+  height: 24px;
 }
 
 .control-bar .control {
-    /*hide 左右按钮*/
-    border: none;
+  /*hide 左右按钮*/
+  border: none;
 }
 
 .control-module .prev,
 .control-module .next,
 .control-module .trigger {
-    background: #fff url(../images/bar.gif) no-repeat;
+  background: #fff url(../images/bar.gif) no-repeat;
 }
 
 .control-module .next {
-    background-position: 0 -25px;
+  background-position: 0 -25px;
 }
 
 .control-module .trigger {
-    float: right;
+  float: right;
 
-    width: 15px;
-    height: 20px;
-    margin-top: -2px;
-    margin-right: -9px;
+  width: 15px;
+  height: 20px;
+  margin-top: -2px;
+  margin-right: -9px;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    background-position: 0 -50px;
+  background-position: 0 -50px;
 }
 
 .control-bar .btn-today {
-    float: right;
+  float: right;
 
-    height: 26px;
-    padding: 0 10px;
+  height: 26px;
+  padding: 0 10px;
 
-    cursor: pointer;
-    text-align: center;
+  cursor: pointer;
+  text-align: center;
 
-    border: 1px solid #c9cccf;
-    background-color: #fcfcfc;
+  border: 1px solid #c9cccf;
+  background-color: #fcfcfc;
 
-    line-height: 24px;
+  line-height: 24px;
 }
 
 .control-bar .list {
-    position: absolute;
-    z-index: 200;
-    top: 24px;
-    left: -1px;
+  position: absolute;
+  z-index: 200;
+  top: 24px;
+  left: -1px;
 
-    overflow-x: hidden;
-    overflow-y: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 
-    width: 84px;
-    height: 185px;
-    margin-top: 1px;
-    padding: 0;
+  width: 84px;
+  height: 185px;
+  margin-top: 1px;
+  padding: 0;
 
-    list-style: none;
+  list-style: none;
 
-    border-width: 0 1px 1px;
-    border-style: none solid solid;
-    border-color: #c9cccf;
-    background: #fff;
+  border-width: 0 1px 1px;
+  border-style: none solid solid;
+  border-color: #c9cccf;
+  background: #fff;
 }
 
 .control-bar .list li {
-    z-index: 200;
+  z-index: 200;
 
-    width: 66px;
-    height: 22px;
-    margin-bottom: 1px;
+  width: 66px;
+  height: 22px;
+  margin-bottom: 1px;
 
-    cursor: pointer;
-    text-align: center;
+  cursor: pointer;
+  text-align: center;
 
-    color: #333;
+  color: #333;
 
-    line-height: 22px;
+  line-height: 22px;
 }
 
 .zh-almanac .dates-bd .today {
-    color: #ff0000;
+  color: #ff0000;
 }
 
 .zh-almanac .dates-bd .notCur,
 .zh-almanac .dates-bd .notCur span {
-    color: #bbb;
+  color: #bbb;
 }
 
 .control-bar .sel-list {
-    width: 71px;
-    height: auto;
+  width: 71px;
+  height: auto;
 }
 
 .control-bar .sel-list li {
-    width: 70px;
+  width: 70px;
 }
 
 .control-bar .list li:hover,
 .control-bar .list li.on {
-    background-color: #e5e5e5;
+  background-color: #e5e5e5;
 }
 
 .control-bar .list .hover {
-    background-color: #e5e5e5;
+  background-color: #e5e5e5;
 }
 
 .control-bar .control:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 
@@ -229,172 +229,172 @@
 
 .dates-hd,
 .dates-bd {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 
-    list-style: none;
+  list-style: none;
 }
 
 .dates-hd li {
-    float: left;
+  float: left;
 
-    width: 51px;
-    padding: 5px;
+  width: 51px;
+  padding: 5px;
 
-    text-align: center;
+  text-align: center;
 
-    border-width: 1px 1px 1px medium;
-    border-style: none solid solid none;
-    border-color: #f1ebe4;
-    background: none repeat scroll 0 0 #fefbeb;
+  border-width: 1px 1px 1px medium;
+  border-style: none solid solid none;
+  border-color: #f1ebe4;
+  background: none repeat scroll 0 0 #fefbeb;
 
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .dates-bd li span::-moz-selection {
-    background-color: #fff;
+  background-color: #fff;
 }
 
 .dates-bd li span::selection {
-    background-color: #fff;
+  background-color: #fff;
 }
 
 .dates-bd li span::-moz-selection {
-    background-color: #fff;
+  background-color: #fff;
 }
 
 .dates-bd li span::-webkit-selection {
-    background-color: #fff;
+  background-color: #fff;
 }
 
 .dates-bd li {
-    position: relative;
-    z-index: 2;
+  position: relative;
+  z-index: 2;
 
-    float: left;
-    overflow: hidden;
+  float: left;
+  overflow: hidden;
 
-    width: 51px;
-    height: 51px;
+  width: 51px;
+  height: 51px;
 
-    cursor: pointer;
-    text-align: center;
+  cursor: pointer;
+  text-align: center;
 
-    border-right: 1px solid #f1ebe4;
-    border-bottom: 1px solid #f1ebe4;
-    background: none repeat scroll 0 0 #fff;
+  border-right: 1px solid #f1ebe4;
+  border-bottom: 1px solid #f1ebe4;
+  background: none repeat scroll 0 0 #fff;
 
-    font-size: 16px;
+  font-size: 16px;
 }
 
 .dates-bd li:hover,
 .dates-bd li.on {
-    background-color: #fefbeb;
+  background-color: #fefbeb;
 }
 
 .dates-bd li .layer {
-    position: absolute;
-    z-index: -1;
-    top: 0;
+  position: absolute;
+  z-index: -1;
+  top: 0;
 
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 
-    opacity: 0.8;
+  opacity: 0.8;
 
-    filter: alpha(opacity=0.8);
+  filter: alpha(opacity=0.8);
 }
 
 .dates-bd li .layer span {
-    float: left;
+  float: left;
 
-    width: 50%;
-    height: 16px;
+  width: 50%;
+  height: 16px;
 
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .dates-bd .solar {
-    display: inline-block;
+  display: inline-block;
 
-    width: 100%;
-    margin: 6px 0 0;
+  width: 100%;
+  margin: 6px 0 0;
 
-    text-align: center;
+  text-align: center;
 
-    font-family: tahoma, "\5FAE\8F6F\96C5\9ED1", "\5B8B\4F53", arial, georgia, verdana, helvetica, sans-serif;
-    font-size: 16px;
-    line-height: 22px;
+  font-family: tahoma, "\5FAE\8F6F\96C5\9ED1", "\5B8B\4F53", arial, georgia, verdana, helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 22px;
 }
 
 .dates-bd .lunar {
-    display: block;
-    overflow: hidden;
+  display: block;
+  overflow: hidden;
 
-    width: 100%;
+  width: 100%;
 
-    text-align: center;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 
-    color: #999;
+  color: #999;
 
-    font-size: 12px;
-    line-height: 14px;
+  font-size: 12px;
+  line-height: 14px;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 .clearfix::before,
 .clearfix::after {
-    display: table;
-    clear: both;
+  display: table;
+  clear: both;
 
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 
-    content: " ";
+  content: " ";
 }
 
 .zh-almanac .tip {
-    padding: 10px;
+  padding: 10px;
 
-    text-align: center;
+  text-align: center;
 
-    color: #008000;
+  color: #008000;
 }
 
 
 /* input 清除按钮样式 */
 
 .clearIptVal {
-    position: relative;
+  position: relative;
 }
 
 .clearIptVal span {
-    position: absolute;
-    top: 2px;
-    right: 1px;
+  position: absolute;
+  top: 2px;
+  right: 1px;
 
-    width: 26px;
-    height: 26px;
+  width: 26px;
+  height: 26px;
 
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .clearIptVal i {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
 
-    display: block;
+  display: block;
 
-    width: 16px;
-    height: 16px;
-    margin: -8px 0 0 -8px;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
 
-    background: url(../images/btn_clear.png) center center;
-    background-size: 16px;
+  background: url(../images/btn_clear.png) center center;
+  background-size: 16px;
 }

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>倒计时</title>
+</head>
+<body>
+<p>距离活动结束还有: <span id="cutdown"></span></p>
+</body>
+<script src="./a.js"></script>
+<script>
+  let cutdown = new Cutdown();
+  let strTime = '2100/06/15,18:30:00';
+  let endTime = (new Date(strTime)).getTime();
+  cutdown.init({
+    'endTime': endTime,
+    'id': '#cutdown',
+    'msg': {
+      'start': 'd天hh:mm:ss',
+      'end': "00:00:00"
+    }
+  })
+</script>
+
+</html>

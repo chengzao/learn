@@ -1,203 +1,201 @@
 html,
 body {
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    overflow-x: hidden;
-    width: 100%;
-    min-height: 100%;
-    margin: 0 auto;
-    -webkit-user-select: none;
-    -webkit-user-select: none;
-    -webkit-text-size-adjust: 100%;
-    -webkit-overflow-scrolling: touch;
-    overflow-scrolling: touch;
-    -ms-text-size-adjust: 100%;
-    -moz-text-size-adjust: 100%;
-    text-size-adjust: 100%;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+  width: 100%;
+  min-height: 100%;
+  margin: 0 auto;
+  -webkit-user-select: none;
+  -webkit-user-select: none;
+  -webkit-text-size-adjust: 100%;
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 input:-ms-clear {
-    display: none;
+  display: none;
 }
 
 a,
 button,
 input,
 textarea {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .Mcalendar {
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-size: 10px;
-    position: fixed;
-    z-index: 9900;
-    top: 0;
-    left: 0;
-    display: block;
-    display: none;
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, .2);
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  position: fixed;
+  z-index: 9900;
+  top: 0;
+  left: 0;
+  display: block;
+  display: none;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .2);
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
 }
 
 .date_main {
-    position: absolute;
-    z-index: 9901;
-    bottom: 0;
-    left: 0;
-    overflow: hidden;
-    width: 100%;
-    height: auto;
-    margin: 0;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    vertical-align: middle;
-    color: #363837;
-    background-color: white;
+  position: absolute;
+  z-index: 9901;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  vertical-align: middle;
+  color: #363837;
+  background-color: white;
 }
 
 .slideInUp {
-    -webkit-animation: slideInUp .3s ease-in;
-    animation: slideInUp .3s ease-in;
+  -webkit-animation: slideInUp .3s ease-in;
+  animation: slideInUp .3s ease-in;
 }
 
 @-webkit-keyframes slideInUp {
-    from {
-        -webkit-transform: translate3d(0, 100%, 0);
-        transform: translate3d(0, 100%, 0);
-    }
-    to {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 @keyframes slideInUp {
-    from {
-        -webkit-transform: translate3d(0, 100%, 0);
-        transform: translate3d(0, 100%, 0);
-    }
-    to {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .date_roll {
-    font-weight: bold;
-    overflow: hidden;
-    width: 100%;
-    height: auto;
-    background-color: transparent;
-    -webkit-backface-visibility: hidden;
-    -webkit-transform-style: preserve-3d;
-    -webkit-mask: -webkit-linear-gradient(top, #debb47 50%, rgba(36, 142, 36, 0));
+  font-weight: bold;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  -webkit-mask: -webkit-linear-gradient(top, #debb47 50%, rgba(36, 142, 36, 0));
 }
 
-.date_roll>div {
-    font-size: 2em;
-    position: relative;
-    float: left;
-    overflow: hidden;
-    width: 25%;
-    height: 6em;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    background-color: transparent;
-    webkit-transform: translateZ(0);
-    -webkit-perspective: 1000;
-    perspective: 1000;
+.date_roll > div {
+  font-size: 2em;
+  position: relative;
+  float: left;
+  overflow: hidden;
+  width: 25%;
+  height: 6em;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  background-color: transparent;
+  webkit-transform: translateZ(0);
+  -webkit-perspective: 1000;
+  perspective: 1000;
 }
 
 .date_btn_box {
-    border-top: 1px solid #ccc;
+  border-top: 1px solid #ccc;
 }
 
 .date_roll_mask {
-    padding: 1em 0 1em 0;
-    -webkit-mask: -webkit-linear-gradient(bottom, #debb47 50%, rgba(36, 142, 36, 0));
-    ;
+  padding: 1em 0 1em 0;
+  -webkit-mask: -webkit-linear-gradient(bottom, #debb47 50%, rgba(36, 142, 36, 0));;
 }
 
 .date_grid {
-    position: relative;
-    z-index: 0;
-    top: 2em;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    width: 78%;
-    height: 2em;
-    margin: 0;
-    text-align: right;
-    border-top: 1px solid #e6e6e6;
-    border-bottom: 1px solid #e6e6e6;
+  position: relative;
+  z-index: 0;
+  top: 2em;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 78%;
+  height: 2em;
+  margin: 0;
+  text-align: right;
+  border-top: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
 }
 
-.date_grid>div {
-    font-size: .8em;
-    line-height: 2.5em;
-    position: absolute;
-    top: 0;
-    right: 0;
-    color: #000;
+.date_grid > div {
+  font-size: .8em;
+  line-height: 2.5em;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #000;
 }
 
-.date_roll>div:nth-child(3) .date_grid>div {
-    left: 42%;
+.date_roll > div:nth-child(3) .date_grid > div {
+  left: 42%;
 }
 
 .date_btn {
-    font-size: 1.6em;
-    line-height: 1em;
-    padding: .8em 1em;
-    cursor: pointer;
-    text-align: center;
-    color: #000;
-    ;
+  font-size: 1.6em;
+  line-height: 1em;
+  padding: .8em 1em;
+  cursor: pointer;
+  text-align: center;
+  color: #000;;
 }
 
 .date_btn_box .lcalendar_cancel {
-    float: left;
+  float: left;
 }
 
 .date_btn_box .lcalendar_finish {
-    float: right;
+  float: right;
 }
 
 .gear {
-    position: absolute;
-    z-index: 9902;
-    float: left;
-    width: 5.5em;
-    margin-top: -6em;
+  position: absolute;
+  z-index: 9902;
+  float: left;
+  width: 5.5em;
+  margin-top: -6em;
 }
 
-.date_roll>div .gear {
-    width: 67%;
+.date_roll > div .gear {
+  width: 67%;
 }
 
-.date_roll>div:nth-child(1) .gear {
-    text-indent: 20%;
+.date_roll > div:nth-child(1) .gear {
+  text-indent: 20%;
 }
 
-.date_roll>div:nth-child(2) .gear {
-    text-indent: -20%;
+.date_roll > div:nth-child(2) .gear {
+  text-indent: -20%;
 }
 
-.date_roll>div:nth-child(3) .gear {
-    text-indent: -20%;
+.date_roll > div:nth-child(3) .gear {
+  text-indent: -20%;
 }
 
-.date_roll>div:nth-child(4) .gear {
-    text-indent: -25%;
+.date_roll > div:nth-child(4) .gear {
+  text-indent: -25%;
 }
 
 .tooth {
-    font-weight: normal;
-    line-height: 2em;
-    height: 2em;
-    text-align: center;
+  font-weight: normal;
+  line-height: 2em;
+  height: 2em;
+  text-align: center;
 }

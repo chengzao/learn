@@ -2,96 +2,29 @@
 <html>
 <head lang="en">
   <meta charset="UTF-8">
-  <title></title>
   <style>
-    img {
-            position: absolute;
-            left: 0;
-            top: 50px;
-        }
+    .ads{
+      width: 50px;
+      height: 200px;
+      color: #fff;
+      background-color: #0c8ed9;
+      /* main */
+      position: absolute;
+      left: 0;
+      top: 50px;
+    }
 
-        #demo {
-            width: 1000px;
-            margin: 0 auto;
-        }
-    </style>
+    #demo {
+      width: 1000px;
+      margin: 0 auto;
+    }
+  </style>
+  <title></title>
 </head>
 <body>
-  <img src="images/aside.jpg" alt="" id="pic" />
+  <div class="ads" id="pic">广告</div>
 
-  <div id="demo">
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-
-    <p>天王盖地虎，小鸡炖蘑菇</p>
-  </div>
+  <div id="demo"></div>
 </body>
 </html>
 <script>
@@ -116,23 +49,28 @@
     }
   }
 
+  // 添加数据
+  let html = Array(50).fill('<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid architecto beatae esse et explicabo facilis harum illum magni mollitia nostrum odit officia provident, quam, reiciendis sunt temporibus totam unde voluptatem.</div>').join('')
+  document.querySelector('#demo').innerHTML = html
+
   // 动画
   function animate(obj, target) {
     clearInterval(obj.timer);
     obj.timer = setInterval(function () {
-      var step = (target - obj.offsetTop) / 10;//step = (target - leader) / 10
+      let step = (target - obj.offsetTop) / 10;//step = (target - leader) / 10
       step = target > obj.offsetTop ? Math.ceil(step) : Math.floor(step);//根据目标来向上或者向下取整
       //leader = leader + step
       obj.style.top = obj.offsetTop + step + "px";
       //console.log("leader: " + box.offsetLeft + "step" + step);
-      if (target == obj.offsetTop) {
+      if (target === obj.offsetTop) {
         clearInterval(obj.timer);
       }
     }, 30)
   }
 
+  // load
   window.onload = function () {
-    var pic = document.getElementById("pic");
+    let pic = document.getElementById("pic");
     window.onscroll = function () {
       target = scroll().top + 50;
       animate(pic, target);

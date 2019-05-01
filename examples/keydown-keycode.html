@@ -1,31 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>keycode</title>
-	<style>
-
-
-	</style>
+  <meta charset="UTF-8">
+  <title>keycode</title>
 </head>
 <body>
-
 <input type="text" size="40" onkeypress="myFunction(event)">
-
 <p id="demo"></p>
 </body>
-
 <script>
-
-  document.onkeydown=function(event){
-  	event=event||window.event;
-  	var x = event.which || event.keyCode;
-  	console.log(x);
+  document.onkeydown = function (event) {
+    event = event || window.event;
+    var x = event.which || event.keyCode;
+    console.log(x);
   }
-	function myFunction(event) {
 
+  function myFunction(event) {
     var x = event.which || event.keyCode;
     document.getElementById("demo").innerHTML = " Unicode 值为: " + x;
-}
+  }
 </script>
 </html>

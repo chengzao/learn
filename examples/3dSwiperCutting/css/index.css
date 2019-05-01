@@ -1,122 +1,126 @@
 body {
-			margin: 0;
-			padding-top: 0;
-			background-color: #F7F7F7;
-		}
+  margin: 0;
+  padding-top: 0;
+  background-color: #F7F7F7;
+}
 
-		ul {
-			height: 100%;
-			margin: 0;
-			padding: 0;
-			list-style: none;
-		}
+ul {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 
-		.view {
-			width: 560px;
-			height: 300px;
-			margin: 100px auto;
-			border: 1px solid #CCC;
-			position: relative;
-		}
+.view {
+  width: 560px;
+  height: 300px;
+  margin: 100px auto;
+  border: 1px solid #CCC;
+  position: relative;
+}
 
-		li {
-			position: absolute;
-			top: 0;
-			width: 112px;
-			height: 100%;
-			/*background-color: green;*/
-			-webkit-transform-style: preserve-3d;
-			        transform-style: preserve-3d;
-			-webkit-transition: all 1s;
-			transition: all 1s;
-		}
+li {
+  position: absolute;
+  top: 0;
+  width: 112px;
+  height: 100%;
+  /*background-color: green;*/
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
 
-		li:nth-child(1) {
-			left: 0;
-		}
+li:nth-child(1) {
+  left: 0;
+}
 
-		li:nth-child(2) {
-			left: 112px;
-		}
+li:nth-child(2) {
+  left: 112px;
+}
 
-		li:nth-child(3) {
-			left: 224px;
-		}
+li:nth-child(3) {
+  left: 224px;
+}
 
-		li:nth-child(4) {
-			left: 336px;
-		}
+li:nth-child(4) {
+  left: 336px;
+}
 
-		li:nth-child(5) {
-			left: 448px;
-		}
+li:nth-child(5) {
+  left: 448px;
+}
 
-		li span {
-			position: absolute;
-			top: 0;
-			left: 0;
-			display: block;
-			width: 112px;
-			height: 300px;
-		}
-		/*front*/
-		li span:nth-child(1) {
-			background: url(../images/1.jpg);
-			-webkit-transform: translateZ(150px);
-			        transform: translateZ(150px);
-		}
-		/*top*/
-		li span:nth-child(2) {
-			background: url(../images/2.jpg);
-			-webkit-transform: rotateX(90deg) translateZ(150px);
-			        transform: rotateX(90deg) translateZ(150px);
-		}
-		/*back*/
-		li span:nth-child(3) {
-			background: url(../images/3.jpg);
-			-webkit-transform: rotateX(180deg) translateZ(150px);
-			        transform: rotateX(180deg) translateZ(150px);
-		}
-		/*bottom*/
-		li span:nth-child(4) {
-			background: url(../images/4.jpg);
-			-webkit-transform: rotateX(270deg) translateZ(150px);
-			        transform: rotateX(270deg) translateZ(150px);
-		}
+li span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 112px;
+  height: 300px;
+}
 
-		li:nth-child(2) span {
-			background-position: -112px 0;
-		}
+/*front*/
+li span:nth-child(1) {
+  background: url(../images/1.jpg);
+  -webkit-transform: translateZ(150px);
+  transform: translateZ(150px);
+}
 
-		li:nth-child(3) span {
-			background-position: -224px 0;
-		}
+/*top*/
+li span:nth-child(2) {
+  background: url(../images/2.jpg);
+  -webkit-transform: rotateX(90deg) translateZ(150px);
+  transform: rotateX(90deg) translateZ(150px);
+}
 
-		li:nth-child(4) span {
-			background-position: -336px 0;
-		}
+/*back*/
+li span:nth-child(3) {
+  background: url(../images/3.jpg);
+  -webkit-transform: rotateX(180deg) translateZ(150px);
+  transform: rotateX(180deg) translateZ(150px);
+}
 
-		li:nth-child(5) span {
-			background-position: -448px 0;
-		}
+/*bottom*/
+li span:nth-child(4) {
+  background: url(../images/4.jpg);
+  -webkit-transform: rotateX(270deg) translateZ(150px);
+  transform: rotateX(270deg) translateZ(150px);
+}
+
+li:nth-child(2) span {
+  background-position: -112px 0;
+}
+
+li:nth-child(3) span {
+  background-position: -224px 0;
+}
+
+li:nth-child(4) span {
+  background-position: -336px 0;
+}
+
+li:nth-child(5) span {
+  background-position: -448px 0;
+}
 
 
-		/*按钮*/
-		.prev, .next {
-			display: block;
-			width: 60px;
-			height: 60px;
-			text-align: center;
-			line-height: 60px;
-			margin-top: -30px;
-			font-size: 40px;
-			color: #FFF;
-			text-decoration: none;
-			background-color: rgba(0, 0, 0, 0.5);
-			position: absolute;
-			top: 50%;
-		}
+/*按钮*/
+.prev, .next {
+  display: block;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  margin-top: -30px;
+  font-size: 40px;
+  color: #FFF;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 50%;
+}
 
-		.next {
-			right: 0;
-		}
+.next {
+  right: 0;
+}

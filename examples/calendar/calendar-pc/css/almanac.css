@@ -1,6 +1,7 @@
-html{
+html {
   font-size: 13px;
 }
+
 .control-bar .control-module {
   background-color: #f3f5fa;
   border: 1px solid #c9cccf;
@@ -8,6 +9,7 @@ html{
   margin-right: 5px;
   position: relative;
 }
+
 .control-bar .control {
   border-left: 1px solid #c9cccf;
   border-right: 1px solid #c9cccf;
@@ -16,12 +18,14 @@ html{
   line-height: 12px;
   padding: 4px 10px 0;
 }
+
 .control .field {
   float: left;
   height: 12px;
   line-height: 12px;
   padding: 0;
 }
+
 .year-control .control,
 .month-control .control {
   width: 38px;
@@ -34,14 +38,17 @@ html{
   height: 20px;
   width: 15px;
 }
+
 .control-module .prev,
 .control-module .next,
 .control-module .trigger {
   background: url("images/bar.gif") no-repeat;
 }
+
 .control-module .next {
   background-position: 0 -25px;
 }
+
 .control-module .trigger {
   background-position: 0 -50px;
   cursor: pointer;
@@ -62,6 +69,7 @@ html{
   height: 20px;
   line-height: 20px;
 }
+
 .control-bar .list {
   position: absolute;
   top: 23px;
@@ -78,6 +86,7 @@ html{
   z-index: 200;
   list-style: none;
 }
+
 .control-bar .list li {
   color: #9a9a9a;
   cursor: pointer;
@@ -89,15 +98,17 @@ html{
   padding-left: 10px;
   z-index: 200;
 }
+
 .control-bar .list li:hover, .control-bar .list li.on {
   background-color: #77a1b4;
   color: #fff;
 }
 
-.hidden{
+.hidden {
   display: none;
 }
-.clearfix::before, .clearfix::after{
+
+.clearfix::before, .clearfix::after {
   box-sizing: border-box;
   clear: both;
   content: " ";

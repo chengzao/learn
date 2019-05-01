@@ -2,90 +2,90 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://ii.911cha.com/blue/style.css?20171226">
-    <link rel="stylesheet" href="https://ii.911cha.com/nongli/nongli.css?20170327">
-    <link rel="stylesheet" href="./css/calendar.css">
-    <title>calendar</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://ii.911cha.com/blue/style.css?20171226">
+  <link rel="stylesheet" href="https://ii.911cha.com/nongli/nongli.css?20170327">
+  <link rel="stylesheet" href="./css/calendar.css">
+  <title>calendar</title>
 </head>
 
 <body>
-    <div class="mainbox">
-        <div class="leftbox">
-            <div class="panel">
-                <div class="mtb">
-                    <div class="oc gclear" style="position:relative;">
-                        <span class="s_txt mr green">生日一</span>
-                        <span class="s_iptw clearIptVal">
+<div class="mainbox">
+  <div class="leftbox">
+    <div class="panel">
+      <div class="mtb">
+        <div class="oc gclear" style="position:relative;">
+          <span class="s_txt mr green">生日一</span>
+          <span class="s_iptw clearIptVal">
                             <input readonly="readonly" class="s_ipt f14" autocomplete="off" id="txt_0" value="点击选择生日1">
                         </span>
-                        <span class="s_txt red">必填</span>
-                        <div id="calendar0" style="position: absolute;z-index: 111; top: 44px;left:80px;"></div>
-                    </div>
-                    <div class="oc gclear" style="position:relative;">
-                        <span class="s_txt mr green">生日二</span>
-                        <span class="s_iptw clearIptVal">
+          <span class="s_txt red">必填</span>
+          <div id="calendar0" style="position: absolute;z-index: 111; top: 44px;left:80px;"></div>
+        </div>
+        <div class="oc gclear" style="position:relative;">
+          <span class="s_txt mr green">生日二</span>
+          <span class="s_iptw clearIptVal">
                             <input readonly="readonly" class="s_ipt f14" autocomplete="off" id="txt_1" value="点击选择生日2">
                         </span>
-                        <span class="s_txt blue">必填</span>
-                        <div id="calendar1" style="position: absolute;z-index: 111; top: 44px;left:80px;"></div>
-                    </div>
-                    <div class="oc gclear" style="position:relative;">
-                        <span class="s_txt mr green">生日二</span>
-                        <span class="s_iptw clearIptVal">
+          <span class="s_txt blue">必填</span>
+          <div id="calendar1" style="position: absolute;z-index: 111; top: 44px;left:80px;"></div>
+        </div>
+        <div class="oc gclear" style="position:relative;">
+          <span class="s_txt mr green">生日二</span>
+          <span class="s_iptw clearIptVal">
                             <input readonly="readonly" class="s_ipt f14" autocomplete="off" id="txt_2" value="点击选择吉日">
                         </span>
-                        <span class="s_txt blue">必填</span>
-                        <div id="calendar2" style="position: absolute;z-index: 111; top: 44px;left:80px;"></div>
-                    </div>
-                </div>
-            </div>
+          <span class="s_txt blue">必填</span>
+          <div id="calendar2" style="position: absolute;z-index: 111; top: 44px;left:80px;"></div>
         </div>
+      </div>
     </div>
+  </div>
+</div>
 </body>
 <!-- <script src="./js/calendarM.js"></script> -->
 <script src="./js/calendar.min.js"></script>
 <script>
-    window.onload = function() {
-        // 使用
-        // cal.show({
-        //   'el': '#txt_0',  // 目标input
-        //   'show':'#calendar0', // 日历填充位置
-        //   'iptName':['kind1','year1','month1','date1'], // 隐藏提交input的name
-        //   'tip': '点击选择生日1', //点击清除按钮后input显示的内容,保持与页面input的提示内容一致
-        //   'initTime':[2017,9] //日历初始化时间，只支持阳历
-        // })
+  window.onload = function () {
+    // 使用
+    // cal.show({
+    //   'el': '#txt_0',  // 目标input
+    //   'show':'#calendar0', // 日历填充位置
+    //   'iptName':['kind1','year1','month1','date1'], // 隐藏提交input的name
+    //   'tip': '点击选择生日1', //点击清除按钮后input显示的内容,保持与页面input的提示内容一致
+    //   'initTime':[2017,9] //日历初始化时间，只支持阳历
+    // })
 
 
-        // 示例如下 ：
+    // 示例如下 ：
 
-        cal.show({
-             'el': '#txt_0',
-             'show':'#calendar0',
-             'iptName':['kind1','year1','month1','date1'],
-             'tip': '点击选择生日1',
-             'initTime':[2017,9]
-           })
+    cal.show({
+      'el': '#txt_0',
+      'show': '#calendar0',
+      'iptName': ['kind1', 'year1', 'month1', 'date1'],
+      'tip': '点击选择生日1',
+      'initTime': [2017, 9]
+    })
 
-        cal.show({
-           'el': '#txt_1',
-           'show':'#calendar1',
-           'iptName':['kind2','year2','month2','date2'],
-           'tip': '点击选择生日2',
-           'initTime':[2014,9]
-        })
+    cal.show({
+      'el': '#txt_1',
+      'show': '#calendar1',
+      'iptName': ['kind2', 'year2', 'month2', 'date2'],
+      'tip': '点击选择生日2',
+      'initTime': [2014, 9]
+    })
 
-        cal.show({
-           'el': '#txt_2',
-           'show':'#calendar2',
-           'iptName':['kind3','year3','month3','date3'],
-           'tip': '点击选择吉日',
-           'initTime':[2010,9]
-        })
+    cal.show({
+      'el': '#txt_2',
+      'show': '#calendar2',
+      'iptName': ['kind3', 'year3', 'month3', 'date3'],
+      'tip': '点击选择吉日',
+      'initTime': [2010, 9]
+    })
 
-    }
+  }
 </script>
 
 </html>
