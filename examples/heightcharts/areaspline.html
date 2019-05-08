@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>areaspline</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>
+  <style>
+    .statistic-common-tooltip-wrap {
+      background-color: #fff;
+      border-radius: 10px 10px 0;
+      box-shadow: 0 0 8px 0 rgba(0,0,0,.15);
+      padding: 12px;
+    }
+    .statistic-common-tooltip-wrap .tooltip-title {
+      color: #999;
+      margin-bottom: 8px;
+    }
+    .c-666 {
+      color: #666!important;
+    }
+    .statistic-common-tooltip-wrap .tooltip-value {
+      font-size: 18px;
+      font-weight: 700;
+      display: inline-block;
+      width: 50px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="project-process-statistic-spline-chart" style="height: 400px"></div>
+  <script>
+    var formatDateTime = function (time ,fmt) { //author: meizz
+      var date = new Date(time)
+      var o = {
+        "M+": date.getMonth() + 1, //月份
+        "d+": date.getDate(), //日
+        "h+": date.getHours(), //小时
+        "m+": date.getMinutes(), //分
+        "s+": date.getSeconds(), //秒
+        "q+": Math.floor((date.getMonth() + 3) / 3), //季度
+        "S": date.getMilliseconds() //毫秒
+      };
+      if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
+      for (var k in o)
+        if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+      return fmt;
+    }
+
+    let database = {
+      begin: 1554652800000,
+      end: 1557244799999,
+      taskProcessStat:{
+        '2019-04-12': {created: 0, completed: 2},
+        '2019-04-17': {created: 0, completed: 1}
+      }
+    }
+
+    var noFormattedData = database.taskProcessStat;
+    var formattedData = {
+      created: [],
+      completed: []
+    };
+    var begin = database.begin;
+    var end = database.end;
+    var categories = [];
+
+    for (var time = begin; time < end; time += 24 * 60 * 60 * 1000) {
+      var timeStr = formatDateTime(time, 'yyyy-MM-dd');
+      if (noFormattedData[timeStr] != undefined) {
+        formattedData.created.push(noFormattedData[timeStr].created);
+        formattedData.completed.push(noFormattedData[timeStr].completed);
+      } else {
+        formattedData.created.push(0);
+        formattedData.completed.push(0);
+      }
+    }
+    var beginDate = new Date(begin);
+
+    Highcharts.setOptions({
+      global: {
+        timezoneOffset: -8 * 60,
+      },
+      lang: {
+        resetZoom: '重置缩放'
+      }
+    });
+    var config = {
+      chart: {
+        zoomType: 'none',
+        resetZoomButton: {
+          theme: {
+            fill: 'white',
+            stroke: 'silver',
+            r: 3,
+            states: {
+              hover: {
+                fill: '#1ab394',
+                style: {
+                  color: '#ffffff'
+                }
+              }
+            }
+          }
+        }
+      },
+      title: {
+        text: null
+      },
+      credits: {
+        enabled: false
+      },
+      legend: {
+        enabled: false
+      },
+      xAxis: {
+        allowDecimals: false,
+        type: 'datetime',
+        minPadding: 0,
+        maxPadding: 0,
+        gridLineColor: '#f0f0f6',
+        gridLineDashStyle: 'shortdot',
+        gridLineWidth: 1,
+        tickLength: 0,
+        crosshair: {
+          color: '#999999',
+          width: 1
+        },
+        minRange: 86400000,
+        mintTickInterval: 86400000,
+        labels: {
+          formatter: function () {
+            var date = new Date(this.value);
+            var today = new Date();
+            var time = formatDateTime(this.value, 'yyyy-MM-dd');
+            if (date.getFullYear() == today.getFullYear()) {
+              time = formatDateTime(this.value, 'MM-dd');
+            }
+
+            return time;
+          }
+        }
+      },
+      yAxis: {
+        allowDecimals: false,
+        minPadding: 0,
+        gridLineColor: '#f0f0f6',
+        gridLineWidth: 1,
+        tickLength: 0,
+        title: {
+          text: null
+        }
+      },
+      plotOptions: {
+        areaspline: {
+          lineWidth: 3,
+          point: {
+            events: {
+              click: function () {
+                // fn.openStatisticProcessDetail(this.x);
+              }
+            }
+          },
+          states: {
+            hover: {
+              lineWidthPlus: 0,
+              halo: {
+                size: 0
+              }
+            }
+          },
+          marker: {
+            enabled: false,
+            states: {
+              hover: {
+                radius: 7,
+                lineWidth: 3,
+                fillColor: '#ffffff'
+              }
+            }
+          },
+          pointStart: begin,
+          pointInterval: 24 * 3600 * 1000
+        }
+      },
+      tooltip: {
+        crosshairs: true,
+        shared: true,
+        shadow: false,
+        backgroundColor: 'rgba(255, 255, 255, 0)',
+        borderWidth: 0,
+        useHTML: true,
+        formatter: function () {
+          var today = new Date();
+          var date = new Date(this.x);
+          var title = formatDateTime(this.x, 'yyyy-MM-dd');
+
+          if (date.getFullYear() == today.getFullYear()) {
+            title = formatDateTime(this.x, 'MM-dd');
+          }
+
+          return '<div class="statistic-common-tooltip-wrap">' +
+            '<div class="tooltip-title">' + title + '</div>' +
+            '<div class="c-666">' +
+            '新增: <span class="tooltip-value">' + this.points[0].y + '</span>' +
+            '</div>' +
+            '<div class="c-666">' +
+            '完成: <span class="tooltip-value">' + this.points[1].y + '</span>' +
+            '</div>' +
+            '</div>';
+        },
+        positioner: function (labelWidth, labelHeight, point) {
+          var x = point.plotX - labelWidth + 20;
+
+          // $('.statistic-common-tooltip-wrap').removeClass('tooltip-right');
+          if (x < 0) {
+            x = point.plotX + 60;
+            // $('.statistic-common-tooltip-wrap').addClass('tooltip-right');
+          }
+          var y = point.plotY - Math.round(labelHeight / 2);
+
+          if (y < 0) {
+            y = point.plotY;
+          }
+
+          return {x: x, y: y};
+        }
+
+
+      },
+      series: [
+        {
+        type: 'areaspline',
+        name: '新增',
+        color: '#d1d2db',
+        fillColor: {
+          linearGradient: {x1: 0, y1: 0, x2: 0, y2: 1},
+          stops: [
+            [0, 'rgba(0, 0, 0, 0.1)'],
+            [0.8, 'rgba(255, 255, 255, 0)']
+          ]
+        },
+        marker: {
+          symbol: 'circle',
+          states: {
+            hover: {
+              lineColor: '#d1d2db',
+            }
+          }
+        },
+        data: formattedData.created
+      }, {
+        type: 'areaspline',
+        name: '完成',
+        color: '#51c1a9',
+        fillColor: {
+          linearGradient: {x1: 0, y1: 0, x2: 0, y2: 1},
+          stops: [
+            [0, 'rgba(81, 193, 169, 0.6)'],
+            [0.8, 'rgba(255, 255, 255, 0)']
+          ]
+        },
+        marker: {
+          symbol: 'circle',
+          states: {
+            hover: {
+              lineColor: '#51c1a9',
+            }
+          }
+        },
+        data: formattedData.completed
+      }]
+    };
+
+
+    if (formattedData.created.length < 7) {
+      config.xAxis.mintTickInterval = undefined;
+      config.xAxis.tickInterval = 86400000;
+    }
+    if (formattedData.created.length == 1) {
+      config.plotOptions.areaspline.marker.enabled = true;
+    }
+    console.log(JSON.stringify(config, 0, 2))
+    $('#project-process-statistic-spline-chart').highcharts(config);
+  </script>
+
+</body>
+</html>
