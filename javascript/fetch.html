@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>fetch html</title>
+</head>
+<body>
+  <div id="content"></div>
+  <script>
+    fetch('https://mp.weixin.qq.com/s?__biz=Mzg5MDA2MTkwMw==&mid=2247484136&idx=1&sn=25100f30ab95f5d45a8fefc7cf023da3&chksm=cfe317c8f8949ede6273446a11337e814811185c4be7ffe788e49ae5418c939f1d4c45eef7e1&mpshare=1&scene=1&srcid=#rd')
+      .then(res => res.text())
+      .then(result => console.log(result))
+  </script>
+</body>
+</html>

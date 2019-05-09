@@ -187,8 +187,8 @@
     console.log(tools.spliteYearArr(arr));
 
     var ddd = {
-      earliestDate: +new Date(2019, 1, 5),
-      latestDate: +new Date(2019, 3, 15)
+      earliestDate: 1533113100000,
+      latestDate: 1567414800000
     }
 
     // let monthArr = [...Array(12).keys()].map(item => item+1);
@@ -294,12 +294,12 @@
     }
 
 
-    res = formateYear(ddd.earliestDate, ddd.latestDate, 3)
+    res = formateYear(ddd.earliestDate, ddd.latestDate, 12)
 
     var result = getYearMonths(res.outputStart.stamp, res.outputEnd.stamp)
 
 
-    console.log(splitArrYear(result.data));
+    console.log('year',result);
 
   </script>
 </body>

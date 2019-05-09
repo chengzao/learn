@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>highchars</title>
+  <script src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
+  <script src="http://cdn.hcharts.cn/highstock/highstock.js"></script>
+</head>
+<body>
+  <div id="container" style="height: 500px"></div>
+  <script>
+    $(function () {
+
+      var chart = new Highcharts.Chart({
+
+        chart: {
+          renderTo: 'container',
+          heigth: 300,
+          type: 'column' //2.设置图表类型
+        },
+
+        xAxis: {
+          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+          max: 10 //3.设置显示个数
+        },
+
+
+        //4.设置滚动条可用
+        scrollbar: {
+          enabled: true
+        },
+        yAxis: [{
+
+        }, {
+          opposite: false
+        }],
+        series: [{
+          data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4, 29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
+          name: '测试1'
+        }]
+      });
+
+    });
+  </script>
+</body>
+</html>
