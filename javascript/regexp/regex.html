@@ -19,13 +19,15 @@
   var regEx2 = /\d/;
 
 
-  var rep = /\d+|\.|\,|\~|\!|\@|\#|\#|\%|\^|\&|\*|\(|\)|\+|\=|\{|\}/ui;
-  // /([\x{4e00}-\x{9fa5}]+)/u
-  // /([a-zA-Z]+)/ui
-  var str = '111';
-  var res = new RegExp(rep, 'gi').test(str)
+  var regex = /(ab)+/g;
+  var string = "ababa abbb ababab";
+  console.log( string.match(regex) );
 
-  console.log('res =>', res);
+
+  var path = "/cost/form/"
+
+  var res = /^\/cost\/form\/?$/.test(path)
+  console.log('res', res)
 
 
 </script>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bar</title>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>
+</head>
+<body>
+<div id="container" style="min-width:400px;height:400px"></div>
+<script>
+  var config = {
+    chart: {
+      type: 'bar'
+    },
+    title: {
+      text: '堆叠条形图'
+    },
+    xAxis: {
+      categories: ['苹果', '橘子', '梨', '葡萄', '香蕉'],
+      "tickLength": 0
+    },
+    "yAxis":{
+      "min":0,
+      "tickLength":0,
+      "gridLineWidth":0,
+      "title":{
+        "text":""
+      },
+      "labels":{
+        "style":{
+          "color":"#fff"
+        }
+      },
+      "stackLabels":{
+        "enabled":true,
+        "style":{
+          "fontWeight":"bold",
+          "color":"gray"
+        }
+      },
+      "visible":true
+    },
+    legend: {
+      reversed: true
+    },
+    "tooltip": {
+      "enabled": false
+    },
+    plotOptions: {
+      bar: {
+        stacking: 'normal',
+        // dataLabels: {
+        //   align: 'left',
+        //   enabled: true
+        // }
+      }
+    },
+    series: [{
+      name: '小张',
+      data: [0],
+      // dataLabels: {
+      // 	align: 'left',
+      // 	enabled: true
+      // }
+    }]
+  };
+  var config2 = {
+    "chart":{
+      "type":"bar"
+    },
+    "title":{
+      "text":""
+    },
+    "colors":[
+      "#ebebeb",
+      "#48c2a9"
+    ],
+    "xAxis":{
+      "categories":[
+        "s2工程通超管"
+      ],
+      "tickLength":0
+    },
+    "yAxis":{
+      "min":1,
+      "tickLength":0,
+      "gridLineWidth":0,
+      "title":{
+        "text":""
+      },
+      "labels":{
+        "style":{
+          "color":"#fff"
+        }
+      },
+      "stackLabels":{
+        "enabled":true,
+        "style":{
+          "fontWeight":"bold",
+          "color":"gray"
+        }
+      },
+      "visible":true
+    },
+    "credits":{
+      "enabled":false
+    },
+    "legend":{
+      "enabled":false,
+      "reversed":true
+    },
+    "tooltip":{
+      "enabled":false
+    },
+    "plotOptions":{
+      "series":{
+        "stacking":"normal",
+        "pointWidth":20
+      }
+    },
+    "series":[
+      {
+        "states":{
+          "hover":{
+            "enabled":true,
+            "color":"#ee5666",
+            "halo":false
+          }
+        },
+        "color":"#f17885",
+        "name":"完成量",
+        "data":[
+          0
+        ]
+      }
+    ]
+  }
+  var chart = Highcharts.chart('container', config);
+</script>
+</body>
+</html>
