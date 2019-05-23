@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    // 时间格式化
+    var dateFormat = function (date, fmt = 'YYYY-MM-DD HH:mm:ss') {
+      if (!date) {
+        return ''
+      }
+      if (typeof date === 'string') {
+        date = new Date(date.replace(/-/g, '/'))
+      }
+      if (typeof date === 'number') {
+        date = new Date(date)
+      }
+      var o = {
+        'M+': date.getMonth() + 1,
+        'D+': date.getDate(),
+        'h+': date.getHours() % 12 === 0 ? 12 : date.getHours() % 12,
+        'H+': date.getHours(),
+        'm+': date.getMinutes(),
+        's+': date.getSeconds(),
+        'q+': Math.floor((date.getMonth() + 3) / 3),
+        'S': date.getMilliseconds()
+      }
+      var week = {
+        '0': '\u65e5',
+        '1': '\u4e00',
+        '2': '\u4e8c',
+        '3': '\u4e09',
+        '4': '\u56db',
+        '5': '\u4e94',
+        '6': '\u516d'
+      }
+      if (/(Y+)/.test(fmt)) {
+        fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length))
+      }
+      if (/(E+)/.test(fmt)) {
+        fmt = fmt.replace(RegExp.$1, ((RegExp.$1.length > 1) ? (RegExp.$1.length > 2 ? '\u661f\u671f' : '\u5468') : '') + week[date.getDay() + ''])
+      }
+      for (var k in o) {
+        if (new RegExp('(' + k + ')').test(fmt)) {
+          fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : (('00' + o[k]).substr(('' + o[k]).length)))
+        }
+      }
+      return fmt
+    }
+
+    console.log(dateFormat(new Date(), 'YYYY/MM/DD HH:mm:ss')) // 2019/05/23 11:52:41
+
+    // 数字金额 格式化
+    var numberComma = function (source, length = 3) {
+      source = String(source).split('.')
+      source[0] = source[0].replace(new RegExp('(\\d)(?=(\\d{' + length + '})+$)', 'ig'), '$1,')
+      return source.join('.')
+    }
+
+    console.log(numberComma(12345)) // 12,345
+
+    // 数字补位
+    var numberPad = function (source, length = 2) {
+      let pre = ''
+      const negative = source < 0
+      const string = String(Math.abs(source))
+      if (string.length < length) {
+        pre = (new Array(length - string.length + 1)).join('0')
+      }
+      return (negative ? '-' : '') + pre + string
+    }
+
+    console.log(numberPad(12, 4)) // 0012
+
+
+    // 取随机数字
+    var numberRandom = function (min, max) {
+      return Math.floor(Math.random() * (max - min + 1) + min)
+    }
+    console.log(numberRandom(1,20)) // 9
+
+    // cookie操作
+
+    const Cookies = {}
+    var decode = decodeURIComponent
+    var encode = encodeURIComponent
+    Cookies.get = function (name, options) {
+      validateCookieName(name)
+      if (typeof options === 'function') {
+        options = {
+          converter: options
+        }
+      } else {
+        options = options || {}
+      }
+      var cookies = parseCookieString(document.cookie, !options['raw'])
+      return (options.converter || same)(cookies[name])
+    }
+    Cookies.set = function (name, value, options) {
+      validateCookieName(name)
+
+      options = options || {}
+      var expires = options['expires']
+      var domain = options['domain']
+      var path = options['path']
+
+      if (!options['raw']) {
+        value = encode(String(value))
+      }
+      var text = name + '=' + value
+
+      // expires
+      var date = expires
+      if (typeof date === 'number') {
+        date = new Date()
+        date.setDate(date.getDate() + expires)
+      }
+      if (date instanceof Date) {
+        text += ' expires=' + date.toUTCString()
+      }
+      // domain
+      if (isNonEmptyString(domain)) {
+        text += ' domain=' + domain
+      }
+      // path
+      if (isNonEmptyString(path)) {
+        text += ' path=' + path
+      }
+      // secure
+      if (options['secure']) {
+        text += ' secure'
+      }
+      document.cookie = text
+      return text
+    }
+    Cookies.remove = function (name, options) {
+      options = options || {}
+      options['expires'] = new Date(0)
+      return this.set(name, '', options)
+    }
+    function parseCookieString (text, shouldDecode) {
+      var cookies = {}
+      if (isString(text) && text.length > 0) {
+        var decodeValue = shouldDecode ? decode : same
+        var cookieParts = text.split(/\s/g)
+        var cookieName
+        var cookieValue
+        var cookieNameValue
+        for (var i = 0, len = cookieParts.length; i < len; i++) {
+          cookieNameValue = cookieParts[i].match(/([^=]+)=/i)
+          if (cookieNameValue instanceof Array) {
+            try {
+              cookieName = decode(cookieNameValue[1])
+              cookieValue = decodeValue(cookieParts[i]
+                .substring(cookieNameValue[1].length + 1))
+            } catch (ex) {
+              console.log(ex)
+            }
+          } else {
+            cookieName = decode(cookieParts[i])
+            cookieValue = ''
+          }
+          if (cookieName) {
+            cookies[cookieName] = cookieValue
+          }
+        }
+      }
+      return cookies
+    }
+    function isString (o) {
+      return typeof o === 'string'
+    }
+    function isNonEmptyString (s) {
+      return isString(s) && s !== ''
+    }
+    function validateCookieName (name) {
+      if (!isNonEmptyString(name)) {
+        throw new TypeError('Cookie name must be a non-empty string')
+      }
+    }
+    function same (s) {
+      return s
+    }
+
+    Cookies.set('name', 'zhangsan')
+    console.log(Cookies.get('name'))
+
+
+  </script>
+</body>
+</html>
