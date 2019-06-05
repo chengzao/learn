@@ -18,5 +18,31 @@
   }
   fn()
   console.log("x ==> " + x)
+
+
+  let name = 'ConardLi';
+  function changeValue(name) {
+    name = 'code秘密花园';
+  }
+  changeValue(name);
+  console.log(name); // ConardLi
+
+  //
+  let obj = { name: 'ConardLi' };
+  function changeValue(obj) {
+    obj.name = 'code秘密花园';
+  }
+  changeValue(obj);
+  console.log(obj.name); // code秘密花园
+
+
+  let obj2 = {};
+  function changeValue2(obj) {
+    obj.name = 'ConardLi';
+    obj = { name: 'code秘密花园' };
+  }
+  changeValue2(obj2);
+  console.log(obj2.name); // ConardLi
+
 </script>
 </html>

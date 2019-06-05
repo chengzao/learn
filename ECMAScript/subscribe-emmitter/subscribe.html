@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>发布订阅</title>
+</head>
+<body>
+  <script src="./subscribe.js"></script>
+  <script>
+    //测试一下
+    let subscribe = new Subscribe();
+    let fn1 = function fn1(x, y) {
+      console.log(1, x, y);
+    };
+    let fn2 = function fn2() {
+      console.log(2);
+    };
+    let fn3 = function fn3() {
+      console.log(3);
+      subscribe.remove(fn1);
+      subscribe.remove(fn2);
+    };
+    let fn4 = function fn4() {
+      console.log(4);
+    };
+
+    subscribe.add(fn1);
+    subscribe.add(fn1);
+    subscribe.add(fn2);
+    subscribe.add(fn1);
+    subscribe.add(fn3);
+    subscribe.add(fn4);
+    setInterval(() => {
+      subscribe.fire(100, 200);
+    }, 1000);
+  </script>
+</body>
+</html>

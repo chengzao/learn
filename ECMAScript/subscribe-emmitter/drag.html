@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>发布订阅模式</title>
+  <style>
+    html, body {
+        height: 100%;
+        overflow: hidden;
+    }
+    #box{
+        position: absolute;
+        top: 100px;
+        left: 100px;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: lightcoral;
+        cursor: move;
+        z-index: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="box"></div>
+  <script src="./drag.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    new Drag(document.querySelector('#box'))
+  </script>
+</body>
+</html>
