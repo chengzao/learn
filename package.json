@@ -24,7 +24,7 @@
     "axios": "^0.18.0",
     "core-decorators": "^0.20.0",
     "fs-readfile-promise": "^3.0.1",
-    "node-fetch": "^1.7.3",
+    "node-fetch": "^2.6.0",
     "ws": "^6.0.0"
   }
 }
