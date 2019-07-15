@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./svg.css">
+  <title>svg</title>
+</head>
+<body>
+  <section>
+    <h2>Rectangular</h2>
+    <div class="row">
+      <div class="column">
+        <canvas id="rect"></canvas>
+      </div>
+      <div class="column">
+        <svg>
+          <rect width="100" height="100"></rect>
+          <rect width="100" height="100" x="115"></rect>
+          <rect width="100" height="100" x="230" rx="15" ry="15"></rect>
+        </svg>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>Five Pointed Star</h2>
+    <div class="row">
+      <div class="column">
+        <canvas id="star" width="450" height="100"></canvas>
+      </div>
+      <div class="column">
+        <svg>
+          <polygon points="81, 95 0, 36 100, 36 19, 95 50, 0" stroke="red" fill="transparent"></polygon>
+          <polyline points="81, 95 0, 36 100, 36 19, 95 50, 0" fill="red" transform="translate(115, 0)"></polyline>
+          <polyline points="81, 95 0, 36 100, 36 19, 95 50, 0" fill="red" transform="translate(230, 0)"></polyline>
+          <polyline points="81, 95 0, 36 100, 36 19, 95 50, 0" fill="red" transform="translate(345, 0)"
+            fill-rule="evenodd"></polyline>
+        </svg>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>Circle & Arc</h2>
+    <div class="row">
+      <div class="column">
+        <canvas id="circle" width="450" height="100"></canvas>
+      </div>
+      <div class="column">
+        <svg>
+          <circle cx="50" cy="50" r="49"></circle>
+          <path d="M 50 50 L 99 50 A 49 49 0 1 0 50 99" transform="translate(115, 0)"></path>
+          <path d="M 50 50 L 99 50 A 49 49 0 0 1 50 99" transform="translate(230, 0)"></path>
+          <ellipse cx="50" cy="50" rx="30" ry="40" transform="translate(345, 0)"></ellipse>
+        </svg>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>Text</h2>
+    <div class="row">
+      <div class="column">
+        <canvas id="text"></canvas>
+      </div>
+      <div class="column">
+        <svg>
+          <g>
+            <rect width="100" height="100" x="1" y="1" fill="transparent" stroke="red">
+            </rect>
+            <text x="0" y="16" font-size="16px" font-family="serif">hello, world</text>
+          </g>
+          <g transform="translate(115, 0)">
+            <rect width="100" height="100" x="1" y="1" fill="transparent" stroke="red">
+            </rect>
+            <text x="50" y="50" font-size="16px" font-family="serif" text-anchor="middle"
+              alignment-baseline="middle">垂直居中</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>Gradient</h2>
+    <div class="row">
+      <div class="column">
+        <canvas id="grad"></canvas>
+      </div>
+      <div class="column">
+        <svg>
+          <defs>
+            <linearGradient id="linear" x1="0" y1="0" x2="0.3" y2="0.3" spreadMethod="reflect">
+              <stop offset="0" stop-color="red"></stop>
+              <stop offset="100%" stop-color="#fff"></stop>
+            </linearGradient>
+            <radialGradient id="radial" cx="0.5" cy="0.5" r="0.5" fx="0.8" fy="0.8">
+              <stop offset="0" stop-color="red"></stop>
+              <stop offset="100%" stop-color="#fff"></stop>
+            </radialGradient>
+          </defs>
+          <rect x="0" y="0" width="100" height="100" fill="url(#linear)"></rect>
+          <circle cx="50" cy="50" r="50" fill="url(#radial)" transform="translate(115, 0)"></circle>
+        </svg>
+      </div>
+    </div>
+  </section>
+  <div>
+    <h2>Animation</h2>
+    <div class="row">
+      <div class="column">
+        <canvas id="animate"></canvas>
+      </div>
+      <div class="column">
+        <svg>
+          <circle cx="50" cy="50" r="49">
+            <animate attributeName="r" values="50; 5; 50" keyTimes="0; 0.5; 1" dur="3s" repeatCount="indefinite">
+            </animate>
+            <animate attributeName="fill" values="red; white; red" dur="3s" repeatCount="indefinite">
+            </animate>
+            <circle />
+        </svg>
+      </div>
+    </div>
+  </div>
+  <script src="./svg.js"></script>
+</body>
+</html>
