@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>instanceOf</title>
+</head>
+<body>
+  <script>
+    function instanceOf2(l, r) {
+      let proto = l.__proto__;
+      let prototype = r.prototype
+      while (true) {
+        if (proto == null) {
+          return false
+        }
+        if (proto == prototype) {
+          return true
+        }
+        proto = proto.__proto__
+      }
+    }
+
+    function Car() {}
+    function Dog() {}
+    var car = new Car();
+    var dog = new Dog()
+
+    console.log(instanceOf2(dog, Car))
+    // expected output: false
+
+    console.log(instanceOf2(car, Car));
+    // expected output: true
+
+    console.log(instanceOf2(car, Object));
+    // expected output: true
+  </script>
+</body>
+</html>

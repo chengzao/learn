@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>promise</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  function Promise2 (constructor){
+    var that = this;
+    that.status = 'pending'
+    that.value = undefined
+    that.reason = undefined
+    function resolve(value){
+      if(that.status === 'pending'){
+        that.value = value
+        that.status = 'resolved'
+      }
+    }
+    function reject(reason){
+      if(that.status === 'pending'){
+        that.value = reason
+        that.status = 'rejected'
+      }
+    }
+    try {
+      constructor(resolve, reject)
+    } catch (error) {
+      reject(error)
+    }
+  }
+
+  Promise2.prototype.then = function(onFullfilled, onRejected){
+    var that = this;
+    switch(that.status){
+      case 'resolved':
+        onFullfilled(that.value)
+        break;
+      case 'rejected':
+        onRejected(that.reason)
+        break;
+      default:
+        break;
+    }
+  }
+
+
+  var p = new Promise2(function(resolve, reject){
+    resolve(1)
+  })
+
+  p.then(function(x){
+    console.log(x);
+  }, function(e){
+    console.log(e);
+  })
+
+</script>
+
+</html>
