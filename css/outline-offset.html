@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>使用负值 outline-offset 实现加号</title>
+  <style>
+    .icon-add {
+      width: 200px;
+      height: 200px;
+      outline: 20px solid #000;
+      outline-offset: -118px;
+    }
+
+    .letter_spacing {
+      margin-left: 300px;
+      font-size: 36px;
+      letter-spacing: 0px;
+      animation: move 10s infinite;
+    }
+
+    @keyframes move {
+      40% {
+        letter-spacing: 36px;
+      }
+
+      80% {
+        letter-spacing: -72px;
+      }
+
+      100% {
+        letter-spacing: -72px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="icon-add"></div>
+  <p class="letter_spacing">倒序排列文字</p>
+
+</body>
+</html>
