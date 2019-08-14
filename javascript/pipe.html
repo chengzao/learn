@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>pipe管道</title>
+</head>
+<body>
+  <script>
+    function pipe(...fns) {
+      return function (x) {
+        return fns.reduce(function (arg, fn) {
+          return fn(arg);
+        }, x)
+      }
+    }
+
+    let str = 'javascript pipe'
+
+    function stringToUpper(str) {
+      return str.toUpperCase()
+    }
+
+    function stringReverse(str) {
+      return str.split('').reverse().join('')
+    }
+
+    let toUpperAndReverse = pipe(stringToUpper, stringReverse)
+    let result = toUpperAndReverse(str)
+    console.log(result); // EPIP TPIRCSAVAJ
+
+  </script>
+</body>
+</html>
