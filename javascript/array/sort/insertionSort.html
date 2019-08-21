@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>插入排序</title>
+</head>
+<body>
+  <div>
+    <h3>直接插入</h3>
+    <p>插入排序：通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入</p>
+    <code>
+      步骤:<br>
+      1. 从第一个元素开始，该元素可以认为已经被排序；<br>
+      2. 取出下一个元素，在已经排序的元素序列中从后向前扫描；<br>
+      3. 如果该元素（已排序）大于新元素，将该元素移到下一位置；<br>
+      4. 重复步骤 3，直到找到已排序的元素小于或者等于新元素的位置；<br>
+      5. 将新元素插入到该位置后；<br>
+      6. 重复步骤 2 ~ 5
+    </code>
+    <img src="https://raw.githubusercontent.com/chengzao/imgbed/img/img/insertionSort.gif" alt="insertionSort">
+    <p></p>
+  </div>
+  <script>
+    // 插入排序
+    const insertionSort = array => {
+      const len = array.length;
+      if (len <= 1) return
+
+      let preIndex, current;
+      for (let i = 1; i < len; i++) {
+        preIndex = i - 1; //待比较元素的下标
+        current = array[i]; //当前元素
+        while (preIndex >= 0 && array[preIndex] > current) {
+          //前置条件之一: 待比较元素比当前元素大
+          array[preIndex + 1] = array[preIndex]; //将待比较元素后移一位
+          preIndex--; //游标前移一位
+        }
+        if (preIndex + 1 != i) {
+          //避免同一个元素赋值给自身
+          array[preIndex + 1] = current; //将当前元素插入预留空位
+          console.log('array :', array);
+        }
+      }
+      return array;
+    };
+    // 测试
+    const array = [2, 5, 4, 3, 1, 9];
+    console.log("原始 array :", array);
+    insertionSort(array);
+
+  </script>
+</body>
+</html>

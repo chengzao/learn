@@ -1,0 +1,7 @@
+@URL = https://api.weixin.qq.com/
+@APPID = wx336e32586cc1632f
+@APPSECRET = c4fe2a5a8d2ab198cbddaebb6dfcf9d0
+
+### GET access_token
+GET {{URL}}cgi-bin/token?grant_type=client_credential&appid={{APPID}}&secret={{APPSECRET}}
+
