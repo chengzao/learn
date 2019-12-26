@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <dl>
+      <dd>13</dd>
+    </dl>
+  </ul>
+  <script>
+    var ul = document.querySelector('ul')
+    var lis = ul.children
+    var fragment = document.createDocumentFragment()
+    let nodes = Array.from(lis)
+    var p = document.createElement('p')
+    p.innerText = '插入的p标签'
+    nodes.splice(2, 0, p)
+    for (var i = 0; i < nodes.length; i++) {
+      fragment.appendChild(nodes[i])
+    }
+    ul.appendChild(fragment)
+
+    // var ul = document.querySelector('ul')
+    // var lis = ul.children
+    // var p = document.createElement('p')
+    // p.innerHTML = '插入的p标签'
+    // ul.insertBefore(p, lis[1])
+
+
+    // var arr = [1, 2, 3, 4]
+    // var arr2 = []
+    // var len = arr.length;
+    // for (var i = 0; i < len; i++) {
+    //   var item = arr[i]
+    //   if (i == 1) {
+    //     arr2.push('item')
+    //   }
+    //   arr2.push(item)
+    // }
+    // console.log(arr2);
+
+    // var arr = [1, 2, 3, 4]
+    // arr.splice(2, 0, 'item')
+    // console.log(arr);
+  </script>
+</body>
+</html>
