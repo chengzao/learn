@@ -20,7 +20,7 @@
 
   // 事件的监听，来监听状态的变化
   xhr.onreadystatechange = function () {
-    if (xhr.readyState == 4 && xhr.status) {
+    if (xhr.readyState == 4 && xhr.status === 200) {
       document.getElementById('show').innerHTML = xhr.responseText;
     }
 

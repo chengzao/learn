@@ -49,9 +49,6 @@
     xhr.send();
   }
 
-  // ajax('GET', 'http://www.b.com/v1/api/get');
-  // ajax('GET', 'http://www.b.com/v1/api/bing-bg');
-
   function ready(callback) {
 
     if (document.addEventListener) {
@@ -107,7 +104,7 @@
 
   ready(function () {
     jsonp({
-      url: 'http://www.b.com/v1/api/jsonp',
+      url: 'http://localhost:3001/api/jsonp',
       params: {
         wd: 'chengzao'
       },

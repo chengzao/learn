@@ -1,8 +1,0 @@
-<news>
-<item>
-	<p id='a'>this is a xml demo</p>
-</item>
-<item class='b'>
-	<p>this is a test</p>
-</item>
-</news>
