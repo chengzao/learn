@@ -8,6 +8,8 @@
 
 </body>
 <script>
+  var str = '{"name":"zhangsan","age":20}';
+
   function strToJson(str) {
     var json = eval('(' + str + ')');
     return json;
@@ -18,7 +20,7 @@
     var json = (new Function("return " + str))();
     return json;
   }
-
+  strToJson(str);   // Object {name: "zhangsan", age: 20}
 
   function strToJson(str) {
     return JSON.parse(str);
