@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>图片本地预览示例</title>
+</head>
+<body>
+    <h3>图片本地预览示例</h3>
+    <input type="file" accept="image/*" onchange="loadFile(event)" />
+    <img id="previewContainer" />
+
+    <script>
+        const loadFile = function(event) {
+            const reader = new FileReader();
+            console.log(reader)
+            reader.onload = function() {
+                const output = document.querySelector("#previewContainer");
+                const data = dataUrlToBlob(reader.result, 'image/jpeg')
+                output.src = reader.result;
+            };
+            // readAsDataURL => 本地图片对应的 File 对象转换为 Data URL
+            // readAsArrayBuffer
+            // readAsText
+
+            // data:[<mediatype>][;base64],<data>
+            // data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAhAAAAIwCAYAAADXrFK...
+            reader.readAsDataURL(event.target.files[0]);
+        };
+
+
+        function dataUrlToBlob(base64, mimeType) {
+            let bytes = window.atob(base64.split(",")[1]);
+            let ab = new ArrayBuffer(bytes.length);
+            let ia = new Uint8Array(ab);
+            for (let i = 0; i < bytes.length; i++) {
+                ia[i] = bytes.charCodeAt(i);
+            }
+            return new Blob([ab], { type: mimeType });
+        }
+
+
+        function uploadFile(url, blob) {
+            let formData = new FormData();
+            let request = new XMLHttpRequest();
+            formData.append("imgData", blob);
+            request.open("POST", url, true);
+            request.send(formData);
+        }
+
+    </script>
+</body>
+</html>

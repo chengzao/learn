@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iframe2</title>
+  </head>
+  <body>
+    <h3>iframe2 page</h3>
+    <script>
+      window.top.postMessage("message from iframe2");
+
+      window.addEventListener(
+        "message",
+        function (e) {
+          console.log("iframe2: ", e.data);
+        },
+        false
+      );
+
+      function postMsg(target) {
+        target.postMessage(
+          {
+            type: "onChange",
+            data: "123456",
+          },
+          "*"
+        );
+      }
+      try {
+        const parent = window.parent;
+        const opener = window.opener;
+        if (parent && parent.frames) {
+          for (let i = 0; i < parent.frames.length; i++) {
+            const f = parent.frames[i];
+            try {
+              f.origin;
+              postMsg(f);
+            } catch (e) {
+              console.error(e);
+            }
+          }
+        }
+        if (opener) {
+          console.log("frame2 opener: ", opener);
+          postMsg(opener);
+          window.opener.document.getElementById("frame2").value =
+            "hello from iframe2";
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    </script>
+  </body>
+</html>

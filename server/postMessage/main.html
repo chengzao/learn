@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PostMessage</title>
+</head>
+<body>
+  <h3>PostMessage Main Page</h3> 
+  <input id="frame1" value="">
+  <input id="frame2" value="">
+  <p>
+    <button onclick="window.open('./frame2.html')">open iframe2</button>
+  </p>
+  <iframe src="./frame1.html" frameborder="1"></iframe>
+  <iframe src="./frame2.html" frameborder="1"></iframe>
+  <script>
+  // 子页面向父页面传递消息  
+  window.addEventListener('message',function(e){
+  　　console.log('main page: ',e.data)
+  },false)
+
+
+  // 父页面向子页面传递消息
+  window.onload = function () {
+    var frame1 = window.frames[0];
+    frame1.postMessage('message from main page', '*');
+
+    var frame2 = window.frames[1];
+    frame2.postMessage('message from main page', '*');
+  }
+  </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: antiquewhite;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    function makeHighRes(canvas) {
+      var ctx = canvas.getContext("2d");
+      // Get the device pixel ratio, falling back to 1.
+      var dpr =
+        window.devicePixelRatio ||
+        window.webkitDevicePixelRatio ||
+        window.mozDevicePixelRatio ||
+        1;
+
+      // Get the size of the canvas in CSS pixels.
+      var oldWidth = canvas.width;
+      var oldHeight = canvas.height;
+      // Give the canvas pixel dimensions of their CSS
+      // size * the device pixel ratio.
+      canvas.width = Math.round(oldWidth * dpr);
+      canvas.height = Math.round(oldHeight * dpr);
+      canvas.style.width = oldWidth + "px";
+      canvas.style.height = oldHeight + "px";
+      // Scale all drawing operations by the dpr, so you
+      // don't have to worry about the difference.
+      ctx.scale(dpr, dpr);
+      return ctx;
+    }
+
+
+    var PIXEL_RATIO = (function() {
+      var ctx = document.createElement("canvas").getContext("2d"),
+        dpr = window.devicePixelRatio || 1,
+        bsr = ctx.webkitBackingStorePixelRatio ||
+          ctx.mozBackingStorePixelRatio ||
+          ctx.msBackingStorePixelRatio ||
+          ctx.oBackingStorePixelRatio ||
+          ctx.backingStorePixelRatio || 1;
+
+      return dpr / bsr;
+    })();
+
+
+    createHiDPICanvas = function(w, h, ratio) {
+      if (!ratio) { ratio = PIXEL_RATIO; }
+      var can = document.createElement("canvas");
+      can.width = w * ratio;
+      can.height = h * ratio;
+      can.style.width = w + "px";
+      can.style.height = h + "px";
+      can.getContext("2d").setTransform(ratio, 0, 0, ratio, 0, 0);
+      return can;
+    }
+
+    //Create canvas with the device resolution.
+    var myCanvas = createHiDPICanvas(500, 250);
+
+    //Create canvas with a custom resolution.
+    var myCustomCanvas = createHiDPICanvas(400, 200, 2);
+    var ctx = myCustomCanvas.getContext('2d')
+
+    ctx.save()
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, myCustomCanvas.width, myCustomCanvas.height);
+    ctx.restore();
+
+    ctx.save()
+    ctx.fillStyle = "#000";
+    ctx.font = "50px Arial";
+    ctx.fillStyle = "left"
+    ctx.fillText('我是一行字', 0, 100)
+    ctx.restore()
+
+
+    document.body.append(myCustomCanvas)
+  </script>
+</body>
+</html>

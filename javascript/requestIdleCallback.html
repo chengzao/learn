@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>requestIdleCallback</title>
+</head>
+<body>
+    <!-- https://juejin.im/post/5e5f7dc2e51d4526fb5de615#heading-1 -->
+    <input type="text" id="text" />
+    <script>
+
+        requestIdleCallback((deadline) => {
+            // deadline.timeRemaining() 返回当前空闲时间的剩余时间
+            // deadline.didTimeout属性是一个布尔值，如果didTimeout是true，那么表示本次callback的执行是因为超时的原因
+            if (deadline.timeRemaining() > 0) {
+                // task()
+            }
+        }, {
+            timeout: 500
+        })
+
+
+        const datas = []
+        const text = document.getElementById('text')
+        let isReporting = false
+
+        function sleep(ms = 100) {
+            let sleepSwitch = true
+            let s = Date.now()
+            while (sleepSwitch) {
+                if (Date.now() - s > ms) {
+                    sleepSwitch = false
+                }
+            }
+        }
+        function handleClick() {
+            datas.push({
+                date: Date.now()
+            })
+            // 监听用户响应的函数，需要花费150ms
+            sleep(150)
+            handleDataReport()
+        }
+
+        // =========================  使用requestIdleCallback  ==============================
+
+        function handleDataReport() {
+            if (isReporting) {
+                return
+            }
+            isReporting = true
+            requestIdleCallback(report)
+        }
+
+        function report(deadline) {
+            isReporting = false
+            while (deadline.timeRemaining() > 0 && datas.length > 0) {
+                get(datas.pop())
+            }
+            if (datas.length) {
+                handleDataReport()
+            }
+        }
+
+        // =========================  使用requestIdleCallback结束  ==============================
+
+        function get(data) {
+            // 数据上报的函数，需要话费20ms
+            sleep(20)
+            console.log(`~~~ 数据上报 ~~~: ${data.date}`)
+        }
+
+        text.oninput = handleClick
+    </script>
+</body>
+</html>
