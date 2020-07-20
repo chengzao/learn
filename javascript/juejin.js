@@ -1,13 +1,33 @@
+// ==UserScript==
+// @name         juejin
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  try to take over the world!
+// @author       You
+// @match        *://*.juejin.im/*
+// @grant        none
+// ==/UserScript==
 ;(() => {
     const isJuejinHost = /^juejin\.+/.test(window.location.host)
     if (!isJuejinHost) {
         return false
     }
+
+    let users = window.localStorage.getItem('__tea_cache_tokens_2608')
+
+    if (!users) {
+        return false
+    }
+
+    const uid = JSON.parse(users).user_unique_id
+
     const display_id = 'insert_j_fav_display'
     const wrap_id = 'insert_j_fav_wrap'
     const ul_id = 'insert_j_fav_view_ul'
     const close_id = 'insert_j_fav_close_btn'
     const search_id = 'insert_j_fav_search_btn'
+    const title_id = 'insert_j_fav_title'
+    const list_counts_id = 'insert_j_fav_counts'
 
     function setStyle(obj, json) {
         for (let i in json) {
@@ -72,7 +92,11 @@
 
     wrapEl.innerHTML = `
         <div style="height: 40px;line-height: 40px;position: relative;overflow: hidden;box-shadow: 1px 2px 4px 0px #333;">
-            <div style="margin: 0 40px 0 15px;">点赞的文章列表： <a target="_blank" style="color:#027fff;" href="https://juejin.im/user/592e24c60ce463006b4b8c23/likes">@chengzao</a> <input id="${search_id}" value="" autocomplete="off" style="height: 23px;border: 1px solid #ccc;outline: none;margin-left: 10px;padding-left:10px;" /></div>
+            <div style="margin: 0 40px 0 15px;">
+                <span id="${title_id}" style="cursor:move">点赞的文章列表：</span><span id="${list_counts_id}"></span>
+                <a target="_blank" style="color:#027fff;" href="https://juejin.im/user/592e24c60ce463006b4b8c23/likes">@chengzao</a>
+                <input id="${search_id}" value="" autocomplete="off" style="height: 23px;border: 1px solid #ccc;outline: none;margin-left: 10px;padding-left:10px;" />
+            </div>
             <span id="${close_id}" style="position: absolute;top: 10px;right: 10px;width: 20px;height: 20px;cursor: pointer;text-align: center;line-height: 20px;">X</span>
         </div>
         <ul id="${ul_id}" style="height: 460px; overflow:auto;"> <div style="text-align: center;marin-top:28px;">loading...</div> </ul>
@@ -93,8 +117,7 @@
     let str = '',
         arr = [],
         total = 0
-    const fetchUrl =
-        'https://user-like-wrapper-ms.juejin.im/v1/user/592e24c60ce463006b4b8c23/like/entry'
+    const fetchUrl = `https://user-like-wrapper-ms.juejin.im/v1/user/${uid}/like/entry`
     const fetchData = async (i) => {
         fetch(fetchUrl + '?page=' + i + '&pageSize=20', {
             headers: {
@@ -126,6 +149,9 @@
                         })
                         repeatItem(searchArr, str)
                     })
+                    document.getElementById(
+                        list_counts_id,
+                    ).innerText = `(${total})`
                 }
             })
             .catch((err) => console.log('catch: ', err))
@@ -135,20 +161,21 @@
     let firstTime = 0
     let lastTime = 0
 
-    function drag(el) {
+    function drag(el, target) {
         let eleX
         let eleY
         let pageX
         let pageY
         let obj = document.getElementById(el)
         let isMove = false
+        let tar = target ? document.getElementById(target) : obj
 
         obj.onmousedown = function (ev) {
             const event = ev || window.event
             pageX = event.pageX
             pageY = event.pageY
-            eleX = obj.offsetLeft
-            eleY = obj.offsetTop
+            eleX = tar.offsetLeft
+            eleY = tar.offsetTop
             isMove = true
 
             firstTime = new Date().getTime()
@@ -159,8 +186,8 @@
                     const event = ev || window.event
                     let left = eleX + (event.pageX - pageX)
                     let top = eleY + (event.pageY - pageY)
-                    obj.style.left = left + 'px'
-                    obj.style.top = top + 'px'
+                    tar.style.left = left + 'px'
+                    tar.style.top = top + 'px'
                 }
             }
 
@@ -179,7 +206,7 @@
     }
     drag(display_id)
 
-    drag(wrap_id)
+    drag(title_id, wrap_id)
 
     addEvent(display_id, 'click', function () {
         let el = document.getElementById(wrap_id)
@@ -189,7 +216,7 @@
                 el.style.display = 'block'
                 el.className = ''
                 total = 0
-                // fetchData(0)
+                fetchData(0)
             } else {
                 el.style.display = 'none'
                 el.className = 'hide'
