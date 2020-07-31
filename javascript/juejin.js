@@ -7,7 +7,7 @@
 // @match        *://*.juejin.im/*
 // @grant        none
 // ==/UserScript==
-;(() => {
+; (() => {
     const isJuejinHost = /^juejin\.+/.test(window.location.host)
     if (!isJuejinHost) {
         return false
@@ -18,7 +18,6 @@
     if (!users) {
         return false
     }
-
     const uid = JSON.parse(users).user_unique_id
 
     const display_id = 'insert_j_fav_display'
@@ -40,9 +39,9 @@
             if (item) {
                 str +=
                     '<li style="padding: 10px; "><a target="_blank" href="' +
-                    item.originalUrl +
+                    item.article_info.link_url +
                     '" >' +
-                    item.title +
+                    item.article_info.title +
                     '</a></li>'
             }
         })
@@ -105,7 +104,7 @@
     const wrap = document.getElementById(wrap_id)
     !wrap && document.body.appendChild(wrapEl)
 
-    addEvent(close_id, 'click', function () {
+    addEvent(close_id, 'click', function() {
         let el = document.getElementById(wrap_id)
         // el && el.remove()
         if (el) {
@@ -117,30 +116,41 @@
     let str = '',
         arr = [],
         total = 0
-    const fetchUrl = `https://user-like-wrapper-ms.juejin.im/v1/user/${uid}/like/entry`
+    const fetchUrl = `https://apinew.juejin.im/interact_api/v1/digg/query_page`
     const fetchData = async (i) => {
-        fetch(fetchUrl + '?page=' + i + '&pageSize=20', {
+
+        fetch(fetchUrl, {
             headers: {
-                'Sec-Fetch-Mode': 'cors',
-                'X-Juejin-Src': 'web',
+                'sec-fetch-dest': 'empty',
+                'sec-fetch-mode': 'cors',
+                'sec-fetch-site': 'same-site',
+                'content-type': 'application/json'
             },
+            mode: 'cors',
+            method: 'POST',
+            body: JSON.stringify({
+                cursor: i * 10 + '',
+                item_type: 2,
+                sort_type: 2,
+                user_id: "3949101496410183"
+            }),
             credentials: 'include',
         })
             .then((res) => res.json())
             .then((res) => {
-                arr = arr.concat(res.d.entryList)
-                total += res.d.entryList.length
-                if (res.d.total > total) {
+                arr = arr.concat(res.data)
+                total += res.data.length
+                if (res.count > total) {
                     i++
                     fetchData(i)
                 } else {
                     repeatItem(arr, str)
-                    addEvent(search_id, 'blur', function (ev) {
+                    addEvent(search_id, 'keyup', function(ev) {
                         const value = ev.target.value
                         const searchArr = arr.map((item) => {
                             if (
                                 item &&
-                                item.title
+                                item.article_info.title
                                     .toLowerCase()
                                     .indexOf(value.toLowerCase()) > -1
                             ) {
@@ -154,7 +164,7 @@
                     ).innerText = `(${total})`
                 }
             })
-            .catch((err) => console.log('catch: ', err))
+            .catch((err) => alert('catch: api error!') && console.log('catch: ', err))
     }
 
     let key = false
@@ -170,7 +180,7 @@
         let isMove = false
         let tar = target ? document.getElementById(target) : obj
 
-        obj.onmousedown = function (ev) {
+        obj.onmousedown = function(ev) {
             const event = ev || window.event
             pageX = event.pageX
             pageY = event.pageY
@@ -181,7 +191,7 @@
             firstTime = new Date().getTime()
             key = false
 
-            document.onmousemove = function (ev) {
+            document.onmousemove = function(ev) {
                 if (isMove) {
                     const event = ev || window.event
                     let left = eleX + (event.pageX - pageX)
@@ -191,7 +201,7 @@
                 }
             }
 
-            document.onmouseup = function () {
+            document.onmouseup = function() {
                 document.onmousemove = null
                 document.onmouseup = null
                 isMove = false
@@ -208,7 +218,7 @@
 
     drag(title_id, wrap_id)
 
-    addEvent(display_id, 'click', function () {
+    addEvent(display_id, 'click', function() {
         let el = document.getElementById(wrap_id)
         if (el && key) {
             const isHide = /hide/.test(el.className)
