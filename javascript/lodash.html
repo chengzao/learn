@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lodash</title>
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
+  <script>
+    function square(n) {
+      return n * n;
+    }
+
+    var addSquare = _.flowRight([square, _.add]);
+    console.log(addSquare(1, 2));
+
+
+    function fn1(args){
+      return 'fn1 ' + args
+    }
+
+    function fn2(args){
+      return 'fn2 ' + args.name
+    }
+
+    var html = _.flowRight([fn1, fn2])({name: 'Hello Lodash!'})
+    console.log(html);
+
+
+  </script>
+</body>
+</html>
