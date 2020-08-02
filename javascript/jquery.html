@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jquery</title>
+</head>
+<body>
+  <script src="https://cdn.bootcss.com/jquery/3.5.0/jquery.js"></script>
+  <ul class="ul">
+    <li><button class="btn0">click btn0</button></li>
+  </ul>
+  <p><button class="btn1">自动触发事件</button></p>
+  <ol>
+    <li><button class="btn2">click btn2</button></li>
+  </ol>
+  <script>
+  var $ul = $('.ul')
+  $ul.on('click.operatebutton', '.btn0', function(ev){
+    console.log('ev', ev.currentTarget.textContent)
+    $ul.off('click.operatebutton')
+  })
+
+  $(".btn1").on("click.btn1", function (event, message1, message2) { //获取数据
+    console.log(message1 , message2)
+  });
+  $(".btn1").trigger("click.btn1",["hello","world"]); //传递两个数据
+
+
+  var $win = $(window)
+  $win.on('click.create', function(ev, data){
+    console.log('click.create', data)
+  })
+  $('.btn2').on('click', function(ev){
+    var value = ev.currentTarget.textContent
+    $win.triggerHandler('click.create', [value])
+  })
+
+
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blob</title>
+</head>
+<body>
+    <script>
+        // blobParts => ArrayBuffer，ArrayBufferView，Blob，DOMString...
+        // options => { type: xxx, endingsz: xxx }
+        // var aBlob = new Blob(blobParts, options);
+
+        let myBlobParts = ['<html><h2>Hello Semlinker</h2></html>']; // an array consisting of a single DOMString
+        let myBlob = new Blob(myBlobParts, { type: 'text/html', endings: "transparent" }); // the blob
+
+        console.log(myBlob.size + " bytes size");
+        // Output: 37 bytes size
+        console.log(myBlob.type + " is the type");
+        // Output: text/html is the type
+
+
+        let hello = new Uint8Array([72, 101, 108, 108, 111]); // 二进制格式的 "hello"
+        let blob = new Blob([hello, ' ', 'semlinker'], { type: 'text/plain' });
+        console.log(blob.arrayBuffer())
+
+    </script>
+</body>
+</html>

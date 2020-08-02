@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>图片本地预览示例</title>
+</head>
+<body>
+    <h3>图片本地预览示例</h3>
+    <input type="file" accept="image/*" onchange="loadFile(event)" />
+    <img id="previewContainer" />
+
+    <script>
+        const loadFile = function(event) {
+            const reader = new FileReader();
+            console.log(reader)
+            reader.onload = function() {
+                const output = document.querySelector("#previewContainer");
+                const blob = new Blob([reader.result]);
+                const objectURL = URL.createObjectURL(blob);
+                output.src = objectURL;
+            };
+            // readAsDataURL => 本地图片对应的 File 对象转换为 Data URL
+            // readAsArrayBuffer
+            // readAsText
+
+            reader.readAsArrayBuffer(event.target.files[0]);
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>获取远程图片预览示例</title>
+</head>
+<body>
+    <h3>获取远程图片预览示例</h3>
+    <img id="previewContainer" style="width: 50%;" />
+
+    <script>
+        const image = document.querySelector("#previewContainer");
+        // response => json()、 text() 、formData() 和 arrayBuffer() ...
+        fetch("http://img5.imgtn.bdimg.com/it/u=1325326911,2796291602&fm=26&gp=0.jpg")
+            .then((response) => response.arrayBuffer())
+            .then((buffer) => {
+                console.log(buffer)
+                const blob = new Blob([buffer]);
+                const objectURL = URL.createObjectURL(blob);
+                image.src = objectURL;
+                image.onload = function() {
+                    URL.revokeObjectURL(objectURL)
+                }
+            });
+
+
+    </script>
+</body>
+</html>

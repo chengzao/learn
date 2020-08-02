@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>atob / btoa</title>
+</head>
+<body>
+    <script>
+        // a 代表 ASCII，而 b 代表 Blob
+
+
+        // btoa 表示 二进制 到 ASCII，对应的是编码操作
+        var name = 'Semlinker';
+        var encodedName = btoa(name);
+        console.log(encodedName); // U2VtbGlua2Vy
+
+
+        // atob 表示 ASCII 到 二进制 ，对应的是解码操作
+        var encodedName = 'U2VtbGlua2Vy';
+        var name = atob(encodedName);
+        console.log(name); // Semlinker
+
+    </script>
+</body>
+</html>

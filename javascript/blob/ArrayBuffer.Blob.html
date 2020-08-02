@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ArrayBuffer To Blob</title>
+</head>
+<body>
+    <h3>ArrayBuffer转换成Blob <a href="https://juejin.im/post/5d1ea7a8e51d454fd8057bea">原文链接</a></h3>
+    <script>
+        //我们直接创建一个Uint8Array并填入上面的数据
+        const u8Buf = new Uint8Array([60, 100, 105, 118, 62, 104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100, 60, 47, 100, 105, 118, 62]);
+        const blob = new Blob([u8Buf], { type: "text/html" }); // Blob {size: 22, type: "text/html"}
+        const textReader = new FileReader();
+
+        textReader.readAsText(blob);
+        textReader.onload = function() {
+            console.log(textReader.result); // 同样得到div>hello world</div>
+        };
+
+
+        // Blob -> ArrayBuffer : FileReader的readAsArrayBuffer
+        var blob = new Blob(["\x01\x02\x03\x04"]),
+            fileReader = new FileReader(),
+            array;
+
+        fileReader.onload = function() {
+            array = this.result;
+            console.log("Array contains", array.byteLength, "bytes.");
+        };
+        fileReader.readAsArrayBuffer(blob);
+
+
+        // ArrayBuffer -> Blob : new Blob([new Uint8Array(data]])
+        var array = new Uint8Array([0x01, 0x02, 0x03, 0x04]);
+        var blob = new Blob([array]);
+
+    </script>
+</body>
+</html>

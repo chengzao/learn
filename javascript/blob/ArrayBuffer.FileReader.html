@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blob To ArrayBuffer</title>
+</head>
+<body>
+    <h3>Blob对象并转换成ArrayBuffer <a href="https://juejin.im/post/5d1ea7a8e51d454fd8057bea">原文链接</a></h3>
+    <script>
+        //创建一个以二进制数据存储的html文件
+        const text = "<div>hello world</div>";
+        const blob = new Blob([text], { type: "text/html" }); // Blob {size: 22, type: "text/html"}
+        //以文本读取
+        const textReader = new FileReader();
+        textReader.readAsText(blob);
+        textReader.onload = function() {
+            console.log(textReader.result); // <div>hello world</div>
+        };
+
+        //以ArrayBuffer形式读取
+        const bufReader = new FileReader();
+        bufReader.readAsArrayBuffer(blob);
+        bufReader.onload = function() {
+            console.log(new Uint8Array(bufReader.result));
+            // Uint8Array(22) [60, 100, 105, 118, 62, 104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100, 60, 47, 100, 105, 118, 62]
+        };
+    </script>
+</body>
+</html>

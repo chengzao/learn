@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iframe1</title>
+</head>
+<body>
+  <h3>iframe1 page</h3>
+  <script>
+  　　 window.top.postMessage('message from iframe1');
+
+      window.parent.document.getElementById("frame1").value = "hello from iframe1"
+
+      const parent = window.parent;
+      const opener = window.opener;
+
+      console.log('iframe1 parent:', parent.frames.length)
+      console.log('iframe1 opener:', opener)
+
+      window.addEventListener('message',function(e){
+        console.log('iframe1: ',e.data)
+      },false)
+  </script>
+</body>
+</html>

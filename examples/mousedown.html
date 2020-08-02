@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mousedown mousemove</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 200px;
+            background-color: aquamarine;
+            position: absolute;
+            left: 0;
+            right: 0;
+        }
+
+        #btn {
+            width: 60px;
+            height: 38px;
+            outline: none;
+            border: none;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <button id="btn">button</button>
+    <script>
+        function drag(el) {
+            let eleX = 0
+            let eleY = 0
+            let pageX = 0
+            let pageY = 0
+            let obj = document.getElementById(el)
+            let isMove = false
+
+            let key = false
+            let firstTime = 0
+            let lastTime = 0
+
+            obj.onmousedown = function(ev) {
+                const event = ev || window.event
+                pageX = event.pageX
+                pageY = event.pageY
+                eleX = obj.offsetLeft
+                eleY = obj.offsetTop
+                isMove = true
+
+                firstTime = new Date().getTime()
+                key = false
+
+                document.onmousemove = function(ev) {
+                    if (isMove) {
+                        const event = ev || window.event
+                        let left = eleX + (event.pageX - pageX)
+                        let top = eleY + (event.pageY - pageY)
+                        obj.style.left = left + 'px'
+                        obj.style.top = top + 'px'
+                    }
+                }
+
+                document.onmouseup = function() {
+                    document.onmousemove = null
+                    document.onmouseup = null
+                    isMove = false
+                }
+                return false
+            }
+
+            obj.onmouseup = function() {
+                lastTime = new Date().getTime()
+                if (lastTime - firstTime < 200) {
+                    key = true
+                }
+            }
+        }
+
+        drag('box')
+        drag('btn')
+    </script>
+</body>
+</html>
