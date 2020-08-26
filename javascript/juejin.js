@@ -114,8 +114,7 @@
     })
 
     let str = '',
-        arr = [],
-        total = 0
+        arr = [];
     const fetchUrl = `https://apinew.juejin.im/interact_api/v1/digg/query_page`
     const fetchData = async (i) => {
 
@@ -137,10 +136,9 @@
             credentials: 'include',
         })
             .then((res) => res.json())
-            .then((res) => {
+            .then(async (res) => {
                 arr = arr.concat(res.data)
-                total += res.data.length
-                if (res.count > total) {
+                if (res.count > +res.cursor) {
                     i++
                     fetchData(i)
                 } else {
@@ -161,10 +159,10 @@
                     })
                     document.getElementById(
                         list_counts_id,
-                    ).innerText = `(${total})`
+                    ).innerText = `(${res.count})`
                 }
             })
-            .catch((err) => alert('catch: api error!') && console.log('catch: ', err))
+            .catch((err) => console.log('catch: ', err))
     }
 
     let key = false
@@ -225,7 +223,6 @@
             if (isHide) {
                 el.style.display = 'block'
                 el.className = ''
-                total = 0
                 fetchData(0)
             } else {
                 el.style.display = 'none'
