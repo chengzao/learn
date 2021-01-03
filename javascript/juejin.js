@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         juejin
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.0.2
 // @description  try to take over the world!
 // @author       You
-// @match        *://*.juejin.im/*
+// @match        *://*.juejin.cn/*
 // @grant        none
 // ==/UserScript==
 ; (() => {
@@ -13,13 +13,6 @@
         return false
     }
 
-    let users = window.localStorage.getItem('__tea_cache_tokens_2608')
-
-    if (!users) {
-        return false
-    }
-    const uid = JSON.parse(users).user_unique_id
-
     const display_id = 'insert_j_fav_display'
     const wrap_id = 'insert_j_fav_wrap'
     const ul_id = 'insert_j_fav_view_ul'
@@ -27,6 +20,7 @@
     const search_id = 'insert_j_fav_search_btn'
     const title_id = 'insert_j_fav_title'
     const list_counts_id = 'insert_j_fav_counts'
+    const refresh_button_id = 'insert_j_refresh_btn'
 
     function setStyle(obj, json) {
         for (let i in json) {
@@ -37,9 +31,10 @@
     function repeatItem(arr, str) {
         arr.forEach((item) => {
             if (item) {
+                const url = item.article_info.link_url ?item.article_info.link_url : location.origin+'/post/'+item.article_info.article_id;
                 str +=
                     '<li style="padding: 10px; "><a target="_blank" href="' +
-                    item.article_info.link_url +
+                    url +
                     '" >' +
                     item.article_info.title +
                     '</a></li>'
@@ -95,6 +90,7 @@
                 <span id="${title_id}" style="cursor:move">点赞的文章列表：</span><span id="${list_counts_id}"></span>
                 <a target="_blank" style="color:#027fff;" href="https://juejin.im/user/592e24c60ce463006b4b8c23/likes">@chengzao</a>
                 <input id="${search_id}" value="" autocomplete="off" style="height: 23px;border: 1px solid #ccc;outline: none;margin-left: 10px;padding-left:10px;" />
+                <span id="${refresh_button_id}" style="color:#027fff;cursor:pointer;margin-left:10px;">刷新</span>
             </div>
             <span id="${close_id}" style="position: absolute;top: 10px;right: 10px;width: 20px;height: 20px;cursor: pointer;text-align: center;line-height: 20px;">X</span>
         </div>
@@ -115,6 +111,8 @@
 
     let str = '',
         arr = [];
+
+    let clicked = false, refreshed = false;
     const fetchUrl = `https://apinew.juejin.im/interact_api/v1/digg/query_page`
     const fetchData = async (i) => {
 
@@ -143,6 +141,7 @@
                     fetchData(i)
                 } else {
                     repeatItem(arr, str)
+                    refreshed = false
                     addEvent(search_id, 'keyup', function(ev) {
                         const value = ev.target.value
                         const searchArr = arr.map((item) => {
@@ -223,11 +222,17 @@
             if (isHide) {
                 el.style.display = 'block'
                 el.className = ''
-                fetchData(0)
+                !clicked && fetchData(0)
+                clicked = true
             } else {
                 el.style.display = 'none'
                 el.className = 'hide'
             }
         }
+    })
+
+    addEvent(refresh_button_id, 'click', function(){
+       !refreshed && fetchData(0)
+        refreshed = true
     })
 })()
