@@ -114,6 +114,8 @@
 
     let clicked = false, refreshed = false;
     const fetchUrl = `https://apinew.juejin.im/interact_api/v1/digg/query_page`
+    const user_id = '3949101496410183';
+  
     const fetchData = async (i) => {
 
         fetch(fetchUrl, {
@@ -129,7 +131,7 @@
                 cursor: i * 10 + '',
                 item_type: 2,
                 sort_type: 2,
-                user_id: "3949101496410183"
+                user_id: user_id
             }),
             credentials: 'include',
         })
@@ -232,7 +234,11 @@
     })
 
     addEvent(refresh_button_id, 'click', function(){
-       !refreshed && fetchData(0)
+      
+      !refreshed && fetchData(0)
         refreshed = true
+        str = '';
+        arr = [];
+        document.getElementById(search_id).value = '';
     })
 })()
