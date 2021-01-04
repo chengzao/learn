@@ -32,12 +32,11 @@
         arr.forEach((item) => {
             if (item) {
                 const url = item.article_info.link_url ?item.article_info.link_url : location.origin+'/post/'+item.article_info.article_id;
-                str +=
-                    '<li style="padding: 10px; "><a target="_blank" href="' +
-                    url +
-                    '" >' +
-                    item.article_info.title +
-                    '</a></li>'
+                const date = new Date((+item.article_info.ctime)*1000);
+                const date_txt = date.getFullYear() +'/'+(date.getMonth()+1)+'/'+date.getDate();
+                const title = item.article_info.ctime ? date_txt +': '+ item.article_info.title : item.article_info.title;
+              
+                str += '<li style="padding: 10px; "><a target="_blank" href="' + url +'" >'+ title +'</a></li>'
             }
         })
         let ul = document.getElementById(ul_id)
