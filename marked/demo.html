@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>marked</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/styles/tomorrow-night-bright.min.css">
+</head>
+
+<body>
+<h2><span class="header-link">marked</span></h2><p>I am using <strong>markdown</strong>. </p>
+<h3><span class="header-link">code</span></h3><pre><code class="language-js"> <span class="hljs-title class_">Array</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">unique</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">var</span> json = {};
+    <span class="hljs-keyword">var</span> result = [];
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">forEach</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">value</span>) {
+      <span class="hljs-comment">// 判断数组中的类型</span>
+      <span class="hljs-keyword">var</span> <span class="hljs-keyword">type</span> = <span class="hljs-title class_">Object</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">toString</span>.<span class="hljs-title function_">call</span>(value).<span class="hljs-title function_">match</span>(<span class="hljs-regexp">/\s(\w+)/</span>)[<span class="hljs-number">1</span>].<span class="hljs-title function_">toLowerCase</span>();
+      <span class="hljs-comment">// 根据类型判断该数组中的项是否在json中</span>
+      <span class="hljs-keyword">if</span> (!((<span class="hljs-keyword">type</span> + <span class="hljs-string">'-'</span> + value) <span class="hljs-keyword">in</span> json)) {
+        json[<span class="hljs-keyword">type</span> + <span class="hljs-string">'-'</span> + value] = <span class="hljs-literal">true</span>;
+        result.<span class="hljs-title function_">push</span>(value);
+      }
+    })
+    <span class="hljs-keyword">return</span> result;
+  }
+</code></pre>
+<h3><span class="header-link">css</span></h3><pre><code><span class="hljs-selector-tag">body</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#F7F7F7</span>;
+}
+
+<span class="hljs-selector-tag">ul</span> {
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">list-style</span>: none;
+}
+</code></pre>
+<h3><span class="header-link">tag</span></h3><img src="https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/css-transition.png">
+
+<h3><span class="header-link">heading+</span></h3><p><code>demo xxxx</code></p>
+
+</body>
+</html>
