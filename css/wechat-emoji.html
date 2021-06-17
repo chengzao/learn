@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const str = 'submit <img src="https://res.wx.qq.com/mpres/htmledition/images/icon/emotion/10.gif" data-id="/::-|"><img src="https://res.wx.qq.com/mpres/htmledition/images/icon/emotion/11.gif" data-id="/::@">'
+
+        // str.replace(/<img([\w\W]+?)\/>/g, (aaa, val) => {
+        //     console.log(aaa, val)
+        // })
+        // let res = str.replace(/<img([\w\W]+?)\/?>/g, (s, s1) => {
+        //     console.log(s, s1)
+        //     return s1
+        // })
+
+        // console.log(res)
+        let res = str.replace(/<img\s+src="(.*?)"\s+data\-id="(.*?)">/gi, (s, s1, s2) => {
+            console.log(s1,s2)
+            return s2
+        })
+
+        console.log(res);
+
+    </script>
+</body>
+</html>
