@@ -26,9 +26,9 @@
     // User ID
     let user_id = '3949101496410183';
     
-    try(
+    try{
       user_id = JSON.parse(window.localStorage.getItem('__tea_cache_tokens_2608')).user_unique_id
-    )catch(){
+    }catch(){
       user_id = '3949101496410183' 
     }
 
