@@ -6,6 +6,7 @@
 // @author       You
 // @match        *://*.juejin.cn/*
 // @grant        none
+// @downloadurl  https://cdn.jsdelivr.net/gh/chengzao/learn@master/javascript/juejin.js
 // ==/UserScript==
 ; ((win,doc) => {
     const isJuejinHost = /^juejin\.+/.test(win.location.host)
