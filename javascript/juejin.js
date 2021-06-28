@@ -1,17 +1,25 @@
 // ==UserScript==
 // @name         juejin
 // @namespace    http://tampermonkey.net/
-// @version      0.0.2
+// @version      1.0.2
 // @description  try to take over the world!
 // @author       You
 // @match        *://*.juejin.cn/*
 // @grant        none
 // ==/UserScript==
-; (() => {
-    const isJuejinHost = /^juejin\.+/.test(window.location.host)
+; ((win,doc) => {
+    const isJuejinHost = /^juejin\.+/.test(win.location.host)
     if (!isJuejinHost) {
         return false
     }
+
+    const identify = encodeURIComponent('__plugins:juejin@v1__');
+
+    if (win[identify]) {
+        return;
+    };
+
+    win[identify] = true;
 
     const display_id = 'insert_j_fav_display'
     const wrap_id = 'insert_j_fav_wrap'
@@ -35,20 +43,20 @@
                 const date = new Date((+item.article_info.ctime)*1000);
                 const date_txt = date.getFullYear() +'/'+(date.getMonth()+1)+'/'+date.getDate();
                 const title = item.article_info.ctime ? date_txt +': '+ item.article_info.title : item.article_info.title;
-              
+
                 str += '<li style="padding: 10px; "><a target="_blank" href="' + url +'" >'+ title +'</a></li>'
             }
         })
-        let ul = document.getElementById(ul_id)
+        let ul = doc.getElementById(ul_id)
         ul && (ul.innerHTML = str)
     }
 
     function addEvent(el, type, cb) {
-        let dom = document.getElementById(el)
+        let dom = doc.getElementById(el)
         dom && dom.addEventListener(type, cb, false)
     }
 
-    const btn = document.createElement('button')
+    const btn = doc.createElement('button')
     btn.id = display_id
     btn.innerText = '掘金'
     setStyle(btn, {
@@ -63,10 +71,10 @@
         boxShadow: '0 0 3px #000',
     })
 
-    const getBtn = document.getElementById(display_id)
-    !getBtn && document.body.appendChild(btn)
+    const getBtn = doc.getElementById(display_id)
+    !getBtn && doc.body.appendChild(btn)
 
-    let wrapEl = document.createElement('div')
+    let wrapEl = doc.createElement('div')
     wrapEl.id = wrap_id
     wrapEl.className = 'hide'
     setStyle(wrapEl, {
@@ -96,11 +104,11 @@
         <ul id="${ul_id}" style="height: 460px; overflow:auto;"> <div style="text-align: center;marin-top:28px;">loading...</div> </ul>
     `
 
-    const wrap = document.getElementById(wrap_id)
-    !wrap && document.body.appendChild(wrapEl)
+    const wrap = doc.getElementById(wrap_id)
+    !wrap && doc.body.appendChild(wrapEl)
 
     addEvent(close_id, 'click', function() {
-        let el = document.getElementById(wrap_id)
+        let el = doc.getElementById(wrap_id)
         // el && el.remove()
         if (el) {
             el.style.display = 'none'
@@ -112,9 +120,9 @@
         arr = [];
 
     let clicked = false, refreshed = false;
-    const fetchUrl = `https://apinew.juejin.im/interact_api/v1/digg/query_page`
+    const fetchUrl = `https://api.juejin.cn/interact_api/v1/digg/query_page`
     const user_id = '3949101496410183';
-  
+
     const fetchData = async (i) => {
 
         fetch(fetchUrl, {
@@ -157,7 +165,7 @@
                         })
                         repeatItem(searchArr, str)
                     })
-                    document.getElementById(
+                    doc.getElementById(
                         list_counts_id,
                     ).innerText = `(${res.count})`
                 }
@@ -174,12 +182,12 @@
         let eleY
         let pageX
         let pageY
-        let obj = document.getElementById(el)
+        let obj = doc.getElementById(el)
         let isMove = false
-        let tar = target ? document.getElementById(target) : obj
+        let tar = target ? doc.getElementById(target) : obj
 
         obj.onmousedown = function(ev) {
-            const event = ev || window.event
+            const event = ev || win.event
             pageX = event.pageX
             pageY = event.pageY
             eleX = tar.offsetLeft
@@ -189,9 +197,9 @@
             firstTime = new Date().getTime()
             key = false
 
-            document.onmousemove = function(ev) {
+            doc.onmousemove = function(ev) {
                 if (isMove) {
-                    const event = ev || window.event
+                    const event = ev || win.event
                     let left = eleX + (event.pageX - pageX)
                     let top = eleY + (event.pageY - pageY)
                     tar.style.left = left + 'px'
@@ -199,9 +207,9 @@
                 }
             }
 
-            document.onmouseup = function() {
-                document.onmousemove = null
-                document.onmouseup = null
+            doc.onmouseup = function() {
+                doc.onmousemove = null
+                doc.onmouseup = null
                 isMove = false
 
                 lastTime = new Date().getTime()
@@ -217,7 +225,7 @@
     drag(title_id, wrap_id)
 
     addEvent(display_id, 'click', function() {
-        let el = document.getElementById(wrap_id)
+        let el = doc.getElementById(wrap_id)
         if (el && key) {
             const isHide = /hide/.test(el.className)
             if (isHide) {
@@ -233,11 +241,11 @@
     })
 
     addEvent(refresh_button_id, 'click', function(){
-      
+
       !refreshed && fetchData(0)
         refreshed = true
         str = '';
         arr = [];
-        document.getElementById(search_id).value = '';
+        doc.getElementById(search_id).value = '';
     })
-})()
+})(window, document)
