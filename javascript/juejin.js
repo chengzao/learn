@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name         juejin
 // @namespace    http://tampermonkey.net/
-// @version      1.0.2
+// @version      1.0.3
 // @description  try to take over the world!
 // @author       You
 // @match        *://*.juejin.cn/*
 // @grant        none
-// @downloadurl  https://cdn.jsdelivr.net/gh/chengzao/learn@master/javascript/juejin.js
+// @downloadURL  https://cdn.jsdelivr.net/gh/chengzao/learn@master/javascript/juejin.js
 // ==/UserScript==
 ; ((win,doc) => {
     const isJuejinHost = /^juejin\.+/.test(win.location.host)
@@ -21,6 +21,10 @@
     };
 
     win[identify] = true;
+    
+    const fetchUrl = `https://api.juejin.cn/interact_api/v1/digg/query_page`
+    // User ID
+    const user_id = '3949101496410183';
 
     const display_id = 'insert_j_fav_display'
     const wrap_id = 'insert_j_fav_wrap'
@@ -121,8 +125,7 @@
         arr = [];
 
     let clicked = false, refreshed = false;
-    const fetchUrl = `https://api.juejin.cn/interact_api/v1/digg/query_page`
-    const user_id = '3949101496410183';
+
 
     const fetchData = async (i) => {
 
