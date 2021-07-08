@@ -25,12 +25,6 @@
     const fetchUrl = `https://api.juejin.cn/interact_api/v1/digg/query_page`
     // User ID
     let user_id = '3949101496410183';
-    
-    try{
-      user_id = JSON.parse(window.localStorage.getItem('__tea_cache_tokens_2608')).user_unique_id
-    }catch(err){
-      user_id = '3949101496410183' 
-    }
 
     const display_id = 'insert_j_fav_display'
     const wrap_id = 'insert_j_fav_wrap'
